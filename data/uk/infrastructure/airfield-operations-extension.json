@@ -1,0 +1,21 @@
+{
+  "id": "airfield_operations_extension",
+  "name": "Airfield Operations Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "airfield_operations",
+  "parent_buildings": [],
+  "capabilities": ["airfield_operations_mission_generation"],
+  "notes": [
+    "Aircraft Accident Codes C, D and F use this as a mission-generation precondition.",
+    "Parent-building compatibility, price, build time and capacity remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588"
+    ]
+  }
+}
