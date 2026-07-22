@@ -9,6 +9,21 @@
     "name": {"type": "string", "minLength": 1},
     "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "service": {"type": "string"},
+    "mission_types": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "poi": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "duration_minutes": {"type": "integer", "minimum": 1},
+    "preconditions": {
+      "type": "object",
+      "properties": {
+        "fire_stations": {"type": "integer", "minimum": 0},
+        "rescue_stations": {"type": "integer", "minimum": 0},
+        "police_stations": {"type": "integer", "minimum": 0},
+        "recovery_centres": {"type": "integer", "minimum": 0},
+        "hart_bases": {"type": "integer", "minimum": 0},
+        "other": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
     "requirements": {
       "type": "object",
       "required": ["guaranteed"],
@@ -21,6 +36,8 @@
     "patients": {"type": "object"},
     "prisoners": {"type": "object"},
     "reward": {"type": "object"},
+    "follow_up_missions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "expandable_missions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "notes": {"type": "array", "items": {"type": "string"}},
     "verification": {"$ref": "#/$defs/verification"}
   },
@@ -29,16 +46,20 @@
       "type": "object",
       "required": ["resource", "quantity"],
       "properties": {
-        "resource": {"type": "string"},
+        "resource": {"type": "string", "minLength": 1},
         "quantity": {"type": "integer", "minimum": 1}
       },
       "additionalProperties": false
     },
     "probabilisticRequirement": {
-      "allOf": [
-        {"$ref": "#/$defs/resourceRequirement"},
-        {"type": "object", "required": ["probability"], "properties": {"probability": {"type": "number", "minimum": 0, "maximum": 1}}}
-      ]
+      "type": "object",
+      "required": ["resource", "quantity", "probability"],
+      "properties": {
+        "resource": {"type": "string", "minLength": 1},
+        "quantity": {"type": "integer", "minimum": 1},
+        "probability": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
     },
     "verification": {
       "type": "object",
