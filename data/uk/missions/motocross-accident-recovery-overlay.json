@@ -1,0 +1,25 @@
+{
+  "id": "266-recovery-overlay",
+  "name": "Motorcross Accident",
+  "aliases": ["Motocross Accident"],
+  "service": "recovery",
+  "mission_types": ["Ambulance Missions"],
+  "poi": ["Dirt Race Track"],
+  "variant": {
+    "source_mission_id": 266,
+    "kind": "additive-overlay",
+    "key": "recovery-centre"
+  },
+  "preconditions": {
+    "rescue_stations": 3,
+    "recovery_centres": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 300},
+  "notes": ["The UK directory currently spells the mission name Motorcross Accident. The commonly used Motocross spelling is retained as an alias."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/266?additive_overlays=a"]
+  }
+}
