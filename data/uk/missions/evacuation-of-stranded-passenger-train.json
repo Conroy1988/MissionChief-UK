@@ -1,0 +1,63 @@
+{
+  "id": 807,
+  "name": "Evacuation of Stranded Passenger Train",
+  "aliases": [],
+  "service": "railway_response",
+  "mission_types": ["Railway Fire Missions", "Railway Police"],
+  "poi": ["Railroad Crossing", "Rail Crossing"],
+  "preconditions": {
+    "fire_stations": 15,
+    "rescue_stations": 12,
+    "police_stations": 9,
+    "hart_bases": 1,
+    "search_and_rescue_hqs": 2,
+    "railway_fire_responses": 1,
+    "railway_police": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 4},
+      {"resource": "fire_officer", "quantity": 4},
+      {"resource": "road_rail_unit", "quantity": 1},
+      {"resource": "rescue_support_vehicle", "quantity": 1},
+      {"resource": "breathing_apparatus_support_unit", "quantity": 1},
+      {"resource": "police_car", "quantity": 6},
+      {"resource": "eiu", "quantity": 1},
+      {"resource": "prv", "quantity": 2},
+      {"resource": "srv", "quantity": 2},
+      {"resource": "welfare_vehicle", "quantity": 1},
+      {"resource": "operational_team_leader", "quantity": 1},
+      {"resource": "control_van", "quantity": 1}
+    ],
+    "alternatives": [
+      {"resources": ["iccu", "ambulance_control_unit"], "quantity": 1},
+      {"resources": ["hazmat_unit", "cbrn_vehicle"], "quantity": 1},
+      {"resources": ["operational_support_van", "operational_support_trailer", "personal_sar_vehicle"], "quantity": 5}
+    ]
+  },
+  "personnel": {
+    "available": [
+      {"role": "Railway Police Officer", "quantity": 12},
+      {"role": "Mobile Operations Manager", "quantity": 4},
+      {"role": "Police Sergeant", "quantity": 4}
+    ],
+    "required": [
+      {"role": "Railway Police Officer", "quantity": 4},
+      {"role": "Mobile Operations Manager", "quantity": 1},
+      {"role": "Police Sergeant", "quantity": 1}
+    ]
+  },
+  "patients": {
+    "minimum": 5,
+    "maximum": 50,
+    "transport_probability": 0.1,
+    "specializations": ["General Internal"],
+    "codes": ["C-3", "C-4"]
+  },
+  "reward": {"average_credits": 13600},
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/807"]
+  }
+}
