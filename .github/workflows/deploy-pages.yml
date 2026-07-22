@@ -10,42 +10,52 @@ permissions:
   pages: write
   id-token: write
 
+# Keep the active deployment running. GitHub retains only the latest pending
+# run in this concurrency group, so rapid documentation commits converge on
+# the newest site without repeatedly cancelling the deployment in progress.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
+    name: Build Pages artifact
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v6
 
-      - name: Configure Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
 
-      - name: Install documentation dependencies
-        run: pip install -r requirements.txt
-
-      - name: Build documentation
-        run: mkdocs build --strict
-
       - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
 
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Build documentation strictly
+        run: python -m mkdocs build --strict --site-dir site
+
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
   deploy:
+    name: Deploy GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: build
     steps:
       - name: Deploy to GitHub Pages
