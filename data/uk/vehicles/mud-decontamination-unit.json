@@ -1,0 +1,21 @@
+{
+  "id": "mud_decontamination_unit",
+  "name": "Mud Decontamination Unit",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "specialist support",
+  "capabilities": [
+    "mud_decontamination"
+  ],
+  "notes": [
+    "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/546",
+      "https://www.missionchief.co.uk/einsaetze/567"
+    ]
+  }
+}
