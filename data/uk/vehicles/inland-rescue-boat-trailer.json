@@ -1,0 +1,32 @@
+{
+  "id": "inland_rescue_boat_trailer",
+  "name": "Inland Rescue Boat (Trailer)",
+  "aliases": [
+    "Inland Rescue Boat",
+    "IRB"
+  ],
+  "service": "lifeboat",
+  "category": "water rescue trailer",
+  "capabilities": [
+    "inland_water_rescue",
+    "coastal_water_rescue"
+  ],
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": [
+      "inland_water",
+      "coastal_water"
+    ]
+  },
+  "notes": [
+    "Recorded as a trailer because the official UK resource name explicitly includes '(Trailer)'."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/567",
+      "https://www.missionchief.co.uk/einsaetze/569"
+    ]
+  }
+}
