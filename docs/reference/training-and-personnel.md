@@ -2,40 +2,70 @@
 
 Training and staffing are first-class dependencies rather than footnotes attached to vehicles.
 
-## Training records
+## Production data
 
-Every course record should include:
+Stage 23 introduces schema-controlled qualification records under:
 
-- canonical course name;
-- service and academy or classroom context;
-- confirmed duration;
-- eligible personnel types;
-- vehicles requiring the qualification;
-- missions depending on qualified personnel;
-- extension or building prerequisites;
-- aliases and terminology;
-- evidence classification and verification date.
+```text
+data/uk/training/
+```
 
-## Personnel records
+The current production set verifies eleven operational roles:
 
-Personnel documentation should distinguish:
+- Railway Police Officer;
+- Mobile Operations Manager;
+- Search Advisor;
+- SAR Commander;
+- Search Technician;
+- Cave Rescue Specialist;
+- Airfield Operations Supervisor;
+- Operational Team Leader;
+- Police Sergeant;
+- Police Inspector;
+- Ambulance Officer.
 
-- untrained staff;
-- staff enrolled on a course;
-- trained and available staff;
-- staff assigned to a vehicle;
-- staff unavailable because of dispatch or other constraints.
+## Evidence boundary
+
+The mission pages verify that these roles exist and may be required or must be available before mission generation. They do **not** necessarily verify:
+
+- the academy or classroom used;
+- the exact course name;
+- course duration;
+- prerequisites;
+- maximum class size;
+- whether the qualification is transferable between vehicle types.
+
+Unverified attributes are omitted rather than inferred.
+
+## Record types
+
+The training schema supports:
+
+- `role-qualification` — an operational role verified by missions, with course details still potentially unknown;
+- `course` — a directly verified named course with any confirmed duration and prerequisites.
+
+A role record must not be presented as a complete course record unless the course interface has been reproduced.
+
+## Personnel states
+
+Mission records distinguish:
+
+- `available` — qualified personnel that must exist before generation;
+- `required` — exact personnel needed at the incident;
+- `average_minimum` — an official average-minimum value rather than a guaranteed exact count;
+- `ranges` — an explicit minimum-to-maximum requirement;
+- `probabilistic` — chance-based personnel requirements.
 
 ## Dependency mapping
 
-The database will model:
+The database is designed to model:
 
 ```text
 Mission → capability → vehicle → staffing → training → building or extension
 ```
 
-This relationship is required for accurate fleet and training planning. Owning a vehicle alone does not guarantee that it can fulfil its intended operational role.
+Owning a vehicle alone does not prove that it can fulfil its intended operational role.
 
 ## Planning guidance
 
-Training recommendations should account for reserve depth. A station with exactly the minimum number of qualified personnel can become unusable when staff are assigned elsewhere or multiple missions overlap.
+Training recommendations should include reserve depth. A station with exactly the minimum number of qualified personnel can become unusable when staff are assigned elsewhere or several missions overlap.
