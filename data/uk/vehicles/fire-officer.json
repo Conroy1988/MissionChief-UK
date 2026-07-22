@@ -1,0 +1,10 @@
+{
+  "id": "fire_officer",
+  "name": "Fire Officer",
+  "aliases": ["Fire Officers"],
+  "service": "fire_and_rescue",
+  "category": "Command",
+  "capabilities": ["incident_command"],
+  "notes": ["The record represents the deployable Fire Officer resource named in official alternative requirements; it is distinct from personnel-role fields."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+}
