@@ -2,33 +2,25 @@ name: Refresh official UK mission catalogue
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/uk-mission-catalogue-expansion
-    paths:
-      - scripts/import_official_uk_missions.py
-      - scripts/publish_official_mission_catalogue.py
-      - scripts/compact_official_mission_catalogue.py
-      - .github/workflows/import-official-uk-missions.yml
-      - data/sources/missionchief-uk/README.md
+  schedule:
+    - cron: "17 4 * * *"
 
 permissions:
   contents: write
 
 concurrency:
-  group: official-uk-mission-catalogue-${{ github.ref }}
-  cancel-in-progress: true
+  group: official-uk-mission-catalogue-refresh
+  cancel-in-progress: false
 
 jobs:
   refresh:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Check out catalogue branch
+      - name: Check out current main
         uses: actions/checkout@v6
         with:
-          ref: feature/uk-mission-catalogue-expansion
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -36,11 +28,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate catalogue scripts
+      - name: Validate catalogue tooling
         run: |
           python -m py_compile scripts/import_official_uk_missions.py
           python -m py_compile scripts/publish_official_mission_catalogue.py
           python -m py_compile scripts/compact_official_mission_catalogue.py
+          python -m py_compile scripts/validate_official_mission_catalogue.py
 
       - name: Download and reconcile official UK missions
         run: python scripts/import_official_uk_missions.py
@@ -51,40 +44,28 @@ jobs:
       - name: Compact tracked catalogue files
         run: python scripts/compact_official_mission_catalogue.py
 
-      - name: Confirm generated catalogue integrity
+      - name: Audit refreshed official catalogue
+        run: python scripts/validate_official_mission_catalogue.py
+
+      - name: Commit source changes only
         shell: bash
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/sources/missionchief-uk docs/assets/data/official
 
-          source_root = Path('data/sources/missionchief-uk')
-          public_root = Path('docs/assets/data/official')
-          coverage = json.loads((source_root / 'mission-coverage.json').read_text(encoding='utf-8'))
-          raw = json.loads((source_root / 'einsaetze.raw.json').read_text(encoding='utf-8'))
-          public = json.loads((public_root / 'uk-missions.json').read_text(encoding='utf-8'))
-
-          assert raw['count'] == len(raw['records'])
-          assert raw['count'] == public['count'] == len(public['records'])
-          assert coverage['official_count'] == raw['count']
-          assert coverage['matched_count'] + coverage['official_only_count'] == coverage['official_count']
-          assert raw['count'] >= 100
-          assert (source_root / 'einsaetze.raw.json').stat().st_size < 1_000_000
-          assert (public_root / 'uk-missions.json').stat().st_size < 1_000_000
-          assert not (source_root / 'official-missions.json').exists()
-          print(f"Validated and published {raw['count']} official UK mission records")
-          PY
-
-      - name: Commit refreshed official catalogue
-        shell: bash
-        run: |
-          if git diff --quiet -- data/sources/missionchief-uk docs/assets/data/official; then
-            echo "Official catalogue is unchanged."
+          if git diff --cached --quiet; then
+            echo "Official UK mission source is unchanged; no commit is required."
             exit 0
           fi
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/sources/missionchief-uk docs/assets/data/official
+          checked_out=$(git rev-parse HEAD)
+          git fetch origin main
+          current_main=$(git rev-parse origin/main)
+          if [ "$checked_out" != "$current_main" ]; then
+            echo "main moved from $checked_out to $current_main during refresh; rerun against the new baseline."
+            exit 1
+          fi
+
           git commit -m "Refresh official UK mission catalogue"
-          git push origin HEAD:feature/uk-mission-catalogue-expansion
+          git push origin HEAD:main
