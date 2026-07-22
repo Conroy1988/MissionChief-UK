@@ -1,0 +1,20 @@
+{
+  "id": "police_inspector",
+  "name": "Police Inspector",
+  "aliases": [],
+  "service": "police",
+  "qualification_type": "role-qualification",
+  "roles": ["Police Inspector"],
+  "notes": [
+    "Official railway and airfield missions verify this command role.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc",
+      "https://www.missionchief.co.uk/einsaetze/589"
+    ]
+  }
+}
