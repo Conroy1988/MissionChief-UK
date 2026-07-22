@@ -1,0 +1,32 @@
+{
+  "id": 0,
+  "name": "Bin fire",
+  "aliases": [
+    "Bin Fire"
+  ],
+  "service": "fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 110,
+    "event_multiplier_observed": 2
+  },
+  "notes": [
+    "Official UK mission page lists one required fire engine and one required fire station.",
+    "Follow-up missions listed by the official page: Phonebox on fire, Burning leaves and Burning bus shelter."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/0"
+    ]
+  }
+}
