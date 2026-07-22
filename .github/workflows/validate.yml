@@ -26,20 +26,8 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          package-manager-cache: false
-
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
-
-      - name: Install browser-test dependencies
-        run: npm install --no-audit --no-fund
-
-      - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
 
       - name: Validate JSON documents
         run: python scripts/validate_data.py
@@ -56,14 +44,26 @@ jobs:
       - name: Audit documentation links and anchors
         run: python scripts/audit_links.py
 
-      - name: Validate intelligence-tool JavaScript syntax
-        run: node --check docs/javascripts/intelligence-tools.js
-
       - name: Build documentation strictly
         run: python -m mkdocs build --strict --site-dir site
 
       - name: Audit built site
         run: python scripts/release_readiness.py --site-dir site
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate intelligence-tool JavaScript syntax
+        run: node --check docs/javascripts/intelligence-tools.js
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
 
       - name: Run Chromium acceptance tests against built site
         shell: bash
