@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/vehicle.schema.json",
+  "title": "MissionChief UK Vehicle Record",
+  "type": "object",
+  "required": ["id", "name", "service", "verification"],
+  "properties": {
+    "id": {"type": ["integer", "string"]},
+    "name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "service": {"type": "string"},
+    "category": {"type": "string"},
+    "cost": {"type": "object"},
+    "staffing": {"type": "object"},
+    "training": {"type": "array", "items": {"type": "string"}},
+    "building_requirements": {"type": "array", "items": {"type": "string"}},
+    "capabilities": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "verification": {
+      "type": "object",
+      "required": ["status", "checked_at"],
+      "properties": {
+        "status": {"type": "string", "enum": ["verified", "calculated", "community-report", "review-required"]},
+        "checked_at": {"type": "string", "format": "date"},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
