@@ -1,0 +1,21 @@
+{
+  "id": "railway_fire_response",
+  "name": "Railway fire response",
+  "aliases": ["Railway Fire Response"],
+  "kind": "building",
+  "service": "fire_and_rescue",
+  "parent_buildings": [],
+  "capabilities": ["railway_fire_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Railway fire response as a countable mission-generation precondition.",
+    "Cost, capacity, construction time and precise building-interface classification remain unpublished until directly reproduced."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b"
+    ]
+  }
+}
