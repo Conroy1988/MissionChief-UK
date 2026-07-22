@@ -1,101 +1,112 @@
 # Project Roadmap
 
-The guide will be developed as a maintained information system, not a one-off collection of articles.
+MissionChief UK is developed as a maintained information system rather than a one-off collection of articles.
 
-## Phase 1 — Foundation
+## Delivered foundation
 
-- [x] Define project purpose and scope
-- [x] Establish searchable documentation framework
-- [x] Define top-level content taxonomy
-- [x] Define evidence and verification standards
-- [ ] Add automated documentation build and GitHub Pages deployment
-- [ ] Add link, spelling and structured-data validation
-- [ ] Create issue templates for corrections, data submissions and guide requests
+- [x] Searchable MkDocs Material documentation site
+- [x] GitHub Pages deployment
+- [x] Evidence and verification standards
+- [x] Structured mission and vehicle schemas
+- [x] Recursive JSON Schema validation
+- [x] Mission-to-resource referential-integrity checks
+- [x] Issue forms and pull-request evidence controls
+- [x] Script compatibility, installation and recovery framework
+- [x] Planning-tool architecture
 
-## Phase 2 — Core player journey
+## Delivered data stages
 
-- [ ] Interface and terminology overview
-- [ ] First station and first vehicles
-- [ ] Credits, coins and expenditure decisions
-- [ ] Mission generation and dispatch fundamentals
-- [ ] Patients, prisoners and transport destinations
-- [ ] Personnel recruitment and training
-- [ ] Recommended early expansion sequence
-- [ ] Common early-account mistakes
+### Stage 12 — First production records
 
-## Phase 3 — Service encyclopaedia
+- [x] Initial Fire mission records
+- [x] Public verified-mission catalogue
+- [x] Schema-controlled production data
 
-For every UK service:
+### Stage 13 — Fire expansion and integrity
 
-- [ ] Buildings and extensions
-- [ ] Vehicle and equipment catalogue
-- [ ] Personnel and qualification requirements
-- [ ] Mission unlocks and dependencies
-- [ ] Fleet templates by progression stage
-- [ ] Placement and coverage guidance
-- [ ] Common failure and dispatch scenarios
+- [x] Core Fire resource records
+- [x] Probabilistic vehicle requirements
+- [x] Canonical mission-to-vehicle references
+- [x] Dataset manifest
 
-Service order:
+### Stage 14 — Ambulance and Police
 
-1. Fire and Rescue
-2. Ambulance
-3. Police
-4. Coastguard
-5. Lifeboat
-6. Mountain Rescue
-7. Other specialist and cross-service systems
+- [x] Ambulance alternative-resource groups
+- [x] Structured patient probabilities and codes
+- [x] Police public-order personnel and prisoner data
+- [x] Alternative-resource validation
 
-## Phase 4 — Searchable reference database
+### Stage 15 — Coastguard and Lifeboat
 
-- [ ] Mission records
-- [ ] Vehicle records and aliases
-- [ ] Building and extension records
-- [ ] Training and personnel records
-- [ ] Costs, capacities and unlock conditions
-- [ ] Source and last-verified metadata
-- [ ] Schema validation
-- [ ] Generated index pages
+- [x] CRV, mud-rescue and helicopter records
+- [x] Inland Rescue Boat trailer distinction
+- [x] ILB-or-ALB alternatives
+- [x] Ocean restrictions and hand-off destinations
+- [x] Maritime mission batch and service documentation
 
-## Phase 5 — Scripts and tools
+### Stage 16 — Mountain Rescue
 
-- [ ] Safe userscript installation guide
-- [ ] Tampermonkey configuration
-- [ ] LSSM installation and UK module recommendations
-- [ ] MissionChief Map Command Toolkit guide
-- [ ] Command Nexus guide
-- [ ] Compatibility matrix
-- [ ] Recommended desktop, tablet and iOS settings
-- [ ] Troubleshooting and recovery procedures
+- [x] Mountain Rescue Station preconditions
+- [x] Mountain Rescue 4x4 or SAR 4x4 alternatives
+- [x] Control Van and Search Dog Unit records
+- [x] Rescue Support Vehicle and ATV Carrier records
+- [x] PRV, SRV and Welfare Vehicle records
+- [x] Probability-based personnel requirements
+- [x] Cave Rescue Specialist and Search Advisor modelling
+- [x] Explicit additive-overlay records
+- [x] Mountain Rescue service guide and mission batch
 
-Third-party tools will be documented factually. Inclusion is not an endorsement, and each guide must identify permissions, data access and maintenance status.
+## Current production baseline
 
-## Phase 6 — Advanced operations
+```text
+21 verified mission records
+21 canonical vehicle-resource records
+6 represented operational service groups
+5 published mission batches
+```
 
-- [ ] Fleet optimisation
-- [ ] Staffing and classroom planning
-- [ ] Geographic coverage design
-- [ ] Credit efficiency and growth modelling
-- [ ] Large-scale dispatch workflows
-- [ ] Alliance administration
-- [ ] Alliance events and major incidents
-- [ ] Accessibility and mobile workflows
+## Stage 17 — Search and Rescue HQ operations
 
-## Phase 7 — Interactive intelligence layer
+Next controlled targets:
+
+- [ ] Search and Rescue HQ preconditions
+- [ ] active-drone preconditions
+- [ ] operational support vans, trailers and Personal SAR Vehicles
+- [ ] Police Helicopter or Drone alternatives
+- [ ] SAR Commanders and Search Technicians
+- [ ] High Risk Missing Person
+- [ ] Very High Risk Missing Person
+- [ ] explicit drone-enabled overlays
+
+## Later structured-data stages
+
+- [ ] Building and extension production records
+- [ ] Training and qualification production records
+- [ ] Current vehicle prices and staffing limits
+- [ ] Airfield Operations
+- [ ] Recovery and HGV recovery operations
+- [ ] Bomb Disposal and EOD
+- [ ] Railway Police and rail incident resources
+- [ ] Mass-casualty specialist resources
+- [ ] generated indexes and public data exports
+
+## Interactive intelligence layer
 
 - [ ] Mission requirement lookup
 - [ ] Vehicle and training comparison tools
-- [ ] Station/fleet planning calculators
+- [ ] Station and fleet planning calculators
 - [ ] Natural-language query catalogue
 - [ ] FAQ generated from verified records
-- [ ] Public data exports or API
+- [ ] Public API or versioned exports
 
 ## Definition of complete
 
-A subject is not complete merely because a page exists. It is complete when:
+A subject is complete only when:
 
 1. terminology and aliases are searchable;
-2. values are verified and dated;
-3. dependencies and exceptions are documented;
-4. practical examples are included;
-5. related pages and data records are linked;
-6. a player can act without needing an unexplained assumption.
+2. exact values are verified and dated;
+3. dependencies, alternatives and overlays are explicit;
+4. evidence boundaries are stated;
+5. related documentation and structured records are linked;
+6. validation covers the relevant relationships;
+7. a player can act without relying on an unexplained assumption.
