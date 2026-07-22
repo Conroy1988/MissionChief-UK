@@ -141,4 +141,5 @@ nav:
       - Research Checklist: contributing/research-checklist.md
       - Contributing: contributing/index.md
   - Project:
+      - v1.0.0 Release Notes: releases/v1.0.0.md
       - Roadmap: ROADMAP.md
