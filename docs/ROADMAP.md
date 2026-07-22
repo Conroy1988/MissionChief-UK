@@ -56,27 +56,40 @@ MissionChief UK is developed as a maintained information system rather than a on
 - [x] Explicit additive-overlay records
 - [x] Mountain Rescue service guide and mission batch
 
+### Stage 17 — Search and Rescue HQ
+
+- [x] Search and Rescue HQ preconditions
+- [x] active-Drone preconditions
+- [x] Operational Support Van, Trailer and Personal SAR Vehicle records
+- [x] Police Helicopter or Drone alternatives
+- [x] Mountain Rescue 4x4 or SAR 4x4 alternatives reused across services
+- [x] Search Advisor and SAR Commander availability and requirements
+- [x] average-minimum Search Technician modelling
+- [x] High Risk Missing Person
+- [x] Very High Risk Missing Person
+- [x] Search and Rescue HQ service guide and mission batch
+
 ## Current production baseline
 
 ```text
-21 verified mission records
-21 canonical vehicle-resource records
-6 represented operational service groups
-5 published mission batches
+23 verified mission records
+26 canonical vehicle-resource records
+7 represented operational service groups
+6 published mission batches
 ```
 
-## Stage 17 — Search and Rescue HQ operations
+## Stage 18 — Bomb Disposal and EOD operations
 
 Next controlled targets:
 
-- [ ] Search and Rescue HQ preconditions
-- [ ] active-drone preconditions
-- [ ] operational support vans, trailers and Personal SAR Vehicles
-- [ ] Police Helicopter or Drone alternatives
-- [ ] SAR Commanders and Search Technicians
-- [ ] High Risk Missing Person
-- [ ] Very High Risk Missing Person
-- [ ] explicit drone-enabled overlays
+- [ ] Bomb Disposal HQ preconditions
+- [ ] active-Drone reuse across specialist services
+- [ ] EOD and Bomb Disposal vehicle records
+- [ ] Bomb Disposal personnel and qualification roles
+- [ ] small and large unexploded-ordnance missions
+- [ ] marine and railway Bomb Disposal variants
+- [ ] explicit additive-overlay or mission-variation handling where present
+- [ ] Bomb Disposal service guide and verified mission batch
 
 ## Later structured-data stages
 
@@ -85,7 +98,6 @@ Next controlled targets:
 - [ ] Current vehicle prices and staffing limits
 - [ ] Airfield Operations
 - [ ] Recovery and HGV recovery operations
-- [ ] Bomb Disposal and EOD
 - [ ] Railway Police and rail incident resources
 - [ ] Mass-casualty specialist resources
 - [ ] generated indexes and public data exports
