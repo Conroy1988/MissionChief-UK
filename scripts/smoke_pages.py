@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION_PATH = ROOT / "data" / "version.json"
+MINIMUM_OFFICIAL_MISSIONS = 1000
 
 STATIC_HTML_ROUTES = (
     "",
@@ -21,6 +22,7 @@ STATIC_HTML_ROUTES = (
     "tools/resource-comparison/",
     "tools/fleet-planner/",
     "tools/query-catalogue/",
+    "reference/official-mission-catalogue/",
     "reference/generated-faq/",
     "api/",
     "quality-assurance/",
@@ -37,6 +39,11 @@ API_FILES = (
     "openapi.json",
 )
 
+OFFICIAL_FILES = (
+    "uk-missions.json",
+    "uk-mission-coverage.json",
+)
+
 
 class SmokeFailure(RuntimeError):
     pass
@@ -46,7 +53,7 @@ def fetch(url: str, attempts: int, delay: float) -> tuple[bytes, str]:
     last_error: Exception | None = None
     for attempt in range(1, attempts + 1):
         try:
-            request = Request(url, headers={"User-Agent": "MissionChief-UK-release-smoke/1.0"})
+            request = Request(url, headers={"User-Agent": "MissionChief-UK-release-smoke/1.1"})
             with urlopen(request, timeout=30) as response:
                 body = response.read()
                 content_type = response.headers.get_content_type()
@@ -74,6 +81,13 @@ def require(condition: bool, message: str) -> None:
         raise SmokeFailure(message)
 
 
+def require_json_content_type(content_type: str, url: str) -> None:
+    require(
+        content_type in {"application/json", "text/plain", "application/octet-stream"},
+        f"Unexpected content type for {url}: {content_type}",
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Smoke-test the deployed MissionChief UK Pages site")
     parser.add_argument("base_url", help="Deployed Pages base URL")
@@ -87,6 +101,7 @@ def main() -> int:
 
     base_url = args.base_url.rstrip("/") + "/"
     api_root = urljoin(base_url, "assets/data/v1/")
+    official_root = urljoin(base_url, "assets/data/official/")
 
     try:
         for route in html_routes:
@@ -96,18 +111,21 @@ def main() -> int:
             text = body.decode("utf-8", errors="replace")
             require("MissionChief UK" in text, f"Expected MissionChief UK page marker was absent from {url}")
 
-        script_url = urljoin(base_url, "javascripts/intelligence-tools.js")
-        script, _ = fetch(script_url, args.attempts, args.delay)
-        require(b"initMissionLookup" in script, "Deployed intelligence-tools.js is incomplete")
+        required_scripts = {
+            "javascripts/official-catalogue-loader.js": b"MCUKOfficialCatalogue",
+            "javascripts/intelligence-tools.js": b"initMissionLookup",
+            "javascripts/official-mission-details.js": b"Complete official catalogue record",
+        }
+        for relative, marker in required_scripts.items():
+            script_url = urljoin(base_url, relative)
+            script, _ = fetch(script_url, args.attempts, args.delay)
+            require(marker in script, f"Deployed {relative} is incomplete")
 
         payloads: dict[str, Any] = {}
         for filename in API_FILES:
             url = urljoin(api_root, filename)
             body, content_type = fetch(url, args.attempts, args.delay)
-            require(
-                content_type in {"application/json", "text/plain", "application/octet-stream"},
-                f"Unexpected content type for {url}: {content_type}",
-            )
+            require_json_content_type(content_type, url)
             payloads[filename] = parse_json(body, url)
 
         manifest = payloads["manifest.json"]
@@ -142,11 +160,48 @@ def main() -> int:
         openapi = payloads["openapi.json"]
         require(openapi.get("openapi") == "3.1.0", "Deployed OpenAPI contract is not version 3.1.0")
         require(openapi.get("info", {}).get("version") == manifest.get("data_version"), "Deployed OpenAPI version mismatch")
+
+        official_payloads: dict[str, Any] = {}
+        for filename in OFFICIAL_FILES:
+            url = urljoin(official_root, filename)
+            body, content_type = fetch(url, args.attempts, args.delay)
+            require_json_content_type(content_type, url)
+            official_payloads[filename] = parse_json(body, url)
+
+        official_catalogue = official_payloads["uk-missions.json"]
+        official_records = official_catalogue.get("records")
+        require(official_catalogue.get("collection") == "official-uk-missions", "Official catalogue collection name is invalid")
+        require(isinstance(official_records, list), "Official catalogue records are invalid")
+        require(
+            len(official_records) >= MINIMUM_OFFICIAL_MISSIONS,
+            f"Official catalogue contains only {len(official_records)} missions",
+        )
+        require(official_catalogue.get("count") == len(official_records), "Official catalogue count mismatch")
+        official_ids = [str(record.get("id")) for record in official_records if isinstance(record, dict)]
+        require(len(official_ids) == len(official_records), "Official catalogue contains non-object records")
+        require(len(official_ids) == len(set(official_ids)), "Official catalogue contains duplicate mission IDs")
+        source = official_catalogue.get("source")
+        require(isinstance(source, dict), "Official catalogue source metadata is missing")
+        require(source.get("url") == "https://www.missionchief.co.uk/einsaetze.json", "Official source URL is invalid")
+        source_sha = source.get("sha256")
+        require(isinstance(source_sha, str) and len(source_sha) == 64, "Official source SHA-256 is invalid")
+
+        official_coverage = official_payloads["uk-mission-coverage.json"]
+        require(official_coverage.get("official_count") == len(official_records), "Official coverage count mismatch")
+        require(
+            official_coverage.get("matched_count", 0) + official_coverage.get("official_only_count", 0)
+            == official_coverage.get("official_count"),
+            "Official coverage reconciliation is inconsistent",
+        )
+        require(official_coverage.get("source_sha256") == source_sha, "Official coverage SHA differs from catalogue")
     except (SmokeFailure, OSError, json.JSONDecodeError, KeyError) as exc:
         print(f"Pages smoke test failed: {exc}")
         return 1
 
-    print(f"Pages smoke test passed for {base_url} ({total} indexed records, version {expected_version})")
+    print(
+        f"Pages smoke test passed for {base_url} "
+        f"({total} canonical indexed records, {len(official_records)} official UK missions, version {expected_version})"
+    )
     return 0
 
 

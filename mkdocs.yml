@@ -1,5 +1,5 @@
 site_name: MissionChief UK — Operations Intelligence Platform
-site_description: Independent verified command knowledgebase, planning suite and static data API for MissionChief UK
+site_description: Independent verified command knowledgebase, complete official UK mission catalogue, planning suite and static data API for MissionChief UK
 site_url: https://conroy1988.github.io/MissionChief-UK/
 repo_url: https://github.com/Conroy1988/MissionChief-UK
 repo_name: Conroy1988/MissionChief-UK
@@ -15,7 +15,9 @@ extra_css:
 
 extra_javascript:
   - javascripts/home-command.js
+  - javascripts/official-catalogue-loader.js
   - javascripts/intelligence-tools.js
+  - javascripts/official-mission-details.js
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
 
@@ -133,6 +135,7 @@ nav:
       - Command Index: reference/index.md
       - Mission Intelligence:
           - Mission Database: reference/mission-database.md
+          - Official UK Mission Catalogue: reference/official-mission-catalogue.md
           - Verified Mission Records: reference/verified-mission-records.md
           - Mission Batch 2: reference/verified-mission-batch-2.md
           - Mission Batch 3: reference/verified-mission-batch-3.md
@@ -174,6 +177,7 @@ nav:
       - Contributing: contributing/index.md
   - Project:
       - Quality Assurance: quality-assurance.md
+      - v1.1.0 Release Notes: releases/v1.1.0.md
       - v1.0.1 Release Notes: releases/v1.0.1.md
       - v1.0.0 Release Notes: releases/v1.0.0.md
       - Roadmap: ROADMAP.md

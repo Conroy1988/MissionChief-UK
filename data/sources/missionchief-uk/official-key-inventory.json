@@ -1,0 +1,471 @@
+{
+  "chances": [
+    {
+      "key": "battalion_chief_vehicles",
+      "mission_count": 3
+    },
+    {
+      "key": "coastal_helicopter",
+      "mission_count": 2
+    },
+    {
+      "key": "emergency_welfare",
+      "mission_count": 4
+    },
+    {
+      "key": "hazmat_vehicles",
+      "mission_count": 14
+    },
+    {
+      "key": "heavy_rescue_vehicles",
+      "mission_count": 2
+    },
+    {
+      "key": "k9",
+      "mission_count": 1
+    },
+    {
+      "key": "kdow_orgl",
+      "mission_count": 15
+    },
+    {
+      "key": "mobile_air_vehicles",
+      "mission_count": 13
+    },
+    {
+      "key": "patient_critical_care",
+      "mission_count": 276
+    },
+    {
+      "key": "patient_transport",
+      "mission_count": 603
+    },
+    {
+      "key": "platform_trucks",
+      "mission_count": 45
+    },
+    {
+      "key": "police_cars",
+      "mission_count": 1
+    },
+    {
+      "key": "traffic_car",
+      "mission_count": 13
+    },
+    {
+      "key": "water_tankers",
+      "mission_count": 65
+    }
+  ],
+  "generated_at": "2026-07-22T21:40:36Z",
+  "prerequisites": [
+    {
+      "key": "airport",
+      "mission_count": 12
+    },
+    {
+      "key": "airport_2",
+      "mission_count": 4
+    },
+    {
+      "key": "bomb_disposal_count",
+      "mission_count": 11
+    },
+    {
+      "key": "bomb_disposal_diver",
+      "mission_count": 4
+    },
+    {
+      "key": "coastal_helicopter_count",
+      "mission_count": 11
+    },
+    {
+      "key": "coastal_hover_boat",
+      "mission_count": 2
+    },
+    {
+      "key": "coastal_rescue_count",
+      "mission_count": 23
+    },
+    {
+      "key": "coastal_rescue_extension",
+      "mission_count": 1
+    },
+    {
+      "key": "drone",
+      "mission_count": 9
+    },
+    {
+      "key": "fire_stations",
+      "mission_count": 637
+    },
+    {
+      "key": "fire_support_count",
+      "mission_count": 66
+    },
+    {
+      "key": "flood_equipment",
+      "mission_count": 7
+    },
+    {
+      "key": "general_practitioner",
+      "mission_count": 7
+    },
+    {
+      "key": "hazard_response_ems",
+      "mission_count": 160
+    },
+    {
+      "key": "main_building",
+      "mission_count": 1062
+    },
+    {
+      "key": "mass_casualty_count",
+      "mission_count": 59
+    },
+    {
+      "key": "max_police_stations",
+      "mission_count": 2
+    },
+    {
+      "key": "mountain_rescue",
+      "mission_count": 17
+    },
+    {
+      "key": "mud_rescue",
+      "mission_count": 5
+    },
+    {
+      "key": "personnel_educations",
+      "mission_count": 97
+    },
+    {
+      "key": "police_helicopter_stations",
+      "mission_count": 36
+    },
+    {
+      "key": "police_stations",
+      "mission_count": 577
+    },
+    {
+      "key": "railway_fire",
+      "mission_count": 14
+    },
+    {
+      "key": "railway_police",
+      "mission_count": 27
+    },
+    {
+      "key": "rescue_stations",
+      "mission_count": 566
+    },
+    {
+      "key": "riot_police",
+      "mission_count": 37
+    },
+    {
+      "key": "technical_aid",
+      "mission_count": 6
+    },
+    {
+      "key": "tow_trucks",
+      "mission_count": 24
+    },
+    {
+      "key": "tow_trucks_large",
+      "mission_count": 12
+    },
+    {
+      "key": "wasserrettung",
+      "mission_count": 6
+    },
+    {
+      "key": "water_damage_pump_count",
+      "mission_count": 9
+    },
+    {
+      "key": "water_rescue_2",
+      "mission_count": 29
+    }
+  ],
+  "requirements": [
+    {
+      "key": "airport_command",
+      "mission_count": 4
+    },
+    {
+      "key": "airport_equipment",
+      "mission_count": 5
+    },
+    {
+      "key": "ambulances",
+      "mission_count": 32
+    },
+    {
+      "key": "arff",
+      "mission_count": 6
+    },
+    {
+      "key": "atv_carrier",
+      "mission_count": 18
+    },
+    {
+      "key": "battalion_chief_vehicles",
+      "mission_count": 436
+    },
+    {
+      "key": "bomb_disposal_command",
+      "mission_count": 4
+    },
+    {
+      "key": "bomb_disposal_crew",
+      "mission_count": 7
+    },
+    {
+      "key": "bomb_disposal_diver_crew",
+      "mission_count": 4
+    },
+    {
+      "key": "bomb_disposal_diver_equipment",
+      "mission_count": 4
+    },
+    {
+      "key": "bomb_disposal_equipment",
+      "mission_count": 4
+    },
+    {
+      "key": "bomb_disposal_heavy_equipment",
+      "mission_count": 2
+    },
+    {
+      "key": "coastal_boat",
+      "mission_count": 11
+    },
+    {
+      "key": "coastal_boat_hover",
+      "mission_count": 2
+    },
+    {
+      "key": "coastal_command",
+      "mission_count": 6
+    },
+    {
+      "key": "coastal_guard_boat",
+      "mission_count": 5
+    },
+    {
+      "key": "coastal_helicopter",
+      "mission_count": 11
+    },
+    {
+      "key": "coastal_jetski",
+      "mission_count": 1
+    },
+    {
+      "key": "coastal_mud_rescue",
+      "mission_count": 5
+    },
+    {
+      "key": "coastal_rescue",
+      "mission_count": 22
+    },
+    {
+      "key": "coastal_support",
+      "mission_count": 5
+    },
+    {
+      "key": "drone",
+      "mission_count": 7
+    },
+    {
+      "key": "elw_airport",
+      "mission_count": 4
+    },
+    {
+      "key": "emergency_welfare",
+      "mission_count": 98
+    },
+    {
+      "key": "ems_mobile_command",
+      "mission_count": 65
+    },
+    {
+      "key": "firetrucks",
+      "mission_count": 628
+    },
+    {
+      "key": "flood_equipment",
+      "mission_count": 7
+    },
+    {
+      "key": "foam",
+      "mission_count": 64
+    },
+    {
+      "key": "hazard_response_primary",
+      "mission_count": 138
+    },
+    {
+      "key": "hazard_response_secondary",
+      "mission_count": 138
+    },
+    {
+      "key": "hazmat_vehicles",
+      "mission_count": 161
+    },
+    {
+      "key": "heavy_rescue_vehicles",
+      "mission_count": 252
+    },
+    {
+      "key": "height_rescue_units",
+      "mission_count": 3
+    },
+    {
+      "key": "k9",
+      "mission_count": 51
+    },
+    {
+      "key": "kdow_orgl",
+      "mission_count": 126
+    },
+    {
+      "key": "large_coastal_boat",
+      "mission_count": 9
+    },
+    {
+      "key": "mass_casualty_equipment",
+      "mission_count": 38
+    },
+    {
+      "key": "midwife",
+      "mission_count": 3
+    },
+    {
+      "key": "min_pump_speed",
+      "mission_count": 9
+    },
+    {
+      "key": "mobile_air_vehicles",
+      "mission_count": 139
+    },
+    {
+      "key": "mobile_command_vehicles",
+      "mission_count": 221
+    },
+    {
+      "key": "mud_rescue",
+      "mission_count": 5
+    },
+    {
+      "key": "oneof_airport_fire_engine_or_engine_large",
+      "mission_count": 3
+    },
+    {
+      "key": "oneof_coastal_guard_boat_or_boat_large",
+      "mission_count": 3
+    },
+    {
+      "key": "oneof_fire_command_advanced_or_airport_fire_command",
+      "mission_count": 2
+    },
+    {
+      "key": "oneof_fire_command_or_airport_fire_command",
+      "mission_count": 4
+    },
+    {
+      "key": "oneof_fire_engine_or_airport_fire_engine",
+      "mission_count": 6
+    },
+    {
+      "key": "oneof_fire_engine_or_airport_fire_engine_large",
+      "mission_count": 4
+    },
+    {
+      "key": "oneof_fire_engine_or_airport_fire_engine_or_engine_large",
+      "mission_count": 1
+    },
+    {
+      "key": "oneof_fire_engine_or_rescue",
+      "mission_count": 18
+    },
+    {
+      "key": "oneof_fire_engine_or_rescue_or_ladder",
+      "mission_count": 6
+    },
+    {
+      "key": "oneof_fire_ladder_or_rescue_stairs",
+      "mission_count": 3
+    },
+    {
+      "key": "oneof_mountain_atv_or_search_and_rescue_atv",
+      "mission_count": 17
+    },
+    {
+      "key": "oneof_paramedic_or_paramedic_advanced",
+      "mission_count": 2
+    },
+    {
+      "key": "oneof_police_drone_or_helicopter",
+      "mission_count": 10
+    },
+    {
+      "key": "oneof_police_patrol_or_swat",
+      "mission_count": 29
+    },
+    {
+      "key": "personnel_educations",
+      "mission_count": 103
+    },
+    {
+      "key": "platform_trucks",
+      "mission_count": 203
+    },
+    {
+      "key": "police_cars",
+      "mission_count": 559
+    },
+    {
+      "key": "police_helicopters",
+      "mission_count": 28
+    },
+    {
+      "key": "police_horse",
+      "mission_count": 6
+    },
+    {
+      "key": "railway_police",
+      "mission_count": 27
+    },
+    {
+      "key": "rescue_dogs",
+      "mission_count": 9
+    },
+    {
+      "key": "search_and_rescue",
+      "mission_count": 5
+    },
+    {
+      "key": "search_and_rescue_command",
+      "mission_count": 13
+    },
+    {
+      "key": "traffic_car",
+      "mission_count": 65
+    },
+    {
+      "key": "two_way",
+      "mission_count": 14
+    },
+    {
+      "key": "water_rescue",
+      "mission_count": 2
+    },
+    {
+      "key": "water_tankers",
+      "mission_count": 187
+    }
+  ],
+  "schema_version": "1",
+  "source_sha256": "bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878"
+}

@@ -39,8 +39,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Validate structured data
+      - name: Validate canonical structured data
         run: python scripts/validate_data.py
+
+      - name: Validate official UK mission catalogue
+        run: python scripts/validate_official_mission_catalogue.py
 
       - name: Generate public data exports
         run: python scripts/generate_exports.py

@@ -14,6 +14,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = ROOT / "data" / "uk"
 OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "v1"
+OFFICIAL_SOURCE_ROOT = ROOT / "data" / "sources" / "missionchief-uk"
+OFFICIAL_OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "official"
 VERSION_PATH = ROOT / "data" / "version.json"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
 README_PATH = ROOT / "README.md"
@@ -30,6 +32,7 @@ EXPECTED_STATIC_PAGES = (
     "tools/resource-comparison.md",
     "tools/fleet-planner.md",
     "tools/query-catalogue.md",
+    "reference/official-mission-catalogue.md",
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
@@ -39,8 +42,31 @@ REQUIRED_QA_FILES = (
     "package.json",
     "playwright.config.mjs",
     "tests/e2e/live-site.spec.mjs",
+    "tests/e2e/official-mission-catalogue.spec.mjs",
     "scripts/audit_links.py",
+    "scripts/validate_official_mission_catalogue.py",
     "docs/quality-assurance.md",
+)
+
+REQUIRED_OFFICIAL_FILES = (
+    "scripts/import_official_uk_missions.py",
+    "scripts/publish_official_mission_catalogue.py",
+    "scripts/compact_official_mission_catalogue.py",
+    ".github/workflows/import-official-uk-missions.yml",
+    "data/sources/missionchief-uk/README.md",
+    "data/sources/missionchief-uk/einsaetze.raw.json",
+    "data/sources/missionchief-uk/mission-coverage.json",
+    "data/sources/missionchief-uk/official-key-inventory.json",
+    "docs/assets/data/official/uk-missions.json",
+    "docs/assets/data/official/uk-mission-coverage.json",
+    "docs/javascripts/official-catalogue-loader.js",
+    "docs/javascripts/official-mission-details.js",
+)
+
+REQUIRED_JAVASCRIPT_ORDER = (
+    "javascripts/official-catalogue-loader.js",
+    "javascripts/intelligence-tools.js",
+    "javascripts/official-mission-details.js",
 )
 
 PLAYWRIGHT_PROJECTS = (
@@ -110,18 +136,20 @@ def audit_navigation(release_version: str) -> None:
         require(target in nav_targets, f"Release-critical page is not present in MkDocs navigation: {target}")
 
     javascript = config.get("extra_javascript", [])
-    require(
-        isinstance(javascript, list) and "javascripts/intelligence-tools.js" in javascript,
-        "MkDocs must load javascripts/intelligence-tools.js",
-    )
+    require(isinstance(javascript, list), "MkDocs extra_javascript must be a list")
+    for asset in REQUIRED_JAVASCRIPT_ORDER:
+        require(asset in javascript, f"MkDocs must load {asset}")
+    positions = [javascript.index(asset) for asset in REQUIRED_JAVASCRIPT_ORDER]
+    require(positions == sorted(positions), "Official catalogue loader, lookup and detail scripts are in the wrong order")
 
 
-def audit_quality_assets() -> None:
-    for relative in REQUIRED_QA_FILES:
-        require((ROOT / relative).is_file(), f"Release-critical QA file is missing: {relative}")
+def audit_quality_assets(release_version: str) -> None:
+    for relative in (*REQUIRED_QA_FILES, *REQUIRED_OFFICIAL_FILES):
+        require((ROOT / relative).is_file(), f"Release-critical file is missing: {relative}")
 
     package = read_json(ROOT / "package.json")
     require(isinstance(package, dict), "package.json must contain an object")
+    require(package.get("version") == release_version, "package.json version does not match data/version.json")
     scripts = package.get("scripts")
     require(
         isinstance(scripts, dict) and scripts.get("test:e2e") == "playwright test",
@@ -139,6 +167,26 @@ def audit_quality_assets() -> None:
     suite_text = (ROOT / "tests" / "e2e" / "live-site.spec.mjs").read_text(encoding="utf-8")
     for marker in ("mission-lookup", "comparison", "fleet-planner", "query-catalogue", "AxeBuilder"):
         require(marker in suite_text, f"Browser acceptance suite is missing coverage marker: {marker}")
+
+    official_suite = (ROOT / "tests" / "e2e" / "official-mission-catalogue.spec.mjs").read_text(encoding="utf-8")
+    for marker in (
+        "official-uk-missions",
+        "official_only_count",
+        "Burning motorbike",
+        "Complete official catalogue record",
+        "mcuk-official-field-details",
+    ):
+        require(marker in official_suite, f"Official mission acceptance suite is missing marker: {marker}")
+
+    workflow_text = (ROOT / ".github" / "workflows" / "import-official-uk-missions.yml").read_text(encoding="utf-8")
+    for marker in (
+        "workflow_dispatch",
+        "schedule:",
+        "validate_official_mission_catalogue.py",
+        "git diff --cached --quiet",
+        "gh workflow run deploy-pages.yml --ref main",
+    ):
+        require(marker in workflow_text, f"Official catalogue refresh workflow is missing control: {marker}")
 
 
 def release_metadata() -> dict[str, Any]:
@@ -238,6 +286,7 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
         release_version in readme_lower and "static api" in readme_words,
         f"README does not identify Static API v{release_version}",
     )
+    require("1,062" in readme or "1062" in readme, "README does not expose the official UK mission catalogue baseline")
     return counts
 
 
@@ -249,11 +298,16 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "tools/resource-comparison/index.html",
         "tools/fleet-planner/index.html",
         "tools/query-catalogue/index.html",
+        "reference/official-mission-catalogue/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
         f"releases/v{release_version}/index.html",
+        "javascripts/official-catalogue-loader.js",
         "javascripts/intelligence-tools.js",
+        "javascripts/official-mission-details.js",
+        "assets/data/official/uk-missions.json",
+        "assets/data/official/uk-mission-coverage.json",
         "assets/data/v1/manifest.json",
         "assets/data/v1/missions.json",
         "assets/data/v1/vehicles.json",
@@ -270,6 +324,11 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
     source_manifest = read_json(OUTPUT_ROOT / "manifest.json")
     require(built_manifest == source_manifest, "Built-site manifest differs from the generated source manifest")
 
+    for filename in ("uk-missions.json", "uk-mission-coverage.json"):
+        built = read_json(site_dir / "assets" / "data" / "official" / filename)
+        source = read_json(OFFICIAL_OUTPUT_ROOT / filename)
+        require(built == source, f"Built official catalogue asset differs from source: {filename}")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Audit MissionChief UK v1 release readiness")
@@ -278,7 +337,7 @@ def main() -> int:
 
     try:
         release = release_metadata()
-        audit_quality_assets()
+        audit_quality_assets(release["version"])
         counts = audit_exports(release)
         audit_navigation(release["version"])
         if args.site_dir is not None:

@@ -9,24 +9,24 @@
 
 # MissionChief UK
 
-<p class="mcuk-hero-lead">A verified command platform for searching incidents, understanding requirements, planning fleets and consuming structured UK game data.</p>
+<p class="mcuk-hero-lead">A complete UK mission catalogue backed by conservative canonical evidence, operational search, fleet planning and structured public data.</p>
 
 <div class="mcuk-actions" markdown>
-[Search mission requirements](tools/mission-lookup.md){ .md-button .md-button--primary }
+[Search all UK missions](tools/mission-lookup.md){ .md-button .md-button--primary }
 [Plan concurrent incidents](tools/fleet-planner.md){ .md-button }
 [Open the static API](api/index.md){ .md-button }
 </div>
 
 <div class="mcuk-command-hint">
   <button type="button" data-mcuk-palette-open><kbd>Ctrl K</kbd> Open instant command search</button>
-  <span>Search all verified missions, resources, infrastructure and qualifications without leaving your current page.</span>
+  <span>Search canonical missions, resources, infrastructure and qualifications without leaving your current page.</span>
 </div>
 
 <div class="mcuk-hero-telemetry">
-  <div><strong data-mcuk-metric="version">v1.0.1</strong><span>Data release</span></div>
+  <div><strong data-mcuk-metric="version">v1.1.0</strong><span>Data release</span></div>
   <div><strong data-mcuk-metric="stage">Stage 34</strong><span>Core programme</span></div>
-  <div><strong data-mcuk-metric="missions">62</strong><span>Verified missions</span></div>
-  <div><strong data-mcuk-metric="resources">46</strong><span>Canonical resources</span></div>
+  <div><strong data-mcuk-metric="official">1,062</strong><span>Official UK missions</span></div>
+  <div><strong data-mcuk-metric="missions">62</strong><span>Canonical mapped</span></div>
   <div><strong data-mcuk-metric="api">API v1</strong><span>Public interface</span></div>
 </div>
 
@@ -43,10 +43,10 @@
 </section>
 
 <section class="mcuk-command-strip">
-  <span><b>SEARCH</b> Find the exact incident or resource</span>
-  <span><b>ASSESS</b> Separate guaranteed and uncertain demand</span>
+  <span><b>SEARCH</b> Find any official UK mission or canonical resource</span>
+  <span><b>ASSESS</b> Separate official source fields from mapped evidence</span>
   <span><b>PLAN</b> Model simultaneous operational pressure</span>
-  <span><b>VERIFY</b> Trace populated facts to evidence</span>
+  <span><b>VERIFY</b> Trace every published fact to its evidence tier</span>
 </section>
 
 ## Choose a command route
@@ -55,9 +55,9 @@
 
 <a class="mcuk-command-card mcuk-command-card--blue" href="tools/mission-lookup/">
   <span class="mcuk-command-icon">01</span>
-  <small>MISSION INTELLIGENCE</small>
+  <small>COMPLETE MISSION INTELLIGENCE</small>
   <strong>Mission Lookup</strong>
-  <p>Search IDs, names, aliases, POIs, service groups, patient profiles and requirement types.</p>
+  <p>Search 1,062 official UK missions alongside 62 higher-trust canonical mappings, with every published field retained.</p>
   <em>Launch lookup →</em>
 </a>
 
@@ -65,7 +65,7 @@
   <span class="mcuk-command-icon">02</span>
   <small>RESOURCE PLANNING</small>
   <strong>Concurrent Fleet Planner</strong>
-  <p>Multiply guaranteed requirements across several incidents without flattening alternative groups.</p>
+  <p>Multiply guaranteed canonical requirements across several incidents without flattening alternative groups.</p>
   <em>Open planner →</em>
 </a>
 
@@ -89,16 +89,16 @@
   <span class="mcuk-command-icon">05</span>
   <small>NATURAL-LANGUAGE SEARCH</small>
   <strong>Query Catalogue</strong>
-  <p>Use ordinary words or a short question against the generated cross-collection evidence index.</p>
+  <p>Use ordinary words or a short question against the generated canonical cross-collection evidence index.</p>
   <em>Ask the catalogue →</em>
 </a>
 
-<a class="mcuk-command-card mcuk-command-card--gold" href="api/">
+<a class="mcuk-command-card mcuk-command-card--gold" href="reference/official-mission-catalogue/">
   <span class="mcuk-command-icon">06</span>
-  <small>MACHINE-READABLE DATA</small>
-  <strong>Static Data API</strong>
-  <p>Consume versioned JSON collections, the manifest, search index, FAQ and OpenAPI contract.</p>
-  <em>Read API contract →</em>
+  <small>OFFICIAL SOURCE GOVERNANCE</small>
+  <strong>UK Mission Catalogue</strong>
+  <p>Review source provenance, captured fields, daily refresh controls, reconciliation and accuracy boundaries.</p>
+  <em>Inspect catalogue →</em>
 </a>
 
 </div>
@@ -109,25 +109,26 @@
   <div class="mcuk-board-header">
     <div>
       <small>PRODUCTION POSTURE</small>
-      <h3>Validated UK data, one controlled source</h3>
+      <h3>Complete official coverage, controlled canonical interpretation</h3>
     </div>
     <span data-mcuk-release-date>Released 22 July 2026</span>
   </div>
   <div class="mcuk-board-metrics">
-    <div><strong data-mcuk-collection="missions">62</strong><span>Mission records</span><i>Requirements, outcomes and generation</i></div>
+    <div><strong data-mcuk-collection="missions">62</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
     <div><strong data-mcuk-collection="vehicles">46</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
     <div><strong data-mcuk-collection="infrastructure">18</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
     <div><strong data-mcuk-collection="training">11</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
   </div>
   <div class="mcuk-board-footer">
-    <span><b data-mcuk-search-count>137</b> searchable canonical entities</span>
+    <span><b>1,062</b> official UK missions</span>
+    <span><b data-mcuk-search-count>137</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
-    <a href="reference/data-exports/">Inspect generated exports →</a>
+    <a href="reference/official-mission-catalogue/">Inspect source controls →</a>
   </div>
 </div>
 
 !!! important "Evidence boundary"
-    **Verified applies only to populated fields.** An omitted value is unknown, not zero. Empty response arrays may represent directory-level evidence where the individual response table was unavailable.
+    **Official catalogue and canonical mapped are different evidence states.** Official fields are reproduced as published. Internal keys are not guessed into canonical vehicles, personnel or buildings. An omitted canonical value remains unknown, not zero.
 
 ## Operational coverage
 
@@ -165,18 +166,18 @@
   </article>
 </div>
 
-## From evidence to command decision
+## From official source to command decision
 
 <div class="mcuk-pipeline">
-  <div><span>01</span><strong>Capture</strong><p>Record reproducible UK evidence and source context.</p></div>
+  <div><span>01</span><strong>Capture</strong><p>Snapshot the complete official UK catalogue and reproducible evidence.</p></div>
   <i></i>
-  <div><span>02</span><strong>Model</strong><p>Represent missions, resources and qualifications as canonical JSON.</p></div>
+  <div><span>02</span><strong>Reconcile</strong><p>Match official IDs to canonical records without inventing unsupported mappings.</p></div>
   <i></i>
-  <div><span>03</span><strong>Validate</strong><p>Enforce schemas, identifiers, ranges and cross-record relationships.</p></div>
+  <div><span>03</span><strong>Validate</strong><p>Enforce schemas, identifiers, checksums, ranges and cross-record relationships.</p></div>
   <i></i>
-  <div><span>04</span><strong>Publish</strong><p>Generate documentation, intelligence tools, FAQ and static API exports.</p></div>
+  <div><span>04</span><strong>Publish</strong><p>Generate documentation, intelligence tools, FAQ and public data exports.</p></div>
   <i></i>
-  <div><span>05</span><strong>Verify live</strong><p>Smoke-test the deployed Pages site and public API before release.</p></div>
+  <div><span>05</span><strong>Verify live</strong><p>Smoke-test the deployed Pages site and cross-browser workflows before release.</p></div>
 </div>
 
 ## Intelligence standard
@@ -185,7 +186,7 @@
   <article class="mcuk-evidence mcuk-evidence--verified"><b>✅</b><strong>Verified</strong><p>Reproduced in the current UK game or supported by a suitable primary source.</p></article>
   <article class="mcuk-evidence mcuk-evidence--calculated"><b>🧮</b><strong>Calculated</strong><p>Derived transparently from verified values with the method retained.</p></article>
   <article class="mcuk-evidence mcuk-evidence--recommended"><b>🎯</b><strong>Recommended</strong><p>Strategic guidance that may vary by account, geography or play style.</p></article>
-  <article class="mcuk-evidence mcuk-evidence--review"><b>⚠️</b><strong>Review required</strong><p>Incomplete, contradictory, outdated or awaiting reproduction.</p></article>
+  <article class="mcuk-evidence mcuk-evidence--review"><b>📡</b><strong>Official catalogue</strong><p>Published by the UK feed but not automatically normalized into canonical resources.</p></article>
 </div>
 
 [Read the complete data and evidence standard →](reference/data-standard.md)
@@ -196,15 +197,15 @@
   <a href="getting-started/"><span>NEW COMMANDER</span><strong>Build the right foundation</strong><p>Start the account, understand the interface and avoid expensive early mistakes.</p></a>
   <a href="strategy/account-progression/"><span>GROWING ACCOUNT</span><strong>Plan expansion deliberately</strong><p>Balance service growth, station placement and specialist capability.</p></a>
   <a href="alliances/"><span>ALLIANCE OPERATIONS</span><strong>Coordinate at scale</strong><p>Use shared knowledge for transport, event and major-incident workflows.</p></a>
-  <a href="api/"><span>DEVELOPER / RESEARCHER</span><strong>Consume the canonical data</strong><p>Build read-only tools against the versioned JSON and OpenAPI interface.</p></a>
+  <a href="api/"><span>DEVELOPER / RESEARCHER</span><strong>Consume controlled public data</strong><p>Use the versioned canonical API and separate complete official catalogue endpoints.</p></a>
 </div>
 
 <section class="mcuk-final-cta" markdown>
 
 <div>
   <small>COMMUNITY INTELLIGENCE</small>
-  <h2>Found a gap, contradiction or new UK mission?</h2>
-  <p>Submit reproducible evidence. Every accepted contribution should make the platform more precise—not merely larger.</p>
+  <h2>Can you map an official key or strengthen canonical evidence?</h2>
+  <p>The catalogue already captures new UK missions automatically. Contributions should now improve interpretation, verification and operational usefulness.</p>
 </div>
 
 <div class="mcuk-actions" markdown>

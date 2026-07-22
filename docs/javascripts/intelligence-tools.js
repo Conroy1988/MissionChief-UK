@@ -6,6 +6,7 @@
     ? script.src.replace(/javascripts\/intelligence-tools\.js(?:\?.*)?$/, "")
     : `${window.location.origin}/MissionChief-UK/`;
   const apiRoot = new URL("assets/data/v1/", siteRoot);
+  const officialDataRoot = new URL("assets/data/official/", siteRoot);
   const cache = new Map();
 
   const escapeHtml = (value) => String(value ?? "")
@@ -19,6 +20,12 @@
     .replaceAll("_", " ")
     .replace(/\b\w/g, (character) => character.toUpperCase());
 
+  const displayValue = (value) => {
+    if (value === null || value === undefined || value === "") return "Not published";
+    if (typeof value === "object") return JSON.stringify(value);
+    return String(value);
+  };
+
   async function collection(name) {
     if (!cache.has(name)) {
       cache.set(name, fetch(new URL(`${name}.json`, apiRoot), { cache: "no-cache" })
@@ -29,6 +36,24 @@
         .then((payload) => payload.records || []));
     }
     return cache.get(name);
+  }
+
+  async function officialCatalogue() {
+    const cacheKey = "official-uk-missions";
+    if (!cache.has(cacheKey)) {
+      cache.set(cacheKey, fetch(new URL("uk-missions.json", officialDataRoot), { cache: "no-cache" })
+        .then((response) => {
+          if (response.status === 404) return { records: [], count: 0, source: null };
+          if (!response.ok) throw new Error(`Unable to load official UK mission catalogue (${response.status})`);
+          return response.json();
+        })
+        .then((payload) => ({
+          records: Array.isArray(payload.records) ? payload.records : [],
+          count: Number(payload.count) || 0,
+          source: payload.source || null
+        })));
+    }
+    return cache.get(cacheKey);
   }
 
   function claimRoot(selector) {
@@ -57,7 +82,7 @@
     return rows;
   }
 
-  function missionCard(mission) {
+  function missionCard(mission, officialRecord = null) {
     const rows = requirementRows(mission);
     const resourceTable = rows.length
       ? `<table><thead><tr><th>Requirement</th><th>Resource</th><th>Qty</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${escapeHtml(row.type)}</td><td>${escapeHtml(label(row.resource))}</td><td>${escapeHtml(row.quantity)}</td></tr>`).join("")}</tbody></table>`
@@ -66,7 +91,11 @@
     const patient = mission.patients
       ? `<p><strong>Patients:</strong> ${escapeHtml(mission.patients.minimum ?? 0)}–${escapeHtml(mission.patients.maximum ?? 0)}</p>`
       : "";
-    return `<article class="mcuk-tool-card">
+    const officialLink = officialRecord?.official_url
+      ? `<a class="mcuk-catalogue-link" href="${escapeHtml(officialRecord.official_url)}" target="_blank" rel="noopener">Open official mission page ↗</a>`
+      : "";
+    return `<article class="mcuk-tool-card mcuk-mission-card mcuk-mission-card--canonical">
+      <div class="mcuk-catalogue-badges"><span class="mcuk-catalogue-badge mcuk-catalogue-badge--canonical">Canonical mapped</span>${officialRecord ? '<span class="mcuk-catalogue-badge">Official ID matched</span>' : ""}</div>
       <h3>${escapeHtml(mission.name)} <small>#${escapeHtml(mission.id)}</small></h3>
       <p><strong>Service:</strong> ${escapeHtml(label(mission.service))}</p>
       <p><strong>Average credits:</strong> ${escapeHtml(mission.reward?.average_credits ?? "Not published")}</p>
@@ -74,7 +103,60 @@
       ${preconditions.length ? `<details><summary>Generation preconditions</summary><ul>${preconditions.map(([key, value]) => `<li>${escapeHtml(label(key))}: ${escapeHtml(Array.isArray(value) ? value.join(", ") : value)}</li>`).join("")}</ul></details>` : ""}
       ${resourceTable}
       <p class="mcuk-evidence-note">Evidence status: ${escapeHtml(label(mission.verification?.status || "unknown"))}; checked ${escapeHtml(mission.verification?.checked_at || "unknown")}.</p>
+      ${officialLink}
     </article>`;
+  }
+
+  function officialRequirementTable(mission) {
+    const requirements = mission.requirements && typeof mission.requirements === "object" ? mission.requirements : {};
+    const chances = mission.chances && typeof mission.chances === "object" ? mission.chances : {};
+    const keys = [...new Set([...Object.keys(requirements), ...Object.keys(chances)])].sort();
+    if (!keys.length) return "<p><em>The official catalogue does not publish requirement keys for this mission.</em></p>";
+    return `<table><thead><tr><th>Official requirement key</th><th>Published value</th><th>Chance field</th></tr></thead><tbody>${keys.map((key) => `<tr><td><code>${escapeHtml(key)}</code></td><td>${escapeHtml(displayValue(requirements[key]))}</td><td>${escapeHtml(displayValue(chances[key]))}</td></tr>`).join("")}</tbody></table>`;
+  }
+
+  function officialMissionCard(mission) {
+    const places = Array.isArray(mission.place_array) && mission.place_array.length
+      ? mission.place_array
+      : mission.place ? [mission.place] : [];
+    const prerequisites = mission.prerequisites && typeof mission.prerequisites === "object"
+      ? Object.entries(mission.prerequisites)
+      : [];
+    const availability = mission.availability || {};
+    const categories = Array.isArray(mission.mission_categories) ? mission.mission_categories : [];
+    const availabilityText = mission.limited_availability
+      ? `<p><strong>Availability:</strong> ${escapeHtml(availability.starts_at || "Unspecified start")} → ${escapeHtml(availability.ends_at || "Unspecified end")}</p>`
+      : "";
+    return `<article class="mcuk-tool-card mcuk-mission-card mcuk-mission-card--official">
+      <div class="mcuk-catalogue-badges"><span class="mcuk-catalogue-badge mcuk-catalogue-badge--official">Official UK catalogue</span><span class="mcuk-catalogue-badge mcuk-catalogue-badge--pending">Canonical mapping pending</span></div>
+      <h3>${escapeHtml(mission.name)} <small>#${escapeHtml(mission.id)}</small></h3>
+      <p><strong>Generated by:</strong> ${escapeHtml(label(mission.generated_by || "Not published"))}</p>
+      <p><strong>Average credits:</strong> ${escapeHtml(mission.average_credits ?? "Not published")}</p>
+      ${places.length ? `<p><strong>POI:</strong> ${escapeHtml(places.join(", "))}</p>` : ""}
+      ${categories.length ? `<p><strong>Mission categories:</strong> ${escapeHtml(categories.map(label).join(", "))}</p>` : ""}
+      ${availabilityText}
+      ${prerequisites.length ? `<details><summary>Official generation prerequisites</summary><ul>${prerequisites.map(([key, value]) => `<li><code>${escapeHtml(key)}</code>: ${escapeHtml(displayValue(value))}</li>`).join("")}</ul></details>` : ""}
+      ${officialRequirementTable(mission)}
+      <p class="mcuk-evidence-note">This is a current official catalogue record. Requirement keys are displayed verbatim and have not been guessed into canonical vehicle resources.</p>
+      <a class="mcuk-catalogue-link" href="${escapeHtml(mission.official_url)}" target="_blank" rel="noopener">Open official mission page ↗</a>
+    </article>`;
+  }
+
+  function missionSearchText(mission) {
+    const values = [
+      mission.id,
+      mission.name,
+      mission.generated_by,
+      mission.place,
+      ...(mission.aliases || []),
+      ...(mission.poi || []),
+      ...(mission.place_array || []),
+      ...(mission.mission_types || []),
+      ...(mission.mission_categories || []),
+      ...Object.keys(mission.requirements || {}),
+      ...Object.keys(mission.prerequisites || {})
+    ];
+    return values.filter((value) => value !== null && value !== undefined).join(" ").toLowerCase();
   }
 
   async function initMissionLookup() {
@@ -82,22 +164,65 @@
     if (!root) return;
     const input = root.querySelector("[data-role='query']");
     const service = root.querySelector("[data-role='service']");
+    const sourceFilter = root.querySelector("[data-role='source']");
+    const summary = root.querySelector("[data-role='summary']");
     const results = root.querySelector("[data-role='results']");
     try {
-      const missions = await collection("missions");
-      const services = [...new Set(missions.map((mission) => mission.service).filter(Boolean))].sort();
-      service.innerHTML = `<option value="">All services</option>${services.map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(label(item))}</option>`).join("")}`;
+      const [canonicalMissions, officialPayload] = await Promise.all([collection("missions"), officialCatalogue()]);
+      const officialMissions = officialPayload.records;
+      const officialById = new Map(officialMissions.map((mission) => [String(mission.id), mission]));
+      const canonicalIds = new Set(canonicalMissions.map((mission) => String(mission.id)));
+      const entries = [
+        ...canonicalMissions.map((mission) => ({
+          kind: "canonical",
+          mission,
+          official: officialById.get(String(mission.id)) || null,
+          category: mission.service || "canonical",
+          searchText: missionSearchText(mission)
+        })),
+        ...officialMissions
+          .filter((mission) => !canonicalIds.has(String(mission.id)))
+          .map((mission) => ({
+            kind: "official",
+            mission,
+            official: mission,
+            category: mission.generated_by || mission.additional?.filter_id || "official catalogue",
+            searchText: missionSearchText(mission)
+          }))
+      ];
+      entries.sort((a, b) => {
+        const aNumber = Number(a.mission.id);
+        const bNumber = Number(b.mission.id);
+        if (Number.isFinite(aNumber) && Number.isFinite(bNumber)) return aNumber - bNumber;
+        return String(a.mission.id).localeCompare(String(b.mission.id));
+      });
+
+      const categories = [...new Set(entries.map((entry) => entry.category).filter(Boolean))]
+        .sort((a, b) => label(a).localeCompare(label(b)));
+      service.innerHTML = `<option value="">All services and generators</option>${categories.map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(label(item))}</option>`).join("")}`;
+
       const render = () => {
         const query = input.value.trim().toLowerCase();
         const selectedService = service.value;
-        const filtered = missions.filter((mission) => {
-          const haystack = [mission.id, mission.name, ...(mission.aliases || []), ...(mission.poi || []), ...(mission.mission_types || [])].join(" ").toLowerCase();
-          return (!query || haystack.includes(query)) && (!selectedService || mission.service === selectedService);
-        }).slice(0, 50);
-        results.innerHTML = filtered.length ? filtered.map(missionCard).join("") : "<p>No matching verified records.</p>";
+        const selectedSource = sourceFilter?.value || "";
+        const filtered = entries.filter((entry) => {
+          return (!query || entry.searchText.includes(query))
+            && (!selectedService || entry.category === selectedService)
+            && (!selectedSource || entry.kind === selectedSource);
+        });
+        const visible = filtered.slice(0, 100);
+        if (summary) {
+          const mappedCount = canonicalMissions.length;
+          const officialOnlyCount = Math.max(0, officialMissions.length - [...canonicalIds].filter((id) => officialById.has(id)).length);
+          summary.innerHTML = `<strong>${escapeHtml(filtered.length)}</strong> matching mission${filtered.length === 1 ? "" : "s"}; showing ${escapeHtml(visible.length)}. Catalogue coverage: <strong>${escapeHtml(mappedCount)}</strong> canonical mapped and <strong>${escapeHtml(officialOnlyCount)}</strong> official records awaiting full mapping.`;
+        }
+        results.innerHTML = visible.length
+          ? visible.map((entry) => entry.kind === "canonical" ? missionCard(entry.mission, entry.official) : officialMissionCard(entry.mission)).join("")
+          : "<p>No matching UK mission records.</p>";
       };
       input.addEventListener("input", render);
       service.addEventListener("change", render);
+      sourceFilter?.addEventListener("change", render);
       render();
     } catch (error) {
       results.innerHTML = `<p class="mcuk-tool-error">${escapeHtml(error.message)}</p>`;

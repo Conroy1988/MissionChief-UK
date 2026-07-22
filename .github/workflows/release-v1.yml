@@ -82,9 +82,13 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python -m pip install -r requirements.txt
 
-      - name: Validate structured data
+      - name: Validate canonical structured data
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_data.py
+
+      - name: Validate official UK mission catalogue
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_mission_catalogue.py
 
       - name: Generate public data exports
         if: steps.existing.outputs.exists != 'true'

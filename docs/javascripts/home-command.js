@@ -6,7 +6,9 @@
     ? script.src.replace(/javascripts\/home-command\.js(?:\?.*)?$/, "")
     : `${window.location.origin}/MissionChief-UK/`;
   const manifestUrl = new URL("assets/data/v1/manifest.json", siteRoot);
+  const officialCoverageUrl = new URL("assets/data/official/uk-mission-coverage.json", siteRoot);
   let manifestPromise;
+  let officialCoveragePromise;
 
   const text = (selector, value) => {
     document.querySelectorAll(selector).forEach((node) => {
@@ -41,6 +43,18 @@
     return manifestPromise;
   };
 
+  const loadOfficialCoverage = () => {
+    if (!officialCoveragePromise) {
+      officialCoveragePromise = fetch(officialCoverageUrl, { cache: "no-cache" })
+        .then((response) => {
+          if (!response.ok) return null;
+          return response.json();
+        })
+        .catch(() => null);
+    }
+    return officialCoveragePromise;
+  };
+
   async function initHomeCommand() {
     const root = document.querySelector("[data-mcuk-home]");
     if (!root || root.dataset.mcukHomeReady === "true") return;
@@ -49,17 +63,21 @@
     const state = root.querySelector("[data-mcuk-live-state]");
 
     try {
-      const manifest = await loadManifest();
+      const [manifest, officialCoverage] = await Promise.all([loadManifest(), loadOfficialCoverage()]);
       const missions = collectionCount(manifest, "missions", 62);
       const vehicles = collectionCount(manifest, "vehicles", 46);
       const infrastructure = collectionCount(manifest, "infrastructure", 18);
       const training = collectionCount(manifest, "training", 11);
+      const officialMissions = Number.isFinite(officialCoverage?.official_count)
+        ? officialCoverage.official_count
+        : 1062;
       const searchable = Number.isFinite(manifest?.search_index?.count)
         ? manifest.search_index.count
         : missions + vehicles + infrastructure + training;
 
-      text('[data-mcuk-metric="version"]', `v${manifest.data_version || "1.0.0"}`);
+      text('[data-mcuk-metric="version"]', `v${manifest.data_version || "1.1.0"}`);
       text('[data-mcuk-metric="stage"]', `Stage ${manifest.stage ?? 34}`);
+      text('[data-mcuk-metric="official"]', officialMissions.toLocaleString("en-GB"));
       text('[data-mcuk-metric="missions"]', missions);
       text('[data-mcuk-metric="resources"]', vehicles);
       text('[data-mcuk-metric="api"]', `API ${String(manifest.api_version || "v1").toUpperCase()}`);
