@@ -1,13 +1,14 @@
 {
   "id": "hart_base",
   "name": "HART Base",
-  "aliases": ["Hazardous Area Response Team Base"],
+  "aliases": [],
   "kind": "building",
   "service": "ambulance",
   "parent_buildings": [],
   "capabilities": ["hart_mission_generation"],
   "notes": [
     "This record establishes the canonical HART Base identifier used across verified specialist missions.",
+    "The abbreviation remains unexpanded without separate primary-source evidence.",
     "Price, build time, vehicle capacity and personnel capacity remain unverified."
   ],
   "verification": {
