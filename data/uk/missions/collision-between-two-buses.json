@@ -1,0 +1,24 @@
+{
+  "id": 791,
+  "name": "Collision between two buses",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Mass Casualty Missions (Specialization)", "Police Missions", "Recovery Vehicle Missions"],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 16,
+    "rescue_stations": 10,
+    "police_stations": 4,
+    "hart_bases": 1,
+    "mass_casualty_extensions": 1,
+    "hgv_recovery_extensions": 2
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 11800},
+  "notes": ["The official directory verifies this standalone Recovery Vehicle Mission and its two HGV Recovery Extension dependency. Response and towing quantities remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/791"]
+  }
+}
