@@ -11,13 +11,8 @@
   border-bottom: 2px solid rgba(79, 190, 255, 0.45);
 }
 
-.md-tabs {
-  background: #081522;
-}
-
-.md-main__inner {
-  margin-top: 1.3rem;
-}
+.md-tabs { background: #081522; }
+.md-main__inner { margin-top: 1.3rem; }
 
 .mcuk-hero {
   position: relative;
@@ -44,23 +39,9 @@
   background-size: 36px 36px;
 }
 
-.mcuk-hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-.mcuk-hero h1 {
-  margin: 0;
-  color: #fff;
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  letter-spacing: 0.035em;
-}
-
-.mcuk-hero p {
-  max-width: 52rem;
-  color: #d9edf9;
-  font-size: 1.05rem;
-}
+.mcuk-hero > * { position: relative; z-index: 1; }
+.mcuk-hero h1 { margin: 0; color: #fff; font-size: clamp(2rem, 5vw, 3.8rem); letter-spacing: 0.035em; }
+.mcuk-hero p { max-width: 52rem; color: #d9edf9; font-size: 1.05rem; }
 
 .mcuk-kicker {
   display: inline-block;
@@ -75,16 +56,8 @@
   text-transform: uppercase;
 }
 
-.mcuk-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.35rem;
-}
-
-.mcuk-actions .md-button {
-  margin: 0;
-}
+.mcuk-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.35rem; }
+.mcuk-actions .md-button { margin: 0; }
 
 .mcuk-status-grid {
   display: grid;
@@ -100,23 +73,50 @@
   background: var(--md-default-bg-color);
 }
 
-.mcuk-status strong {
-  display: block;
-  margin-bottom: 0.2rem;
-  color: var(--mcuk-blue);
-  font-size: 1.15rem;
+.mcuk-status strong { display: block; margin-bottom: 0.2rem; color: var(--mcuk-blue); font-size: 1.15rem; }
+.grid.cards > ul > li { transition: border-color 150ms ease, transform 150ms ease; }
+.grid.cards > ul > li:hover { border-color: rgba(45, 159, 232, 0.7); transform: translateY(-2px); }
+
+.mcuk-tool {
+  margin: 1.2rem 0;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--mcuk-blue) 45%, transparent);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--md-default-bg-color) 94%, var(--mcuk-blue));
 }
 
-.grid.cards > ul > li {
-  transition: border-color 150ms ease, transform 150ms ease;
+.mcuk-tool-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.grid.cards > ul > li:hover {
-  border-color: rgba(45, 159, 232, 0.7);
-  transform: translateY(-2px);
+.mcuk-tool-controls label { display: grid; gap: 0.35rem; font-weight: 700; }
+.mcuk-tool input,
+.mcuk-tool select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.45rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
 }
+
+.mcuk-tool-card {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.7rem;
+  background: var(--md-default-bg-color);
+}
+
+.mcuk-tool-card h3 { margin-top: 0; }
+.mcuk-tool-card small { color: var(--md-default-fg-color--light); }
+.mcuk-evidence-note { color: var(--md-default-fg-color--light); font-size: 0.82rem; }
+.mcuk-tool-error { color: var(--mcuk-red); font-weight: 700; }
+.mcuk-tool pre { white-space: pre-wrap; margin: 0; font-size: 0.75rem; }
+.mcuk-tool table { display: table; width: 100%; }
 
 [data-md-color-scheme="slate"] .md-typeset .admonition,
-[data-md-color-scheme="slate"] .md-typeset details {
-  background-color: rgba(13, 32, 50, 0.88);
-}
+[data-md-color-scheme="slate"] .md-typeset details { background-color: rgba(13, 32, 50, 0.88); }
