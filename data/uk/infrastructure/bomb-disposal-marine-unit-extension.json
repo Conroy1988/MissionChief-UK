@@ -1,0 +1,18 @@
+{
+  "id": "bomb_disposal_marine_unit_extension",
+  "name": "Bomb Disposal Marine Unit Extension",
+  "aliases": ["Marine Bomb Disposal Extension"],
+  "kind": "extension",
+  "service": "bomb_disposal",
+  "parent_buildings": ["Bomb Disposal HQ"],
+  "capabilities": ["Unlocks marine and coastal Bomb Disposal mission preconditions"],
+  "notes": [
+    "The official mission directory confirms one or two extensions as preconditions for beach, harbour and marina ordnance missions.",
+    "Cost, construction time, capacity and associated vehicles remain unpublished until reproduced from the current extension interface."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
