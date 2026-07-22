@@ -1,0 +1,19 @@
+{
+  "id": "drone",
+  "name": "Drone",
+  "aliases": ["UAV", "Uncrewed Aerial Vehicle"],
+  "service": "shared",
+  "category": "Aerial search and reconnaissance",
+  "capabilities": ["aerial_search", "reconnaissance"],
+  "notes": [
+    "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/635",
+      "https://www.missionchief.co.uk/einsaetze/636"
+    ]
+  }
+}
