@@ -1,0 +1,17 @@
+{
+  "id": "breathing_apparatus_support_unit",
+  "name": "Breathing Apparatus Support Unit",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Specialist support",
+  "capabilities": ["breathing_apparatus_support"],
+  "notes": ["Official UK railway mission pages list this resource as guaranteed or probabilistic depending on the incident."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a"
+    ]
+  }
+}
