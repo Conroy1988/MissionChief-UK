@@ -5,26 +5,43 @@ This directory contains the production machine-readable records used by the Miss
 ## Current inventory
 
 ```text
-27 verified mission records
-26 canonical vehicle-resource records
-2 canonical infrastructure records
-8 represented operational service groups
-7 published mission-data batches
+30 verified mission records
+39 canonical vehicle-resource records
+6 canonical infrastructure records
+9 represented operational service groups
+8 published mission-data batches
 ```
 
-### Stage 18 mission records
+### Stage 19 mission records
 
-- `829` — Unexploded WW2 Ordnance in Countryside
-- `830` — Unexploded WW2 Ordnance on Quiet Beach
-- `832` — Unexploded WW2 Ordnance in Harbour
-- `839` — Unexploded WW2 Bomb Located at Building Site (Large)
+- `587` — Aircraft Accident - Code C
+- `588` — Aircraft Accident - Code F
+- `593` — Bird Strike - Code B
 
-### Stage 18 infrastructure records
+### Stage 19 infrastructure records
 
-- `bomb_disposal_hq` — Bomb Disposal HQ
-- `bomb_disposal_marine_unit_extension` — Bomb Disposal Marine Unit Extension
+- `aviation_firefighting_extension` — Aviation firefighting Extension
+- `airfield_operations_extension` — Airfield Operations Extension
+- `mass_casualty_extension` — Mass Casualty Extension
+- `hart_base` — HART Base
 
-The full vehicle and mission inventories remain available through the public reference pages and the JSON files under this directory.
+### Stage 19 deployable resources
+
+- `riv` — RIV
+- `major_foam_tender` — Major Foam Tender
+- `water_carrier` — Water Carrier
+- `airfield_firefighting_command_vehicle` — Airfield Firefighting Command Vehicle
+- `airfield_operations_vehicle` — Airfield Operations Vehicle
+- `fire_officer` — Fire Officer
+- `hazmat_unit` — HazMat Unit
+- `cbrn_vehicle` — CBRN Vehicle
+- `iccu` — ICCU
+- `ambulance_control_unit` — Ambulance Control Unit
+- `rescue_stairs` — Rescue Stairs
+- `traffic_car` — Traffic Car
+- `mass_casualty_equipment` — Mass Casualty Equipment
+
+The full inventories remain available through the public reference pages and the JSON files under this directory.
 
 ## Service coverage
 
@@ -37,9 +54,10 @@ The production dataset now contains records across:
 - Lifeboat and Ocean Rescue;
 - Mountain Rescue and land search;
 - Search and Rescue HQ and drone-enabled operations;
-- Bomb Disposal and EOD mission generation.
+- Bomb Disposal and EOD mission generation;
+- Airfield Operations and airport firefighting.
 
-Airfield Operations, Recovery, Railway Police and other specialist services remain future controlled population batches.
+Recovery, Railway Police and other specialist services remain future controlled population batches.
 
 ## Validation guarantees
 
@@ -49,28 +67,25 @@ The repository validator checks:
 2. conformance with the applicable Draft 2020-12 schema;
 3. unique identifiers within each record type;
 4. valid date formats;
-5. guaranteed and probabilistic mission resources against canonical resource IDs;
+5. guaranteed, probabilistic and conditional mission resources against canonical IDs;
 6. every resource inside every alternative requirement group;
 7. that patient minimums do not exceed patient maximums;
-8. Bomb Disposal infrastructure preconditions against canonical infrastructure records.
+8. specialist mission preconditions against canonical infrastructure records.
 
-A mission fails validation when it references an unknown vehicle resource or a Bomb Disposal infrastructure entity that does not exist under `data/uk/infrastructure/`.
+A mission fails validation when it references an unknown deployable resource or a mapped infrastructure entity that does not exist under `data/uk/infrastructure/`.
 
-## Stage 18 infrastructure modelling
+## Conditional-resource modelling
 
-Stage 18 introduces production records for buildings and extensions through `infrastructure.schema.json`.
+Stage 19 introduces `requirements.conditional`. Aircraft Accident Codes C and F use this for Traffic Cars that are required only when available.
 
-```text
-Bomb Disposal HQ
-Bomb Disposal Marine Unit Extension
-```
+Conditional requirements are neither guaranteed nor recommended. Their exact trigger is preserved in the `condition` field.
 
-The mission fields `bomb_disposal_hqs` and `bomb_disposal_marine_unit_extensions` are validated against these records.
+## Airfield alternative groups
+
+Airfield incidents may contain several independent alternative groups. Some resources, especially Airfield Firefighting Command Vehicles, can appear in more than one group and as a dedicated requirement. Records preserve every official requirement row separately rather than inventing a minimum unique-vehicle total.
 
 ## Evidence boundary
 
-The official mission directory exposed mission IDs, names, POIs, rewards and preconditions. Individual response tables were not consistently retrievable during Stage 18 verification.
-
-Vehicle and personnel requirement arrays are therefore empty for the first Bomb Disposal batch. Empty fields are deliberate and must not be interpreted as proof that no specialist response is required.
+Stage 19 records verify current mission-page fields, but do not yet publish purchase prices, staffing limits, training durations, infrastructure costs or dispatch-allocation behaviour across overlapping alternatives.
 
 Temporary event multipliers are not stored as base rewards unless explicitly identified as observations rather than canonical values.
