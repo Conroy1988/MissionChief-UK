@@ -1,0 +1,36 @@
+{
+  "id": 832,
+  "name": "Unexploded WW2 Ordnance in Harbour",
+  "aliases": ["Unexploded Second World War ordnance in harbour"],
+  "service": "bomb_disposal",
+  "mission_types": ["Bomb Disposal Missions"],
+  "poi": ["Harbour"],
+  "custom_spawn_area": false,
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {"source_mission_id": 832, "kind": "base", "key": "harbour-ordnance"},
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 6,
+    "police_stations": 20,
+    "hart_bases": 1,
+    "coastguard_rescue_stations": 9,
+    "bomb_disposal_hqs": 3,
+    "bomb_disposal_marine_unit_extensions": 2,
+    "active_drones": 1,
+    "other": []
+  },
+  "requirements": {"guaranteed": [], "probabilistic": [], "alternatives": []},
+  "reward": {"average_credits": 15000},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "This record demonstrates that an active Drone can be a mission-generation precondition without proving a Drone response requirement.",
+    "Vehicle and personnel requirements remain unpublished until the individual mission page is reproducible."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/832", "https://www.missionchief.co.uk/einsaetze"]
+  }
+}
