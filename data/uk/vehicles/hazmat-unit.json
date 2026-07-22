@@ -1,10 +1,10 @@
 {
   "id": "hazmat_unit",
   "name": "HazMat Unit",
-  "aliases": ["Hazardous Materials Unit"],
+  "aliases": [],
   "service": "fire_and_rescue",
   "category": "Hazardous materials",
   "capabilities": ["hazardous_materials_response"],
-  "notes": ["Official UK airfield pages pair this resource with CBRN Vehicles in an alternative requirement group."],
+  "notes": ["Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group."],
   "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
 }
