@@ -1,0 +1,17 @@
+{
+  "id": "sar_commander",
+  "name": "SAR Commander",
+  "aliases": [],
+  "service": "search_and_rescue",
+  "qualification_type": "role-qualification",
+  "roles": ["SAR Commander"],
+  "notes": [
+    "Official Search and Rescue missions verify this role as an available and required personnel type.",
+    "The associated course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/635"]
+  }
+}
