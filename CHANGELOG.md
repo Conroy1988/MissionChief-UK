@@ -6,7 +6,24 @@ The project follows semantic versioning for its public static-data API and relea
 
 ## [Unreleased]
 
-No unreleased changes are currently recorded.
+### Command experience
+
+- Added a site-wide verified-data command palette available through `Ctrl+K`, `⌘K` or `/`.
+- Added instant search across missions, deployable resources, infrastructure and qualifications.
+- Added collection filters, keyboard result navigation, responsive mobile presentation and focus restoration.
+- Added encoded deep links from mission results into Mission Lookup and from other collections into the Query Catalogue.
+- Added a persistent header launcher plus a prominent landing-page command-search control.
+
+### Quality assurance
+
+- Added Playwright acceptance coverage for command-palette search, filtering, closure, mission deep links and iPhone viewport operation.
+- Added all-JavaScript syntax validation to the validation and deployment workflows.
+- Documented the command-search trust boundary and dedicated local test command.
+
+### Compatibility
+
+- Retained the v1.0.1 static API, canonical IDs, collection counts and evidence semantics.
+- Added no MissionChief authentication, account access or data mutation capability.
 
 ## [1.0.1] — 2026-07-22
 
