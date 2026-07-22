@@ -32,7 +32,7 @@ jobs:
 
       - name: Configure GitHub Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Install documentation dependencies
         run: |
@@ -48,8 +48,17 @@ jobs:
       - name: Generate FAQ
         run: python scripts/generate_faq.py
 
+      - name: Audit repository and generated API
+        run: python scripts/release_readiness.py
+
+      - name: Validate intelligence-tool JavaScript syntax
+        run: node --check docs/javascripts/intelligence-tools.js
+
       - name: Build documentation strictly
         run: python -m mkdocs build --strict --site-dir site
+
+      - name: Audit built site
+        run: python scripts/release_readiness.py --site-dir site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
@@ -64,7 +73,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: build
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    name: Smoke-test deployed Pages site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: deploy
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Test deployed pages and public API
+        run: python scripts/smoke_pages.py "${{ needs.deploy.outputs.page_url }}"
