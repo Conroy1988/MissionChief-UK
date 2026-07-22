@@ -1,0 +1,27 @@
+{
+  "id": "coastguard_commander",
+  "name": "Coastguard Commander",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "command",
+  "cost": {
+    "credits": 25000,
+    "coins": 15
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 5
+  },
+  "training": ["Coastal Command Training"],
+  "building_requirements": [
+    "Coastguard Rescue Station",
+    "Home Response Location"
+  ],
+  "capabilities": ["coastguard_command"],
+  "notes": ["Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"]
+  }
+}
