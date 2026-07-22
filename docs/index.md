@@ -17,8 +17,13 @@
 [Open the static API](api/index.md){ .md-button }
 </div>
 
+<div class="mcuk-command-hint">
+  <button type="button" data-mcuk-palette-open><kbd>Ctrl K</kbd> Open instant command search</button>
+  <span>Search all verified missions, resources, infrastructure and qualifications without leaving your current page.</span>
+</div>
+
 <div class="mcuk-hero-telemetry">
-  <div><strong data-mcuk-metric="version">v1.0.0</strong><span>Data release</span></div>
+  <div><strong data-mcuk-metric="version">v1.0.1</strong><span>Data release</span></div>
   <div><strong data-mcuk-metric="stage">Stage 34</strong><span>Core programme</span></div>
   <div><strong data-mcuk-metric="missions">62</strong><span>Verified missions</span></div>
   <div><strong data-mcuk-metric="resources">46</strong><span>Canonical resources</span></div>
