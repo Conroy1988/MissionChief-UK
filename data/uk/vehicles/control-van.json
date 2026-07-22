@@ -1,0 +1,21 @@
+{
+  "id": "control_van",
+  "name": "Control Van",
+  "aliases": ["Control Vans"],
+  "service": "search_and_rescue",
+  "category": "command",
+  "capabilities": ["incident_command", "search_coordination"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["land", "off_road"]
+  },
+  "notes": [
+    "The official Overdue Hikers mission page lists one Control Van.",
+    "Price, staffing, training and building requirements are not published in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/756"]
+  }
+}
