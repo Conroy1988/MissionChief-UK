@@ -8,14 +8,15 @@ Each mission page and structured record should contain:
 
 - canonical mission name and game identifier;
 - aliases and searchable terminology;
-- service and mission-type classifications;
-- points of interest and known unlock conditions;
+- service and mission-group classification;
+- known unlock conditions and POIs;
 - guaranteed resource requirements;
-- probabilistic requirements with clearly stated probabilities;
-- alternative resource groups where one of several vehicles can satisfy the same requirement;
-- personnel availability and on-scene requirements;
-- patient, critical-care, prisoner and transport behaviour;
+- probabilistic requirements with confirmed probabilities;
+- alternative resource groups where one of several vehicles can satisfy a requirement;
+- personnel and training dependencies;
+- patient, prisoner, transport and hand-off behaviour;
 - reward data;
+- custom spawn-area and vehicle-environment restrictions;
 - related mission variants;
 - operational notes and common dispatch mistakes;
 - evidence status, source trail and verification date.
@@ -26,28 +27,47 @@ Requirements must distinguish between:
 
 - **guaranteed** — always required under the documented conditions;
 - **probabilistic** — may be requested, with the confirmed probability recorded;
-- **alternative** — a confirmed quantity can be supplied by any one of the listed compatible resources;
-- **conditional** — triggered only when another element exists, such as a patient, prisoner or optional game system;
+- **alternative** — one qualifying resource from a defined group satisfies the requirement;
+- **conditional** — triggered only when another element exists, such as a patient or prisoner;
 - **recommended** — strategic advice rather than a game requirement.
 
-An alternative group must not be flattened into multiple guaranteed requirements. For example, “1 RRV or Specialist Paramedic RRV” means one qualifying vehicle, not one of each.
+## Alternative requirements
 
-## Patients and prisoners
+An alternative group such as:
 
-Where confirmed, patient records should preserve:
+```json
+{
+  "resources": [
+    "inshore_lifeboat",
+    "all_weather_lifeboat"
+  ],
+  "quantity": 1
+}
+```
 
-- minimum and maximum patient counts;
-- transport probability;
-- critical-care probability;
-- first-responder full-care probability;
-- patient specialisation;
-- possible patient codes.
+means one ILB or one ALB. It must not be interpreted as requiring both resources.
 
-Prisoner records should preserve confirmed maximum counts separately from police vehicle and personnel requirements.
+The same model is used by verified Ambulance missions where an RRV or Specialist Paramedic RRV can satisfy one response requirement.
 
-## Personnel
+## Maritime mission fields
 
-Personnel availability preconditions and personnel actually required at the mission are different concepts. The database stores them independently so a guide does not confuse an unlock condition with the staffing needed to complete the incident.
+Stage 15 adds explicit fields for:
+
+- Coastguard Rescue Stations;
+- Lifeboat Stations;
+- Helicopter Hangars;
+- Mud Decontamination and Hovercraft Extensions;
+- custom mission spawn areas;
+- restricted vehicle environments such as `Ocean`;
+- patient or prisoner hand-off destinations such as a Lifeboat Station.
+
+These fields remain separate from vehicle requirements. A Lifeboat Station precondition does not itself prove that a particular boat is required.
+
+## Trailer and vessel distinction
+
+The dataset treats `Inland Rescue Boat (Trailer)` as a different resource from ILB and ALB ocean-rescue boats.
+
+Trailer status, operating environment and vehicle requirement are recorded separately. Exact towing or carrier compatibility must not be inferred unless reproduced from the current UK game.
 
 ## Dispatch interpretation
 
@@ -55,10 +75,12 @@ Where the interface separates resources into required, responding, on scene and 
 
 ## Data relationship
 
-Mission records reference canonical vehicle identifiers. Repository validation fails when a guaranteed, probabilistic or alternative resource does not have a matching record under `data/uk/vehicles/`.
+Mission records reference canonical vehicle, building, extension, training and personnel identifiers. This allows future calculators and APIs to consume the same evidence used by the documentation.
 
-The same architecture is designed to expand later to buildings, extensions, training and personnel identifiers, allowing calculators and APIs to consume the same evidence used by the documentation.
+Repository validation currently checks guaranteed, probabilistic and alternative vehicle references against the canonical vehicle dataset.
 
 ## Publication rule
 
-No exact mission requirement, reward, probability, patient behaviour or personnel count should be published as verified without reproducible UK-game evidence or a suitable primary source.
+No exact mission requirement, reward or probability should be published as verified without reproducible UK-game evidence or a suitable primary source.
+
+Temporary reward multipliers must not replace the documented base reward. When a live mission page displays an event multiplier, the directory value and the observation should be recorded separately.
