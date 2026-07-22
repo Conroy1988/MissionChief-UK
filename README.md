@@ -11,6 +11,7 @@
 
 [![Deploy MissionChief UK Guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
+[![Release](https://img.shields.io/github/v/release/Conroy1988/MissionChief-UK?style=flat-square&label=release)](https://github.com/Conroy1988/MissionChief-UK/releases/latest)
 [![Last Commit](https://img.shields.io/github/last-commit/Conroy1988/MissionChief-UK?style=flat-square)](https://github.com/Conroy1988/MissionChief-UK/commits/main)
 [![Issues](https://img.shields.io/github/issues/Conroy1988/MissionChief-UK?style=flat-square)](https://github.com/Conroy1988/MissionChief-UK/issues)
 [![Licence](https://img.shields.io/github/license/Conroy1988/MissionChief-UK?style=flat-square)](LICENSE)
@@ -19,7 +20,7 @@
 
 **Verified missions · Canonical resources · Infrastructure · Qualifications · Intelligence tools · Static API**
 
-[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](docs/tools/mission-lookup.md) · [**Fleet Planner**](docs/tools/fleet-planner.md) · [**Static API**](docs/api/index.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](docs/tools/mission-lookup.md) · [**Fleet Planner**](docs/tools/fleet-planner.md) · [**Static API**](docs/api/index.md) · [**v1.0.0 Notes**](docs/releases/v1.0.0.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -159,6 +160,7 @@ All tools are read-only and consume the validated versioned exports. They do not
 | **Mission Lookup** | Search current mission requirements | [Open tool →](docs/tools/mission-lookup.md) |
 | **Fleet Planner** | Model concurrent guaranteed requirements | [Open tool →](docs/tools/fleet-planner.md) |
 | **Static API** | Consume versioned JSON data | [Open API →](docs/api/index.md) |
+| **Release Notes** | Review the v1.0.0 production baseline | [Open notes →](docs/releases/v1.0.0.md) |
 | **Community Verification** | Submit reproducible UK evidence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
 ---
@@ -185,9 +187,17 @@ Relationship and range validation
         ↓
 Versioned exports and generated FAQ
         ↓
-MkDocs strict build
+Repository and API readiness audit
+        ↓
+JavaScript syntax validation
+        ↓
+MkDocs strict build and built-site audit
         ↓
 GitHub Pages deployment
+        ↓
+Live site and public API smoke test
+        ↓
+Versioned GitHub release
 ```
 
 Local validation:
@@ -197,7 +207,10 @@ pip install -r requirements.txt
 python scripts/validate_data.py
 python scripts/generate_exports.py
 python scripts/generate_faq.py
-mkdocs build --strict
+python scripts/release_readiness.py
+node --check docs/javascripts/intelligence-tools.js
+mkdocs build --strict --site-dir site
+python scripts/release_readiness.py --site-dir site
 ```
 
 ---
