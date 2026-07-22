@@ -8,7 +8,7 @@ const RELEASE = JSON.parse(
 const RELEASE_VERSION = RELEASE.version;
 
 const CRITICAL_ROUTES = [
-  { path: "", heading: "MissionChief UK Command Centre" },
+  { path: "", heading: "MissionChief UK" },
   { path: "tools/mission-lookup/", heading: "Mission Requirement Lookup" },
   { path: "tools/resource-comparison/", heading: "Resource and Qualification Comparison" },
   { path: "tools/fleet-planner/", heading: "Concurrent Fleet Planner" },
@@ -99,7 +99,7 @@ test("mission lookup loads, filters and renders mission evidence", async ({ page
   await expect.poll(() => root.locator("article.mcuk-tool-card").count()).toBeGreaterThan(0);
 
   await root.locator("input[data-role='query']").fill("588");
-  await expect(root.locator("article.mcuk-tool-card")).toContainText("Aircraft Accident Code F");
+  await expect(root.locator("article.mcuk-tool-card")).toContainText("Aircraft Accident - Code F");
   await expect(root.locator("article.mcuk-tool-card")).toContainText("#588");
   expect(failures).toEqual([]);
 });
@@ -127,7 +127,7 @@ test("fleet planner multiplies a verified mission", async ({ page }) => {
 
   await root.locator("select[data-role='mission']").selectOption("588");
   await root.locator("input[data-role='concurrency']").fill("3");
-  await expect(root.locator("[data-role='results']")).toContainText("Aircraft Accident Code F");
+  await expect(root.locator("[data-role='results']")).toContainText("Aircraft Accident - Code F");
   await expect(root.locator("[data-role='results'] table")).toContainText("3 concurrent");
   expect(failures).toEqual([]);
 });
