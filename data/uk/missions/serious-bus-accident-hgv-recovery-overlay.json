@@ -1,0 +1,27 @@
+{
+  "id": "73-hgv-recovery-overlay",
+  "name": "Serious Accident Involving a Bus",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Mass Casualty Missions (Specialization)", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 73,
+    "kind": "additive-overlay",
+    "key": "hgv-recovery"
+  },
+  "preconditions": {
+    "fire_stations": 5,
+    "rescue_stations": 8,
+    "police_stations": 2,
+    "hgv_recovery_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 2300},
+  "notes": ["The official directory verifies the HGV Recovery variation and generation fields. Dispatch and towing details remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/73?additive_overlays=b"]
+  }
+}
