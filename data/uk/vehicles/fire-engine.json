@@ -1,0 +1,28 @@
+{
+  "id": "fire_engine",
+  "name": "Fire engine",
+  "aliases": [
+    "Fire Engine",
+    "Pump"
+  ],
+  "service": "fire",
+  "category": "response",
+  "training": [],
+  "building_requirements": [],
+  "capabilities": [
+    "fire_engine_requirement"
+  ],
+  "notes": [
+    "Official UK mission records repeatedly identify Fire engines as required response resources.",
+    "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/0",
+      "https://www.missionchief.co.uk/einsaetze/6",
+      "https://www.missionchief.co.uk/einsaetze/521"
+    ]
+  }
+}
