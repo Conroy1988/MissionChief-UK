@@ -35,6 +35,9 @@
         "search_and_rescue_hqs": {"type": "integer", "minimum": 0},
         "bomb_disposal_hqs": {"type": "integer", "minimum": 0},
         "bomb_disposal_marine_unit_extensions": {"type": "integer", "minimum": 0},
+        "aviation_firefighting_extensions": {"type": "integer", "minimum": 0},
+        "airfield_operations_extensions": {"type": "integer", "minimum": 0},
+        "mass_casualty_extensions": {"type": "integer", "minimum": 0},
         "active_drones": {"type": "integer", "minimum": 0},
         "other": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
       },
@@ -46,6 +49,7 @@
       "properties": {
         "guaranteed": {"type": "array", "items": {"$ref": "#/$defs/resourceRequirement"}},
         "probabilistic": {"type": "array", "items": {"$ref": "#/$defs/probabilisticRequirement"}},
+        "conditional": {"type": "array", "items": {"$ref": "#/$defs/conditionalResourceRequirement"}},
         "alternatives": {"type": "array", "items": {"$ref": "#/$defs/alternativeResourceRequirement"}}
       },
       "additionalProperties": false
@@ -62,6 +66,7 @@
   "$defs": {
     "resourceRequirement": {"type": "object", "required": ["resource", "quantity"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}}, "additionalProperties": false},
     "probabilisticRequirement": {"type": "object", "required": ["resource", "quantity", "probability"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}}, "additionalProperties": false},
+    "conditionalResourceRequirement": {"type": "object", "required": ["resource", "quantity", "condition"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "condition": {"type": "string", "minLength": 1}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
     "alternativeResourceRequirement": {"type": "object", "required": ["resources", "quantity"], "properties": {"resources": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 2, "uniqueItems": true}, "quantity": {"type": "integer", "minimum": 1}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
     "personnelRequirement": {"type": "object", "required": ["role", "quantity"], "properties": {"role": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}}, "additionalProperties": false},
     "probabilisticPersonnelRequirement": {"type": "object", "required": ["role", "quantity", "probability"], "properties": {"role": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}}, "additionalProperties": false},
