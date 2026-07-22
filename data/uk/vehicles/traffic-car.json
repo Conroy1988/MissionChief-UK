@@ -1,0 +1,10 @@
+{
+  "id": "traffic_car",
+  "name": "Traffic Car",
+  "aliases": [],
+  "service": "police",
+  "category": "Traffic policing",
+  "capabilities": ["traffic_management"],
+  "notes": ["On verified airfield incidents this resource is conditional: required only when available."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/590"]}
+}
