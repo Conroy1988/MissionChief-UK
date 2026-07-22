@@ -1,0 +1,28 @@
+{
+  "id": "371-recovery-variation",
+  "name": "Multiple vehicle RTC - Major Incident",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Mass Casualty Missions (Specialization)", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 371,
+    "kind": "mission-variation",
+    "key": "recovery-centre",
+    "notes": ["The official URL identifies this as overlay index 3 rather than an additive-overlay key."]
+  },
+  "preconditions": {
+    "fire_stations": 13,
+    "rescue_stations": 40,
+    "police_stations": 6,
+    "recovery_centres": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 10300},
+  "notes": ["Generation and reward values are directory-verified. Response and towing outcomes remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/371?overlay_index=3"]
+  }
+}
