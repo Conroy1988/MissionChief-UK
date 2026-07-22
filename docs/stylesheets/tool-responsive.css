@@ -60,8 +60,151 @@
   word-break: break-word;
 }
 
+[data-mcuk-tool="mission-lookup"] {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+[data-mcuk-tool="mission-lookup"],
+[data-mcuk-tool="mission-lookup"] * {
+  box-sizing: border-box;
+}
+
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls {
+  display: grid;
+  grid-template-columns: minmax(12rem, 2fr) repeat(2, minmax(10rem, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls label,
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls input,
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls input,
+[data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls select {
+  display: block;
+  width: 100%;
+}
+
+.mcuk-catalogue-summary {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--mcuk-border);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--mcuk-blue) 6%, var(--md-default-bg-color));
+  color: var(--md-default-fg-color--light);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.mcuk-catalogue-summary strong {
+  color: var(--md-default-fg-color);
+}
+
+.mcuk-mission-card {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.mcuk-mission-card--canonical {
+  border-left: 4px solid var(--mcuk-success);
+}
+
+.mcuk-mission-card--official {
+  border-left: 4px solid var(--mcuk-blue);
+}
+
+.mcuk-catalogue-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+}
+
+.mcuk-catalogue-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--mcuk-border);
+  border-radius: 999px;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-default-bg-color);
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.mcuk-catalogue-badge--canonical {
+  border-color: color-mix(in srgb, var(--mcuk-success) 55%, transparent);
+  color: var(--mcuk-success);
+  background: color-mix(in srgb, var(--mcuk-success) 8%, var(--md-default-bg-color));
+}
+
+.mcuk-catalogue-badge--official {
+  border-color: color-mix(in srgb, var(--mcuk-blue) 55%, transparent);
+  color: var(--mcuk-blue);
+  background: color-mix(in srgb, var(--mcuk-blue) 8%, var(--md-default-bg-color));
+}
+
+.mcuk-catalogue-badge--pending {
+  border-color: color-mix(in srgb, var(--mcuk-gold) 58%, transparent);
+  color: color-mix(in srgb, var(--mcuk-gold) 85%, var(--md-default-fg-color));
+  background: color-mix(in srgb, var(--mcuk-gold) 8%, var(--md-default-bg-color));
+}
+
+.mcuk-mission-card table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+.mcuk-mission-card th,
+.mcuk-mission-card td,
+.mcuk-mission-card code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mcuk-mission-card details {
+  margin: 0.75rem 0;
+}
+
+.mcuk-catalogue-link {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  font-weight: 800;
+}
+
+@container (max-width: 48rem) {
+  [data-mcuk-tool="mission-lookup"] .mcuk-mission-lookup-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @container (max-width: 34rem) {
   [data-mcuk-tool="comparison"] .mcuk-tool-controls {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mcuk-mission-card {
+    padding-inline: 0.85rem;
+  }
+
+  .mcuk-mission-card table {
+    font-size: 0.7rem;
   }
 }
