@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">MissionChief UK command mark</title>
+  <desc id="desc">A blue and red emergency operations radar mark containing the letters UK.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#102b45"/>
+      <stop offset="1" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35b6ff"/>
+      <stop offset="0.5" stop-color="#7dd9ff"/>
+      <stop offset="0.501" stop-color="#ff6a72"/>
+      <stop offset="1" stop-color="#d63345"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#62c7ff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#62c7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect x="3" y="3" width="122" height="122" rx="25" fill="none" stroke="url(#edge)" stroke-width="3"/>
+  <circle cx="64" cy="64" r="46" fill="url(#glow)" stroke="#79d2ff" stroke-opacity="0.35"/>
+  <circle cx="64" cy="64" r="34" fill="none" stroke="#8cd9ff" stroke-opacity="0.35" stroke-dasharray="4 6"/>
+  <path d="M64 18v92M18 64h92" stroke="#8bd8ff" stroke-opacity="0.18"/>
+  <path d="M64 27a37 37 0 0 1 32 18" fill="none" stroke="#35b6ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M96 83A37 37 0 0 1 64 101" fill="none" stroke="#e44958" stroke-width="4" stroke-linecap="round"/>
+  <path d="M64 38 83 49v30L64 90 45 79V49Z" fill="#0c2034" stroke="url(#edge)" stroke-width="2"/>
+  <text x="64" y="70" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="900" letter-spacing="1">UK</text>
+  <circle cx="96" cy="45" r="4" fill="#45c3ff"/>
+  <circle cx="32" cy="82" r="4" fill="#ff5965"/>
+</svg>
