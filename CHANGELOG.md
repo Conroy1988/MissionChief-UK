@@ -16,6 +16,7 @@ The project follows semantic versioning for its public static-data API and relea
 - Added deterministic versioned JSON exports, manifest, search index, generated FAQ and OpenAPI 3.1 contract.
 - Added mission lookup, resource and qualification comparison, concurrent fleet planning and deterministic evidence search.
 - Added repository, built-site and deployed-Pages release-readiness checks.
+- Added automated v1 publication after successful deployment and live endpoint checks.
 
 ### Validation
 
