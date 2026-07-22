@@ -1,0 +1,10 @@
+{
+  "id": "ambulance_control_unit",
+  "name": "Ambulance Control Unit",
+  "aliases": [],
+  "service": "ambulance",
+  "category": "Command and control",
+  "capabilities": ["ambulance_incident_command"],
+  "notes": ["Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+}
