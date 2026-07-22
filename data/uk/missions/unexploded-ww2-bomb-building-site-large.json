@@ -1,0 +1,34 @@
+{
+  "id": 839,
+  "name": "Unexploded WW2 Bomb Located at Building Site (Large)",
+  "aliases": ["Large building-site unexploded WW2 bomb"],
+  "service": "bomb_disposal",
+  "mission_types": ["Bomb Disposal Missions"],
+  "poi": [],
+  "custom_spawn_area": false,
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {"source_mission_id": 839, "kind": "base", "key": "large-building-site-bomb"},
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 15,
+    "police_stations": 20,
+    "hart_bases": 1,
+    "bomb_disposal_hqs": 3,
+    "active_drones": 1,
+    "other": []
+  },
+  "requirements": {"guaranteed": [], "probabilistic": [], "alternatives": []},
+  "reward": {"average_credits": 11500},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The official directory confirms the high-complexity station, HQ, HART and active-Drone preconditions.",
+    "The response-unit and EOD personnel sections remain intentionally empty pending direct mission-page verification."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/839", "https://www.missionchief.co.uk/einsaetze"]
+  }
+}
