@@ -32,7 +32,23 @@ EXPECTED_TOOL_PAGES = (
     "tools/query-catalogue.md",
     "reference/generated-faq.md",
     "api/index.md",
+    "quality-assurance.md",
     "releases/v1.0.0.md",
+)
+
+REQUIRED_QA_FILES = (
+    "package.json",
+    "playwright.config.js",
+    "tests/e2e/site.spec.js",
+    "scripts/audit_links.py",
+    "docs/quality-assurance.md",
+)
+
+PLAYWRIGHT_PROJECTS = (
+    "chromium-desktop",
+    "firefox-desktop",
+    "webkit-iphone",
+    "webkit-ipad",
 )
 
 
@@ -99,12 +115,37 @@ def audit_navigation() -> None:
     )
 
 
+def audit_quality_assets() -> None:
+    for relative in REQUIRED_QA_FILES:
+        require((ROOT / relative).is_file(), f"Release-critical QA file is missing: {relative}")
+
+    package = read_json(ROOT / "package.json")
+    require(isinstance(package, dict), "package.json must contain an object")
+    scripts = package.get("scripts")
+    require(isinstance(scripts, dict) and scripts.get("test:e2e") == "playwright test",
+            "package.json must expose the Playwright test:e2e command")
+    dependencies = package.get("devDependencies")
+    require(isinstance(dependencies, dict), "package.json must define devDependencies")
+    for dependency in ("@playwright/test", "@axe-core/playwright"):
+        require(dependency in dependencies, f"package.json is missing QA dependency: {dependency}")
+
+    config_text = (ROOT / "playwright.config.js").read_text(encoding="utf-8")
+    for project in PLAYWRIGHT_PROJECTS:
+        require(project in config_text, f"Playwright configuration is missing project: {project}")
+
+    suite_text = (ROOT / "tests" / "e2e" / "site.spec.js").read_text(encoding="utf-8")
+    for marker in ("mission-lookup", "comparison", "fleet-planner", "query-catalogue", "AxeBuilder"):
+        require(marker in suite_text, f"Browser acceptance suite is missing coverage marker: {marker}")
+
+
 def audit_exports() -> dict[str, int]:
     version = read_json(VERSION_PATH)
     require(isinstance(version, dict), "data/version.json must contain an object")
     release_version = version.get("version")
-    require(isinstance(release_version, str) and re.fullmatch(r"\d+\.\d+\.\d+", release_version) is not None,
-            "data/version.json must contain a semantic version")
+    require(
+        isinstance(release_version, str) and re.fullmatch(r"\d+\.\d+\.\d+", release_version) is not None,
+        "data/version.json must contain a semantic version",
+    )
     require(version.get("stage") == 34, "The v1 release must identify Stage 34")
     require(version.get("status") == "production", "The v1 release status must be production")
 
@@ -147,7 +188,11 @@ def audit_exports() -> dict[str, int]:
     require(isinstance(search_records, list), "search-index.json records must be an array")
     require(search_index.get("data_version") == release_version, "Search-index version mismatch")
     require(search_index.get("count") == len(search_records), "Search-index count does not match its records")
-    actual_search_keys = {(str(item.get("collection")), str(item.get("id"))) for item in search_records if isinstance(item, dict)}
+    actual_search_keys = {
+        (str(item.get("collection")), str(item.get("id")))
+        for item in search_records
+        if isinstance(item, dict)
+    }
     require(actual_search_keys == search_keys, "Search index does not contain exactly one entry for every canonical record")
 
     faq = read_json(OUTPUT_ROOT / "faq.json")
@@ -171,10 +216,13 @@ def audit_exports() -> dict[str, int]:
 
     readme = README_PATH.read_text(encoding="utf-8")
     readme_lower = readme.lower()
+    readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
     for name, count in counts.items():
         require(str(count) in readme, f"README does not expose the current {name} count ({count})")
-    require("stage_34_complete" in readme_lower, "README stage badge is not synchronized to Stage 34")
-    require("static data api v1.0.0" in readme_lower, "README does not identify Static Data API v1.0.0")
+    require("stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
+            "README stage badge is not synchronized to Stage 34")
+    require(release_version in readme_lower and "static api" in readme_words,
+            f"README does not identify Static API v{release_version}")
 
     return counts
 
@@ -189,6 +237,7 @@ def audit_built_site(site_dir: Path) -> None:
         "tools/query-catalogue/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
+        "quality-assurance/index.html",
         "releases/v1.0.0/index.html",
         "javascripts/intelligence-tools.js",
         "assets/data/v1/manifest.json",
@@ -214,6 +263,7 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
+        audit_quality_assets()
         counts = audit_exports()
         audit_navigation()
         if args.site_dir is not None:
