@@ -1,0 +1,21 @@
+{
+  "id": "rescue_support_vehicle",
+  "name": "Rescue Support Vehicle",
+  "aliases": ["RSV", "Rescue Support Vehicles"],
+  "service": "fire",
+  "category": "specialist_support",
+  "capabilities": ["technical_rescue_support"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["land"]
+  },
+  "notes": [
+    "The official Stuck Climber mission page lists one Rescue Support Vehicle.",
+    "Price, staffing, training and building requirements are not published in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/143"]
+  }
+}
