@@ -4,18 +4,28 @@
   "aliases": [],
   "service": "coastguard",
   "category": "specialist rescue",
-  "capabilities": [
-    "mud_rescue"
-  ],
+  "cost": {
+    "credits": 20000,
+    "coins": 15
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 5
+  },
+  "training": ["Mud Rescue Training"],
+  "building_requirements": ["Coastguard Rescue Station"],
+  "capabilities": ["mud_rescue"],
   "notes": [
-    "Official UK Coastguard missions identify this as a required specialist resource."
+    "Official UK Coastguard missions identify this as a required specialist resource.",
+    "Current official Help Center guidance verifies the purchase cost, crew range, training and available building."
   ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/546",
-      "https://www.missionchief.co.uk/einsaetze/567"
+      "https://www.missionchief.co.uk/einsaetze/567",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
   }
 }
