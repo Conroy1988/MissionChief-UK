@@ -1,0 +1,27 @@
+{
+  "id": "coastguard_rescue_helicopter",
+  "name": "Coastguard Rescue Helicopter",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "air rescue",
+  "capabilities": [
+    "air_rescue",
+    "ocean_rescue"
+  ],
+  "deployment": {
+    "operating_environments": [
+      "air",
+      "ocean"
+    ]
+  },
+  "notes": [
+    "The verified Medivac from vessel mission applies a 50% requirement probability to this resource."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/562"
+    ]
+  }
+}
