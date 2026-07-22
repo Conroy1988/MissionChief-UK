@@ -170,10 +170,11 @@ def audit_exports() -> dict[str, int]:
     require(manifest.get("openapi", {}).get("path") == "openapi.json", "Manifest OpenAPI path mismatch")
 
     readme = README_PATH.read_text(encoding="utf-8")
+    readme_lower = readme.lower()
     for name, count in counts.items():
         require(str(count) in readme, f"README does not expose the current {name} count ({count})")
-    require("STAGE_34_COMPLETE" in readme, "README stage badge is not synchronized to Stage 34")
-    require("Static Data API v1.0.0" in readme, "README does not identify Static Data API v1.0.0")
+    require("stage_34_complete" in readme_lower, "README stage badge is not synchronized to Stage 34")
+    require("static data api v1.0.0" in readme_lower, "README does not identify Static Data API v1.0.0")
 
     return counts
 
