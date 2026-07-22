@@ -1,0 +1,63 @@
+{
+  "id": 797,
+  "name": "Person in large enclosure",
+  "aliases": [
+    "Person In Large Enclosure"
+  ],
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "poi": [
+    "Zoo"
+  ],
+  "preconditions": {
+    "fire_stations": 3,
+    "rescue_stations": 2,
+    "police_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.15
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1,
+        "probability": 0.3
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 0.6,
+    "specialisation": "General Internal",
+    "possible_codes": [
+      "C-2",
+      "C-3"
+    ]
+  },
+  "reward": {
+    "average_credits": 1180
+  },
+  "notes": [
+    "The official page lists between three and nine minimum firefighters.",
+    "The Aerial Appliance Truck and Police car are conditional requirements with probabilities of 15% and 30% respectively."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/797"
+    ]
+  }
+}
