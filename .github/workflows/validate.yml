@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: validate-${{ github.ref }}
@@ -19,9 +19,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
-        with:
-          ref: ${{ github.head_ref || github.ref }}
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -29,63 +26,14 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Refresh official UK catalogue for expansion PR
-        if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
-        run: |
-          python -m py_compile scripts/import_official_uk_missions.py
-          python -m py_compile scripts/publish_official_mission_catalogue.py
-          python -m py_compile scripts/compact_official_mission_catalogue.py
-          python scripts/import_official_uk_missions.py
-          python scripts/publish_official_mission_catalogue.py
-          python scripts/compact_official_mission_catalogue.py
-
-      - name: Verify official UK catalogue coverage
-        if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          source = Path('data/sources/missionchief-uk')
-          public = Path('docs/assets/data/official')
-          catalogue = json.loads((public / 'uk-missions.json').read_text(encoding='utf-8'))
-          coverage = json.loads((source / 'mission-coverage.json').read_text(encoding='utf-8'))
-          assert catalogue['count'] == len(catalogue['records'])
-          assert catalogue['count'] >= 100
-          assert coverage['official_count'] == catalogue['count']
-          assert coverage['matched_count'] + coverage['official_only_count'] == coverage['official_count']
-          assert (source / 'einsaetze.raw.json').stat().st_size < 1_000_000
-          assert (public / 'uk-missions.json').stat().st_size < 1_000_000
-          assert not (source / 'official-missions.json').exists()
-          print(
-              f"Official UK catalogue: {catalogue['count']} missions; "
-              f"{coverage['matched_count']} canonical matches; "
-              f"{coverage['official_only_count']} awaiting canonical mapping"
-          )
-          PY
-
-      - name: Commit validated catalogue to expansion branch
-        if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/sources/missionchief-uk docs/assets/data/official
-
-          if git diff --cached --quiet; then
-            echo "Validated official catalogue is already committed."
-            exit 0
-          fi
-
-          git commit -m "Refresh official UK mission catalogue"
-          git push origin HEAD:${{ github.head_ref }}
-
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Validate JSON documents
+      - name: Validate canonical JSON documents
         run: python scripts/validate_data.py
+
+      - name: Validate official UK mission catalogue
+        run: python scripts/validate_official_mission_catalogue.py
 
       - name: Generate public data exports
         run: python scripts/generate_exports.py
@@ -143,17 +91,6 @@ jobs:
           done
 
           MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
-
-      - name: Upload generated official UK catalogue
-        if: always() && github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
-        uses: actions/upload-artifact@v4
-        with:
-          name: official-uk-mission-catalogue
-          path: |
-            data/sources/missionchief-uk
-            docs/assets/data/official
-          if-no-files-found: error
-          retention-days: 14
 
       - name: Upload browser-test diagnostics
         if: failure()
