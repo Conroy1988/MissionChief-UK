@@ -1,0 +1,17 @@
+{
+  "id": "search_technician",
+  "name": "Search Technician",
+  "aliases": [],
+  "service": "search_and_rescue",
+  "qualification_type": "role-qualification",
+  "roles": ["Search Technician"],
+  "notes": [
+    "Official Search and Rescue missions verify Search Technicians through an average-minimum personnel requirement.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/635"]
+  }
+}
