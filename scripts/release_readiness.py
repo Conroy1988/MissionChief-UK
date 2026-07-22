@@ -37,7 +37,7 @@ EXPECTED_STATIC_PAGES = (
 
 REQUIRED_QA_FILES = (
     "package.json",
-    "playwright.config.js",
+    "playwright.config.mjs",
     "tests/e2e/live-site.spec.mjs",
     "scripts/audit_links.py",
     "docs/quality-assurance.md",
@@ -132,7 +132,7 @@ def audit_quality_assets() -> None:
     for dependency in ("@playwright/test", "@axe-core/playwright"):
         require(dependency in dependencies, f"package.json is missing QA dependency: {dependency}")
 
-    config_text = (ROOT / "playwright.config.js").read_text(encoding="utf-8")
+    config_text = (ROOT / "playwright.config.mjs").read_text(encoding="utf-8")
     for project in PLAYWRIGHT_PROJECTS:
         require(project in config_text, f"Playwright configuration is missing project: {project}")
 
