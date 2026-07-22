@@ -52,7 +52,7 @@ jobs:
         run: python scripts/release_readiness.py
 
       - name: Audit documentation links and anchors
-        run: python scripts/check_links.py
+        run: python scripts/audit_links.py
 
       - name: Validate intelligence-tool JavaScript syntax
         run: node --check docs/javascripts/intelligence-tools.js
