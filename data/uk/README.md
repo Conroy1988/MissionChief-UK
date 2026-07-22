@@ -6,7 +6,7 @@ This directory contains the production machine-readable records used by the Miss
 
 ### Missions
 
-Twenty-one verified mission records:
+Twenty-three verified mission records:
 
 - `0` — Bin fire
 - `1` — Container fire
@@ -22,6 +22,8 @@ Twenty-one verified mission records:
 - `567` — Rescue Boat Assist Coastguard Mud Rescue
 - `569` — Rescue Boat Assist Coastguard, Persons Cut off by Tide
 - `622` — Group Throwing Flares
+- `635` — High Risk Missing Person
+- `636` — Very High Risk Missing Person
 - `693` — HCP Home Visit
 - `753-helicopter-overlay` — Belay Failure Whilst Abseiling helicopter overlay
 - `755-hart-overlay` — Fall Whilst Fell Running HART overlay
@@ -32,7 +34,7 @@ Twenty-one verified mission records:
 
 ### Vehicles and deployable resources
 
-Twenty-one verified canonical records:
+Twenty-six verified canonical records:
 
 - `fire_engine` — Fire engine
 - `aerial_appliance_truck` — Aerial Appliance Truck
@@ -44,6 +46,8 @@ Twenty-one verified canonical records:
 - `srv` — SRV
 - `welfare_vehicle` — Welfare Vehicle
 - `police_car` — Police car
+- `police_helicopter` — Police Helicopter
+- `drone` — Drone
 - `coastguard_rescue_vehicle` — CRV
 - `coastguard_mud_rescue_unit` — Coastguard Mud Rescue Unit
 - `mud_decontamination_unit` — Mud Decontamination Unit
@@ -55,6 +59,9 @@ Twenty-one verified canonical records:
 - `sar_4x4` — SAR 4x4
 - `control_van` — Control Van
 - `search_dog_unit` — Search Dog Unit
+- `operational_support_van` — Operational Support Van
+- `operational_support_trailer` — Operational Support Trailer
+- `personal_sar_vehicle` — Personal SAR Vehicle
 
 ## Service coverage
 
@@ -65,7 +72,8 @@ The production dataset now contains records across:
 - Police;
 - Coastguard;
 - Lifeboat and Ocean Rescue;
-- Mountain Rescue and land search.
+- Mountain Rescue and land search;
+- Search and Rescue HQ and drone-enabled operations.
 
 Airfield Operations, Recovery, Bomb Disposal, Railway Police and other specialist services remain future controlled population batches.
 
@@ -77,15 +85,15 @@ The repository validator checks:
 2. conformance with the applicable Draft 2020-12 schema;
 3. unique identifiers within each record type;
 4. valid date formats;
-5. guaranteed and probabilistic mission resources against canonical vehicle IDs;
-6. every resource inside an alternative requirement group;
+5. guaranteed and probabilistic mission resources against canonical resource IDs;
+6. every resource inside every alternative requirement group;
 7. that patient minimums do not exceed patient maximums.
 
 A mission file fails validation when it references a resource that does not exist under `data/uk/vehicles/`.
 
 ## Variant modelling
 
-Stage 16 introduces explicit mission variants. Additive overlays use a unique string dataset ID while retaining the official numeric mission ID:
+Stage 16 introduced explicit mission variants. Additive overlays use a unique string dataset ID while retaining the official numeric mission ID:
 
 ```json
 {
@@ -98,19 +106,21 @@ Stage 16 introduces explicit mission variants. Additive overlays use a unique st
 }
 ```
 
-This prevents HART, helicopter or future drone requirements from being incorrectly applied to the base mission.
+This prevents HART, helicopter or future overlay-only requirements from being incorrectly applied to the base mission.
 
-## Mountain Rescue modelling
+## Search and Rescue HQ modelling
 
-The Stage 16 schema supports:
+Stage 17 adds:
 
-- Mountain Rescue Station preconditions;
-- Search and Rescue HQ and active-drone preconditions for future SAR records;
-- Mountain Rescue 4x4 or SAR 4x4 alternative groups;
-- probability-based personnel requirements;
-- Control Vans, Search Dog Units, Rescue Support Vehicles and ATV Carriers;
-- cave-rescue personnel availability and incident requirements;
-- custom spawn areas and structured patient mechanics.
+- Search and Rescue HQ and active-Drone preconditions;
+- Operational Support Van, Operational Support Trailer or Personal SAR Vehicle alternatives;
+- Police Helicopter or Drone alternatives;
+- Mountain Rescue 4x4 or SAR 4x4 alternatives reused across the service boundary;
+- Search Advisor and SAR Commander availability and incident requirements;
+- an `average_minimum` personnel state for Search Technicians;
+- structured missing-person patient mechanics.
+
+The active-Drone precondition is distinct from the incident aerial-search requirement. It must not be interpreted as forcing the dispatched response to be a Drone.
 
 ## Evidence policy
 
