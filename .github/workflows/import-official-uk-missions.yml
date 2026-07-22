@@ -1,0 +1,76 @@
+name: Refresh official UK mission catalogue
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/uk-mission-catalogue-expansion
+    paths:
+      - scripts/import_official_uk_missions.py
+      - .github/workflows/import-official-uk-missions.yml
+      - data/sources/missionchief-uk/README.md
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-uk-mission-catalogue-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out catalogue branch
+        uses: actions/checkout@v6
+        with:
+          ref: feature/uk-mission-catalogue-expansion
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate importer syntax
+        run: python -m py_compile scripts/import_official_uk_missions.py
+
+      - name: Download and reconcile official UK missions
+        run: python scripts/import_official_uk_missions.py
+
+      - name: Confirm generated catalogue integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('data/sources/missionchief-uk')
+          catalogue = json.loads((root / 'official-missions.json').read_text(encoding='utf-8'))
+          coverage = json.loads((root / 'mission-coverage.json').read_text(encoding='utf-8'))
+          raw = json.loads((root / 'einsaetze.raw.json').read_text(encoding='utf-8'))
+
+          assert catalogue['count'] == len(catalogue['records'])
+          assert raw['count'] == len(raw['records'])
+          assert catalogue['count'] == raw['count']
+          assert coverage['official_count'] == catalogue['count']
+          assert coverage['matched_count'] + coverage['official_only_count'] == coverage['official_count']
+          assert catalogue['count'] >= 100
+          print(f"Validated {catalogue['count']} official UK mission records")
+          PY
+
+      - name: Commit refreshed official catalogue
+        shell: bash
+        run: |
+          if git diff --quiet -- data/sources/missionchief-uk; then
+            echo "Official catalogue is unchanged."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sources/missionchief-uk
+          git commit -m "Refresh official UK mission catalogue"
+          git push origin HEAD:feature/uk-mission-catalogue-expansion
