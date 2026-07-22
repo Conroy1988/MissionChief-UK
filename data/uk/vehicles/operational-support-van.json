@@ -1,0 +1,19 @@
+{
+  "id": "operational_support_van",
+  "name": "Operational Support Van",
+  "aliases": ["OSV"],
+  "service": "search_and_rescue",
+  "category": "Operational support",
+  "capabilities": ["search_support", "incident_logistics"],
+  "notes": [
+    "Official SAR mission pages group this resource with Operational Support Trailers and Personal SAR Vehicles as alternative ways to satisfy one requirement."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/635",
+      "https://www.missionchief.co.uk/einsaetze/636"
+    ]
+  }
+}
