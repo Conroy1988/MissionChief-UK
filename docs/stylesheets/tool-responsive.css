@@ -183,6 +183,36 @@
   margin: 0.75rem 0;
 }
 
+.mcuk-official-record-details {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border-top: 1px solid var(--mcuk-border);
+  padding-top: 0.75rem;
+}
+
+.mcuk-official-record-details summary {
+  cursor: pointer;
+  color: var(--mcuk-blue);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.mcuk-official-record-details pre {
+  width: 100%;
+  max-width: 100%;
+  max-height: 32rem;
+  margin: 0.75rem 0 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  -webkit-overflow-scrolling: touch;
+}
+
 .mcuk-catalogue-link {
   display: inline-flex;
   margin-top: 0.75rem;
@@ -206,5 +236,10 @@
 
   .mcuk-mission-card table {
     font-size: 0.7rem;
+  }
+
+  .mcuk-official-record-details pre {
+    max-height: 24rem;
+    font-size: 0.62rem;
   }
 }
