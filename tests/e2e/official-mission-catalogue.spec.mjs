@@ -54,7 +54,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   const officialDetails = officialCard.locator("details.mcuk-official-record-details");
   await expect(officialDetails).toContainText("Complete official catalogue record");
   await officialDetails.locator("summary").click();
-  await expect(officialDetails.locator("pre")).toContainText('"id": 3');
+  await expect(officialDetails.locator("pre")).toContainText('"id": "3"');
   await expect(officialDetails.locator("pre")).toContainText('"requirements"');
   await expect(officialDetails.locator("pre")).toContainText('"prerequisites"');
 
@@ -67,7 +67,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   const canonicalDetails = canonicalCard.locator("details.mcuk-official-record-details");
   await expect(canonicalDetails).toContainText("Complete official catalogue record");
   await canonicalDetails.locator("summary").click();
-  await expect(canonicalDetails.locator("pre")).toContainText('"id": 588');
+  await expect(canonicalDetails.locator("pre")).toContainText('"id": "588"');
   await expect(canonicalDetails.locator("pre")).toContainText('"additional"');
 
   expect(catalogueRequests, "Official catalogue should be fetched once and shared by all lookup surfaces").toBe(1);
