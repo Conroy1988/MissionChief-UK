@@ -1,0 +1,23 @@
+{
+  "id": "operational_support_trailer",
+  "name": "Operational Support Trailer",
+  "aliases": ["SAR Operational Support Trailer"],
+  "service": "search_and_rescue",
+  "category": "Operational support trailer",
+  "capabilities": ["search_support", "incident_logistics"],
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": ["land"]
+  },
+  "notes": [
+    "The official requirement identifies this as a trailer but does not identify compatible towing vehicles."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/635",
+      "https://www.missionchief.co.uk/einsaetze/636"
+    ]
+  }
+}
