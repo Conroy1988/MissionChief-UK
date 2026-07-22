@@ -69,14 +69,15 @@ jobs:
         if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
         shell: bash
         run: |
-          if git diff --quiet -- data/sources/missionchief-uk docs/assets/data/official; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/sources/missionchief-uk docs/assets/data/official
+
+          if git diff --cached --quiet; then
             echo "Validated official catalogue is already committed."
             exit 0
           fi
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/sources/missionchief-uk docs/assets/data/official
           git commit -m "Refresh official UK mission catalogue"
           git push origin HEAD:${{ github.head_ref }}
 
