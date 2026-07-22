@@ -48,6 +48,12 @@ function isIgnorableBrowserRequest(url) {
   }
 }
 
+function isExpectedNavigationCancellation(request) {
+  const errorText = request.failure()?.errorText || "";
+  return request.resourceType() === "document"
+    && (errorText.includes("NS_BINDING_ABORTED") || errorText.includes("ERR_ABORTED"));
+}
+
 function runtimeFailures(page) {
   const failures = [];
   page.on("pageerror", (error) => failures.push(`pageerror: ${error.message}`));
@@ -62,7 +68,11 @@ function runtimeFailures(page) {
     }
   });
   page.on("requestfailed", (request) => {
-    if (isFirstParty(request.url()) && !isIgnorableBrowserRequest(request.url())) {
+    if (
+      isFirstParty(request.url())
+      && !isIgnorableBrowserRequest(request.url())
+      && !isExpectedNavigationCancellation(request)
+    ) {
       failures.push(`request: ${request.url()} — ${request.failure()?.errorText || "failed"}`);
     }
   });
