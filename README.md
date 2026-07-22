@@ -7,7 +7,7 @@
 [![Documentation](https://img.shields.io/badge/OPEN-DOCUMENTATION-1593D1?style=for-the-badge&logo=readthedocs&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![MissionChief UK](https://img.shields.io/badge/REGION-UNITED_KINGDOM-0B1D31?style=for-the-badge)](https://www.missionchief.co.uk/)
 [![Evidence Standard](https://img.shields.io/badge/INTELLIGENCE-EVIDENCE_LED-1675A9?style=for-the-badge&logo=databricks&logoColor=white)](docs/reference/data-standard.md)
-[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_13_VERIFIED_DATA-D63345?style=for-the-badge)](#current-operational-state)
+[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_15_MARITIME_DATA-D63345?style=for-the-badge)](#current-operational-state)
 
 [![Deploy MissionChief UK Guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
@@ -17,9 +17,9 @@
 
 ### The independent UK command knowledgebase for MissionChief
 
-**Game intelligence · Verified missions · Vehicle records · Strategy · Scripts · Structured data · Community verification**
+**Game intelligence · Verified missions · Vehicle records · Maritime operations · Strategy · Scripts · Structured data · Community verification**
 
-[**Enter the Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Start Here**](docs/getting-started/index.md) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Compatibility**](docs/scripts/compatibility-centre.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter the Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Maritime Batch**](docs/reference/verified-mission-batch-4.md) · [**Compatibility**](docs/scripts/compatibility-centre.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -29,26 +29,25 @@
 
 **MissionChief UK** is an independent, searchable command knowledge centre for the United Kingdom version of MissionChief.
 
-It is being built as a maintained information system rather than another partial wiki or loose collection of tips. The platform connects practical guides with structured, source-aware records so players can understand not only *what* to do, but *why the information can be trusted*.
+It is being built as a maintained information system rather than another partial wiki or loose collection of tips. Practical guides, structured records and evidence metadata are kept together so players can understand both the operational answer and the basis for trusting it.
 
-The knowledgebase is designed to answer operational questions such as:
+The knowledgebase is designed to answer questions such as:
 
 - What should I build next?
-- Which vehicles, extensions, and training courses does a mission require?
-- Which requirements are guaranteed and which are probabilistic?
-- How should a station or specialist fleet be configured?
-- Which scripts are useful, safe, maintained, and compatible with the UK game?
-- How do alliances, transport, patients, prisoners, credits, and progression work?
-- Which information is verified fact, calculated guidance, recommendation, or still awaiting confirmation?
+- Which vehicles, extensions, stations and trained personnel does a mission require?
+- Which requirements are guaranteed, probabilistic or satisfied by alternatives?
+- How should a specialist fleet be configured?
+- Which scripts are maintained, compatible and recoverable?
+- Which values are verified facts, calculations, recommendations or still awaiting reproduction?
 
-> **Command principle:** useful information must be easy to find, current enough to trust, and precise enough to act on.
+> **Command principle:** useful information must be easy to find, current enough to trust and precise enough to act on.
 
 <table>
 <tr>
-<td width="25%" align="center"><strong>🔎 FIND</strong><br><sub>Search guides, aliases, missions, vehicles, buildings, and training.</sub></td>
-<td width="25%" align="center"><strong>✅ VERIFY</strong><br><sub>Separate reproduced facts from calculation, advice, and uncertainty.</sub></td>
-<td width="25%" align="center"><strong>🧭 PLAN</strong><br><sub>Connect progression, fleet, staffing, geography, and cost decisions.</sub></td>
-<td width="25%" align="center"><strong>🛡️ RECOVER</strong><br><sub>Document safe installation, compatibility, troubleshooting, and rollback.</sub></td>
+<td width="25%" align="center"><strong>🔎 FIND</strong><br><sub>Search missions, vehicles, aliases, services and systems.</sub></td>
+<td width="25%" align="center"><strong>✅ VERIFY</strong><br><sub>Separate reproduced facts from assumptions and advice.</sub></td>
+<td width="25%" align="center"><strong>🧭 PLAN</strong><br><sub>Connect fleet, staffing, geography, progression and cost.</sub></td>
+<td width="25%" align="center"><strong>🛡️ RECOVER</strong><br><sub>Document compatibility, troubleshooting and rollback.</sub></td>
 </tr>
 </table>
 
@@ -56,30 +55,34 @@ The knowledgebase is designed to answer operational questions such as:
 
 # 📡 Current Operational State
 
-The project has progressed beyond its Stage 10 architecture milestone into **Stage 13 verified-data expansion**.
+The project has progressed beyond its Stage 10 architecture milestone into **Stage 15 verified maritime-data expansion**.
 
-The full documentation and schema architecture is established, and the repository now contains a growing verified catalogue rather than framework-only placeholders.
+The documentation and schema architecture is established, while the production dataset now contains:
+
+```text
+16 verified mission records
+12 canonical vehicle-resource records
+5 represented operational service groups
+```
 
 | Domain | Current state | Delivered capability |
 |---|---|---|
-| **Command Centre** | Operational | MkDocs Material site, custom MissionChief identity, instant search, structured navigation, and GitHub Pages deployment |
-| **Getting started** | Active | First-expansion and account-progression pathways |
-| **Game systems** | Active | Missions, dispatching, buildings, extensions, and progression architecture |
-| **Service encyclopaedia** | Active | Fire, Ambulance, Police, Coastguard/Lifeboat, and specialist-service structure |
-| **Vehicle reference** | Verified records live | Schema-backed records, aliases, roles, capacities, sources, and verification metadata |
-| **Mission reference** | Verified batches live | Guaranteed and probabilistic requirements, rewards, unlock context, sources, and verification metadata |
-| **Cross-reference integrity** | Operational | Mission resource identifiers are validated against the vehicle catalogue |
-| **Dataset manifest** | Operational | UK dataset inventory and bounded publication posture |
-| **Buildings reference** | Framework delivered | Buildings and extensions database specification |
-| **Personnel and training** | Framework delivered | Qualification, staffing, alias, and training reference structure |
-| **Planning tools** | Programme established | Calculator and decision-support architecture for later verified data |
-| **Scripts and compatibility** | Operational framework | Tool catalogue, compatibility centre, browser/device posture, installation, troubleshooting, and recovery standards |
-| **Community verification** | Operational framework | Evidence submissions, reproduction expectations, review workflow, and editorial controls |
-| **Glossary and aliases** | Operational framework | UK terminology, alternative labels, abbreviations, and search normalisation |
-| **Validation** | Operational | JSON schema validation, mission-to-vehicle reference validation, and strict MkDocs build |
+| **Command Centre** | Operational | MkDocs Material site, custom identity, instant search, structured navigation and GitHub Pages deployment |
+| **Vehicle reference** | Verified records live | Canonical IDs, official labels, aliases, service roles, deployment metadata and evidence trails |
+| **Mission reference** | Four verified batches live | Guaranteed, probabilistic and alternative resources; patients; personnel; rewards; POIs and preconditions |
+| **Fire and Rescue** | Populated baseline | First response and specialist-resource records with verified missions |
+| **Ambulance** | Populated baseline | RRV alternatives and structured patient mechanics |
+| **Police** | Populated baseline | Public-order personnel, vehicles and prisoner data |
+| **Coastguard and Lifeboat** | Populated baseline | Mud rescue, CRV, trailer boat, ILB/ALB, ocean restrictions and helicopter medivac |
+| **Cross-reference integrity** | Operational | Mission resources are validated against canonical vehicle records |
+| **Dataset manifest** | Operational | Explicit inventory and bounded publication posture |
+| **Buildings, personnel and training** | Framework delivered | Database specifications ready for controlled population |
+| **Planning tools** | Programme established | Future calculators and decision-support tools based on verified data |
+| **Scripts and compatibility** | Operational framework | Tool catalogue, device posture, installation, troubleshooting and recovery standards |
+| **Community verification** | Operational framework | Evidence submission, reproduction and editorial controls |
 
 > [!IMPORTANT]
-> Stage 13 means verified data is now being published through the live reference pages. It does **not** claim that every UK mission, vehicle, building, training course, cost, or edge case has already been catalogued.
+> Stage 15 means verified cross-service data is being published through the live reference pages. It does **not** claim that every UK mission, vehicle, building, training course, price or edge case has already been catalogued.
 
 ## Delivery progression
 
@@ -87,55 +90,76 @@ The full documentation and schema architecture is established, and the repositor
 STAGES 01–02  Foundation, scope, identity and player journey
 STAGES 03–07  Vehicle, mission, building, personnel and training frameworks
 STAGES 08–10  Planning tools, community verification, compatibility and recovery
-STAGES 11–12  Initial verified mission and vehicle datasets with stronger schemas
-STAGE 13      Dataset manifest, cross-reference integrity and published verified-data pages
+STAGES 11–12  Contribution controls, schemas and first production records
+STAGE 13      Referential integrity and expanded Fire mission data
+STAGE 14      Ambulance and Police alternative, patient and personnel models
+STAGE 15      Coastguard, Lifeboat, trailer and ocean-rescue modelling
 ```
 
 ---
 
 # 🗂️ Verified Data Programme
 
-## Verified vehicle records
+## Current vehicle catalogue
 
-The live vehicle catalogue now demonstrates the complete record contract with real UK resource data. Mature records can include:
+The live dataset contains 12 canonical vehicle-resource records across Fire, Ambulance, Police, Coastguard and Lifeboat operations.
 
-- canonical identifier and display name;
-- alternative names and search aliases;
-- service and operational role;
-- transport or capability flags;
-- training and personnel implications;
-- source trail and verification date; and
-- evidence classification.
+Stage 15 adds:
+
+- CRV;
+- Coastguard Mud Rescue Unit;
+- Mud Decontamination Unit;
+- Coastguard Rescue Helicopter;
+- Inland Rescue Boat (Trailer);
+- ILB; and
+- ALB.
+
+Official abbreviations remain canonical where that is how the mission page presents the requirement. Expanded terms are stored as searchable aliases rather than silently replacing the game terminology.
 
 [Open verified vehicle records →](docs/reference/verified-vehicle-records.md)
 
-## Verified mission records
+## Current mission catalogue
 
-Mission records now support both deterministic and probabilistic requirements.
-
-The model distinguishes:
+Mission records distinguish:
 
 - guaranteed resource requirements;
-- chance-based resource requirements;
-- minimum unlock and station context;
-- patient, prisoner, transport, and extension dependencies;
-- reward and duration information where verified;
-- aliases and search terms;
-- source and last-verified metadata; and
-- confidence/evidence classification.
+- chance-based requirements with explicit probabilities;
+- alternative groups where one qualifying vehicle satisfies the requirement;
+- station and extension preconditions;
+- POIs and mission groups;
+- patient, prisoner, personnel and hand-off behaviour;
+- ocean-only vehicle restrictions and custom spawn areas;
+- base rewards and observed temporary multipliers; and
+- source and verification metadata.
 
-The mission schema was expanded specifically so probability-based requirements are represented explicitly rather than flattened into misleading guaranteed counts.
+[Open initial verified mission records →](docs/reference/verified-mission-records.md)  
+[Open Fire expansion batch →](docs/reference/verified-mission-batch-2.md)  
+[Open Ambulance and Police batch →](docs/reference/verified-mission-batch-3.md)  
+[Open Coastguard and Lifeboat batch →](docs/reference/verified-mission-batch-4.md)
 
-[Open verified mission records →](docs/reference/verified-mission-records.md)  
-[Open verified mission batch 2 →](docs/reference/verified-mission-batch-2.md)
+## Maritime modelling milestone
+
+Stage 15 establishes the first structured distinction between:
+
+```text
+Inland Rescue Boat (Trailer)
+            ≠
+ILB or ALB ocean-rescue vessel
+```
+
+It also records:
+
+- Coastguard Rescue Stations and Lifeboat Stations separately;
+- helicopter and specialist-extension preconditions;
+- trailer status without guessing towing compatibility;
+- ILB-or-ALB alternative requirements;
+- ocean vehicle restrictions;
+- Lifeboat Station patient hand-offs; and
+- temporary reward multipliers without overwriting base rewards.
 
 ## Referential integrity
 
-Structured validation checks that mission requirement identifiers resolve to known vehicle records. A mission cannot silently reference a misspelled, missing, or invented resource ID and still pass the repository validation contract.
-
-## Dataset manifest
-
-The UK dataset manifest provides a bounded view of which structured collections exist and how they are intended to be consumed. It is the basis for later exports, calculators, generated indexes, and potential APIs without pretending the current catalogue is complete.
+Structured validation checks every guaranteed, probabilistic and alternative mission resource against the canonical vehicle dataset. A misspelled, missing or invented resource ID cannot silently pass the repository contract.
 
 ---
 
@@ -143,16 +167,16 @@ The UK dataset manifest provides a bounded view of which structured collections 
 
 <table>
 <tr>
-<td width="25%" align="center"><h3>🚒</h3><strong>Fire & Rescue</strong><br><sub>Stations, appliances, specialist units, extensions, staffing, and mission capability.</sub></td>
-<td width="25%" align="center"><h3>🚑</h3><strong>Ambulance</strong><br><sub>Patients, transport, hospitals, response assets, clinical resources, and specialist care.</sub></td>
-<td width="25%" align="center"><h3>🚓</h3><strong>Police</strong><br><sub>Custody, prisoners, public order, investigation, firearms, and specialist policing.</sub></td>
-<td width="25%" align="center"><h3>🚁</h3><strong>Air Operations</strong><br><sub>Helicopters, aircraft, bases, operational roles, and deployment requirements.</sub></td>
+<td width="25%" align="center"><h3>🚒</h3><strong>Fire & Rescue</strong><br><sub>Stations, appliances, specialist units, extensions and staffing.</sub></td>
+<td width="25%" align="center"><h3>🚑</h3><strong>Ambulance</strong><br><sub>Patients, transport, response assets and specialist care.</sub></td>
+<td width="25%" align="center"><h3>🚓</h3><strong>Police</strong><br><sub>Custody, public order, investigation and specialist policing.</sub></td>
+<td width="25%" align="center"><h3>🚁</h3><strong>Air Operations</strong><br><sub>Helicopters, aircraft, bases and deployment requirements.</sub></td>
 </tr>
 <tr>
-<td align="center"><h3>🚤</h3><strong>Maritime</strong><br><sub>Coastguard, lifeboat, inland rescue, trailers, and seagoing operations.</sub></td>
-<td align="center"><h3>⛰️</h3><strong>Specialist Rescue</strong><br><sub>Mountain rescue, technical capability, and cross-service response.</sub></td>
-<td align="center"><h3>🏗️</h3><strong>Infrastructure</strong><br><sub>Buildings, extensions, classrooms, hospitals, dispatch centres, and placement.</sub></td>
-<td align="center"><h3>📡</h3><strong>Command Systems</strong><br><sub>Dispatching, missions, finance, alliances, account progression, and tooling.</sub></td>
+<td align="center"><h3>🚤</h3><strong>Maritime</strong><br><sub>Coastguard, lifeboat, mud rescue, trailers and ocean operations.</sub></td>
+<td align="center"><h3>⛰️</h3><strong>Specialist Rescue</strong><br><sub>Mountain, technical and cross-service response.</sub></td>
+<td align="center"><h3>🏗️</h3><strong>Infrastructure</strong><br><sub>Buildings, extensions, hospitals, classrooms and dispatch centres.</sub></td>
+<td align="center"><h3>📡</h3><strong>Command Systems</strong><br><sub>Dispatching, missions, finance, alliances and tooling.</sub></td>
 </tr>
 </table>
 
@@ -162,29 +186,27 @@ The UK dataset manifest provides a bounded view of which structured collections 
 
 | Operational route | Use it for | Access |
 |---|---|---|
-| **New Player Control** | Account setup, first buildings, early fleets, and expansion order | [Deploy guide →](docs/getting-started/index.md) |
-| **Game Systems** | Credits, coins, missions, patients, prisoners, transport, buildings, and dispatching | [Open systems →](docs/systems/index.md) |
-| **Emergency Services** | Vehicles, personnel, training, stations, and specialist resources | [Browse services →](docs/services/index.md) |
+| **New Player Control** | Account setup, first buildings and expansion order | [Deploy guide →](docs/getting-started/index.md) |
+| **Game Systems** | Missions, patients, prisoners, transport, buildings and dispatching | [Open systems →](docs/systems/index.md) |
+| **Emergency Services** | Vehicles, personnel, training and specialist resources | [Browse services →](docs/services/index.md) |
 | **Verified Vehicles** | Current schema-backed resource records | [Open records →](docs/reference/verified-vehicle-records.md) |
-| **Verified Missions** | Current guaranteed and probabilistic mission records | [Open records →](docs/reference/verified-mission-records.md) |
-| **Strategy Room** | Progression, placement, staffing, fleet composition, coverage, and financial efficiency | [Open strategy →](docs/strategy/index.md) |
-| **Alliance Operations** | Roles, funds, events, shared buildings, rules, and coordination | [Open alliance guides →](docs/alliances/index.md) |
-| **Scripts & Tools** | LSSM, userscripts, browsers, devices, permissions, compatibility, and recovery | [Inspect tools →](docs/scripts/index.md) |
-| **Planning Tools** | Verified-data calculators, comparisons, and future account-planning workflows | [Open programme →](docs/tools/planning-tools.md) |
-| **Community Verification** | Submit, reproduce, classify, and review operational intelligence | [Verification workflow →](docs/contributing/verification-workflow.md) |
+| **Verified Missions** | Current cross-service mission records | [Open records →](docs/reference/verified-mission-records.md) |
+| **Maritime Operations** | Coastguard, Lifeboat and Ocean Rescue data | [Open Stage 15 batch →](docs/reference/verified-mission-batch-4.md) |
+| **Strategy Room** | Progression, placement, staffing and fleet composition | [Open strategy →](docs/strategy/index.md) |
+| **Scripts & Tools** | LSSM, userscripts, browsers, compatibility and recovery | [Inspect tools →](docs/scripts/index.md) |
+| **Planning Tools** | Future verified-data calculators and comparisons | [Open programme →](docs/tools/planning-tools.md) |
+| **Community Verification** | Submit, reproduce and review operational intelligence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
 ---
 
 # 🧠 Intelligence Classification
 
-This project deliberately separates evidence from opinion.
-
 | Marker | Classification | Definition |
 |:---:|---|---|
 | ✅ | **Verified** | Reproduced in the current UK game or confirmed through a reliable primary source |
 | 🧮 | **Calculated** | Derived from verified values with the method documented |
-| 🎯 | **Recommended** | Operational guidance that can vary by account, geography, alliance, or play style |
-| ⚠️ | **Review required** | Potentially outdated, incomplete, contradictory, or awaiting reproduction |
+| 🎯 | **Recommended** | Operational guidance that can vary by account, geography, alliance or play style |
+| ⚠️ | **Review required** | Potentially outdated, incomplete, contradictory or awaiting reproduction |
 
 Mature records include verification dates and source trails wherever practical. MissionChief changes over time; undocumented assumptions are not promoted to facts.
 
@@ -198,26 +220,21 @@ Mature records include verification dates and source trails wherever practical. 
 MISSIONCHIEF UK COMMAND CENTRE
 │
 ├── Human-readable operational intelligence
-│   ├── Getting started and account progression
-│   ├── Missions, dispatch, transport, finance and buildings
-│   ├── Emergency-service references
-│   ├── Strategy, fleet, staffing and geographic planning
-│   ├── Alliance operations
+│   ├── Getting started and progression
+│   ├── Game systems and emergency-service guides
+│   ├── Strategy and alliance operations
 │   └── Scripts, compatibility and recovery
 │
 ├── Structured reference data
 │   ├── Verified vehicles and aliases
 │   ├── Verified missions and requirements
-│   ├── Buildings and extensions
-│   ├── Personnel and training
-│   ├── Dataset manifest
+│   ├── Buildings, extensions, personnel and training
 │   └── Future calculators, exports and APIs
 │
 ├── Evidence and governance
 │   ├── Verification classifications
 │   ├── Source and last-verified metadata
 │   ├── Community reproduction workflow
-│   ├── Editorial requirements
 │   └── Schema and referential-integrity validation
 │
 └── Delivery platform
@@ -228,48 +245,23 @@ MISSIONCHIEF UK COMMAND CENTRE
     └── Pull-request validation gates
 ```
 
-## Repository structure
-
-```text
-.
-├── .github/workflows/
-├── assets/readme/
-├── docs/
-│   ├── getting-started/
-│   ├── systems/
-│   ├── services/
-│   ├── strategy/
-│   ├── alliances/
-│   ├── scripts/
-│   ├── reference/
-│   ├── tools/
-│   └── contributing/
-├── data/
-│   ├── schema/
-│   └── uk/
-├── scripts/validate_data.py
-├── mkdocs.yml
-├── requirements.txt
-└── README.md
-```
-
 ---
 
-# 🧩 Scripts, Devices, and Compatibility
+# 🧩 Scripts, Devices and Compatibility
 
-Tools are not listed merely because they exist. Each mature entry should identify:
+Tool entries should identify:
 
 - what the tool changes;
 - how it is installed and updated;
-- which browsers and devices it supports;
-- whether it is actively maintained;
-- which permissions and data access it requires;
-- whether it conflicts with another tool;
+- supported browsers and devices;
+- maintenance status;
+- permissions and data access;
+- conflicts with other tools;
 - recommended UK configuration;
-- known limitations and warning signs; and
-- safe disable, recovery, and rollback procedures.
+- known limitations; and
+- safe disable, recovery and rollback procedures.
 
-The compatibility centre covers LSSM, userscripts, browser extensions, MissionChief Map Command Toolkit, MissionChief Command Nexus, and other community tooling without treating inclusion as endorsement.
+The compatibility centre covers LSSM, userscripts, browser extensions, MissionChief Map Command Toolkit, MissionChief Command Nexus and other community tooling without treating inclusion as endorsement.
 
 [Open the compatibility centre →](docs/scripts/compatibility-centre.md)  
 [Open installation and recovery →](docs/scripts/installation-and-recovery.md)
@@ -278,23 +270,23 @@ The compatibility centre covers LSSM, userscripts, browser extensions, MissionCh
 
 # ✅ Validation and Delivery
 
-Every push to `main` and every pull request is expected to pass the repository-owned validation workflow:
+Every push to `main` and every pull request is expected to pass:
 
 ```text
 Checkout
    ↓
 Python 3.12
    ↓
-Install documentation dependencies
+Install dependencies
    ↓
-Validate structured JSON documents
+Validate JSON against Draft 2020-12 schemas
    ↓
-Validate mission resource references against vehicle IDs
+Validate mission resource references
+   ↓
+Validate patient ranges
    ↓
 Build MkDocs with --strict
 ```
-
-The public command centre is deployed through GitHub Pages. Validation and deployment remain separate so malformed data, broken navigation, invalid references, or strict-build failures cannot be presented as verified publication.
 
 Local validation:
 
@@ -319,18 +311,16 @@ Open `http://127.0.0.1:8000` for the local site.
 
 # 🤝 Contribute Operational Intelligence
 
-Corrections, verified values, screenshots, reproducible observations, strategy analysis, aliases, and tool documentation are welcome.
-
 Before submitting information:
 
 1. distinguish observed fact from calculation or recommendation;
 2. include the MissionChief UK context;
 3. provide a source or reproducible test where possible;
 4. state when the information was last verified;
-5. use canonical structured identifiers and valid resource references;
-6. record aliases and exceptions that affect search or dispatch interpretation;
+5. use canonical identifiers and valid resource references;
+6. record aliases and exceptions affecting search or dispatch interpretation;
 7. avoid copying third-party work without permission; and
-8. never include private account, alliance, webhook, token, or personal data.
+8. never include private account, alliance, webhook, token or personal data.
 
 [Read the contribution requirements →](docs/contributing/index.md)  
 [Read the verification workflow →](docs/contributing/verification-workflow.md)
@@ -339,9 +329,9 @@ Before submitting information:
 
 # ⚖️ Independence and Attribution
 
-This is an independent community project created and maintained by [Conroy1988](https://github.com/Conroy1988). It is **not operated by, endorsed by, or affiliated with SHPlay GmbH or the official MissionChief team**.
+This is an independent community project created and maintained by [Conroy1988](https://github.com/Conroy1988). It is **not operated by, endorsed by or affiliated with SHPlay GmbH or the official MissionChief team**.
 
-MissionChief names, trademarks, screenshots, game artwork, and third-party materials remain the property of their respective owners. Original project code and content are released under the [MIT Licence](LICENSE), unless a file states otherwise.
+MissionChief names, trademarks, screenshots, game artwork and third-party materials remain the property of their respective owners. Original project code and content are released under the [MIT Licence](LICENSE), unless a file states otherwise.
 
 <div align="center">
 
