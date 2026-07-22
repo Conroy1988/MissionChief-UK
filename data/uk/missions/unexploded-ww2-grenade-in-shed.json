@@ -1,0 +1,22 @@
+{
+  "id": 836,
+  "name": "Unexploded WW2 Grenade Located in Shed",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "mission_types": ["Bomb Disposal Missions"],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 6,
+    "police_stations": 10,
+    "bomb_disposal_hqs": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 2750},
+  "notes": ["The official directory verifies the populated generation fields. Exact EOD vehicle, personnel and patient data remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
