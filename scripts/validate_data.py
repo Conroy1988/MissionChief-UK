@@ -39,11 +39,29 @@ def format_error(path: Path, error: Any) -> str:
     return f"{path.relative_to(ROOT)} [{location}]: {error.message}"
 
 
+def mission_resource_references(path: Path, record: dict[str, Any]) -> list[tuple[Path, str, str]]:
+    references: list[tuple[Path, str, str]] = []
+    requirements = record.get("requirements", {})
+    if not isinstance(requirements, dict):
+        return references
+
+    for requirement_type in ("guaranteed", "probabilistic"):
+        entries = requirements.get(requirement_type, [])
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if isinstance(entry, dict) and isinstance(entry.get("resource"), str):
+                references.append((path, requirement_type, entry["resource"]))
+    return references
+
+
 def main() -> int:
     failures: list[str] = []
     warnings: list[str] = []
     seen_ids: dict[str, dict[str, Path]] = defaultdict(dict)
     schema_cache: dict[Path, Draft202012Validator] = {}
+    vehicle_ids: set[str] = set()
+    mission_resources: list[tuple[Path, str, str]] = []
     files = sorted(DATA_ROOT.rglob("*.json"))
 
     for path in files:
@@ -67,16 +85,16 @@ def main() -> int:
                 Draft202012Validator.check_schema(schema)
                 validator = Draft202012Validator(schema, format_checker=FormatChecker())
                 schema_cache[schema_path] = validator
-        except (OSError, json.JSONDecodeError, Exception) as exc:
+        except Exception as exc:
             failures.append(f"{schema_path.relative_to(ROOT)}: schema load failed: {exc}")
             continue
 
         for error in sorted(validator.iter_errors(record), key=lambda item: list(item.absolute_path)):
             failures.append(format_error(path, error))
 
+        kind = path.parent.name.lower()
         if isinstance(record, dict) and "id" in record:
             record_id = str(record["id"])
-            kind = path.parent.name.lower()
             previous = seen_ids[kind].get(record_id)
             if previous is not None:
                 failures.append(
@@ -85,6 +103,19 @@ def main() -> int:
                 )
             else:
                 seen_ids[kind][record_id] = path
+
+            if kind in {"vehicle", "vehicles"}:
+                vehicle_ids.add(record_id)
+
+        if kind in {"mission", "missions"} and isinstance(record, dict):
+            mission_resources.extend(mission_resource_references(path, record))
+
+    for path, requirement_type, resource_id in mission_resources:
+        if resource_id not in vehicle_ids:
+            failures.append(
+                f"{path.relative_to(ROOT)} [{requirement_type}]: resource '{resource_id}' "
+                "does not have a matching record under data/uk/vehicles"
+            )
 
     if warnings:
         print("Structured data validation warnings:")
@@ -97,7 +128,10 @@ def main() -> int:
             print(f"- {failure}")
         return 1
 
-    print(f"Validated {len(files)} structured data file(s) successfully.")
+    print(
+        f"Validated {len(files)} structured data file(s) successfully, including "
+        f"{len(mission_resources)} mission resource reference(s)."
+    )
     return 0
 
 
