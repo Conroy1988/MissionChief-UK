@@ -4,64 +4,27 @@ This directory contains the production machine-readable records used by the Miss
 
 ## Current inventory
 
-### Missions
+```text
+27 verified mission records
+26 canonical vehicle-resource records
+2 canonical infrastructure records
+8 represented operational service groups
+7 published mission-data batches
+```
 
-Twenty-three verified mission records:
+### Stage 18 mission records
 
-- `0` — Bin fire
-- `1` — Container fire
-- `2` — Burning car
-- `6` — Garden shed fire
-- `143` — Stuck Climber
-- `208` — Domestic smoke alarm activation
-- `521` — Community Engagement (Fire)
-- `522` — Community Engagement (Ambulance)
-- `546` — Mud Rescue
-- `561` — Broken Down Boat
-- `562` — Medivac from vessel
-- `567` — Rescue Boat Assist Coastguard Mud Rescue
-- `569` — Rescue Boat Assist Coastguard, Persons Cut off by Tide
-- `622` — Group Throwing Flares
-- `635` — High Risk Missing Person
-- `636` — Very High Risk Missing Person
-- `693` — HCP Home Visit
-- `753-helicopter-overlay` — Belay Failure Whilst Abseiling helicopter overlay
-- `755-hart-overlay` — Fall Whilst Fell Running HART overlay
-- `756` — Overdue Hikers
-- `760` — Amateur Explorers Trapped in Abandoned Mineshaft
-- `762` — Palliative Care Visit
-- `797` — Person in large enclosure
+- `829` — Unexploded WW2 Ordnance in Countryside
+- `830` — Unexploded WW2 Ordnance on Quiet Beach
+- `832` — Unexploded WW2 Ordnance in Harbour
+- `839` — Unexploded WW2 Bomb Located at Building Site (Large)
 
-### Vehicles and deployable resources
+### Stage 18 infrastructure records
 
-Twenty-six verified canonical records:
+- `bomb_disposal_hq` — Bomb Disposal HQ
+- `bomb_disposal_marine_unit_extension` — Bomb Disposal Marine Unit Extension
 
-- `fire_engine` — Fire engine
-- `aerial_appliance_truck` — Aerial Appliance Truck
-- `rescue_support_vehicle` — Rescue Support Vehicle
-- `rapid_response_vehicle` — Rapid Response Vehicle
-- `specialist_paramedic_rrv` — Specialist Paramedic RRV
-- `atv_carrier` — ATV Carrier
-- `prv` — PRV
-- `srv` — SRV
-- `welfare_vehicle` — Welfare Vehicle
-- `police_car` — Police car
-- `police_helicopter` — Police Helicopter
-- `drone` — Drone
-- `coastguard_rescue_vehicle` — CRV
-- `coastguard_mud_rescue_unit` — Coastguard Mud Rescue Unit
-- `mud_decontamination_unit` — Mud Decontamination Unit
-- `coastguard_rescue_helicopter` — Coastguard Rescue Helicopter
-- `inland_rescue_boat_trailer` — Inland Rescue Boat (Trailer)
-- `inshore_lifeboat` — ILB
-- `all_weather_lifeboat` — ALB
-- `mountain_rescue_4x4` — Mountain Rescue 4x4
-- `sar_4x4` — SAR 4x4
-- `control_van` — Control Van
-- `search_dog_unit` — Search Dog Unit
-- `operational_support_van` — Operational Support Van
-- `operational_support_trailer` — Operational Support Trailer
-- `personal_sar_vehicle` — Personal SAR Vehicle
+The full vehicle and mission inventories remain available through the public reference pages and the JSON files under this directory.
 
 ## Service coverage
 
@@ -73,9 +36,10 @@ The production dataset now contains records across:
 - Coastguard;
 - Lifeboat and Ocean Rescue;
 - Mountain Rescue and land search;
-- Search and Rescue HQ and drone-enabled operations.
+- Search and Rescue HQ and drone-enabled operations;
+- Bomb Disposal and EOD mission generation.
 
-Airfield Operations, Recovery, Bomb Disposal, Railway Police and other specialist services remain future controlled population batches.
+Airfield Operations, Recovery, Railway Police and other specialist services remain future controlled population batches.
 
 ## Validation guarantees
 
@@ -87,45 +51,26 @@ The repository validator checks:
 4. valid date formats;
 5. guaranteed and probabilistic mission resources against canonical resource IDs;
 6. every resource inside every alternative requirement group;
-7. that patient minimums do not exceed patient maximums.
+7. that patient minimums do not exceed patient maximums;
+8. Bomb Disposal infrastructure preconditions against canonical infrastructure records.
 
-A mission file fails validation when it references a resource that does not exist under `data/uk/vehicles/`.
+A mission fails validation when it references an unknown vehicle resource or a Bomb Disposal infrastructure entity that does not exist under `data/uk/infrastructure/`.
 
-## Variant modelling
+## Stage 18 infrastructure modelling
 
-Stage 16 introduced explicit mission variants. Additive overlays use a unique string dataset ID while retaining the official numeric mission ID:
+Stage 18 introduces production records for buildings and extensions through `infrastructure.schema.json`.
 
-```json
-{
-  "id": "753-helicopter-overlay",
-  "variant": {
-    "source_mission_id": 753,
-    "kind": "additive-overlay",
-    "key": "coastguard-helicopter"
-  }
-}
+```text
+Bomb Disposal HQ
+Bomb Disposal Marine Unit Extension
 ```
 
-This prevents HART, helicopter or future overlay-only requirements from being incorrectly applied to the base mission.
+The mission fields `bomb_disposal_hqs` and `bomb_disposal_marine_unit_extensions` are validated against these records.
 
-## Search and Rescue HQ modelling
+## Evidence boundary
 
-Stage 17 adds:
+The official mission directory exposed mission IDs, names, POIs, rewards and preconditions. Individual response tables were not consistently retrievable during Stage 18 verification.
 
-- Search and Rescue HQ and active-Drone preconditions;
-- Operational Support Van, Operational Support Trailer or Personal SAR Vehicle alternatives;
-- Police Helicopter or Drone alternatives;
-- Mountain Rescue 4x4 or SAR 4x4 alternatives reused across the service boundary;
-- Search Advisor and SAR Commander availability and incident requirements;
-- an `average_minimum` personnel state for Search Technicians;
-- structured missing-person patient mechanics.
-
-The active-Drone precondition is distinct from the incident aerial-search requirement. It must not be interpreted as forcing the dispatched response to be a Drone.
-
-## Evidence policy
-
-A record marked `verified` applies that status only to the populated fields. Missing values are intentional when the current UK game has not yet been reproduced or evidenced for that attribute.
+Vehicle and personnel requirement arrays are therefore empty for the first Bomb Disposal batch. Empty fields are deliberate and must not be interpreted as proof that no specialist response is required.
 
 Temporary event multipliers are not stored as base rewards unless explicitly identified as observations rather than canonical values.
-
-Official abbreviations such as PRV and SRV remain unexpanded when the primary source does not provide an authoritative expanded name.
