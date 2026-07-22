@@ -1,0 +1,19 @@
+{
+  "id": "personal_sar_vehicle",
+  "name": "Personal SAR Vehicle",
+  "aliases": ["Personal Search and Rescue Vehicle"],
+  "service": "search_and_rescue",
+  "category": "Personnel transport and support",
+  "capabilities": ["search_support", "personnel_transport"],
+  "notes": [
+    "Official SAR mission pages list Personal SAR Vehicles as one alternative within the operational-support requirement group."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/635",
+      "https://www.missionchief.co.uk/einsaetze/636"
+    ]
+  }
+}
