@@ -1,0 +1,10 @@
+{
+  "id": "riv",
+  "name": "RIV",
+  "aliases": ["Rapid Intervention Vehicle"],
+  "service": "airfield_operations",
+  "category": "Airfield firefighting response",
+  "capabilities": ["airfield_firefighting"],
+  "notes": ["Official mission pages use the abbreviation RIV."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/593"]}
+}
