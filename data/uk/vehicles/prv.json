@@ -1,0 +1,17 @@
+{
+  "id": "prv",
+  "name": "PRV",
+  "aliases": ["PRVs"],
+  "service": "ambulance",
+  "category": "specialist_response",
+  "capabilities": ["specialist_ambulance_response"],
+  "notes": [
+    "The official UK mission page uses the label PRV without expanding the abbreviation.",
+    "No expanded name, price, staffing or training requirement is inferred in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/760"]
+  }
+}
