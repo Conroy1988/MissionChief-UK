@@ -1,0 +1,32 @@
+{
+  "id": 829,
+  "name": "Unexploded WW2 Ordnance in Countryside",
+  "aliases": ["Unexploded Second World War ordnance in countryside"],
+  "service": "bomb_disposal",
+  "mission_types": ["Bomb Disposal Missions"],
+  "poi": ["Forest", "Farm", "Heathland"],
+  "custom_spawn_area": false,
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {"source_mission_id": 829, "kind": "base", "key": "countryside-ordnance"},
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 6,
+    "police_stations": 10,
+    "bomb_disposal_hqs": 1,
+    "other": []
+  },
+  "requirements": {"guaranteed": [], "probabilistic": [], "alternatives": []},
+  "reward": {"average_credits": 4500},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The official directory confirms the mission ID, POIs, average reward and building preconditions.",
+    "Vehicle and personnel requirements remain unpublished because the individual mission page was unavailable during verification."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/829", "https://www.missionchief.co.uk/einsaetze"]
+  }
+}
