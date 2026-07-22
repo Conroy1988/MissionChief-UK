@@ -55,6 +55,7 @@
   "personnel": {
     "available": [],
     "required": [],
+    "average_minimum": [],
     "probabilistic": [
       {
         "role": "Replace with exact role label",
