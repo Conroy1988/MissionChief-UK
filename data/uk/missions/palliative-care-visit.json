@@ -1,0 +1,55 @@
+{
+  "id": 762,
+  "name": "Palliative Care Visit",
+  "aliases": [],
+  "service": "ambulance",
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "preconditions": {
+    "rescue_stations": 1,
+    "gp_surgeries": 1
+  },
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": [
+          "rapid_response_vehicle",
+          "specialist_paramedic_rrv"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One vehicle from the listed alternatives satisfies the requirement."
+        ]
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 0.05,
+    "critical_care_probability": 0.05,
+    "specializations": [
+      "General Internal"
+    ],
+    "codes": [
+      "C-3",
+      "C-4"
+    ]
+  },
+  "reward": {
+    "average_credits": 500
+  },
+  "notes": [
+    "Official UK mission page requires one RRV or Specialist Paramedic RRV."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/762"
+    ]
+  }
+}
