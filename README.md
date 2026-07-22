@@ -7,7 +7,7 @@
 [![Open Command Centre](https://img.shields.io/badge/OPEN-COMMAND_CENTRE-1593D1?style=for-the-badge&logo=googlemaps&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![Release](https://img.shields.io/github/v/release/Conroy1988/MissionChief-UK?style=for-the-badge&label=RELEASE&color=1675A9)](https://github.com/Conroy1988/MissionChief-UK/releases/latest)
 [![Stage](https://img.shields.io/badge/PROGRAMME-STAGE_34_COMPLETE-D63345?style=for-the-badge)](#-production-command-posture)
-[![API](https://img.shields.io/badge/STATIC_API-v1.0.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
+[![API](https://img.shields.io/badge/STATIC_API-v1.0.1-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
 
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
 [![Deploy Pages](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
@@ -18,7 +18,7 @@
 
 **Verified operational data · Service doctrine · Interactive planning · Evidence governance · Versioned public exports**
 
-[**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.0.md) · [**Contribute Evidence**](docs/contributing/index.md)
+[**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.1.md) · [**Contribute Evidence**](docs/contributing/index.md)
 
 </div>
 
@@ -51,7 +51,7 @@ It combines human-readable guidance, canonical structured records, browser-side 
 
 # 📡 Production Command Posture
 
-The numbered core delivery programme is complete through **Stage 34**, with continuous evidence maintenance now operating on top of the v1.0.0 production baseline.
+The numbered core delivery programme is complete through **Stage 34**, with continuous evidence maintenance operating on the **v1.0.1** production baseline.
 
 | Intelligence domain | Current baseline | Operational result |
 |---|---:|---|
@@ -61,7 +61,7 @@ The numbered core delivery programme is complete through **Stage 34**, with cont
 | **Qualifications** | **11** | Operational roles with unverified course details deliberately omitted |
 | **Service groups** | **11** | Fire, Ambulance, Police, maritime, mountain, SAR, EOD, airfield, recovery and railway operations |
 | **Mission batches** | **13** | Controlled publication units spanning the current verified catalogue |
-| **Public interface** | **API v1** | Manifest, collections, search index, generated FAQ and OpenAPI contract |
+| **Public interface** | **API v1.0.1** | Manifest, collections, search index, generated FAQ and OpenAPI contract |
 | **Quality assurance** | **Cross-browser** | Built-site Chromium plus deployed Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance |
 
 > [!IMPORTANT]
@@ -237,9 +237,11 @@ Versioned exports and generated FAQ
         ↓
 Repository and API readiness audit
         ↓
-JavaScript syntax validation
+Documentation link and heading-anchor audit
         ↓
 MkDocs strict build and built-site audit
+        ↓
+JavaScript syntax validation
         ↓
 Chromium acceptance against the built site
         ↓
@@ -256,16 +258,17 @@ Local verification:
 
 ```bash
 pip install -r requirements.txt
-npm install
-npx playwright install --with-deps
 python scripts/validate_data.py
 python scripts/generate_exports.py
 python scripts/generate_faq.py
 python scripts/release_readiness.py
-node --check docs/javascripts/intelligence-tools.js
-node --check docs/javascripts/home-command.js
+python scripts/audit_links.py
 mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
+npm install
+npx playwright install --with-deps
+node --check docs/javascripts/intelligence-tools.js
+node --check docs/javascripts/home-command.js
 npm run test:e2e
 ```
 
@@ -284,8 +287,6 @@ npm run test:e2e
 | **Using scripts and extensions** | [Compatibility Centre](https://conroy1988.github.io/MissionChief-UK/scripts/compatibility-centre/) |
 | **Building a tool or integration** | [Static API](https://conroy1988.github.io/MissionChief-UK/api/) and [Generated Exports](https://conroy1988.github.io/MissionChief-UK/reference/data-exports/) |
 | **Submitting evidence** | [Contribution Standard](docs/contributing/index.md) and [Verification Workflow](docs/contributing/verification-workflow.md) |
-
----
 
 # 🤝 Contribute to the Intelligence Picture
 
