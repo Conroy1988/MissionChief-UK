@@ -11,6 +11,7 @@ extra_css:
   - stylesheets/extra.css
   - stylesheets/command-palette.css
   - stylesheets/home-responsive.css
+  - stylesheets/tool-responsive.css
 
 extra_javascript:
   - javascripts/home-command.js
