@@ -1,0 +1,41 @@
+{
+  "id": 6,
+  "name": "Garden shed fire",
+  "aliases": [
+    "Garden Shed Fire"
+  ],
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 600
+  },
+  "follow_up_missions": [
+    "Burning leaves",
+    "Roof fire"
+  ],
+  "notes": [
+    "The official UK mission page lists two required Fire engines and two required Fire Stations."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/6"
+    ]
+  }
+}
