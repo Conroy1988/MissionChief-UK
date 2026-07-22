@@ -1,0 +1,46 @@
+{
+  "id": 561,
+  "name": "Broken Down Boat",
+  "aliases": [],
+  "service": "lifeboat",
+  "mission_types": [
+    "Ocean Rescue Missions"
+  ],
+  "custom_spawn_area": true,
+  "restricted_vehicle_types": [
+    "Ocean"
+  ],
+  "preconditions": {
+    "lifeboat_stations": 1
+  },
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": [
+          "inshore_lifeboat",
+          "all_weather_lifeboat"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One ILB or ALB satisfies the requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "notes": [
+    "The official mission page displayed a temporary x2 reward marker during verification; 6000 is retained as the base average shown in the mission directory."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze",
+      "https://www.missionchief.co.uk/einsaetze/561"
+    ]
+  }
+}
