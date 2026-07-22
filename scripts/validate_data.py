@@ -19,6 +19,12 @@ SCHEMA_BY_DIRECTORY = {
     "vehicles": "vehicle.schema.json",
     "mission": "mission.schema.json",
     "missions": "mission.schema.json",
+    "infrastructure": "infrastructure.schema.json",
+}
+
+PRECONDITION_INFRASTRUCTURE_IDS = {
+    "bomb_disposal_hqs": "bomb_disposal_hq",
+    "bomb_disposal_marine_unit_extensions": "bomb_disposal_marine_unit_extension",
 }
 
 
@@ -68,6 +74,20 @@ def mission_resource_references(path: Path, record: dict[str, Any]) -> list[tupl
     return references
 
 
+def mission_infrastructure_references(path: Path, record: dict[str, Any]) -> list[tuple[Path, str, str]]:
+    references: list[tuple[Path, str, str]] = []
+    preconditions = record.get("preconditions", {})
+    if not isinstance(preconditions, dict):
+        return references
+
+    for field, infrastructure_id in PRECONDITION_INFRASTRUCTURE_IDS.items():
+        quantity = preconditions.get(field, 0)
+        if isinstance(quantity, int) and quantity > 0:
+            references.append((path, field, infrastructure_id))
+
+    return references
+
+
 def validate_mission_semantics(path: Path, record: dict[str, Any]) -> list[str]:
     failures: list[str] = []
     patients = record.get("patients")
@@ -87,7 +107,9 @@ def main() -> int:
     seen_ids: dict[str, dict[str, Path]] = defaultdict(dict)
     schema_cache: dict[Path, Draft202012Validator] = {}
     vehicle_ids: set[str] = set()
+    infrastructure_ids: set[str] = set()
     mission_resources: list[tuple[Path, str, str]] = []
+    mission_infrastructure: list[tuple[Path, str, str]] = []
     files = sorted(DATA_ROOT.rglob("*.json"))
 
     for path in files:
@@ -132,9 +154,12 @@ def main() -> int:
 
             if kind in {"vehicle", "vehicles"}:
                 vehicle_ids.add(record_id)
+            elif kind == "infrastructure":
+                infrastructure_ids.add(record_id)
 
         if kind in {"mission", "missions"} and isinstance(record, dict):
             mission_resources.extend(mission_resource_references(path, record))
+            mission_infrastructure.extend(mission_infrastructure_references(path, record))
             failures.extend(validate_mission_semantics(path, record))
 
     for path, requirement_type, resource_id in mission_resources:
@@ -142,6 +167,13 @@ def main() -> int:
             failures.append(
                 f"{path.relative_to(ROOT)} [{requirement_type}]: resource '{resource_id}' "
                 "does not have a matching record under data/uk/vehicles"
+            )
+
+    for path, precondition_field, infrastructure_id in mission_infrastructure:
+        if infrastructure_id not in infrastructure_ids:
+            failures.append(
+                f"{path.relative_to(ROOT)} [preconditions.{precondition_field}]: infrastructure "
+                f"'{infrastructure_id}' does not have a matching record under data/uk/infrastructure"
             )
 
     if warnings:
@@ -157,7 +189,8 @@ def main() -> int:
 
     print(
         f"Validated {len(files)} structured data file(s) successfully, including "
-        f"{len(mission_resources)} mission resource reference(s)."
+        f"{len(mission_resources)} mission resource reference(s) and "
+        f"{len(mission_infrastructure)} infrastructure precondition reference(s)."
     )
     return 0
 
