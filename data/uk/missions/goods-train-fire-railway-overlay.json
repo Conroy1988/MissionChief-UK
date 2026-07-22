@@ -1,0 +1,42 @@
+{
+  "id": "134-railway-overlay",
+  "name": "Goods Train Fire",
+  "aliases": [],
+  "service": "railway_response",
+  "mission_types": ["Fire Fighting Missions", "Chemical and Industrial Fire Missions (Specialization)", "Railway Fire Missions", "Urban Fire Missions"],
+  "poi": ["Rail Crossing", "Railroad Crossing", "Train station (regional traffic)", "Goods station"],
+  "variant": {
+    "source_mission_id": 134,
+    "kind": "additive-overlay",
+    "key": "railway-response",
+    "notes": ["Railway fire response and Railway Police enhanced state."]
+  },
+  "preconditions": {
+    "fire_stations": 13,
+    "railway_fire_responses": 1,
+    "railway_police": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 4},
+      {"resource": "fire_officer", "quantity": 3},
+      {"resource": "water_carrier", "quantity": 1},
+      {"resource": "breathing_apparatus_support_unit", "quantity": 1},
+      {"resource": "road_rail_unit", "quantity": 1},
+      {"resource": "eiu", "quantity": 1}
+    ],
+    "alternatives": [
+      {"resources": ["iccu", "ambulance_control_unit"], "quantity": 1}
+    ]
+  },
+  "personnel": {
+    "available": [{"role": "Railway Police Officer", "quantity": 4}],
+    "required": [{"role": "Railway Police Officer", "quantity": 2}]
+  },
+  "reward": {"average_credits": 3000},
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b"]
+  }
+}
