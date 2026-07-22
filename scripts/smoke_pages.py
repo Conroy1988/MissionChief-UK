@@ -6,12 +6,16 @@ import argparse
 import json
 import sys
 import time
+from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 
-HTML_ROUTES = (
+ROOT = Path(__file__).resolve().parents[1]
+VERSION_PATH = ROOT / "data" / "version.json"
+
+STATIC_HTML_ROUTES = (
     "",
     "tools/mission-lookup/",
     "tools/resource-comparison/",
@@ -19,7 +23,7 @@ HTML_ROUTES = (
     "tools/query-catalogue/",
     "reference/generated-faq/",
     "api/",
-    "releases/v1.0.0/",
+    "quality-assurance/",
 )
 
 API_FILES = (
@@ -77,11 +81,15 @@ def main() -> int:
     parser.add_argument("--delay", type=float, default=5.0)
     args = parser.parse_args()
 
+    release = json.loads(VERSION_PATH.read_text(encoding="utf-8"))
+    expected_version = release["version"]
+    html_routes = (*STATIC_HTML_ROUTES, f"releases/v{expected_version}/")
+
     base_url = args.base_url.rstrip("/") + "/"
     api_root = urljoin(base_url, "assets/data/v1/")
 
     try:
-        for route in HTML_ROUTES:
+        for route in html_routes:
             url = urljoin(base_url, route)
             body, content_type = fetch(url, args.attempts, args.delay)
             require("html" in content_type, f"Expected HTML content type from {url}, received {content_type}")
@@ -96,15 +104,20 @@ def main() -> int:
         for filename in API_FILES:
             url = urljoin(api_root, filename)
             body, content_type = fetch(url, args.attempts, args.delay)
-            require(content_type in {"application/json", "text/plain", "application/octet-stream"},
-                    f"Unexpected content type for {url}: {content_type}")
+            require(
+                content_type in {"application/json", "text/plain", "application/octet-stream"},
+                f"Unexpected content type for {url}: {content_type}",
+            )
             payloads[filename] = parse_json(body, url)
 
         manifest = payloads["manifest.json"]
         require(manifest.get("api_version") == "v1", "Deployed manifest api_version is not v1")
-        require(manifest.get("data_version") == "1.0.0", "Deployed data version is not 1.0.0")
-        require(manifest.get("stage") == 34, "Deployed manifest is not Stage 34")
-        require(manifest.get("status") == "production", "Deployed manifest status is not production")
+        require(
+            manifest.get("data_version") == expected_version,
+            f"Deployed data version is not {expected_version}",
+        )
+        require(manifest.get("stage") == release.get("stage"), "Deployed manifest stage does not match release metadata")
+        require(manifest.get("status") == release.get("status"), "Deployed manifest status does not match release metadata")
 
         collections = manifest.get("collections")
         require(isinstance(collections, dict), "Deployed manifest collections are invalid")
@@ -129,11 +142,11 @@ def main() -> int:
         openapi = payloads["openapi.json"]
         require(openapi.get("openapi") == "3.1.0", "Deployed OpenAPI contract is not version 3.1.0")
         require(openapi.get("info", {}).get("version") == manifest.get("data_version"), "Deployed OpenAPI version mismatch")
-    except SmokeFailure as exc:
+    except (SmokeFailure, OSError, json.JSONDecodeError, KeyError) as exc:
         print(f"Pages smoke test failed: {exc}")
         return 1
 
-    print(f"Pages smoke test passed for {base_url} ({total} indexed records)")
+    print(f"Pages smoke test passed for {base_url} ({total} indexed records, version {expected_version})")
     return 0
 
 
