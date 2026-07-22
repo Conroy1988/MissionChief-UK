@@ -1,0 +1,17 @@
+{
+  "id": "dog_support_unit",
+  "name": "Dog Support Unit (DSU)",
+  "aliases": ["Dog Support Unit", "DSU"],
+  "service": "police",
+  "category": "Dog support",
+  "capabilities": ["police_dog_support"],
+  "notes": ["Official UK mission pages use both Dog Support Unit and DSU terminology."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/465",
+      "https://police.missionchief.co.uk/einsaetze/808"
+    ]
+  }
+}
