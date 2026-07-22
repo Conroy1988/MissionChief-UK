@@ -19,27 +19,11 @@ DEFAULT_URL = "https://www.missionchief.co.uk/einsaetze.json"
 DEFAULT_OUTPUT = ROOT / "data" / "sources" / "missionchief-uk"
 DEFAULT_CANONICAL = ROOT / "data" / "uk" / "missions"
 MINIMUM_PLAUSIBLE_RECORDS = 100
-KNOWN_FIELDS = (
-    "id",
-    "name",
-    "place",
-    "place_array",
-    "average_credits",
-    "generated_by",
-    "icons",
-    "requirements",
-    "chances",
-    "additional",
-    "prerequisites",
-    "alternate_version",
-    "mission_categories",
-    "patient_specializations",
-)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Download, validate and normalize the official MissionChief UK mission catalogue."
+        description="Download, validate and reconcile the official MissionChief UK mission catalogue."
     )
     parser.add_argument("--url", default=DEFAULT_URL, help="Official mission JSON endpoint.")
     parser.add_argument("--input", type=Path, help="Read an existing JSON payload instead of downloading it.")
@@ -112,31 +96,6 @@ def stable_id(value: Any) -> tuple[int, int | str]:
         return (1, str(value))
 
 
-def official_url(mission_id: Any) -> str:
-    return f"https://www.missionchief.co.uk/einsaetze/{mission_id}"
-
-
-def normalized_record(record: dict[str, Any]) -> dict[str, Any]:
-    mission_id = record.get("id")
-    name = mission_name(record)
-    additional = record.get("additional") if isinstance(record.get("additional"), dict) else {}
-    normalized: dict[str, Any] = {
-        "id": mission_id,
-        "name": name,
-        "official_url": official_url(mission_id),
-        "limited_availability": bool(additional.get("date_start") or additional.get("date_end")),
-        "availability": {
-            "starts_at": additional.get("date_start"),
-            "ends_at": additional.get("date_end"),
-        },
-    }
-    for field in KNOWN_FIELDS:
-        if field in record:
-            normalized[field] = record[field]
-    normalized["raw"] = record
-    return normalized
-
-
 def validate_records(records: list[dict[str, Any]]) -> None:
     ids: dict[str, int] = {}
     failures: list[str] = []
@@ -187,6 +146,20 @@ def write_json(path: Path, value: Any) -> None:
         handle.write("\n")
 
 
+def existing_source_timestamp(output: Path, source_sha256: str) -> str | None:
+    path = output / "einsaetze.raw.json"
+    if not path.exists():
+        return None
+    try:
+        previous = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if previous.get("source_sha256") != source_sha256:
+        return None
+    fetched_at = previous.get("fetched_at")
+    return fetched_at if isinstance(fetched_at, str) and fetched_at else None
+
+
 def coverage_report(official: list[dict[str, Any]], canonical: list[dict[str, Any]]) -> dict[str, Any]:
     official_by_id = {str(record["id"]): record for record in official}
     canonical_by_id = {str(record.get("id")): record for record in canonical if record.get("id") is not None}
@@ -231,12 +204,14 @@ def main() -> int:
     payload, source = read_payload(args)
     records = decode_records(payload)
     validate_records(records)
+    records.sort(key=lambda record: stable_id(record.get("id")))
 
-    normalized = [normalized_record(record) for record in records]
-    normalized.sort(key=lambda record: stable_id(record.get("id")))
     canonical = load_canonical(args.canonical_dir)
-    fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    output = args.output_dir
     source_sha256 = hashlib.sha256(payload).hexdigest()
+    fetched_at = existing_source_timestamp(output, source_sha256)
+    if fetched_at is None:
+        fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
     raw_document = {
         "source_url": args.url,
@@ -245,17 +220,6 @@ def main() -> int:
         "source_sha256": source_sha256,
         "count": len(records),
         "records": records,
-    }
-    catalogue = {
-        "schema_version": "1",
-        "source": {
-            "authority": "MissionChief UK",
-            "url": args.url,
-            "fetched_at": fetched_at,
-            "sha256": source_sha256,
-        },
-        "count": len(normalized),
-        "records": normalized,
     }
     report = coverage_report(records, canonical)
     report.update(
@@ -275,16 +239,15 @@ def main() -> int:
         "prerequisites": key_inventory(records, "prerequisites"),
     }
 
-    output = args.output_dir
     write_json(output / "einsaetze.raw.json", raw_document)
-    write_json(output / "official-missions.json", catalogue)
     write_json(output / "mission-coverage.json", report)
     write_json(output / "official-key-inventory.json", inventory)
 
     print(
-        f"Imported {len(normalized)} official UK missions; "
+        f"Imported {len(records)} official UK missions; "
         f"{report['matched_count']} currently have canonical records and "
-        f"{report['official_only_count']} require canonical review."
+        f"{report['official_only_count']} require canonical review. "
+        f"Source SHA-256: {source_sha256}."
     )
     return 0
 
