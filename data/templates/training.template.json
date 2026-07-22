@@ -1,0 +1,17 @@
+{
+  "id": "replace-with-qualification-id",
+  "name": "Replace with exact UK role or course name",
+  "aliases": [],
+  "service": "replace-with-service-id",
+  "qualification_type": "role-qualification",
+  "roles": ["Replace with exact operational role"],
+  "prerequisites": [],
+  "notes": [
+    "Omit course_name and duration_hours unless directly verified from the current UK training interface."
+  ],
+  "verification": {
+    "status": "review-required",
+    "checked_at": "2026-07-22",
+    "sources": ["Replace with official or reproducible source"]
+  }
+}
