@@ -1,0 +1,25 @@
+{
+  "id": "3-recovery-overlay",
+  "name": "Burning motorbike",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 3,
+    "kind": "additive-overlay",
+    "key": "recovery-centre"
+  },
+  "preconditions": {
+    "fire_stations": 1,
+    "recovery_centres": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 640},
+  "notes": ["The official directory verifies the Recovery Centre variation and reward. The individual response/towing table was unavailable and is not inferred."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/3?additive_overlays=a"]
+  }
+}
