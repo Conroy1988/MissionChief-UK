@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/infrastructure.schema.json",
+  "title": "MissionChief UK Infrastructure Record",
+  "type": "object",
+  "required": ["id", "name", "kind", "service", "verification"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "kind": {"type": "string", "enum": ["building", "extension"]},
+    "service": {"type": "string", "minLength": 1},
+    "parent_buildings": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "capabilities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "verification": {
+      "type": "object",
+      "required": ["status", "checked_at"],
+      "properties": {
+        "status": {"type": "string", "enum": ["verified", "calculated", "community-report", "review-required"]},
+        "checked_at": {"type": "string", "format": "date"},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
