@@ -116,6 +116,7 @@
       "properties": {
         "available": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}},
         "required": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}},
+        "average_minimum": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}},
         "probabilistic": {"type": "array", "items": {"$ref": "#/$defs/probabilisticPersonnelRequirement"}}
       },
       "additionalProperties": false
