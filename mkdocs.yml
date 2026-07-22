@@ -16,6 +16,7 @@ extra_css:
 extra_javascript:
   - javascripts/home-command.js
   - javascripts/intelligence-tools.js
+  - javascripts/official-mission-details.js
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
 
