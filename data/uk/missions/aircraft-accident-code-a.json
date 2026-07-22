@@ -1,0 +1,24 @@
+{
+  "id": 586,
+  "name": "Aircraft Accident - Code A",
+  "aliases": [],
+  "service": "airfield_operations",
+  "mission_types": ["Airfield firefighting operations", "Mass Casualty Missions (Specialization)"],
+  "poi": ["Small Airport (Runway)"],
+  "preconditions": {
+    "fire_stations": 7,
+    "rescue_stations": 7,
+    "police_stations": 8,
+    "hart_bases": 1,
+    "mass_casualty_extensions": 1,
+    "aviation_firefighting_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 8000},
+  "notes": ["The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
