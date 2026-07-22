@@ -1,0 +1,24 @@
+{
+  "id": "coastguard_rope_rescue_unit",
+  "name": "Coastguard Rope Rescue Unit",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "specialist rescue",
+  "cost": {
+    "credits": 35000,
+    "coins": 20
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 5
+  },
+  "training": ["Rope Rescue Training"],
+  "building_requirements": ["Coastguard Rescue Station"],
+  "capabilities": ["coastguard_rope_rescue"],
+  "notes": ["Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"]
+  }
+}
