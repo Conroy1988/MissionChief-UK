@@ -45,6 +45,9 @@ jobs:
       - name: Generate public data exports
         run: python scripts/generate_exports.py
 
+      - name: Generate FAQ
+        run: python scripts/generate_faq.py
+
       - name: Build documentation strictly
         run: python -m mkdocs build --strict --site-dir site
 
