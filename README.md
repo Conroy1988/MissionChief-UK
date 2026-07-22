@@ -132,7 +132,7 @@ Traffic Car
 Mass Casualty Equipment
 ```
 
-Official labels remain canonical. RIV and ICCU retain their abbreviations, with expanded forms stored only as aliases.
+Official labels remain canonical. Abbreviations such as RIV, ICCU and CBRN remain unexpanded unless a separate primary source verifies an expanded name.
 
 ## Stage 19 missions
 
