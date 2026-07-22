@@ -6,7 +6,7 @@ This directory contains the production machine-readable records used by the Miss
 
 ### Missions
 
-Eleven verified mission records:
+Sixteen verified mission records:
 
 - `0` — Bin fire
 - `1` — Container fire
@@ -15,6 +15,11 @@ Eleven verified mission records:
 - `208` — Domestic smoke alarm activation
 - `521` — Community Engagement (Fire)
 - `522` — Community Engagement (Ambulance)
+- `546` — Mud Rescue
+- `561` — Broken Down Boat
+- `562` — Medivac from vessel
+- `567` — Rescue Boat Assist Coastguard Mud Rescue
+- `569` — Rescue Boat Assist Coastguard, Persons Cut off by Tide
 - `622` — Group Throwing Flares
 - `693` — HCP Home Visit
 - `762` — Palliative Care Visit
@@ -22,13 +27,20 @@ Eleven verified mission records:
 
 ### Vehicles
 
-Five verified resource records:
+Twelve verified resource records:
 
 - `fire_engine` — Fire engine
 - `aerial_appliance_truck` — Aerial Appliance Truck
 - `rapid_response_vehicle` — Rapid Response Vehicle
 - `specialist_paramedic_rrv` — Specialist Paramedic RRV
 - `police_car` — Police car
+- `coastguard_rescue_vehicle` — CRV
+- `coastguard_mud_rescue_unit` — Coastguard Mud Rescue Unit
+- `mud_decontamination_unit` — Mud Decontamination Unit
+- `coastguard_rescue_helicopter` — Coastguard Rescue Helicopter
+- `inland_rescue_boat_trailer` — Inland Rescue Boat (Trailer)
+- `inshore_lifeboat` — ILB
+- `all_weather_lifeboat` — ALB
 
 ## Service coverage
 
@@ -36,9 +48,11 @@ The production dataset now contains records across:
 
 - Fire and Rescue;
 - Ambulance;
-- Police.
+- Police;
+- Coastguard;
+- Lifeboat and Ocean Rescue.
 
-Maritime, Coastguard, Search and Rescue and other specialist services remain future controlled population batches.
+Mountain Rescue, Airfield Operations, HART, Recovery, Bomb Disposal and other specialist services remain future controlled population batches.
 
 ## Validation guarantees
 
@@ -53,6 +67,18 @@ The repository validator checks:
 7. that patient minimums do not exceed patient maximums.
 
 A mission file fails validation when it references a resource that does not exist under `data/uk/vehicles/`.
+
+## Maritime modelling
+
+The Stage 15 schema supports:
+
+- Coastguard Rescue Station and Lifeboat Station preconditions;
+- Helicopter Hangars and specialist maritime extensions;
+- trailers and operating environments;
+- ocean-only vehicle restrictions;
+- custom mission spawn areas;
+- patient and prisoner hand-off destinations;
+- ILB-or-ALB alternative requirements.
 
 ## Evidence policy
 
