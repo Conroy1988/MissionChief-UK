@@ -16,9 +16,9 @@
 
 ### **Mission control for the United Kingdom game. Not another loose collection of tips.**
 
-**Verified operational data · Service doctrine · Interactive planning · Evidence governance · Versioned public exports**
+**Verified operational data · Instant command search · Service doctrine · Interactive planning · Evidence governance · Versioned public exports**
 
-[**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.1.md) · [**Contribute Evidence**](docs/contributing/index.md)
+[**Open Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.1.md)
 
 </div>
 
@@ -59,6 +59,7 @@ The numbered core delivery programme is complete through **Stage 34**, with cont
 | **Canonical resources** | **46** | Vehicles, trailers, boats, specialist equipment, capabilities and deployment metadata |
 | **Infrastructure** | **18** | Buildings and extensions enforced through schema-controlled references |
 | **Qualifications** | **11** | Operational roles with unverified course details deliberately omitted |
+| **Searchable entities** | **137** | One global command index spanning every canonical collection |
 | **Service groups** | **11** | Fire, Ambulance, Police, maritime, mountain, SAR, EOD, airfield, recovery and railway operations |
 | **Mission batches** | **13** | Controlled publication units spanning the current verified catalogue |
 | **Public interface** | **API v1.0.1** | Manifest, collections, search index, generated FAQ and OpenAPI contract |
@@ -75,7 +76,28 @@ STAGES 13–20  Core emergency-service production data
 STAGE 21      Railway Police and Railway Fire Response
 STAGES 22–27  Infrastructure, qualifications, economics and specialist enrichment
 STAGES 28–34  Public exports, intelligence tools, generated FAQ and Static Data API v1
+CONTINUOUS    Evidence maintenance, command search and verified-data expansion
 ```
+
+---
+
+# ⌨️ Instant Command Search
+
+The deployed Command Centre now includes a **site-wide verified-data command palette**.
+
+Press **`Ctrl+K`**, **`⌘K`** or **`/`** from any page to:
+
+- search all 137 canonical missions, resources, infrastructure records and qualifications;
+- filter instantly by intelligence collection;
+- navigate entirely from the keyboard;
+- deep-link a selected mission into Mission Lookup;
+- deep-link other canonical records into the Query Catalogue;
+- retain a read-only trust boundary with no MissionChief authentication or account access; and
+- use the same generated `search-index.json` consumed by the public API.
+
+The palette is responsive across desktop, tablet, iPhone and iPad layouts and is included in Playwright acceptance coverage.
+
+[Launch the Command Centre →](https://conroy1988.github.io/MissionChief-UK/)
 
 ---
 
@@ -83,6 +105,7 @@ STAGES 28–34  Public exports, intelligence tools, generated FAQ and Static Dat
 
 | Command route | What it does | Open |
 |---|---|---|
+| **Global Command Search** | Searches every canonical collection from any page through `Ctrl+K`, `⌘K` or `/` | [Open Command Centre →](https://conroy1988.github.io/MissionChief-UK/) |
 | **Mission Lookup** | Searches mission IDs, names, aliases, POIs, mission types and service groups | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) |
 | **Resource Comparison** | Compares canonical vehicles and qualifications without hiding unknown fields | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) |
 | **Concurrent Fleet Planner** | Multiplies guaranteed requirements across simultaneous incidents while preserving alternative groups | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) |
@@ -218,10 +241,13 @@ flowchart LR
     Records --> Validator[Schema + relationship validator]
     Validator --> Exports[Versioned API exports]
     Validator --> Docs[Strict MkDocs build]
+    Exports --> Palette[Global command palette]
     Exports --> Tools[Mission lookup + comparison + planning]
     Exports --> Consumers[External read-only consumers]
+    Palette --> DeepLinks[Tool deep links]
     Docs --> Pages[GitHub Pages Command Centre]
     Tools --> Pages
+    Palette --> Pages
     Pages --> Smoke[Live-site and API smoke test]
     Smoke --> Release[Versioned GitHub release]
 ```
@@ -241,9 +267,11 @@ Documentation link and heading-anchor audit
         ↓
 MkDocs strict build and built-site audit
         ↓
-JavaScript syntax validation
+All JavaScript syntax validation
         ↓
 Chromium acceptance against the built site
+        ↓
+Global command-palette and deep-link acceptance
         ↓
 GitHub Pages deployment
         ↓
@@ -267,8 +295,7 @@ mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
 npm install
 npx playwright install --with-deps
-node --check docs/javascripts/intelligence-tools.js
-node --check docs/javascripts/home-command.js
+for file in docs/javascripts/*.js; do node --check "$file"; done
 npm run test:e2e
 ```
 
@@ -282,6 +309,7 @@ npm run test:e2e
 |---|---|
 | **A new UK player** | [Start Here](https://conroy1988.github.io/MissionChief-UK/getting-started/) and [First Expansion](https://conroy1988.github.io/MissionChief-UK/getting-started/first-expansion/) |
 | **An established commander** | [Emergency Services](https://conroy1988.github.io/MissionChief-UK/services/) and [Mission Lookup](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) |
+| **Searching during live play** | Open the [Command Centre](https://conroy1988.github.io/MissionChief-UK/) and press `Ctrl+K`, `⌘K` or `/` |
 | **Planning account growth** | [Account Progression](https://conroy1988.github.io/MissionChief-UK/strategy/account-progression/) and [Station Placement](https://conroy1988.github.io/MissionChief-UK/strategy/station-placement/) |
 | **Running alliance operations** | [Alliance Operations](https://conroy1988.github.io/MissionChief-UK/alliances/) |
 | **Using scripts and extensions** | [Compatibility Centre](https://conroy1988.github.io/MissionChief-UK/scripts/compatibility-centre/) |
@@ -298,7 +326,7 @@ Useful contributions include:
 - vehicle economics and staffing evidence;
 - qualification and course evidence;
 - accessibility and mobile-workflow findings; and
-- failures in the generated tools or public API.
+- failures in the generated tools, global command search or public API.
 
 Every accepted change should leave the platform more precise, not merely larger.
 
