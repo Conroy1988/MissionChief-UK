@@ -34,11 +34,24 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   await expect(officialCard).toContainText("Official UK catalogue");
   await expect(officialCard).toContainText("Canonical mapping pending");
 
+  const officialDetails = officialCard.locator("details.mcuk-official-record-details");
+  await expect(officialDetails).toContainText("Complete official catalogue record");
+  await officialDetails.locator("summary").click();
+  await expect(officialDetails.locator("pre")).toContainText('"id": 3');
+  await expect(officialDetails.locator("pre")).toContainText('"requirements"');
+  await expect(officialDetails.locator("pre")).toContainText('"prerequisites"');
+
   await root.locator("select[data-role='source']").selectOption("canonical");
   await root.locator("input[data-role='query']").fill("588");
   const canonicalCard = root.locator("article.mcuk-mission-card--canonical").first();
   await expect(canonicalCard).toContainText("Aircraft Accident - Code F");
   await expect(canonicalCard).toContainText("Canonical mapped");
+
+  const canonicalDetails = canonicalCard.locator("details.mcuk-official-record-details");
+  await expect(canonicalDetails).toContainText("Complete official catalogue record");
+  await canonicalDetails.locator("summary").click();
+  await expect(canonicalDetails.locator("pre")).toContainText('"id": 588');
+  await expect(canonicalDetails.locator("pre")).toContainText('"additional"');
 
   const dimensions = await page.locator(".md-content").evaluate((element) => ({
     clientWidth: element.clientWidth,
