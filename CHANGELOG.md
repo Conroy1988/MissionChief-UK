@@ -19,6 +19,7 @@ The project follows semantic versioning for its public static-data API and relea
 - Added Playwright acceptance coverage for command-palette search, filtering, closure, mission deep links and iPhone viewport operation.
 - Added all-JavaScript syntax validation to the validation and deployment workflows.
 - Documented the command-search trust boundary and dedicated local test command.
+- Corrected Firefox instant-navigation cancellation handling and WebKit comparison-layout overflow before the v1.0.1 release validation cycle.
 
 ### Compatibility
 
