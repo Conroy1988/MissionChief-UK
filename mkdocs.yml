@@ -10,6 +10,9 @@ copyright: Independent community project. MissionChief and associated assets bel
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/intelligence-tools.js
+
 theme:
   name: material
   language: en
@@ -87,6 +90,7 @@ nav:
       - Bomb Disposal & EOD: services/bomb-disposal.md
       - Airfield Operations: services/airfield-operations.md
       - Recovery & HGV Recovery: services/recovery.md
+      - Railway Response: services/railway-response.md
   - Strategy:
       - Strategy Index: strategy/index.md
       - Account Progression: strategy/account-progression.md
@@ -101,6 +105,7 @@ nav:
       - Reference Index: reference/index.md
       - Vehicle Catalogue: reference/vehicle-catalogue.md
       - Verified Vehicle Records: reference/verified-vehicle-records.md
+      - Vehicle Economics & Staffing: reference/vehicle-economics-and-staffing.md
       - Mission Database: reference/mission-database.md
       - Verified Mission Records: reference/verified-mission-records.md
       - Verified Mission Batch 2: reference/verified-mission-batch-2.md
@@ -111,13 +116,26 @@ nav:
       - Verified Mission Batch 7: reference/verified-mission-batch-7.md
       - Verified Mission Batch 8: reference/verified-mission-batch-8.md
       - Verified Mission Batch 9: reference/verified-mission-batch-9.md
+      - Verified Mission Batch 10: reference/verified-mission-batch-10.md
+      - Verified Mission Batch 11: reference/verified-mission-batch-11.md
+      - Verified Mission Batch 12: reference/verified-mission-batch-12.md
+      - Verified Mission Batch 13: reference/verified-mission-batch-13.md
       - Buildings & Extensions: reference/buildings-and-extensions.md
+      - Specialist Infrastructure Batch 2: reference/verified-infrastructure-batch-2.md
       - Training & Personnel: reference/training-and-personnel.md
+      - Generated FAQ: reference/generated-faq.md
+      - Generated Data Exports: reference/data-exports.md
       - Glossary & Aliases: reference/glossary-and-aliases.md
       - Structured Data Entry: reference/data-entry-guide.md
       - Data Standard: reference/data-standard.md
-  - Planning Tools:
+  - Intelligence Tools:
       - Programme: tools/planning-tools.md
+      - Mission Lookup: tools/mission-lookup.md
+      - Resource Comparison: tools/resource-comparison.md
+      - Concurrent Fleet Planner: tools/fleet-planner.md
+      - Query Catalogue: tools/query-catalogue.md
+  - Static Data API:
+      - API Guide: api/index.md
   - Community Verification:
       - Verification Workflow: contributing/verification-workflow.md
       - Research Checklist: contributing/research-checklist.md
