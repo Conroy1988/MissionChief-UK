@@ -27,6 +27,10 @@ The suite verifies:
 - resource and qualification comparison;
 - concurrent fleet multiplication;
 - deterministic query-catalogue results;
+- the global command palette opening through `Ctrl+K` or `⌘K`;
+- command-palette search against the generated canonical search index;
+- collection filtering, keyboard closure and mission-result deep linking;
+- iPhone viewport operation of the command palette;
 - MkDocs Material instant-navigation reinitialisation;
 - all eight static API endpoints and their cross-file counts;
 - critical WCAG A/AA violations on the main interactive surfaces.
@@ -56,7 +60,11 @@ Documentation link and anchor audit
         ↓
 Strict MkDocs build
         ↓
+All JavaScript syntax validation
+        ↓
 Chromium acceptance against the built site
+        ↓
+Command-palette, deep-link and mobile acceptance
         ↓
 GitHub Pages deployment
         ↓
@@ -66,6 +74,20 @@ Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance
 ```
 
 A failed post-deployment browser test marks the Pages workflow as failed and prevents automated release publication.
+
+## Command-search trust boundary
+
+The global command palette is tested as a read-only interface over `assets/data/v1/search-index.json`.
+
+It must:
+
+- load only the generated first-party search index;
+- expose no arbitrary HTML from data records;
+- escape record content before rendering;
+- avoid MissionChief authentication and account access;
+- preserve omitted values as unknown;
+- link mission records into Mission Lookup using an encoded query; and
+- link other collections into the Query Catalogue using the same encoded-query contract.
 
 ## Failure diagnostics
 
@@ -106,6 +128,12 @@ mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
 ```
 
+Validate every browser-side script:
+
+```bash
+for file in docs/javascripts/*.js; do node --check "$file"; done
+```
+
 Install browser-test dependencies and browser binaries:
 
 ```bash
@@ -123,6 +151,12 @@ Run one browser project:
 
 ```bash
 npm run test:e2e -- --project=chromium-desktop
+```
+
+Run only the command-palette acceptance file:
+
+```bash
+npm run test:e2e -- tests/e2e/command-palette.spec.mjs
 ```
 
 Run against another deployment or local server:
