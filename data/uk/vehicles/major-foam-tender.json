@@ -1,0 +1,10 @@
+{
+  "id": "major_foam_tender",
+  "name": "Major Foam Tender",
+  "aliases": [],
+  "service": "airfield_operations",
+  "category": "Foam firefighting",
+  "capabilities": ["airfield_firefighting", "foam_delivery"],
+  "notes": ["The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/593"]}
+}
