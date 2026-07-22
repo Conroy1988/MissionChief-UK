@@ -12,6 +12,7 @@ This section provides operational references for the services currently represen
 - [Search and Rescue HQ](search-and-rescue.md)
 - [Bomb Disposal and EOD](bomb-disposal.md)
 - [Airfield Operations](airfield-operations.md)
+- [Recovery and HGV Recovery](recovery.md)
 
 ## Standard service-guide structure
 
@@ -30,4 +31,4 @@ Mature service guides should document:
 
 ## Controlled future expansion
 
-The next service-data batches will extend Recovery and HGV recovery, Railway Police and other specialist or shared-response systems.
+The next service-data batches will extend Railway Police, railway fire response and other specialist or shared-response systems.
