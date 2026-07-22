@@ -1,0 +1,87 @@
+site_name: MissionChief UK — The Complete Guide
+site_description: Independent searchable guide and reference database for MissionChief UK
+site_url: https://conroy1988.github.io/MissionChief-UK/
+repo_url: https://github.com/Conroy1988/MissionChief-UK
+repo_name: Conroy1988/MissionChief-UK
+edit_uri: edit/main/docs/
+
+copyright: Independent community project. MissionChief and associated assets belong to their respective owners.
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Use dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Use light mode
+
+plugins:
+  - search:
+      lang: en
+  - tags
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Start Here:
+      - Overview: getting-started/index.md
+      - First Expansion: getting-started/first-expansion.md
+  - Game Systems:
+      - Systems Index: systems/index.md
+  - Emergency Services:
+      - Services Index: services/index.md
+  - Strategy:
+      - Strategy Index: strategy/index.md
+  - Alliances:
+      - Alliance Index: alliances/index.md
+  - Scripts & Tools:
+      - Tool Index: scripts/index.md
+  - Reference:
+      - Reference Index: reference/index.md
+      - Data Standard: reference/data-standard.md
+  - Project:
+      - Roadmap: ROADMAP.md
+      - Contributing: contributing/index.md
