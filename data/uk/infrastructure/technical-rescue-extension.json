@@ -1,0 +1,18 @@
+{
+  "id": "technical_rescue_extension",
+  "name": "Technical Rescue Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "fire_and_rescue",
+  "parent_buildings": [],
+  "capabilities": ["technical_rescue_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Technical Rescue Extensions as countable mission-generation preconditions.",
+    "Compatible parent buildings, price, construction time and capacity remain unpublished pending direct evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
