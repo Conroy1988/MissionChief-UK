@@ -1,0 +1,10 @@
+{
+  "id": "iccu",
+  "name": "ICCU",
+  "aliases": ["Incident Command and Control Unit"],
+  "service": "ambulance",
+  "category": "Command and control",
+  "capabilities": ["incident_command_and_control"],
+  "notes": ["Official pages use the abbreviation ICCU inside an alternative command-resource group."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+}
