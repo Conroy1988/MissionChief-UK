@@ -20,7 +20,7 @@
 
 **Verified missions · Canonical resources · Infrastructure · Qualifications · Intelligence tools · Static API**
 
-[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](docs/tools/mission-lookup.md) · [**Fleet Planner**](docs/tools/fleet-planner.md) · [**Static API**](docs/api/index.md) · [**v1.0.0 Notes**](docs/releases/v1.0.0.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](docs/tools/mission-lookup.md) · [**Fleet Planner**](docs/tools/fleet-planner.md) · [**Static API**](docs/api/index.md) · [**Quality Assurance**](docs/quality-assurance.md) · [**v1.0.0 Notes**](docs/releases/v1.0.0.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -63,6 +63,7 @@ Static data API v1.0.0
 | **Recovery** | Expanded baseline | Cars, motorbikes, buses, caravans, HGVs and major collisions through Batch 13 |
 | **Intelligence tools** | Live | Mission lookup, comparison, concurrent fleet planning and query catalogue |
 | **Public API** | Live | Versioned JSON collections, manifest, search index, FAQ and OpenAPI contract |
+| **Quality assurance** | Live | Built-site Chromium and deployed Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance |
 
 > [!IMPORTANT]
 > `verified` applies only to populated fields. An omitted value is unknown, not zero. Empty response arrays may represent directory-level evidence where the individual response table was unavailable.
@@ -160,6 +161,7 @@ All tools are read-only and consume the validated versioned exports. They do not
 | **Mission Lookup** | Search current mission requirements | [Open tool →](docs/tools/mission-lookup.md) |
 | **Fleet Planner** | Model concurrent guaranteed requirements | [Open tool →](docs/tools/fleet-planner.md) |
 | **Static API** | Consume versioned JSON data | [Open API →](docs/api/index.md) |
+| **Quality Assurance** | Review browser, device and accessibility coverage | [Open QA guide →](docs/quality-assurance.md) |
 | **Release Notes** | Review the v1.0.0 production baseline | [Open notes →](docs/releases/v1.0.0.md) |
 | **Community Verification** | Submit reproducible UK evidence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
@@ -193,9 +195,13 @@ JavaScript syntax validation
         ↓
 MkDocs strict build and built-site audit
         ↓
+Chromium acceptance against the built site
+        ↓
 GitHub Pages deployment
         ↓
-Live site and public API smoke test
+Live HTTP and public API smoke test
+        ↓
+Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance
         ↓
 Versioned GitHub release
 ```
@@ -204,6 +210,8 @@ Local validation:
 
 ```bash
 pip install -r requirements.txt
+npm install
+npx playwright install --with-deps
 python scripts/validate_data.py
 python scripts/generate_exports.py
 python scripts/generate_faq.py
@@ -211,7 +219,10 @@ python scripts/release_readiness.py
 node --check docs/javascripts/intelligence-tools.js
 mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
+npm run test:e2e
 ```
+
+[Read the quality-assurance guide →](docs/quality-assurance.md)
 
 ---
 
