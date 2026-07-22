@@ -1,0 +1,22 @@
+{
+  "id": 592,
+  "name": "Bird Strike - Code A",
+  "aliases": [],
+  "service": "airfield_operations",
+  "mission_types": ["Airfield firefighting operations"],
+  "poi": ["Small Airport (Runway)"],
+  "preconditions": {
+    "fire_stations": 4,
+    "rescue_stations": 4,
+    "hart_bases": 2,
+    "aviation_firefighting_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 3000},
+  "notes": ["The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
