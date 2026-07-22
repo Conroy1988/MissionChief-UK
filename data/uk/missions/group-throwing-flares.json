@@ -1,0 +1,65 @@
+{
+  "id": 622,
+  "name": "Group Throwing Flares",
+  "aliases": [],
+  "service": "police",
+  "mission_types": [
+    "Police Missions",
+    "Police & Public Order Missions (Specialization)"
+  ],
+  "poi": [
+    "Stadium"
+  ],
+  "preconditions": {
+    "police_stations": 2,
+    "police_public_order_extensions": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "personnel": {
+    "available": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 12
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
+    ],
+    "required": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 6
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 2
+  },
+  "reward": {
+    "average_credits": 2500
+  },
+  "notes": [
+    "Official UK mission page confirms four required Police Cars and the listed public-order personnel requirements."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/622"
+    ]
+  }
+}
