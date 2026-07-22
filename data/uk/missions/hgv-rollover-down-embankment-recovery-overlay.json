@@ -1,0 +1,26 @@
+{
+  "id": "268-hgv-recovery-overlay",
+  "name": "HGV Rollover Down Embankment",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 268,
+    "kind": "additive-overlay",
+    "key": "hgv-recovery"
+  },
+  "preconditions": {
+    "fire_stations": 8,
+    "rescue_stations": 2,
+    "hgv_recovery_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 4800},
+  "notes": ["The official directory verifies the enhanced generation state. Exact HGV towing and response data remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/268?additive_overlays=a"]
+  }
+}
