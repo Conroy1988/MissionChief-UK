@@ -1,0 +1,70 @@
+{
+  "id": 562,
+  "name": "Medivac from vessel",
+  "aliases": [],
+  "service": "lifeboat",
+  "mission_types": [
+    "Ocean Rescue Missions"
+  ],
+  "custom_spawn_area": true,
+  "restricted_vehicle_types": [
+    "Ocean"
+  ],
+  "handoff_destinations": [
+    "Lifeboat Station"
+  ],
+  "preconditions": {
+    "rescue_stations": 3,
+    "lifeboat_stations": 1,
+    "helicopter_hangars": 1
+  },
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [
+      {
+        "resource": "coastguard_rescue_helicopter",
+        "quantity": 1,
+        "probability": 0.5
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "inshore_lifeboat",
+          "all_weather_lifeboat"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One ILB or ALB satisfies the lifeboat requirement."
+        ]
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 1.0,
+    "critical_care_probability": 0.4,
+    "specializations": [
+      "General Internal"
+    ],
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ]
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "notes": [
+    "The Coastguard Rescue Helicopter is required with a confirmed probability of 50%."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/562"
+    ]
+  }
+}
