@@ -1,0 +1,67 @@
+/* Responsive corrections for interactive intelligence tools.
+ *
+ * Native select controls in WebKit can retain an intrinsic width based on the
+ * longest option. Comparison tables can also expand their parent unless the
+ * result surface owns horizontal scrolling. These rules constrain the tool to
+ * the MkDocs content column without clipping controls or data.
+ */
+
+[data-mcuk-tool="comparison"] {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+[data-mcuk-tool="comparison"],
+[data-mcuk-tool="comparison"] * {
+  box-sizing: border-box;
+}
+
+[data-mcuk-tool="comparison"] .mcuk-tool-controls {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+[data-mcuk-tool="comparison"] .mcuk-tool-controls label,
+[data-mcuk-tool="comparison"] .mcuk-tool-controls select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+[data-mcuk-tool="comparison"] .mcuk-tool-controls select {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+[data-mcuk-tool="comparison"] [data-role="results"] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-mcuk-tool="comparison"] [data-role="results"] table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+[data-mcuk-tool="comparison"] [data-role="results"] th,
+[data-mcuk-tool="comparison"] [data-role="results"] td {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@container (max-width: 34rem) {
+  [data-mcuk-tool="comparison"] .mcuk-tool-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
