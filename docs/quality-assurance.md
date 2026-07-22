@@ -31,6 +31,16 @@ The suite verifies:
 - all eight static API endpoints and their cross-file counts;
 - critical WCAG A/AA violations on the main interactive surfaces.
 
+The deterministic documentation audit additionally checks:
+
+- relative Markdown links;
+- local HTML `href` and `src` references;
+- GitHub Pages URLs that point back into this project;
+- MkDocs page-route resolution for both `page.md` and `page/index.md` layouts;
+- local heading anchors in README, changelog and documentation pages.
+
+External websites are not treated as deterministic build dependencies because availability, anti-bot controls and redirects can change independently of this repository. Official evidence URLs remain recorded in the production data and are reviewed through the evidence-maintenance process.
+
 ## Validation layers
 
 ```text
@@ -41,6 +51,8 @@ Schema and referential validation
 Generated exports and FAQ
         ↓
 Repository/API readiness audit
+        ↓
+Documentation link and anchor audit
         ↓
 Strict MkDocs build
         ↓
@@ -74,9 +86,27 @@ Depending on the failure, this can include:
 
 Artifacts are retained for 14 days.
 
+Link-audit failures are printed directly in the Actions log using this format:
+
+```text
+source-file.md:line: missing local target or anchor
+```
+
 ## Local execution
 
-Install dependencies and browser binaries:
+Run the deterministic repository checks:
+
+```bash
+python scripts/validate_data.py
+python scripts/generate_exports.py
+python scripts/generate_faq.py
+python scripts/release_readiness.py
+python scripts/audit_links.py
+mkdocs build --strict --site-dir site
+python scripts/release_readiness.py --site-dir site
+```
+
+Install browser-test dependencies and browser binaries:
 
 ```bash
 npm install
@@ -117,5 +147,3 @@ Automated tests can detect repeatable browser, accessibility, network and data-c
 - unusual browser extensions or content blockers;
 - poor mobile networks;
 - subjective readability and visual-design preferences.
-
-Manual acceptance remains appropriate for significant visual redesigns and new interactive features.
