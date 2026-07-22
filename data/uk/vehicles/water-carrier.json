@@ -1,0 +1,10 @@
+{
+  "id": "water_carrier",
+  "name": "Water Carrier",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Water supply",
+  "capabilities": ["bulk_water_supply"],
+  "notes": ["Verified as a guaranteed requirement on current UK airfield incident pages."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/593"]}
+}
