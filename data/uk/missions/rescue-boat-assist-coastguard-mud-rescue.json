@@ -1,0 +1,76 @@
+{
+  "id": 567,
+  "name": "Rescue Boat Assist Coastguard Mud Rescue",
+  "aliases": [],
+  "service": "coastguard",
+  "mission_types": [
+    "Coastal Rescue Missions"
+  ],
+  "poi": [
+    "Estuary",
+    "Harbour",
+    "Beach",
+    "Marina"
+  ],
+  "preconditions": {
+    "rescue_stations": 3,
+    "coastguard_rescue_stations": 4,
+    "lifeboat_stations": 1,
+    "mud_decontamination_extensions": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_mud_rescue_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "mud_decontamination_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "inland_rescue_boat_trailer",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "personnel": {
+    "available": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 30
+      }
+    ],
+    "required": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 15
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 3,
+    "transport_probability": 0.8,
+    "specializations": [
+      "General Internal"
+    ],
+    "codes": [
+      "C-1",
+      "C-2"
+    ]
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "notes": [],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/567"
+    ]
+  }
+}
