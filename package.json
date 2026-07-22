@@ -1,0 +1,18 @@
+{
+  "name": "missionchief-uk-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser acceptance tests for the MissionChief UK guide and static API.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.60.0"
+  }
+}
