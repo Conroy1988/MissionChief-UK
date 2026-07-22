@@ -1,0 +1,25 @@
+{
+  "id": "recovery_centre",
+  "name": "Recovery Centre",
+  "aliases": [],
+  "kind": "building",
+  "service": "recovery",
+  "parent_buildings": [],
+  "capabilities": [
+    "recovery_mission_generation",
+    "car_towing"
+  ],
+  "notes": [
+    "Official UK mission pages use this building as a generation precondition for Recovery Vehicle Missions and recovery-enabled variants.",
+    "Purchase cost, construction time, capacity, staffing and vehicle inventory remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/784",
+      "https://police.missionchief.co.uk/einsaetze/2?additive_overlays=a",
+      "https://police.missionchief.co.uk/einsaetze/129?additive_overlays=a"
+    ]
+  }
+}
