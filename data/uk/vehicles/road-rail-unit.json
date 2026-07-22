@@ -1,0 +1,21 @@
+{
+  "id": "road_rail_unit",
+  "name": "Road Rail Unit",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Railway response",
+  "capabilities": ["rail_access", "railway_incident_response"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["road", "railway"]
+  },
+  "notes": ["Official UK railway mission pages list Road Rail Unit as a deployable requirement."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc"
+    ]
+  }
+}
