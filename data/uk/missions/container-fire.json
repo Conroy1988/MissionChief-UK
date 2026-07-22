@@ -1,0 +1,30 @@
+{
+  "id": 1,
+  "name": "Container fire",
+  "aliases": [
+    "Container Fire"
+  ],
+  "service": "fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 170
+  },
+  "notes": [
+    "Official UK mission page lists one required fire engine and one required fire station."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/1"
+    ]
+  }
+}
