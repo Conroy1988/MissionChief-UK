@@ -1,27 +1,30 @@
 # Emergency Services
 
-This section will provide a complete operational reference for every service available in MissionChief UK.
+This section provides operational references for the services currently represented in the MissionChief UK guide and structured dataset.
+
+## Active service guides
+
+- [Fire and Rescue](fire-and-rescue.md)
+- [Ambulance](ambulance.md)
+- [Police](police.md)
+- [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
+- [Mountain Rescue](mountain-rescue.md)
 
 ## Standard service-guide structure
 
-Every service will document:
+Mature service guides should document:
 
-1. Buildings and extensions
-2. Vehicles, trailers, aircraft and boats
-3. Personnel capacities and qualifications
-4. Training courses and classroom planning
-5. Mission unlocks and cross-service dependencies
-6. Fleet templates by account stage
-7. Placement and geographic coverage
-8. Common dispatch failures and remedies
-9. Relevant scripts and tool configuration
+1. buildings and extensions;
+2. vehicles, trailers, aircraft and boats;
+3. personnel capacities and qualifications;
+4. training courses and classroom planning;
+5. mission unlocks and cross-service dependencies;
+6. fleet templates by account stage;
+7. placement and geographic coverage;
+8. common dispatch failures and remedies;
+9. relevant scripts and tool configuration;
+10. evidence status and last-verification date.
 
-## Planned services
+## Controlled future expansion
 
-- Fire and Rescue Service
-- Ambulance Service
-- Police Service
-- Coastguard Rescue Service
-- Lifeboat Service
-- Mountain Rescue
-- Specialist and shared-response systems
+The next service-data batches will extend Search and Rescue HQ operations, active drones, Airfield Operations, Recovery, Bomb Disposal, Railway Police and other specialist or shared-response systems.
