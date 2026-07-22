@@ -1,0 +1,18 @@
+{
+  "id": "bomb_disposal_hq",
+  "name": "Bomb Disposal HQ",
+  "aliases": ["Bomb Disposal Headquarters"],
+  "kind": "building",
+  "service": "bomb_disposal",
+  "parent_buildings": [],
+  "capabilities": ["Generates or unlocks Bomb Disposal missions when the required count is met"],
+  "notes": [
+    "The official mission directory confirms this building as a precondition across the UK Bomb Disposal mission set.",
+    "Construction cost, build duration, capacity and vehicle availability remain unpublished until reproduced from the current building interface."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
