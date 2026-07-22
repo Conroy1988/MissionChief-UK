@@ -1,0 +1,58 @@
+{
+  "id": "753-helicopter-overlay",
+  "name": "Belay Failure Whilst Abseiling",
+  "aliases": ["Belay Failure Whilst Abseiling (Helicopter Overlay)"],
+  "service": "mountain_rescue",
+  "mission_types": ["Mountain Rescue"],
+  "poi": ["Ravine", "Cliff"],
+  "custom_spawn_area": true,
+  "variant": {
+    "source_mission_id": 753,
+    "kind": "additive-overlay",
+    "key": "coastguard-helicopter",
+    "notes": [
+      "This record represents the helicopter additive overlay, not the base 4,000-credit mission."
+    ]
+  },
+  "preconditions": {
+    "rescue_stations": 1,
+    "mountain_rescue_stations": 2,
+    "helicopter_hangars": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "coastguard_rescue_helicopter", "quantity": 1}
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": ["mountain_rescue_4x4", "sar_4x4"],
+        "quantity": 2,
+        "notes": ["Two qualifying 4x4 vehicles are required in total."]
+      }
+    ]
+  },
+  "patients": {
+    "maximum": 2,
+    "transport_probability": 0.8,
+    "critical_care_probability": 0.5,
+    "specializations": ["Traumatology"],
+    "codes": ["C-1", "C-2"]
+  },
+  "reward": {
+    "average_credits": 6000,
+    "base_variant_average_credits": 4000
+  },
+  "notes": [
+    "The official mission directory lists a 4,000-credit base mission and a 6,000-credit helicopter overlay.",
+    "The stored requirements are the full requirements shown by the additive-overlay page."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/753?additive_overlays=a",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  }
+}
