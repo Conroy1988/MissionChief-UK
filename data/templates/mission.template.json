@@ -1,26 +1,21 @@
 {
-  "$schema": "../schema/mission.schema.json",
   "id": "replace-with-stable-id",
   "name": "Replace with exact UK game name",
   "aliases": [],
-  "services": ["fire"],
+  "service": "fire",
   "requirements": {
     "guaranteed": [],
-    "probabilistic": [],
-    "conditional": []
+    "probabilistic": []
   },
-  "patients": null,
-  "prisoners": null,
-  "rewards": {},
+  "patients": {},
+  "prisoners": {},
+  "reward": {},
+  "notes": [],
   "verification": {
     "status": "review-required",
-    "last_verified": "YYYY-MM-DD",
+    "checked_at": "2026-07-22",
     "sources": [
-      {
-        "type": "in-game",
-        "description": "Replace with reproducible observation path"
-      }
+      "Replace with a reproducible UK-game observation or primary source"
     ]
-  },
-  "notes": []
+  }
 }
