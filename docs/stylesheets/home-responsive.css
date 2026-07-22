@@ -1,0 +1,149 @@
+/* Command Centre responsive corrections.
+ *
+ * The MkDocs content column can be substantially narrower than the browser
+ * viewport when navigation and the table of contents are visible. These rules
+ * therefore respond to the actual Command Centre container rather than only
+ * the viewport width. They deliberately reflow content instead of clipping it.
+ */
+
+.mcuk-home {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.mcuk-home,
+.mcuk-home * {
+  box-sizing: border-box;
+}
+
+.mcuk-home > *,
+.mcuk-home-hero,
+.mcuk-command-strip,
+.mcuk-command-grid,
+.mcuk-operations-board,
+.mcuk-theatre-grid,
+.mcuk-pipeline,
+.mcuk-evidence-grid,
+.mcuk-role-grid,
+.mcuk-final-cta {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.mcuk-home-hero > *,
+.mcuk-command-strip > *,
+.mcuk-command-grid > *,
+.mcuk-board-metrics > *,
+.mcuk-theatre-grid > *,
+.mcuk-pipeline > *,
+.mcuk-evidence-grid > *,
+.mcuk-role-grid > * {
+  min-width: 0;
+}
+
+.mcuk-command-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.mcuk-command-hint button {
+  flex: 0 1 auto;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.mcuk-command-hint span {
+  flex: 1 1 18rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.mcuk-hero-telemetry {
+  width: 100%;
+  max-width: 100%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.mcuk-hero-telemetry > div,
+.mcuk-command-strip > span,
+.mcuk-board-metrics > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.mcuk-board-header,
+.mcuk-board-footer,
+.mcuk-chip-row,
+.mcuk-final-cta {
+  flex-wrap: wrap;
+}
+
+.mcuk-board-footer a {
+  margin-left: 0;
+}
+
+@container (max-width: 52rem) {
+  .mcuk-hero-topline {
+    flex-wrap: wrap;
+  }
+
+  .mcuk-hero-telemetry,
+  .mcuk-command-strip,
+  .mcuk-board-metrics,
+  .mcuk-evidence-grid,
+  .mcuk-role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mcuk-command-grid,
+  .mcuk-theatre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mcuk-pipeline {
+    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+  }
+
+  .mcuk-pipeline > i {
+    display: none;
+  }
+}
+
+@container (max-width: 36rem) {
+  .mcuk-home-hero {
+    min-height: 0;
+    padding-inline: 1rem;
+  }
+
+  .mcuk-home-hero h1 {
+    font-size: clamp(2.35rem, 15cqi, 4rem);
+  }
+
+  .mcuk-actions,
+  .mcuk-actions .md-button,
+  .mcuk-command-hint button {
+    width: 100%;
+  }
+
+  .mcuk-hero-telemetry,
+  .mcuk-command-strip,
+  .mcuk-command-grid,
+  .mcuk-board-metrics,
+  .mcuk-theatre-grid,
+  .mcuk-evidence-grid,
+  .mcuk-role-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mcuk-radar {
+    opacity: 0.35;
+  }
+}
