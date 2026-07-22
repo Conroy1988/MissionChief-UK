@@ -8,24 +8,44 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
+
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
+
       - name: Validate JSON documents
         run: python scripts/validate_data.py
+
       - name: Generate public data exports
         run: python scripts/generate_exports.py
+
       - name: Generate FAQ
         run: python scripts/generate_faq.py
+
+      - name: Audit repository and generated API
+        run: python scripts/release_readiness.py
+
+      - name: Validate intelligence-tool JavaScript syntax
+        run: node --check docs/javascripts/intelligence-tools.js
+
       - name: Build documentation strictly
-        run: python -m mkdocs build --strict
+        run: python -m mkdocs build --strict --site-dir site
+
+      - name: Audit built site
+        run: python scripts/release_readiness.py --site-dir site
