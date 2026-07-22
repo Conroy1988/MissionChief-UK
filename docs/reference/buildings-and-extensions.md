@@ -30,10 +30,30 @@ Each record identifies:
 | `aviation_firefighting_extension` | Aviation firefighting Extension | Extension | Airport-firefighting mission precondition |
 | `airfield_operations_extension` | Airfield Operations Extension | Extension | Airfield-operations mission precondition |
 | `mass_casualty_extension` | Mass Casualty Extension | Extension | Mass-casualty mission precondition |
+| `recovery_centre` | Recovery Centre | Building | Recovery mission and variation precondition |
+| `hgv_recovery_extension` | HGV Recovery Extension | Extension | Truck and HGV recovery variation precondition |
 
 Mapped mission preconditions are checked by the repository validator.
 
-## Stage 19 airport infrastructure
+## Recovery infrastructure
+
+### Recovery Centre
+
+Recovery Centres unlock dedicated Recovery Vehicle Missions and recovery-enabled variations of Fire, Police and Ambulance incidents.
+
+The infrastructure record verifies the current display name and its mission-generation relationship. It does not yet publish purchase cost, build time, capacity, staffing or vehicle inventory.
+
+### HGV Recovery Extension
+
+HGV Recovery Extensions enable truck, bus, caravan and other heavy-vehicle recovery variations.
+
+The Stage 20 record deliberately leaves `parent_buildings` empty. The extension name and mission-generation effect are verified, but its compatible parent building must be reproduced from the current building interface rather than inferred from terminology.
+
+### Infrastructure versus towing
+
+A Recovery Centre or HGV Recovery Extension is a generation precondition. The number of cars or trucks to tow is a separate mission outcome under `recovery.assets`. Neither should be converted into an unsupported dispatch-resource requirement.
+
+## Airport infrastructure
 
 ### Aviation firefighting Extension
 
@@ -49,7 +69,7 @@ Codes C and F include a Mass Casualty Extension precondition and a separate Mass
 
 ### HART Base
 
-HART Base is now a canonical infrastructure record because verified missions across several services use it as a generation precondition. It does not itself prove that a particular HART vehicle is required.
+HART Base is a canonical infrastructure record because verified missions across several services use it as a generation precondition. It does not itself prove that a particular HART vehicle is required.
 
 ## Building record standard
 
