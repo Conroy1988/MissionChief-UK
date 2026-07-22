@@ -1,0 +1,17 @@
+{
+  "id": "mobile_operations_manager",
+  "name": "Mobile Operations Manager",
+  "aliases": [],
+  "service": "railway_response",
+  "qualification_type": "role-qualification",
+  "roles": ["Mobile Operations Manager"],
+  "notes": [
+    "Official railway missions verify this operational role.",
+    "Course name, duration and prerequisites remain unpublished because they are not shown on the current mission page."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/807"]
+  }
+}
