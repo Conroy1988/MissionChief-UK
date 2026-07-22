@@ -21,6 +21,8 @@ Each record verifies only its populated attributes. Purchase prices, crew limits
 | `srv` | SRV | Ambulance | Specialist response |
 | `welfare_vehicle` | Welfare Vehicle | Ambulance | Support |
 | `police_car` | Police car | Police | Response |
+| `police_helicopter` | Police Helicopter | Police | Air support |
+| `drone` | Drone | Shared | Aerial search and reconnaissance |
 | `coastguard_rescue_vehicle` | CRV | Coastguard | Response |
 | `coastguard_mud_rescue_unit` | Coastguard Mud Rescue Unit | Coastguard | Specialist rescue |
 | `mud_decontamination_unit` | Mud Decontamination Unit | Coastguard | Specialist support |
@@ -32,14 +34,46 @@ Each record verifies only its populated attributes. Purchase prices, crew limits
 | `sar_4x4` | SAR 4x4 | Search and Rescue | Response |
 | `control_van` | Control Van | Search and Rescue | Command |
 | `search_dog_unit` | Search Dog Unit | Search and Rescue | Specialist search |
+| `operational_support_van` | Operational Support Van | Search and Rescue | Operational support |
+| `operational_support_trailer` | Operational Support Trailer | Search and Rescue | Operational support trailer |
+| `personal_sar_vehicle` | Personal SAR Vehicle | Search and Rescue | Personnel transport and support |
 
 All records shown above were checked on 22 July 2026.
+
+## Search and Rescue HQ resources
+
+### Operational Support Van, Trailer and Personal SAR Vehicle
+
+The official High Risk Missing Person and Very High Risk Missing Person pages group these resources as alternatives:
+
+```json
+{
+  "resources": [
+    "operational_support_van",
+    "operational_support_trailer",
+    "personal_sar_vehicle"
+  ],
+  "quantity": 1
+}
+```
+
+One qualifying resource satisfies the requirement. The Operational Support Trailer is explicitly recorded as a trailer, but compatible towing vehicles remain unverified.
+
+### Police Helicopter and Drone
+
+The official SAR pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement.
+
+The active-Drone generation precondition is separate from the response requirement. It does not mean a Drone must be dispatched when a Police Helicopter can satisfy the mission.
+
+### Control Van
+
+The Control Van is the guaranteed command resource on both verified missing-person missions. It is also used by Stage 16 Mountain Rescue records.
 
 ## Mountain Rescue and land-search resources
 
 ### Mountain Rescue 4x4 and SAR 4x4
 
-Official UK Mountain Rescue pages present these as alternatives. Mission records therefore use an alternative group rather than requiring one of each.
+Official UK Mountain Rescue and SAR pages present these as alternatives. Mission records therefore use an alternative group rather than requiring one of each.
 
 ```json
 {
@@ -52,10 +86,6 @@ Official UK Mountain Rescue pages present these as alternatives. Mission records
 ```
 
 The quantity represents the total number of qualifying 4x4s.
-
-### Control Van
-
-The Control Van is used for search and incident coordination. It is verified on Overdue Hikers and the abandoned-mineshaft rescue.
 
 ### Search Dog Unit
 
@@ -106,12 +136,17 @@ data/uk/vehicles/
 ├── coastguard-rescue-helicopter.json
 ├── coastguard-rescue-vehicle.json
 ├── control-van.json
+├── drone.json
 ├── fire-engine.json
 ├── inland-rescue-boat-trailer.json
 ├── inshore-lifeboat.json
 ├── mountain-rescue-4x4.json
 ├── mud-decontamination-unit.json
+├── operational-support-trailer.json
+├── operational-support-van.json
+├── personal-sar-vehicle.json
 ├── police-car.json
+├── police-helicopter.json
 ├── prv.json
 ├── rapid-response-vehicle.json
 ├── rescue-support-vehicle.json
