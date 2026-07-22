@@ -6,6 +6,10 @@ The project follows semantic versioning for its public static-data API and relea
 
 ## [Unreleased]
 
+No unreleased changes are currently recorded.
+
+## [1.0.1] — 2026-07-22
+
 ### Quality assurance
 
 - Added Playwright acceptance testing for Chromium and Firefox desktop browsers.
@@ -16,6 +20,20 @@ The project follows semantic versioning for its public static-data API and relea
 - Added page-level horizontal-overflow, first-party HTTP failure and JavaScript runtime checks.
 - Added retained Playwright reports, traces, screenshots and videos for failed Actions runs.
 - Added Chromium testing against the locally built site before deployment and full cross-browser testing after Pages deployment.
+- Added deterministic local documentation-link and heading-anchor validation.
+
+### Release engineering
+
+- Made smoke, browser and readiness checks derive the expected version from `data/version.json`.
+- Generalized automated publication for compatible v1 semantic-version releases.
+- Required release notes and protected release tags from pointing at a different deployed commit.
+- Reordered validation so deterministic failures occur before browser downloads.
+- Protected browser-test configuration and QA documentation as release-critical assets.
+
+### Compatibility
+
+- Retained all API v1 paths, envelopes, canonical IDs and evidence semantics.
+- Retained the v1.0.0 collection counts; no canonical data records changed in this patch.
 
 ## [1.0.0] — 2026-07-22
 
