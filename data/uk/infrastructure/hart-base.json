@@ -1,0 +1,22 @@
+{
+  "id": "hart_base",
+  "name": "HART Base",
+  "aliases": ["Hazardous Area Response Team Base"],
+  "kind": "building",
+  "service": "ambulance",
+  "parent_buildings": [],
+  "capabilities": ["hart_mission_generation"],
+  "notes": [
+    "This record establishes the canonical HART Base identifier used across verified specialist missions.",
+    "Price, build time, vehicle capacity and personnel capacity remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://www.missionchief.co.uk/einsaetze/593"
+    ]
+  }
+}
