@@ -1,0 +1,43 @@
+{
+  "id": "782-recovery-overlay",
+  "name": "Non-Injury RTC with Police Car (Recovery Required)",
+  "aliases": ["Non-Injury RTC with Police Car — enhanced recovery variation"],
+  "service": "police",
+  "mission_types": ["Police Missions", "Recovery Vehicle Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 782,
+    "kind": "additive-overlay",
+    "key": "traffic-car-police-sergeant",
+    "notes": ["This documented variation includes Traffic Car and Police Sergeant requirements."]
+  },
+  "preconditions": {"police_stations": 3, "recovery_centres": 1},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "police_car", "quantity": 2},
+      {"resource": "traffic_car", "quantity": 1}
+    ],
+    "probabilistic": [],
+    "conditional": [],
+    "alternatives": []
+  },
+  "personnel": {
+    "available": [{"role": "Police Sergeant", "quantity": 3}],
+    "required": [{"role": "Police Sergeant", "quantity": 1}],
+    "average_minimum": [],
+    "probabilistic": []
+  },
+  "recovery": {
+    "assets": [{"asset_type": "car", "minimum": 1, "maximum": 1}]
+  },
+  "reward": {"average_credits": 4800},
+  "notes": [
+    "The source page is an additive-overlay view and identifies the base mission as a mission variation.",
+    "One car must be towed after the incident response."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/782?additive_overlays=a"]
+  }
+}
