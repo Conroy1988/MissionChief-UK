@@ -1,0 +1,43 @@
+{
+  "id": 521,
+  "name": "Community Engagement (Fire)",
+  "aliases": [
+    "Fire community engagement"
+  ],
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "School",
+    "Mall"
+  ],
+  "duration_minutes": 60,
+  "preconditions": {
+    "fire_stations": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "notes": [
+    "The official UK mission page lists a one-hour duration and School or Mall points of interest.",
+    "Temporary event multipliers are not included in the base average-credit value."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/521"
+    ]
+  }
+}
