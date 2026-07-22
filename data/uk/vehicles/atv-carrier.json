@@ -1,0 +1,21 @@
+{
+  "id": "atv_carrier",
+  "name": "ATV Carrier",
+  "aliases": ["ATV Carriers"],
+  "service": "ambulance",
+  "category": "specialist_support",
+  "capabilities": ["all_terrain_transport", "hart_support"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["land", "off_road", "mountain"]
+  },
+  "notes": [
+    "The official HART additive-overlay version of Fall Whilst Fell Running lists one ATV Carrier.",
+    "Price, staffing, training and building requirements are not published in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a"]
+  }
+}
