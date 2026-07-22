@@ -1,0 +1,20 @@
+{
+  "id": "eiu",
+  "name": "EIU",
+  "aliases": [],
+  "service": "police",
+  "category": "Railway investigation and support",
+  "capabilities": ["railway_incident_support"],
+  "notes": [
+    "Official UK railway mission pages use the abbreviation EIU.",
+    "The abbreviation remains unexpanded because the current primary sources do not provide a verified full name."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://police.missionchief.co.uk/einsaetze/291?additive_overlays=a"
+    ]
+  }
+}
