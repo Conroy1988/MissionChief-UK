@@ -1,48 +1,55 @@
-# Planning Tools Programme
+# Intelligence Tools Programme
 
-Stage 8 converts the structured reference database into practical decision-support tools.
+Stages 29–32 convert the structured reference database into practical browser-side decision support.
 
-## Planned tools
+## Live tools
 
-### Fleet Planner
+### Mission Requirement Lookup
 
-Compares owned vehicles and qualified staffing against a selected mission set or service profile.
+Searches missions by ID, name, alias, POI and mission type. It renders guaranteed, probabilistic, conditional and alternative resources without merging their meanings.
 
-### Building Planner
+[Open Mission Lookup](mission-lookup.md)
 
-Models proposed stations, extensions, capacity and confirmed costs without altering live account data.
+### Resource and Qualification Comparison
 
-### Training Planner
+Compares two deployable resources or qualification records using only populated canonical fields. Unknown costs, staffing or course details remain visibly unverified.
 
-Identifies qualification gaps between owned vehicles, available personnel and operational objectives.
+[Open Comparison Tool](resource-comparison.md)
 
-### Mission Requirement Explorer
+### Concurrent Fleet Planner
 
-Displays guaranteed, probabilistic and conditional mission requirements without merging those categories.
+Multiplies published guaranteed requirements for several simultaneous incidents and preserves alternative groups independently.
 
-### Coverage Planner
+[Open Fleet Planner](fleet-planner.md)
 
-Supports manual geographic planning using station locations, destination buildings and specialist-resource distribution. Any travel estimate must disclose its routing assumptions.
+### Natural-Language Query Catalogue
 
-### Cost Calculator
+Matches ordinary questions and keywords against the generated cross-collection search index. It is deterministic evidence retrieval, not generative inference.
 
-Combines confirmed purchase and expansion values while preserving the source and verification date of every input.
+[Open Query Catalogue](query-catalogue.md)
 
 ## Engineering principles
 
 - Structured data is the single source of truth.
-- Calculations must be reproducible.
-- Assumptions must be visible.
-- Unknown values must not silently become zero.
-- Recommendations must remain distinct from verified game mechanics.
-- Tools should degrade safely when data is incomplete.
+- Calculations are reproducible in the browser.
+- Assumptions and scope limits are displayed beside results.
+- Unknown values never silently become zero.
+- Recommendations remain distinct from verified game mechanics.
+- Tools fail visibly when versioned exports cannot be loaded.
+- No tool mutates a MissionChief account or repository record.
 
-## Delivery order
+## Data flow
 
-1. Read-only lookup and filtering.
-2. Requirement comparison.
-3. Cost and training calculations.
-4. Saved planning scenarios.
-5. Geographic and optimisation features.
+```text
+Canonical JSON records
+        ↓
+Schema and relationship validation
+        ↓
+Versioned v1 exports
+        ↓
+Browser-side lookup and calculations
+```
 
-The first implementation should favour transparent calculations over opaque optimisation.
+## Future enhancement
+
+The delivered tools establish a stable read-only layer. Saved scenarios, account inventory import, routing, geographic optimisation and authenticated account integration remain optional future features and would require separate privacy and evidence controls.
