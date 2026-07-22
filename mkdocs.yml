@@ -38,6 +38,9 @@ theme:
         icon: material/weather-sunny
         name: Use light mode
 
+extra_css:
+  - stylesheets/extra.css
+
 plugins:
   - search:
       lang: en
