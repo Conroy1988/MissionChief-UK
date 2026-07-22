@@ -1,0 +1,18 @@
+{
+  "id": "police_helicopter_station",
+  "name": "Police Helicopter Station",
+  "aliases": [],
+  "kind": "building",
+  "service": "police",
+  "parent_buildings": [],
+  "capabilities": ["police_air_support_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Police Helicopter Stations as countable mission-generation preconditions.",
+    "Cost, capacity, construction time and aircraft allocation remain unpublished until directly reproduced."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
