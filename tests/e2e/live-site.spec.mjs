@@ -23,15 +23,31 @@ const API_FILES = [
   "openapi.json"
 ];
 
+const FIRST_PARTY_HOSTNAMES = new Set(["conroy1988.github.io", "127.0.0.1", "localhost"]);
+
+function isFirstParty(url) {
+  try {
+    return FIRST_PARTY_HOSTNAMES.has(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+}
+
 function runtimeFailures(page) {
   const failures = [];
   page.on("pageerror", (error) => failures.push(`pageerror: ${error.message}`));
   page.on("console", (message) => {
-    if (message.type() === "error") failures.push(`console: ${message.text()}`);
+    if (message.type() === "error" && !message.text().startsWith("Failed to load resource")) {
+      failures.push(`console: ${message.text()}`);
+    }
+  });
+  page.on("response", (response) => {
+    if (isFirstParty(response.url()) && response.status() >= 400) {
+      failures.push(`response: ${response.url()} — HTTP ${response.status()}`);
+    }
   });
   page.on("requestfailed", (request) => {
-    const url = new URL(request.url());
-    if (url.hostname === "conroy1988.github.io") {
+    if (isFirstParty(request.url())) {
       failures.push(`request: ${request.url()} — ${request.failure()?.errorText || "failed"}`);
     }
   });
