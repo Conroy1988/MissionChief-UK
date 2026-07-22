@@ -1,0 +1,72 @@
+{
+  "id": 546,
+  "name": "Mud Rescue",
+  "aliases": [],
+  "service": "coastguard",
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "poi": [
+    "Estuary",
+    "Harbour",
+    "Beach",
+    "Marina"
+  ],
+  "preconditions": {
+    "rescue_stations": 3,
+    "coastguard_rescue_stations": 4,
+    "mud_decontamination_extensions": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_mud_rescue_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "mud_decontamination_unit",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "personnel": {
+    "available": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 30
+      }
+    ],
+    "required": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 15
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 3,
+    "transport_probability": 0.7,
+    "specializations": [
+      "General Internal"
+    ],
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ]
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "notes": [],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/546"
+    ]
+  }
+}
