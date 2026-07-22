@@ -1,0 +1,18 @@
+{
+  "id": "hovercraft_extension",
+  "name": "Hovercraft Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "coastguard",
+  "parent_buildings": [],
+  "capabilities": ["hovercraft_mission_generation"],
+  "notes": [
+    "Verified UK coastal missions use Hovercraft Extensions as generation preconditions.",
+    "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
