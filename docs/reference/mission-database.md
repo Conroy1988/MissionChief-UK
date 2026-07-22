@@ -1,40 +1,31 @@
 # Mission Database
 
-The mission database provides one consistent reference model for every documented MissionChief UK mission.
+The mission database provides one consistent evidence model for every documented MissionChief UK mission.
 
 ## Mission record anatomy
 
-Each mission page and structured record should contain:
+A mature record can contain:
 
-- canonical mission name and game identifier;
-- aliases and searchable terminology;
-- service and mission-group classification;
-- known unlock conditions and POIs;
-- guaranteed resource requirements;
-- probabilistic requirements with confirmed probabilities;
-- conditional requirements with their exact trigger and any confirmed probability;
-- alternative resource groups where one of several resources can satisfy a requirement;
-- personnel that are available, required, average-minimum or probability-based;
-- patient, prisoner, transport and hand-off behaviour;
-- recovery and towing outcomes where exposed;
-- reward data;
-- custom spawn-area and vehicle-environment restrictions;
-- explicit base, additive-overlay or mission-variation relationships;
+- canonical mission name, game ID and aliases;
+- service, mission groups and POIs;
+- station, building, extension and active-resource preconditions;
+- guaranteed, probabilistic, conditional and alternative resources;
+- available, required, average-minimum, ranged and probabilistic personnel;
+- patients, prisoners, transport and hand-off behaviour;
+- recovery and towing outcomes;
+- reward values and observed event multipliers;
+- base, additive-overlay or mission-variation identity;
 - evidence status, source trail and verification date.
 
 ## Requirement language
 
-Requirements must distinguish between:
+- **Guaranteed** — always required under the documented mission state.
+- **Probabilistic** — may be required at the stated probability.
+- **Conditional** — applies only when the stated trigger is true and may also carry a probability.
+- **Alternative** — the stated total may be supplied by any combination of listed resources.
+- **Recommended** — strategy, not a game requirement.
 
-- **guaranteed** — always required under the documented conditions;
-- **probabilistic** — may be requested, with the confirmed probability recorded;
-- **conditional** — required only when a stated condition is true;
-- **alternative** — one qualifying resource from a defined group satisfies the requirement;
-- **recommended** — strategic advice rather than a game requirement.
-
-## Conditional requirements
-
-A conditional requirement can include both a trigger and a probability:
+### Conditional probability
 
 ```json
 {
@@ -45,25 +36,20 @@ A conditional requirement can include both a trigger and a probability:
 }
 ```
 
-This preserves the verified Multi vehicle RTC recovery rule: one Traffic Car has a 50% requirement probability and applies only when available. Neither fact should be discarded.
+This preserves both facts rather than flattening the requirement into guaranteed or optional.
 
-## Alternative requirements
-
-An alternative group such as:
+### Alternative groups
 
 ```json
 {
-  "resources": [
-    "fire_engine",
-    "major_foam_tender"
-  ],
+  "resources": ["fire_engine", "major_foam_tender"],
   "quantity": 7
 }
 ```
 
-means seven qualifying resources in total. It must not be interpreted as seven of each type.
+This means seven qualifying resources in total, not seven of each type.
 
-The same model is used for:
+Established alternatives include:
 
 - RRV or Specialist Paramedic RRV;
 - ILB or ALB;
@@ -74,14 +60,24 @@ The same model is used for:
 - RIV or Major Foam Tender;
 - Fire Officer or Airfield Firefighting Command Vehicle;
 - HazMat Unit or CBRN Vehicle;
-- ICCU, Ambulance Control Unit or Airfield Firefighting Command Vehicle;
+- ICCU or Ambulance Control Unit;
 - Aerial Appliance Truck or Rescue Stairs.
 
-## Recovery and towing outcomes
+## Personnel states
 
-Official recovery-enabled pages place towing quantities under **Other information**, separately from Vehicle and Personnel Requirements.
+Personnel use five independent forms:
 
-Towing is therefore represented as:
+- `available` — must exist before generation;
+- `required` — exact incident requirement;
+- `average_minimum` — official average-minimum value, not an exact count;
+- `ranges` — explicit minimum and maximum, such as 14–42 firefighters;
+- `probabilistic` — chance-based personnel requirement.
+
+Repository validation rejects personnel ranges where the minimum exceeds the maximum.
+
+## Recovery and towing
+
+Official recovery pages place towing under **Other information**, separately from Vehicle and Personnel Requirements.
 
 ```json
 {
@@ -97,25 +93,11 @@ Towing is therefore represented as:
 }
 ```
 
-Supported asset types are `car`, `truck` and the generic `vehicle` fallback. Repository validation rejects a towing minimum that exceeds its maximum.
+Towing must not be converted into a fictional emergency-resource requirement. Recovery Centre and HGV Recovery Extension counts remain mission-generation preconditions.
 
-A towing outcome must not be converted into a fictional dispatch requirement. Recovery Centre and HGV Recovery Extension values belong under mission preconditions; emergency vehicles remain under `requirements`.
+## Mission variants
 
-## Overlapping airfield alternatives
-
-Airfield Firefighting Command Vehicles may appear as:
-
-1. a dedicated guaranteed resource;
-2. an alternative to Fire Officers;
-3. an alternative to ICCU or Ambulance Control Unit.
-
-The structured records preserve every official row separately. They do not infer whether one vehicle can satisfy multiple rows or calculate a minimum unique-vehicle total without dispatch-level evidence.
-
-## Mission variants and overlays
-
-Some official mission IDs have base, additive-overlay or mission-variation states. These must remain distinct.
-
-An overlay record uses a unique string dataset ID while preserving the official mission ID:
+Base, additive-overlay and mission-variation states remain distinct.
 
 ```json
 {
@@ -128,48 +110,36 @@ An overlay record uses a unique string dataset ID while preserving the official 
 }
 ```
 
-This prevents recovery, HART, helicopter or other overlay-only requirements from being incorrectly applied to the base mission.
-
-## Personnel states
-
-Personnel can be represented in four independent states:
-
-- `available` — must exist before generation;
-- `required` — exact incident requirement;
-- `average_minimum` — official average-minimum value that is not an exact guaranteed count;
-- `probabilistic` — chance-based incident personnel.
-
-A probability-based or average-minimum role must not be presented as guaranteed.
+The major multi-vehicle RTC recovery record uses `mission-variation` because its official URL exposes an overlay index rather than an additive-overlay key.
 
 ## Specialist preconditions
 
-The schema supports explicit preconditions for general stations and specialist infrastructure, including:
+The schema supports mapped canonical infrastructure including:
 
-- HART Bases;
-- Coastguard and Lifeboat facilities;
-- Mountain Rescue Stations and Search and Rescue HQs;
-- Bomb Disposal HQs and Marine Unit Extensions;
-- Aviation firefighting Extensions;
-- Airfield Operations Extensions;
-- Mass Casualty Extensions;
-- Recovery Centres;
-- HGV Recovery Extensions;
-- active Drones.
+- HART, Mass Casualty and Public Order;
+- Coastguard Mud Decontamination and Hovercraft;
+- Mountain Rescue and Search and Rescue HQ;
+- Bomb Disposal HQ and Marine Unit Extension;
+- Aviation firefighting and Airfield Operations;
+- Recovery Centre and HGV Recovery Extension;
+- Railway Police and Railway fire response;
+- Police Helicopter Station;
+- Foam, Water Damage Pump, Flood Rescue and Technical Rescue extensions.
 
-Mapped specialist preconditions are validated against canonical infrastructure records. A generation precondition does not itself prove that a specific vehicle is required at the incident.
+Mapped fields fail validation when their canonical infrastructure record is absent.
+
+An infrastructure count controls mission generation; it does not automatically prove a dispatch resource.
+
+## Overlapping rows
+
+Some resources occur as both dedicated requirements and members of independent alternative groups. The dataset preserves every official row and does not infer whether one physical vehicle can satisfy several rows simultaneously.
 
 ## Dispatch interpretation
 
-Where the interface separates resources into required, responding, on scene and still needed, the guide must preserve those distinctions. A unit already responding must not be presented as an additional outstanding requirement.
-
-## Data relationship
-
-Mission records reference canonical deployable-resource and infrastructure identifiers. This allows future calculators and APIs to consume the same evidence used by the documentation.
-
-Repository validation checks guaranteed, probabilistic, conditional and alternative resource references against the canonical vehicle dataset, and mapped preconditions against canonical infrastructure records.
+Required, responding, on-scene and still-needed values must remain distinct. A unit already responding must not be presented as an additional outstanding requirement.
 
 ## Publication rule
 
-No exact mission requirement, towing quantity, reward or probability should be published as verified without reproducible UK-game evidence or a suitable primary source.
+No exact requirement, personnel value, towing quantity, reward or probability is published as verified without reproducible UK-game evidence or a suitable primary source.
 
-Temporary reward multipliers must not replace the documented base reward. When a live mission page displays an event multiplier, the directory value and the observation must be recorded separately.
+Temporary event multipliers remain observations and never replace canonical average-credit values.
