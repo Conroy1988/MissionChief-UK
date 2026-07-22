@@ -4,20 +4,20 @@
   "aliases": [],
   "service": "fire",
   "category": "response",
-  "cost": {},
-  "staffing": {
-    "minimum": 1,
-    "maximum": 1
-  },
   "training": [],
   "building_requirements": [],
   "capabilities": [],
-  "notes": [],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": []
+  },
+  "notes": [
+    "Add cost only when credits or coins are directly verified.",
+    "Add staffing only when the current minimum or maximum crew is directly verified."
+  ],
   "verification": {
     "status": "review-required",
     "checked_at": "2026-07-22",
-    "sources": [
-      "Replace with a reproducible UK-game observation or primary source"
-    ]
+    "sources": ["Replace with a reproducible UK-game observation or primary source"]
   }
 }
