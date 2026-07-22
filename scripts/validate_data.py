@@ -29,6 +29,8 @@ PRECONDITION_INFRASTRUCTURE_IDS = {
     "aviation_firefighting_extensions": "aviation_firefighting_extension",
     "airfield_operations_extensions": "airfield_operations_extension",
     "mass_casualty_extensions": "mass_casualty_extension",
+    "recovery_centres": "recovery_centre",
+    "hgv_recovery_extensions": "hgv_recovery_extension",
 }
 
 
@@ -102,6 +104,21 @@ def validate_mission_semantics(path: Path, record: dict[str, Any]) -> list[str]:
             failures.append(
                 f"{path.relative_to(ROOT)} [patients]: minimum '{minimum}' exceeds maximum '{maximum}'"
             )
+
+    recovery = record.get("recovery")
+    if isinstance(recovery, dict):
+        assets = recovery.get("assets", [])
+        if isinstance(assets, list):
+            for index, asset in enumerate(assets):
+                if not isinstance(asset, dict):
+                    continue
+                minimum = asset.get("minimum")
+                maximum = asset.get("maximum")
+                if isinstance(minimum, int) and isinstance(maximum, int) and minimum > maximum:
+                    failures.append(
+                        f"{path.relative_to(ROOT)} [recovery.assets.{index}]: minimum "
+                        f"'{minimum}' exceeds maximum '{maximum}'"
+                    )
     return failures
 
 
