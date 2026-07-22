@@ -1,0 +1,24 @@
+{
+  "id": "mountain_rescue_4x4",
+  "name": "Mountain Rescue 4x4",
+  "aliases": ["Mountain Rescue 4x4 Vehicle"],
+  "service": "mountain_rescue",
+  "category": "response",
+  "capabilities": ["mountain_rescue_response", "off_road_access"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["land", "off_road", "mountain"]
+  },
+  "notes": [
+    "Official UK mission pages present Mountain Rescue 4x4 as one alternative to SAR 4x4.",
+    "Price, staffing and training requirements are not published in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/143",
+      "https://police.missionchief.co.uk/einsaetze/756"
+    ]
+  }
+}
