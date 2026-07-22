@@ -25,6 +25,10 @@ SCHEMA_BY_DIRECTORY = {
 PRECONDITION_INFRASTRUCTURE_IDS = {
     "bomb_disposal_hqs": "bomb_disposal_hq",
     "bomb_disposal_marine_unit_extensions": "bomb_disposal_marine_unit_extension",
+    "hart_bases": "hart_base",
+    "aviation_firefighting_extensions": "aviation_firefighting_extension",
+    "airfield_operations_extensions": "airfield_operations_extension",
+    "mass_casualty_extensions": "mass_casualty_extension",
 }
 
 
@@ -51,7 +55,7 @@ def mission_resource_references(path: Path, record: dict[str, Any]) -> list[tupl
     if not isinstance(requirements, dict):
         return references
 
-    for requirement_type in ("guaranteed", "probabilistic"):
+    for requirement_type in ("guaranteed", "probabilistic", "conditional"):
         entries = requirements.get(requirement_type, [])
         if not isinstance(entries, list):
             continue
