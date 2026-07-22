@@ -1,0 +1,31 @@
+{
+  "id": 208,
+  "name": "Domestic smoke alarm activation",
+  "aliases": [
+    "Domestic Smoke Alarm Activation"
+  ],
+  "service": "fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 600
+  },
+  "notes": [
+    "Official UK mission page lists one required fire engine and one required fire station.",
+    "Expandable missions listed by the official page: House fire and House fire (Persons Reported)."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/208"
+    ]
+  }
+}
