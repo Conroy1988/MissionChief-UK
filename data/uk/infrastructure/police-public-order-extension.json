@@ -1,0 +1,18 @@
+{
+  "id": "police_public_order_extension",
+  "name": "Police Public Order Extension",
+  "aliases": ["Public Order Extension"],
+  "kind": "extension",
+  "service": "police",
+  "parent_buildings": [],
+  "capabilities": ["public_order_mission_generation"],
+  "notes": [
+    "Verified UK mission records use Police Public Order Extensions as mission-generation preconditions.",
+    "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct building-interface evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
