@@ -16,6 +16,7 @@ CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 OFFICIAL_URL = "https://www.missionchief.co.uk/einsaetze.json"
 MINIMUM_EXPECTED_MISSIONS = 1000
 MAX_TRACKED_FILE_BYTES = 1_000_000
+DERIVED_PUBLIC_FIELDS = {"official_url", "limited_availability", "availability"}
 
 RAW_PATH = SOURCE_ROOT / "einsaetze.raw.json"
 COVERAGE_PATH = SOURCE_ROOT / "mission-coverage.json"
@@ -116,6 +117,8 @@ def audit() -> dict[str, Any]:
 
     if not isinstance(raw, dict) or not isinstance(public, dict):
         raise ValueError("Official source and public catalogue envelopes must be objects")
+    if not isinstance(coverage, dict) or not isinstance(public_coverage, dict) or not isinstance(inventory, dict):
+        raise ValueError("Official coverage and inventory documents must be objects")
 
     raw_records, raw_by_id = validate_records(raw.get("records"), "raw official catalogue")
     public_records, public_by_id = validate_records(public.get("records"), "public official catalogue")
@@ -139,6 +142,10 @@ def audit() -> dict[str, Any]:
     if raw.get("source_url") != OFFICIAL_URL:
         raise ValueError(f"Unexpected official source URL: {raw.get('source_url')}")
 
+    source_timestamp = raw.get("fetched_at")
+    if not isinstance(source_timestamp, str) or not source_timestamp:
+        raise ValueError("Raw source retrieval timestamp is missing")
+
     public_source = public.get("source")
     if not isinstance(public_source, dict):
         raise ValueError("Public catalogue source metadata is missing")
@@ -153,13 +160,36 @@ def audit() -> dict[str, Any]:
         raise ValueError(f"Catalogue source SHA metadata is inconsistent: {metadata_shas}")
     if public_source.get("url") != OFFICIAL_URL:
         raise ValueError("Public catalogue does not identify the official UK endpoint")
-    if public_source.get("fetched_at") != raw.get("fetched_at"):
-        raise ValueError("Raw and public catalogue source timestamps differ")
+
+    metadata_timestamps = {
+        source_timestamp,
+        public_source.get("fetched_at"),
+        coverage.get("generated_at"),
+        public_coverage.get("generated_at"),
+        inventory.get("generated_at"),
+    }
+    if metadata_timestamps != {source_timestamp}:
+        raise ValueError(f"Catalogue source timestamps are inconsistent: {metadata_timestamps}")
+
+    expected_public_coverage = {"collection": "official-uk-mission-coverage", **coverage}
+    if public_coverage != expected_public_coverage:
+        raise ValueError("Public official coverage document is not an exact published copy of source coverage")
+
+    if public.get("schema_version") != "1" or public.get("collection") != "official-uk-missions":
+        raise ValueError("Public official catalogue envelope metadata is invalid")
 
     for mission_id, raw_record in raw_by_id.items():
         public_record = public_by_id[mission_id]
+        expected_keys = set(raw_record) | DERIVED_PUBLIC_FIELDS
+        if set(public_record) != expected_keys:
+            missing = sorted(expected_keys - set(public_record))
+            unexpected = sorted(set(public_record) - expected_keys)
+            raise ValueError(
+                f"Public mission {mission_id} fields differ from the lossless contract; "
+                f"missing={missing}, unexpected={unexpected}"
+            )
         for key, value in raw_record.items():
-            if key not in public_record or public_record[key] != value:
+            if public_record[key] != value:
                 raise ValueError(f"Public mission {mission_id} does not preserve official field '{key}'")
         expected_url = f"https://www.missionchief.co.uk/einsaetze/{mission_id}"
         if public_record.get("official_url") != expected_url:
@@ -192,11 +222,8 @@ def audit() -> dict[str, Any]:
         "coverage_percent": round(len(matched_ids) / len(raw_records) * 100, 2),
     }
     for key, value in expected_coverage.items():
-        if coverage.get(key) != value or public_coverage.get(key) != value:
-            raise ValueError(
-                f"Coverage field '{key}' is inconsistent; expected {value}, "
-                f"source={coverage.get(key)}, public={public_coverage.get(key)}"
-            )
+        if coverage.get(key) != value:
+            raise ValueError(f"Coverage field '{key}' is inconsistent; expected {value}, source={coverage.get(key)}")
 
     expected_official_only = [
         {"id": raw_by_id[mission_id].get("id"), "name": mission_name(raw_by_id[mission_id])}
