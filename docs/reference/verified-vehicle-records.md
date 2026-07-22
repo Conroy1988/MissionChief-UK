@@ -1,96 +1,99 @@
 # Verified Vehicle Records
 
-This page exposes the canonical vehicle-resource records currently available in the MissionChief UK dataset.
+This page exposes the canonical deployable-resource records currently available in the MissionChief UK dataset.
 
-Each record verifies only the populated attributes. Purchase prices, crew limits, training and station restrictions remain intentionally absent until those values are reproduced from the current UK vehicle market.
+Each record verifies only its populated attributes. Purchase prices, crew limits, training and station restrictions remain absent until reproduced from the current UK interfaces.
 
 !!! success "Evidence boundary"
-    A verified vehicle record does not mean every vehicle attribute has been verified. Empty or omitted fields are preferable to unsupported values.
+    A verified resource record does not mean every attribute has been verified. Empty or omitted fields are preferable to unsupported values.
 
 ## Current records
 
-| Canonical ID | UK requirement label | Service | Category | Evidence status |
-|---|---|---|---|---|
-| `fire_engine` | Fire engine | Fire and Rescue | Response | Verified 22 July 2026 |
-| `aerial_appliance_truck` | Aerial Appliance Truck | Fire and Rescue | Specialist | Verified 22 July 2026 |
-| `rapid_response_vehicle` | Rapid Response Vehicle | Ambulance | Response | Verified 22 July 2026 |
-| `specialist_paramedic_rrv` | Specialist Paramedic RRV | Ambulance | Specialist response | Verified 22 July 2026 |
-| `police_car` | Police car | Police | Response | Verified 22 July 2026 |
-| `coastguard_rescue_vehicle` | CRV | Coastguard | Response | Verified 22 July 2026 |
-| `coastguard_mud_rescue_unit` | Coastguard Mud Rescue Unit | Coastguard | Specialist rescue | Verified 22 July 2026 |
-| `mud_decontamination_unit` | Mud Decontamination Unit | Coastguard | Specialist support | Verified 22 July 2026 |
-| `coastguard_rescue_helicopter` | Coastguard Rescue Helicopter | Coastguard | Air rescue | Verified 22 July 2026 |
-| `inland_rescue_boat_trailer` | Inland Rescue Boat (Trailer) | Lifeboat | Water-rescue trailer | Verified 22 July 2026 |
-| `inshore_lifeboat` | ILB | Lifeboat | Ocean-rescue boat | Verified 22 July 2026 |
-| `all_weather_lifeboat` | ALB | Lifeboat | Ocean-rescue boat | Verified 22 July 2026 |
+| Canonical ID | UK requirement label | Service | Category |
+|---|---|---|---|
+| `fire_engine` | Fire engine | Fire and Rescue | Response |
+| `aerial_appliance_truck` | Aerial Appliance Truck | Fire and Rescue | Specialist |
+| `rescue_support_vehicle` | Rescue Support Vehicle | Fire and Rescue | Specialist support |
+| `rapid_response_vehicle` | Rapid Response Vehicle | Ambulance | Response |
+| `specialist_paramedic_rrv` | Specialist Paramedic RRV | Ambulance | Specialist response |
+| `atv_carrier` | ATV Carrier | Ambulance/HART | Specialist support |
+| `prv` | PRV | Ambulance | Specialist response |
+| `srv` | SRV | Ambulance | Specialist response |
+| `welfare_vehicle` | Welfare Vehicle | Ambulance | Support |
+| `police_car` | Police car | Police | Response |
+| `coastguard_rescue_vehicle` | CRV | Coastguard | Response |
+| `coastguard_mud_rescue_unit` | Coastguard Mud Rescue Unit | Coastguard | Specialist rescue |
+| `mud_decontamination_unit` | Mud Decontamination Unit | Coastguard | Specialist support |
+| `coastguard_rescue_helicopter` | Coastguard Rescue Helicopter | Coastguard | Air rescue |
+| `inland_rescue_boat_trailer` | Inland Rescue Boat (Trailer) | Lifeboat | Water-rescue trailer |
+| `inshore_lifeboat` | ILB | Lifeboat | Ocean-rescue boat |
+| `all_weather_lifeboat` | ALB | Lifeboat | Ocean-rescue boat |
+| `mountain_rescue_4x4` | Mountain Rescue 4x4 | Mountain Rescue | Response |
+| `sar_4x4` | SAR 4x4 | Search and Rescue | Response |
+| `control_van` | Control Van | Search and Rescue | Command |
+| `search_dog_unit` | Search Dog Unit | Search and Rescue | Specialist search |
 
-## Fire engine
+All records shown above were checked on 22 July 2026.
 
-The Fire engine is the first canonical response resource in the dataset. Official UK mission pages repeatedly identify it as a guaranteed requirement, including Bin fire, Garden shed fire and Community Engagement (Fire).
+## Mountain Rescue and land-search resources
 
-**Not yet published:** purchase cost, maximum crew, station unlocks and training dependencies.
+### Mountain Rescue 4x4 and SAR 4x4
 
-## Aerial Appliance Truck
+Official UK Mountain Rescue pages present these as alternatives. Mission records therefore use an alternative group rather than requiring one of each.
 
-The Aerial Appliance Truck record establishes the canonical specialist-resource identifier used by conditional mission requirements.
+```json
+{
+  "resources": [
+    "mountain_rescue_4x4",
+    "sar_4x4"
+  ],
+  "quantity": 2
+}
+```
 
-**Not yet published:** purchase cost, staffing, training and station restrictions.
+The quantity represents the total number of qualifying 4x4s.
 
-## Rapid Response Vehicle
+### Control Van
 
-The Rapid Response Vehicle establishes the canonical `rapid_response_vehicle` identifier and the searchable alias `RRV`.
+The Control Van is used for search and incident coordination. It is verified on Overdue Hikers and the abandoned-mineshaft rescue.
 
-Official UK mission pages identify an RRV as one valid response option for HCP Home Visit and Palliative Care Visit.
+### Search Dog Unit
 
-**Not yet published:** purchase cost, staffing, training, patient capability limits and station restrictions.
+The Search Dog Unit is a distinct search resource and must not be confused with a Police Dog Support Unit. It is verified on Overdue Hikers and the abandoned-mineshaft rescue.
 
-## Specialist Paramedic RRV
+### Rescue Support Vehicle
 
-The Specialist Paramedic RRV establishes a separate canonical specialist-response resource. It appears as an alternative to the standard RRV on verified UK ambulance mission pages.
+The Rescue Support Vehicle is retained as the exact official requirement label. The dataset does not infer a fixed crew, training course or station dependency from the mission requirement alone.
 
-The dataset preserves that relationship as an alternative resource group rather than treating both vehicles as simultaneously required.
+### ATV Carrier
 
-**Not yet published:** purchase cost, staffing, training and station or extension dependencies.
+The ATV Carrier is currently verified through the HART additive overlay for Fall Whilst Fell Running. Its requirement belongs to the overlay and must not be added to the base mission.
 
-## Police car
+### PRV and SRV
 
-The Police car record establishes the canonical identifier used by mission requirements. Official UK mission records identify Police Cars as required or conditional policing resources.
+The official abandoned-mineshaft mission page uses the abbreviations **PRV** and **SRV**. The records preserve those labels without inventing expanded names.
 
-**Not yet published:** purchase cost, crew model, custody behaviour and station restrictions.
+### Welfare Vehicle
 
-## Coastguard Rescue Vehicle
+The Welfare Vehicle is verified as prolonged-incident support on the abandoned-mineshaft rescue.
 
-The official maritime mission pages use the abbreviation **CRV**. The expanded term **Coastguard Rescue Vehicle** is retained as a searchable alias.
+## Maritime resources
 
-Verified mission usage includes two CRVs for Rescue Boat Assist Coastguard, Persons Cut off by Tide.
+### CRV
 
-## Coastguard Mud Rescue Unit
+The official maritime mission pages use the abbreviation **CRV**. Coastguard Rescue Vehicle remains a searchable alias.
 
-This specialist Coastguard resource is verified on Mud Rescue and Rescue Boat Assist Coastguard Mud Rescue.
+### Inland Rescue Boat (Trailer)
 
-The mission data separately stores the number of trained Mud Rescue Operators available and required; it does not infer a fixed vehicle crew.
+The official requirement label identifies this resource as a trailer. The record sets `is_trailer` to `true` but does not guess compatible towing vehicles.
 
-## Mud Decontamination Unit
+### ILB and ALB
 
-The Mud Decontamination Unit is recorded as specialist Coastguard support. It appears alongside Coastguard Mud Rescue Units in the first verified mud-rescue mission set.
+The abbreviations **ILB** and **ALB** remain canonical. Inshore Lifeboat and All-weather Lifeboat are searchable aliases. An `ILB or ALB` requirement is stored as an alternative group.
 
-## Coastguard Rescue Helicopter
+## Ambulance alternatives
 
-The Coastguard Rescue Helicopter is the first maritime air-resource record. Medivac from vessel applies a verified 50% requirement probability to it.
-
-**Not yet published:** purchase cost, crew, training and hangar restrictions beyond mission preconditions.
-
-## Inland Rescue Boat (Trailer)
-
-The official requirement label explicitly identifies this resource as a trailer. The record therefore sets `is_trailer` to `true` but does not guess which towing vehicles are compatible.
-
-This resource appears in inland and coastal support missions and is distinct from ILB and ALB ocean-rescue boats.
-
-## ILB and ALB
-
-Official UK ocean-rescue mission pages use the abbreviations **ILB** and **ALB**. The dataset preserves those labels as canonical names and stores **Inshore Lifeboat** and **All-weather Lifeboat** as searchable aliases.
-
-Where the game states `ILBs or ALBs`, the mission record uses an alternative group. One qualifying lifeboat satisfies the requirement.
+Rapid Response Vehicle and Specialist Paramedic RRV can satisfy the same alternative requirement on the verified HCP Home Visit and Palliative Care Visit missions. The dataset does not treat both as simultaneously required.
 
 ## Machine-readable records
 
@@ -98,28 +101,37 @@ Where the game states `ILBs or ALBs`, the mission record uses an alternative gro
 data/uk/vehicles/
 ├── aerial-appliance-truck.json
 ├── all-weather-lifeboat.json
+├── atv-carrier.json
 ├── coastguard-mud-rescue-unit.json
 ├── coastguard-rescue-helicopter.json
 ├── coastguard-rescue-vehicle.json
+├── control-van.json
 ├── fire-engine.json
 ├── inland-rescue-boat-trailer.json
 ├── inshore-lifeboat.json
+├── mountain-rescue-4x4.json
 ├── mud-decontamination-unit.json
 ├── police-car.json
+├── prv.json
 ├── rapid-response-vehicle.json
-└── specialist-paramedic-rrv.json
+├── rescue-support-vehicle.json
+├── sar-4x4.json
+├── search-dog-unit.json
+├── specialist-paramedic-rrv.json
+├── srv.json
+└── welfare-vehicle.json
 ```
 
-Mission records reference these resources through their canonical IDs. Repository validation fails when a guaranteed, probabilistic or alternative requirement names a resource without a corresponding vehicle record.
+Repository validation fails when a guaranteed, probabilistic or alternative mission requirement references an unknown canonical resource.
 
-## Next verification target
+## Still awaiting verification
 
-The next vehicle-data pass should reproduce current values directly from the UK vehicle market and station purchase interfaces, including:
+The next attribute-level pass should reproduce:
 
-1. price in credits and coins where applicable;
-2. minimum and maximum personnel;
-3. training requirements;
+1. credit and coin purchase prices;
+2. minimum and maximum vehicle staffing;
+3. exact training requirements and durations;
 4. building and extension dependencies;
 5. purchase limits and unlock conditions;
-6. exact trailer towing or carrier relationships;
+6. trailer towing or carrier relationships;
 7. patient, prisoner and transport capabilities.
