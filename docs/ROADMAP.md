@@ -11,6 +11,7 @@ MissionChief UK is developed as a maintained information system rather than a on
 - [x] Recursive JSON Schema validation
 - [x] Mission-to-resource referential-integrity checks
 - [x] Mission-to-infrastructure precondition checks
+- [x] Patient and towing range semantics
 - [x] Issue forms and pull-request evidence controls
 - [x] Script compatibility, installation and recovery framework
 - [x] Planning-tool architecture
@@ -40,54 +41,68 @@ Unchecked Stage 18 items remain controlled enrichment work and must not be guess
 
 ### Stage 19 — Airfield Operations
 
-- [x] Aviation firefighting Extension preconditions
-- [x] Airfield Operations Extension preconditions
+- [x] Aviation firefighting and Airfield Operations extension records
 - [x] Mass Casualty Extension and HART Base infrastructure records
 - [x] airport runway POI distinctions
 - [x] RIV, Major Foam Tender and Water Carrier records
 - [x] Airfield Firefighting Command and Airfield Operations vehicles
 - [x] shared command, hazardous-materials, casualty and traffic resources
 - [x] conditional Traffic Car requirements
-- [x] Bird Strike Code B
-- [x] Aircraft Accident Codes C and F
-- [x] 75–175 and 150–250 patient modelling
+- [x] Bird Strike Code B and Aircraft Accident Codes C/F
 - [x] Airfield Operations service guide and Mission Batch 8
 - [ ] remaining Code A/D and Hot Brakes missions
 - [ ] airport maintenance-hangar and control-tower incidents
 - [ ] prices, staffing, training and extension construction data
 - [ ] dispatch-allocation testing for overlapping command alternatives
 
+### Stage 20 — Recovery and HGV recovery operations
+
+- [x] Recovery Centre infrastructure record
+- [x] HGV Recovery Extension infrastructure record
+- [x] mission-to-Recovery infrastructure validation
+- [x] structured car, truck and generic-vehicle towing ranges
+- [x] towing minimum/maximum semantic validation
+- [x] conditional requirements with optional probability
+- [x] base versus recovery-enabled mission variants
+- [x] dedicated Recovery Vehicle Missions
+- [x] Recovery service guide and Mission Batch 9
+- [ ] Recovery Centre and HGV extension prices, capacity and construction data
+- [ ] directly verified Recovery vehicle inventory and staffing
+- [ ] remaining HGV, bus, caravan and railway recovery variants
+
+Unchecked Stage 20 enrichment items require direct building or vehicle-interface evidence.
+
 ## Current production baseline
 
 ```text
-30 verified mission records
+36 verified mission records
 39 canonical vehicle-resource records
-6 canonical infrastructure records
-9 represented operational service groups
-8 published mission batches
+8 canonical infrastructure records
+10 represented operational service groups
+9 published mission batches
 ```
 
-## Stage 20 — Recovery and HGV recovery operations
+## Stage 21 — Railway Police and railway fire response
 
 Next controlled targets:
 
-- [ ] Recovery Centre infrastructure record
-- [ ] HGV Recovery Extension infrastructure record
-- [ ] standard recovery and HGV recovery resources
-- [ ] base versus recovery-enabled mission variants
-- [ ] collision and breakdown mission relationships
-- [ ] HGV rollover and major transport incidents
-- [ ] Recovery service guide
-- [ ] verified Recovery mission batch
+- [ ] Railway Police and Railway fire response infrastructure records
+- [ ] Railway Police and specialist rail-response resources
+- [ ] rail POI distinctions and aliases
+- [ ] base versus Railway Police mission variations
+- [ ] passenger, goods and level-crossing incidents
+- [ ] rail incidents with HGV Recovery dependencies
+- [ ] Railway service guide
+- [ ] verified Railway mission batch
 
 ## Later structured-data stages
 
 - [ ] broader building and extension production records
 - [ ] training and qualification production records
 - [ ] current vehicle prices and staffing limits
-- [ ] Railway Police and rail incident resources
 - [ ] remaining Bomb Disposal enrichment
 - [ ] remaining Airfield Operations enrichment
+- [ ] remaining Recovery enrichment
 - [ ] generated indexes and public data exports
 
 ## Interactive intelligence layer
