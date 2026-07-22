@@ -1,0 +1,18 @@
+{
+  "id": "water_damage_pump_extension",
+  "name": "Water Damage Pump Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "fire_and_rescue",
+  "parent_buildings": [],
+  "capabilities": ["water_damage_pump_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Water Damage Pump Extensions as countable mission-generation preconditions.",
+    "Compatible parent buildings, price, build time and capacity remain unpublished pending direct evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
