@@ -1,118 +1,150 @@
 # Project Roadmap
 
-MissionChief UK is developed as a maintained information system rather than a one-off collection of articles.
+MissionChief UK is maintained as an evidence-led information system rather than a one-off collection of articles.
 
-## Delivered foundation
+## Core programme status
 
-- [x] Searchable MkDocs Material documentation site
-- [x] GitHub Pages deployment
-- [x] Evidence and verification standards
-- [x] Structured mission, vehicle and infrastructure schemas
-- [x] Recursive JSON Schema validation
-- [x] Mission-to-resource referential-integrity checks
-- [x] Mission-to-infrastructure precondition checks
-- [x] Patient and towing range semantics
-- [x] Issue forms and pull-request evidence controls
-- [x] Script compatibility, installation and recovery framework
-- [x] Planning-tool architecture
-
-## Delivered data stages
-
-### Stages 12–17
-
-- [x] Initial Fire mission and resource records
-- [x] Ambulance and Police alternatives, patients and personnel
-- [x] Coastguard, Lifeboat, trailer and ocean-rescue modelling
-- [x] Mountain Rescue resources and mission variants
-- [x] Search and Rescue HQ, active-Drone and missing-person operations
-
-### Stage 18 — Bomb Disposal and EOD baseline
-
-- [x] Bomb Disposal HQ and Marine Unit Extension records
-- [x] first production infrastructure schema
-- [x] mission-to-infrastructure validation
-- [x] countryside, beach, harbour and large building-site missions
-- [x] Bomb Disposal service guide and Mission Batch 7
-- [ ] exact EOD vehicle and personnel records
-- [ ] HQ and extension costs, capacities and construction times
-- [ ] railway Bomb Disposal and remaining mission variants
-
-Unchecked Stage 18 items remain controlled enrichment work and must not be guessed.
-
-### Stage 19 — Airfield Operations
-
-- [x] Aviation firefighting and Airfield Operations extension records
-- [x] Mass Casualty Extension and HART Base infrastructure records
-- [x] airport runway POI distinctions
-- [x] RIV, Major Foam Tender and Water Carrier records
-- [x] Airfield Firefighting Command and Airfield Operations vehicles
-- [x] shared command, hazardous-materials, casualty and traffic resources
-- [x] conditional Traffic Car requirements
-- [x] Bird Strike Code B and Aircraft Accident Codes C/F
-- [x] Airfield Operations service guide and Mission Batch 8
-- [ ] remaining Code A/D and Hot Brakes missions
-- [ ] airport maintenance-hangar and control-tower incidents
-- [ ] prices, staffing, training and extension construction data
-- [ ] dispatch-allocation testing for overlapping command alternatives
-
-### Stage 20 — Recovery and HGV recovery operations
-
-- [x] Recovery Centre infrastructure record
-- [x] HGV Recovery Extension infrastructure record
-- [x] mission-to-Recovery infrastructure validation
-- [x] structured car, truck and generic-vehicle towing ranges
-- [x] towing minimum/maximum semantic validation
-- [x] conditional requirements with optional probability
-- [x] base versus recovery-enabled mission variants
-- [x] dedicated Recovery Vehicle Missions
-- [x] Recovery service guide and Mission Batch 9
-- [ ] Recovery Centre and HGV extension prices, capacity and construction data
-- [ ] directly verified Recovery vehicle inventory and staffing
-- [ ] remaining HGV, bus, caravan and railway recovery variants
-
-Unchecked Stage 20 enrichment items require direct building or vehicle-interface evidence.
-
-## Current production baseline
+**Stages 1–34 are delivered.**
 
 ```text
-36 verified mission records
-39 canonical vehicle-resource records
-8 canonical infrastructure records
-10 represented operational service groups
-9 published mission batches
+62 mission records
+46 deployable-resource records
+18 infrastructure records
+11 qualification records
+13 verified mission batches
+Static data API v1.0.0
 ```
 
-## Stage 21 — Railway Police and railway fire response
+## Delivered foundation — Stages 1–12
 
-Next controlled targets:
+- [x] project identity and information architecture
+- [x] player journey and service-guide framework
+- [x] vehicle, mission, building, personnel and training models
+- [x] planning-tool architecture
+- [x] evidence and verification standards
+- [x] contribution controls and templates
+- [x] Draft 2020-12 schemas and recursive validation
+- [x] GitHub Pages delivery through Actions
 
-- [ ] Railway Police and Railway fire response infrastructure records
-- [ ] Railway Police and specialist rail-response resources
-- [ ] rail POI distinctions and aliases
-- [ ] base versus Railway Police mission variations
-- [ ] passenger, goods and level-crossing incidents
-- [ ] rail incidents with HGV Recovery dependencies
-- [ ] Railway service guide
-- [ ] verified Railway mission batch
+## Delivered operational data — Stages 13–20
 
-## Later structured-data stages
+- [x] Fire and Rescue baseline and resource integrity
+- [x] Ambulance and Police alternatives, patients and personnel
+- [x] Coastguard, Lifeboat, trailer and ocean-rescue modelling
+- [x] Mountain Rescue resources and explicit mission variants
+- [x] Search and Rescue HQ, active Drone and missing-person operations
+- [x] Bomb Disposal infrastructure and initial mission sequence
+- [x] Airfield Operations, airport infrastructure and Code C/F incidents
+- [x] Recovery Centres, HGV extensions and structured towing outcomes
 
-- [ ] broader building and extension production records
-- [ ] training and qualification production records
-- [ ] current vehicle prices and staffing limits
-- [ ] remaining Bomb Disposal enrichment
-- [ ] remaining Airfield Operations enrichment
-- [ ] remaining Recovery enrichment
-- [ ] generated indexes and public data exports
+## Delivered completion programme — Stages 21–34
 
-## Interactive intelligence layer
+### Stage 21 — Railway response
 
-- [ ] Mission requirement lookup
-- [ ] Vehicle and training comparison tools
-- [ ] Station and fleet planning calculators
-- [ ] Natural-language query catalogue
-- [ ] FAQ generated from verified records
-- [ ] Public API or versioned exports
+- [x] Railway Police and Railway fire response infrastructure
+- [x] Road Rail Unit, EIU, BA support, Foam Unit and DSU resources
+- [x] Railway Police and command personnel
+- [x] passenger, goods and station incidents
+- [x] personnel-range semantics
+- [x] Railway service guide and Mission Batch 10
+
+### Stage 22 — Specialist infrastructure
+
+- [x] Police Helicopter Station
+- [x] Public Order, Foam, Pump, Flood and Technical Rescue extensions
+- [x] Mud Decontamination and Hovercraft extensions
+- [x] referential enforcement and infrastructure Batch 2
+
+### Stage 23 — Qualifications
+
+- [x] production training schema
+- [x] eleven verified operational-role records
+- [x] qualification template and public catalogue
+- [x] explicit separation of verified roles from unverified course details
+
+### Stage 24 — Vehicle economics and staffing
+
+- [x] structured credit, coin and crew fields
+- [x] first official Coastguard economics set
+- [x] market-data evidence standard
+- [x] comparison-ready export fields
+
+### Stage 25 — Bomb Disposal enrichment
+
+- [x] busy beach and marina progression
+- [x] small and large railway-station incidents
+- [x] shed, loft and small building-site incidents
+- [x] Mission Batch 11 with directory-level evidence boundaries
+
+### Stage 26 — Airfield enrichment
+
+- [x] Aircraft Accident Code A and Code D
+- [x] Hot Brakes Code D
+- [x] Bird Strike and Fuel Leak Code A
+- [x] airport maintenance-hangar fire
+- [x] Mission Batch 12
+
+### Stage 27 — Recovery enrichment
+
+- [x] motorbike and motocross recovery
+- [x] HGV rollover and hazardous-goods recovery
+- [x] bus, caravan and major multi-vehicle variants
+- [x] collision between two buses
+- [x] Mission Batch 13
+
+### Stage 28 — Generated exports
+
+- [x] deterministic mission, vehicle, infrastructure and training exports
+- [x] version manifest and search index
+- [x] validation and deployment integration
+
+### Stage 29 — Mission lookup
+
+- [x] browser-side mission search and service filtering
+- [x] rendered preconditions, patients and requirement classes
+
+### Stage 30 — Comparison
+
+- [x] deployable-resource comparison
+- [x] qualification comparison
+- [x] visible unknown-value handling
+
+### Stage 31 — Fleet planning
+
+- [x] concurrent guaranteed-resource multiplier
+- [x] independent alternative-group output
+- [x] explicit scope limitations
+
+### Stage 32 — Query catalogue
+
+- [x] deterministic natural-language keyword matching
+- [x] cross-collection generated search index
+- [x] no unsupported generative inference
+
+### Stage 33 — Generated FAQ
+
+- [x] live collection counts
+- [x] evidence-policy answers
+- [x] Markdown and JSON outputs generated during builds
+
+### Stage 34 — Static API
+
+- [x] public v1 JSON endpoints
+- [x] release versioning and manifest
+- [x] OpenAPI 3.1 contract
+- [x] API guide and compatibility policy
+
+## Ongoing evidence maintenance
+
+The numbered core programme is complete. Remaining work is continuous maintenance rather than unfinished architecture:
+
+- reproduce additional vehicle prices, staffing and training durations;
+- verify currently unavailable EOD and Recovery response tables;
+- add new UK missions and game changes;
+- test overlapping alternative-resource dispatch allocation;
+- enrich infrastructure cost, capacity and parent-building data;
+- maintain API compatibility and publish future versioned releases;
+- improve tools when new verified fields support transparent calculations.
 
 ## Definition of complete
 
