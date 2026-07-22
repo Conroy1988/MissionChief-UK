@@ -19,6 +19,16 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   expect(catalogue.source.url).toBe("https://www.missionchief.co.uk/einsaetze.json");
   expect(catalogue.source.sha256).toMatch(/^[a-f0-9]{64}$/);
 
+  let catalogueRequests = 0;
+  page.on("request", (browserRequest) => {
+    try {
+      const path = new URL(browserRequest.url()).pathname;
+      if (path.endsWith("/assets/data/official/uk-missions.json")) catalogueRequests += 1;
+    } catch {
+      // Ignore browser-internal URLs that are not valid absolute URLs.
+    }
+  });
+
   await page.goto("tools/mission-lookup/", { waitUntil: "networkidle" });
   const root = page.locator("[data-mcuk-tool='mission-lookup']");
   await expect(root).toHaveAttribute("data-mcuk-ready", "true");
@@ -59,6 +69,8 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   await canonicalDetails.locator("summary").click();
   await expect(canonicalDetails.locator("pre")).toContainText('"id": 588');
   await expect(canonicalDetails.locator("pre")).toContainText('"additional"');
+
+  expect(catalogueRequests, "Official catalogue should be fetched once and shared by all lookup surfaces").toBe(1);
 
   const dimensions = await page.locator(".md-content").evaluate((element) => ({
     clientWidth: element.clientWidth,
