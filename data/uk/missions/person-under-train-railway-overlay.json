@@ -1,0 +1,48 @@
+{
+  "id": "291-railway-police-overlay",
+  "name": "Person under train",
+  "aliases": [],
+  "service": "railway_response",
+  "mission_types": ["Fire Fighting Missions", "Railway Fire Missions", "Urban Fire Missions"],
+  "poi": ["Train station (regional traffic)", "Train station (regional traffic and long-distance travel)", "Subway station"],
+  "variant": {
+    "source_mission_id": 291,
+    "kind": "additive-overlay",
+    "key": "railway-police",
+    "notes": ["Railway Police enhanced state."]
+  },
+  "preconditions": {
+    "fire_stations": 14,
+    "rescue_stations": 2,
+    "police_stations": 5,
+    "railway_police": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 4},
+      {"resource": "fire_officer", "quantity": 4},
+      {"resource": "rescue_support_vehicle", "quantity": 2},
+      {"resource": "police_car", "quantity": 5},
+      {"resource": "eiu", "quantity": 1}
+    ]
+  },
+  "personnel": {
+    "available": [{"role": "Railway Police Officer", "quantity": 8}],
+    "required": [{"role": "Railway Police Officer", "quantity": 4}],
+    "ranges": [{"role": "Firefighter", "minimum": 14, "maximum": 42}]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 1,
+    "critical_care_probability": 1,
+    "specializations": ["Traumatology", "Critical Care"],
+    "codes": ["C-1"]
+  },
+  "reward": {"average_credits": 7800},
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/291?additive_overlays=a"]
+  }
+}
