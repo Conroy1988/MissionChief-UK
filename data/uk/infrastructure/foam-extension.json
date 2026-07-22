@@ -1,0 +1,18 @@
+{
+  "id": "foam_extension",
+  "name": "Foam Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "fire_and_rescue",
+  "parent_buildings": [],
+  "capabilities": ["foam_response_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Foam Extensions as countable mission-generation preconditions.",
+    "Compatible parent buildings, price, build time and capacity remain unpublished pending direct building-interface evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
