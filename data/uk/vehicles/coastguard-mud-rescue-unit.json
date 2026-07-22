@@ -1,0 +1,21 @@
+{
+  "id": "coastguard_mud_rescue_unit",
+  "name": "Coastguard Mud Rescue Unit",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "specialist rescue",
+  "capabilities": [
+    "mud_rescue"
+  ],
+  "notes": [
+    "Official UK Coastguard missions identify this as a required specialist resource."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/546",
+      "https://www.missionchief.co.uk/einsaetze/567"
+    ]
+  }
+}
