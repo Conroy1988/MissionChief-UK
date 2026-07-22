@@ -8,6 +8,7 @@ on:
     paths:
       - scripts/import_official_uk_missions.py
       - scripts/publish_official_mission_catalogue.py
+      - scripts/compact_official_mission_catalogue.py
       - .github/workflows/import-official-uk-missions.yml
       - data/sources/missionchief-uk/README.md
 
@@ -39,12 +40,16 @@ jobs:
         run: |
           python -m py_compile scripts/import_official_uk_missions.py
           python -m py_compile scripts/publish_official_mission_catalogue.py
+          python -m py_compile scripts/compact_official_mission_catalogue.py
 
       - name: Download and reconcile official UK missions
         run: python scripts/import_official_uk_missions.py
 
       - name: Publish browser catalogue
         run: python scripts/publish_official_mission_catalogue.py
+
+      - name: Compact tracked catalogue files
+        run: python scripts/compact_official_mission_catalogue.py
 
       - name: Confirm generated catalogue integrity
         shell: bash
@@ -55,20 +60,19 @@ jobs:
 
           source_root = Path('data/sources/missionchief-uk')
           public_root = Path('docs/assets/data/official')
-          catalogue = json.loads((source_root / 'official-missions.json').read_text(encoding='utf-8'))
           coverage = json.loads((source_root / 'mission-coverage.json').read_text(encoding='utf-8'))
           raw = json.loads((source_root / 'einsaetze.raw.json').read_text(encoding='utf-8'))
           public = json.loads((public_root / 'uk-missions.json').read_text(encoding='utf-8'))
 
-          assert catalogue['count'] == len(catalogue['records'])
           assert raw['count'] == len(raw['records'])
-          assert catalogue['count'] == raw['count'] == public['count']
-          assert public['count'] == len(public['records'])
-          assert coverage['official_count'] == catalogue['count']
+          assert raw['count'] == public['count'] == len(public['records'])
+          assert coverage['official_count'] == raw['count']
           assert coverage['matched_count'] + coverage['official_only_count'] == coverage['official_count']
-          assert catalogue['count'] >= 100
-          assert all('raw' not in record for record in public['records'])
-          print(f"Validated and published {catalogue['count']} official UK mission records")
+          assert raw['count'] >= 100
+          assert (source_root / 'einsaetze.raw.json').stat().st_size < 1_000_000
+          assert (public_root / 'uk-missions.json').stat().st_size < 1_000_000
+          assert not (source_root / 'official-missions.json').exists()
+          print(f"Validated and published {raw['count']} official UK mission records")
           PY
 
       - name: Commit refreshed official catalogue
