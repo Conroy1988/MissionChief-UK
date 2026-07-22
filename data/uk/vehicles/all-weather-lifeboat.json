@@ -1,0 +1,28 @@
+{
+  "id": "all_weather_lifeboat",
+  "name": "ALB",
+  "aliases": [
+    "All-weather Lifeboat"
+  ],
+  "service": "lifeboat",
+  "category": "ocean rescue boat",
+  "capabilities": [
+    "ocean_rescue"
+  ],
+  "deployment": {
+    "operating_environments": [
+      "ocean"
+    ]
+  },
+  "notes": [
+    "Official UK mission requirements use the abbreviation ALB."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/561",
+      "https://www.missionchief.co.uk/einsaetze/562"
+    ]
+  }
+}
