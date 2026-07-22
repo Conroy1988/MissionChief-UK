@@ -1,0 +1,129 @@
+name: Publish MissionChief UK release
+
+on:
+  workflow_run:
+    workflows: ["Deploy MissionChief UK Guide"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: missionchief-uk-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the successfully deployed commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Read release metadata
+        id: metadata
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          release = json.loads(Path("data/version.json").read_text(encoding="utf-8"))
+          version = release["version"]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"version={version}\n")
+              output.write(f"tag=v{version}\n")
+              output.write(f"stage={release['stage']}\n")
+              output.write(f"status={release['status']}\n")
+          PY
+
+      - name: Enforce v1 production metadata
+        shell: bash
+        run: |
+          test "${{ steps.metadata.outputs.version }}" = "1.0.0"
+          test "${{ steps.metadata.outputs.stage }}" = "34"
+          test "${{ steps.metadata.outputs.status }}" = "production"
+
+      - name: Check whether the release already exists
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.metadata.outputs.tag }}
+        shell: bash
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Release $TAG already exists; no publication action is required."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.existing.outputs.exists != 'true'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install documentation dependencies
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate structured data
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_data.py
+
+      - name: Generate public data exports
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/generate_exports.py
+
+      - name: Generate FAQ
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/generate_faq.py
+
+      - name: Audit repository and generated API
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/release_readiness.py
+
+      - name: Validate intelligence-tool JavaScript syntax
+        if: steps.existing.outputs.exists != 'true'
+        run: node --check docs/javascripts/intelligence-tools.js
+
+      - name: Build documentation strictly
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m mkdocs build --strict --site-dir site
+
+      - name: Audit built site
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/release_readiness.py --site-dir site
+
+      - name: Create immutable tag and GitHub Release
+        if: steps.existing.outputs.exists != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.metadata.outputs.tag }}
+          VERSION: ${{ steps.metadata.outputs.version }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if ! git rev-parse "$TAG" >/dev/null 2>&1; then
+            git tag -a "$TAG" -m "MissionChief UK $TAG"
+            git push origin "$TAG"
+          fi
+
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "MissionChief UK v$VERSION" \
+            --notes-file docs/releases/v1.0.0.md
