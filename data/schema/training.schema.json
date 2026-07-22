@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/training.schema.json",
+  "title": "MissionChief UK Training and Qualification Record",
+  "type": "object",
+  "required": ["id", "name", "service", "qualification_type", "roles", "verification"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "service": {"type": "string", "minLength": 1},
+    "qualification_type": {"type": "string", "enum": ["role-qualification", "course"]},
+    "roles": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+    "course_name": {"type": "string", "minLength": 1},
+    "duration_hours": {"type": "number", "exclusiveMinimum": 0},
+    "prerequisites": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "verification": {
+      "type": "object",
+      "required": ["status", "checked_at"],
+      "properties": {
+        "status": {"type": "string", "enum": ["verified", "calculated", "community-report", "review-required"]},
+        "checked_at": {"type": "string", "format": "date"},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
