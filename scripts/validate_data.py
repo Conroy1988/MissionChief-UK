@@ -20,6 +20,7 @@ SCHEMA_BY_DIRECTORY = {
     "mission": "mission.schema.json",
     "missions": "mission.schema.json",
     "infrastructure": "infrastructure.schema.json",
+    "training": "training.schema.json",
 }
 
 PRECONDITION_INFRASTRUCTURE_IDS = {
@@ -31,6 +32,13 @@ PRECONDITION_INFRASTRUCTURE_IDS = {
     "mass_casualty_extensions": "mass_casualty_extension",
     "recovery_centres": "recovery_centre",
     "hgv_recovery_extensions": "hgv_recovery_extension",
+    "railway_police": "railway_police",
+    "railway_fire_responses": "railway_fire_response",
+    "police_helicopter_stations": "police_helicopter_station",
+    "foam_extensions": "foam_extension",
+    "water_damage_pump_extensions": "water_damage_pump_extension",
+    "flood_rescue_extensions": "flood_rescue_extension",
+    "technical_rescue_extensions": "technical_rescue_extension",
 }
 
 
@@ -117,6 +125,21 @@ def validate_mission_semantics(path: Path, record: dict[str, Any]) -> list[str]:
                 if isinstance(minimum, int) and isinstance(maximum, int) and minimum > maximum:
                     failures.append(
                         f"{path.relative_to(ROOT)} [recovery.assets.{index}]: minimum "
+                        f"'{minimum}' exceeds maximum '{maximum}'"
+                    )
+
+    personnel = record.get("personnel")
+    if isinstance(personnel, dict):
+        ranges = personnel.get("ranges", [])
+        if isinstance(ranges, list):
+            for index, requirement in enumerate(ranges):
+                if not isinstance(requirement, dict):
+                    continue
+                minimum = requirement.get("minimum")
+                maximum = requirement.get("maximum")
+                if isinstance(minimum, int) and isinstance(maximum, int) and minimum > maximum:
+                    failures.append(
+                        f"{path.relative_to(ROOT)} [personnel.ranges.{index}]: minimum "
                         f"'{minimum}' exceeds maximum '{maximum}'"
                     )
     return failures
