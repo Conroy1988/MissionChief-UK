@@ -1,0 +1,14 @@
+{
+  "id": "foam_unit",
+  "name": "Foam Unit",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Foam response",
+  "capabilities": ["foam_response"],
+  "notes": ["Official UK railway and major-incident pages list Foam Unit as a deployable requirement."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/808"]
+  }
+}
