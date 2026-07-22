@@ -9,10 +9,13 @@ copyright: Independent community project. MissionChief and associated assets bel
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/command-palette.css
 
 extra_javascript:
   - javascripts/home-command.js
   - javascripts/intelligence-tools.js
+  - javascripts/tool-deep-links.js
+  - javascripts/command-palette.js
 
 theme:
   name: material
