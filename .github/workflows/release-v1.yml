@@ -102,9 +102,13 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/audit_links.py
 
-      - name: Validate intelligence-tool JavaScript syntax
+      - name: Validate all JavaScript syntax
         if: steps.existing.outputs.exists != 'true'
-        run: node --check docs/javascripts/intelligence-tools.js
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
 
       - name: Build documentation strictly
         if: steps.existing.outputs.exists != 'true'
