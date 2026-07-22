@@ -7,7 +7,7 @@
 [![Documentation](https://img.shields.io/badge/OPEN-DOCUMENTATION-1593D1?style=for-the-badge&logo=readthedocs&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![MissionChief UK](https://img.shields.io/badge/REGION-UNITED_KINGDOM-0B1D31?style=for-the-badge)](https://www.missionchief.co.uk/)
 [![Evidence Standard](https://img.shields.io/badge/INTELLIGENCE-EVIDENCE_LED-1675A9?style=for-the-badge&logo=databricks&logoColor=white)](docs/reference/data-standard.md)
-[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_19_AIRFIELD_OPS-D63345?style=for-the-badge)](#current-operational-state)
+[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_20_RECOVERY-D63345?style=for-the-badge)](#current-operational-state)
 
 [![Deploy MissionChief UK Guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
@@ -19,7 +19,7 @@
 
 **Verified missions · Canonical resources · Infrastructure records · Emergency-service guides · Structured data · Community verification**
 
-[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Airfield Operations**](docs/reference/verified-mission-batch-8.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Recovery Operations**](docs/reference/verified-mission-batch-9.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -37,14 +37,14 @@ The project combines practical guides with machine-readable records and explicit
 
 # 📡 Current Operational State
 
-Stage 19 delivers the first fully populated Airfield Operations and airport-firefighting baseline:
+Stage 20 delivers the first production Recovery and HGV recovery model:
 
 ```text
-30 verified mission records
+36 verified mission records
 39 canonical vehicle-resource records
-6 canonical infrastructure records
-9 represented operational service groups
-8 published mission-data batches
+8 canonical infrastructure records
+10 represented operational service groups
+9 published mission-data batches
 ```
 
 | Domain | State | Delivered capability |
@@ -52,18 +52,19 @@ Stage 19 delivers the first fully populated Airfield Operations and airport-fire
 | **Command Centre** | Operational | MkDocs Material site, instant search, structured navigation and GitHub Pages deployment |
 | **Vehicle reference** | Live | Canonical IDs, official labels, aliases, deployment metadata and evidence trails |
 | **Infrastructure reference** | Live | Schema-controlled buildings and extensions with mission-precondition validation |
-| **Mission reference** | Live | Guaranteed, probabilistic, conditional and alternative resources; variants; patients; personnel; rewards; POIs and preconditions |
-| **Fire and Rescue** | Populated baseline | First-response, technical-rescue, command, water and hazardous-materials records |
-| **Ambulance and HART** | Populated baseline | RRV alternatives, patient mechanics, command, mass-casualty and specialist-response records |
-| **Police** | Populated baseline | Public order, air support, prisoners, traffic policing and shared specialist response |
+| **Mission reference** | Live | Guaranteed, probabilistic, conditional and alternative resources; variants; patients; personnel; towing; rewards; POIs and preconditions |
+| **Fire and Rescue** | Populated baseline | First response, technical rescue, hazardous materials, airport and recovery variations |
+| **Ambulance and HART** | Populated baseline | Patient mechanics, command, mass-casualty and specialist response |
+| **Police** | Populated baseline | Public order, air support, traffic policing, prisoners and recovery-linked incidents |
 | **Coastguard and Lifeboat** | Populated baseline | Mud rescue, CRV, trailer boat, ILB/ALB, ocean restrictions and medivac |
 | **Mountain Rescue** | Populated baseline | Alternative 4×4s, command, search dogs, cave rescue and overlays |
 | **Search and Rescue HQ** | Populated baseline | Active-Drone preconditions, SAR command and aerial-search alternatives |
 | **Bomb Disposal and EOD** | Populated precondition baseline | HQs, marine extensions, land/coastal missions and infrastructure integrity |
-| **Airfield Operations** | Populated baseline | Airport extensions, RIV/foam fleet, airfield command, conditional traffic resources and Code C/F mass-casualty incidents |
+| **Airfield Operations** | Populated baseline | Airport extensions, RIV/foam fleet, airfield command and Code C/F incidents |
+| **Recovery and HGV Recovery** | Populated baseline | Recovery Centres, HGV extensions, towing ranges and recovery-enabled variants |
 
 > [!IMPORTANT]
-> A verified record applies that status only to populated fields. Prices, staffing limits, training, infrastructure costs and dispatch allocation across overlapping alternatives remain unpublished until directly reproduced.
+> A verified record applies only to populated fields. Recovery infrastructure costs, capacity, staffing and vehicle inventory remain unpublished until directly reproduced.
 
 ## Delivery progression
 
@@ -77,9 +78,10 @@ STAGE 14      Ambulance and Police patient, personnel and alternative-resource m
 STAGE 15      Coastguard, Lifeboat, trailer and ocean-rescue modelling
 STAGE 16      Mountain Rescue, land search and explicit mission variants
 STAGE 17      Search and Rescue HQ, active drones and missing-person operations
-STAGE 18      Bomb Disposal infrastructure and unexploded-ordnance mission baseline
-STAGE 19      Airfield Operations, airport infrastructure and code-based aircraft incidents
-STAGE 20      Next: Recovery and HGV recovery operations
+STAGE 18      Bomb Disposal infrastructure and unexploded-ordnance baseline
+STAGE 19      Airfield Operations and code-based aircraft incidents
+STAGE 20      Recovery Centres, HGV extensions and structured towing outcomes
+STAGE 21      Next: Railway Police and railway fire response
 ```
 
 ---
@@ -89,9 +91,9 @@ STAGE 20      Next: Recovery and HGV recovery operations
 ## Production collections
 
 ```text
-data/uk/missions/         30 records
+data/uk/missions/         36 records
 data/uk/vehicles/         39 records
-data/uk/infrastructure/    6 records
+data/uk/infrastructure/    8 records
 ```
 
 The validator enforces:
@@ -99,59 +101,46 @@ The validator enforces:
 - Draft 2020-12 schema conformance;
 - unique record identifiers;
 - guaranteed, probabilistic and conditional resource integrity;
-- every resource in alternative groups;
+- every resource inside alternative groups;
 - patient-range semantics;
+- towing-range semantics;
 - mapped infrastructure-precondition integrity.
 
-## Stage 19 infrastructure
+## Stage 20 infrastructure
 
 ```text
-hart_base
-aviation_firefighting_extension
-airfield_operations_extension
-mass_casualty_extension
+recovery_centre
+hgv_recovery_extension
 ```
 
-These join the two Bomb Disposal infrastructure records. Missions using the mapped precondition fields fail validation when the corresponding infrastructure record is absent.
+These join the Bomb Disposal and Airfield infrastructure records. Missions using `recovery_centres` or `hgv_recovery_extensions` fail validation when the matching canonical infrastructure record is absent.
 
-## Stage 19 deployable fleet
+## Stage 20 missions
 
-```text
-RIV
-Major Foam Tender
-Water Carrier
-Airfield Firefighting Command Vehicle
-Airfield Operations Vehicle
-Fire Officer
-HazMat Unit
-CBRN Vehicle
-ICCU
-Ambulance Control Unit
-Rescue Stairs
-Traffic Car
-Mass Casualty Equipment
-```
+| Dataset ID | Mission | Towing | Credits |
+|---|---|---|---:|
+| `784` | Abandoned Car Obstructing Road | Response page unavailable | 400 |
+| `785` | Broken Down Car Obstructing Road | Response page unavailable | 400 |
+| `2-recovery-overlay` | Burning car | 1 car | 670 |
+| `13-hgv-recovery-overlay` | Burning truck | 1 truck | 1,280 |
+| `129-recovery-overlay` | Multi vehicle RTC | 2–4 cars | 1,900 |
+| `782-recovery-overlay` | Non-Injury RTC with Police Car | 1 car | 4,800 |
 
-Official labels remain canonical. Abbreviations such as RIV, ICCU and CBRN remain unexpanded unless a separate primary source verifies an expanded name.
+[Open the Recovery service guide →](docs/services/recovery.md)  
+[Open verified Mission Batch 9 →](docs/reference/verified-mission-batch-9.md)
 
-## Stage 19 missions
+## Towing is separate from dispatch
 
-| ID | Mission | Key scale | Credits |
-|---:|---|---|---:|
-| `593` | Bird Strike - Code B | RIV/foam alternatives | 6,000 |
-| `587` | Aircraft Accident - Code C | 75–175 patients | 16,000 |
-| `588` | Aircraft Accident - Code F | 150–250 patients | 24,000 |
+Official pages list towing under **Other information**, not Vehicle and Personnel Requirements. The dataset therefore stores towing under `recovery.assets` rather than inventing a Recovery Vehicle dispatch row.
 
-[Open the Airfield Operations service guide →](docs/services/airfield-operations.md)  
-[Open verified Mission Batch 8 →](docs/reference/verified-mission-batch-8.md)
+## Conditional probability
 
-## Conditional Traffic Cars
+Multi vehicle RTC records one Traffic Car with both:
 
-Aircraft Accident Codes C and F state that Traffic Cars are required only when available. They are stored under `requirements.conditional` rather than being marked guaranteed or omitted.
+- a 50% requirement probability;
+- the condition `only_when_available`.
 
-## Overlapping command alternatives
-
-Airfield Firefighting Command Vehicles appear in dedicated and alternative requirement rows. The dataset preserves each official row separately and does not invent a minimum unique-vehicle total.
+The schema preserves both facts in one conditional requirement.
 
 ---
 
@@ -163,8 +152,8 @@ Airfield Firefighting Command Vehicles appear in dedicated and alternative requi
 | **Emergency Services** | Service-specific vehicles, personnel and stations | [Browse services →](docs/services/index.md) |
 | **Verified Vehicles** | Current canonical deployable-resource records | [Open records →](docs/reference/verified-vehicle-records.md) |
 | **Verified Missions** | Current cross-service mission records | [Open records →](docs/reference/verified-mission-records.md) |
-| **Bomb Disposal and EOD** | HQ, marine-extension and unexploded-ordnance data | [Open Stage 18 →](docs/reference/verified-mission-batch-7.md) |
 | **Airfield Operations** | Airport fleet, extensions and aircraft incidents | [Open Stage 19 →](docs/reference/verified-mission-batch-8.md) |
+| **Recovery Operations** | Recovery Centres, towing and HGV variations | [Open Stage 20 →](docs/reference/verified-mission-batch-9.md) |
 | **Scripts & Tools** | Compatibility, installation and recovery | [Inspect tools →](docs/scripts/index.md) |
 | **Community Verification** | Submit and reproduce operational intelligence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
@@ -196,7 +185,7 @@ Mission-to-resource validation
     ↓
 Infrastructure-precondition validation
     ↓
-Patient-range semantic validation
+Patient and towing range validation
     ↓
 MkDocs strict build
 ```
