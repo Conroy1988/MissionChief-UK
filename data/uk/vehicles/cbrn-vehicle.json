@@ -1,0 +1,10 @@
+{
+  "id": "cbrn_vehicle",
+  "name": "CBRN Vehicle",
+  "aliases": ["Chemical Biological Radiological Nuclear Vehicle"],
+  "service": "fire_and_rescue",
+  "category": "CBRN response",
+  "capabilities": ["cbrn_response"],
+  "notes": ["Official UK airfield pages pair this resource with HazMat Units in an alternative requirement group."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+}
