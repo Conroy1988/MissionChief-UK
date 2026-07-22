@@ -1,0 +1,27 @@
+{
+  "id": "police_car",
+  "name": "Police car",
+  "aliases": [
+    "Police Car",
+    "Police vehicle"
+  ],
+  "service": "police",
+  "category": "response",
+  "training": [],
+  "building_requirements": [],
+  "capabilities": [
+    "police_car_requirement"
+  ],
+  "notes": [
+    "Official UK mission records identify Police Cars as a required policing resource.",
+    "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/454",
+      "https://www.missionchief.co.uk/einsaetze/797"
+    ]
+  }
+}
