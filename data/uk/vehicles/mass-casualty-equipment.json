@@ -1,0 +1,10 @@
+{
+  "id": "mass_casualty_equipment",
+  "name": "Mass Casualty Equipment",
+  "aliases": [],
+  "service": "ambulance",
+  "category": "Mass casualty support",
+  "capabilities": ["mass_casualty_support"],
+  "notes": ["Verified as a guaranteed resource on Aircraft Accident Codes C and F."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+}
