@@ -1,21 +1,37 @@
 {
-  "id": "replace-with-stable-id",
+  "id": "replace-with-official-mission-id",
   "name": "Replace with exact UK game name",
   "aliases": [],
   "service": "fire",
+  "mission_types": [],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 0,
+    "rescue_stations": 0,
+    "police_stations": 0,
+    "other": []
+  },
   "requirements": {
     "guaranteed": [],
-    "probabilistic": []
+    "probabilistic": [
+      {
+        "resource": "replace-with-canonical-vehicle-id",
+        "quantity": 1,
+        "probability": 0.15
+      }
+    ]
   },
   "patients": {},
   "prisoners": {},
   "reward": {},
+  "follow_up_missions": [],
+  "expandable_missions": [],
   "notes": [],
   "verification": {
     "status": "review-required",
     "checked_at": "2026-07-22",
     "sources": [
-      "Replace with a reproducible UK-game observation or primary source"
+      "Replace with official or reproducible source"
     ]
   }
 }
