@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "target_stage": "fully-canonical",
+  "updated_at": "2026-07-23",
+  "stages": {
+    "captured": "The mission exists in the lossless official UK catalogue.",
+    "identity-verified": "The official mission ID and name match a canonical mission record.",
+    "requirements-mapped": "Every published requirement and chance key used by the mission has been mapped into the canonical dispatch model or explicitly classified as not applicable.",
+    "operationally-verified": "Conditional requirements, probabilities, patients, personnel, relationships, variants and other operational mechanics have reproducible evidence.",
+    "fully-canonical": "The mission has completed a final evidence-completeness audit and can be treated as fully normalized operational intelligence."
+  },
+  "records": {
+    "0": {
+      "stage": "requirements-mapped",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0"
+      ],
+      "notes": [
+        "The official one-Fire-Engine requirement and average reward are represented by the canonical Bin fire record.",
+        "Operational relationship and completeness auditing remain pending before promotion beyond requirements-mapped."
+      ]
+    },
+    "1": {
+      "stage": "requirements-mapped",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/1"
+      ],
+      "notes": [
+        "The official one-Fire-Engine requirement and average reward are represented by the canonical Container fire record.",
+        "A final operational and evidence-completeness audit remains pending before promotion beyond requirements-mapped."
+      ]
+    }
+  }
+}
