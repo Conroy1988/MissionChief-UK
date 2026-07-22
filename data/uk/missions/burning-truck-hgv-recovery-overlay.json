@@ -1,0 +1,34 @@
+{
+  "id": "13-hgv-recovery-overlay",
+  "name": "Burning truck",
+  "aliases": ["Burning truck — HGV Recovery variation"],
+  "service": "fire_and_rescue",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 13,
+    "kind": "additive-overlay",
+    "key": "hgv-recovery",
+    "notes": ["Adds the HGV Recovery Extension precondition and one truck to tow."]
+  },
+  "preconditions": {"fire_stations": 2, "hgv_recovery_extensions": 1},
+  "requirements": {
+    "guaranteed": [{"resource": "fire_engine", "quantity": 2}],
+    "probabilistic": [],
+    "conditional": [],
+    "alternatives": []
+  },
+  "recovery": {
+    "assets": [{"asset_type": "truck", "minimum": 1, "maximum": 1}]
+  },
+  "reward": {"average_credits": 1280},
+  "notes": [
+    "The HGV recovery requirement is an infrastructure precondition and towing outcome, not an extra Fire engine requirement.",
+    "The source page identifies this as a mission variation of Burning truck."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/13?additive_overlays=a"]
+  }
+}
