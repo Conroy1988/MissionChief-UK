@@ -1,0 +1,26 @@
+{
+  "$schema": "../schema/vehicle.schema.json",
+  "id": "replace-with-stable-id",
+  "name": "Replace with exact UK game name",
+  "aliases": [],
+  "service": "fire",
+  "category": "response",
+  "staffing": {
+    "minimum": 1,
+    "maximum": 1
+  },
+  "training": [],
+  "building_requirements": [],
+  "capabilities": [],
+  "verification": {
+    "status": "review-required",
+    "last_verified": "YYYY-MM-DD",
+    "sources": [
+      {
+        "type": "in-game",
+        "description": "Replace with reproducible observation path"
+      }
+    ]
+  },
+  "notes": []
+}
