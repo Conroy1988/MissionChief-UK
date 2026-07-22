@@ -1,0 +1,49 @@
+name: Documentation improvement
+
+description: Report missing, unclear or incomplete guide content.
+title: "[Documentation]: "
+labels:
+  - documentation
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Documentation area
+      options:
+        - Getting started
+        - Game systems
+        - Emergency services
+        - Strategy
+        - Alliances
+        - Scripts and tools
+        - Reference database
+        - Planning tools
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What needs improvement?
+      description: Identify the page, missing subject or unclear wording.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What should the guide explain?
+      description: Describe the practical question the finished content should answer.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Add UK-game observations, source material or reproducible examples where relevant.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I searched the existing documentation for this subject.
+          required: true
