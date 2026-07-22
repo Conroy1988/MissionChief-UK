@@ -12,7 +12,8 @@ Each mission page and structured record should contain:
 - known unlock conditions and POIs;
 - guaranteed resource requirements;
 - probabilistic requirements with confirmed probabilities;
-- alternative resource groups where one of several vehicles can satisfy a requirement;
+- conditional requirements with their exact trigger;
+- alternative resource groups where one of several resources can satisfy a requirement;
 - personnel that are available, required, average-minimum or probability-based;
 - patient, prisoner, transport and hand-off behaviour;
 - reward data;
@@ -26,9 +27,23 @@ Requirements must distinguish between:
 
 - **guaranteed** — always required under the documented conditions;
 - **probabilistic** — may be requested, with the confirmed probability recorded;
+- **conditional** — required only when a stated condition is true;
 - **alternative** — one qualifying resource from a defined group satisfies the requirement;
-- **conditional** — triggered only when another element exists;
 - **recommended** — strategic advice rather than a game requirement.
+
+## Conditional requirements
+
+Stage 19 introduces first-class conditional resources:
+
+```json
+{
+  "resource": "traffic_car",
+  "quantity": 4,
+  "condition": "only_when_available"
+}
+```
+
+This is used where official airfield pages state that Traffic Cars are required only when available. A conditional requirement must not be flattened into a guaranteed count or omitted as merely optional advice.
 
 ## Alternative requirements
 
@@ -37,34 +52,38 @@ An alternative group such as:
 ```json
 {
   "resources": [
-    "mountain_rescue_4x4",
-    "sar_4x4"
+    "fire_engine",
+    "major_foam_tender"
   ],
-  "quantity": 2
+  "quantity": 7
 }
 ```
 
-means two qualifying 4x4 resources in total. It must not be interpreted as two of each vehicle.
+means seven qualifying resources in total. It must not be interpreted as seven of each type.
 
 The same model is used for:
 
-- Rapid Response Vehicle or Specialist Paramedic RRV;
+- RRV or Specialist Paramedic RRV;
 - ILB or ALB;
 - Mountain Rescue 4x4 or SAR 4x4;
-- Operational Support Van, Operational Support Trailer or Personal SAR Vehicle;
-- Police Helicopter or Drone.
+- Operational Support Van, Trailer or Personal SAR Vehicle;
+- Police Helicopter or Drone;
+- Fire Engine or RIV;
+- RIV or Major Foam Tender;
+- Fire Officer or Airfield Firefighting Command Vehicle;
+- HazMat Unit or CBRN Vehicle;
+- ICCU, Ambulance Control Unit or Airfield Firefighting Command Vehicle;
+- Aerial Appliance Truck or Rescue Stairs.
 
-## Search and Rescue HQ requirements
+## Overlapping airfield alternatives
 
-The verified High Risk Missing Person and Very High Risk Missing Person records use three independent alternative groups:
+Airfield Firefighting Command Vehicles may appear as:
 
-1. one operational-support resource;
-2. one aerial-search resource;
-3. two qualifying 4x4 resources.
+1. a dedicated guaranteed resource;
+2. an alternative to Fire Officers;
+3. an alternative to ICCU or Ambulance Control Unit.
 
-These groups must not be merged. A Drone does not satisfy the operational-support requirement, and an Operational Support Trailer does not satisfy the aerial-search requirement.
-
-The `active_drones` precondition is also distinct from the incident response requirement. It states what must be active before the mission can generate; it does not prove that a Drone rather than a Police Helicopter will be dispatched.
+The structured records preserve every official row separately. They do not infer whether one vehicle can satisfy multiple rows or calculate a minimum unique-vehicle total without dispatch-level evidence.
 
 ## Mission variants and overlays
 
@@ -83,63 +102,33 @@ An overlay record uses a unique string dataset ID while preserving the official 
 }
 ```
 
-This prevents an ATV Carrier, Coastguard Rescue Helicopter, active drone or other overlay-only requirement from being incorrectly applied to the base mission.
+This prevents overlay-only requirements from being incorrectly applied to a base mission.
 
 ## Personnel states
 
 Personnel can be represented in four independent states:
 
-```json
-{
-  "personnel": {
-    "available": [
-      {"role": "Search Advisor", "quantity": 2}
-    ],
-    "required": [
-      {"role": "Search Advisor", "quantity": 1}
-    ],
-    "average_minimum": [
-      {"role": "Search Technician", "quantity": 10}
-    ],
-    "probabilistic": [
-      {
-        "role": "Operational Team Leader",
-        "quantity": 1,
-        "probability": 0.75
-      }
-    ]
-  }
-}
-```
-
-- `available` records the personnel that must exist before generation;
-- `required` records an exact incident requirement;
-- `average_minimum` preserves an official average-minimum value without presenting it as an exact guaranteed count;
-- `probabilistic` records chance-based incident personnel.
+- `available` — must exist before generation;
+- `required` — exact incident requirement;
+- `average_minimum` — official average-minimum value that is not an exact guaranteed count;
+- `probabilistic` — chance-based incident personnel.
 
 A probability-based or average-minimum role must not be presented as guaranteed.
 
 ## Specialist preconditions
 
-The schema currently supports explicit precondition fields for:
+The schema supports explicit preconditions for general stations and specialist infrastructure, including:
 
-- Fire, Rescue and Police Stations;
-- HART Bases and GP Surgeries;
-- Police & Public Order Extensions;
-- Coastguard Rescue Stations and Lifeboat Stations;
-- Helicopter Hangars;
-- Mud Decontamination and Hovercraft Extensions;
-- Mountain Rescue Stations;
-- Search and Rescue HQs;
-- active drones.
+- HART Bases;
+- Coastguard and Lifeboat facilities;
+- Mountain Rescue Stations and Search and Rescue HQs;
+- Bomb Disposal HQs and Marine Unit Extensions;
+- Aviation firefighting Extensions;
+- Airfield Operations Extensions;
+- Mass Casualty Extensions;
+- active Drones.
 
-A building or active-equipment precondition does not itself prove that a specific vehicle is required at the incident.
-
-## Trailer, vessel and environment distinctions
-
-The dataset treats `Inland Rescue Boat (Trailer)` as a different resource from ILB and ALB ocean-rescue boats.
-
-It also treats `Operational Support Trailer` as a trailer resource that is distinct from an Operational Support Van or Personal SAR Vehicle. Trailer status, operating environment and mission requirement are recorded separately. Exact towing compatibility must not be inferred unless reproduced from the current UK game.
+Mapped specialist preconditions are validated against canonical infrastructure records. A generation precondition does not itself prove that a specific vehicle is required at the incident.
 
 ## Dispatch interpretation
 
@@ -147,9 +136,9 @@ Where the interface separates resources into required, responding, on scene and 
 
 ## Data relationship
 
-Mission records reference canonical vehicle, building, extension, training and personnel identifiers. This allows future calculators and APIs to consume the same evidence used by the documentation.
+Mission records reference canonical deployable-resource and infrastructure identifiers. This allows future calculators and APIs to consume the same evidence used by the documentation.
 
-Repository validation checks guaranteed, probabilistic and alternative vehicle references against the canonical vehicle dataset.
+Repository validation checks guaranteed, probabilistic, conditional and alternative resource references against the canonical vehicle dataset.
 
 ## Publication rule
 
