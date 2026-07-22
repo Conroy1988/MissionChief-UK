@@ -15,6 +15,10 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
+  const label = (value) => String(value || "")
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, (character) => character.toUpperCase());
+
   async function collection(name) {
     if (!cache.has(name)) {
       cache.set(name, fetch(new URL(`${name}.json`, apiRoot), { cache: "no-cache" })
@@ -27,9 +31,12 @@
     return cache.get(name);
   }
 
-  const label = (value) => String(value || "")
-    .replaceAll("_", " ")
-    .replace(/\b\w/g, (character) => character.toUpperCase());
+  function claimRoot(selector) {
+    const root = document.querySelector(selector);
+    if (!root || root.dataset.mcukReady === "true") return null;
+    root.dataset.mcukReady = "true";
+    return root;
+  }
 
   function requirementRows(mission) {
     const requirements = mission.requirements || {};
@@ -71,7 +78,7 @@
   }
 
   async function initMissionLookup() {
-    const root = document.querySelector("[data-mcuk-tool='mission-lookup']");
+    const root = claimRoot("[data-mcuk-tool='mission-lookup']");
     if (!root) return;
     const input = root.querySelector("[data-role='query']");
     const service = root.querySelector("[data-role='service']");
@@ -98,36 +105,36 @@
   }
 
   async function initComparison() {
-    const root = document.querySelector("[data-mcuk-tool='comparison']");
+    const root = claimRoot("[data-mcuk-tool='comparison']");
     if (!root) return;
     const kind = root.querySelector("[data-role='kind']");
     const first = root.querySelector("[data-role='first']");
     const second = root.querySelector("[data-role='second']");
     const results = root.querySelector("[data-role='results']");
-    const loadOptions = async () => {
-      const records = await collection(kind.value);
-      const options = records.map((record) => `<option value="${escapeHtml(record.id)}">${escapeHtml(record.name)} (${escapeHtml(record.id)})</option>`).join("");
-      first.innerHTML = options;
-      second.innerHTML = options;
-      if (second.options.length > 1) second.selectedIndex = 1;
-      render(records);
-    };
-    const render = (records) => {
+    let records = [];
+    const render = () => {
       const selected = [first.value, second.value].map((id) => records.find((record) => String(record.id) === String(id))).filter(Boolean);
       const fields = kind.value === "vehicles"
         ? ["service", "category", "cost", "staffing", "training", "building_requirements", "capabilities"]
         : ["service", "qualification_type", "roles", "course_name", "duration_hours", "prerequisites"];
       results.innerHTML = selected.length === 2 ? `<table><thead><tr><th>Field</th>${selected.map((record) => `<th>${escapeHtml(record.name)}</th>`).join("")}</tr></thead><tbody>${fields.map((field) => `<tr><th>${escapeHtml(label(field))}</th>${selected.map((record) => `<td><pre>${escapeHtml(typeof record[field] === "object" ? JSON.stringify(record[field], null, 2) : record[field] ?? "Not verified")}</pre></td>`).join("")}</tr>`).join("")}</tbody></table>` : "";
     };
-    let records = [];
-    kind.addEventListener("change", async () => { records = await collection(kind.value); await loadOptions(); });
-    first.addEventListener("change", () => render(records));
-    second.addEventListener("change", () => render(records));
-    try { records = await collection(kind.value); await loadOptions(); } catch (error) { results.textContent = error.message; }
+    const loadOptions = async () => {
+      records = await collection(kind.value);
+      const options = records.map((record) => `<option value="${escapeHtml(record.id)}">${escapeHtml(record.name)} (${escapeHtml(record.id)})</option>`).join("");
+      first.innerHTML = options;
+      second.innerHTML = options;
+      if (second.options.length > 1) second.selectedIndex = 1;
+      render();
+    };
+    kind.addEventListener("change", () => loadOptions().catch((error) => { results.textContent = error.message; }));
+    first.addEventListener("change", render);
+    second.addEventListener("change", render);
+    try { await loadOptions(); } catch (error) { results.textContent = error.message; }
   }
 
   async function initPlanner() {
-    const root = document.querySelector("[data-mcuk-tool='fleet-planner']");
+    const root = claimRoot("[data-mcuk-tool='fleet-planner']");
     if (!root) return;
     const missionSelect = root.querySelector("[data-role='mission']");
     const concurrency = root.querySelector("[data-role='concurrency']");
@@ -150,7 +157,7 @@
   }
 
   async function initQueryCatalogue() {
-    const root = document.querySelector("[data-mcuk-tool='query-catalogue']");
+    const root = claimRoot("[data-mcuk-tool='query-catalogue']");
     if (!root) return;
     const input = root.querySelector("[data-role='query']");
     const results = root.querySelector("[data-role='results']");
@@ -170,10 +177,18 @@
     } catch (error) { results.textContent = error.message; }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function initAll() {
     initMissionLookup();
     initComparison();
     initPlanner();
     initQueryCatalogue();
-  });
+  }
+
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(initAll);
+  } else if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll, { once: true });
+  } else {
+    initAll();
+  }
 })();
