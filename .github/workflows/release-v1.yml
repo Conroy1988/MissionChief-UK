@@ -90,6 +90,10 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_official_mission_catalogue.py
 
+      - name: Generate 100% mission verification status
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/generate_mission_verification_status.py
+
       - name: Generate public data exports
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_exports.py
