@@ -7,7 +7,7 @@
 [![Open Command Centre](https://img.shields.io/badge/OPEN-COMMAND_CENTRE-1593D1?style=for-the-badge&logo=googlemaps&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![Release](https://img.shields.io/github/v/release/Conroy1988/MissionChief-UK?style=for-the-badge&label=RELEASE&color=1675A9)](https://github.com/Conroy1988/MissionChief-UK/releases/latest)
 [![Stage](https://img.shields.io/badge/PROGRAMME-STAGE_34_COMPLETE-D63345?style=for-the-badge)](#-production-command-posture)
-[![API](https://img.shields.io/badge/STATIC_API-v1.0.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
+[![Static Data API v1.0.0](https://img.shields.io/badge/STATIC_API-v1.0.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
 
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
 [![Deploy Pages](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
@@ -28,7 +28,7 @@
 
 **MissionChief UK** is an independent operations-intelligence platform for the United Kingdom version of MissionChief.
 
-It combines human-readable guidance, canonical structured records, browser-side command tools, strict evidence rules and a versioned static API. The result is a single place to answer the questions that matter during real play:
+It combines human-readable guidance, canonical structured records, browser-side command tools, strict evidence rules and the versioned **Static Data API v1.0.0**. The result is a single place to answer the questions that matter during real play:
 
 - What does this mission actually require?
 - Which resource, qualification, building or extension unlocks the response?
