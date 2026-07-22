@@ -1,0 +1,26 @@
+{
+  "id": "aerial_appliance_truck",
+  "name": "Aerial Appliance Truck",
+  "aliases": [
+    "Aerial Appliance",
+    "Aerial Appliance Truck"
+  ],
+  "service": "fire",
+  "category": "specialist",
+  "training": [],
+  "building_requirements": [],
+  "capabilities": [
+    "aerial_appliance_requirement"
+  ],
+  "notes": [
+    "Official UK mission records identify Aerial Appliance Trucks as a possible specialist requirement.",
+    "Cost, staffing, training and station restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/797"
+    ]
+  }
+}
