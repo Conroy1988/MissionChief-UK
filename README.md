@@ -7,7 +7,7 @@
 [![Documentation](https://img.shields.io/badge/OPEN-DOCUMENTATION-1593D1?style=for-the-badge&logo=readthedocs&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![MissionChief UK](https://img.shields.io/badge/REGION-UNITED_KINGDOM-0B1D31?style=for-the-badge)](https://www.missionchief.co.uk/)
 [![Evidence Standard](https://img.shields.io/badge/INTELLIGENCE-EVIDENCE_LED-1675A9?style=for-the-badge&logo=databricks&logoColor=white)](docs/reference/data-standard.md)
-[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_18_BOMB_DISPOSAL-D63345?style=for-the-badge)](#current-operational-state)
+[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_19_AIRFIELD_OPS-D63345?style=for-the-badge)](#current-operational-state)
 
 [![Deploy MissionChief UK Guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
@@ -19,7 +19,7 @@
 
 **Verified missions · Canonical resources · Infrastructure records · Emergency-service guides · Structured data · Community verification**
 
-[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Bomb Disposal**](docs/reference/verified-mission-batch-7.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Airfield Operations**](docs/reference/verified-mission-batch-8.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -37,32 +37,33 @@ The project combines practical guides with machine-readable records and explicit
 
 # 📡 Current Operational State
 
-Stage 18 has delivered the first Bomb Disposal and EOD mission-generation baseline:
+Stage 19 delivers the first fully populated Airfield Operations and airport-firefighting baseline:
 
 ```text
-27 verified mission records
-26 canonical vehicle-resource records
-2 canonical infrastructure records
-8 represented operational service groups
-7 published mission-data batches
+30 verified mission records
+39 canonical vehicle-resource records
+6 canonical infrastructure records
+9 represented operational service groups
+8 published mission-data batches
 ```
 
 | Domain | State | Delivered capability |
 |---|---|---|
 | **Command Centre** | Operational | MkDocs Material site, instant search, structured navigation and GitHub Pages deployment |
 | **Vehicle reference** | Live | Canonical IDs, official labels, aliases, deployment metadata and evidence trails |
-| **Infrastructure reference** | Live baseline | Schema-controlled buildings and extensions with mission-precondition validation |
-| **Mission reference** | Live | Guaranteed, probabilistic and alternative resources; variants; patients; personnel; rewards; POIs and preconditions |
-| **Fire and Rescue** | Populated baseline | First-response and technical-rescue records |
-| **Ambulance and HART** | Populated baseline | RRV alternatives, patient mechanics, ATV and specialist-response records |
-| **Police** | Populated baseline | Public order, air support, prisoners and shared specialist response |
+| **Infrastructure reference** | Live | Schema-controlled buildings and extensions with mission-precondition validation |
+| **Mission reference** | Live | Guaranteed, probabilistic, conditional and alternative resources; variants; patients; personnel; rewards; POIs and preconditions |
+| **Fire and Rescue** | Populated baseline | First-response, technical-rescue, command, water and hazardous-materials records |
+| **Ambulance and HART** | Populated baseline | RRV alternatives, patient mechanics, command, mass-casualty and specialist-response records |
+| **Police** | Populated baseline | Public order, air support, prisoners, traffic policing and shared specialist response |
 | **Coastguard and Lifeboat** | Populated baseline | Mud rescue, CRV, trailer boat, ILB/ALB, ocean restrictions and medivac |
 | **Mountain Rescue** | Populated baseline | Alternative 4×4s, command, search dogs, cave rescue and overlays |
 | **Search and Rescue HQ** | Populated baseline | Active-Drone preconditions, SAR command and aerial-search alternatives |
 | **Bomb Disposal and EOD** | Populated precondition baseline | HQs, marine extensions, land/coastal missions and infrastructure integrity |
+| **Airfield Operations** | Populated baseline | Airport extensions, RIV/foam fleet, airfield command, conditional traffic resources and Code C/F mass-casualty incidents |
 
 > [!IMPORTANT]
-> A verified record applies that status only to populated fields. The first Bomb Disposal batch verifies mission-directory information; EOD response vehicles, personnel, training and costs remain unpublished until directly reproduced.
+> A verified record applies that status only to populated fields. Prices, staffing limits, training, infrastructure costs and dispatch allocation across overlapping alternatives remain unpublished until directly reproduced.
 
 ## Delivery progression
 
@@ -77,7 +78,8 @@ STAGE 15      Coastguard, Lifeboat, trailer and ocean-rescue modelling
 STAGE 16      Mountain Rescue, land search and explicit mission variants
 STAGE 17      Search and Rescue HQ, active drones and missing-person operations
 STAGE 18      Bomb Disposal infrastructure and unexploded-ordnance mission baseline
-STAGE 19      Next: Airfield Operations
+STAGE 19      Airfield Operations, airport infrastructure and code-based aircraft incidents
+STAGE 20      Next: Recovery and HGV recovery operations
 ```
 
 ---
@@ -87,46 +89,69 @@ STAGE 19      Next: Airfield Operations
 ## Production collections
 
 ```text
-data/uk/missions/         27 records
-data/uk/vehicles/         26 records
-data/uk/infrastructure/    2 records
+data/uk/missions/         30 records
+data/uk/vehicles/         39 records
+data/uk/infrastructure/    6 records
 ```
 
 The validator enforces:
 
 - Draft 2020-12 schema conformance;
 - unique record identifiers;
-- mission-to-vehicle resource integrity;
-- alternative-resource integrity;
+- guaranteed, probabilistic and conditional resource integrity;
+- every resource in alternative groups;
 - patient-range semantics;
-- Bomb Disposal preconditions against canonical infrastructure IDs.
+- mapped infrastructure-precondition integrity.
 
-## Stage 18 infrastructure
+## Stage 19 infrastructure
 
 ```text
-bomb_disposal_hq
-bomb_disposal_marine_unit_extension
+hart_base
+aviation_firefighting_extension
+airfield_operations_extension
+mass_casualty_extension
 ```
 
-These are the first production building/extension records. Missions using `bomb_disposal_hqs` or `bomb_disposal_marine_unit_extensions` fail validation when the matching infrastructure record is absent.
+These join the two Bomb Disposal infrastructure records. Missions using the mapped precondition fields fail validation when the corresponding infrastructure record is absent.
 
-## Stage 18 missions
+## Stage 19 deployable fleet
 
-| ID | Mission | Key Bomb Disposal preconditions | Credits |
+```text
+RIV
+Major Foam Tender
+Water Carrier
+Airfield Firefighting Command Vehicle
+Airfield Operations Vehicle
+Fire Officer
+HazMat Unit
+CBRN Vehicle
+ICCU
+Ambulance Control Unit
+Rescue Stairs
+Traffic Car
+Mass Casualty Equipment
+```
+
+Official labels remain canonical. RIV and ICCU retain their abbreviations, with expanded forms stored only as aliases.
+
+## Stage 19 missions
+
+| ID | Mission | Key scale | Credits |
 |---:|---|---|---:|
-| `829` | Unexploded WW2 Ordnance in Countryside | 1 HQ | 4,500 |
-| `830` | Unexploded WW2 Ordnance on Quiet Beach | 1 HQ, 1 Marine Unit Extension | 5,500 |
-| `832` | Unexploded WW2 Ordnance in Harbour | 3 HQs, 2 Marine Unit Extensions, active Drone | 15,000 |
-| `839` | Unexploded WW2 Bomb Located at Building Site (Large) | 3 HQs, active Drone | 11,500 |
+| `593` | Bird Strike - Code B | RIV/foam alternatives | 6,000 |
+| `587` | Aircraft Accident - Code C | 75–175 patients | 16,000 |
+| `588` | Aircraft Accident - Code F | 150–250 patients | 24,000 |
 
-[Open the Bomb Disposal service guide →](docs/services/bomb-disposal.md)  
-[Open verified Mission Batch 7 →](docs/reference/verified-mission-batch-7.md)
+[Open the Airfield Operations service guide →](docs/services/airfield-operations.md)  
+[Open verified Mission Batch 8 →](docs/reference/verified-mission-batch-8.md)
 
-## Evidence boundary
+## Conditional Traffic Cars
 
-The official directory confirmed IDs, names, POIs, rewards and infrastructure preconditions. Individual response tables were unavailable during verification, so the new records do not claim exact EOD vehicles or personnel.
+Aircraft Accident Codes C and F state that Traffic Cars are required only when available. They are stored under `requirements.conditional` rather than being marked guaranteed or omitted.
 
-An active Drone is recorded as a mission-generation precondition and is not automatically treated as a dispatch requirement.
+## Overlapping command alternatives
+
+Airfield Firefighting Command Vehicles appear in dedicated and alternative requirement rows. The dataset preserves each official row separately and does not invent a minimum unique-vehicle total.
 
 ---
 
@@ -138,8 +163,8 @@ An active Drone is recorded as a mission-generation precondition and is not auto
 | **Emergency Services** | Service-specific vehicles, personnel and stations | [Browse services →](docs/services/index.md) |
 | **Verified Vehicles** | Current canonical deployable-resource records | [Open records →](docs/reference/verified-vehicle-records.md) |
 | **Verified Missions** | Current cross-service mission records | [Open records →](docs/reference/verified-mission-records.md) |
-| **Search and Rescue HQ** | Drone-enabled missing-person operations | [Open Stage 17 →](docs/reference/verified-mission-batch-6.md) |
 | **Bomb Disposal and EOD** | HQ, marine-extension and unexploded-ordnance data | [Open Stage 18 →](docs/reference/verified-mission-batch-7.md) |
+| **Airfield Operations** | Airport fleet, extensions and aircraft incidents | [Open Stage 19 →](docs/reference/verified-mission-batch-8.md) |
 | **Scripts & Tools** | Compatibility, installation and recovery | [Inspect tools →](docs/scripts/index.md) |
 | **Community Verification** | Submit and reproduce operational intelligence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
