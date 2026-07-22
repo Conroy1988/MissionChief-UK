@@ -183,6 +183,7 @@
   margin: 0.75rem 0;
 }
 
+.mcuk-official-field-details,
 .mcuk-official-record-details {
   width: 100%;
   max-width: 100%;
@@ -191,11 +192,22 @@
   padding-top: 0.75rem;
 }
 
+.mcuk-official-field-details summary,
 .mcuk-official-record-details summary {
   cursor: pointer;
   color: var(--mcuk-blue);
   font-size: 0.76rem;
   font-weight: 850;
+}
+
+.mcuk-official-field-details table {
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+}
+
+.mcuk-official-field-details th:first-child,
+.mcuk-official-field-details td:first-child {
+  width: 38%;
 }
 
 .mcuk-official-record-details pre {
@@ -234,8 +246,9 @@
     padding-inline: 0.85rem;
   }
 
-  .mcuk-mission-card table {
-    font-size: 0.7rem;
+  .mcuk-mission-card table,
+  .mcuk-official-field-details table {
+    font-size: 0.66rem;
   }
 
   .mcuk-official-record-details pre {
