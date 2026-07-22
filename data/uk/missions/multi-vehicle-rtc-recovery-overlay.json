@@ -1,0 +1,67 @@
+{
+  "id": "129-recovery-overlay",
+  "name": "Multi vehicle RTC",
+  "aliases": ["Multi vehicle RTC — Recovery Centre variation"],
+  "service": "fire_and_rescue",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 129,
+    "kind": "additive-overlay",
+    "key": "recovery-centre",
+    "notes": ["Adds Recovery Centre generation and between two and four cars to tow."]
+  },
+  "preconditions": {
+    "fire_stations": 3,
+    "rescue_stations": 10,
+    "police_stations": 1,
+    "recovery_centres": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 2},
+      {"resource": "police_car", "quantity": 2}
+    ],
+    "probabilistic": [],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 1,
+        "condition": "only_when_available",
+        "probability": 0.5,
+        "notes": ["The official page states a 50% requirement probability and only when available."]
+      }
+    ],
+    "alternatives": []
+  },
+  "personnel": {
+    "available": [],
+    "required": [],
+    "average_minimum": [],
+    "probabilistic": [
+      {"role": "Operational Team Leader", "quantity": 1, "probability": 0.5}
+    ]
+  },
+  "patients": {
+    "minimum": 3,
+    "maximum": 7,
+    "transport_probability": 0.5,
+    "critical_care_probability": 0,
+    "first_responder_full_care_probability": 0,
+    "specializations": ["General Surgeon"],
+    "codes": ["C-2", "C-3"]
+  },
+  "recovery": {
+    "assets": [{"asset_type": "car", "minimum": 2, "maximum": 4}]
+  },
+  "reward": {"average_credits": 1900},
+  "notes": [
+    "Conditional Traffic Car probability is structured without converting it into a guaranteed requirement.",
+    "Towing quantity is independent of the emergency vehicle response."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/129?additive_overlays=a"]
+  }
+}
