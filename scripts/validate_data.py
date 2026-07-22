@@ -35,10 +35,13 @@ PRECONDITION_INFRASTRUCTURE_IDS = {
     "railway_police": "railway_police",
     "railway_fire_responses": "railway_fire_response",
     "police_helicopter_stations": "police_helicopter_station",
+    "police_public_order_extensions": "police_public_order_extension",
     "foam_extensions": "foam_extension",
     "water_damage_pump_extensions": "water_damage_pump_extension",
     "flood_rescue_extensions": "flood_rescue_extension",
     "technical_rescue_extensions": "technical_rescue_extension",
+    "mud_decontamination_extensions": "mud_decontamination_extension",
+    "hovercraft_extensions": "hovercraft_extension",
 }
 
 
