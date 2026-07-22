@@ -7,6 +7,9 @@ edit_uri: edit/main/docs/
 
 copyright: Independent community project. MissionChief and associated assets belong to their respective owners.
 
+extra_css:
+  - stylesheets/extra.css
+
 theme:
   name: material
   language: en
@@ -38,9 +41,6 @@ theme:
         icon: material/weather-sunny
         name: Use light mode
 
-extra_css:
-  - stylesheets/extra.css
-
 plugins:
   - search:
       lang: en
@@ -68,16 +68,24 @@ markdown_extensions:
       custom_checkbox: true
 
 nav:
-  - Home: index.md
+  - Command Centre: index.md
   - Start Here:
       - Overview: getting-started/index.md
       - First Expansion: getting-started/first-expansion.md
   - Game Systems:
       - Systems Index: systems/index.md
+      - Missions & Dispatching: systems/missions-and-dispatching.md
+      - Buildings & Extensions: systems/buildings-and-extensions.md
   - Emergency Services:
       - Services Index: services/index.md
+      - Fire & Rescue: services/fire-and-rescue.md
+      - Ambulance: services/ambulance.md
+      - Police: services/police.md
+      - Coastguard & Lifeboat: services/coastguard-and-lifeboat.md
   - Strategy:
       - Strategy Index: strategy/index.md
+      - Account Progression: strategy/account-progression.md
+      - Station Placement: strategy/station-placement.md
   - Alliances:
       - Alliance Index: alliances/index.md
   - Scripts & Tools:
