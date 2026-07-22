@@ -2,10 +2,10 @@
 
 This page exposes the canonical deployable-resource records currently available in the MissionChief UK dataset.
 
-Each record verifies only its populated attributes. Purchase prices, crew limits, training and station restrictions remain absent until reproduced from the current UK interfaces.
+Each record verifies only its populated attributes. Purchase prices, crew limits, training and station restrictions remain absent until reproduced from current UK interfaces.
 
 !!! success "Evidence boundary"
-    A verified resource record does not mean every attribute has been verified. Empty or omitted fields are preferable to unsupported values.
+    Empty or omitted attributes are preferable to unsupported values.
 
 ## Current records
 
@@ -14,14 +14,22 @@ Each record verifies only its populated attributes. Purchase prices, crew limits
 | `fire_engine` | Fire engine | Fire and Rescue | Response |
 | `aerial_appliance_truck` | Aerial Appliance Truck | Fire and Rescue | Specialist |
 | `rescue_support_vehicle` | Rescue Support Vehicle | Fire and Rescue | Specialist support |
+| `fire_officer` | Fire Officer | Fire and Rescue | Command |
+| `water_carrier` | Water Carrier | Fire and Rescue | Water supply |
+| `hazmat_unit` | HazMat Unit | Fire and Rescue | Hazardous materials |
+| `cbrn_vehicle` | CBRN Vehicle | Fire and Rescue | CBRN response |
 | `rapid_response_vehicle` | Rapid Response Vehicle | Ambulance | Response |
 | `specialist_paramedic_rrv` | Specialist Paramedic RRV | Ambulance | Specialist response |
 | `atv_carrier` | ATV Carrier | Ambulance/HART | Specialist support |
 | `prv` | PRV | Ambulance | Specialist response |
 | `srv` | SRV | Ambulance | Specialist response |
 | `welfare_vehicle` | Welfare Vehicle | Ambulance | Support |
+| `iccu` | ICCU | Ambulance | Command and control |
+| `ambulance_control_unit` | Ambulance Control Unit | Ambulance | Command and control |
+| `mass_casualty_equipment` | Mass Casualty Equipment | Ambulance | Mass casualty support |
 | `police_car` | Police car | Police | Response |
 | `police_helicopter` | Police Helicopter | Police | Air support |
+| `traffic_car` | Traffic Car | Police | Traffic policing |
 | `drone` | Drone | Shared | Aerial search and reconnaissance |
 | `coastguard_rescue_vehicle` | CRV | Coastguard | Response |
 | `coastguard_mud_rescue_unit` | Coastguard Mud Rescue Unit | Coastguard | Specialist rescue |
@@ -35,129 +43,67 @@ Each record verifies only its populated attributes. Purchase prices, crew limits
 | `control_van` | Control Van | Search and Rescue | Command |
 | `search_dog_unit` | Search Dog Unit | Search and Rescue | Specialist search |
 | `operational_support_van` | Operational Support Van | Search and Rescue | Operational support |
-| `operational_support_trailer` | Operational Support Trailer | Search and Rescue | Operational support trailer |
-| `personal_sar_vehicle` | Personal SAR Vehicle | Search and Rescue | Personnel transport and support |
+| `operational_support_trailer` | Operational Support Trailer | Search and Rescue | Trailer |
+| `personal_sar_vehicle` | Personal SAR Vehicle | Search and Rescue | Personnel support |
+| `riv` | RIV | Airfield Operations | Airfield firefighting response |
+| `major_foam_tender` | Major Foam Tender | Airfield Operations | Foam firefighting |
+| `airfield_firefighting_command_vehicle` | Airfield Firefighting Command Vehicle | Airfield Operations | Command |
+| `airfield_operations_vehicle` | Airfield Operations Vehicle | Airfield Operations | Airfield operations |
+| `rescue_stairs` | Rescue Stairs | Airfield Operations | Aircraft access and rescue |
 
-All records shown above were checked on 22 July 2026.
+All records above were checked on 22 July 2026.
 
-## Search and Rescue HQ resources
+## Stage 19 Airfield Operations resources
 
-### Operational Support Van, Trailer and Personal SAR Vehicle
+### RIV and Major Foam Tender
 
-The official High Risk Missing Person and Very High Risk Missing Person pages group these resources as alternatives:
+Official pages use **RIV** as the response label. Bird Strike Code B accepts Fire Engines or RIVs in one alternative group and RIVs or Major Foam Tenders in another.
 
-```json
-{
-  "resources": [
-    "operational_support_van",
-    "operational_support_trailer",
-    "personal_sar_vehicle"
-  ],
-  "quantity": 1
-}
-```
+The Major Foam Tender also appears as a dedicated requirement on Aircraft Accident Codes C and F. Dedicated and alternative requirements remain separate.
 
-One qualifying resource satisfies the requirement. The Operational Support Trailer is explicitly recorded as a trailer, but compatible towing vehicles remain unverified.
+### Airfield command and operations
 
-### Police Helicopter and Drone
+The Airfield Firefighting Command Vehicle can appear:
 
-The official SAR pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement.
+- as a dedicated requirement;
+- as an alternative to Fire Officers;
+- as an alternative to ICCU or Ambulance Control Unit.
 
-The active-Drone generation precondition is separate from the response requirement. It does not mean a Drone must be dispatched when a Police Helicopter can satisfy the mission.
+The dataset preserves each official row. It does not assume one command vehicle can satisfy multiple rows simultaneously.
 
-### Control Van
+Airfield Operations Vehicles are separate response assets. Airfield Operations Supervisors are personnel and are not represented as vehicles.
 
-The Control Van is the guaranteed command resource on both verified missing-person missions. It is also used by Stage 16 Mountain Rescue records.
+### Hazardous-materials alternatives
 
-## Mountain Rescue and land-search resources
+HazMat Units and CBRN Vehicles form an alternative group. The required quantity is the total number of qualifying resources, not the number of each type.
 
-### Mountain Rescue 4x4 and SAR 4x4
+### Rescue Stairs
 
-Official UK Mountain Rescue and SAR pages present these as alternatives. Mission records therefore use an alternative group rather than requiring one of each.
+Aircraft Accident Code F accepts one Aerial Appliance Truck or Rescue Stairs for the aircraft-access requirement.
 
-```json
-{
-  "resources": [
-    "mountain_rescue_4x4",
-    "sar_4x4"
-  ],
-  "quantity": 2
-}
-```
+### Conditional Traffic Cars
 
-The quantity represents the total number of qualifying 4x4s.
+Traffic Cars are stored as conditional resources where the official page states they are required only when available.
 
-### Search Dog Unit
+## Other established alternatives
 
-The Search Dog Unit is a distinct search resource and must not be confused with a Police Dog Support Unit. It is verified on Overdue Hikers and the abandoned-mineshaft rescue.
+The dataset also preserves:
 
-### Rescue Support Vehicle
-
-The Rescue Support Vehicle is retained as the exact official requirement label. The dataset does not infer a fixed crew, training course or station dependency from the mission requirement alone.
-
-### ATV Carrier
-
-The ATV Carrier is currently verified through the HART additive overlay for Fall Whilst Fell Running. Its requirement belongs to the overlay and must not be added to the base mission.
-
-### PRV and SRV
-
-The official abandoned-mineshaft mission page uses the abbreviations **PRV** and **SRV**. The records preserve those labels without inventing expanded names.
-
-### Welfare Vehicle
-
-The Welfare Vehicle is verified as prolonged-incident support on the abandoned-mineshaft rescue.
-
-## Maritime resources
-
-### CRV
-
-The official maritime mission pages use the abbreviation **CRV**. Coastguard Rescue Vehicle remains a searchable alias.
-
-### Inland Rescue Boat (Trailer)
-
-The official requirement label identifies this resource as a trailer. The record sets `is_trailer` to `true` but does not guess compatible towing vehicles.
-
-### ILB and ALB
-
-The abbreviations **ILB** and **ALB** remain canonical. Inshore Lifeboat and All-weather Lifeboat are searchable aliases. An `ILB or ALB` requirement is stored as an alternative group.
-
-## Ambulance alternatives
-
-Rapid Response Vehicle and Specialist Paramedic RRV can satisfy the same alternative requirement on the verified HCP Home Visit and Palliative Care Visit missions. The dataset does not treat both as simultaneously required.
+- RRV or Specialist Paramedic RRV;
+- ILB or ALB;
+- Mountain Rescue 4x4 or SAR 4x4;
+- Operational Support Van, Trailer or Personal SAR Vehicle;
+- Police Helicopter or Drone.
 
 ## Machine-readable records
 
+All 39 production records are stored as one JSON object per file under:
+
 ```text
 data/uk/vehicles/
-├── aerial-appliance-truck.json
-├── all-weather-lifeboat.json
-├── atv-carrier.json
-├── coastguard-mud-rescue-unit.json
-├── coastguard-rescue-helicopter.json
-├── coastguard-rescue-vehicle.json
-├── control-van.json
-├── drone.json
-├── fire-engine.json
-├── inland-rescue-boat-trailer.json
-├── inshore-lifeboat.json
-├── mountain-rescue-4x4.json
-├── mud-decontamination-unit.json
-├── operational-support-trailer.json
-├── operational-support-van.json
-├── personal-sar-vehicle.json
-├── police-car.json
-├── police-helicopter.json
-├── prv.json
-├── rapid-response-vehicle.json
-├── rescue-support-vehicle.json
-├── sar-4x4.json
-├── search-dog-unit.json
-├── specialist-paramedic-rrv.json
-├── srv.json
-└── welfare-vehicle.json
 ```
 
-Repository validation fails when a guaranteed, probabilistic or alternative mission requirement references an unknown canonical resource.
+Repository validation fails when a guaranteed, probabilistic, conditional or alternative mission requirement references an unknown canonical resource.
 
 ## Still awaiting verification
 
