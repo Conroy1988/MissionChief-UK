@@ -9,6 +9,8 @@
     "fire_stations": 0,
     "rescue_stations": 0,
     "police_stations": 0,
+    "gp_surgeries": 0,
+    "police_public_order_extensions": 0,
     "other": []
   },
   "requirements": {
@@ -19,10 +21,35 @@
         "quantity": 1,
         "probability": 0.15
       }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "first-valid-canonical-vehicle-id",
+          "second-valid-canonical-vehicle-id"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One vehicle from the listed alternatives satisfies this requirement."
+        ]
+      }
     ]
   },
-  "patients": {},
-  "prisoners": {},
+  "personnel": {
+    "available": [],
+    "required": []
+  },
+  "patients": {
+    "minimum": 0,
+    "maximum": 0,
+    "transport_probability": 0,
+    "critical_care_probability": 0,
+    "specializations": [],
+    "codes": []
+  },
+  "prisoners": {
+    "maximum": 0
+  },
   "reward": {},
   "follow_up_missions": [],
   "expandable_missions": [],
