@@ -1,0 +1,61 @@
+{
+  "id": "792-railway-police-overlay",
+  "name": "Mass influx of sick people - railway station",
+  "aliases": [],
+  "service": "railway_response",
+  "mission_types": ["Ambulance Missions", "Mass Casualty Missions (Specialization)", "Railway Fire Missions"],
+  "poi": ["Train station (regional traffic)"],
+  "variant": {
+    "source_mission_id": 792,
+    "kind": "additive-overlay",
+    "key": "railway-police",
+    "notes": ["The observed page displayed a temporary x2 event multiplier; 8,100 remains the canonical average-credit value."]
+  },
+  "preconditions": {
+    "fire_stations": 11,
+    "rescue_stations": 15,
+    "police_stations": 5,
+    "hart_bases": 1,
+    "mass_casualty_extensions": 1,
+    "railway_police": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "police_car", "quantity": 6},
+      {"resource": "fire_engine", "quantity": 4},
+      {"resource": "rescue_support_vehicle", "quantity": 3},
+      {"resource": "fire_officer", "quantity": 1},
+      {"resource": "prv", "quantity": 1},
+      {"resource": "srv", "quantity": 1},
+      {"resource": "welfare_vehicle", "quantity": 1},
+      {"resource": "eiu", "quantity": 2}
+    ],
+    "probabilistic": [
+      {"resource": "breathing_apparatus_support_unit", "quantity": 1, "probability": 0.1}
+    ]
+  },
+  "personnel": {
+    "available": [{"role": "Railway Police Officer", "quantity": 16}],
+    "required": [
+      {"role": "Railway Police Officer", "quantity": 8},
+      {"role": "Ambulance Officer", "quantity": 1}
+    ]
+  },
+  "patients": {
+    "minimum": 35,
+    "maximum": 70,
+    "transport_probability": 0.25,
+    "critical_care_probability": 0.2,
+    "specializations": ["General Internal"],
+    "codes": ["C-1", "C-2", "C-3", "C-4"]
+  },
+  "reward": {"average_credits": 8100, "event_multiplier_observed": 2},
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  }
+}
