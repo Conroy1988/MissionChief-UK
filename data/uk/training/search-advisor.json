@@ -1,0 +1,17 @@
+{
+  "id": "search_advisor",
+  "name": "Search Advisor",
+  "aliases": [],
+  "service": "search_and_rescue",
+  "qualification_type": "role-qualification",
+  "roles": ["Search Advisor"],
+  "notes": [
+    "Official Search and Rescue missions verify this role as both an available and required personnel type.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/635"]
+  }
+}
