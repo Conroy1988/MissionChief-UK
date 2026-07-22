@@ -2,15 +2,25 @@
   "id": "replace-with-official-mission-id",
   "name": "Replace with exact UK game name",
   "aliases": [],
-  "service": "fire",
+  "service": "replace-with-service-id",
   "mission_types": [],
   "poi": [],
+  "custom_spawn_area": false,
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
   "preconditions": {
     "fire_stations": 0,
     "rescue_stations": 0,
     "police_stations": 0,
+    "recovery_centres": 0,
+    "hart_bases": 0,
     "gp_surgeries": 0,
     "police_public_order_extensions": 0,
+    "coastguard_rescue_stations": 0,
+    "lifeboat_stations": 0,
+    "helicopter_hangars": 0,
+    "mud_decontamination_extensions": 0,
+    "hovercraft_extensions": 0,
     "other": []
   },
   "requirements": {
@@ -25,12 +35,12 @@
     "alternatives": [
       {
         "resources": [
-          "first-valid-canonical-vehicle-id",
-          "second-valid-canonical-vehicle-id"
+          "replace-with-first-canonical-vehicle-id",
+          "replace-with-second-canonical-vehicle-id"
         ],
         "quantity": 1,
         "notes": [
-          "One vehicle from the listed alternatives satisfies this requirement."
+          "One qualifying resource satisfies this requirement."
         ]
       }
     ]
@@ -44,6 +54,7 @@
     "maximum": 0,
     "transport_probability": 0,
     "critical_care_probability": 0,
+    "first_responder_full_care_probability": 0,
     "specializations": [],
     "codes": []
   },
