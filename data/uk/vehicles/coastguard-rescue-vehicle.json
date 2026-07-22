@@ -1,0 +1,22 @@
+{
+  "id": "coastguard_rescue_vehicle",
+  "name": "CRV",
+  "aliases": [
+    "Coastguard Rescue Vehicle"
+  ],
+  "service": "coastguard",
+  "category": "response",
+  "capabilities": [
+    "coastguard_response"
+  ],
+  "notes": [
+    "Official UK mission requirements use the abbreviation CRV for this resource."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/569"
+    ]
+  }
+}
