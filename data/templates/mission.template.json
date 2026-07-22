@@ -19,6 +19,7 @@
     "rescue_stations": 0,
     "police_stations": 0,
     "recovery_centres": 0,
+    "hgv_recovery_extensions": 0,
     "hart_bases": 0,
     "gp_surgeries": 0,
     "police_public_order_extensions": 0,
@@ -51,6 +52,7 @@
         "resource": "replace-with-canonical-vehicle-id",
         "quantity": 1,
         "condition": "replace-with-exact-trigger",
+        "probability": 0.5,
         "notes": []
       }
     ],
@@ -81,6 +83,16 @@
     "codes": []
   },
   "prisoners": {"maximum": 0},
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "car",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": ["Use only when the official page exposes a towing quantity."]
+      }
+    ]
+  },
   "reward": {},
   "follow_up_missions": [],
   "expandable_missions": [],
