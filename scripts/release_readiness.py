@@ -25,7 +25,7 @@ COLLECTIONS = {
     "training": DATA_ROOT / "training",
 }
 
-EXPECTED_TOOL_PAGES = (
+EXPECTED_STATIC_PAGES = (
     "tools/mission-lookup.md",
     "tools/resource-comparison.md",
     "tools/fleet-planner.md",
@@ -33,13 +33,12 @@ EXPECTED_TOOL_PAGES = (
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
-    "releases/v1.0.0.md",
 )
 
 REQUIRED_QA_FILES = (
     "package.json",
     "playwright.config.js",
-    "tests/e2e/site.spec.js",
+    "tests/e2e/live-site.spec.mjs",
     "scripts/audit_links.py",
     "docs/quality-assurance.md",
 )
@@ -96,7 +95,7 @@ def flatten_nav(value: Any) -> Iterable[str]:
             yield from flatten_nav(item)
 
 
-def audit_navigation() -> None:
+def audit_navigation(release_version: str) -> None:
     config = yaml.safe_load(MKDOCS_PATH.read_text(encoding="utf-8"))
     require(isinstance(config, dict), "mkdocs.yml must contain a mapping")
     nav = config.get("nav")
@@ -105,7 +104,9 @@ def audit_navigation() -> None:
     nav_targets = set(flatten_nav(nav))
     for target in nav_targets:
         require((ROOT / "docs" / target).is_file(), f"MkDocs navigation target does not exist: docs/{target}")
-    for target in EXPECTED_TOOL_PAGES:
+
+    required_targets = (*EXPECTED_STATIC_PAGES, f"releases/v{release_version}.md")
+    for target in required_targets:
         require(target in nav_targets, f"Release-critical page is not present in MkDocs navigation: {target}")
 
     javascript = config.get("extra_javascript", [])
@@ -122,8 +123,10 @@ def audit_quality_assets() -> None:
     package = read_json(ROOT / "package.json")
     require(isinstance(package, dict), "package.json must contain an object")
     scripts = package.get("scripts")
-    require(isinstance(scripts, dict) and scripts.get("test:e2e") == "playwright test",
-            "package.json must expose the Playwright test:e2e command")
+    require(
+        isinstance(scripts, dict) and scripts.get("test:e2e") == "playwright test",
+        "package.json must expose the Playwright test:e2e command",
+    )
     dependencies = package.get("devDependencies")
     require(isinstance(dependencies, dict), "package.json must define devDependencies")
     for dependency in ("@playwright/test", "@axe-core/playwright"):
@@ -133,28 +136,36 @@ def audit_quality_assets() -> None:
     for project in PLAYWRIGHT_PROJECTS:
         require(project in config_text, f"Playwright configuration is missing project: {project}")
 
-    suite_text = (ROOT / "tests" / "e2e" / "site.spec.js").read_text(encoding="utf-8")
+    suite_text = (ROOT / "tests" / "e2e" / "live-site.spec.mjs").read_text(encoding="utf-8")
     for marker in ("mission-lookup", "comparison", "fleet-planner", "query-catalogue", "AxeBuilder"):
         require(marker in suite_text, f"Browser acceptance suite is missing coverage marker: {marker}")
 
 
-def audit_exports() -> dict[str, int]:
-    version = read_json(VERSION_PATH)
-    require(isinstance(version, dict), "data/version.json must contain an object")
-    release_version = version.get("version")
+def release_metadata() -> dict[str, Any]:
+    release = read_json(VERSION_PATH)
+    require(isinstance(release, dict), "data/version.json must contain an object")
+    version = release.get("version")
     require(
-        isinstance(release_version, str) and re.fullmatch(r"\d+\.\d+\.\d+", release_version) is not None,
-        "data/version.json must contain a semantic version",
+        isinstance(version, str) and re.fullmatch(r"1\.\d+\.\d+", version) is not None,
+        "data/version.json must contain a v1 semantic version",
     )
-    require(version.get("stage") == 34, "The v1 release must identify Stage 34")
-    require(version.get("status") == "production", "The v1 release status must be production")
+    require(release.get("stage") == 34, "The v1 release must identify Stage 34")
+    require(release.get("status") == "production", "The v1 release status must be production")
+    require(
+        (ROOT / "docs" / "releases" / f"v{version}.md").is_file(),
+        f"Release notes are missing for v{version}",
+    )
+    return release
 
+
+def audit_exports(release: dict[str, Any]) -> dict[str, int]:
+    release_version = release["version"]
     manifest = read_json(OUTPUT_ROOT / "manifest.json")
     require(manifest.get("api_version") == "v1", "Manifest api_version must be v1")
     require(manifest.get("data_version") == release_version, "Manifest data_version does not match data/version.json")
-    require(manifest.get("released_at") == version.get("released_at"), "Manifest release date does not match data/version.json")
-    require(manifest.get("stage") == version.get("stage"), "Manifest stage does not match data/version.json")
-    require(manifest.get("status") == version.get("status"), "Manifest status does not match data/version.json")
+    require(manifest.get("released_at") == release.get("released_at"), "Manifest release date does not match data/version.json")
+    require(manifest.get("stage") == release.get("stage"), "Manifest stage does not match data/version.json")
+    require(manifest.get("status") == release.get("status"), "Manifest status does not match data/version.json")
 
     manifest_collections = manifest.get("collections")
     require(isinstance(manifest_collections, dict), "Manifest collections must be an object")
@@ -166,7 +177,7 @@ def audit_exports() -> dict[str, int]:
         payload = read_json(OUTPUT_ROOT / f"{name}.json")
         require(payload.get("schema_version") == "1", f"{name}.json schema_version must be 1")
         require(payload.get("data_version") == release_version, f"{name}.json data_version mismatch")
-        require(payload.get("released_at") == version.get("released_at"), f"{name}.json release date mismatch")
+        require(payload.get("released_at") == release.get("released_at"), f"{name}.json release date mismatch")
         require(payload.get("collection") == name, f"{name}.json collection name mismatch")
         exported_records = payload.get("records")
         require(isinstance(exported_records, list), f"{name}.json records must be an array")
@@ -219,15 +230,18 @@ def audit_exports() -> dict[str, int]:
     readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
     for name, count in counts.items():
         require(str(count) in readme, f"README does not expose the current {name} count ({count})")
-    require("stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
-            "README stage badge is not synchronized to Stage 34")
-    require(release_version in readme_lower and "static api" in readme_words,
-            f"README does not identify Static API v{release_version}")
-
+    require(
+        "stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
+        "README stage badge is not synchronized to Stage 34",
+    )
+    require(
+        release_version in readme_lower and "static api" in readme_words,
+        f"README does not identify Static API v{release_version}",
+    )
     return counts
 
 
-def audit_built_site(site_dir: Path) -> None:
+def audit_built_site(site_dir: Path, release_version: str) -> None:
     require(site_dir.is_dir(), f"Built site directory does not exist: {site_dir}")
     expected_files = (
         "index.html",
@@ -238,7 +252,7 @@ def audit_built_site(site_dir: Path) -> None:
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
-        "releases/v1.0.0/index.html",
+        f"releases/v{release_version}/index.html",
         "javascripts/intelligence-tools.js",
         "assets/data/v1/manifest.json",
         "assets/data/v1/missions.json",
@@ -263,18 +277,19 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
+        release = release_metadata()
         audit_quality_assets()
-        counts = audit_exports()
-        audit_navigation()
+        counts = audit_exports(release)
+        audit_navigation(release["version"])
         if args.site_dir is not None:
-            audit_built_site(args.site_dir.resolve())
+            audit_built_site(args.site_dir.resolve(), release["version"])
     except (AuditFailure, OSError, yaml.YAMLError) as exc:
         print(f"Release-readiness audit failed: {exc}")
         return 1
 
     summary = ", ".join(f"{name}={count}" for name, count in counts.items())
     site_note = f"; built site={args.site_dir}" if args.site_dir is not None else ""
-    print(f"Release-readiness audit passed: {summary}{site_note}")
+    print(f"Release-readiness audit passed: version={release['version']}, {summary}{site_note}")
     return 0
 
 
