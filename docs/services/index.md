@@ -9,6 +9,7 @@ This section provides operational references for the services currently represen
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
 - [Mountain Rescue](mountain-rescue.md)
+- [Search and Rescue HQ](search-and-rescue.md)
 
 ## Standard service-guide structure
 
@@ -27,4 +28,4 @@ Mature service guides should document:
 
 ## Controlled future expansion
 
-The next service-data batches will extend Search and Rescue HQ operations, active drones, Airfield Operations, Recovery, Bomb Disposal, Railway Police and other specialist or shared-response systems.
+The next service-data batches will extend Airfield Operations, Recovery, Bomb Disposal, Railway Police and other specialist or shared-response systems.
