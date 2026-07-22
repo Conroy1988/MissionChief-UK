@@ -1,0 +1,10 @@
+{
+  "id": "rescue_stairs",
+  "name": "Rescue Stairs",
+  "aliases": [],
+  "service": "airfield_operations",
+  "category": "Aircraft access and rescue",
+  "capabilities": ["aircraft_access"],
+  "notes": ["Aircraft Accident Code F accepts this resource as an alternative to an Aerial Appliance Truck."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/588"]}
+}
