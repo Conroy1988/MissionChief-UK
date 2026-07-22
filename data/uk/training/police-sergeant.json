@@ -1,0 +1,20 @@
+{
+  "id": "police_sergeant",
+  "name": "Police Sergeant",
+  "aliases": [],
+  "service": "police",
+  "qualification_type": "role-qualification",
+  "roles": ["Police Sergeant"],
+  "notes": [
+    "Official Police, Railway and Recovery missions verify this supervisory role.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://www.missionchief.co.uk/einsaetze/782?additive_overlays=a"
+    ]
+  }
+}
