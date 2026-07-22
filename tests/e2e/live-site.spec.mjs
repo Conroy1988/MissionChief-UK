@@ -1,5 +1,11 @@
+import { readFileSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+
+const RELEASE = JSON.parse(
+  readFileSync(new URL("../../data/version.json", import.meta.url), "utf8")
+);
+const RELEASE_VERSION = RELEASE.version;
 
 const CRITICAL_ROUTES = [
   { path: "", heading: "MissionChief UK Command Centre" },
@@ -9,7 +15,8 @@ const CRITICAL_ROUTES = [
   { path: "tools/query-catalogue/", heading: "Natural-Language Query Catalogue" },
   { path: "reference/generated-faq/", heading: "Generated FAQ" },
   { path: "api/", heading: "MissionChief UK Static Data API" },
-  { path: "releases/v1.0.0/", heading: "MissionChief UK v1.0.0" }
+  { path: "quality-assurance/", heading: "Quality Assurance" },
+  { path: `releases/v${RELEASE_VERSION}/`, heading: `MissionChief UK v${RELEASE_VERSION}` }
 ];
 
 const API_FILES = [
@@ -33,6 +40,14 @@ function isFirstParty(url) {
   }
 }
 
+function isIgnorableBrowserRequest(url) {
+  try {
+    return new URL(url).pathname.endsWith("/favicon.ico");
+  } catch {
+    return false;
+  }
+}
+
 function runtimeFailures(page) {
   const failures = [];
   page.on("pageerror", (error) => failures.push(`pageerror: ${error.message}`));
@@ -42,12 +57,12 @@ function runtimeFailures(page) {
     }
   });
   page.on("response", (response) => {
-    if (isFirstParty(response.url()) && response.status() >= 400) {
+    if (isFirstParty(response.url()) && !isIgnorableBrowserRequest(response.url()) && response.status() >= 400) {
       failures.push(`response: ${response.url()} — HTTP ${response.status()}`);
     }
   });
   page.on("requestfailed", (request) => {
-    if (isFirstParty(request.url())) {
+    if (isFirstParty(request.url()) && !isIgnorableBrowserRequest(request.url())) {
       failures.push(`request: ${request.url()} — ${request.failure()?.errorText || "failed"}`);
     }
   });
@@ -151,9 +166,9 @@ test("public API collections are internally consistent", async ({ request }, tes
 
   const manifest = payloads["manifest.json"];
   expect(manifest.api_version).toBe("v1");
-  expect(manifest.data_version).toBe("1.0.0");
-  expect(manifest.stage).toBe(34);
-  expect(manifest.status).toBe("production");
+  expect(manifest.data_version).toBe(RELEASE_VERSION);
+  expect(manifest.stage).toBe(RELEASE.stage);
+  expect(manifest.status).toBe(RELEASE.status);
 
   let total = 0;
   for (const collection of ["missions", "vehicles", "infrastructure", "training"]) {
