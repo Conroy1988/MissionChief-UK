@@ -1,0 +1,24 @@
+{
+  "id": "rapid_response_vehicle",
+  "name": "Rapid Response Vehicle",
+  "aliases": [
+    "RRV"
+  ],
+  "service": "ambulance",
+  "category": "response",
+  "capabilities": [
+    "ambulance_first_response"
+  ],
+  "notes": [
+    "Official UK mission pages identify an RRV as one valid response option for HCP Home Visit and Palliative Care Visit.",
+    "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/693",
+      "https://www.missionchief.co.uk/einsaetze/762"
+    ]
+  }
+}
