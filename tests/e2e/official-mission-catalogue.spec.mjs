@@ -34,6 +34,13 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   await expect(officialCard).toContainText("Official UK catalogue");
   await expect(officialCard).toContainText("Canonical mapping pending");
 
+  const fieldDetails = officialCard.locator("details.mcuk-official-field-details");
+  await expect(fieldDetails).toContainText("Patients, personnel, variants and additional fields");
+  await fieldDetails.locator("summary").click();
+  await expect(fieldDetails.locator("table")).toContainText("additional.expansion_missions_ids");
+  await expect(fieldDetails.locator("table")).toContainText("base_mission_id");
+  await expect(fieldDetails.locator("table")).toContainText("followup_missions_ids");
+
   const officialDetails = officialCard.locator("details.mcuk-official-record-details");
   await expect(officialDetails).toContainText("Complete official catalogue record");
   await officialDetails.locator("summary").click();
