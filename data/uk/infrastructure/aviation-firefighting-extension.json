@@ -1,0 +1,21 @@
+{
+  "id": "aviation_firefighting_extension",
+  "name": "Aviation firefighting Extension",
+  "aliases": ["Aviation Firefighting Extension"],
+  "kind": "extension",
+  "service": "airfield_operations",
+  "parent_buildings": [],
+  "capabilities": ["airfield_firefighting_mission_generation"],
+  "notes": [
+    "The canonical display name preserves the capitalization used by current UK mission pages.",
+    "Parent-building compatibility, price, build time and capacity remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/593"
+    ]
+  }
+}
