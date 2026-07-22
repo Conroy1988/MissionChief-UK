@@ -99,11 +99,13 @@ nav:
       - Buildings & Extensions: reference/buildings-and-extensions.md
       - Training & Personnel: reference/training-and-personnel.md
       - Glossary & Aliases: reference/glossary-and-aliases.md
+      - Structured Data Entry: reference/data-entry-guide.md
       - Data Standard: reference/data-standard.md
   - Planning Tools:
       - Programme: tools/planning-tools.md
   - Community Verification:
       - Verification Workflow: contributing/verification-workflow.md
+      - Research Checklist: contributing/research-checklist.md
       - Contributing: contributing/index.md
   - Project:
       - Roadmap: ROADMAP.md
