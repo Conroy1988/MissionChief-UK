@@ -1,0 +1,36 @@
+{
+  "id": "2-recovery-overlay",
+  "name": "Burning car",
+  "aliases": ["Burning car — Recovery Centre variation"],
+  "service": "fire_and_rescue",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 2,
+    "kind": "additive-overlay",
+    "key": "recovery-centre",
+    "notes": ["Adds Recovery Centre generation and one car to tow to the base Burning car mission."]
+  },
+  "preconditions": {"fire_stations": 1, "recovery_centres": 1},
+  "requirements": {
+    "guaranteed": [{"resource": "fire_engine", "quantity": 1}],
+    "probabilistic": [],
+    "conditional": [],
+    "alternatives": []
+  },
+  "recovery": {
+    "assets": [{"asset_type": "car", "minimum": 1, "maximum": 1}]
+  },
+  "reward": {"average_credits": 670},
+  "follow_up_missions": ["Burning motorbike", "Burning leaves"],
+  "expandable_missions": ["Garage fire", "Caravan fire", "Burning trailer"],
+  "notes": [
+    "The tow requirement is stored separately from dispatched emergency vehicles.",
+    "The source page identifies this as a mission variation of Burning car."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/2?additive_overlays=a"]
+  }
+}
