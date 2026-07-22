@@ -7,7 +7,7 @@
 [![Documentation](https://img.shields.io/badge/OPEN-DOCUMENTATION-1593D1?style=for-the-badge&logo=readthedocs&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
 [![MissionChief UK](https://img.shields.io/badge/REGION-UNITED_KINGDOM-0B1D31?style=for-the-badge)](https://www.missionchief.co.uk/)
 [![Evidence Standard](https://img.shields.io/badge/INTELLIGENCE-EVIDENCE_LED-1675A9?style=for-the-badge&logo=databricks&logoColor=white)](docs/reference/data-standard.md)
-[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_16_MOUNTAIN_RESCUE-D63345?style=for-the-badge)](#current-operational-state)
+[![Project Stage](https://img.shields.io/badge/STATUS-STAGE_17_SAR_HQ-D63345?style=for-the-badge)](#current-operational-state)
 
 [![Deploy MissionChief UK Guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
@@ -19,7 +19,7 @@
 
 **Verified missions · Canonical resources · Emergency-service guides · Strategy · Scripts · Structured data · Community verification**
 
-[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Mountain Rescue**](docs/reference/verified-mission-batch-5.md) · [**Contribute**](docs/contributing/index.md)
+[**Enter Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Verified Vehicles**](docs/reference/verified-vehicle-records.md) · [**Verified Missions**](docs/reference/verified-mission-records.md) · [**Search & Rescue HQ**](docs/reference/verified-mission-batch-6.md) · [**Contribute**](docs/contributing/index.md)
 
 </div>
 
@@ -37,13 +37,13 @@ The project combines practical guides with machine-readable records and explicit
 
 # 📡 Current Operational State
 
-Stage 16 is complete. The production dataset now contains:
+Stage 17 is complete. The production dataset now contains:
 
 ```text
-21 verified mission records
-21 canonical vehicle-resource records
-6 represented operational service groups
-5 published mission-data batches
+23 verified mission records
+26 canonical vehicle-resource records
+7 represented operational service groups
+6 published mission-data batches
 ```
 
 | Domain | State | Delivered capability |
@@ -53,9 +53,10 @@ Stage 16 is complete. The production dataset now contains:
 | **Mission reference** | Live | Guaranteed, probabilistic and alternative resources; variants; patients; personnel; rewards; POIs and preconditions |
 | **Fire and Rescue** | Populated baseline | First-response and technical-rescue records |
 | **Ambulance and HART** | Populated baseline | RRV alternatives, patient mechanics, ATV and specialist-response records |
-| **Police** | Populated baseline | Public-order personnel, vehicles and prisoner data |
+| **Police** | Populated baseline | Public-order personnel, vehicles, air support and prisoner data |
 | **Coastguard and Lifeboat** | Populated baseline | Mud rescue, CRV, trailer boat, ILB/ALB, ocean restrictions and helicopter medivac |
 | **Mountain Rescue** | Populated baseline | Alternative 4×4s, command, search dogs, cave rescue and additive overlays |
+| **Search and Rescue HQ** | Populated baseline | Active-Drone preconditions, SAR command personnel, operational support and aerial-search alternatives |
 | **Cross-reference integrity** | Operational | Mission resource identifiers are checked against the canonical resource dataset |
 | **Community verification** | Operational | Evidence submission, reproduction and editorial controls |
 
@@ -73,7 +74,8 @@ STAGE 13      Referential integrity and expanded Fire data
 STAGE 14      Ambulance and Police patient, personnel and alternative-resource models
 STAGE 15      Coastguard, Lifeboat, trailer and ocean-rescue modelling
 STAGE 16      Mountain Rescue, land-search resources and additive mission variants
-STAGE 17      Next: Search and Rescue HQ and drone-enabled operations
+STAGE 17      Search and Rescue HQ, active drones and missing-person operations
+STAGE 18      Next: Bomb Disposal and EOD operations
 ```
 
 ---
@@ -82,21 +84,17 @@ STAGE 17      Next: Search and Rescue HQ and drone-enabled operations
 
 ## Vehicle catalogue
 
-The canonical resource dataset now contains 21 records across Fire, Ambulance, HART support, Police, Coastguard, Lifeboat, Mountain Rescue and Search and Rescue.
+The canonical resource dataset now contains 26 records across Fire, Ambulance, HART support, Police, Coastguard, Lifeboat, Mountain Rescue and Search and Rescue.
 
-Stage 16 adds:
+Stage 17 adds:
 
-- Mountain Rescue 4x4;
-- SAR 4x4;
-- Control Van;
-- Search Dog Unit;
-- Rescue Support Vehicle;
-- ATV Carrier;
-- PRV;
-- SRV;
-- Welfare Vehicle.
+- Operational Support Van;
+- Operational Support Trailer;
+- Personal SAR Vehicle;
+- Police Helicopter;
+- Drone.
 
-Official labels remain canonical. PRV and SRV are deliberately not expanded because the primary source uses only those abbreviations.
+Official labels remain canonical. Trailer status is recorded without inventing towing compatibility, and the generic Drone record remains shared because official missions use it across more than one specialist service.
 
 [Open verified vehicle records →](docs/reference/verified-vehicle-records.md)
 
@@ -107,9 +105,10 @@ Mission records can represent:
 - guaranteed vehicle requirements;
 - probability-based vehicles and personnel;
 - alternative groups where one qualifying resource satisfies the requirement;
-- building, extension, hangar and station preconditions;
+- building, extension, hangar, HQ and active-equipment preconditions;
 - points of interest and custom spawn areas;
 - patient, prisoner and personnel behaviour;
+- exact required, available, average-minimum and probabilistic personnel states;
 - environment restrictions and destination hand-offs;
 - base missions, additive overlays and mission variations;
 - base rewards and temporary multiplier observations;
@@ -119,55 +118,58 @@ Mission records can represent:
 [Open Fire expansion batch →](docs/reference/verified-mission-batch-2.md)  
 [Open Ambulance and Police batch →](docs/reference/verified-mission-batch-3.md)  
 [Open Coastguard and Lifeboat batch →](docs/reference/verified-mission-batch-4.md)  
-[Open Mountain Rescue batch →](docs/reference/verified-mission-batch-5.md)
+[Open Mountain Rescue batch →](docs/reference/verified-mission-batch-5.md)  
+[Open Search and Rescue HQ batch →](docs/reference/verified-mission-batch-6.md)
 
 ---
 
-# ⛰️ Stage 16 Mountain Rescue Milestone
+# 🔎 Stage 17 Search and Rescue HQ Milestone
 
-Stage 16 introduces the first structured Mountain Rescue service model.
+Stage 17 introduces the first structured Search and Rescue HQ service model.
 
-## Alternative off-road response
+## Three independent alternative groups
+
+The verified missing-person missions require:
 
 ```text
-Mountain Rescue 4x4
-        OR
-SAR 4x4
+1 Operational Support Van
+OR Operational Support Trailer
+OR Personal SAR Vehicle
+
+1 Police Helicopter
+OR Drone
+
+2 Mountain Rescue 4x4s
+OR SAR 4x4s
+OR a valid mixture
 ```
 
-The quantity is the total number of qualifying 4x4s, not the number of each type.
+Each group satisfies a different operational function. They must not be merged or treated as requiring every listed resource.
 
-## Mission variants
+## Active Drone precondition
 
-The guide now separates overlay-only requirements from base missions:
+The missions require one active Drone before generation. This is separate from the incident aerial-search requirement, which can be satisfied by a Police Helicopter or Drone.
 
-```json
-{
-  "id": "755-hart-overlay",
-  "variant": {
-    "source_mission_id": 755,
-    "kind": "additive-overlay",
-    "key": "hart-atv-carrier"
-  }
-}
-```
+## Personnel states
 
-This prevents an ATV Carrier, Coastguard Rescue Helicopter or future drone requirement from being incorrectly applied to the base mission.
+The verified records distinguish:
 
-## Specialist personnel
+- 2 Search Advisors available;
+- 4 SAR Commanders available;
+- 1 Search Advisor required;
+- 2 SAR Commanders required;
+- average minimum 10 Search Technicians.
 
-The verified batch includes:
+The Search Technician value is stored as `average_minimum`; it is not presented as an exact guaranteed incident headcount.
 
-- Operational Team Leaders;
-- Search Advisors;
-- Cave Rescue Specialists;
-- Fire Officers;
-- Ambulance Officers;
-- Police Sergeants.
+## Verified missions
 
-Available personnel, incident requirements and probability-based personnel are stored separately.
+| ID | Mission | Police Cars | Average reward |
+|---:|---|---:|---:|
+| `635` | High Risk Missing Person | 3 | 15,275 |
+| `636` | Very High Risk Missing Person | 5 | 18,750 |
 
-[Open the Mountain Rescue service guide →](docs/services/mountain-rescue.md)
+[Open the Search and Rescue HQ guide →](docs/services/search-and-rescue.md)
 
 ---
 
@@ -181,6 +183,7 @@ Available personnel, incident requirements and probability-based personnel are s
 | **Verified Missions** | Current cross-service mission records | [Open records →](docs/reference/verified-mission-records.md) |
 | **Maritime Operations** | Coastguard, Lifeboat and Ocean Rescue | [Open Stage 15 batch →](docs/reference/verified-mission-batch-4.md) |
 | **Mountain Rescue** | 4×4 alternatives, search resources and cave rescue | [Open Stage 16 batch →](docs/reference/verified-mission-batch-5.md) |
+| **Search and Rescue HQ** | Drone-enabled missing-person operations | [Open Stage 17 batch →](docs/reference/verified-mission-batch-6.md) |
 | **Scripts & Tools** | Compatibility, installation and recovery | [Inspect tools →](docs/scripts/index.md) |
 | **Community Verification** | Submit and reproduce operational intelligence | [Open workflow →](docs/contributing/verification-workflow.md) |
 
