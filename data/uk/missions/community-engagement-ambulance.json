@@ -1,0 +1,36 @@
+{
+  "id": 522,
+  "name": "Community Engagement (Ambulance)",
+  "aliases": [],
+  "service": "ambulance",
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "poi": [
+    "School",
+    "Mall"
+  ],
+  "preconditions": {
+    "rescue_stations": 1
+  },
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "notes": [
+    "Official UK mission directory confirms the mission name, POIs, average credits and one required Rescue Station.",
+    "Vehicle requirements are intentionally not populated because the individual mission page was not available during this verification pass."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/522",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  }
+}
