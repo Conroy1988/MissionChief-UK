@@ -1,0 +1,10 @@
+{
+  "id": "airfield_firefighting_command_vehicle",
+  "name": "Airfield Firefighting Command Vehicle",
+  "aliases": [],
+  "service": "airfield_operations",
+  "category": "Command",
+  "capabilities": ["airfield_firefighting_command"],
+  "notes": ["Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/590"]}
+}
