@@ -1,0 +1,26 @@
+{
+  "id": 833,
+  "name": "Unexploded WW2 Ordnance in Marina",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "mission_types": ["Bomb Disposal Missions"],
+  "poi": ["Marina"],
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 6,
+    "police_stations": 20,
+    "coastguard_rescue_stations": 9,
+    "bomb_disposal_hqs": 3,
+    "bomb_disposal_marine_unit_extensions": 2,
+    "hart_bases": 1,
+    "active_drones": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 17000},
+  "notes": ["The official mission directory verifies the populated fields. No unavailable response-table data has been inferred."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+  }
+}
