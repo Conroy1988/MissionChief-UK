@@ -59,8 +59,12 @@ jobs:
       - name: Install browser-test dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Validate intelligence-tool JavaScript syntax
-        run: node --check docs/javascripts/intelligence-tools.js
+      - name: Validate all JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
 
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium

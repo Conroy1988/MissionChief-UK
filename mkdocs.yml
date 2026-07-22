@@ -1,5 +1,5 @@
-site_name: MissionChief UK — The Complete Guide
-site_description: Independent searchable guide and reference database for MissionChief UK
+site_name: MissionChief UK — Operations Intelligence Platform
+site_description: Independent verified command knowledgebase, planning suite and static data API for MissionChief UK
 site_url: https://conroy1988.github.io/MissionChief-UK/
 repo_url: https://github.com/Conroy1988/MissionChief-UK
 repo_name: Conroy1988/MissionChief-UK
@@ -11,38 +11,51 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
+  - javascripts/home-command.js
   - javascripts/intelligence-tools.js
 
 theme:
   name: material
   language: en
+  logo: assets/brand/command-mark.svg
+  favicon: assets/brand/command-mark.svg
+  font: false
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
+    - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.path
     - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.suggest
     - search.highlight
     - search.share
     - content.action.edit
+    - content.action.view
     - content.code.copy
+    - content.tooltips
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: amber
+      primary: custom
+      accent: red
       toggle:
         icon: material/weather-night
-        name: Use dark mode
+        name: Switch to dark command mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: amber
+      primary: custom
+      accent: red
       toggle:
         icon: material/weather-sunny
-        name: Use light mode
+        name: Switch to light command mode
 
 plugins:
   - search:
@@ -70,6 +83,16 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Conroy1988/MissionChief-UK
+      name: MissionChief UK on GitHub
+    - icon: fontawesome/solid/globe
+      link: https://conroy1988.github.io/MissionChief-UK/
+      name: MissionChief UK Command Centre
+
 nav:
   - Command Centre: index.md
   - Start Here:
@@ -82,8 +105,8 @@ nav:
   - Emergency Services:
       - Services Index: services/index.md
       - Fire & Rescue: services/fire-and-rescue.md
-      - Ambulance: services/ambulance.md
-      - Police: services/police.md
+      - Ambulance & HART: services/ambulance.md
+      - Police & Public Order: services/police.md
       - Coastguard & Lifeboat: services/coastguard-and-lifeboat.md
       - Mountain Rescue: services/mountain-rescue.md
       - Search & Rescue HQ: services/search-and-rescue.md
@@ -96,38 +119,42 @@ nav:
       - Account Progression: strategy/account-progression.md
       - Station Placement: strategy/station-placement.md
   - Alliances:
-      - Alliance Index: alliances/index.md
+      - Alliance Operations: alliances/index.md
   - Scripts & Tools:
       - Tool Index: scripts/index.md
       - Compatibility Centre: scripts/compatibility-centre.md
       - Installation & Recovery: scripts/installation-and-recovery.md
   - Reference Database:
-      - Reference Index: reference/index.md
-      - Vehicle Catalogue: reference/vehicle-catalogue.md
-      - Verified Vehicle Records: reference/verified-vehicle-records.md
-      - Vehicle Economics & Staffing: reference/vehicle-economics-and-staffing.md
-      - Mission Database: reference/mission-database.md
-      - Verified Mission Records: reference/verified-mission-records.md
-      - Verified Mission Batch 2: reference/verified-mission-batch-2.md
-      - Verified Mission Batch 3: reference/verified-mission-batch-3.md
-      - Verified Mission Batch 4: reference/verified-mission-batch-4.md
-      - Verified Mission Batch 5: reference/verified-mission-batch-5.md
-      - Verified Mission Batch 6: reference/verified-mission-batch-6.md
-      - Verified Mission Batch 7: reference/verified-mission-batch-7.md
-      - Verified Mission Batch 8: reference/verified-mission-batch-8.md
-      - Verified Mission Batch 9: reference/verified-mission-batch-9.md
-      - Verified Mission Batch 10: reference/verified-mission-batch-10.md
-      - Verified Mission Batch 11: reference/verified-mission-batch-11.md
-      - Verified Mission Batch 12: reference/verified-mission-batch-12.md
-      - Verified Mission Batch 13: reference/verified-mission-batch-13.md
-      - Buildings & Extensions: reference/buildings-and-extensions.md
-      - Specialist Infrastructure Batch 2: reference/verified-infrastructure-batch-2.md
-      - Training & Personnel: reference/training-and-personnel.md
-      - Generated FAQ: reference/generated-faq.md
-      - Generated Data Exports: reference/data-exports.md
-      - Glossary & Aliases: reference/glossary-and-aliases.md
-      - Structured Data Entry: reference/data-entry-guide.md
-      - Data Standard: reference/data-standard.md
+      - Command Index: reference/index.md
+      - Mission Intelligence:
+          - Mission Database: reference/mission-database.md
+          - Verified Mission Records: reference/verified-mission-records.md
+          - Mission Batch 2: reference/verified-mission-batch-2.md
+          - Mission Batch 3: reference/verified-mission-batch-3.md
+          - Mission Batch 4: reference/verified-mission-batch-4.md
+          - Mission Batch 5: reference/verified-mission-batch-5.md
+          - Mission Batch 6: reference/verified-mission-batch-6.md
+          - Mission Batch 7: reference/verified-mission-batch-7.md
+          - Mission Batch 8: reference/verified-mission-batch-8.md
+          - Mission Batch 9: reference/verified-mission-batch-9.md
+          - Mission Batch 10: reference/verified-mission-batch-10.md
+          - Mission Batch 11: reference/verified-mission-batch-11.md
+          - Mission Batch 12: reference/verified-mission-batch-12.md
+          - Mission Batch 13: reference/verified-mission-batch-13.md
+      - Deployable Resources:
+          - Vehicle Catalogue: reference/vehicle-catalogue.md
+          - Verified Vehicle Records: reference/verified-vehicle-records.md
+          - Vehicle Economics & Staffing: reference/vehicle-economics-and-staffing.md
+      - Infrastructure:
+          - Buildings & Extensions: reference/buildings-and-extensions.md
+          - Specialist Infrastructure Batch 2: reference/verified-infrastructure-batch-2.md
+      - Personnel & Training: reference/training-and-personnel.md
+      - Data & Publishing:
+          - Generated FAQ: reference/generated-faq.md
+          - Generated Data Exports: reference/data-exports.md
+          - Glossary & Aliases: reference/glossary-and-aliases.md
+          - Structured Data Entry: reference/data-entry-guide.md
+          - Data Standard: reference/data-standard.md
   - Intelligence Tools:
       - Programme: tools/planning-tools.md
       - Mission Lookup: tools/mission-lookup.md
