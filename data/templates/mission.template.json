@@ -1,5 +1,5 @@
 {
-  "id": "replace-with-official-mission-id",
+  "id": "replace-with-official-mission-id-or-variant-id",
   "name": "Replace with exact UK game name",
   "aliases": [],
   "service": "replace-with-service-id",
@@ -8,6 +8,12 @@
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
   "handoff_destinations": [],
+  "variant": {
+    "source_mission_id": "replace-with-official-mission-id",
+    "kind": "base",
+    "key": "base",
+    "notes": []
+  },
   "preconditions": {
     "fire_stations": 0,
     "rescue_stations": 0,
@@ -21,6 +27,9 @@
     "helicopter_hangars": 0,
     "mud_decontamination_extensions": 0,
     "hovercraft_extensions": 0,
+    "mountain_rescue_stations": 0,
+    "search_and_rescue_hqs": 0,
+    "active_drones": 0,
     "other": []
   },
   "requirements": {
@@ -39,15 +48,20 @@
           "replace-with-second-canonical-vehicle-id"
         ],
         "quantity": 1,
-        "notes": [
-          "One qualifying resource satisfies this requirement."
-        ]
+        "notes": ["One qualifying resource satisfies this requirement."]
       }
     ]
   },
   "personnel": {
     "available": [],
-    "required": []
+    "required": [],
+    "probabilistic": [
+      {
+        "role": "Replace with exact role label",
+        "quantity": 1,
+        "probability": 0.25
+      }
+    ]
   },
   "patients": {
     "minimum": 0,
@@ -58,9 +72,7 @@
     "specializations": [],
     "codes": []
   },
-  "prisoners": {
-    "maximum": 0
-  },
+  "prisoners": {"maximum": 0},
   "reward": {},
   "follow_up_missions": [],
   "expandable_missions": [],
@@ -68,8 +80,6 @@
   "verification": {
     "status": "review-required",
     "checked_at": "2026-07-22",
-    "sources": [
-      "Replace with official or reproducible source"
-    ]
+    "sources": ["Replace with official or reproducible source"]
   }
 }
