@@ -1,0 +1,10 @@
+{
+  "id": "airfield_operations_vehicle",
+  "name": "Airfield Operations Vehicle",
+  "aliases": [],
+  "service": "airfield_operations",
+  "category": "Airfield operations",
+  "capabilities": ["airfield_operations"],
+  "notes": ["Verified as a dedicated response requirement on Aircraft Accident Codes C, D and F."],
+  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/589"]}
+}
