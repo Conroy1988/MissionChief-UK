@@ -52,7 +52,33 @@ def mission_resource_references(path: Path, record: dict[str, Any]) -> list[tupl
         for entry in entries:
             if isinstance(entry, dict) and isinstance(entry.get("resource"), str):
                 references.append((path, requirement_type, entry["resource"]))
+
+    alternatives = requirements.get("alternatives", [])
+    if isinstance(alternatives, list):
+        for index, entry in enumerate(alternatives):
+            if not isinstance(entry, dict):
+                continue
+            resources = entry.get("resources", [])
+            if not isinstance(resources, list):
+                continue
+            for resource in resources:
+                if isinstance(resource, str):
+                    references.append((path, f"alternatives.{index}", resource))
+
     return references
+
+
+def validate_mission_semantics(path: Path, record: dict[str, Any]) -> list[str]:
+    failures: list[str] = []
+    patients = record.get("patients")
+    if isinstance(patients, dict):
+        minimum = patients.get("minimum")
+        maximum = patients.get("maximum")
+        if isinstance(minimum, int) and isinstance(maximum, int) and minimum > maximum:
+            failures.append(
+                f"{path.relative_to(ROOT)} [patients]: minimum '{minimum}' exceeds maximum '{maximum}'"
+            )
+    return failures
 
 
 def main() -> int:
@@ -109,6 +135,7 @@ def main() -> int:
 
         if kind in {"mission", "missions"} and isinstance(record, dict):
             mission_resources.extend(mission_resource_references(path, record))
+            failures.extend(validate_mission_semantics(path, record))
 
     for path, requirement_type, resource_id in mission_resources:
         if resource_id not in vehicle_ids:
