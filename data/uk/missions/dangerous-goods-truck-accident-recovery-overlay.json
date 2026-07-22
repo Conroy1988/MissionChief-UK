@@ -1,0 +1,26 @@
+{
+  "id": "322-hgv-recovery-overlay",
+  "name": "Dangerous goods truck accident",
+  "aliases": [],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 322,
+    "kind": "additive-overlay",
+    "key": "hgv-recovery"
+  },
+  "preconditions": {
+    "fire_stations": 11,
+    "rescue_stations": 1,
+    "hgv_recovery_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 2500},
+  "notes": ["The official directory verifies the HGV Recovery generation state. Exact response, hazardous-load and towing details remain unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/322?additive_overlays=a"]
+  }
+}
