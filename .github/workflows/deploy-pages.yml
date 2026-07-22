@@ -51,8 +51,12 @@ jobs:
       - name: Audit repository and generated API
         run: python scripts/release_readiness.py
 
-      - name: Validate intelligence-tool JavaScript syntax
-        run: node --check docs/javascripts/intelligence-tools.js
+      - name: Validate all JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
 
       - name: Build documentation strictly
         run: python -m mkdocs build --strict --site-dir site
