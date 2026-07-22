@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: validate-${{ github.ref }}
@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -31,8 +34,10 @@ jobs:
         run: |
           python -m py_compile scripts/import_official_uk_missions.py
           python -m py_compile scripts/publish_official_mission_catalogue.py
+          python -m py_compile scripts/compact_official_mission_catalogue.py
           python scripts/import_official_uk_missions.py
           python scripts/publish_official_mission_catalogue.py
+          python scripts/compact_official_mission_catalogue.py
 
       - name: Verify official UK catalogue coverage
         if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
@@ -50,12 +55,30 @@ jobs:
           assert catalogue['count'] >= 100
           assert coverage['official_count'] == catalogue['count']
           assert coverage['matched_count'] + coverage['official_only_count'] == coverage['official_count']
+          assert (source / 'einsaetze.raw.json').stat().st_size < 1_000_000
+          assert (public / 'uk-missions.json').stat().st_size < 1_000_000
+          assert not (source / 'official-missions.json').exists()
           print(
               f"Official UK catalogue: {catalogue['count']} missions; "
               f"{coverage['matched_count']} canonical matches; "
               f"{coverage['official_only_count']} awaiting canonical mapping"
           )
           PY
+
+      - name: Commit validated catalogue to expansion branch
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/uk-mission-catalogue-expansion'
+        shell: bash
+        run: |
+          if git diff --quiet -- data/sources/missionchief-uk docs/assets/data/official; then
+            echo "Validated official catalogue is already committed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sources/missionchief-uk docs/assets/data/official
+          git commit -m "Refresh official UK mission catalogue"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
