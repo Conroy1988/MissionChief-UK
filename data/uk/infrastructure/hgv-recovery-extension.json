@@ -1,0 +1,25 @@
+{
+  "id": "hgv_recovery_extension",
+  "name": "HGV Recovery Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "recovery",
+  "parent_buildings": [],
+  "capabilities": [
+    "hgv_recovery_mission_generation",
+    "truck_towing"
+  ],
+  "notes": [
+    "Official UK mission pages use this extension as a generation precondition for truck and HGV recovery variants.",
+    "The compatible parent building, purchase cost, build time and capacity are not populated without direct building-interface evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/13?additive_overlays=a",
+      "https://www.missionchief.co.uk/einsaetze/778",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  }
+}
