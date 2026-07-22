@@ -8,6 +8,7 @@
   const indexUrl = new URL("assets/data/v1/search-index.json", siteRoot);
   let indexPromise;
   let lastFocused;
+  let openPalette;
 
   const collectionLabels = {
     missions: "Missions",
@@ -50,6 +51,20 @@
     return indexPromise;
   };
 
+  function ensureHeaderLauncher() {
+    if (document.querySelector(".mcuk-command-launcher")) return;
+    const launcher = document.createElement("button");
+    launcher.className = "mcuk-command-launcher";
+    launcher.type = "button";
+    launcher.dataset.mcukPaletteOpen = "";
+    launcher.setAttribute("aria-label", "Open MissionChief UK command palette");
+    const shortcut = /Mac|iPhone|iPad/.test(navigator.platform) ? "⌘K" : "Ctrl K";
+    launcher.innerHTML = `<span>Search command data</span><kbd>${shortcut}</kbd>`;
+    const headerSource = document.querySelector(".md-header__source");
+    if (headerSource) headerSource.before(launcher);
+    else document.querySelector(".md-header__inner")?.appendChild(launcher);
+  }
+
   function createPalette() {
     if (document.querySelector("[data-mcuk-palette]")) return;
 
@@ -58,10 +73,10 @@
     palette.dataset.mcukPalette = "";
     palette.dataset.open = "false";
     palette.innerHTML = `
-      <section class="mcuk-palette__dialog" role="dialog" aria-modal="true" aria-labelledby="mcuk-palette-title">
+      <section class="mcuk-palette__dialog" role="dialog" aria-modal="true" aria-label="MissionChief UK command search">
         <div class="mcuk-palette__search">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-          <input id="mcuk-palette-title" type="search" autocomplete="off" spellcheck="false" placeholder="Search missions, resources, buildings or qualifications…" aria-label="Search verified MissionChief UK data">
+          <input type="search" autocomplete="off" spellcheck="false" placeholder="Search missions, resources, buildings or qualifications…" aria-label="Search verified MissionChief UK data">
           <button class="mcuk-palette__close" type="button" aria-label="Close command palette">ESC</button>
         </div>
         <div class="mcuk-palette__filters" role="group" aria-label="Filter command results">
@@ -71,28 +86,27 @@
           <button class="mcuk-palette__filter" type="button" data-filter="infrastructure" aria-pressed="false">Infrastructure</button>
           <button class="mcuk-palette__filter" type="button" data-filter="training" aria-pressed="false">Qualifications</button>
         </div>
-        <div class="mcuk-palette__status"><span data-palette-status>Loading verified index…</span><strong>Read-only intelligence</strong></div>
+        <div class="mcuk-palette__status" aria-live="polite"><span data-palette-status>Loading verified index…</span><strong>Read-only intelligence</strong></div>
         <div class="mcuk-palette__results" role="listbox" aria-label="Verified data results" data-palette-results></div>
         <div class="mcuk-palette__footer"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span><span><kbd>Ctrl</kbd><kbd>K</kbd> toggle</span></div>
       </section>`;
     document.body.appendChild(palette);
-
-    const launcher = document.createElement("button");
-    launcher.className = "mcuk-command-launcher";
-    launcher.type = "button";
-    launcher.dataset.mcukPaletteOpen = "";
-    launcher.setAttribute("aria-label", "Open MissionChief UK command palette");
-    launcher.innerHTML = `<span>Search command data</span><kbd>${navigator.platform.includes("Mac") ? "⌘K" : "Ctrl K"}</kbd>`;
-
-    const headerSource = document.querySelector(".md-header__source");
-    if (headerSource) headerSource.before(launcher);
-    else document.querySelector(".md-header__inner")?.appendChild(launcher);
   }
 
   function initPalette() {
     createPalette();
+    ensureHeaderLauncher();
     const palette = document.querySelector("[data-mcuk-palette]");
-    if (!palette || palette.dataset.ready === "true") return;
+    if (!palette) return;
+
+    if (palette.dataset.ready === "true") {
+      document.querySelectorAll("[data-mcuk-palette-open]").forEach((button) => {
+        if (button.dataset.mcukPaletteBound === "true") return;
+        button.dataset.mcukPaletteBound = "true";
+        button.addEventListener("click", () => openPalette?.());
+      });
+      return;
+    }
     palette.dataset.ready = "true";
 
     const input = palette.querySelector("input");
@@ -151,7 +165,7 @@
       activeIndex = 0;
     };
 
-    const open = async () => {
+    openPalette = async () => {
       if (palette.dataset.open === "true") return;
       lastFocused = document.activeElement;
       palette.dataset.open = "true";
@@ -177,7 +191,10 @@
       if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
     };
 
-    document.querySelectorAll("[data-mcuk-palette-open]").forEach((button) => button.addEventListener("click", open));
+    document.querySelectorAll("[data-mcuk-palette-open]").forEach((button) => {
+      button.dataset.mcukPaletteBound = "true";
+      button.addEventListener("click", openPalette);
+    });
     palette.querySelector(".mcuk-palette__close").addEventListener("click", close);
     palette.addEventListener("click", (event) => { if (event.target === palette) close(); });
     input.addEventListener("input", render);
@@ -205,7 +222,7 @@
       const slash = event.key === "/" && !editable && !event.ctrlKey && !event.metaKey && !event.altKey;
       if (!shortcut && !slash) return;
       event.preventDefault();
-      if (palette.dataset.open === "true") close(); else open();
+      if (palette.dataset.open === "true") close(); else openPalette();
     });
   }
 
