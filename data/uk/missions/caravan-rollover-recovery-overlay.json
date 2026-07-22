@@ -1,0 +1,26 @@
+{
+  "id": "466-hgv-recovery-overlay",
+  "name": "Caravan roll over RTC",
+  "aliases": ["Caravan rollover RTC"],
+  "service": "recovery",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "variant": {
+    "source_mission_id": 466,
+    "kind": "additive-overlay",
+    "key": "hgv-recovery"
+  },
+  "preconditions": {
+    "fire_stations": 1,
+    "police_stations": 4,
+    "hgv_recovery_extensions": 1
+  },
+  "requirements": {"guaranteed": []},
+  "reward": {"average_credits": 5300},
+  "notes": ["The official directory verifies the HGV Recovery generation state and reward. The response and towing table remains unavailable."],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/466?additive_overlays=a"]
+  }
+}
