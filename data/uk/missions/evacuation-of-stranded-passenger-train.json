@@ -26,7 +26,6 @@
       {"resource": "prv", "quantity": 2},
       {"resource": "srv", "quantity": 2},
       {"resource": "welfare_vehicle", "quantity": 1},
-      {"resource": "operational_team_leader", "quantity": 1},
       {"resource": "control_van", "quantity": 1}
     ],
     "alternatives": [
@@ -44,7 +43,8 @@
     "required": [
       {"role": "Railway Police Officer", "quantity": 4},
       {"role": "Mobile Operations Manager", "quantity": 1},
-      {"role": "Police Sergeant", "quantity": 1}
+      {"role": "Police Sergeant", "quantity": 1},
+      {"role": "Operational Team Leader", "quantity": 1}
     ]
   },
   "patients": {
