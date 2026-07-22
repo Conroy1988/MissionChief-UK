@@ -1,6 +1,6 @@
 {
   "name": "missionchief-uk-guide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Browser acceptance tests for the MissionChief UK guide and static API.",
   "type": "module",
