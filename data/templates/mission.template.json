@@ -29,6 +29,8 @@
     "hovercraft_extensions": 0,
     "mountain_rescue_stations": 0,
     "search_and_rescue_hqs": 0,
+    "bomb_disposal_hqs": 0,
+    "bomb_disposal_marine_unit_extensions": 0,
     "active_drones": 0,
     "other": []
   },
@@ -56,13 +58,7 @@
     "available": [],
     "required": [],
     "average_minimum": [],
-    "probabilistic": [
-      {
-        "role": "Replace with exact role label",
-        "quantity": 1,
-        "probability": 0.25
-      }
-    ]
+    "probabilistic": []
   },
   "patients": {
     "minimum": 0,
