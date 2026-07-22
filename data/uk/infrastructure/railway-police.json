@@ -1,0 +1,21 @@
+{
+  "id": "railway_police",
+  "name": "Railway Police",
+  "aliases": [],
+  "kind": "building",
+  "service": "police",
+  "parent_buildings": [],
+  "capabilities": ["railway_police_mission_generation"],
+  "notes": [
+    "Official UK mission pages use Railway Police as a countable mission-generation precondition.",
+    "The current source confirms the entity name and generation relationship; cost, capacity, construction time and precise building-interface classification remain unpublished."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc"
+    ]
+  }
+}
