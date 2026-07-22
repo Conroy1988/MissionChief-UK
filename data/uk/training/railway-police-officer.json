@@ -1,0 +1,17 @@
+{
+  "id": "railway_police_officer",
+  "name": "Railway Police Officer",
+  "aliases": [],
+  "service": "police",
+  "qualification_type": "role-qualification",
+  "roles": ["Railway Police Officer"],
+  "notes": [
+    "Official railway missions verify this operational role.",
+    "The current sources do not verify the associated course name, duration or prerequisites; those fields are intentionally omitted."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/807"]
+  }
+}
