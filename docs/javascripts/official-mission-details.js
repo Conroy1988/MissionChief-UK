@@ -1,11 +1,6 @@
 (() => {
   "use strict";
 
-  const script = document.currentScript;
-  const siteRoot = script && script.src
-    ? script.src.replace(/javascripts\/official-mission-details\.js(?:\?.*)?$/, "")
-    : `${window.location.origin}/MissionChief-UK/`;
-  const catalogueUrl = new URL("assets/data/official/uk-missions.json", siteRoot);
   const CORE_FIELDS = new Set([
     "id",
     "name",
@@ -27,11 +22,11 @@
 
   const loadRecords = () => {
     if (!recordsPromise) {
-      recordsPromise = fetch(catalogueUrl, { cache: "no-cache" })
-        .then((response) => {
-          if (!response.ok) throw new Error(`Unable to load official mission details (${response.status})`);
-          return response.json();
-        })
+      const catalogue = window.MCUKOfficialCatalogue;
+      if (!catalogue || typeof catalogue.load !== "function") {
+        return Promise.reject(new Error("Official UK mission catalogue loader is unavailable"));
+      }
+      recordsPromise = catalogue.load()
         .then((payload) => new Map((payload.records || []).map((record) => [String(record.id), record])));
     }
     return recordsPromise;
@@ -65,14 +60,7 @@
       .sort(([left], [right]) => left.localeCompare(right));
   };
 
-  const createAdditionalDetails = (record) => {
-    const entries = additionalEntries(record);
-    if (!entries.length) return null;
-
-    const details = document.createElement("details");
-    details.className = "mcuk-official-field-details";
-    const summary = document.createElement("summary");
-    summary.textContent = "Patients, personnel, variants and additional fields";
+  const buildAdditionalTable = (entries) => {
     const table = document.createElement("table");
     const thead = document.createElement("thead");
     thead.innerHTML = "<tr><th>Official field</th><th>Published value</th></tr>";
@@ -91,7 +79,26 @@
     });
 
     table.append(thead, tbody);
-    details.append(summary, table);
+    return table;
+  };
+
+  const createAdditionalDetails = (record) => {
+    const entries = additionalEntries(record);
+    if (!entries.length) return null;
+
+    const details = document.createElement("details");
+    details.className = "mcuk-official-field-details";
+    const summary = document.createElement("summary");
+    summary.textContent = "Patients, personnel, variants and additional fields";
+    const placeholder = document.createElement("p");
+    placeholder.textContent = "Open to load additional published fields…";
+    details.append(summary, placeholder);
+    details.addEventListener("toggle", () => {
+      if (details.open && details.dataset.loaded !== "true") {
+        placeholder.replaceWith(buildAdditionalTable(entries));
+        details.dataset.loaded = "true";
+      }
+    });
     return details;
   };
 
