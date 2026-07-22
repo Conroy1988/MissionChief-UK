@@ -18,7 +18,7 @@
 
 **Verified operational data · Service doctrine · Interactive planning · Evidence governance · Versioned public exports**
 
-[**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Release Notes**](docs/releases/v1.0.0.md) · [**Contribute Evidence**](docs/contributing/index.md)
+[**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.0.md) · [**Contribute Evidence**](docs/contributing/index.md)
 
 </div>
 
@@ -62,6 +62,7 @@ The numbered core delivery programme is complete through **Stage 34**, with cont
 | **Service groups** | **11** | Fire, Ambulance, Police, maritime, mountain, SAR, EOD, airfield, recovery and railway operations |
 | **Mission batches** | **13** | Controlled publication units spanning the current verified catalogue |
 | **Public interface** | **API v1** | Manifest, collections, search index, generated FAQ and OpenAPI contract |
+| **Quality assurance** | **Cross-browser** | Built-site Chromium plus deployed Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance |
 
 > [!IMPORTANT]
 > **Verified applies only to populated fields.** Missing data remains unknown. It is never silently converted into zero, false or “not required”.
@@ -89,6 +90,7 @@ STAGES 28–34  Public exports, intelligence tools, generated FAQ and Static Dat
 | **Verified Mission Records** | Exposes the published cross-service mission catalogue | [Browse →](https://conroy1988.github.io/MissionChief-UK/reference/verified-mission-records/) |
 | **Verified Vehicle Records** | Exposes canonical deployable-resource records | [Browse →](https://conroy1988.github.io/MissionChief-UK/reference/verified-vehicle-records/) |
 | **Static Data API** | Publishes versioned, read-only JSON collections and an OpenAPI description | [Read contract →](https://conroy1988.github.io/MissionChief-UK/api/) |
+| **Quality Assurance** | Documents desktop, mobile, accessibility and deployed-site acceptance coverage | [Review gates →](docs/quality-assurance.md) |
 
 All interactive tools are browser-side and read-only. They consume the same validated exports used by the documentation and do **not** access, modify or authenticate against a MissionChief account.
 
@@ -239,9 +241,13 @@ JavaScript syntax validation
         ↓
 MkDocs strict build and built-site audit
         ↓
+Chromium acceptance against the built site
+        ↓
 GitHub Pages deployment
         ↓
-Live site and public API smoke test
+Live HTTP and public API smoke test
+        ↓
+Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance
         ↓
 Versioned release
 ```
@@ -250,6 +256,8 @@ Local verification:
 
 ```bash
 pip install -r requirements.txt
+npm install
+npx playwright install --with-deps
 python scripts/validate_data.py
 python scripts/generate_exports.py
 python scripts/generate_faq.py
@@ -258,7 +266,10 @@ node --check docs/javascripts/intelligence-tools.js
 node --check docs/javascripts/home-command.js
 mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
+npm run test:e2e
 ```
+
+[Read the quality-assurance guide →](docs/quality-assurance.md)
 
 ---
 
