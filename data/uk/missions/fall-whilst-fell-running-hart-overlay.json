@@ -1,0 +1,58 @@
+{
+  "id": "755-hart-overlay",
+  "name": "Fall Whilst Fell Running",
+  "aliases": ["Fall Whilst Fell Running (HART Overlay)"],
+  "service": "mountain_rescue",
+  "mission_types": ["Mountain Rescue"],
+  "custom_spawn_area": true,
+  "variant": {
+    "source_mission_id": 755,
+    "kind": "additive-overlay",
+    "key": "hart-atv-carrier",
+    "notes": [
+      "This record represents the HART additive overlay, not the base 1,600-credit mission."
+    ]
+  },
+  "preconditions": {
+    "rescue_stations": 1,
+    "hart_bases": 1,
+    "mountain_rescue_stations": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "atv_carrier", "quantity": 1}
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": ["mountain_rescue_4x4", "sar_4x4"],
+        "quantity": 1,
+        "notes": ["One qualifying 4x4 satisfies the requirement."]
+      }
+    ]
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 0.75,
+    "critical_care_probability": 0.1,
+    "specializations": ["Traumatology"],
+    "codes": ["C-2", "C-3"]
+  },
+  "reward": {
+    "average_credits": 2600,
+    "base_variant_average_credits": 1600
+  },
+  "notes": [
+    "The official mission directory lists a 1,600-credit base mission and a 2,600-credit HART overlay.",
+    "The stored requirements are the full requirements shown by the additive-overlay page."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  }
+}
