@@ -55,6 +55,66 @@ def searchable_text(record: dict[str, Any]) -> str:
     return " ".join(terms).lower()
 
 
+def openapi_document(version: str, collection_names: list[str]) -> dict[str, Any]:
+    paths: dict[str, Any] = {
+        "/manifest.json": {
+            "get": {
+                "summary": "Retrieve API manifest",
+                "operationId": "getManifest",
+                "responses": {"200": {"description": "Version and collection manifest", "content": {"application/json": {"schema": {"type": "object"}}}}},
+            }
+        },
+        "/search-index.json": {
+            "get": {
+                "summary": "Retrieve lightweight search index",
+                "operationId": "getSearchIndex",
+                "responses": {"200": {"description": "Search index envelope", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CollectionEnvelope"}}}}},
+            }
+        },
+        "/faq.json": {
+            "get": {
+                "summary": "Retrieve generated FAQ",
+                "operationId": "getFaq",
+                "responses": {"200": {"description": "Generated FAQ entries", "content": {"application/json": {"schema": {"type": "object"}}}}},
+            }
+        },
+    }
+    for name in collection_names:
+        paths[f"/{name}.json"] = {
+            "get": {
+                "summary": f"Retrieve the {name} collection",
+                "operationId": f"get{name.title()}",
+                "responses": {"200": {"description": f"{name.title()} collection envelope", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CollectionEnvelope"}}}}},
+            }
+        }
+    return {
+        "openapi": "3.1.0",
+        "info": {
+            "title": "MissionChief UK Static Data API",
+            "version": version,
+            "description": "Read-only versioned JSON exports generated from evidence-led MissionChief UK records.",
+        },
+        "servers": [{"url": "https://conroy1988.github.io/MissionChief-UK/assets/data/v1", "description": "Production GitHub Pages endpoint"}],
+        "paths": paths,
+        "components": {
+            "schemas": {
+                "CollectionEnvelope": {
+                    "type": "object",
+                    "required": ["schema_version", "data_version", "count", "records"],
+                    "properties": {
+                        "schema_version": {"type": "string"},
+                        "data_version": {"type": "string"},
+                        "released_at": {"type": "string", "format": "date"},
+                        "collection": {"type": "string"},
+                        "count": {"type": "integer", "minimum": 0},
+                        "records": {"type": "array", "items": {"type": "object"}},
+                    },
+                }
+            }
+        },
+    }
+
+
 def main() -> int:
     release = read_json(VERSION_FILE)
     version = release["version"]
@@ -74,10 +134,7 @@ def main() -> int:
             "records": records,
         }
         write_json(OUTPUT_ROOT / f"{name}.json", payload)
-        manifest_collections[name] = {
-            "count": len(records),
-            "path": f"{name}.json",
-        }
+        manifest_collections[name] = {"count": len(records), "path": f"{name}.json"}
         for record in records:
             search_records.append(
                 {
@@ -108,13 +165,13 @@ def main() -> int:
         "stage": release["stage"],
         "status": release["status"],
         "collections": manifest_collections,
-        "search_index": {
-            "count": len(search_records),
-            "path": "search-index.json",
-        },
+        "search_index": {"count": len(search_records), "path": "search-index.json"},
+        "faq": {"path": "faq.json"},
+        "openapi": {"path": "openapi.json"},
     }
     write_json(OUTPUT_ROOT / "manifest.json", manifest)
-    print(f"Generated {len(manifest_collections)} collection exports and one search index at {OUTPUT_ROOT}")
+    write_json(OUTPUT_ROOT / "openapi.json", openapi_document(version, list(COLLECTIONS)))
+    print(f"Generated {len(manifest_collections)} collection exports, search index, manifest and OpenAPI contract at {OUTPUT_ROOT}")
     return 0
 
 
