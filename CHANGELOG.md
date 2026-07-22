@@ -8,7 +8,7 @@ The project follows semantic versioning for its public static-data API and relea
 
 No unreleased changes are currently recorded.
 
-## [1.1.0] — 2026-07-22
+## [1.1.0] — 2026-07-23
 
 ### Complete UK mission catalogue
 
