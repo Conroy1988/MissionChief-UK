@@ -1,0 +1,21 @@
+{
+  "id": "mass_casualty_extension",
+  "name": "Mass Casualty Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "ambulance",
+  "parent_buildings": [],
+  "capabilities": ["mass_casualty_mission_generation"],
+  "notes": [
+    "This record establishes the canonical precondition identifier used by Airfield Operations and other major incidents.",
+    "Parent-building compatibility, price, build time and capacity remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588"
+    ]
+  }
+}
