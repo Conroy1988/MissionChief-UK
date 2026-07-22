@@ -1,0 +1,126 @@
+{
+  "id": 635,
+  "name": "High Risk Missing Person",
+  "aliases": ["High-risk missing person"],
+  "service": "search_and_rescue",
+  "mission_types": ["SAR Missions"],
+  "poi": [],
+  "custom_spawn_area": false,
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {
+    "source_mission_id": 635,
+    "kind": "base",
+    "key": "high-risk-missing-person"
+  },
+  "preconditions": {
+    "rescue_stations": 3,
+    "police_stations": 3,
+    "search_and_rescue_hqs": 2,
+    "active_drones": 1,
+    "other": []
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 3
+      },
+      {
+        "resource": "control_van",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": [
+          "operational_support_van",
+          "operational_support_trailer",
+          "personal_sar_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One qualifying operational-support resource satisfies this requirement."
+        ]
+      },
+      {
+        "resources": [
+          "police_helicopter",
+          "drone"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One Police Helicopter or one Drone satisfies the aerial-search requirement."
+        ]
+      },
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Two qualifying 4x4 vehicles are required in total."
+        ]
+      }
+    ]
+  },
+  "personnel": {
+    "available": [
+      {
+        "role": "Search Advisor",
+        "quantity": 2
+      },
+      {
+        "role": "SAR Commander",
+        "quantity": 4
+      }
+    ],
+    "required": [
+      {
+        "role": "Search Advisor",
+        "quantity": 1
+      },
+      {
+        "role": "SAR Commander",
+        "quantity": 2
+      }
+    ],
+    "average_minimum": [
+      {
+        "role": "Search Technician",
+        "quantity": 10
+      }
+    ],
+    "probabilistic": []
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 1,
+    "transport_probability": 0.4,
+    "critical_care_probability": 0.05,
+    "first_responder_full_care_probability": 0,
+    "specializations": ["General Internal"],
+    "codes": ["C-1", "C-2", "C-3"]
+  },
+  "prisoners": {
+    "maximum": 0
+  },
+  "reward": {
+    "average_credits": 15275
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The average-minimum Search Technician value is preserved separately from exact incident personnel requirements.",
+    "Temporary live reward multipliers must not replace the documented base average reward."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/635"
+    ]
+  }
+}
