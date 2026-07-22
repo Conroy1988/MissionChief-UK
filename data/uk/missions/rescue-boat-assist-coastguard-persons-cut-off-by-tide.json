@@ -1,0 +1,57 @@
+{
+  "id": 569,
+  "name": "Rescue Boat Assist Coastguard, Persons Cut off by Tide",
+  "aliases": [],
+  "service": "coastguard",
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "poi": [
+    "Estuary",
+    "Harbour",
+    "Beach",
+    "Marina"
+  ],
+  "preconditions": {
+    "rescue_stations": 5,
+    "coastguard_rescue_stations": 3,
+    "lifeboat_stations": 1
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_rescue_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "inland_rescue_boat_trailer",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "patients": {
+    "minimum": 1,
+    "maximum": 10,
+    "transport_probability": 0.2,
+    "specializations": [
+      "General Internal"
+    ],
+    "codes": [
+      "C-2",
+      "C-3"
+    ]
+  },
+  "reward": {
+    "average_credits": 6500
+  },
+  "notes": [],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/569"
+    ]
+  }
+}
