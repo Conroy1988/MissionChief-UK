@@ -10,6 +10,7 @@ copyright: Independent community project. MissionChief and associated assets bel
 extra_css:
   - stylesheets/extra.css
   - stylesheets/command-palette.css
+  - stylesheets/home-responsive.css
 
 extra_javascript:
   - javascripts/home-command.js
