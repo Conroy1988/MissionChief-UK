@@ -28,30 +28,34 @@ jobs:
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
 
-      - name: Read release metadata
+      - name: Read and validate release metadata
         id: metadata
         shell: bash
         run: |
           python - <<'PY'
           import json
           import os
+          import re
           from pathlib import Path
 
           release = json.loads(Path("data/version.json").read_text(encoding="utf-8"))
-          version = release["version"]
+          version = release.get("version")
+          if not isinstance(version, str) or re.fullmatch(r"1\.\d+\.\d+", version) is None:
+              raise SystemExit("Release version must be a valid v1 semantic version")
+          if release.get("stage") != 34:
+              raise SystemExit("Release metadata must identify Stage 34")
+          if release.get("status") != "production":
+              raise SystemExit("Release metadata status must be production")
+
+          notes = Path("docs") / "releases" / f"v{version}.md"
+          if not notes.is_file():
+              raise SystemExit(f"Release notes are missing: {notes}")
+
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
               output.write(f"version={version}\n")
               output.write(f"tag=v{version}\n")
-              output.write(f"stage={release['stage']}\n")
-              output.write(f"status={release['status']}\n")
+              output.write(f"notes={notes.as_posix()}\n")
           PY
-
-      - name: Enforce v1 production metadata
-        shell: bash
-        run: |
-          test "${{ steps.metadata.outputs.version }}" = "1.0.0"
-          test "${{ steps.metadata.outputs.stage }}" = "34"
-          test "${{ steps.metadata.outputs.status }}" = "production"
 
       - name: Check whether the release already exists
         id: existing
@@ -94,6 +98,10 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/release_readiness.py
 
+      - name: Audit documentation links and anchors
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/audit_links.py
+
       - name: Validate intelligence-tool JavaScript syntax
         if: steps.existing.outputs.exists != 'true'
         run: node --check docs/javascripts/intelligence-tools.js
@@ -112,12 +120,20 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.metadata.outputs.tag }}
           VERSION: ${{ steps.metadata.outputs.version }}
+          NOTES: ${{ steps.metadata.outputs.notes }}
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if ! git rev-parse "$TAG" >/dev/null 2>&1; then
+          if git rev-parse "$TAG^{commit}" >/dev/null 2>&1; then
+            tagged_commit=$(git rev-parse "$TAG^{commit}")
+            current_commit=$(git rev-parse HEAD)
+            if [ "$tagged_commit" != "$current_commit" ]; then
+              echo "Tag $TAG already points to $tagged_commit instead of deployed commit $current_commit"
+              exit 1
+            fi
+          else
             git tag -a "$TAG" -m "MissionChief UK $TAG"
             git push origin "$TAG"
           fi
@@ -126,4 +142,4 @@ jobs:
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
             --title "MissionChief UK v$VERSION" \
-            --notes-file docs/releases/v1.0.0.md
+            --notes-file "$NOTES"
