@@ -4,6 +4,19 @@ All notable MissionChief UK changes are documented here.
 
 The project follows semantic versioning for its public static-data API and release artefacts.
 
+## [Unreleased]
+
+### Quality assurance
+
+- Added Playwright acceptance testing for Chromium and Firefox desktop browsers.
+- Added WebKit acceptance profiles for iPhone and iPad layouts.
+- Added functional tests for mission lookup, comparison, fleet planning, deterministic query search and MkDocs instant navigation.
+- Added live public-API consistency checks across all eight v1 endpoints.
+- Added critical WCAG A/AA scanning with `@axe-core/playwright`.
+- Added page-level horizontal-overflow, first-party HTTP failure and JavaScript runtime checks.
+- Added retained Playwright reports, traces, screenshots and videos for failed Actions runs.
+- Added Chromium testing against the locally built site before deployment and full cross-browser testing after Pages deployment.
+
 ## [1.0.0] — 2026-07-22
 
 ### Added
