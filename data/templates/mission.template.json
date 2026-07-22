@@ -31,6 +31,9 @@
     "search_and_rescue_hqs": 0,
     "bomb_disposal_hqs": 0,
     "bomb_disposal_marine_unit_extensions": 0,
+    "aviation_firefighting_extensions": 0,
+    "airfield_operations_extensions": 0,
+    "mass_casualty_extensions": 0,
     "active_drones": 0,
     "other": []
   },
@@ -41,6 +44,14 @@
         "resource": "replace-with-canonical-vehicle-id",
         "quantity": 1,
         "probability": 0.15
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "replace-with-canonical-vehicle-id",
+        "quantity": 1,
+        "condition": "replace-with-exact-trigger",
+        "notes": []
       }
     ],
     "alternatives": [
