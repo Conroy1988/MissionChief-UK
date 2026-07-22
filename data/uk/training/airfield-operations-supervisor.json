@@ -1,0 +1,17 @@
+{
+  "id": "airfield_operations_supervisor",
+  "name": "Airfield Operations Supervisor",
+  "aliases": [],
+  "service": "airfield_operations",
+  "qualification_type": "role-qualification",
+  "roles": ["Airfield Operations Supervisor"],
+  "notes": [
+    "Official aircraft-incident pages verify this operational role.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/588"]
+  }
+}
