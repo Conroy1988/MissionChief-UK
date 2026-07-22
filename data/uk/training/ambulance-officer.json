@@ -1,0 +1,20 @@
+{
+  "id": "ambulance_officer",
+  "name": "Ambulance Officer",
+  "aliases": [],
+  "service": "ambulance",
+  "qualification_type": "role-qualification",
+  "roles": ["Ambulance Officer"],
+  "notes": [
+    "Official mass-casualty, railway and specialist missions verify this command role.",
+    "Course name, duration and prerequisites remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc",
+      "https://www.missionchief.co.uk/einsaetze/587"
+    ]
+  }
+}
