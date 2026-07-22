@@ -18,7 +18,7 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 ```text
 API contract: v1
 Data version: 1.1.0
-Released: 22 July 2026
+Released: 23 July 2026
 Canonical missions: 62
 Official UK missions: 1,062
 ```
@@ -65,7 +65,7 @@ Canonical collection endpoints use:
 {
   "schema_version": "1",
   "data_version": "1.1.0",
-  "released_at": "2026-07-22",
+  "released_at": "2026-07-23",
   "collection": "missions",
   "count": 0,
   "records": []
