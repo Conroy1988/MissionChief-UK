@@ -6,24 +6,52 @@ The project follows semantic versioning for its public static-data API and relea
 
 ## [Unreleased]
 
+No unreleased changes are currently recorded.
+
+## [1.1.0] — 2026-07-22
+
+### Complete UK mission catalogue
+
+- Added a lossless snapshot of all 1,062 missions published by the public MissionChief UK mission feed.
+- Preserved every official top-level and nested mission field with source URL, retrieval time and SHA-256 provenance.
+- Added reconciliation reporting against the 62 canonical mission records.
+- Identified 45 official/canonical ID matches, 1,017 official records awaiting full mapping and 17 canonical overlay or derived records without standalone official IDs.
+- Added inventories for every published requirement, chance and prerequisite key.
+- Added separate public official-catalogue and coverage endpoints under `assets/data/official/`.
+
+### Mission Lookup
+
+- Expanded Mission Lookup from the canonical mission set to the complete official UK catalogue.
+- Added search across IDs, names, POIs, generators, categories, requirements and prerequisites.
+- Added service/generator and evidence-coverage filters.
+- Added distinct Canonical mapped and Official UK catalogue evidence states.
+- Added structured expandable views for patients, personnel, duration, follow-ups, expansion missions, overlays, variants and all additional fields.
+- Added a complete official JSON record viewer for every matched or official-only mission.
+- Shared one compact catalogue payload across lookup and detail views.
+- Retained the first 100 matching cards for rendering performance while keeping every record searchable.
+
 ### Command experience
 
 - Added a site-wide verified-data command palette available through `Ctrl+K`, `⌘K` or `/`.
-- Added instant search across missions, deployable resources, infrastructure and qualifications.
+- Added instant search across canonical missions, deployable resources, infrastructure and qualifications.
 - Added collection filters, keyboard result navigation, responsive mobile presentation and focus restoration.
 - Added encoded deep links from mission results into Mission Lookup and from other collections into the Query Catalogue.
-- Added a persistent header launcher plus a prominent landing-page command-search control.
+- Added a persistent header launcher and prominent landing-page command-search control.
 
-### Quality assurance
+### Validation and automation
 
-- Added Playwright acceptance coverage for command-palette search, filtering, closure, mission deep links and iPhone viewport operation.
-- Added all-JavaScript syntax validation to the validation and deployment workflows.
-- Documented the command-search trust boundary and dedicated local test command.
-- Corrected Firefox instant-navigation cancellation handling and WebKit comparison-layout overflow before the v1.0.1 release validation cycle.
+- Added a deterministic importer for the official UK mission feed.
+- Added content-addressed refresh behaviour so an unchanged source produces no commit.
+- Added a daily and manually dispatchable catalogue refresh workflow.
+- Added automatic Pages deployment after a real official-source change.
+- Added an offline catalogue auditor covering IDs, names, ordering, field preservation, checksums, reconciliation, inventories and built-site equality.
+- Added browser acceptance coverage for catalogue completeness, official-only search, canonical search, structured metadata, complete records and horizontal containment.
+- Protected all catalogue source, automation, browser and QA assets as release-critical.
 
 ### Compatibility
 
-- Retained the v1.0.1 static API, canonical IDs, collection counts and evidence semantics.
+- Retained all canonical API v1 paths, envelopes, canonical IDs and evidence semantics.
+- Published the complete official catalogue as a separate data tier rather than silently mixing internal official keys into the canonical API.
 - Added no MissionChief authentication, account access or data mutation capability.
 
 ## [1.0.1] — 2026-07-22
@@ -39,6 +67,7 @@ The project follows semantic versioning for its public static-data API and relea
 - Added retained Playwright reports, traces, screenshots and videos for failed Actions runs.
 - Added Chromium testing against the locally built site before deployment and full cross-browser testing after Pages deployment.
 - Added deterministic local documentation-link and heading-anchor validation.
+- Corrected Firefox instant-navigation cancellation handling and WebKit comparison-layout overflow.
 
 ### Release engineering
 
