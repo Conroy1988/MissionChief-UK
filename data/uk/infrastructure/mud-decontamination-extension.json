@@ -1,0 +1,18 @@
+{
+  "id": "mud_decontamination_extension",
+  "name": "Mud Decontamination Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "coastguard",
+  "parent_buildings": [],
+  "capabilities": ["mud_decontamination_mission_generation"],
+  "notes": [
+    "Verified UK mud-rescue missions use this extension as a countable generation precondition.",
+    "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://www.missionchief.co.uk/einsaetze/562"]
+  }
+}
