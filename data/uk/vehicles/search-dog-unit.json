@@ -1,0 +1,21 @@
+{
+  "id": "search_dog_unit",
+  "name": "Search Dog Unit",
+  "aliases": ["Search Dog Units"],
+  "service": "search_and_rescue",
+  "category": "specialist_search",
+  "capabilities": ["search_dog", "missing_person_search"],
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": ["land", "off_road", "mountain"]
+  },
+  "notes": [
+    "The official Overdue Hikers mission page lists one Search Dog Unit.",
+    "Price, staffing, training and building requirements are not published in this record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/756"]
+  }
+}
