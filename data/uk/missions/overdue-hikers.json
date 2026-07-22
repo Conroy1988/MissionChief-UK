@@ -1,0 +1,47 @@
+{
+  "id": 756,
+  "name": "Overdue Hikers",
+  "aliases": ["Overdue hikers"],
+  "service": "mountain_rescue",
+  "mission_types": ["Mountain Rescue"],
+  "custom_spawn_area": true,
+  "preconditions": {
+    "rescue_stations": 3,
+    "police_stations": 1,
+    "mountain_rescue_stations": 3
+  },
+  "requirements": {
+    "guaranteed": [
+      {"resource": "control_van", "quantity": 1},
+      {"resource": "search_dog_unit", "quantity": 1}
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": ["mountain_rescue_4x4", "sar_4x4"],
+        "quantity": 2,
+        "notes": ["Two qualifying 4x4 vehicles are required in total."]
+      }
+    ]
+  },
+  "patients": {
+    "maximum": 3,
+    "transport_probability": 0.25,
+    "critical_care_probability": 0,
+    "specializations": ["General Internal"],
+    "codes": ["C-2", "C-3", "C-4"]
+  },
+  "reward": {
+    "average_credits": 6400,
+    "event_multiplier_observed": 2
+  },
+  "notes": [
+    "The official page displayed a temporary x2 reward marker; 6,400 remains the stored base average.",
+    "The official page lists multiple mission variations but does not expose a minimum patient count in the captured record."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": ["https://police.missionchief.co.uk/einsaetze/756"]
+  }
+}
