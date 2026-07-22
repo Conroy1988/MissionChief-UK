@@ -1,0 +1,62 @@
+name: Data correction
+
+description: Report an incorrect or outdated MissionChief UK value.
+title: "[Data correction]: "
+labels:
+  - data
+  - verification-required
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide reproducible UK-game evidence. Do not submit guessed values.
+  - type: dropdown
+    id: record_type
+    attributes:
+      label: Record type
+      options:
+        - Vehicle
+        - Mission
+        - Building or extension
+        - Training or personnel
+        - Alias or terminology
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: record_name
+    attributes:
+      label: Exact record name
+      placeholder: Exact UK game label
+    validations:
+      required: true
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: What is incorrect?
+      description: Quote the current repository value or page where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Proposed correction
+      description: State the replacement value and any conditions that affect it.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and reproduction steps
+      description: Include observation date, game path, screenshots or repeatable testing details.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirmed this against the UK version of MissionChief.
+          required: true
+        - label: I have separated verified facts from recommendations or assumptions.
+          required: true
