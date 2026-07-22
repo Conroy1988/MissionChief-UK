@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/mission.schema.json",
+  "title": "MissionChief UK Mission Record",
+  "type": "object",
+  "required": ["id", "name", "service", "requirements", "verification"],
+  "properties": {
+    "id": {"type": ["integer", "string"]},
+    "name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "service": {"type": "string"},
+    "requirements": {
+      "type": "object",
+      "required": ["guaranteed"],
+      "properties": {
+        "guaranteed": {"type": "array", "items": {"$ref": "#/$defs/resourceRequirement"}},
+        "probabilistic": {"type": "array", "items": {"$ref": "#/$defs/probabilisticRequirement"}}
+      },
+      "additionalProperties": false
+    },
+    "patients": {"type": "object"},
+    "prisoners": {"type": "object"},
+    "reward": {"type": "object"},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "verification": {"$ref": "#/$defs/verification"}
+  },
+  "$defs": {
+    "resourceRequirement": {
+      "type": "object",
+      "required": ["resource", "quantity"],
+      "properties": {
+        "resource": {"type": "string"},
+        "quantity": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "probabilisticRequirement": {
+      "allOf": [
+        {"$ref": "#/$defs/resourceRequirement"},
+        {"type": "object", "required": ["probability"], "properties": {"probability": {"type": "number", "minimum": 0, "maximum": 1}}}
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "required": ["status", "checked_at"],
+      "properties": {
+        "status": {"type": "string", "enum": ["verified", "calculated", "community-report", "review-required"]},
+        "checked_at": {"type": "string", "format": "date"},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
