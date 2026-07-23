@@ -42,11 +42,11 @@ jobs:
       - name: Merge mission verification batch registries
         run: python scripts/merge_verification_registry_batches.py
 
-      - name: Validate official-to-canonical key mappings
+      - name: Report all promoted mapping failures
         shell: bash
         run: |
           set -o pipefail
-          python scripts/validate_official_key_mappings.py 2>&1 | tee key-mapping-validation.log
+          python scripts/report_key_mapping_failures.py 2>&1 | tee key-mapping-validation.log
 
       - name: Upload key mapping diagnostics
         if: always()
@@ -56,6 +56,9 @@ jobs:
           path: key-mapping-validation.log
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Validate official-to-canonical key mappings
+        run: python scripts/validate_official_key_mappings.py
 
       - name: Report next evidence-safe canonical candidates
         run: |
