@@ -83,7 +83,7 @@ Every official mission progresses through five enforced gates:
 | Fully canonical | **54 / 1,062 — 5.08%** |
 | Remaining to fully canonical | **1,008** |
 
-Current fully canonical batches:
+Batch 1 established **11 fully canonical missions**. The current evidence-controlled batches are:
 
 ```text
 Batch 1: 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11
@@ -216,7 +216,7 @@ python scripts/validate_data.py
 python scripts/reconcile_official_mission_coverage.py
 python scripts/validate_official_mission_catalogue.py
 python scripts/merge_verification_registry_batches.py
-python scripts/report_promoted_mapping_failures.py
+python scripts/report_key_mapping_failures.py
 python scripts/validate_official_key_mappings.py
 python scripts/report_canonical_candidates.py --limit 50
 python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
