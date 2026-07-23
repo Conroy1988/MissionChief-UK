@@ -31,7 +31,7 @@ Official key mapping failure report passed: all 96 promoted missions are equival
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 96 promoted missions, 96 fully canonical, 9 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 96 promoted missions, 96 fully canonical, 10 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -39,9 +39,39 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 154,
-  "ready_count": 0,
-  "blocked_count": 925,
-  "ready": [],
+  "ready_count": 1,
+  "blocked_count": 924,
+  "ready": [
+    {
+      "id": "12",
+      "name": "Tree on the road",
+      "suggested_path": "data/uk/missions/tree-on-the-road.json",
+      "average_credits": 310,
+      "mission_categories": [
+        "fire",
+        "rural",
+        "urban"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "firetrucks": 1,
+        "oneof_fire_engine_or_rescue_or_ladder": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 1,
+        "main_building": 0
+      },
+      "expansion_missions": [
+        {
+          "id": 25,
+          "name": "Road accident"
+        }
+      ],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -52,129 +82,12 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 154,
   "mapped_key_counts": {
-    "requirements": 9,
+    "requirements": 10,
     "chances": 5,
     "prerequisites": 2
   },
-  "unmapped_key_count": 80,
+  "unmapped_key_count": 79,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "oneof_fire_engine_or_rescue_or_ladder",
-      "remaining_mission_count": 6,
-      "single_key_unlock_count": 1,
-      "examples": [
-        {
-          "id": "12",
-          "name": "Tree on the road",
-          "value": 1,
-          "average_credits": 310,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/12"
-        },
-        {
-          "id": "233",
-          "name": "Person under tree",
-          "value": 2,
-          "average_credits": 1000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/233"
-        },
-        {
-          "id": "526",
-          "name": "Fire Station Open Day",
-          "value": 1,
-          "average_credits": 20000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars"
-          ],
-          "operational_complexity": [
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/526"
-        },
-        {
-          "id": "723",
-          "name": "Hand Laceration Caused By Malfunctioning Deli Slicer",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/723"
-        },
-        {
-          "id": "725",
-          "name": "Butcher Injured By Bandsaw Machine Malfunction",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/725"
-        },
-        {
-          "id": "727",
-          "name": "Hand Pierced By Sharp Catfish Bone",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/727"
-        }
-      ]
-    },
     {
       "group": "chances",
       "key": "patient_transport",
@@ -15384,7 +15297,7 @@ Mission verification status generated: 9.04% fully canonical, 966 of 1062 missio
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=154, direct=137, fully=96, remaining=966, batches=11, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=154, direct=137, fully=96, remaining=966, batches=11, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 11 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -15430,7 +15343,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.29 seconds
+INFO    -  Documentation built in 1.44 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
