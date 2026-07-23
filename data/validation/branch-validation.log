@@ -4,280 +4,40 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-7.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
-Validated 214 structured data file(s) successfully, including 330 mission resource reference(s) and 85 infrastructure precondition reference(s).
+Validated 224 structured data file(s) successfully, including 356 mission resource reference(s) and 85 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 116/1062 direct official/canonical matches, 946 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 125/1062 direct official/canonical matches, 937 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 116/133 canonical ID matches, 946 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 125/142 canonical ID matches, 937 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 75 decisions from 5 source files.
+Mission verification registry merged: 84 decisions from 6 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 75 promoted missions are equivalent.
+Official key mapping failure report passed: all 84 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 75 promoted missions, 75 fully canonical, 5 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 84 promoted missions, 84 fully canonical, 5 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 133,
-  "ready_count": 9,
+  "canonical_count": 142,
+  "ready_count": 0,
   "blocked_count": 937,
-  "ready": [
-    {
-      "id": "107",
-      "name": "Row of garages on fire",
-      "suggested_path": "data/uk/missions/row-of-garages-on-fire-107.json",
-      "average_credits": 3000,
-      "mission_categories": [
-        "fire",
-        "fire_support_specialization",
-        "urban"
-      ],
-      "place": "",
-      "place_array": [],
-      "requirements": {
-        "battalion_chief_vehicles": 1,
-        "firetrucks": 5,
-        "water_tankers": 1
-      },
-      "chances": {
-        "water_tankers": 20
-      },
-      "prerequisites": {
-        "fire_stations": 8,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "153",
-      "name": "Hay shed fire - Large",
-      "suggested_path": "data/uk/missions/hay-shed-fire-large.json",
-      "average_credits": 9000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Farm",
-      "place_array": [
-        "Farm"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 6,
-        "firetrucks": 8,
-        "platform_trucks": 1,
-        "water_tankers": 2
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 13,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "175",
-      "name": "Landfill fire",
-      "suggested_path": "data/uk/missions/landfill-fire.json",
-      "average_credits": 3500,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Landfill site",
-      "place_array": [
-        "Landfill site"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 3,
-        "firetrucks": 4,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 8,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "178",
-      "name": "Medium forest fire",
-      "suggested_path": "data/uk/missions/medium-forest-fire.json",
-      "average_credits": 4000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Forest",
-      "place_array": [
-        "Forest"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 2,
-        "firetrucks": 4,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 3,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "248",
-      "name": "Burning manure pile",
-      "suggested_path": "data/uk/missions/burning-manure-pile.json",
-      "average_credits": 1500,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Farm",
-      "place_array": [
-        "Farm"
-      ],
-      "requirements": {
-        "firetrucks": 2,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 7,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "249",
-      "name": "Large Hay bale stack on fire",
-      "suggested_path": "data/uk/missions/large-hay-bale-stack-on-fire.json",
-      "average_credits": 2000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Farm",
-      "place_array": [
-        "Farm"
-      ],
-      "requirements": {
-        "firetrucks": 3,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 7,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "250",
-      "name": "Harvester on fire in field",
-      "suggested_path": "data/uk/missions/harvester-on-fire-in-field.json",
-      "average_credits": 1000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Farm",
-      "place_array": [
-        "Farm"
-      ],
-      "requirements": {
-        "firetrucks": 2,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 7,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "402",
-      "name": "Fire in allotment (Large)",
-      "suggested_path": "data/uk/missions/fire-in-allotment-large.json",
-      "average_credits": 3000,
-      "mission_categories": [
-        "fire",
-        "urban"
-      ],
-      "place": "Allotment",
-      "place_array": [
-        "Allotment"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 3,
-        "firetrucks": 6,
-        "water_tankers": 1
-      },
-      "chances": {
-        "water_tankers": 30
-      },
-      "prerequisites": {
-        "fire_stations": 8,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "406",
-      "name": "Stack of containers on fire",
-      "suggested_path": "data/uk/missions/stack-of-containers-on-fire-406.json",
-      "average_credits": 8000,
-      "mission_categories": [
-        "fire",
-        "urban",
-        "fire_support_specialization"
-      ],
-      "place": "Container Holding Area",
-      "place_array": [
-        "Container Holding Area"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 6,
-        "firetrucks": 8,
-        "platform_trucks": 1,
-        "water_tankers": 1
-      },
-      "chances": {
-        "platform_trucks": 40,
-        "water_tankers": 60
-      },
-      "prerequisites": {
-        "fire_stations": 10,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    }
-  ],
+  "ready": [],
   "blocked": []
 }
 PASS canonical-candidates
@@ -286,7 +46,7 @@ PASS canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 133,
+  "canonical_count": 142,
   "mapped_key_counts": {
     "requirements": 5,
     "chances": 4,
@@ -17006,11 +16766,11 @@ PASS canonical-candidates
 PASS key-mapping-backlog
 
 ## verification-status
-Mission verification status generated: 7.06% fully canonical, 987 of 1062 missions remaining.
+Mission verification status generated: 7.91% fully canonical, 978 of 1062 missions remaining.
 PASS verification-status
 
 ## verification-assets
-Mission verification programme asset audit passed: 75/1062 fully canonical, 133 canonical records, 4 batch registry files and 987 missions remaining.
+Mission verification programme asset audit passed: 84/1062 fully canonical, 142 canonical records, 5 batch registry files and 978 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -17022,11 +16782,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=133, vehicles=46, infrastructure=18, training=11
-PASS release-readiness
+Release-readiness audit failed: README does not expose the current missions count (142)
+FAIL release-readiness (1)
 
 ## links-and-anchors
-Documentation link audit passed across 74 Markdown files
+Documentation link audit passed across 75 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -17050,10 +16810,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.25 seconds
+INFO    -  Documentation built in 1.39 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=133, vehicles=46, infrastructure=18, training=11; built site=site
-PASS built-site-readiness
+Release-readiness audit failed: README does not expose the current missions count (142)
+FAIL built-site-readiness (1)
 
