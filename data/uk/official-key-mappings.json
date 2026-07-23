@@ -476,6 +476,20 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "A zero main_building value is an upstream sentinel and does not create a canonical operational prerequisite. Any non-zero value must be reviewed before promotion."
+    },
+    "riot_police": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "police_public_order_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/198",
+        "https://www.missionchief.co.uk/einsaetze/510",
+        "https://www.missionchief.co.uk/einsaetze/511",
+        "https://www.missionchief.co.uk/einsaetze/512",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official riot_police value is displayed as the minimum Police & Public Order Extension count required to generate the mission."
     }
   }
 }
