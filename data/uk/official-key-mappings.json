@@ -60,6 +60,21 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official heavy_rescue_vehicles count represents Rescue Support Vehicles. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "water_tankers": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "water_carrier",
+      "chance_key": "water_tankers",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/41",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/593",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official water_tankers count represents UK Water Carriers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
     }
   },
   "chances": {
@@ -98,6 +113,18 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The percentage is the probability that the published Rescue Support Vehicle quantity is required."
+    },
+    "water_tankers": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "water_carrier",
+      "requirement_key": "water_tankers",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/41",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Water Carrier quantity is required."
     }
   },
   "prerequisites": {
