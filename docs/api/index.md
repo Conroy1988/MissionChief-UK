@@ -19,10 +19,10 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 API contract: v1
 Data version: 1.1.0
 Released: 23 July 2026
-Canonical missions: 155
+Canonical missions: 167
 Official UK missions: 1,062
-Direct official/canonical ID matches: 138
-Fully canonical missions: 97
+Direct official/canonical ID matches: 150
+Fully canonical missions: 109
 ```
 
 Version 1.1.0 retains the canonical v1 contract, adds the complete official catalogue as a separate surface and exposes a deterministic route to 100% fully canonical coverage.
@@ -70,7 +70,7 @@ The verification endpoint is generated after merging the base registry with scal
   "data_version": "1.1.0",
   "released_at": "2026-07-23",
   "collection": "missions",
-  "count": 155,
+  "count": 167,
   "records": []
 }
 ```
@@ -103,10 +103,10 @@ The deployed records are generated during the build.
   "target_stage": "fully-canonical",
   "summary": {
     "official_count": 1062,
-    "canonical_count": 155,
-    "direct_canonical_id_matches": 138,
-    "fully_canonical_percent": 9.13,
-    "remaining_to_fully_canonical": 965
+    "canonical_count": 167,
+    "direct_canonical_id_matches": 150,
+    "fully_canonical_percent": 10.26,
+    "remaining_to_fully_canonical": 953
   },
   "records": []
 }
