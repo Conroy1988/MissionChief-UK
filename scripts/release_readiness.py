@@ -14,7 +14,6 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = ROOT / "data" / "uk"
 OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "v1"
-OFFICIAL_SOURCE_ROOT = ROOT / "data" / "sources" / "missionchief-uk"
 OFFICIAL_OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "official"
 VERSION_PATH = ROOT / "data" / "version.json"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
@@ -130,6 +129,10 @@ def require(condition: bool, message: str) -> None:
         raise AuditFailure(message)
 
 
+def exposes_number(text: str, value: int) -> bool:
+    return str(value) in text or f"{value:,}" in text
+
+
 def flatten_nav(value: Any) -> Iterable[str]:
     if isinstance(value, str):
         yield value
@@ -151,8 +154,7 @@ def audit_navigation(release_version: str) -> None:
     for target in nav_targets:
         require((ROOT / "docs" / target).is_file(), f"MkDocs navigation target does not exist: docs/{target}")
 
-    required_targets = (*EXPECTED_STATIC_PAGES, f"releases/v{release_version}.md")
-    for target in required_targets:
+    for target in (*EXPECTED_STATIC_PAGES, f"releases/v{release_version}.md"):
         require(target in nav_targets, f"Release-critical page is not present in MkDocs navigation: {target}")
 
     javascript = config.get("extra_javascript", [])
@@ -304,12 +306,12 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
     require(manifest.get("openapi", {}).get("path") == "openapi.json", "Manifest OpenAPI path mismatch")
 
     verification = read_json(OFFICIAL_OUTPUT_ROOT / "uk-mission-verification.json")
-    verification_summary = verification.get("summary")
-    require(isinstance(verification_summary, dict), "Verification endpoint summary is missing")
-    fully_canonical = verification_summary.get("cumulative_stage_counts", {}).get("fully-canonical")
-    direct_matches = verification_summary.get("direct_canonical_id_matches")
-    remaining = verification_summary.get("remaining_to_fully_canonical")
-    require(verification_summary.get("canonical_count") == counts["missions"], "Verification canonical count mismatch")
+    summary = verification.get("summary")
+    require(isinstance(summary, dict), "Verification endpoint summary is missing")
+    fully_canonical = summary.get("cumulative_stage_counts", {}).get("fully-canonical")
+    direct_matches = summary.get("direct_canonical_id_matches")
+    remaining = summary.get("remaining_to_fully_canonical")
+    require(summary.get("canonical_count") == counts["missions"], "Verification canonical count mismatch")
     require(isinstance(fully_canonical, int), "Verification fully canonical count is invalid")
     require(isinstance(direct_matches, int), "Verification direct match count is invalid")
     require(isinstance(remaining, int), "Verification remaining count is invalid")
@@ -318,7 +320,7 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
     readme_lower = readme.lower()
     readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
     for name, count in counts.items():
-        require(str(count) in readme, f"README does not expose the current {name} count ({count})")
+        require(exposes_number(readme, count), f"README does not expose the current {name} count ({count})")
     require(
         "stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
         "README stage badge is not synchronized to Stage 34",
@@ -327,10 +329,10 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
         release_version in readme_lower and "static api" in readme_words,
         f"README does not identify Static API v{release_version}",
     )
-    require("1,062" in readme or "1062" in readme, "README does not expose the official UK mission catalogue baseline")
+    require(exposes_number(readme, 1062), "README does not expose the official UK mission catalogue baseline")
     require(f"{fully_canonical} fully canonical" in readme_lower, "README fully canonical count is stale")
-    require(str(direct_matches) in readme, "README direct canonical match count is stale")
-    require(str(remaining) in readme, "README remaining verification count is stale")
+    require(exposes_number(readme, direct_matches), "README direct canonical match count is stale")
+    require(exposes_number(readme, remaining), "README remaining verification count is stale")
     require("11 fully canonical" in readme_lower, "README does not preserve the Batch 1 historical milestone")
     return counts
 
