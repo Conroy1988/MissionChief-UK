@@ -1,0 +1,13 @@
+{
+  "id": 388,
+  "name": "Smell of burning (Residential)",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "preconditions": {"fire_stations": 2},
+  "requirements": {"guaranteed": [{"resource": "fire_engine", "quantity": 2}], "probabilistic": []},
+  "reward": {"average_credits": 3000},
+  "follow_up_missions": [],
+  "expandable_missions": ["House fire", "House fire (Persons Reported)", "Flat Fire in Sheltered Housing", "Flat Fire in Sheltered Housing (Persons Reported)", "Thatched cottage fire", "Thatched Cottage Chimney Fire"],
+  "notes": ["All published operational fields are represented directly from the official UK catalogue and mission directory."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/388", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
