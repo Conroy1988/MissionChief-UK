@@ -7,10 +7,12 @@ import sys
 from pathlib import Path
 
 import sync_public_verification_metrics as sync
+import sync_verification_batch_navigation as nav_sync
 
 ROOT = Path(__file__).resolve().parents[1]
 README_PATH = ROOT / "README.md"
 RELEASE_PATH = ROOT / "docs" / "releases" / "v1.1.0.md"
+MKDOCS_PATH = ROOT / "mkdocs.yml"
 
 
 class RunnerFailure(RuntimeError):
@@ -46,6 +48,7 @@ def main() -> int:
     originals = {
         README_PATH: README_PATH.read_text(encoding="utf-8"),
         RELEASE_PATH: RELEASE_PATH.read_text(encoding="utf-8"),
+        MKDOCS_PATH: MKDOCS_PATH.read_text(encoding="utf-8"),
     }
     try:
         readme, release = normalise_templates(originals[README_PATH], originals[RELEASE_PATH])
@@ -54,13 +57,16 @@ def main() -> int:
         result = sync.main()
         if result != 0:
             raise RunnerFailure("Core synchronization returned a failure status")
+        nav_result = nav_sync.main()
+        if nav_result != 0:
+            raise RunnerFailure("Batch navigation synchronization returned a failure status")
     except (OSError, RunnerFailure) as exc:
         for path, content in originals.items():
             path.write_text(content, encoding="utf-8")
         print(f"Repeatable public verification synchronization failed: {exc}", file=sys.stderr)
         return 1
 
-    print("Repeatable public verification synchronization passed.")
+    print("Repeatable public verification and navigation synchronization passed.")
     return 0
 
 
