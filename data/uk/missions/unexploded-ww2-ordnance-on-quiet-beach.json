@@ -49,5 +49,13 @@
       "https://www.missionchief.co.uk/einsaetze/830",
       "https://www.missionchief.co.uk/einsaetze"
     ]
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
   }
 }

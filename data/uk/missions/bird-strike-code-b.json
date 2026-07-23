@@ -79,8 +79,7 @@
         "quantity": 1
       }
     ],
-    "average_minimum": [],
-    "probabilistic": []
+    "average_minimum": []
   },
   "prisoners": {
     "maximum": 0

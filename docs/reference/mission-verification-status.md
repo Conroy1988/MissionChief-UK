@@ -9,15 +9,15 @@ This page is generated from the complete official UK mission catalogue, the cano
 
 | Verification gate | Missions at or beyond gate | Coverage | Exact current stage |
 |---|---:|---:|---:|
-| Captured | 1,062 / 1,062 | 100.00% | 850 |
-| Identity verified | 212 / 1,062 | 19.96% | 41 |
-| Requirements mapped | 171 / 1,062 | 16.10% | 0 |
-| Operationally verified | 171 / 1,062 | 16.10% | 0 |
-| Fully canonical | 171 / 1,062 | 16.10% | 171 |
+| Captured | 1,062 / 1,062 | 100.00% | 843 |
+| Identity verified | 219 / 1,062 | 20.62% | 41 |
+| Requirements mapped | 178 / 1,062 | 16.76% | 0 |
+| Operationally verified | 178 / 1,062 | 16.76% | 0 |
+| Fully canonical | 178 / 1,062 | 16.76% | 178 |
 
-**Remaining to fully canonical:** 891
+**Remaining to fully canonical:** 884
 
-**Direct canonical ID matches:** 212
+**Direct canonical ID matches:** 219
 
 **Canonical overlay or derived records:** 17
 
@@ -128,13 +128,13 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `145` | Fire in an office building - Major Incident | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `146` | Injured person on high voltage mast | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `147` | Spinal injury | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `149` | Building collapse | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `150` | 3rd degree burns | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `151` | Serious head injury | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `152` | Traumatic limb amputation | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `154` | Back pain | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `155` | Suspicious package | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `156` | Heatstroke | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `157` | Easter egg stolen from basket | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 
 ## Machine-readable status
 

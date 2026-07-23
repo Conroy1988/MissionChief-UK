@@ -110,16 +110,16 @@
         "quantity": 1
       },
       {
-        "role": "Operational Team Leader",
-        "quantity": 2
-      },
-      {
         "role": "Police Sergeant",
         "quantity": 1
       },
       {
         "role": "Police Inspector",
         "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 2
       }
     ]
   },

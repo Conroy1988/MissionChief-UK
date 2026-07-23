@@ -96,8 +96,7 @@
         "role": "Search Technician",
         "quantity": 10
       }
-    ],
-    "probabilistic": []
+    ]
   },
   "patients": {
     "maximum": 1,

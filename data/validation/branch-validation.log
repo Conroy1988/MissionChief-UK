@@ -1,10 +1,18 @@
+## official-personnel-key-sync
+Official personnel key mappings synchronized: change required.
+PASS official-personnel-key-sync
+
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 17: 58 mission(s), 60 file(s) written.
+Generated fully canonical Batch 18: 7 mission(s), 9 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 212 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 219 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
+
+## canonical-personnel-sync
+Canonical mapped personnel fields synchronized: 219 direct canonical records, 19 file(s) changed.
+PASS canonical-personnel-sync
 
 ## canonical-data
 Structured data validation warnings:
@@ -16,6 +24,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-15.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-16.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-17.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-18.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -26,41 +35,47 @@ Structured data validation warnings:
 - data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
-Validated 322 structured data file(s) successfully, including 768 mission resource reference(s) and 89 infrastructure precondition reference(s).
+- data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
+Validated 331 structured data file(s) successfully, including 805 mission resource reference(s) and 89 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 212/1062 direct official/canonical matches, 850 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 219/1062 direct official/canonical matches, 843 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 212/229 canonical ID matches, 850 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 219/236 canonical ID matches, 843 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 171 decisions from 16 source files.
+Mission verification registry merged: 178 decisions from 17 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 171 promoted missions are equivalent.
+Official key mapping failure report passed: all 178 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 171 promoted missions, 171 fully canonical, 15 requirement keys, 8 chance keys and 6 prerequisite keys mapped.
+Official key mapping audit passed: 178 promoted missions, 178 fully canonical, 16 requirement keys, 9 chance keys and 6 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 171/171 promoted missions exact, 58 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 178/178 promoted missions exact, 65 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
+
+## official-personnel-equivalence
+Official personnel mapping audit passed: 178/178 promoted missions exact, 7 mapped-personnel missions and 1 personnel role(s) mapped.
+PASS official-personnel-equivalence
 
 ## canonical-candidates
 {
-  "schema_version": "2",
+  "schema_version": "3",
   "official_count": 1062,
-  "canonical_count": 229,
+  "canonical_count": 236,
   "patient_contract_fields": 10,
+  "personnel_contract_roles": 1,
   "ready_count": 0,
-  "blocked_count": 850,
+  "blocked_count": 843,
   "ready": [],
   "blocked": []
 }
@@ -70,152 +85,292 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 229,
+  "canonical_count": 236,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 15,
-    "chances": 8,
+    "requirements": 16,
+    "chances": 9,
     "prerequisites": 6
   },
-  "unmapped_key_count": 67,
+  "unmapped_key_count": 65,
   "entries": [
     {
       "group": "requirements",
-      "key": "kdow_orgl",
-      "remaining_mission_count": 106,
-      "single_key_unlock_count": 7,
+      "key": "ambulances",
+      "remaining_mission_count": 23,
+      "single_key_unlock_count": 6,
       "examples": [
         {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
+          "id": "164",
+          "name": "Easter market fair",
+          "value": 4,
+          "average_credits": 10400,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/164"
+        },
+        {
+          "id": "234",
+          "name": "Concert",
           "value": 1,
-          "average_credits": 10750,
+          "average_credits": 7000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.followup_missions_ids.duplicate-multiplicity"
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/234"
         },
         {
-          "id": "128",
-          "name": "RTC Entrapment",
-          "value": 1,
-          "average_credits": 1250,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.kdow_orgl",
-            "chances.traffic_car"
-          ],
+          "id": "261",
+          "name": "Guarding inner-city New Year's Eve party",
+          "value": 2,
+          "average_credits": 20000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission",
+            "additional.swat_personnel"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/261"
         },
         {
-          "id": "129",
-          "name": "Multi vehicle RTC",
-          "value": 1,
-          "average_credits": 1600,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.kdow_orgl",
-            "chances.traffic_car"
-          ],
+          "id": "306",
+          "name": "Great St. Patricks Day parade",
+          "value": 4,
+          "average_credits": 20000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/129"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/306"
         },
         {
-          "id": "130",
-          "name": "Multi vehicle RTC entrapment",
-          "value": 1,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.kdow_orgl"
-          ],
+          "id": "346",
+          "name": "Safeguarding a swimming competition",
+          "value": 2,
+          "average_credits": 2400,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/130"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/346"
         },
         {
-          "id": "149",
-          "name": "Building collapse",
+          "id": "434",
+          "name": "Thief attacked by a cow",
           "value": 1,
-          "average_credits": 9000,
+          "average_credits": 860,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.subsequent_mission_only"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/434"
+        },
+        {
+          "id": "474",
+          "name": "Penetrating Trauma - Central Wound",
+          "value": 1,
+          "average_credits": 800,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/474"
+        },
+        {
+          "id": "527",
+          "name": "Factory Fire (Major Incident)",
+          "value": 1,
+          "average_credits": 25000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [],
           "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/149"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/527"
         },
         {
-          "id": "189",
-          "name": "Hotel fire (small)",
+          "id": "528",
+          "name": "Factory Fire (Major Incident) (Persons Reported)",
           "value": 1,
-          "average_credits": 3000,
+          "average_credits": 30000,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.kdow_orgl"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/189"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/528"
         },
         {
-          "id": "190",
-          "name": "Hotel fire (medium)",
+          "id": "578",
+          "name": "Hypovolemic shock",
           "value": 1,
-          "average_credits": 5000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.kdow_orgl"
-          ],
+          "average_credits": 500,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/578"
+        }
+      ]
+    },
+    {
+      "group": "requirements",
+      "key": "oneof_police_patrol_or_swat",
+      "remaining_mission_count": 29,
+      "single_key_unlock_count": 4,
+      "examples": [
+        {
+          "id": "93",
+          "name": "High-Risk Warrant",
+          "value": 4,
+          "average_credits": 1200,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.followup_missions_ids.duplicate-multiplicity"
+            "additional.max_possible_prisoners",
+            "additional.min_possible_prisoners",
+            "additional.swat_personnel"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/190"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/93"
         },
         {
-          "id": "192",
-          "name": "Hotel fire (large)",
-          "value": 1,
+          "id": "155",
+          "name": "Suspicious package",
+          "value": 8,
+          "average_credits": 2000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.max_possible_prisoners",
+            "additional.swat_personnel"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/155"
+        },
+        {
+          "id": "405",
+          "name": "Kidnapping",
+          "value": 5,
           "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.followup_missions_ids.duplicate-multiplicity"
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [
+            "requirements.police_helicopters",
+            "requirements.traffic_car",
+            "chances.traffic_car",
+            "prerequisites.police_helicopter_stations"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/192"
+          "operational_complexity": [
+            "additional.max_possible_prisoners",
+            "additional.need_traffic_car_only_if_present",
+            "additional.swat_personnel"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
         },
         {
-          "id": "193",
-          "name": "Hotel fire (major)",
-          "value": 1,
+          "id": "408",
+          "name": "Small Fuel storage tank explosion",
+          "value": 2,
+          "average_credits": 7000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/408"
+        },
+        {
+          "id": "409",
+          "name": "Large Fuel storage tank explosion",
+          "value": 4,
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.followup_missions_ids.duplicate-multiplicity"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/193"
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/409"
         },
         {
-          "id": "196",
-          "name": "Flat Fire in Clad High Rise - Persons Reported",
-          "value": 1,
-          "average_credits": 8000,
+          "id": "410",
+          "name": "Fuel Storage Depot Explosion (Major Incident)",
+          "value": 8,
+          "average_credits": 20000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/410"
+        },
+        {
+          "id": "411",
+          "name": "Out of control argument",
+          "value": 2,
+          "average_credits": 900,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.fire_alarm_system_possible"
+            "additional.max_possible_prisoners"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/196"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/411"
+        },
+        {
+          "id": "412",
+          "name": "Concern for welfare on bridge",
+          "value": 3,
+          "average_credits": 1300,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [
+            "requirements.traffic_car"
+          ],
+          "operational_complexity": [
+            "additional.need_traffic_car_only_if_present"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/412"
+        },
+        {
+          "id": "418",
+          "name": "Drunk and disorderly person",
+          "value": 1,
+          "average_credits": 500,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.max_possible_prisoners"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/418"
+        },
+        {
+          "id": "425",
+          "name": "Armed Robbery of Motor Vehicle",
+          "value": 3,
+          "average_credits": 7000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [
+            "requirements.traffic_car"
+          ],
+          "operational_complexity": [
+            "additional.max_possible_prisoners",
+            "additional.min_possible_prisoners",
+            "additional.need_traffic_car_only_if_present",
+            "additional.swat_personnel"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/425"
         }
       ]
     },
@@ -253,9 +408,7 @@ PASS canonical-candidates
           "value": 10,
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
             "additional.fire_alarm_system_possible"
@@ -508,153 +661,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "requirements",
-      "key": "ambulances",
-      "remaining_mission_count": 23,
-      "single_key_unlock_count": 3,
-      "examples": [
-        {
-          "id": "164",
-          "name": "Easter market fair",
-          "value": 4,
-          "average_credits": 10400,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/164"
-        },
-        {
-          "id": "234",
-          "name": "Concert",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/234"
-        },
-        {
-          "id": "261",
-          "name": "Guarding inner-city New Year's Eve party",
-          "value": 2,
-          "average_credits": 20000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/261"
-        },
-        {
-          "id": "306",
-          "name": "Great St. Patricks Day parade",
-          "value": 4,
-          "average_credits": 20000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/306"
-        },
-        {
-          "id": "346",
-          "name": "Safeguarding a swimming competition",
-          "value": 2,
-          "average_credits": 2400,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/346"
-        },
-        {
-          "id": "434",
-          "name": "Thief attacked by a cow",
-          "value": 1,
-          "average_credits": 860,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.subsequent_mission_only"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/434"
-        },
-        {
-          "id": "474",
-          "name": "Penetrating Trauma - Central Wound",
-          "value": 1,
-          "average_credits": 800,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/474"
-        },
-        {
-          "id": "527",
-          "name": "Factory Fire (Major Incident)",
-          "value": 1,
-          "average_credits": 25000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/527"
-        },
-        {
-          "id": "528",
-          "name": "Factory Fire (Major Incident) (Persons Reported)",
-          "value": 1,
-          "average_credits": 30000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/528"
-        },
-        {
-          "id": "578",
-          "name": "Hypovolemic shock",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/578"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "general_practitioner",
       "remaining_mission_count": 5,
@@ -770,7 +776,6 @@ PASS canonical-candidates
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
             "requirements.atv_carrier",
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
@@ -846,7 +851,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -869,7 +873,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -898,7 +901,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -906,151 +908,6 @@ PASS canonical-candidates
             "overlay_index"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/149-0"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "oneof_police_patrol_or_swat",
-      "remaining_mission_count": 29,
-      "single_key_unlock_count": 1,
-      "examples": [
-        {
-          "id": "93",
-          "name": "High-Risk Warrant",
-          "value": 4,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/93"
-        },
-        {
-          "id": "155",
-          "name": "Suspicious package",
-          "value": 8,
-          "average_credits": 2000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/155"
-        },
-        {
-          "id": "405",
-          "name": "Kidnapping",
-          "value": 5,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
-        },
-        {
-          "id": "408",
-          "name": "Small Fuel storage tank explosion",
-          "value": 2,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/408"
-        },
-        {
-          "id": "409",
-          "name": "Large Fuel storage tank explosion",
-          "value": 4,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/409"
-        },
-        {
-          "id": "410",
-          "name": "Fuel Storage Depot Explosion (Major Incident)",
-          "value": 8,
-          "average_credits": 20000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/410"
-        },
-        {
-          "id": "411",
-          "name": "Out of control argument",
-          "value": 2,
-          "average_credits": 900,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/411"
-        },
-        {
-          "id": "412",
-          "name": "Concern for welfare on bridge",
-          "value": 3,
-          "average_credits": 1300,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/412"
-        },
-        {
-          "id": "418",
-          "name": "Drunk and disorderly person",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/418"
-        },
-        {
-          "id": "425",
-          "name": "Armed Robbery of Motor Vehicle",
-          "value": 3,
-          "average_credits": 7000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/425"
         }
       ]
     },
@@ -1147,7 +1004,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -1170,7 +1026,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -1199,7 +1054,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -1780,8 +1634,6 @@ PASS canonical-candidates
           "average_credits": 1250,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.kdow_orgl",
             "chances.traffic_car"
           ],
           "operational_complexity": [
@@ -1796,8 +1648,6 @@ PASS canonical-candidates
           "average_credits": 1600,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.kdow_orgl",
             "chances.traffic_car"
           ],
           "operational_complexity": [
@@ -1811,10 +1661,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.kdow_orgl"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present"
           ],
@@ -1916,7 +1763,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -1939,7 +1785,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -1967,8 +1812,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.kdow_orgl"
+            "requirements.ems_mobile_command"
           ],
           "operational_complexity": [
             "variant:149",
@@ -1983,8 +1827,7 @@ PASS canonical-candidates
           "average_credits": 9500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.ems_mobile_command",
-            "requirements.kdow_orgl"
+            "requirements.ems_mobile_command"
           ],
           "operational_complexity": [
             "variant:149",
@@ -1999,8 +1842,7 @@ PASS canonical-candidates
           "average_credits": 8500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.ems_mobile_command",
-            "requirements.kdow_orgl"
+            "requirements.ems_mobile_command"
           ],
           "operational_complexity": [
             "additional.followup_missions_ids.duplicate-multiplicity",
@@ -2040,7 +1882,6 @@ PASS canonical-candidates
           "average_credits": 10000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.police_helicopters"
           ],
           "operational_complexity": [
@@ -2056,7 +1897,6 @@ PASS canonical-candidates
           "average_credits": 15000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.police_helicopters"
           ],
           "operational_complexity": [
@@ -2072,7 +1912,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.police_helicopters"
           ],
           "operational_complexity": [],
@@ -2237,7 +2076,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
@@ -2260,7 +2098,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -2289,7 +2126,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2307,7 +2143,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2326,7 +2161,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2346,7 +2180,6 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2367,7 +2200,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2384,7 +2216,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
@@ -2424,7 +2255,6 @@ PASS canonical-candidates
           "average_credits": 10000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
@@ -2440,7 +2270,6 @@ PASS canonical-candidates
           "average_credits": 15000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
@@ -2456,7 +2285,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [],
@@ -2585,7 +2413,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -2608,7 +2435,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -2637,7 +2463,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -2658,7 +2483,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -2811,7 +2635,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.two_way",
@@ -2834,7 +2657,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -2863,7 +2685,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "prerequisites.flood_equipment",
@@ -2884,7 +2705,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.traffic_car",
@@ -3053,7 +2873,6 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "tow_trucks_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.traffic_car"
           ],
           "operational_complexity": [
@@ -3166,9 +2985,7 @@ PASS canonical-candidates
           "average_credits": 1550,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.traffic_car",
-            "chances.kdow_orgl",
             "chances.traffic_car"
           ],
           "operational_complexity": [
@@ -3187,9 +3004,7 @@ PASS canonical-candidates
           "average_credits": 1900,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.traffic_car",
-            "chances.kdow_orgl",
             "chances.traffic_car"
           ],
           "operational_complexity": [
@@ -3586,7 +3401,6 @@ PASS canonical-candidates
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
@@ -3610,7 +3424,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "prerequisites.mass_casualty_count",
@@ -3631,7 +3444,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "prerequisites.mass_casualty_count",
@@ -3653,7 +3465,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "prerequisites.mass_casualty_count",
@@ -3675,7 +3486,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "prerequisites.mass_casualty_count",
@@ -3696,7 +3506,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "prerequisites.police_helicopter_stations"
           ],
@@ -3714,7 +3523,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "prerequisites.police_helicopter_stations"
           ],
@@ -3733,7 +3541,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "prerequisites.police_helicopter_stations"
           ],
@@ -3752,7 +3559,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "prerequisites.police_helicopter_stations"
           ],
@@ -3930,161 +3736,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "chances",
-      "key": "kdow_orgl",
-      "remaining_mission_count": 14,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "128",
-          "name": "RTC Entrapment",
-          "value": 25,
-          "average_credits": 1250,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128"
-        },
-        {
-          "id": "129",
-          "name": "Multi vehicle RTC",
-          "value": 50,
-          "average_credits": 1600,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/129"
-        },
-        {
-          "id": "130",
-          "name": "Multi vehicle RTC entrapment",
-          "value": 50,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/130"
-        },
-        {
-          "id": "189",
-          "name": "Hotel fire (small)",
-          "value": 25,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/189"
-        },
-        {
-          "id": "190",
-          "name": "Hotel fire (medium)",
-          "value": 50,
-          "average_credits": 5000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [
-            "additional.followup_missions_ids.duplicate-multiplicity"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/190"
-        },
-        {
-          "id": "210",
-          "name": "House fire (Persons Reported)",
-          "value": 50,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "additional.followup_missions_ids.duplicate-multiplicity"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/210"
-        },
-        {
-          "id": "216",
-          "name": "Parachutist stuck in tree",
-          "value": 75,
-          "average_credits": 1000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/216"
-        },
-        {
-          "id": "319",
-          "name": "Fall from height",
-          "value": 50,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/319"
-        },
-        {
-          "id": "394",
-          "name": "Odour of chemicals",
-          "value": 10,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/394"
-        },
-        {
-          "id": "128/a",
-          "name": "RTC Entrapment",
-          "value": 25,
-          "average_credits": 1550,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "prerequisites.tow_trucks"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "variant:128",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128/a"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "mountain_rescue",
       "remaining_mission_count": 14,
@@ -4112,7 +3763,6 @@ PASS canonical-candidates
           "average_credits": 9600,
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "prerequisites.personnel_educations"
@@ -4180,7 +3830,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
@@ -4201,9 +3850,7 @@ PASS canonical-candidates
           "average_credits": 1650,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
-            "chances.kdow_orgl"
+            "requirements.oneof_mountain_atv_or_search_and_rescue_atv"
           ],
           "operational_complexity": [
             "variant:143",
@@ -4299,7 +3946,6 @@ PASS canonical-candidates
           "average_credits": 9600,
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "prerequisites.mountain_rescue",
             "prerequisites.personnel_educations"
@@ -4367,7 +4013,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
             "requirements.search_and_rescue_command",
@@ -4388,8 +4033,6 @@ PASS canonical-candidates
           "average_credits": 1650,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.kdow_orgl",
             "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
@@ -4528,9 +4171,7 @@ PASS canonical-candidates
           "average_credits": 1250,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car",
-            "chances.kdow_orgl"
+            "requirements.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present"
@@ -4544,9 +4185,7 @@ PASS canonical-candidates
           "average_credits": 1600,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.traffic_car",
-            "chances.kdow_orgl"
+            "requirements.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present"
@@ -4639,7 +4278,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -4662,7 +4300,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -4867,7 +4504,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -4890,7 +4526,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -5109,7 +4744,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -5812,7 +5446,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -5927,7 +5560,6 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [],
@@ -6135,7 +5767,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "prerequisites.flood_equipment",
@@ -6210,7 +5841,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -6237,7 +5867,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.traffic_car",
@@ -6354,7 +5983,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
@@ -6377,7 +6005,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -6588,7 +6215,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.flood_equipment",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -6722,7 +6348,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
             "requirements.railway_police",
@@ -6929,7 +6554,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
             "requirements.search_and_rescue_command",
@@ -6952,7 +6576,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -7089,8 +6712,7 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "requirements.kdow_orgl"
+            "requirements.coastal_boat"
           ],
           "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/625"
@@ -7680,7 +7302,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -8406,7 +8027,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -10228,17 +9848,17 @@ PASS key-mapping-backlog
 PASS patient-field-contract
 
 ## verification-status
-Mission verification status generated: 16.10% fully canonical, 891 of 1062 missions remaining.
+Mission verification status generated: 16.76% fully canonical, 884 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=229, direct=212, fully=171, remaining=891, batches=17, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
-Verification batch navigation synchronized for 17 evidence pages.
+Public verification metrics synchronized: canonical=236, direct=219, fully=178, remaining=884, batches=18, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 18 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 171/1062 fully canonical, 229 canonical records, 17 evidence batch pages, 150 dynamic batch decisions and 891 missions remaining.
+Mission verification programme asset audit passed: 178/1062 fully canonical, 236 canonical records, 18 evidence batch pages, 157 dynamic batch decisions and 884 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -10250,11 +9870,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=229, vehicles=46, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=236, vehicles=46, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 85 Markdown files
+Documentation link audit passed across 86 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -10278,10 +9898,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.57 seconds
+INFO    -  Documentation built in 1.29 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=229, vehicles=46, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=236, vehicles=46, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 

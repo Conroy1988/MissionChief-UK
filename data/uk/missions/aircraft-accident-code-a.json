@@ -50,5 +50,13 @@
     ],
     "transport_probability": 0.5,
     "critical_care_probability": 0.8
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 2
+      }
+    ]
   }
 }

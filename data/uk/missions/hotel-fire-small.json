@@ -1,0 +1,65 @@
+{
+  "id": 189,
+  "name": "Hotel fire (small)",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/189",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Hotel"
+  ],
+  "preconditions": {
+    "fire_stations": 4,
+    "rescue_stations": 4
+  },
+  "patients": {
+    "maximum": 6,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.4,
+    "critical_care_probability": 0.5
+  },
+  "reward": {
+    "average_credits": 3000
+  },
+  "expandable_missions": [
+    "190"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ],
+  "personnel": {
+    "probabilistic": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1,
+        "probability": 0.25
+      }
+    ]
+  }
+}

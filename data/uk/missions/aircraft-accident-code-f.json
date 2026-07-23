@@ -159,20 +159,19 @@
         "quantity": 1
       },
       {
-        "role": "Operational Team Leader",
-        "quantity": 5
-      },
-      {
         "role": "Police Sergeant",
         "quantity": 4
       },
       {
         "role": "Police Inspector",
         "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 5
       }
     ],
-    "average_minimum": [],
-    "probabilistic": []
+    "average_minimum": []
   },
   "patients": {
     "maximum": 250,
