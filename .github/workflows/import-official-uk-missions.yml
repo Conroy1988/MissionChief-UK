@@ -35,6 +35,7 @@ jobs:
           python -m py_compile scripts/publish_official_mission_catalogue.py
           python -m py_compile scripts/compact_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_mission_catalogue.py
+          python -m py_compile scripts/validate_official_key_mappings.py
           python -m py_compile scripts/generate_mission_verification_status.py
 
       - name: Download and reconcile official UK missions
@@ -48,6 +49,9 @@ jobs:
 
       - name: Audit refreshed official catalogue
         run: python scripts/validate_official_mission_catalogue.py
+
+      - name: Audit official-to-canonical key mappings
+        run: python scripts/validate_official_key_mappings.py
 
       - name: Regenerate 100% mission verification backlog
         run: python scripts/generate_mission_verification_status.py
