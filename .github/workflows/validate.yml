@@ -1,6 +1,6 @@
 name: Validate guide
 
-# Reopened PR synchronization validates the rebuilt current-ID Batch 4.
+# Corrected Batch 4 validation generates the next evidence-safe candidate and key-backlog artifacts.
 on:
   push:
     branches: [main]
@@ -47,7 +47,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          python scripts/report_key_mapping_failures.py 2>&1 | tee key-mapping-validation.log
+          python scripts/report_promoted_mapping_failures.py 2>&1 | tee key-mapping-validation.log
 
       - name: Upload key mapping diagnostics
         if: always()
