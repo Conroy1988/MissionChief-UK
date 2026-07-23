@@ -61,11 +61,7 @@ jobs:
             echo >> data/validation/branch-validation.log
           }
 
-          run_check "official-personnel-key-sync" python scripts/sync_official_personnel_key_mappings.py
-          run_check "official-ambulance-key-sync" python scripts/sync_official_ambulance_key_mapping.py
-          run_check "official-police-car-or-arv-sync" python scripts/sync_official_police_car_or_arv_mapping.py
-          run_check "official-probabilistic-hazmat-sync" python scripts/sync_official_probabilistic_hazmat_mapping.py
-          run_check "official-public-order-extension-sync" python scripts/sync_official_public_order_extension_mapping.py
+          run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
           run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
           run_check "canonical-patient-sync" python scripts/sync_canonical_patient_fields.py
           run_check "canonical-personnel-sync" python scripts/sync_canonical_personnel_fields.py
