@@ -62,9 +62,11 @@ jobs:
           }
 
           run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
+          run_check "prisoner-schema-sync" python scripts/sync_prisoner_schema.py
           run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
           run_check "canonical-patient-sync" python scripts/sync_canonical_patient_fields.py
           run_check "canonical-personnel-sync" python scripts/sync_canonical_personnel_fields.py
+          run_check "canonical-prisoner-sync" python scripts/sync_canonical_prisoner_fields.py
           run_check "canonical-data" python scripts/validate_data.py
           run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
           run_check "official-catalogue" python scripts/validate_official_mission_catalogue.py
@@ -73,6 +75,7 @@ jobs:
           run_check "official-key-equivalence" python scripts/validate_official_key_mappings.py
           run_check "official-patient-equivalence" python scripts/validate_official_patient_mappings.py
           run_check "official-personnel-equivalence" python scripts/validate_official_personnel_mappings.py
+          run_check "official-prisoner-equivalence" python scripts/validate_official_prisoner_mappings.py
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
           run_check "patient-field-contract" python scripts/report_patient_field_contract.py
@@ -124,6 +127,7 @@ jobs:
             docs/api/index.md \
             docs/releases/v1.1.0.md \
             docs/reference \
+            data/schema/mission.schema.json \
             data/uk/missions \
             data/uk/official-key-mappings.json \
             data/uk/mission-verification-batches \
