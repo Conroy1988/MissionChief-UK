@@ -40,6 +40,7 @@ jobs:
           python -m py_compile scripts/validate_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_key_mappings.py
           python -m py_compile scripts/report_canonical_candidates.py
+          python -m py_compile scripts/report_key_mapping_backlog.py
           python -m py_compile scripts/generate_mission_verification_status.py
           python -m py_compile scripts/validate_verification_programme_assets.py
 
@@ -66,6 +67,9 @@ jobs:
 
       - name: Report next evidence-safe canonical candidates
         run: python scripts/report_canonical_candidates.py --limit 50
+
+      - name: Report official key mapping backlog
+        run: python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
 
       - name: Regenerate 100% mission verification backlog
         run: python scripts/generate_mission_verification_status.py
