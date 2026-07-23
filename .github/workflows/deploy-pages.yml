@@ -42,6 +42,9 @@ jobs:
       - name: Validate canonical structured data
         run: python scripts/validate_data.py
 
+      - name: Reconcile official/canonical mission coverage
+        run: python scripts/reconcile_official_mission_coverage.py
+
       - name: Validate official UK mission catalogue
         run: python scripts/validate_official_mission_catalogue.py
 
