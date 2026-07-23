@@ -14,7 +14,8 @@ OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.j
 MAPPINGS_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
-SAFE_ADDITIONAL_KEYS = {"filter_id", "expansion_missions_ids", "followup_missions_ids"}
+RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
+SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS}
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions"}
 
 
@@ -73,6 +74,14 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
         blockers.extend(f"additional.{key}" for key in unsupported)
         if additional.get("filter_id") not in SAFE_GENERATOR_FAMILIES:
             blockers.append(f"generator:{additional.get('filter_id')!r}")
+        for field in RELATIONSHIP_KEYS:
+            values = additional.get(field, [])
+            if not isinstance(values, list):
+                blockers.append(f"additional.{field}.invalid")
+                continue
+            counts = Counter(str(value) for value in values)
+            if any(count > 1 for count in counts.values()):
+                blockers.append(f"additional.{field}.duplicate-multiplicity")
     elif additional not in (None, {}):
         blockers.append("additional")
 
