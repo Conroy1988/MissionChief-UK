@@ -1,0 +1,8 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "134": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/134", "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, four POIs, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]},
+    "579": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/579", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]}
+  }
+}
