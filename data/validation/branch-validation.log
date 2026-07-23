@@ -5,6 +5,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-12.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-13.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-14.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-15.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -14,73 +15,37 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-9.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
-Validated 257 structured data file(s) successfully, including 486 mission resource reference(s) and 85 infrastructure precondition reference(s).
+Validated 259 structured data file(s) successfully, including 497 mission resource reference(s) and 85 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 151/1062 direct official/canonical matches, 911 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 152/1062 direct official/canonical matches, 910 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 151/168 canonical ID matches, 911 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 152/169 canonical ID matches, 910 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 110 decisions from 13 source files.
+Mission verification registry merged: 111 decisions from 14 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 110 promoted missions are equivalent.
+Official key mapping failure report passed: all 111 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 110 promoted missions, 110 fully canonical, 14 requirement keys, 6 chance keys and 5 prerequisite keys mapped.
+Official key mapping audit passed: 111 promoted missions, 111 fully canonical, 14 requirement keys, 6 chance keys and 5 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 168,
-  "ready_count": 1,
+  "canonical_count": 169,
+  "ready_count": 0,
   "blocked_count": 910,
-  "ready": [
-    {
-      "id": "420",
-      "name": "Scrapyard Fire Large",
-      "suggested_path": "data/uk/missions/scrapyard-fire-large-420.json",
-      "average_credits": 20000,
-      "mission_categories": [
-        "fire",
-        "urban",
-        "fire_support_specialization"
-      ],
-      "place": "Scrap yard",
-      "place_array": [
-        "Scrap yard"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 6,
-        "firetrucks": 20,
-        "hazard_response_secondary": 1,
-        "hazmat_vehicles": 1,
-        "mobile_air_vehicles": 1,
-        "mobile_command_vehicles": 1,
-        "platform_trucks": 2,
-        "police_cars": 4,
-        "water_tankers": 2
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 20,
-        "main_building": 0,
-        "police_stations": 3
-      },
-      "generator_family": "firehouse_missions",
-      "expansion_missions": [],
-      "followup_missions": []
-    }
-  ],
+  "ready": [],
   "blocked": []
 }
 PASS canonical-candidates
@@ -89,7 +54,7 @@ PASS canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 168,
+  "canonical_count": 169,
   "mapped_key_counts": {
     "requirements": 14,
     "chances": 6,
@@ -12262,17 +12227,17 @@ PASS canonical-candidates
 PASS key-mapping-backlog
 
 ## verification-status
-Mission verification status generated: 10.36% fully canonical, 952 of 1062 missions remaining.
+Mission verification status generated: 10.45% fully canonical, 951 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=168, direct=151, fully=110, remaining=952, batches=14, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 14 evidence pages.
+Public verification metrics synchronized: canonical=169, direct=152, fully=111, remaining=951, batches=15, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 15 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 110/1062 fully canonical, 168 canonical records, 14 evidence batch pages, 89 dynamic batch decisions and 952 missions remaining.
+Mission verification programme asset audit passed: 111/1062 fully canonical, 169 canonical records, 15 evidence batch pages, 90 dynamic batch decisions and 951 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -12284,11 +12249,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=168, vehicles=46, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=169, vehicles=46, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 82 Markdown files
+Documentation link audit passed across 83 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -12312,10 +12277,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.48 seconds
+INFO    -  Documentation built in 1.57 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=168, vehicles=46, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=169, vehicles=46, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 
