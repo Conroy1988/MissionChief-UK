@@ -1,0 +1,22 @@
+{
+  "id": 402,
+  "name": "Fire in allotment (Large)",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": ["Allotment"],
+  "preconditions": {"fire_stations": 8},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 6},
+      {"resource": "fire_officer", "quantity": 3}
+    ],
+    "probabilistic": [
+      {"resource": "water_carrier", "quantity": 1, "probability": 0.3}
+    ]
+  },
+  "reward": {"average_credits": 3000},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": ["The Allotment POI and 30% Water Carrier probability are retained separately from guaranteed resources."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/402", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
