@@ -2,25 +2,40 @@
   "schema_version": "1",
   "updated_at": "2026-07-23",
   "records": {
-    "21": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/21", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "Final evidence-completeness audit completed."]},
-    "22": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://police.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Aerial Appliance Truck quantities are represented.", "The Fire Officer probability is represented canonically.", "The official self-referential follow-up is retained.", "Final evidence-completeness audit completed."]},
-    "31": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/31", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Final evidence-completeness audit completed."]},
-    "180": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/180", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Final evidence-completeness audit completed."]},
-    "344": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/344", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine quantity is represented.", "The Aerial Appliance Truck probability is represented canonically.", "Final evidence-completeness audit completed."]},
-    "353": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/353", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "Published POI and relationships are retained; repeated follow-up multiplicity is documented.", "Final evidence-completeness audit completed."]},
-    "361": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/361", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine, Aerial Appliance Truck and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "452": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/452", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine, Aerial Appliance Truck and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "456": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/456", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "460": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/460", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "494": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/494", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Aerial Appliance Truck quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "512": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/512", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "520": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/520", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationships are retained.", "Final evidence-completeness audit completed."]},
-    "547": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/547", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine, Aerial Appliance Truck and Fire Officer quantities are represented.", "Published POI is retained.", "Final evidence-completeness audit completed."]},
-    "672": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/672", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]},
-    "708": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/708", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]},
-    "734": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/734", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]},
-    "768": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/768", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]},
-    "774": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/774", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine, Aerial Appliance Truck and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]},
-    "779": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/779", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Mapped Fire Engine, Aerial Appliance Truck and Fire Officer quantities are represented.", "Published POI and expansion relationship are retained.", "Final evidence-completeness audit completed."]}
+    "21": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/21", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "Final evidence-completeness audit completed."]
+    },
+    "22": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://police.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Aerial Appliance Truck quantities are represented.", "The Fire Officer probability is represented canonically.", "The official self-referential follow-up is retained.", "Final evidence-completeness audit completed."]
+    },
+    "31": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/31", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The current six-station prerequisite and base reward are retained.", "Final evidence-completeness audit completed."]
+    },
+    "301": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/301", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["The mission was rebound from an obsolete ID to the exact current official identity.", "Mapped Fire Engine quantity and Aerial Appliance Truck probability are represented.", "Final evidence-completeness audit completed."]
+    },
+    "353": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/353", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "The current six-station prerequisite, base reward, POI and relationships are retained.", "Final evidence-completeness audit completed."]
+    }
   }
 }
