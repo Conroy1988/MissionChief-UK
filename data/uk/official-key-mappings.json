@@ -260,6 +260,20 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official field is displayed as Police Cars or Armed Response Vehicles (ARVs). The quantity is a qualifying total across the two canonical resource types."
+    },
+    "midwife": {
+      "status": "verified",
+      "canonical_target": "personnel.chance-aware",
+      "canonical_role": "Community Midwife",
+      "chance_key": "midwife",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/690",
+        "https://www.missionchief.co.uk/einsaetze/691",
+        "https://www.missionchief.co.uk/einsaetze/692",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official midwife quantity is displayed as required Community Midwives. The verified records publish no chance field, so the quantity is guaranteed."
     }
   },
   "chances": {

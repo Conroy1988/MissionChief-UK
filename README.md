@@ -58,7 +58,7 @@ The numbered core programme is complete through **Stage 34**. Version **1.1.0** 
 | **Deployable resources** | **46** | Vehicles, boats, trailers and specialist equipment |
 | **Infrastructure** | **18** | Buildings and extensions |
 | **Qualifications** | **11** | Operational roles and verified course fields |
-| **Canonical searchable entities** | **323** | Missions, resources, infrastructure and qualifications |
+| **Canonical searchable entities** | **324** | Missions, resources, infrastructure and qualifications |
 | **Public interface** | **Static API v1.1.0** | Versioned canonical and official data surfaces |
 
 > [!IMPORTANT]

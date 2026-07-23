@@ -132,7 +132,7 @@
   <div class="mcuk-board-footer">
     <span><b>1,062</b> official UK missions</span>
     <span><b>229</b> direct ID matches</span>
-    <span><b data-mcuk-search-count>323</b> canonical search entities</span>
+    <span><b data-mcuk-search-count>324</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
     <a href="reference/mission-verification-status/">Track verification →</a>
   </div>

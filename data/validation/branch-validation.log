@@ -1,7 +1,7 @@
 ## official-key-mapping-sync
 Official Ambulance key mapping synchronized: already current.
-GP Surgery mapping synchronized: change required.
-Official personnel key mappings synchronized: already current.
+GP Surgery mapping synchronized: already current.
+Official personnel key mappings synchronized: change required.
 Police Car or ARV mapping synchronized: already current.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
@@ -45,7 +45,7 @@ Structured data validation warnings:
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
-Validated 346 structured data file(s) successfully, including 908 mission resource reference(s) and 90 infrastructure precondition reference(s).
+Validated 347 structured data file(s) successfully, including 908 mission resource reference(s) and 90 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
@@ -65,7 +65,7 @@ Official key mapping failure report passed: all 188 promoted missions are equiva
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 188 promoted missions, 188 fully canonical, 18 requirement keys, 10 chance keys and 8 prerequisite keys mapped.
+Official key mapping audit passed: 188 promoted missions, 188 fully canonical, 19 requirement keys, 10 chance keys and 8 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
@@ -73,7 +73,7 @@ Official patient mapping audit passed: 188/188 promoted missions exact, 74 patie
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 188/188 promoted missions exact, 12 mapped-personnel missions and 1 personnel role(s) mapped.
+Official personnel mapping audit passed: 188/188 promoted missions exact, 12 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## canonical-candidates
@@ -82,7 +82,7 @@ PASS official-personnel-equivalence
   "official_count": 1062,
   "canonical_count": 246,
   "patient_contract_fields": 10,
-  "personnel_contract_roles": 1,
+  "personnel_contract_roles": 2,
   "ready_count": 0,
   "blocked_count": 833,
   "ready": [],
@@ -97,50 +97,12 @@ PASS canonical-candidates
   "canonical_count": 246,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 18,
+    "requirements": 19,
     "chances": 10,
     "prerequisites": 8
   },
-  "unmapped_key_count": 60,
+  "unmapped_key_count": 59,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "midwife",
-      "remaining_mission_count": 3,
-      "single_key_unlock_count": 3,
-      "examples": [
-        {
-          "id": "690",
-          "name": "Labour - Waters Broken",
-          "value": 2,
-          "average_credits": 1400,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/690"
-        },
-        {
-          "id": "691",
-          "name": "Labour - Premature Birth",
-          "value": 2,
-          "average_credits": 1600,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/691"
-        },
-        {
-          "id": "692",
-          "name": "Labour - Home Birth",
-          "value": 2,
-          "average_credits": 900,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/692"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "ems_mobile_command",
@@ -9197,7 +9159,7 @@ Mission verification status generated: 17.70% fully canonical, 874 of 1062 missi
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=246, direct=229, fully=188, remaining=874, batches=21, changed=README.md, docs/releases/v1.1.0.md.
+Public verification metrics synchronized: canonical=246, direct=229, fully=188, remaining=874, batches=21, changed=README.md, docs/index.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 21 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -9215,7 +9177,7 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
@@ -9243,10 +9205,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.66 seconds
+INFO    -  Documentation built in 1.47 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 
