@@ -30,6 +30,7 @@ REQUIRED_FILES = (
     "scripts/report_canonical_candidates.py",
     "scripts/report_key_mapping_backlog.py",
     "scripts/generate_mission_verification_status.py",
+    "scripts/sync_public_verification_metrics.py",
     "scripts/validate_verification_programme_assets.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
@@ -77,6 +78,18 @@ WORKFLOW_MARKERS = {
         *COMMON_WORKFLOW_MARKERS,
         "report_canonical_candidates.py",
         "report_key_mapping_backlog.py",
+    ),
+    ".github/workflows/branch-validation-report.yml": (
+        *COMMON_WORKFLOW_MARKERS,
+        "report_promoted_mapping_failures.py",
+        "report_canonical_candidates.py",
+        "report_key_mapping_backlog.py",
+        "sync_public_verification_metrics.py",
+        "README.md",
+        "docs/index.md",
+        "docs/api/index.md",
+        "docs/releases/v1.1.0.md",
+        "CHANGELOG.md",
     ),
 }
 
