@@ -91,6 +91,22 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official field is displayed as ICCU or Ambulance Control Units. The quantity is a qualifying total across the two canonical resource types, not two simultaneous guaranteed vehicles."
+    },
+    "hazmat_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "hazmat_unit",
+        "cbrn_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/180",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as HazMat Units or CBRN Vehicles. The quantity is a qualifying total across the two canonical resource types. Missions with a same-key probability remain blocked until probabilistic alternative groups are supported."
     }
   },
   "chances": {
