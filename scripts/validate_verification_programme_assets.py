@@ -30,6 +30,7 @@ REQUIRED_FILES = (
     "scripts/report_key_mapping_backlog.py",
     "scripts/generate_mission_verification_status.py",
     "scripts/sync_public_verification_metrics.py",
+    "scripts/sync_verification_batch_navigation.py",
     "scripts/run_public_verification_sync.py",
     "scripts/validate_verification_programme_assets.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
@@ -67,11 +68,13 @@ WORKFLOW_MARKERS = {
         "report_canonical_candidates.py",
         "report_key_mapping_backlog.py",
         "run_public_verification_sync.py",
+        "sync_verification_batch_navigation.py",
         "README.md",
         "docs/index.md",
         "docs/api/index.md",
         "docs/releases/v1.1.0.md",
         "CHANGELOG.md",
+        "mkdocs.yml",
     ),
 }
 
