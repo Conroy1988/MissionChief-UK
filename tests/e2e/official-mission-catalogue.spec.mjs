@@ -40,7 +40,10 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
 
   await root.locator("select[data-role='source']").selectOption("official");
   await root.locator("input[data-role='query']").fill("Road accident");
-  const officialCard = root.locator("article.mcuk-mission-card--official", { hasText: "Road accident #25" }).first();
+  const officialCard = root
+    .locator("article.mcuk-mission-card--official")
+    .filter({ hasText: '"official_url": "https://www.missionchief.co.uk/einsaetze/25"' })
+    .first();
   await expect(officialCard).toContainText("Road accident");
   await expect(officialCard).toContainText("#25");
   await expect(officialCard).toContainText("Official UK catalogue");
@@ -56,20 +59,27 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   const officialDetails = officialCard.locator("details.mcuk-official-record-details");
   await expect(officialDetails).toContainText("Complete official catalogue record");
   await officialDetails.locator("summary").click();
-  await expect(officialDetails.locator("pre")).toContainText('"id": "25"');
+  await expect(officialDetails.locator("pre")).toContainText(
+    '"official_url": "https://www.missionchief.co.uk/einsaetze/25"'
+  );
   await expect(officialDetails.locator("pre")).toContainText('"requirements"');
   await expect(officialDetails.locator("pre")).toContainText('"prerequisites"');
 
   await root.locator("select[data-role='source']").selectOption("canonical");
   await root.locator("input[data-role='query']").fill("588");
-  const canonicalCard = root.locator("article.mcuk-mission-card--canonical").first();
+  const canonicalCard = root
+    .locator("article.mcuk-mission-card--canonical")
+    .filter({ hasText: '"official_url": "https://www.missionchief.co.uk/einsaetze/588"' })
+    .first();
   await expect(canonicalCard).toContainText("Aircraft Accident - Code F");
   await expect(canonicalCard).toContainText("Canonical mapped");
 
   const canonicalDetails = canonicalCard.locator("details.mcuk-official-record-details");
   await expect(canonicalDetails).toContainText("Complete official catalogue record");
   await canonicalDetails.locator("summary").click();
-  await expect(canonicalDetails.locator("pre")).toContainText('"id": "588"');
+  await expect(canonicalDetails.locator("pre")).toContainText(
+    '"official_url": "https://www.missionchief.co.uk/einsaetze/588"'
+  );
   await expect(canonicalDetails.locator("pre")).toContainText('"additional"');
 
   expect(catalogueRequests, "Official catalogue should be fetched once and shared by all lookup surfaces").toBe(1);
