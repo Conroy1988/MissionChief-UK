@@ -90,6 +90,10 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_official_mission_catalogue.py
 
+      - name: Validate official-to-canonical key mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_key_mappings.py
+
       - name: Generate 100% mission verification status
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_mission_verification_status.py
