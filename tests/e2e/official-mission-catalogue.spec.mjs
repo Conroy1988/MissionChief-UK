@@ -1,3 +1,4 @@
+import { test, expect } from "@playwright/test";
 
 test("official UK mission catalogue is complete, reconciled and searchable", async ({ page, request }) => {
   const catalogueResponse = await request.get("assets/data/official/uk-missions.json");
