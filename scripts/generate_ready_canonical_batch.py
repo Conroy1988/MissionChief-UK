@@ -10,6 +10,8 @@ from generate_ready_canonical_batch_base import *  # noqa: F401,F403
 _ORIGINAL_TRANSLATE_REQUIREMENTS = _base.translate_requirements
 _TRAFFIC_KEY = "traffic_car"
 _CONDITION_FIELD = "need_traffic_car_only_if_present"
+_CONTEXTUAL_TARGET = "requirements.contextual"
+_CONTEXTUAL_PROBABILITY_TARGET = "requirements.contextual-probability"
 
 
 def _checked_quantity(value: Any, label: str) -> int:
@@ -22,6 +24,18 @@ def _checked_percent(value: Any, label: str) -> int:
     if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 100:
         raise ValueError(f"{label} must be an integer percentage from 0 to 100")
     return value
+
+
+def _append_resource(
+    output: dict[str, Any],
+    field: str,
+    item: dict[str, Any],
+) -> None:
+    values = output.setdefault(field, [])
+    if not isinstance(values, list):
+        raise ValueError(f"Generated requirements.{field} must be an array")
+    values.append(item)
+    values.sort(key=lambda entry: str(entry.get("resource")))
 
 
 def translate_requirements(official: dict[str, Any], mappings: dict[str, Any]) -> dict[str, Any]:
@@ -41,20 +55,23 @@ def translate_requirements(official: dict[str, Any], mappings: dict[str, Any]) -
 
     mapping = mappings.get("requirements", {}).get(_TRAFFIC_KEY)
     chance_mapping = mappings.get("chances", {}).get(_TRAFFIC_KEY) if has_chance else None
-    if not isinstance(mapping, dict) or mapping.get("canonical_target") != "requirements.conditional":
-        raise ValueError(f"Mission {mission_id} traffic_car requirement does not have a conditional mapping")
+    if not isinstance(mapping, dict) or mapping.get("canonical_target") != _CONTEXTUAL_TARGET:
+        raise ValueError(f"Mission {mission_id} traffic_car requirement does not have a contextual mapping")
     if has_chance and (
         not isinstance(chance_mapping, dict)
-        or chance_mapping.get("canonical_target") != "requirements.conditional-probability"
+        or chance_mapping.get("canonical_target") != _CONTEXTUAL_PROBABILITY_TARGET
     ):
-        raise ValueError(f"Mission {mission_id} traffic_car chance does not have a conditional-probability mapping")
+        raise ValueError(f"Mission {mission_id} traffic_car chance does not have a contextual-probability mapping")
+
+    raw_flag = additional.get(_CONDITION_FIELD)
+    if _CONDITION_FIELD in additional and not isinstance(raw_flag, bool):
+        raise ValueError(f"Mission {mission_id} additional.{_CONDITION_FIELD} must be a boolean")
+    conditional = raw_flag is mapping.get("condition_value", True)
 
     quantity = _checked_quantity(requirements[_TRAFFIC_KEY], f"Mission {mission_id} requirements.traffic_car")
-    required_flag = mapping.get("condition_value", True)
-    if quantity > 0 and additional.get(_CONDITION_FIELD) is not required_flag:
-        raise ValueError(
-            f"Mission {mission_id} requires Traffic Cars but additional.{_CONDITION_FIELD} is not {required_flag!r}"
-        )
+    percent = 100
+    if has_chance:
+        percent = _checked_percent(chances[_TRAFFIC_KEY], f"Mission {mission_id} chances.traffic_car")
 
     sanitized = dict(official)
     sanitized_requirements = dict(requirements)
@@ -65,28 +82,31 @@ def translate_requirements(official: dict[str, Any], mappings: dict[str, Any]) -
     sanitized["chances"] = sanitized_chances
     output = _ORIGINAL_TRANSLATE_REQUIREMENTS(sanitized, mappings)
 
-    probability: float | None = None
-    if has_chance:
-        percent = _checked_percent(chances[_TRAFFIC_KEY], f"Mission {mission_id} chances.traffic_car")
-        if percent == 0:
-            return output
-        if percent < 100:
-            probability = percent / 100
-    if quantity == 0:
+    if quantity == 0 or percent == 0:
         return output
 
-    item: dict[str, Any] = {
-        "resource": str(mapping.get("canonical_id", "traffic_car")),
-        "quantity": quantity,
-        "condition": str(mapping.get("condition", "only_when_available")),
-        "notes": [
-            "The official UK mission data marks this Traffic Car requirement as applicable only when the resource is available."
-        ],
-    }
-    if probability is not None:
-        item["probability"] = probability
-    output.setdefault("conditional", []).append(item)
-    output["conditional"] = sorted(output["conditional"], key=lambda entry: str(entry.get("resource")))
+    resource = str(mapping.get("canonical_id", _TRAFFIC_KEY))
+    probability = None if percent == 100 else percent / 100
+    if conditional:
+        item: dict[str, Any] = {
+            "resource": resource,
+            "quantity": quantity,
+            "condition": str(mapping.get("condition", "only_when_available")),
+            "notes": [
+                "The official UK mission data marks this Traffic Car requirement as applicable only when the resource is available."
+            ],
+        }
+        if probability is not None:
+            item["probability"] = probability
+        _append_resource(output, "conditional", item)
+    elif probability is None:
+        _append_resource(output, "guaranteed", {"resource": resource, "quantity": quantity})
+    else:
+        _append_resource(
+            output,
+            "probabilistic",
+            {"resource": resource, "quantity": quantity, "probability": probability},
+        )
     return output
 
 

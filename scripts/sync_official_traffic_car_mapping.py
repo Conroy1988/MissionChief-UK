@@ -13,7 +13,7 @@ MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 
 REQUIREMENT_MAPPING = {
     "status": "verified",
-    "canonical_target": "requirements.conditional",
+    "canonical_target": "requirements.contextual",
     "canonical_id": "traffic_car",
     "condition_path": "additional.need_traffic_car_only_if_present",
     "condition_value": True,
@@ -25,14 +25,15 @@ REQUIREMENT_MAPPING = {
         "https://www.missionchief.co.uk/einsaetze/587",
         "https://www.missionchief.co.uk/einsaetze/588",
         "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze/776",
         "https://www.missionchief.co.uk/einsaetze.json",
     ],
-    "notes": "Traffic Cars are conditional resources. The published quantity applies only when the Traffic Car is available; an optional same-key chance controls whether that conditional requirement occurs.",
+    "notes": "Traffic Car quantities are contextual. When need_traffic_car_only_if_present is true, the resource is conditional on availability. Otherwise the quantity is guaranteed, or probabilistic when a same-key chance is published.",
 }
 
 CHANCE_MAPPING = {
     "status": "verified",
-    "canonical_target": "requirements.conditional-probability",
+    "canonical_target": "requirements.contextual-probability",
     "canonical_id": "traffic_car",
     "requirement_key": "traffic_car",
     "checked_at": "2026-07-23",
@@ -41,7 +42,7 @@ CHANCE_MAPPING = {
         "https://www.missionchief.co.uk/einsaetze/588",
         "https://www.missionchief.co.uk/einsaetze.json",
     ],
-    "notes": "The integer percentage is the probability that the conditional Traffic Car quantity is required. It does not remove the only-when-available condition.",
+    "notes": "The integer percentage controls whether the Traffic Car quantity is required. The separate availability flag determines whether the resulting requirement remains conditional.",
 }
 
 
@@ -72,7 +73,7 @@ def synchronized_document() -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Synchronize the conditional Traffic Car mapping contract")
+    parser = argparse.ArgumentParser(description="Synchronize the contextual Traffic Car mapping contract")
     parser.add_argument("--check", action="store_true", help="Fail instead of writing when the registry differs")
     args = parser.parse_args()
 
@@ -81,17 +82,17 @@ def main() -> int:
         content = json.dumps(output, ensure_ascii=False, indent=2) + "\n"
         current = MAPPING_PATH.read_text(encoding="utf-8")
     except (OSError, ValueError) as exc:
-        print(f"Conditional Traffic Car mapping synchronization failed: {exc}", file=sys.stderr)
+        print(f"Contextual Traffic Car mapping synchronization failed: {exc}", file=sys.stderr)
         return 1
 
     changed = current != content
     if args.check and changed:
-        print("Conditional Traffic Car mapping synchronization check failed: registry is stale", file=sys.stderr)
+        print("Contextual Traffic Car mapping synchronization check failed: registry is stale", file=sys.stderr)
         return 1
     if changed and not args.check:
         MAPPING_PATH.write_text(content, encoding="utf-8")
     print(
-        "Conditional Traffic Car mapping "
+        "Contextual Traffic Car mapping "
         + ("checked" if args.check else "synchronized")
         + f": {'change required' if changed else 'already current'}."
     )

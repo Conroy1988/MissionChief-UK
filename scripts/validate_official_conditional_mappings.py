@@ -15,11 +15,12 @@ REGISTRY_PATH = ROOT / "data" / "uk" / "mission-verification-registry.json"
 MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 TRAFFIC_KEY = "traffic_car"
 CONDITION_FIELD = "need_traffic_car_only_if_present"
-CONDITION_VALUE = True
 CONDITION_TEXT = "only_when_available"
+CONTEXTUAL_TARGET = "requirements.contextual"
+CONTEXTUAL_PROBABILITY_TARGET = "requirements.contextual-probability"
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 
-ConditionalValue = tuple[int, str, float | None]
+TrafficValue = tuple[str, int, float | None]
 
 
 def read_json(path: Path) -> Any:
@@ -69,21 +70,21 @@ def validate_mapping_contract() -> None:
     chance = chances.get(TRAFFIC_KEY)
     if not isinstance(requirement, dict) or requirement.get("status") != "verified":
         raise ValueError("requirements.traffic_car must have a verified mapping")
-    if requirement.get("canonical_target") != "requirements.conditional":
-        raise ValueError("requirements.traffic_car must target requirements.conditional")
+    if requirement.get("canonical_target") != CONTEXTUAL_TARGET:
+        raise ValueError(f"requirements.traffic_car must target {CONTEXTUAL_TARGET}")
     if requirement.get("canonical_id") != TRAFFIC_KEY:
         raise ValueError("requirements.traffic_car must target canonical traffic_car")
     if requirement.get("condition_path") != f"additional.{CONDITION_FIELD}":
         raise ValueError("requirements.traffic_car has the wrong condition_path")
-    if requirement.get("condition_value") is not CONDITION_VALUE:
+    if requirement.get("condition_value") is not True:
         raise ValueError("requirements.traffic_car has the wrong condition_value")
     if requirement.get("condition") != CONDITION_TEXT:
         raise ValueError("requirements.traffic_car has the wrong canonical condition")
 
     if not isinstance(chance, dict) or chance.get("status") != "verified":
         raise ValueError("chances.traffic_car must have a verified mapping")
-    if chance.get("canonical_target") != "requirements.conditional-probability":
-        raise ValueError("chances.traffic_car must target requirements.conditional-probability")
+    if chance.get("canonical_target") != CONTEXTUAL_PROBABILITY_TARGET:
+        raise ValueError(f"chances.traffic_car must target {CONTEXTUAL_PROBABILITY_TARGET}")
     if chance.get("canonical_id") != TRAFFIC_KEY or chance.get("requirement_key") != TRAFFIC_KEY:
         raise ValueError("chances.traffic_car must link to canonical and official traffic_car")
 
@@ -100,7 +101,7 @@ def checked_percent(value: Any, label: str) -> int:
     return value
 
 
-def expected_traffic_car(record: dict[str, Any]) -> ConditionalValue | None:
+def expected_traffic_car(record: dict[str, Any]) -> TrafficValue | None:
     mission_id = str(record.get("id"))
     requirements = record.get("requirements", {})
     chances = record.get("chances", {})
@@ -115,36 +116,89 @@ def expected_traffic_car(record: dict[str, Any]) -> ConditionalValue | None:
     if not has_requirement:
         return None
 
-    quantity = checked_quantity(requirements[TRAFFIC_KEY], f"Mission {mission_id} requirements.traffic_car")
-    if quantity > 0 and additional.get(CONDITION_FIELD) is not CONDITION_VALUE:
-        raise ValueError(
-            f"Official mission {mission_id} requires Traffic Cars without additional.{CONDITION_FIELD}=true"
-        )
+    raw_flag = additional.get(CONDITION_FIELD)
+    if CONDITION_FIELD in additional and not isinstance(raw_flag, bool):
+        raise ValueError(f"Official mission {mission_id} additional.{CONDITION_FIELD} must be a boolean")
+    conditional = raw_flag is True
 
-    probability: float | None = None
+    quantity = checked_quantity(requirements[TRAFFIC_KEY], f"Mission {mission_id} requirements.traffic_car")
+    percent = 100
     if has_chance:
         percent = checked_percent(chances[TRAFFIC_KEY], f"Mission {mission_id} chances.traffic_car")
-        if percent == 0:
-            return None
-        if percent < 100:
-            probability = percent / 100
-    if quantity == 0:
+    if quantity == 0 or percent == 0:
         return None
-    return quantity, CONDITION_TEXT, probability
+
+    probability = None if percent == 100 else percent / 100
+    if conditional:
+        return "conditional", quantity, probability
+    if probability is None:
+        return "guaranteed", quantity, None
+    return "probabilistic", quantity, probability
 
 
-def actual_traffic_car(record: dict[str, Any]) -> ConditionalValue | None:
+def checked_probability(value: Any, label: str) -> float:
+    if (
+        not isinstance(value, (int, float))
+        or isinstance(value, bool)
+        or not 0 < float(value) < 1
+    ):
+        raise ValueError(f"{label} must be greater than 0 and less than 1")
+    return float(value)
+
+
+def actual_traffic_car(record: dict[str, Any]) -> TrafficValue | None:
     mission_id = str(record.get("id"))
     requirements = record.get("requirements")
     if not isinstance(requirements, dict):
         raise ValueError(f"Canonical mission {mission_id} has no requirements object")
 
-    for field in ("guaranteed", "probabilistic"):
-        values = requirements.get(field, [])
-        if not isinstance(values, list):
-            raise ValueError(f"Canonical mission {mission_id} requirements.{field} must be an array")
-        if any(isinstance(item, dict) and item.get("resource") == TRAFFIC_KEY for item in values):
-            raise ValueError(f"Canonical mission {mission_id} stores Traffic Car under requirements.{field}")
+    found: list[TrafficValue] = []
+    guaranteed = requirements.get("guaranteed", [])
+    if not isinstance(guaranteed, list):
+        raise ValueError(f"Canonical mission {mission_id} requirements.guaranteed must be an array")
+    for item in guaranteed:
+        if not isinstance(item, dict) or item.get("resource") != TRAFFIC_KEY:
+            continue
+        quantity = item.get("quantity")
+        if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 1:
+            raise ValueError(f"Canonical mission {mission_id} has an invalid guaranteed Traffic Car quantity")
+        found.append(("guaranteed", quantity, None))
+
+    probabilistic = requirements.get("probabilistic", [])
+    if not isinstance(probabilistic, list):
+        raise ValueError(f"Canonical mission {mission_id} requirements.probabilistic must be an array")
+    for item in probabilistic:
+        if not isinstance(item, dict) or item.get("resource") != TRAFFIC_KEY:
+            continue
+        quantity = item.get("quantity")
+        if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 1:
+            raise ValueError(f"Canonical mission {mission_id} has an invalid probabilistic Traffic Car quantity")
+        found.append(
+            (
+                "probabilistic",
+                quantity,
+                checked_probability(item.get("probability"), f"Canonical mission {mission_id} Traffic Car probability"),
+            )
+        )
+
+    conditional = requirements.get("conditional", [])
+    if not isinstance(conditional, list):
+        raise ValueError(f"Canonical mission {mission_id} requirements.conditional must be an array")
+    for item in conditional:
+        if not isinstance(item, dict) or item.get("resource") != TRAFFIC_KEY:
+            continue
+        quantity = item.get("quantity")
+        if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 1:
+            raise ValueError(f"Canonical mission {mission_id} has an invalid conditional Traffic Car quantity")
+        if item.get("condition") != CONDITION_TEXT:
+            raise ValueError(f"Canonical mission {mission_id} has an invalid Traffic Car condition")
+        raw_probability = item.get("probability")
+        probability = None if raw_probability is None else checked_probability(
+            raw_probability,
+            f"Canonical mission {mission_id} conditional Traffic Car probability",
+        )
+        found.append(("conditional", quantity, probability))
+
     alternatives = requirements.get("alternatives", [])
     if not isinstance(alternatives, list):
         raise ValueError(f"Canonical mission {mission_id} requirements.alternatives must be an array")
@@ -156,36 +210,12 @@ def actual_traffic_car(record: dict[str, Any]) -> ConditionalValue | None:
     ):
         raise ValueError(f"Canonical mission {mission_id} stores Traffic Car in an alternative group")
 
-    conditional = requirements.get("conditional", [])
-    if not isinstance(conditional, list):
-        raise ValueError(f"Canonical mission {mission_id} requirements.conditional must be an array")
-    matches = [item for item in conditional if isinstance(item, dict) and item.get("resource") == TRAFFIC_KEY]
-    if len(matches) > 1:
-        raise ValueError(f"Canonical mission {mission_id} repeats the Traffic Car conditional requirement")
-    if not matches:
-        return None
-
-    item = matches[0]
-    quantity = item.get("quantity")
-    condition = item.get("condition")
-    probability = item.get("probability")
-    if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 1:
-        raise ValueError(f"Canonical mission {mission_id} has an invalid Traffic Car quantity")
-    if condition != CONDITION_TEXT:
-        raise ValueError(f"Canonical mission {mission_id} has an invalid Traffic Car condition {condition!r}")
-    normalized_probability: float | None = None
-    if probability is not None:
-        if (
-            not isinstance(probability, (int, float))
-            or isinstance(probability, bool)
-            or not 0 < float(probability) < 1
-        ):
-            raise ValueError(f"Canonical mission {mission_id} has an invalid Traffic Car probability")
-        normalized_probability = float(probability)
-    return quantity, condition, normalized_probability
+    if len(found) > 1:
+        raise ValueError(f"Canonical mission {mission_id} stores Traffic Car in multiple requirement modes")
+    return found[0] if found else None
 
 
-def values_equal(actual: ConditionalValue | None, expected: ConditionalValue | None) -> bool:
+def values_equal(actual: TrafficValue | None, expected: TrafficValue | None) -> bool:
     if actual is None or expected is None:
         return actual is None and expected is None
     if actual[0] != expected[0] or actual[1] != expected[1]:
@@ -204,13 +234,21 @@ def audit() -> dict[str, int]:
     canonical = canonical_records()
 
     source_records = 0
+    source_conditional = 0
+    source_ordinary = 0
     source_probabilistic = 0
     for record in official.values():
-        expected = expected_traffic_car(record)
-        if TRAFFIC_KEY in record.get("requirements", {}):
+        requirements = record.get("requirements", {})
+        if isinstance(requirements, dict) and TRAFFIC_KEY in requirements:
             source_records += 1
-        if expected is not None and expected[2] is not None:
-            source_probabilistic += 1
+            expected = expected_traffic_car(record)
+            if expected is not None:
+                if expected[0] == "conditional":
+                    source_conditional += 1
+                else:
+                    source_ordinary += 1
+                if expected[2] is not None:
+                    source_probabilistic += 1
 
     registry = read_json(REGISTRY_PATH)
     decisions = registry.get("records") if isinstance(registry, dict) else None
@@ -219,6 +257,8 @@ def audit() -> dict[str, int]:
 
     promoted = 0
     promoted_with_traffic = 0
+    promoted_conditional = 0
+    promoted_ordinary = 0
     for mission_id, decision in decisions.items():
         if not isinstance(decision, dict) or decision.get("stage") not in PROMOTED_STAGES:
             continue
@@ -231,17 +271,25 @@ def audit() -> dict[str, int]:
         actual = actual_traffic_car(canonical_record)
         if not values_equal(actual, expected):
             raise ValueError(
-                f"Mission {key} Traffic Car conditional differs: expected={expected!r}, canonical={actual!r}"
+                f"Mission {key} Traffic Car requirement differs: expected={expected!r}, canonical={actual!r}"
             )
         promoted += 1
         if expected is not None:
             promoted_with_traffic += 1
+            if expected[0] == "conditional":
+                promoted_conditional += 1
+            else:
+                promoted_ordinary += 1
 
     return {
         "source_records": source_records,
+        "source_conditional": source_conditional,
+        "source_ordinary": source_ordinary,
         "source_probabilistic": source_probabilistic,
         "promoted": promoted,
         "promoted_with_traffic": promoted_with_traffic,
+        "promoted_conditional": promoted_conditional,
+        "promoted_ordinary": promoted_ordinary,
     }
 
 
@@ -249,13 +297,15 @@ def main() -> int:
     try:
         result = audit()
     except ValueError as exc:
-        print(f"Official conditional requirement audit failed: {exc}", file=sys.stderr)
+        print(f"Official contextual requirement audit failed: {exc}", file=sys.stderr)
         return 1
     print(
-        "Official conditional requirement audit passed: "
-        f"{result['source_records']} Traffic Car source records, "
-        f"{result['source_probabilistic']} with probabilities, "
-        f"{result['promoted_with_traffic']} promoted Traffic Car missions and "
+        "Official contextual requirement audit passed: "
+        f"{result['source_records']} Traffic Car source records "
+        f"({result['source_conditional']} conditional, {result['source_ordinary']} ordinary, "
+        f"{result['source_probabilistic']} probabilistic), "
+        f"{result['promoted_with_traffic']} promoted Traffic Car missions "
+        f"({result['promoted_conditional']} conditional, {result['promoted_ordinary']} ordinary) and "
         f"{result['promoted']} promoted missions checked."
     )
     return 0
