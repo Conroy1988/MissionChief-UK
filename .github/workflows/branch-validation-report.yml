@@ -1,6 +1,7 @@
 name: Report release-candidate validation
 
 # Repeatability check: the synchronized publication must remain stable on consecutive runs.
+# run_public_verification_sync.py invokes sync_verification_batch_navigation.py transactionally.
 on:
   push:
     branches:
