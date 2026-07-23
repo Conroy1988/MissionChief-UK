@@ -9,14 +9,18 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from patient_contract import load_mapping_registry, patient_owned_paths
+
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
 MAPPINGS_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
-SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS}
-SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions"}
+PATIENT_MAPPINGS = load_mapping_registry()
+PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
+SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS, *PATIENT_ADDITIONAL_KEYS}
+SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
 
 def read_json(path: Path) -> Any:
@@ -158,9 +162,10 @@ def build_report(example_limit: int) -> dict[str, Any]:
     )
 
     return {
-        "schema_version": "1",
+        "schema_version": "2",
         "official_count": len(records),
         "canonical_count": len(existing),
+        "patient_contract_fields": len(PATIENT_MAPPINGS),
         "mapped_key_counts": {group: len(mapped[group]) for group in KEY_GROUPS},
         "unmapped_key_count": len(entries),
         "entries": entries,
