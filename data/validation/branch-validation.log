@@ -26,7 +26,7 @@ Official key mapping failure report passed: all 75 promoted missions are equival
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 75 promoted missions, 75 fully canonical, 4 requirement keys, 3 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 75 promoted missions, 75 fully canonical, 5 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -34,9 +34,250 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 133,
-  "ready_count": 0,
-  "blocked_count": 946,
-  "ready": [],
+  "ready_count": 9,
+  "blocked_count": 937,
+  "ready": [
+    {
+      "id": "107",
+      "name": "Row of garages on fire",
+      "suggested_path": "data/uk/missions/row-of-garages-on-fire-107.json",
+      "average_credits": 3000,
+      "mission_categories": [
+        "fire",
+        "fire_support_specialization",
+        "urban"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "battalion_chief_vehicles": 1,
+        "firetrucks": 5,
+        "water_tankers": 1
+      },
+      "chances": {
+        "water_tankers": 20
+      },
+      "prerequisites": {
+        "fire_stations": 8,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "153",
+      "name": "Hay shed fire - Large",
+      "suggested_path": "data/uk/missions/hay-shed-fire-large.json",
+      "average_credits": 9000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 6,
+        "firetrucks": 8,
+        "platform_trucks": 1,
+        "water_tankers": 2
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 13,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "175",
+      "name": "Landfill fire",
+      "suggested_path": "data/uk/missions/landfill-fire.json",
+      "average_credits": 3500,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Landfill site",
+      "place_array": [
+        "Landfill site"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 3,
+        "firetrucks": 4,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 8,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "178",
+      "name": "Medium forest fire",
+      "suggested_path": "data/uk/missions/medium-forest-fire.json",
+      "average_credits": 4000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Forest",
+      "place_array": [
+        "Forest"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 2,
+        "firetrucks": 4,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 3,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "248",
+      "name": "Burning manure pile",
+      "suggested_path": "data/uk/missions/burning-manure-pile.json",
+      "average_credits": 1500,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "firetrucks": 2,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 7,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "249",
+      "name": "Large Hay bale stack on fire",
+      "suggested_path": "data/uk/missions/large-hay-bale-stack-on-fire.json",
+      "average_credits": 2000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "firetrucks": 3,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 7,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "250",
+      "name": "Harvester on fire in field",
+      "suggested_path": "data/uk/missions/harvester-on-fire-in-field.json",
+      "average_credits": 1000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "firetrucks": 2,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 7,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "402",
+      "name": "Fire in allotment (Large)",
+      "suggested_path": "data/uk/missions/fire-in-allotment-large.json",
+      "average_credits": 3000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Allotment",
+      "place_array": [
+        "Allotment"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 3,
+        "firetrucks": 6,
+        "water_tankers": 1
+      },
+      "chances": {
+        "water_tankers": 30
+      },
+      "prerequisites": {
+        "fire_stations": 8,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "406",
+      "name": "Stack of containers on fire",
+      "suggested_path": "data/uk/missions/stack-of-containers-on-fire-406.json",
+      "average_credits": 8000,
+      "mission_categories": [
+        "fire",
+        "urban",
+        "fire_support_specialization"
+      ],
+      "place": "Container Holding Area",
+      "place_array": [
+        "Container Holding Area"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 6,
+        "firetrucks": 8,
+        "platform_trucks": 1,
+        "water_tankers": 1
+      },
+      "chances": {
+        "platform_trucks": 40,
+        "water_tankers": 60
+      },
+      "prerequisites": {
+        "fire_stations": 10,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -47,32 +288,18 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 133,
   "mapped_key_counts": {
-    "requirements": 4,
-    "chances": 3,
+    "requirements": 5,
+    "chances": 4,
     "prerequisites": 2
   },
-  "unmapped_key_count": 87,
+  "unmapped_key_count": 85,
   "entries": [
     {
       "group": "requirements",
-      "key": "water_tankers",
-      "remaining_mission_count": 179,
+      "key": "mobile_command_vehicles",
+      "remaining_mission_count": 218,
       "single_key_unlock_count": 6,
       "examples": [
-        {
-          "id": "28",
-          "name": "Burning machine",
-          "value": 1,
-          "average_credits": 2470,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.water_tankers"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/28"
-        },
         {
           "id": "34",
           "name": "Fire in Hospital - Major Incident",
@@ -82,7 +309,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -99,118 +325,12 @@ PASS canonical-candidates
           "official_url": "https://www.missionchief.co.uk/einsaetze/34"
         },
         {
-          "id": "41",
-          "name": "Car workshop fire - persons reported",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "chances.water_tankers",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/41"
-        },
-        {
-          "id": "68",
-          "name": "Big Supermarket Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "chances.water_tankers",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/68"
-        },
-        {
-          "id": "72",
-          "name": "Light Aircraft Crash",
-          "value": 1,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "chances.hazmat_vehicles",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/72"
-        },
-        {
-          "id": "74",
-          "name": "Major fire",
-          "value": 2,
-          "average_credits": 10210,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.only_alliance_mission",
-            "additional.unavailable_in_normal_missions"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/74"
-        },
-        {
-          "id": "102",
-          "name": "Burning manufacturing machine",
-          "value": 1,
-          "average_credits": 2470,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/102"
-        },
-        {
-          "id": "107",
-          "name": "Row of garages on fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.water_tankers"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/107"
-        },
-        {
           "id": "108",
           "name": "Thatched cottage fire",
           "value": 1,
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
           ],
@@ -224,22 +344,139 @@ PASS canonical-candidates
           "official_url": "https://www.missionchief.co.uk/einsaetze/108"
         },
         {
-          "id": "126",
-          "name": "HGV Fire",
+          "id": "122",
+          "name": "Burning thatched roof house ignited by fireworks",
           "value": 1,
-          "average_credits": 1400,
+          "average_credits": 4200,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
+            "requirements.mobile_air_vehicles",
             "requirements.police_cars",
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "chances.water_tankers",
+            "chances.mobile_air_vehicles",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/122"
+        },
+        {
+          "id": "134",
+          "name": "Goods Train Fire",
+          "value": 1,
+          "average_credits": 2000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.mobile_air_vehicles"
+          ],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/134"
+        },
+        {
+          "id": "145",
+          "name": "Fire in an office building - Major Incident",
+          "value": 1,
+          "average_credits": 12000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.mobile_air_vehicles",
+            "requirements.police_cars",
+            "chances.mobile_air_vehicles",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/145"
+        },
+        {
+          "id": "149",
+          "name": "Building collapse",
+          "value": 1,
+          "average_credits": 9000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "requirements.police_cars",
+            "chances.patient_critical_care",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/149"
+        },
+        {
+          "id": "169",
+          "name": "Heathland fire - large",
+          "value": 1,
+          "average_credits": 8000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/169"
+        },
+        {
+          "id": "173",
+          "name": "Warehouse Fire - Major Incident",
+          "value": 1,
+          "average_credits": 14000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.hazmat_vehicles",
+            "requirements.mobile_air_vehicles",
+            "requirements.police_cars",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
+            "additional.fire_alarm_system_possible"
           ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/126"
+          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
+        },
+        {
+          "id": "177",
+          "name": "Large field fire",
+          "value": 1,
+          "average_credits": 7000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/177"
+        },
+        {
+          "id": "181",
+          "name": "Flat Fire in High Rise",
+          "value": 1,
+          "average_credits": 6000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/181"
         }
       ]
     },
@@ -247,7 +484,7 @@ PASS canonical-candidates
       "group": "requirements",
       "key": "hazmat_vehicles",
       "remaining_mission_count": 155,
-      "single_key_unlock_count": 2,
+      "single_key_unlock_count": 3,
       "examples": [
         {
           "id": "29",
@@ -274,9 +511,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -313,7 +548,6 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.water_tankers",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -390,8 +624,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -646,9 +878,7 @@ PASS canonical-candidates
           "average_credits": 20000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers"
+            "requirements.police_cars"
           ],
           "operational_complexity": [
             "additional.duration",
@@ -806,7 +1036,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -959,7 +1188,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
           ],
@@ -982,9 +1210,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.rescue_stations"
           ],
           "operational_complexity": [
@@ -1134,7 +1360,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -1157,9 +1382,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.water_tankers",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -1332,7 +1555,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations"
           ],
@@ -1479,9 +1701,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -1714,201 +1934,6 @@ PASS canonical-candidates
             "generator:'ambulance_station_missions'"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/152"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "mobile_command_vehicles",
-      "remaining_mission_count": 218,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
-          "value": 1,
-          "average_credits": 10750,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
-        },
-        {
-          "id": "108",
-          "name": "Thatched cottage fire",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/108"
-        },
-        {
-          "id": "122",
-          "name": "Burning thatched roof house ignited by fireworks",
-          "value": 1,
-          "average_credits": 4200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/122"
-        },
-        {
-          "id": "134",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.water_tankers"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134"
-        },
-        {
-          "id": "145",
-          "name": "Fire in an office building - Major Incident",
-          "value": 1,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/145"
-        },
-        {
-          "id": "149",
-          "name": "Building collapse",
-          "value": 1,
-          "average_credits": 9000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.police_cars",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/149"
-        },
-        {
-          "id": "169",
-          "name": "Heathland fire - large",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/169"
-        },
-        {
-          "id": "173",
-          "name": "Warehouse Fire - Major Incident",
-          "value": 1,
-          "average_credits": 14000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
-        },
-        {
-          "id": "177",
-          "name": "Large field fire",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/177"
-        },
-        {
-          "id": "181",
-          "name": "Flat Fire in High Rise",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/181"
         }
       ]
     },
@@ -2212,7 +2237,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -2252,7 +2276,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -2300,8 +2323,7 @@ PASS canonical-candidates
           "average_credits": 2000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.water_tankers"
+            "requirements.mobile_command_vehicles"
           ],
           "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/134"
@@ -2340,8 +2362,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -2358,11 +2378,9 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.mobile_air_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -2385,7 +2403,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -2409,8 +2426,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -2427,10 +2442,8 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.mobile_air_vehicles",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -2453,7 +2466,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -2742,7 +2754,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -2790,7 +2801,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -2833,7 +2843,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [],
@@ -3106,7 +3115,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -3147,7 +3155,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -3314,11 +3321,9 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.mobile_air_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -3341,7 +3346,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -3565,7 +3569,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -3613,7 +3616,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -3682,8 +3684,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.foam",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems"
           ],
@@ -3700,8 +3700,6 @@ PASS canonical-candidates
           "average_credits": 3500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
@@ -4295,217 +4293,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "chances",
-      "key": "water_tankers",
-      "remaining_mission_count": 65,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "28",
-          "name": "Burning machine",
-          "value": 30,
-          "average_credits": 2470,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/28"
-        },
-        {
-          "id": "41",
-          "name": "Car workshop fire - persons reported",
-          "value": 40,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/41"
-        },
-        {
-          "id": "68",
-          "name": "Big Supermarket Fire",
-          "value": 20,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/68"
-        },
-        {
-          "id": "107",
-          "name": "Row of garages on fire",
-          "value": 20,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/107"
-        },
-        {
-          "id": "126",
-          "name": "HGV Fire",
-          "value": 10,
-          "average_credits": 1400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.traffic_car",
-            "requirements.water_tankers",
-            "chances.traffic_car",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/126"
-        },
-        {
-          "id": "173",
-          "name": "Warehouse Fire - Major Incident",
-          "value": 50,
-          "average_credits": 14000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
-        },
-        {
-          "id": "192",
-          "name": "Hotel fire (large)",
-          "value": 10,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.mobile_air_vehicles",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/192"
-        },
-        {
-          "id": "235",
-          "name": "Museum Fire",
-          "value": 20,
-          "average_credits": 7500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/235"
-        },
-        {
-          "id": "238",
-          "name": "Restaurant fire",
-          "value": 20,
-          "average_credits": 10000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/238"
-        },
-        {
-          "id": "240",
-          "name": "Fire in shopping centre",
-          "value": 20,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/240"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "fire_support_count",
       "remaining_mission_count": 65,
@@ -4613,7 +4400,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -4663,7 +4449,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -4679,7 +4464,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [],
@@ -4697,7 +4481,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -4728,7 +4511,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -4762,7 +4544,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -4886,7 +4667,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -4905,7 +4685,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -4936,7 +4715,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -4984,7 +4762,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -5019,7 +4796,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -5048,7 +4824,6 @@ PASS canonical-candidates
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
@@ -5076,7 +4851,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
@@ -5232,9 +5006,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.traffic_car",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -5571,7 +5343,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -5619,7 +5390,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -5864,7 +5634,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -5912,7 +5681,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -6006,11 +5774,9 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.mobile_air_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -6305,7 +6071,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -6827,7 +6592,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -6875,7 +6639,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -6914,7 +6677,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -6945,7 +6707,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mass_casualty_count",
@@ -7051,7 +6812,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -7083,7 +6843,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mass_casualty_count",
@@ -7189,7 +6948,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -7216,7 +6974,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -7243,7 +7000,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -7437,7 +7193,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_helicopter_stations",
@@ -7626,7 +7381,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -7674,7 +7428,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -7785,7 +7538,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire"
@@ -7809,7 +7561,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire"
           ],
@@ -7863,8 +7614,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.police_stations"
           ],
@@ -7891,10 +7640,8 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.police_stations"
@@ -7927,10 +7674,8 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
@@ -7976,7 +7721,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -8024,7 +7768,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -8135,7 +7878,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -8159,7 +7901,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
@@ -8213,8 +7954,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.police_stations",
             "prerequisites.railway_police"
@@ -8241,10 +7980,8 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.police_stations",
@@ -8277,10 +8014,8 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
@@ -8468,7 +8203,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -8494,7 +8228,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -9360,7 +9093,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -9400,7 +9132,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -9442,7 +9173,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -9483,7 +9213,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -9521,7 +9250,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -9558,7 +9286,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -9597,7 +9324,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -9635,7 +9361,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -9880,7 +9605,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
           ],
@@ -9901,9 +9625,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
-            "chances.water_tankers"
+            "requirements.mobile_command_vehicles"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel"
@@ -9922,11 +9644,9 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.mobile_air_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -9951,7 +9671,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [],
@@ -10021,7 +9740,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
@@ -10046,8 +9764,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
@@ -10068,8 +9784,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems"
           ],
@@ -10090,8 +9804,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazmat_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
@@ -11005,10 +10717,8 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -11031,9 +10741,7 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -11058,11 +10766,9 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.hazmat_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "chances.water_tankers",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
           ],
@@ -11136,9 +10842,7 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
-            "requirements.personnel_educations",
-            "requirements.water_tankers",
-            "chances.water_tankers"
+            "requirements.personnel_educations"
           ],
           "operational_complexity": [
             "additional.date_end",
@@ -11285,8 +10989,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.police_cars",
             "requirements.traffic_car",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.police_stations"
           ],
           "operational_complexity": [
@@ -11434,8 +11136,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.police_cars",
             "requirements.traffic_car",
-            "requirements.water_tankers",
-            "chances.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations"
           ],
@@ -11475,7 +11175,6 @@ PASS canonical-candidates
             "requirements.police_cars",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -11523,7 +11222,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -11559,7 +11257,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police"
@@ -11583,7 +11280,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "requirements.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police"
           ],
@@ -11829,7 +11525,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -11877,7 +11572,6 @@ PASS canonical-candidates
             "requirements.rescue_dogs",
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -11913,7 +11607,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
-            "requirements.water_tankers",
             "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -11937,7 +11630,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
-            "requirements.water_tankers",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
@@ -13055,7 +12747,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment"
           ],
@@ -13075,7 +12766,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment"
           ],
@@ -13096,7 +12786,6 @@ PASS canonical-candidates
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.police_stations"
@@ -13350,7 +13039,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -13499,7 +13187,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -13519,7 +13206,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -13540,7 +13226,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.police_stations",
@@ -13728,7 +13413,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -13994,7 +13678,6 @@ PASS canonical-candidates
             "requirements.rescue_dogs",
             "requirements.search_and_rescue",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -14187,7 +13870,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.water_damage_pump_count"
           ],
@@ -14207,7 +13889,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.water_damage_pump_count"
           ],
@@ -14228,7 +13909,6 @@ PASS canonical-candidates
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.police_stations",
             "prerequisites.water_damage_pump_count"
@@ -14362,7 +14042,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -14382,7 +14061,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -14403,7 +14081,6 @@ PASS canonical-candidates
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.police_stations",
@@ -14787,7 +14464,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -15003,7 +14679,6 @@ PASS canonical-candidates
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -15700,7 +15375,6 @@ PASS canonical-candidates
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -15999,7 +15673,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -16963,7 +16636,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
@@ -17030,7 +16702,6 @@ PASS canonical-candidates
             "requirements.rescue_dogs",
             "requirements.search_and_rescue_command",
             "requirements.two_way",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -17311,7 +16982,6 @@ PASS canonical-candidates
             "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
-            "requirements.water_tankers",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
@@ -17380,7 +17050,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.24 seconds
+INFO    -  Documentation built in 1.25 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
