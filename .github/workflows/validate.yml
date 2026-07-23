@@ -65,7 +65,19 @@ jobs:
           retention-days: 14
 
       - name: Validate official-to-canonical key mappings
-        run: python scripts/validate_official_key_mappings.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_official_key_mappings.py 2>&1 | tee official-key-equivalence.log
+
+      - name: Upload official key equivalence diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-key-equivalence-diagnostics
+          path: official-key-equivalence.log
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Report next evidence-safe canonical candidates
         run: |
