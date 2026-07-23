@@ -14,6 +14,7 @@ MISSING = object()
 ALLOWED_TRANSFORMS = {
     "identity-integer",
     "identity-string-array",
+    "identity-string-array-preserve-duplicates",
     "identity-integer-array",
     "identity-string",
     "percent-to-probability",
@@ -102,17 +103,24 @@ def nested_value(record: dict[str, Any], path: str) -> Any:
     return container[field]
 
 
+def validated_string_array(value: Any, label: str) -> list[str]:
+    if not isinstance(value, list) or not all(isinstance(item, str) and item for item in value):
+        raise ValueError(f"{label} must be an array of non-empty strings")
+    return list(value)
+
+
 def transform_value(value: Any, transform: str, label: str) -> Any:
     if transform == "identity-integer":
         if not isinstance(value, int) or isinstance(value, bool) or value < 0:
             raise ValueError(f"{label} must be a non-negative integer")
         return value
     if transform == "identity-string-array":
-        if not isinstance(value, list) or not all(isinstance(item, str) and item for item in value):
-            raise ValueError(f"{label} must be an array of non-empty strings")
-        if len(value) != len(set(value)):
+        output = validated_string_array(value, label)
+        if len(output) != len(set(output)):
             raise ValueError(f"{label} must not contain duplicate values")
-        return list(value)
+        return output
+    if transform == "identity-string-array-preserve-duplicates":
+        return validated_string_array(value, label)
     if transform == "identity-integer-array":
         if (
             not isinstance(value, list)
