@@ -316,6 +316,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official mass_casualty_equipment count represents guaranteed Mass Casualty Equipment units."
+    },
+    "police_helicopters": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "police_helicopter",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/91",
+        "https://www.missionchief.co.uk/einsaetze/206",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_helicopters count is the guaranteed number of Police Helicopters."
     }
   },
   "chances": {
@@ -572,6 +585,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official mass_casualty_count value is the minimum Mass Casualty Extension count required to generate the mission."
+    },
+    "police_helicopter_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "police_helicopter_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/91",
+        "https://www.missionchief.co.uk/einsaetze/206",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_helicopter_stations value is the minimum Police Helicopter Station count used to generate the mission."
     }
   }
 }

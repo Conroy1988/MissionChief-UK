@@ -9,15 +9,15 @@ This page is generated from the complete official UK mission catalogue, the cano
 
 | Verification gate | Missions at or beyond gate | Coverage | Exact current stage |
 |---|---:|---:|---:|
-| Captured | 1,062 / 1,062 | 100.00% | 826 |
-| Identity verified | 236 / 1,062 | 22.22% | 41 |
-| Requirements mapped | 195 / 1,062 | 18.36% | 0 |
-| Operationally verified | 195 / 1,062 | 18.36% | 0 |
-| Fully canonical | 195 / 1,062 | 18.36% | 195 |
+| Captured | 1,062 / 1,062 | 100.00% | 825 |
+| Identity verified | 237 / 1,062 | 22.32% | 41 |
+| Requirements mapped | 196 / 1,062 | 18.46% | 0 |
+| Operationally verified | 196 / 1,062 | 18.46% | 0 |
+| Fully canonical | 196 / 1,062 | 18.46% | 196 |
 
-**Remaining to fully canonical:** 867
+**Remaining to fully canonical:** 866
 
-**Direct canonical ID matches:** 236
+**Direct canonical ID matches:** 237
 
 **Canonical overlay or derived records:** 17
 

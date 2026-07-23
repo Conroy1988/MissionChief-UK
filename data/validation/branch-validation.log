@@ -4,9 +4,10 @@ GP Surgery mapping synchronized: already current.
 Mass Casualty core mappings synchronized: already current.
 Official personnel key mappings synchronized: already current.
 Police Car or ARV mapping synchronized: already current.
+Police Helicopter mapping synchronized: change required.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
-Official key mapping synchronization passed: 7 synchronizer(s) executed.
+Official key mapping synchronization passed: 8 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -14,19 +15,19 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 24: 1 mission(s), 3 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 236 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 237 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 236 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 237 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 236 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 237 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-data
@@ -45,6 +46,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-21.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-22.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-23.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-24.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -57,51 +59,51 @@ Structured data validation warnings:
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
-Validated 357 structured data file(s) successfully, including 965 mission resource reference(s) and 97 infrastructure precondition reference(s).
+Validated 359 structured data file(s) successfully, including 976 mission resource reference(s) and 98 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 236/1062 direct official/canonical matches, 826 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 237/1062 direct official/canonical matches, 825 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 236/253 canonical ID matches, 826 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 237/254 canonical ID matches, 825 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 195 decisions from 22 source files.
+Mission verification registry merged: 196 decisions from 23 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 195 promoted missions are equivalent.
+Official key mapping failure report passed: all 196 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 195 promoted missions, 195 fully canonical, 22 requirement keys, 10 chance keys and 9 prerequisite keys mapped.
+Official key mapping audit passed: 196 promoted missions, 196 fully canonical, 23 requirement keys, 10 chance keys and 10 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 195/195 promoted missions exact, 79 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 196/196 promoted missions exact, 80 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 195/195 promoted missions exact, 12 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 196/196 promoted missions exact, 13 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 195/195 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 196/196 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "4",
   "official_count": 1062,
-  "canonical_count": 253,
+  "canonical_count": 254,
   "patient_contract_fields": 10,
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 826,
+  "blocked_count": 825,
   "ready": [],
   "blocked": []
 }
@@ -111,14 +113,14 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 253,
+  "canonical_count": 254,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 22,
+    "requirements": 23,
     "chances": 10,
-    "prerequisites": 9
+    "prerequisites": 10
   },
-  "unmapped_key_count": 55,
+  "unmapped_key_count": 53,
   "entries": [
     {
       "group": "requirements",
@@ -600,10 +602,7 @@ PASS canonical-candidates
           "value": 2,
           "average_credits": 5000,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
             "additional.need_traffic_car_only_if_present"
@@ -683,341 +682,6 @@ PASS canonical-candidates
     },
     {
       "group": "prerequisites",
-      "key": "police_helicopter_stations",
-      "remaining_mission_count": 36,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "91",
-          "name": "Fail to stop",
-          "value": 1,
-          "average_credits": 5000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/91"
-        },
-        {
-          "id": "206",
-          "name": "Firearms Attack",
-          "value": 1,
-          "average_credits": 10000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/206"
-        },
-        {
-          "id": "207",
-          "name": "Firearms Attack (Major Incident)",
-          "value": 1,
-          "average_credits": 15000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/207"
-        },
-        {
-          "id": "300",
-          "name": "Large Aircraft Crash Off Airport",
-          "value": 1,
-          "average_credits": 18000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/300"
-        },
-        {
-          "id": "344",
-          "name": "Missing captain armband",
-          "value": 1,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/344"
-        },
-        {
-          "id": "363",
-          "name": "Standoff with armed suspect",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/363"
-        },
-        {
-          "id": "364",
-          "name": "Standoff with armed suspect (Threatening to set fire)",
-          "value": 1,
-          "average_credits": 8500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/364"
-        },
-        {
-          "id": "405",
-          "name": "Kidnapping",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
-        },
-        {
-          "id": "433",
-          "name": "Cow Thief on the run",
-          "value": 1,
-          "average_credits": 900,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.max_possible_prisoners",
-            "additional.subsequent_mission_only"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/433"
-        },
-        {
-          "id": "765",
-          "name": "Unannounced Easter bunny strike",
-          "value": 1,
-          "average_credits": 7500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.personnel_educations",
-            "requirements.police_helicopters",
-            "prerequisites.personnel_educations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.personnel_educations"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/765"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "police_helicopters",
-      "remaining_mission_count": 28,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "91",
-          "name": "Fail to stop",
-          "value": 1,
-          "average_credits": 5000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/91"
-        },
-        {
-          "id": "206",
-          "name": "Firearms Attack",
-          "value": 1,
-          "average_credits": 10000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/206"
-        },
-        {
-          "id": "207",
-          "name": "Firearms Attack (Major Incident)",
-          "value": 1,
-          "average_credits": 15000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/207"
-        },
-        {
-          "id": "300",
-          "name": "Large Aircraft Crash Off Airport",
-          "value": 1,
-          "average_credits": 18000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/300"
-        },
-        {
-          "id": "344",
-          "name": "Missing captain armband",
-          "value": 1,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/344"
-        },
-        {
-          "id": "405",
-          "name": "Kidnapping",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
-        },
-        {
-          "id": "433",
-          "name": "Cow Thief on the run",
-          "value": 1,
-          "average_credits": 900,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.max_possible_prisoners",
-            "additional.subsequent_mission_only"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/433"
-        },
-        {
-          "id": "765",
-          "name": "Unannounced Easter bunny strike",
-          "value": 1,
-          "average_credits": 7500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.personnel_educations",
-            "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.personnel_educations"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/765"
-        },
-        {
-          "id": "803",
-          "name": "Execution of an Interpol arrest warrant",
-          "value": 1,
-          "average_credits": 7500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.personnel_educations",
-            "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.personnel_educations"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/803"
-        },
-        {
-          "id": "826",
-          "name": "Missing Easter eggs",
-          "value": 1,
-          "average_credits": 900,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/826"
-        }
-      ]
-    },
-    {
-      "group": "prerequisites",
       "key": "railway_police",
       "remaining_mission_count": 24,
       "single_key_unlock_count": 0,
@@ -1055,7 +719,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.technical_aid"
           ],
@@ -1097,7 +760,6 @@ PASS canonical-candidates
             "requirements.railway_police",
             "requirements.traffic_car",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
@@ -1263,7 +925,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -1305,7 +966,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "requirements.traffic_car",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
             "prerequisites.tow_trucks_large"
           ],
@@ -2012,10 +1672,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 23800,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index"
@@ -2028,10 +1685,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 25800,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2045,10 +1699,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 26300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2062,10 +1713,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 24300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2079,10 +1727,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 23000,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index"
@@ -2095,10 +1740,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 25000,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2112,10 +1754,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 25500,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2129,10 +1768,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 23500,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:300",
             "overlay_index",
@@ -2782,9 +2418,7 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "requirements.traffic_car",
-            "prerequisites.police_helicopter_stations"
+            "requirements.traffic_car"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -2870,7 +2504,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
           ],
@@ -3079,7 +2712,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -3285,7 +2917,6 @@ PASS canonical-candidates
             "requirements.railway_police",
             "requirements.traffic_car",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police"
           ],
           "operational_complexity": [
@@ -4324,9 +3955,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 8000,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
             "additional.swat_personnel"
@@ -4339,9 +3968,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 8500,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
             "additional.swat_personnel"
@@ -4354,9 +3981,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 7000,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.subsequent_missions_ids"
           ],
@@ -4376,7 +4001,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -4397,7 +4021,6 @@ PASS canonical-candidates
             "requirements.railway_police",
             "requirements.traffic_car",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
             "prerequisites.tow_trucks_large"
           ],
@@ -4415,8 +4038,7 @@ PASS canonical-candidates
           "average_credits": 7500,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "prerequisites.police_helicopter_stations"
+            "requirements.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present"
@@ -4429,9 +4051,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 9500,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
             "additional.swat_personnel",
@@ -4446,9 +4066,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 10000,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.police_helicopter_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
             "additional.swat_personnel",
@@ -4533,7 +4151,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -5097,7 +4714,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -5802,7 +5418,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
           ],
@@ -6460,7 +6075,6 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "requirements.two_way",
             "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
             "prerequisites.technical_aid"
@@ -10029,17 +9643,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 18.36% fully canonical, 867 of 1062 missions remaining.
+Mission verification status generated: 18.46% fully canonical, 866 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=253, direct=236, fully=195, remaining=867, batches=23, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 23 evidence pages.
+Public verification metrics synchronized: canonical=254, direct=237, fully=196, remaining=866, batches=24, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 24 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 195/1062 fully canonical, 253 canonical records, 23 evidence batch pages, 174 dynamic batch decisions and 867 missions remaining.
+Mission verification programme asset audit passed: 196/1062 fully canonical, 254 canonical records, 24 evidence batch pages, 175 dynamic batch decisions and 866 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -10051,11 +9665,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=253, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=254, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 91 Markdown files
+Documentation link audit passed across 92 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -10079,10 +9693,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 0.97 seconds
+INFO    -  Documentation built in 1.51 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=253, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=254, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 
