@@ -16,10 +16,10 @@ CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
+RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
-    "expansion_missions_ids",
-    "followup_missions_ids",
+    *RELATIONSHIP_KEYS,
 }
 
 
@@ -37,7 +37,9 @@ def stable_id(value: Any) -> tuple[int, int | str]:
         return (1, str(value))
 
 
-def mission_name(record: dict[str, Any]) -> str:
+def mission_name(record: dict[str, Any] | None) -> str:
+    if record is None:
+        return ""
     value = record.get("name") or record.get("caption") or record.get("title")
     return str(value).strip() if value is not None else ""
 
@@ -88,7 +90,26 @@ def key_blockers(record: dict[str, Any], mappings: dict[str, dict[str, dict[str,
     return blockers
 
 
-def operational_blockers(record: dict[str, Any]) -> list[str]:
+def relationship_blockers(
+    additional: dict[str, Any],
+    official_by_id: dict[str, dict[str, Any]],
+) -> list[str]:
+    blockers: list[str] = []
+    for field in RELATIONSHIP_KEYS:
+        values = additional.get(field, [])
+        if not isinstance(values, list):
+            blockers.append(f"additional.{field} is not an array")
+            continue
+        missing = [str(value) for value in values if str(value) not in official_by_id]
+        if missing:
+            blockers.append(f"unresolved additional.{field}: {', '.join(missing)}")
+    return blockers
+
+
+def operational_blockers(
+    record: dict[str, Any],
+    official_by_id: dict[str, dict[str, Any]],
+) -> list[str]:
     blockers: list[str] = []
     additional = record.get("additional", {})
     if not isinstance(additional, dict):
@@ -100,7 +121,10 @@ def operational_blockers(record: dict[str, Any]) -> list[str]:
         filter_id = additional.get("filter_id")
         if filter_id != "firehouse_missions":
             blockers.append(f"generator family requires review: {filter_id!r}")
+        blockers.extend(relationship_blockers(additional, official_by_id))
 
+    if record.get("base_mission_id") is not None:
+        blockers.append("base mission or variant relationship requires explicit modelling")
     if record.get("additive_overlays") not in (None, ""):
         blockers.append("additive overlay requires explicit modelling")
     if record.get("overlay_index") is not None:
@@ -113,15 +137,13 @@ def operational_blockers(record: dict[str, Any]) -> list[str]:
 def resolve_relationships(values: Any, official_by_id: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     if not isinstance(values, list):
         return []
-    result: list[dict[str, Any]] = []
-    for value in values:
-        key = str(value)
-        related = official_by_id.get(key)
-        result.append({
+    return [
+        {
             "id": value,
-            "name": mission_name(related) if related is not None else None,
-        })
-    return result
+            "name": mission_name(official_by_id.get(str(value))),
+        }
+        for value in values
+    ]
 
 
 def candidate_record(
@@ -146,7 +168,6 @@ def candidate_record(
         "requirements": record.get("requirements", {}),
         "chances": record.get("chances", {}),
         "prerequisites": record.get("prerequisites", {}),
-        "base_mission_id": record.get("base_mission_id"),
         "expansion_missions": resolve_relationships(additional.get("expansion_missions_ids", []), official_by_id),
         "followup_missions": resolve_relationships(additional.get("followup_missions_ids", []), official_by_id),
     }
@@ -170,7 +191,7 @@ def report() -> dict[str, Any]:
         if mission_id in existing:
             continue
 
-        blockers = key_blockers(record, mappings) + operational_blockers(record)
+        blockers = key_blockers(record, mappings) + operational_blockers(record, official_by_id)
         if blockers:
             blocked.append({
                 "id": record.get("id"),
