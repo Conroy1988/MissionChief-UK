@@ -16,6 +16,21 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official kdow_orgl quantity is displayed as required Operational Team Leaders. A same-key chance field converts the quantity to a probabilistic personnel requirement."
+    },
+    "community_midwife": {
+      "status": "verified",
+      "canonical_role": "Community Midwife",
+      "requirement_path": "requirements.midwife",
+      "chance_path": "chances.midwife",
+      "canonical_target": "personnel.chance-aware",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/690",
+        "https://www.missionchief.co.uk/einsaetze/691",
+        "https://www.missionchief.co.uk/einsaetze/692",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official midwife quantity is displayed as required Community Midwives. No same-key chance is present in the verified maternity records, so the published quantity is guaranteed."
     }
   }
 }
