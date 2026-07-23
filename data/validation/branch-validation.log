@@ -1,6 +1,7 @@
 ## official-key-mapping-sync
 Official Ambulance key mapping synchronized: already current.
 GP Surgery mapping synchronized: already current.
+Inland water rescue mapping synchronized: change required.
 Mass Casualty core mappings synchronized: already current.
 Official personnel key mappings synchronized: already current.
 Police Car or ARV mapping synchronized: already current.
@@ -8,7 +9,7 @@ Police Helicopter mapping synchronized: already current.
 Police Helicopter or Drone mapping synchronized: already current.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
-Official key mapping synchronization passed: 9 synchronizer(s) executed.
+Official key mapping synchronization passed: 10 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -16,19 +17,19 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 25: 3 mission(s), 5 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 237 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 240 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 237 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 240 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 237 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 240 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-data
@@ -48,6 +49,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-22.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-23.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-24.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-25.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -60,51 +62,51 @@ Structured data validation warnings:
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
-Validated 359 structured data file(s) successfully, including 976 mission resource reference(s) and 98 infrastructure precondition reference(s).
+Validated 363 structured data file(s) successfully, including 995 mission resource reference(s) and 103 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 237/1062 direct official/canonical matches, 825 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 240/1062 direct official/canonical matches, 822 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 237/254 canonical ID matches, 825 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 240/257 canonical ID matches, 822 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 196 decisions from 23 source files.
+Mission verification registry merged: 199 decisions from 24 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 196 promoted missions are equivalent.
+Official key mapping failure report passed: all 199 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 196 promoted missions, 196 fully canonical, 24 requirement keys, 10 chance keys and 10 prerequisite keys mapped.
+Official key mapping audit passed: 199 promoted missions, 199 fully canonical, 25 requirement keys, 10 chance keys and 11 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 196/196 promoted missions exact, 80 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 199/199 promoted missions exact, 83 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 196/196 promoted missions exact, 13 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 199/199 promoted missions exact, 14 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 196/196 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 199/199 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "4",
   "official_count": 1062,
-  "canonical_count": 254,
+  "canonical_count": 257,
   "patient_contract_fields": 10,
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 825,
+  "blocked_count": 822,
   "ready": [],
   "blocked": []
 }
@@ -114,14 +116,14 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 254,
+  "canonical_count": 257,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 24,
+    "requirements": 25,
     "chances": 10,
-    "prerequisites": 10
+    "prerequisites": 11
   },
-  "unmapped_key_count": 52,
+  "unmapped_key_count": 50,
   "entries": [
     {
       "group": "requirements",
@@ -1555,7 +1557,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
@@ -1600,7 +1601,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_helicopter",
             "requirements.coastal_rescue",
             "prerequisites.coastal_helicopter_count",
@@ -3145,7 +3145,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_helicopter",
             "requirements.coastal_rescue",
             "prerequisites.coastal_rescue_count",
@@ -3350,7 +3349,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_rescue",
             "prerequisites.coastal_helicopter_count",
             "prerequisites.coastal_rescue_count",
@@ -3618,165 +3616,6 @@ PASS canonical-candidates
             "additional.pump_water_amount"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/809"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "coastal_boat",
-      "remaining_mission_count": 9,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "565",
-          "name": "Vehicle trapped in flood water",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/565"
-        },
-        {
-          "id": "568",
-          "name": "Mud Rescue MAJOR",
-          "value": 1,
-          "average_credits": 18000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat_hover",
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.coastal_support",
-            "requirements.mud_rescue",
-            "requirements.personnel_educations",
-            "prerequisites.coastal_hover_boat",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.mud_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.water_rescue_2"
-          ],
-          "operational_complexity": [
-            "additional.personnel_educations",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/568"
-        },
-        {
-          "id": "583",
-          "name": "Medium Aircraft Emergency Landing in Estuary Mud",
-          "value": 2,
-          "average_credits": 30000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.coastal_support",
-            "requirements.mud_rescue",
-            "requirements.personnel_educations",
-            "prerequisites.mud_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.water_rescue_2"
-          ],
-          "operational_complexity": [
-            "additional.personnel_educations",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/583"
-        },
-        {
-          "id": "599",
-          "name": "EPIRB Activation (Marina)",
-          "value": 3,
-          "average_credits": 12000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_helicopter",
-            "requirements.coastal_rescue",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.water_rescue_2"
-          ],
-          "operational_complexity": [
-            "additional.handoff_possible_via_building_types",
-            "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/599"
-        },
-        {
-          "id": "625",
-          "name": "Gain entry - houseboat (concern for welfare)",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/625"
-        },
-        {
-          "id": "677",
-          "name": "Fire on a cruise ship at the dock",
-          "value": 2,
-          "average_credits": 20500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/677"
-        },
-        {
-          "id": "714",
-          "name": "Water Rescue Required at Sport Sailing Event",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/714"
-        },
-        {
-          "id": "718",
-          "name": "Canoeing accident",
-          "value": 1,
-          "average_credits": 3450,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/718"
-        },
-        {
-          "id": "565/a",
-          "name": "Vehicle trapped in flood water",
-          "value": 1,
-          "average_credits": 3500,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.flood_equipment",
-            "prerequisites.flood_equipment",
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
-            "variant:565",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/565/a"
         }
       ]
     },
@@ -4229,9 +4068,7 @@ PASS canonical-candidates
           "average_credits": 3500,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "requirements.flood_equipment",
-            "prerequisites.wasserrettung"
+            "requirements.flood_equipment"
           ],
           "operational_complexity": [
             "generator:'coastal_rescue_missions'",
@@ -4362,9 +4199,7 @@ PASS canonical-candidates
           "average_credits": 3500,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "prerequisites.flood_equipment",
-            "prerequisites.wasserrettung"
+            "prerequisites.flood_equipment"
           ],
           "operational_complexity": [
             "generator:'coastal_rescue_missions'",
@@ -4668,97 +4503,6 @@ PASS canonical-candidates
             "additive_overlays"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/757/a"
-        }
-      ]
-    },
-    {
-      "group": "prerequisites",
-      "key": "wasserrettung",
-      "remaining_mission_count": 6,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "565",
-          "name": "Vehicle trapped in flood water",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/565"
-        },
-        {
-          "id": "625",
-          "name": "Gain entry - houseboat (concern for welfare)",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/625"
-        },
-        {
-          "id": "677",
-          "name": "Fire on a cruise ship at the dock",
-          "value": 2,
-          "average_credits": 20500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/677"
-        },
-        {
-          "id": "714",
-          "name": "Water Rescue Required at Sport Sailing Event",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/714"
-        },
-        {
-          "id": "718",
-          "name": "Canoeing accident",
-          "value": 1,
-          "average_credits": 3450,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/718"
-        },
-        {
-          "id": "565/a",
-          "name": "Vehicle trapped in flood water",
-          "value": 1,
-          "average_credits": 3500,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "requirements.flood_equipment",
-            "prerequisites.flood_equipment"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
-            "variant:565",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/565/a"
         }
       ]
     },
@@ -5182,7 +4926,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
@@ -5207,7 +4950,6 @@ PASS canonical-candidates
           "average_credits": 30000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
@@ -5298,7 +5040,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
@@ -5323,7 +5064,6 @@ PASS canonical-candidates
           "average_credits": 30000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
             "requirements.mud_rescue",
@@ -5393,7 +5133,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_support",
@@ -5418,7 +5157,6 @@ PASS canonical-candidates
           "average_credits": 30000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_command",
             "requirements.coastal_support",
             "requirements.mud_rescue",
@@ -5463,7 +5201,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
@@ -5488,7 +5225,6 @@ PASS canonical-candidates
           "average_credits": 30000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
             "requirements.mud_rescue",
@@ -5676,7 +5412,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
@@ -5701,7 +5436,6 @@ PASS canonical-candidates
           "average_credits": 30000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
@@ -5753,7 +5487,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_boat_hover",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
@@ -5842,7 +5575,6 @@ PASS canonical-candidates
           "average_credits": 18000,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
-            "requirements.coastal_boat",
             "requirements.coastal_command",
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
@@ -9499,17 +9231,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 18.46% fully canonical, 866 of 1062 missions remaining.
+Mission verification status generated: 18.74% fully canonical, 863 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=254, direct=237, fully=196, remaining=866, batches=24, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 24 evidence pages.
+Public verification metrics synchronized: canonical=257, direct=240, fully=199, remaining=863, batches=25, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 25 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 196/1062 fully canonical, 254 canonical records, 24 evidence batch pages, 175 dynamic batch decisions and 866 missions remaining.
+Mission verification programme asset audit passed: 199/1062 fully canonical, 257 canonical records, 25 evidence batch pages, 178 dynamic batch decisions and 863 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -9521,11 +9253,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=254, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=257, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 92 Markdown files
+Documentation link audit passed across 93 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -9549,10 +9281,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.20 seconds
+INFO    -  Documentation built in 1.39 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=254, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=257, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 

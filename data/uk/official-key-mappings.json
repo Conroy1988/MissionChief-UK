@@ -345,6 +345,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official field is displayed as Police Helicopters or Drones. The quantity is a qualifying total across the two canonical aerial-search resources."
+    },
+    "coastal_boat": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "inland_rescue_boat_trailer",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/625",
+        "https://www.missionchief.co.uk/einsaetze/677",
+        "https://www.missionchief.co.uk/einsaetze/718",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_boat count is displayed as the required Inland Rescue Boat (Trailer) quantity on the verified UK incidents."
     }
   },
   "chances": {
@@ -614,6 +627,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official police_helicopter_stations value is the minimum Police Helicopter Station count used to generate the mission."
+    },
+    "wasserrettung": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "technical_rescue_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/625",
+        "https://www.missionchief.co.uk/einsaetze/677",
+        "https://www.missionchief.co.uk/einsaetze/718",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official wasserrettung prerequisite is displayed as the required Technical Rescue Extension count on the verified UK incidents."
     }
   }
 }
