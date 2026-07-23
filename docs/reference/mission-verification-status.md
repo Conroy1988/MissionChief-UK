@@ -9,15 +9,15 @@ This page is generated from the complete official UK mission catalogue, the cano
 
 | Verification gate | Missions at or beyond gate | Coverage | Exact current stage |
 |---|---:|---:|---:|
-| Captured | 1,062 / 1,062 | 100.00% | 836 |
-| Identity verified | 226 / 1,062 | 21.28% | 41 |
-| Requirements mapped | 185 / 1,062 | 17.42% | 0 |
-| Operationally verified | 185 / 1,062 | 17.42% | 0 |
-| Fully canonical | 185 / 1,062 | 17.42% | 185 |
+| Captured | 1,062 / 1,062 | 100.00% | 833 |
+| Identity verified | 229 / 1,062 | 21.56% | 41 |
+| Requirements mapped | 188 / 1,062 | 17.70% | 0 |
+| Operationally verified | 188 / 1,062 | 17.70% | 0 |
+| Fully canonical | 188 / 1,062 | 17.70% | 188 |
 
-**Remaining to fully canonical:** 877
+**Remaining to fully canonical:** 874
 
-**Direct canonical ID matches:** 226
+**Direct canonical ID matches:** 229
 
 **Canonical overlay or derived records:** 17
 
@@ -67,7 +67,6 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `68` | Big Supermarket Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `69` | Unknown Tanker Spill | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `71` | Nosebleed | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `72` | Light Aircraft Crash | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `73` | Serious Accident Involving a Bus | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `74` | Major fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `76` | Industrial Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
@@ -135,6 +134,7 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `155` | Suspicious package | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `156` | Heatstroke | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `157` | Easter egg stolen from basket | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `158` | Chocolate Egg heist | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 
 ## Machine-readable status
 

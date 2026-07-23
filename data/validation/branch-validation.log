@@ -7,19 +7,23 @@ Official Ambulance key mapping synchronized: already current.
 PASS official-ambulance-key-sync
 
 ## official-police-car-or-arv-sync
-Police Car or ARV mapping synchronized: change required.
+Police Car or ARV mapping synchronized: already current.
 PASS official-police-car-or-arv-sync
 
+## official-probabilistic-hazmat-sync
+Probabilistic HazMat alternative mapping synchronized: change required.
+PASS official-probabilistic-hazmat-sync
+
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 20: 3 mission(s), 5 file(s) written.
+Generated fully canonical Batch 21: 3 mission(s), 5 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 226 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 229 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 226 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 229 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-data
@@ -35,6 +39,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-18.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-19.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-20.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-21.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -46,46 +51,46 @@ Structured data validation warnings:
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
-Validated 342 structured data file(s) successfully, including 881 mission resource reference(s) and 89 infrastructure precondition reference(s).
+Validated 346 structured data file(s) successfully, including 908 mission resource reference(s) and 90 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 226/1062 direct official/canonical matches, 836 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 229/1062 direct official/canonical matches, 833 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 226/243 canonical ID matches, 836 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 229/246 canonical ID matches, 833 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 185 decisions from 19 source files.
+Mission verification registry merged: 188 decisions from 20 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 185 promoted missions are equivalent.
+Official key mapping failure report passed: all 188 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 185 promoted missions, 185 fully canonical, 18 requirement keys, 9 chance keys and 6 prerequisite keys mapped.
+Official key mapping audit passed: 188 promoted missions, 188 fully canonical, 18 requirement keys, 10 chance keys and 6 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 185/185 promoted missions exact, 71 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 188/188 promoted missions exact, 74 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 185/185 promoted missions exact, 12 mapped-personnel missions and 1 personnel role(s) mapped.
+Official personnel mapping audit passed: 188/188 promoted missions exact, 12 mapped-personnel missions and 1 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "3",
   "official_count": 1062,
-  "canonical_count": 243,
+  "canonical_count": 246,
   "patient_contract_fields": 10,
   "personnel_contract_roles": 1,
   "ready_count": 0,
-  "blocked_count": 836,
+  "blocked_count": 833,
   "ready": [],
   "blocked": []
 }
@@ -95,146 +100,15 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 243,
+  "canonical_count": 246,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
     "requirements": 18,
-    "chances": 9,
+    "chances": 10,
     "prerequisites": 6
   },
-  "unmapped_key_count": 63,
+  "unmapped_key_count": 62,
   "entries": [
-    {
-      "group": "chances",
-      "key": "hazmat_vehicles",
-      "remaining_mission_count": 14,
-      "single_key_unlock_count": 4,
-      "examples": [
-        {
-          "id": "72",
-          "name": "Light Aircraft Crash",
-          "value": 50,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/72"
-        },
-        {
-          "id": "272",
-          "name": "Fire in petrol station (large)",
-          "value": 5,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/272"
-        },
-        {
-          "id": "457",
-          "name": "Care home fire (Persons Reported)",
-          "value": 10,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/457"
-        },
-        {
-          "id": "479",
-          "name": "Locomotive train fire",
-          "value": 30,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/479"
-        },
-        {
-          "id": "684",
-          "name": "Self-Service Laundry Facility Fire",
-          "value": 40,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/684"
-        },
-        {
-          "id": "805",
-          "name": "Severe chlorine leak",
-          "value": 50,
-          "average_credits": 9560,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/805"
-        },
-        {
-          "id": "823",
-          "name": "Fire in furniture shop",
-          "value": 50,
-          "average_credits": 12270,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/823"
-        },
-        {
-          "id": "272/a",
-          "name": "Fire in petrol station (large)",
-          "value": 5,
-          "average_credits": 8800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:272",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/272/a"
-        },
-        {
-          "id": "272/ab",
-          "name": "Fire in petrol station (large)",
-          "value": 5,
-          "average_credits": 9300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.emergency_welfare"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:272",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/272/ab"
-        },
-        {
-          "id": "272/b",
-          "name": "Fire in petrol station (large)",
-          "value": 5,
-          "average_credits": 8500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.emergency_welfare"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:272",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/272/b"
-        }
-      ]
-    },
     {
       "group": "prerequisites",
       "key": "riot_police",
@@ -9571,17 +9445,17 @@ PASS key-mapping-backlog
 PASS patient-field-contract
 
 ## verification-status
-Mission verification status generated: 17.42% fully canonical, 877 of 1062 missions remaining.
+Mission verification status generated: 17.70% fully canonical, 874 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=243, direct=226, fully=185, remaining=877, batches=20, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
-Verification batch navigation synchronized for 20 evidence pages.
+Public verification metrics synchronized: canonical=246, direct=229, fully=188, remaining=874, batches=21, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 21 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 185/1062 fully canonical, 243 canonical records, 20 evidence batch pages, 164 dynamic batch decisions and 877 missions remaining.
+Mission verification programme asset audit passed: 188/1062 fully canonical, 246 canonical records, 21 evidence batch pages, 167 dynamic batch decisions and 874 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -9593,11 +9467,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=243, vehicles=48, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 88 Markdown files
+Documentation link audit passed across 89 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -9621,10 +9495,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.55 seconds
+INFO    -  Documentation built in 1.56 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=243, vehicles=48, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=246, vehicles=48, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 

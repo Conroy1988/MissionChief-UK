@@ -1,0 +1,104 @@
+{
+  "id": 823,
+  "name": "Fire in furniture shop",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 7
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 3
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 5
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ],
+        "probability": 0.5
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/823",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Mall",
+    "Storehouse",
+    "Mall\nStorehouse"
+  ],
+  "preconditions": {
+    "fire_stations": 23,
+    "foam_extensions": 1,
+    "police_stations": 6,
+    "rescue_stations": 8
+  },
+  "patients": {
+    "maximum": 4,
+    "specializations": [
+      "General Surgeon"
+    ],
+    "specialization_ids": [
+      1
+    ],
+    "specialization_text": "General Surgeon",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 12270
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}
