@@ -16106,14 +16106,14 @@ Mission verification status generated: 8.76% fully canonical, 969 of 1062 missio
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=151, direct=134, fully=93, remaining=969, batches=9, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=151, direct=134, fully=93, remaining=969, batches=9, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 9 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit failed: Workflow .github/workflows/branch-validation-report.yml does not enforce sync_verification_batch_navigation.py
-FAIL verification-assets (1)
+Mission verification programme asset audit passed: 93/1062 fully canonical, 151 canonical records, 9 evidence batch pages, 72 dynamic batch decisions and 969 missions remaining.
+PASS verification-assets
 
 ## public-exports
 Generated 4 collection exports, search index, manifest and OpenAPI contract at /home/runner/work/MissionChief-UK/MissionChief-UK/docs/assets/data/v1
@@ -16152,7 +16152,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.22 seconds
+INFO    -  Documentation built in 1.29 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
