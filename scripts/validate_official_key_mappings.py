@@ -18,17 +18,20 @@ KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 MAPPING_STATUSES = {"verified", "not-applicable"}
-PATIENT_CHANCE_TARGETS = {
+DELEGATED_REQUIREMENT_TARGETS = {"personnel.chance-aware"}
+DELEGATED_CHANCE_TARGETS = {
     "patients.transport_probability",
     "patients.critical_care_probability",
+    "personnel.probabilistic",
 }
 TARGETS_BY_GROUP = {
     "requirements": {
         "requirements.guaranteed",
         "requirements.chance-aware",
         "requirements.alternatives",
+        *DELEGATED_REQUIREMENT_TARGETS,
     },
-    "chances": {"requirements.probabilistic", *PATIENT_CHANCE_TARGETS},
+    "chances": {"requirements.probabilistic", *DELEGATED_CHANCE_TARGETS},
     "prerequisites": {"preconditions"},
 }
 
@@ -129,13 +132,17 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
                     raise ValueError(f"{label} uses unsupported canonical target {target!r}")
                 if group == "requirements" and target == "requirements.alternatives":
                     validated_resource_list(mapping.get("canonical_ids"), label)
-                elif group == "chances" and target in PATIENT_CHANCE_TARGETS:
+                elif target in DELEGATED_REQUIREMENT_TARGETS or target == "personnel.probabilistic":
+                    role = mapping.get("canonical_role")
+                    if not isinstance(role, str) or not role:
+                        raise ValueError(f"{label} requires canonical_role")
+                elif target in DELEGATED_CHANCE_TARGETS:
                     pass
                 else:
                     canonical_id = mapping.get("canonical_id")
                     if not isinstance(canonical_id, str) or not canonical_id:
                         raise ValueError(f"{label} requires canonical_id")
-                if group == "chances" and target == "requirements.probabilistic":
+                if group == "chances" and target in {"requirements.probabilistic", "personnel.probabilistic"}:
                     requirement_key = mapping.get("requirement_key", official_key)
                     if not isinstance(requirement_key, str) or not requirement_key:
                         raise ValueError(f"{label} requires requirement_key")
@@ -313,6 +320,8 @@ def audit_promoted_mission(
             raise ValueError(f"Mission {mission_id} uses non-integer mapped value requirements.{official_key}={value!r}")
 
         target = mapping["canonical_target"]
+        if target in DELEGATED_REQUIREMENT_TARGETS:
+            continue
         if target == "requirements.alternatives":
             if official_key in official_chances:
                 raise ValueError(
@@ -372,7 +381,7 @@ def audit_promoted_mission(
             continue
         validated_percent(value, f"Mission {mission_id} chances.{official_key}")
         target = mapping["canonical_target"]
-        if target in PATIENT_CHANCE_TARGETS:
+        if target in DELEGATED_CHANCE_TARGETS:
             continue
         requirement_key = str(mapping.get("requirement_key", official_key))
         if requirement_key not in official_requirements:
