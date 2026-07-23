@@ -61,6 +61,7 @@ jobs:
             echo >> data/validation/branch-validation.log
           }
 
+          run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
           run_check "canonical-patient-sync" python scripts/sync_canonical_patient_fields.py
           run_check "canonical-data" python scripts/validate_data.py
           run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
@@ -118,7 +119,9 @@ jobs:
             docs/index.md \
             docs/api/index.md \
             docs/releases/v1.1.0.md \
+            docs/reference \
             data/uk/missions \
+            data/uk/mission-verification-batches \
             data/validation/branch-validation.json \
             data/validation/branch-validation.log
           if git diff --cached --quiet; then
