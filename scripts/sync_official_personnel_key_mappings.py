@@ -11,33 +11,51 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 
-REQUIREMENT_MAPPING = {
-    "status": "verified",
-    "canonical_target": "personnel.chance-aware",
-    "canonical_role": "Operational Team Leader",
-    "chance_key": "kdow_orgl",
-    "checked_at": "2026-07-23",
-    "sources": [
-        "https://www.missionchief.co.uk/einsaetze/143",
-        "https://www.missionchief.co.uk/einsaetze/149",
-        "https://www.missionchief.co.uk/einsaetze/587",
-        "https://www.missionchief.co.uk/einsaetze.json",
-    ],
-    "notes": "The official kdow_orgl quantity is displayed as required Operational Team Leaders. A same-key chance field converts the quantity to probabilistic personnel.",
+REQUIREMENT_MAPPINGS = {
+    "kdow_orgl": {
+        "status": "verified",
+        "canonical_target": "personnel.chance-aware",
+        "canonical_role": "Operational Team Leader",
+        "chance_key": "kdow_orgl",
+        "checked_at": "2026-07-23",
+        "sources": [
+            "https://www.missionchief.co.uk/einsaetze/143",
+            "https://www.missionchief.co.uk/einsaetze/149",
+            "https://www.missionchief.co.uk/einsaetze/587",
+            "https://www.missionchief.co.uk/einsaetze.json",
+        ],
+        "notes": "The official kdow_orgl quantity is displayed as required Operational Team Leaders. A same-key chance field converts the quantity to probabilistic personnel.",
+    },
+    "midwife": {
+        "status": "verified",
+        "canonical_target": "personnel.chance-aware",
+        "canonical_role": "Community Midwife",
+        "chance_key": "midwife",
+        "checked_at": "2026-07-23",
+        "sources": [
+            "https://www.missionchief.co.uk/einsaetze/690",
+            "https://www.missionchief.co.uk/einsaetze/691",
+            "https://www.missionchief.co.uk/einsaetze/692",
+            "https://www.missionchief.co.uk/einsaetze.json",
+        ],
+        "notes": "The official midwife quantity is displayed as required Community Midwives. The verified records publish no chance field, so the quantity is guaranteed.",
+    },
 }
 
-CHANCE_MAPPING = {
-    "status": "verified",
-    "canonical_target": "personnel.probabilistic",
-    "canonical_role": "Operational Team Leader",
-    "requirement_key": "kdow_orgl",
-    "checked_at": "2026-07-23",
-    "sources": [
-        "https://www.missionchief.co.uk/einsaetze/143",
-        "https://www.missionchief.co.uk/einsaetze/189",
-        "https://www.missionchief.co.uk/einsaetze.json",
-    ],
-    "notes": "The integer percentage is the probability that the published Operational Team Leader quantity is required.",
+CHANCE_MAPPINGS = {
+    "kdow_orgl": {
+        "status": "verified",
+        "canonical_target": "personnel.probabilistic",
+        "canonical_role": "Operational Team Leader",
+        "requirement_key": "kdow_orgl",
+        "checked_at": "2026-07-23",
+        "sources": [
+            "https://www.missionchief.co.uk/einsaetze/143",
+            "https://www.missionchief.co.uk/einsaetze/189",
+            "https://www.missionchief.co.uk/einsaetze.json",
+        ],
+        "notes": "The integer percentage is the probability that the published Operational Team Leader quantity is required.",
+    }
 }
 
 
@@ -59,8 +77,8 @@ def synchronized_document() -> dict[str, Any]:
     output = dict(document)
     output_requirements = dict(requirements)
     output_chances = dict(chances)
-    output_requirements["kdow_orgl"] = REQUIREMENT_MAPPING
-    output_chances["kdow_orgl"] = CHANCE_MAPPING
+    output_requirements.update(REQUIREMENT_MAPPINGS)
+    output_chances.update(CHANCE_MAPPINGS)
     output["requirements"] = output_requirements
     output["chances"] = output_chances
     return output
