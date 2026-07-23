@@ -229,6 +229,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official kdow_orgl quantity is displayed as required Operational Team Leaders. A same-key chance field converts the quantity to probabilistic personnel."
+    },
+    "ambulances": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "ambulance",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/234",
+        "https://www.missionchief.co.uk/einsaetze/527",
+        "https://www.missionchief.co.uk/einsaetze/691",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official ambulances count is the guaranteed number of frontline Ambulance vehicles."
     }
   },
   "chances": {
