@@ -81,9 +81,6 @@
     ],
     "average_minimum": []
   },
-  "prisoners": {
-    "maximum": 0
-  },
   "reward": {
     "average_credits": 6000
   },

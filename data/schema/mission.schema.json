@@ -3,90 +3,669 @@
   "$id": "https://conroy1988.github.io/MissionChief-UK/schema/mission.schema.json",
   "title": "MissionChief UK Mission Record",
   "type": "object",
-  "required": ["id", "name", "service", "requirements", "verification"],
+  "required": [
+    "id",
+    "name",
+    "service",
+    "requirements",
+    "verification"
+  ],
   "properties": {
-    "id": {"type": ["integer", "string"]},
-    "name": {"type": "string", "minLength": 1},
-    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "service": {"type": "string"},
-    "mission_types": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "poi": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "duration_minutes": {"type": "integer", "minimum": 1},
-    "custom_spawn_area": {"type": "boolean"},
-    "restricted_vehicle_types": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "handoff_destinations": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "variant": {"$ref": "#/$defs/variantInfo"},
+    "id": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "service": {
+      "type": "string"
+    },
+    "mission_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "poi": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "duration_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "custom_spawn_area": {
+      "type": "boolean"
+    },
+    "restricted_vehicle_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "handoff_destinations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "variant": {
+      "$ref": "#/$defs/variantInfo"
+    },
     "preconditions": {
       "type": "object",
       "properties": {
-        "fire_stations": {"type": "integer", "minimum": 0},
-        "rescue_stations": {"type": "integer", "minimum": 0},
-        "police_stations": {"type": "integer", "minimum": 0},
-        "recovery_centres": {"type": "integer", "minimum": 0},
-        "hgv_recovery_extensions": {"type": "integer", "minimum": 0},
-        "hart_bases": {"type": "integer", "minimum": 0},
-        "gp_surgeries": {"type": "integer", "minimum": 0},
-        "police_public_order_extensions": {"type": "integer", "minimum": 0},
-        "coastguard_rescue_stations": {"type": "integer", "minimum": 0},
-        "lifeboat_stations": {"type": "integer", "minimum": 0},
-        "helicopter_hangars": {"type": "integer", "minimum": 0},
-        "mud_decontamination_extensions": {"type": "integer", "minimum": 0},
-        "hovercraft_extensions": {"type": "integer", "minimum": 0},
-        "mountain_rescue_stations": {"type": "integer", "minimum": 0},
-        "search_and_rescue_hqs": {"type": "integer", "minimum": 0},
-        "bomb_disposal_hqs": {"type": "integer", "minimum": 0},
-        "bomb_disposal_marine_unit_extensions": {"type": "integer", "minimum": 0},
-        "aviation_firefighting_extensions": {"type": "integer", "minimum": 0},
-        "airfield_operations_extensions": {"type": "integer", "minimum": 0},
-        "mass_casualty_extensions": {"type": "integer", "minimum": 0},
-        "railway_police": {"type": "integer", "minimum": 0},
-        "railway_fire_responses": {"type": "integer", "minimum": 0},
-        "police_helicopter_stations": {"type": "integer", "minimum": 0},
-        "foam_extensions": {"type": "integer", "minimum": 0},
-        "water_damage_pump_extensions": {"type": "integer", "minimum": 0},
-        "flood_rescue_extensions": {"type": "integer", "minimum": 0},
-        "technical_rescue_extensions": {"type": "integer", "minimum": 0},
-        "active_drones": {"type": "integer", "minimum": 0},
-        "other": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        "fire_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rescue_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "police_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recovery_centres": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hgv_recovery_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hart_bases": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gp_surgeries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "police_public_order_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coastguard_rescue_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lifeboat_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "helicopter_hangars": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mud_decontamination_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hovercraft_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mountain_rescue_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "search_and_rescue_hqs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bomb_disposal_hqs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bomb_disposal_marine_unit_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "aviation_firefighting_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "airfield_operations_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mass_casualty_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "railway_police": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "railway_fire_responses": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "police_helicopter_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "foam_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "water_damage_pump_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "flood_rescue_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "technical_rescue_extensions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_drones": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "other": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
       },
       "additionalProperties": false
     },
     "requirements": {
       "type": "object",
-      "required": ["guaranteed"],
+      "required": [
+        "guaranteed"
+      ],
       "properties": {
-        "guaranteed": {"type": "array", "items": {"$ref": "#/$defs/resourceRequirement"}},
-        "probabilistic": {"type": "array", "items": {"$ref": "#/$defs/probabilisticRequirement"}},
-        "conditional": {"type": "array", "items": {"$ref": "#/$defs/conditionalResourceRequirement"}},
-        "alternatives": {"type": "array", "items": {"$ref": "#/$defs/alternativeResourceRequirement"}}
+        "guaranteed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resourceRequirement"
+          }
+        },
+        "probabilistic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/probabilisticRequirement"
+          }
+        },
+        "conditional": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionalResourceRequirement"
+          }
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alternativeResourceRequirement"
+          }
+        }
       },
       "additionalProperties": false
     },
-    "personnel": {"$ref": "#/$defs/personnelInfo"},
-    "patients": {"$ref": "#/$defs/patientInfo"},
-    "prisoners": {"$ref": "#/$defs/prisonerInfo"},
-    "recovery": {"$ref": "#/$defs/recoveryInfo"},
-    "reward": {"type": "object"},
-    "follow_up_missions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "expandable_missions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "notes": {"type": "array", "items": {"type": "string"}},
-    "verification": {"$ref": "#/$defs/verification"}
+    "personnel": {
+      "$ref": "#/$defs/personnelInfo"
+    },
+    "patients": {
+      "$ref": "#/$defs/patientInfo"
+    },
+    "prisoners": {
+      "$ref": "#/$defs/prisonerInfo"
+    },
+    "recovery": {
+      "$ref": "#/$defs/recoveryInfo"
+    },
+    "reward": {
+      "type": "object"
+    },
+    "follow_up_missions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "expandable_missions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verification": {
+      "$ref": "#/$defs/verification"
+    }
   },
   "$defs": {
-    "resourceRequirement": {"type": "object", "required": ["resource", "quantity"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}}, "additionalProperties": false},
-    "probabilisticRequirement": {"type": "object", "required": ["resource", "quantity", "probability"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}}, "additionalProperties": false},
-    "conditionalResourceRequirement": {"type": "object", "required": ["resource", "quantity", "condition"], "properties": {"resource": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "condition": {"type": "string", "minLength": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
-    "alternativeResourceRequirement": {"type": "object", "required": ["resources", "quantity"], "properties": {"resources": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 2, "uniqueItems": true}, "quantity": {"type": "integer", "minimum": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
-    "personnelRequirement": {"type": "object", "required": ["role", "quantity"], "properties": {"role": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}}, "additionalProperties": false},
-    "probabilisticPersonnelRequirement": {"type": "object", "required": ["role", "quantity", "probability"], "properties": {"role": {"type": "string", "minLength": 1}, "quantity": {"type": "integer", "minimum": 1}, "probability": {"type": "number", "minimum": 0, "maximum": 1}}, "additionalProperties": false},
-    "personnelRangeRequirement": {"type": "object", "required": ["role", "minimum", "maximum"], "properties": {"role": {"type": "string", "minLength": 1}, "minimum": {"type": "integer", "minimum": 0}, "maximum": {"type": "integer", "minimum": 0}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
-    "personnelInfo": {"type": "object", "properties": {"available": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}}, "required": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}}, "average_minimum": {"type": "array", "items": {"$ref": "#/$defs/personnelRequirement"}}, "ranges": {"type": "array", "items": {"$ref": "#/$defs/personnelRangeRequirement"}}, "probabilistic": {"type": "array", "items": {"$ref": "#/$defs/probabilisticPersonnelRequirement"}}}, "additionalProperties": false},
-    "patientInfo": {"type": "object", "properties": {"minimum": {"type": "integer", "minimum": 0}, "maximum": {"type": "integer", "minimum": 0}, "transport_probability": {"type": "number", "minimum": 0, "maximum": 1}, "critical_care_probability": {"type": "number", "minimum": 0, "maximum": 1}, "first_responder_full_care_probability": {"type": "number", "minimum": 0, "maximum": 1}, "specializations": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "specialization_ids": {"type": "array", "items": {"type": "integer"}, "uniqueItems": true}, "specialization_text": {"type": "string"}, "codes": {"type": "array", "items": {"type": "string"}}, "generated_at_end": {"type": "boolean"}}, "additionalProperties": false},
-    "prisonerInfo": {"type": "object", "properties": {"maximum": {"type": "integer", "minimum": 0}}, "additionalProperties": false},
-    "recoveryAssetInfo": {"type": "object", "required": ["asset_type", "minimum", "maximum"], "properties": {"asset_type": {"type": "string", "enum": ["car", "truck", "vehicle"]}, "minimum": {"type": "integer", "minimum": 0}, "maximum": {"type": "integer", "minimum": 0}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
-    "recoveryInfo": {"type": "object", "required": ["assets"], "properties": {"assets": {"type": "array", "items": {"$ref": "#/$defs/recoveryAssetInfo"}, "minItems": 1}}, "additionalProperties": false},
-    "variantInfo": {"type": "object", "required": ["source_mission_id", "kind", "key"], "properties": {"source_mission_id": {"type": ["integer", "string"]}, "kind": {"type": "string", "enum": ["base", "additive-overlay", "mission-variation"]}, "key": {"type": "string", "minLength": 1}, "notes": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
-    "verification": {"type": "object", "required": ["status", "checked_at"], "properties": {"status": {"type": "string", "enum": ["verified", "calculated", "community-report", "review-required"]}, "checked_at": {"type": "string", "format": "date"}, "sources": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false}
+    "resourceRequirement": {
+      "type": "object",
+      "required": [
+        "resource",
+        "quantity"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "probabilisticRequirement": {
+      "type": "object",
+      "required": [
+        "resource",
+        "quantity",
+        "probability"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "conditionalResourceRequirement": {
+      "type": "object",
+      "required": [
+        "resource",
+        "quantity",
+        "condition"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "alternativeResourceRequirement": {
+      "type": "object",
+      "required": [
+        "resources",
+        "quantity"
+      ],
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "personnelRequirement": {
+      "type": "object",
+      "required": [
+        "role",
+        "quantity"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "probabilisticPersonnelRequirement": {
+      "type": "object",
+      "required": [
+        "role",
+        "quantity",
+        "probability"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "personnelRangeRequirement": {
+      "type": "object",
+      "required": [
+        "role",
+        "minimum",
+        "maximum"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "personnelInfo": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/personnelRequirement"
+          }
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/personnelRequirement"
+          }
+        },
+        "average_minimum": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/personnelRequirement"
+          }
+        },
+        "ranges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/personnelRangeRequirement"
+          }
+        },
+        "probabilistic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/probabilisticPersonnelRequirement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "patientInfo": {
+      "type": "object",
+      "properties": {
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "transport_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "critical_care_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "first_responder_full_care_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "specializations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "specialization_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "specialization_text": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generated_at_end": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prisonerInfo": {
+      "type": "object",
+      "properties": {
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "recoveryAssetInfo": {
+      "type": "object",
+      "required": [
+        "asset_type",
+        "minimum",
+        "maximum"
+      ],
+      "properties": {
+        "asset_type": {
+          "type": "string",
+          "enum": [
+            "car",
+            "truck",
+            "vehicle"
+          ]
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "recoveryInfo": {
+      "type": "object",
+      "required": [
+        "assets"
+      ],
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recoveryAssetInfo"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "variantInfo": {
+      "type": "object",
+      "required": [
+        "source_mission_id",
+        "kind",
+        "key"
+      ],
+      "properties": {
+        "source_mission_id": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "base",
+            "additive-overlay",
+            "mission-variation"
+          ]
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "status",
+        "checked_at"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "verified",
+            "calculated",
+            "community-report",
+            "review-required"
+          ]
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }

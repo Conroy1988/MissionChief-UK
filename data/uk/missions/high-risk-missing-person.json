@@ -117,9 +117,6 @@
     "transport_probability": 0.4,
     "critical_care_probability": 0.05
   },
-  "prisoners": {
-    "maximum": 0
-  },
   "reward": {
     "average_credits": 15275
   },

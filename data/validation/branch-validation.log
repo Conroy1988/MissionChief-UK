@@ -9,17 +9,25 @@ Public Order Extension mapping synchronized: already current.
 Official key mapping synchronization passed: 7 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
+## prisoner-schema-sync
+Prisoner schema synchronized: change required.
+PASS prisoner-schema-sync
+
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 23: 3 mission(s), 5 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 233 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 236 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 233 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 236 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
+
+## canonical-prisoner-sync
+Canonical prisoner fields synchronized: 236 direct canonical records, 5 file(s) changed.
+PASS canonical-prisoner-sync
 
 ## canonical-data
 Structured data validation warnings:
@@ -36,6 +44,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-20.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-21.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-22.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-23.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -47,46 +56,52 @@ Structured data validation warnings:
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
-Validated 352 structured data file(s) successfully, including 952 mission resource reference(s) and 96 infrastructure precondition reference(s).
+- data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
+Validated 357 structured data file(s) successfully, including 965 mission resource reference(s) and 97 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 233/1062 direct official/canonical matches, 829 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 236/1062 direct official/canonical matches, 826 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 233/250 canonical ID matches, 829 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 236/253 canonical ID matches, 826 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 192 decisions from 21 source files.
+Mission verification registry merged: 195 decisions from 22 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 192 promoted missions are equivalent.
+Official key mapping failure report passed: all 195 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 192 promoted missions, 192 fully canonical, 22 requirement keys, 10 chance keys and 9 prerequisite keys mapped.
+Official key mapping audit passed: 195 promoted missions, 195 fully canonical, 22 requirement keys, 10 chance keys and 9 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 192/192 promoted missions exact, 78 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 195/195 promoted missions exact, 79 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 192/192 promoted missions exact, 12 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 195/195 promoted missions exact, 12 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
+
+## official-prisoner-equivalence
+Official prisoner mapping audit passed: 195/195 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+PASS official-prisoner-equivalence
 
 ## canonical-candidates
 {
-  "schema_version": "3",
+  "schema_version": "4",
   "official_count": 1062,
-  "canonical_count": 250,
+  "canonical_count": 253,
   "patient_contract_fields": 10,
   "personnel_contract_roles": 2,
+  "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 829,
+  "blocked_count": 826,
   "ready": [],
   "blocked": []
 }
@@ -96,7 +111,7 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 250,
+  "canonical_count": 253,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
     "requirements": 22,
@@ -10014,17 +10029,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 18.08% fully canonical, 870 of 1062 missions remaining.
+Mission verification status generated: 18.36% fully canonical, 867 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=250, direct=233, fully=192, remaining=870, batches=22, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 22 evidence pages.
+Public verification metrics synchronized: canonical=253, direct=236, fully=195, remaining=867, batches=23, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 23 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 192/1062 fully canonical, 250 canonical records, 22 evidence batch pages, 171 dynamic batch decisions and 870 missions remaining.
+Mission verification programme asset audit passed: 195/1062 fully canonical, 253 canonical records, 23 evidence batch pages, 174 dynamic batch decisions and 867 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -10036,11 +10051,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=250, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=253, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 90 Markdown files
+Documentation link audit passed across 91 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -10064,10 +10079,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.69 seconds
+INFO    -  Documentation built in 1.54 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=250, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=253, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 
