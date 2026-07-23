@@ -34,6 +34,7 @@ jobs:
           python -m py_compile scripts/import_official_uk_missions.py
           python -m py_compile scripts/publish_official_mission_catalogue.py
           python -m py_compile scripts/compact_official_mission_catalogue.py
+          python -m py_compile scripts/reconcile_official_mission_coverage.py
           python -m py_compile scripts/validate_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_key_mappings.py
           python -m py_compile scripts/generate_mission_verification_status.py
@@ -46,6 +47,9 @@ jobs:
 
       - name: Compact tracked catalogue files
         run: python scripts/compact_official_mission_catalogue.py
+
+      - name: Reconcile official/canonical mission coverage
+        run: python scripts/reconcile_official_mission_coverage.py
 
       - name: Audit refreshed official catalogue
         run: python scripts/validate_official_mission_catalogue.py
