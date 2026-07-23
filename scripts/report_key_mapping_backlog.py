@@ -14,6 +14,7 @@ OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.j
 MAPPINGS_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
+SAFE_ADDITIONAL_KEYS = {"filter_id", "expansion_missions_ids", "followup_missions_ids"}
 
 
 def read_json(path: Path) -> Any:
@@ -21,13 +22,6 @@ def read_json(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise ValueError(f"{path.relative_to(ROOT)}: unable to read JSON: {exc}") from exc
-
-
-def stable_id(value: Any) -> tuple[int, int | str]:
-    try:
-        return (0, int(value))
-    except (TypeError, ValueError):
-        return (1, str(value))
 
 
 def mission_name(record: dict[str, Any]) -> str:
@@ -74,12 +68,18 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
     blockers: list[str] = []
     additional = record.get("additional")
     if isinstance(additional, dict):
-        for key in additional:
-            if key not in {"filter_id", "expansion_missions_ids", "followup_missions_ids"}:
-                blockers.append(f"additional.{key}")
+        unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
+        blockers.extend(f"additional.{key}" for key in unsupported)
+        if additional.get("filter_id") != "firehouse_missions":
+            blockers.append(f"generator:{additional.get('filter_id')!r}")
     elif additional not in (None, {}):
         blockers.append("additional")
-    for key in ("base_mission_id", "overlay_index", "additive_overlays", "generated_by"):
+
+    mission_id = record.get("id")
+    base_mission_id = record.get("base_mission_id")
+    if base_mission_id is not None and str(base_mission_id) != str(mission_id):
+        blockers.append(f"variant:{base_mission_id}")
+    for key in ("overlay_index", "additive_overlays", "generated_by"):
         if record.get(key) not in (None, "", []):
             blockers.append(key)
     return blockers
@@ -116,7 +116,11 @@ def build_report(example_limit: int) -> dict[str, Any]:
                         "filter_id": record.get("additional", {}).get("filter_id")
                         if isinstance(record.get("additional"), dict)
                         else None,
-                        "other_unmapped_keys": [f"{other_group}.{other_key}" for other_group, other_key in unmapped if (other_group, other_key) != identity],
+                        "other_unmapped_keys": [
+                            f"{other_group}.{other_key}"
+                            for other_group, other_key in unmapped
+                            if (other_group, other_key) != identity
+                        ],
                         "operational_complexity": complexity,
                         "official_url": f"https://www.missionchief.co.uk/einsaetze/{record.get('id')}",
                     }
@@ -124,17 +128,16 @@ def build_report(example_limit: int) -> dict[str, Any]:
         if len(unmapped) == 1 and not complexity:
             single_key_unlocks[unmapped[0]] += 1
 
-    entries = []
-    for group, key in counts:
-        entries.append(
-            {
-                "group": group,
-                "key": key,
-                "remaining_mission_count": counts[(group, key)],
-                "single_key_unlock_count": single_key_unlocks[(group, key)],
-                "examples": examples[(group, key)],
-            }
-        )
+    entries = [
+        {
+            "group": group,
+            "key": key,
+            "remaining_mission_count": counts[(group, key)],
+            "single_key_unlock_count": single_key_unlocks[(group, key)],
+            "examples": examples[(group, key)],
+        }
+        for group, key in counts
+    ]
     entries.sort(
         key=lambda item: (
             -item["single_key_unlock_count"],
