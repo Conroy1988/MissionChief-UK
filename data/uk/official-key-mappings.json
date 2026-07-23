@@ -490,6 +490,20 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official riot_police value is displayed as the minimum Police & Public Order Extension count required to generate the mission."
+    },
+    "general_practitioner": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "gp_surgeries",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/689",
+        "https://www.missionchief.co.uk/einsaetze/690",
+        "https://www.missionchief.co.uk/einsaetze/693",
+        "https://www.missionchief.co.uk/einsaetze/773",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official general_practitioner value is displayed as the minimum GP Surgery count required to generate the mission."
     }
   }
 }
