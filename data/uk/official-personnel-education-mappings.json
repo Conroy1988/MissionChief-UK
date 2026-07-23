@@ -1,0 +1,44 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "roles": {
+    "police_sergeant": {"canonical_role": "Police Sergeant", "checked_at": "2026-07-23"},
+    "railway_police": {"canonical_role": "Railway Police Officer", "checked_at": "2026-07-23"},
+    "level_2_public_order": {"canonical_role": "Level 2 Public Order Officer", "checked_at": "2026-07-23"},
+    "police_inspector": {"canonical_role": "Police Inspector", "checked_at": "2026-07-23"},
+    "level_1_public_order": {"canonical_role": "Level 1 Public Order Officer", "checked_at": "2026-07-23"},
+    "police_medic": {"canonical_role": "Police Medic", "checked_at": "2026-07-23"},
+    "gw_gefahrgut": {"canonical_role": "HazMat Specialist", "checked_at": "2026-07-23"},
+    "search_and_rescue": {"canonical_role": "Search Advisor", "checked_at": "2026-07-23"},
+    "mobile_command_training": {"canonical_role": "Mobile Operations Manager", "checked_at": "2026-07-23"},
+    "coastal_mud_rescue": {"canonical_role": "Mud Rescue Operator", "checked_at": "2026-07-23"},
+    "gw_hoehenrettung": {"canonical_role": "Rope Rescue Operator", "checked_at": "2026-07-23"},
+    "mountain_cave_rescue": {"canonical_role": "Cave Rescue Specialist", "checked_at": "2026-07-23"},
+    "search_and_rescue_command": {"canonical_role": "SAR Commander", "checked_at": "2026-07-23"}
+  },
+  "paths": {
+    "requirements.personnel_educations": "personnel.required",
+    "prerequisites.personnel_educations": "personnel.available",
+    "additional.personnel_educations": "evidence-labels"
+  },
+  "sources": [
+    "https://www.missionchief.co.uk/einsaetze/445",
+    "https://www.missionchief.co.uk/einsaetze/446",
+    "https://www.missionchief.co.uk/einsaetze/587",
+    "https://www.missionchief.co.uk/einsaetze/808",
+    "https://www.missionchief.co.uk/einsaetze.json"
+  ],
+  "catalogue_audit": {
+    "required_records": 103,
+    "available_records": 97,
+    "additional_label_records": 103,
+    "required_role_count": 13,
+    "available_role_count": 12,
+    "additional_label_count": 13
+  },
+  "notes": [
+    "Required and available personnel counts are preserved independently.",
+    "The human-readable additional.personnel_educations object is used to verify the canonical role labels and required quantities.",
+    "All audited personnel education containers are objects."
+  ]
+}
