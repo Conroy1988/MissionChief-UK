@@ -1,6 +1,6 @@
 name: Validate guide
 
-# Corrected Batch 4 validation generates the next evidence-safe candidate and key-backlog artifacts.
+# Validate the corrected 54-mission canonical baseline and generate the next evidence backlog.
 on:
   push:
     branches:
