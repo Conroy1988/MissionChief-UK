@@ -19,7 +19,11 @@ PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canon
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 MAPPING_STATUSES = {"verified", "not-applicable"}
 TARGETS_BY_GROUP = {
-    "requirements": {"requirements.guaranteed", "requirements.chance-aware"},
+    "requirements": {
+        "requirements.guaranteed",
+        "requirements.chance-aware",
+        "requirements.alternatives",
+    },
     "chances": {"requirements.probabilistic"},
     "prerequisites": {"preconditions"},
 }
@@ -79,6 +83,17 @@ def canonical_records() -> dict[str, dict[str, Any]]:
     return result
 
 
+def validated_resource_list(value: Any, label: str) -> list[str]:
+    if (
+        not isinstance(value, list)
+        or len(value) < 2
+        or not all(isinstance(item, str) and item for item in value)
+        or len(value) != len(set(value))
+    ):
+        raise ValueError(f"{label} requires at least two unique canonical_ids")
+    return value
+
+
 def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, Any]]]:
     if not isinstance(registry, dict) or registry.get("schema_version") != "1":
         raise ValueError("Official key mapping registry schema_version must be '1'")
@@ -103,13 +118,17 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
             sources = mapping.get("sources")
             if not isinstance(sources, list) or not sources or not all(isinstance(item, str) and item for item in sources):
                 raise ValueError(f"{label} requires evidence sources")
+
             if status == "verified":
                 target = mapping.get("canonical_target")
-                canonical_id = mapping.get("canonical_id")
                 if target not in TARGETS_BY_GROUP[group]:
                     raise ValueError(f"{label} uses unsupported canonical target {target!r}")
-                if not isinstance(canonical_id, str) or not canonical_id:
-                    raise ValueError(f"{label} requires canonical_id")
+                if group == "requirements" and target == "requirements.alternatives":
+                    validated_resource_list(mapping.get("canonical_ids"), label)
+                else:
+                    canonical_id = mapping.get("canonical_id")
+                    if not isinstance(canonical_id, str) or not canonical_id:
+                        raise ValueError(f"{label} requires canonical_id")
                 if group == "chances":
                     requirement_key = mapping.get("requirement_key", official_key)
                     if not isinstance(requirement_key, str) or not requirement_key:
@@ -122,11 +141,15 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
     return validated
 
 
-def guaranteed_requirements(record: dict[str, Any], mission_id: str) -> dict[str, int]:
+def requirements_object(record: dict[str, Any], mission_id: str) -> dict[str, Any]:
     requirements = record.get("requirements")
     if not isinstance(requirements, dict):
         raise ValueError(f"Canonical mission {mission_id} has no requirements object")
-    guaranteed = requirements.get("guaranteed")
+    return requirements
+
+
+def guaranteed_requirements(record: dict[str, Any], mission_id: str) -> dict[str, int]:
+    guaranteed = requirements_object(record, mission_id).get("guaranteed")
     if not isinstance(guaranteed, list):
         raise ValueError(f"Canonical mission {mission_id} has no guaranteed requirement array")
     result: dict[str, int] = {}
@@ -135,7 +158,7 @@ def guaranteed_requirements(record: dict[str, Any], mission_id: str) -> dict[str
             raise ValueError(f"Canonical mission {mission_id} has an invalid guaranteed requirement")
         resource = item.get("resource")
         quantity = item.get("quantity")
-        if not isinstance(resource, str) or not resource or not isinstance(quantity, int) or quantity < 0:
+        if not isinstance(resource, str) or not resource or not isinstance(quantity, int) or quantity < 1:
             raise ValueError(f"Canonical mission {mission_id} has an invalid guaranteed requirement")
         if resource in result:
             raise ValueError(f"Canonical mission {mission_id} repeats guaranteed resource {resource}")
@@ -144,10 +167,7 @@ def guaranteed_requirements(record: dict[str, Any], mission_id: str) -> dict[str
 
 
 def probabilistic_requirements(record: dict[str, Any], mission_id: str) -> dict[str, tuple[int, float]]:
-    requirements = record.get("requirements")
-    if not isinstance(requirements, dict):
-        raise ValueError(f"Canonical mission {mission_id} has no requirements object")
-    probabilistic = requirements.get("probabilistic", [])
+    probabilistic = requirements_object(record, mission_id).get("probabilistic", [])
     if not isinstance(probabilistic, list):
         raise ValueError(f"Canonical mission {mission_id} has an invalid probabilistic requirement array")
     result: dict[str, tuple[int, float]] = {}
@@ -161,7 +181,7 @@ def probabilistic_requirements(record: dict[str, Any], mission_id: str) -> dict[
             not isinstance(resource, str)
             or not resource
             or not isinstance(quantity, int)
-            or quantity < 0
+            or quantity < 1
             or not isinstance(probability, (int, float))
             or isinstance(probability, bool)
             or not 0 <= float(probability) <= 1
@@ -170,6 +190,32 @@ def probabilistic_requirements(record: dict[str, Any], mission_id: str) -> dict[
         if resource in result:
             raise ValueError(f"Canonical mission {mission_id} repeats probabilistic resource {resource}")
         result[resource] = (quantity, float(probability))
+    return result
+
+
+def alternative_requirements(record: dict[str, Any], mission_id: str) -> dict[tuple[str, ...], int]:
+    alternatives = requirements_object(record, mission_id).get("alternatives", [])
+    if not isinstance(alternatives, list):
+        raise ValueError(f"Canonical mission {mission_id} has an invalid alternatives requirement array")
+    result: dict[tuple[str, ...], int] = {}
+    for item in alternatives:
+        if not isinstance(item, dict):
+            raise ValueError(f"Canonical mission {mission_id} has an invalid alternative requirement")
+        resources = item.get("resources")
+        quantity = item.get("quantity")
+        if (
+            not isinstance(resources, list)
+            or len(resources) < 2
+            or not all(isinstance(resource, str) and resource for resource in resources)
+            or len(resources) != len(set(resources))
+            or not isinstance(quantity, int)
+            or quantity < 1
+        ):
+            raise ValueError(f"Canonical mission {mission_id} has an invalid alternative requirement")
+        key = tuple(sorted(resources))
+        if key in result:
+            raise ValueError(f"Canonical mission {mission_id} repeats alternative resource group {key}")
+        result[key] = quantity
     return result
 
 
@@ -192,6 +238,19 @@ def add_expected_probability(
     if previous is not None and previous != value:
         raise ValueError(f"Mission {mission_id} maps conflicting probabilistic values for {resource}: {previous} and {value}")
     target[resource] = value
+
+
+def add_expected_alternative(
+    target: dict[tuple[str, ...], int],
+    resources: list[str],
+    quantity: int,
+    mission_id: str,
+) -> None:
+    key = tuple(sorted(resources))
+    previous = target.get(key)
+    if previous is not None and previous != quantity:
+        raise ValueError(f"Mission {mission_id} maps conflicting alternative quantities for {key}: {previous} and {quantity}")
+    target[key] = quantity
 
 
 def audit_promoted_mission(
@@ -222,6 +281,7 @@ def audit_promoted_mission(
 
     expected_guaranteed: dict[str, int] = {}
     expected_probabilistic: dict[str, tuple[int, float]] = {}
+    expected_alternatives: dict[tuple[str, ...], int] = {}
     expected_preconditions: dict[str, int] = {}
 
     for official_key, value in official_requirements.items():
@@ -238,16 +298,28 @@ def audit_promoted_mission(
         if not isinstance(value, int) or isinstance(value, bool) or value < 0:
             raise ValueError(f"Mission {mission_id} uses non-integer mapped value requirements.{official_key}={value!r}")
 
-        resource = mapping["canonical_id"]
         target = mapping["canonical_target"]
+        if target == "requirements.alternatives":
+            if official_key in official_chances:
+                raise ValueError(
+                    f"Mission {mission_id} publishes a chance for alternative requirements.{official_key}; "
+                    "probabilistic alternative groups are not yet supported"
+                )
+            if value > 0:
+                add_expected_alternative(expected_alternatives, mapping["canonical_ids"], value, mission_id)
+            continue
+
+        resource = mapping["canonical_id"]
         if target == "requirements.guaranteed":
-            add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
+            if value > 0:
+                add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
             continue
 
         chance_key = str(mapping.get("chance_key", official_key))
         chance = official_chances.get(chance_key)
         if chance is None:
-            add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
+            if value > 0:
+                add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
             continue
         chance_mapping = mappings["chances"].get(chance_key)
         if chance_mapping is None:
@@ -267,7 +339,7 @@ def audit_promoted_mission(
             )
         if not isinstance(chance, int) or isinstance(chance, bool) or not 0 <= chance <= 100:
             raise ValueError(f"Mission {mission_id} uses invalid chance chances.{chance_key}={chance!r}")
-        if chance <= 0:
+        if chance <= 0 or value <= 0:
             continue
         if chance >= 100:
             add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
@@ -315,6 +387,7 @@ def audit_promoted_mission(
 
     canonical_guaranteed = guaranteed_requirements(canonical, mission_id)
     canonical_probabilistic = probabilistic_requirements(canonical, mission_id)
+    canonical_alternatives = alternative_requirements(canonical, mission_id)
     canonical_preconditions = canonical.get("preconditions", {})
     if not isinstance(canonical_preconditions, dict):
         raise ValueError(f"Canonical mission {mission_id} preconditions must be an object")
@@ -331,6 +404,12 @@ def audit_promoted_mission(
             raise ValueError(
                 f"Mission {mission_id} maps official requirement to probabilistic {resource}="
                 f"({quantity}, {probability}), canonical value is {actual!r}"
+            )
+    for resources, quantity in expected_alternatives.items():
+        if canonical_alternatives.get(resources) != quantity:
+            raise ValueError(
+                f"Mission {mission_id} maps official requirement to alternative {resources}={quantity}, "
+                f"canonical value is {canonical_alternatives.get(resources)!r}"
             )
     for precondition, quantity in expected_preconditions.items():
         if canonical_preconditions.get(precondition) != quantity:
@@ -357,6 +436,11 @@ def audit_promoted_mission(
                     f"Mission {mission_id} strict probabilistic value differs for {resource}: "
                     f"expected={expected}, canonical={actual}"
                 )
+        if canonical_alternatives != expected_alternatives:
+            raise ValueError(
+                f"Mission {mission_id} strict alternative requirements differ: "
+                f"expected={expected_alternatives}, canonical={canonical_alternatives}"
+            )
         if canonical_preconditions != expected_preconditions:
             raise ValueError(
                 f"Mission {mission_id} strict preconditions differ: "
