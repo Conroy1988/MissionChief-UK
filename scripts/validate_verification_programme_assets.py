@@ -23,6 +23,7 @@ REQUIRED_FILES = (
     "scripts/merge_verification_registry_batches.py",
     "scripts/validate_official_key_mappings.py",
     "scripts/report_canonical_candidates.py",
+    "scripts/report_key_mapping_backlog.py",
     "scripts/generate_mission_verification_status.py",
     "scripts/validate_verification_programme_assets.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
@@ -53,12 +54,15 @@ WORKFLOW_MARKERS = {
         *COMMON_WORKFLOW_MARKERS,
         "report_canonical_candidates.py",
         "canonical-candidates",
+        "report_key_mapping_backlog.py",
+        "key-mapping-backlog",
     ),
     ".github/workflows/deploy-pages.yml": COMMON_WORKFLOW_MARKERS,
     ".github/workflows/release-v1.yml": COMMON_WORKFLOW_MARKERS,
     ".github/workflows/import-official-uk-missions.yml": (
         *COMMON_WORKFLOW_MARKERS,
         "report_canonical_candidates.py",
+        "report_key_mapping_backlog.py",
     ),
 }
 
@@ -119,7 +123,6 @@ def validate_status(status: Any) -> dict[str, Any]:
     record_ids = [str(record.get("id")) for record in records if isinstance(record, dict)]
     if len(record_ids) != official_count or len(record_ids) != len(set(record_ids)):
         raise ValueError("Mission verification records must contain unique IDs")
-
     return summary
 
 
@@ -169,7 +172,6 @@ def audit() -> tuple[dict[str, Any], int]:
         for marker in markers:
             if marker not in text:
                 raise ValueError(f"Workflow {workflow} does not enforce {marker}")
-
     return summary, batch_count
 
 
