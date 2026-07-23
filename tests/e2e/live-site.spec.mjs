@@ -91,11 +91,47 @@ for (const route of CRITICAL_ROUTES) {
     await openPage(page, route.path);
     await expect(page.getByRole("heading", { level: 1, name: route.heading })).toBeVisible();
 
-    const dimensions = await page.locator(".md-content").evaluate((element) => ({
-      clientWidth: element.clientWidth,
-      scrollWidth: element.scrollWidth
-    }));
-    expect(dimensions.scrollWidth, `Horizontal overflow detected on ${route.path}`).toBeLessThanOrEqual(dimensions.clientWidth + 2);
+    const dimensions = await page.locator(".md-content").evaluate((element) => {
+      const contentRect = element.getBoundingClientRect();
+      const offenders = [...element.querySelectorAll("*")]
+        .map((candidate) => {
+          const rect = candidate.getBoundingClientRect();
+          const style = getComputedStyle(candidate);
+          return {
+            tag: candidate.tagName.toLowerCase(),
+            id: candidate.id,
+            className: typeof candidate.className === "string" ? candidate.className : "",
+            role: candidate.getAttribute("data-role"),
+            right: Math.round(rect.right),
+            width: Math.round(rect.width),
+            clientWidth: candidate.clientWidth,
+            scrollWidth: candidate.scrollWidth,
+            overflowX: style.overflowX,
+            minWidth: style.minWidth,
+            maxWidth: style.maxWidth,
+            whiteSpace: style.whiteSpace,
+            text: (candidate.textContent || "").trim().slice(0, 80)
+          };
+        })
+        .filter((candidate) =>
+          candidate.right > contentRect.right + 2
+          || candidate.scrollWidth > candidate.clientWidth + 2
+        )
+        .sort((left, right) =>
+          Math.max(right.right - contentRect.right, right.scrollWidth - right.clientWidth)
+          - Math.max(left.right - contentRect.right, left.scrollWidth - left.clientWidth)
+        )
+        .slice(0, 12);
+      return {
+        clientWidth: element.clientWidth,
+        scrollWidth: element.scrollWidth,
+        offenders
+      };
+    });
+    expect(
+      dimensions.scrollWidth,
+      `Horizontal overflow detected on ${route.path}: ${JSON.stringify(dimensions.offenders)}`
+    ).toBeLessThanOrEqual(dimensions.clientWidth + 2);
     expect(failures).toEqual([]);
   });
 }
