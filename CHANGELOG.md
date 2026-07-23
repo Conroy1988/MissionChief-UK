@@ -14,8 +14,8 @@ No unreleased changes are currently recorded.
 
 - Added a lossless snapshot of all 1,062 missions published by the public MissionChief UK mission feed.
 - Preserved every official top-level and nested mission field with source URL, retrieval time and SHA-256 provenance.
-- Added offline reconciliation reporting against 127 canonical mission records.
-- Identified 110 direct official/canonical ID matches, 952 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
+- Added offline reconciliation reporting against 112 canonical mission records.
+- Identified 95 direct official/canonical ID matches, 967 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
 - Added inventories for every published requirement, chance and prerequisite key.
 - Added separate public catalogue, coverage and verification endpoints under `assets/data/official/`.
 
@@ -27,18 +27,21 @@ No unreleased changes are currently recorded.
 - Added deterministic per-mission blockers and next actions.
 - Added an official-key mapping registry requiring evidence for every mapped requirement, chance and prerequisite key.
 - Added strict chance-aware key-equivalence validation for missions promoted to fully canonical.
+- Added aggregate diagnostics that report every promoted mission identity or mapping failure in one run.
 - Added offline coverage reconciliation so canonical batches update official/canonical match counts without redownloading the source feed.
 - Added an evidence-safe candidate analyser across the complete retained official catalogue.
 - Added a ranked official-key mapping backlog with retained Actions artifacts.
 - The analysers resolve relationship IDs, create collision-free paths for duplicate names and block overlays, unsupported service families, patients, personnel and unresolved relationships.
-- Fully canonicalized 69 missions across four Fire and Rescue batches.
+- Fully canonicalized 54 missions across four Fire and Rescue batches.
 - Batch 1: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10`, `11`.
 - Batch 2: IDs `13`, `14`, `15`, `16`, `17`, `18`, `19`, `23`, `24`, `27`.
 - Batch 3: IDs `32`, `58`, `65`, `202`, `203`, `313`, `334`, `352`, `365`, `366`, `388`, `399`, `400`, `421`, `435`, `468`, `472`, `475`, `535`, `541`, `570`, `577`, `624`, `638`, `668`, `772`, `857`, `858`.
-- Batch 4: IDs `21`, `22`, `31`, `180`, `344`, `353`, `361`, `452`, `456`, `460`, `494`, `512`, `520`, `547`, `672`, `708`, `734`, `768`, `774`, `779`.
+- Batch 4: IDs `21`, `22`, `31`, `301`, `353`.
 - Added verified Aerial Appliance Truck and Fire Officer requirement and chance mappings.
 - Preserved requirement probabilities as canonical probabilistic resources instead of flattening them into guaranteed responses.
-- Expanded the canonical mission collection from 62 to 127 records.
+- Removed 15 provisional Batch 4 records after aggregate identity validation proved that their assumed IDs belonged to different current UK missions.
+- Corrected Chimney fire to the published 1,900-credit average and Roof fire expansion relationship.
+- Expanded the canonical mission collection from 62 to 112 records.
 - Published a generated verification dashboard and `uk-mission-verification.json` endpoint.
 
 ### Mission Lookup
@@ -68,7 +71,7 @@ No unreleased changes are currently recorded.
 - Added automatic Pages deployment after a real official-source or generated verification-state change.
 - Added an offline catalogue auditor covering IDs, names, ordering, field preservation, checksums, reconciliation, inventories and built-site equality.
 - Added verification-registry batch merging to CI, deployment, release publication and catalogue refresh.
-- Added official-to-canonical key mapping validation to every publication path.
+- Added aggregate promoted-mission diagnostics and official-to-canonical key mapping validation to every publication path.
 - Added candidate and key-backlog reports with retained Actions artifacts.
 - Added browser acceptance coverage for catalogue completeness, official-only search, canonical search, structured metadata, complete records and horizontal containment.
 - Protected catalogue source, automation, verification, browser and QA assets as release-critical.
