@@ -1,0 +1,118 @@
+name: Report release-candidate validation
+
+on:
+  push:
+    branches:
+      - feature/uk-mission-catalogue-expansion
+    paths-ignore:
+      - data/validation/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-candidate-validation-report
+  cancel-in-progress: true
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          ref: feature/uk-mission-catalogue-expansion
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run deterministic validation and retain report
+        id: validate
+        shell: bash
+        run: |
+          set +e
+          mkdir -p data/validation
+          : > data/validation/branch-validation.log
+          failed=0
+
+          run_check() {
+            name="$1"
+            shift
+            echo "## $name" | tee -a data/validation/branch-validation.log
+            "$@" >> data/validation/branch-validation.log 2>&1
+            code=$?
+            if [ "$code" -eq 0 ]; then
+              echo "PASS $name" | tee -a data/validation/branch-validation.log
+            else
+              echo "FAIL $name ($code)" | tee -a data/validation/branch-validation.log
+              failed=1
+            fi
+            echo >> data/validation/branch-validation.log
+          }
+
+          run_check "canonical-data" python scripts/validate_data.py
+          run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
+          run_check "official-catalogue" python scripts/validate_official_mission_catalogue.py
+          run_check "registry-merge" python scripts/merge_verification_registry_batches.py
+          run_check "promoted-mapping-report" python scripts/report_promoted_mapping_failures.py
+          run_check "official-key-equivalence" python scripts/validate_official_key_mappings.py
+          run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
+          run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
+          run_check "verification-status" python scripts/generate_mission_verification_status.py
+          run_check "verification-assets" python scripts/validate_verification_programme_assets.py
+          run_check "public-exports" python scripts/generate_exports.py
+          run_check "generated-faq" python scripts/generate_faq.py
+          run_check "release-readiness" python scripts/release_readiness.py
+          run_check "links-and-anchors" python scripts/audit_links.py
+          run_check "strict-mkdocs-build" python -m mkdocs build --strict --site-dir site
+          run_check "built-site-readiness" python scripts/release_readiness.py --site-dir site
+
+          export VALIDATION_FAILED="$failed"
+          export VALIDATION_SHA="$GITHUB_SHA"
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          status = "failure" if os.environ["VALIDATION_FAILED"] == "1" else "success"
+          payload = {
+              "schema_version": "1",
+              "validated_commit": os.environ["VALIDATION_SHA"],
+              "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+              "status": status,
+              "log_path": "data/validation/branch-validation.log",
+          }
+          Path("data/validation/branch-validation.json").write_text(
+              json.dumps(payload, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+
+      - name: Commit validation report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/validation/branch-validation.json data/validation/branch-validation.log
+          if git diff --cached --quiet; then
+            echo "Validation report is unchanged."
+          else
+            git commit -m "Record release-candidate validation"
+            git push origin HEAD:feature/uk-mission-catalogue-expansion
+          fi
+
+      - name: Enforce validation result
+        if: steps.validate.outputs.failed == '1'
+        run: exit 1
