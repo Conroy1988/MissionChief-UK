@@ -16769,6 +16769,10 @@ PASS key-mapping-backlog
 Mission verification status generated: 7.91% fully canonical, 978 of 1062 missions remaining.
 PASS verification-status
 
+## public-metric-sync
+Public verification metrics synchronized: canonical=142, direct=125, fully=84, remaining=978, batches=7, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+PASS public-metric-sync
+
 ## verification-assets
 Mission verification programme asset audit passed: 84/1062 fully canonical, 142 canonical records, 5 batch registry files and 978 missions remaining.
 PASS verification-assets
@@ -16782,8 +16786,8 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit failed: README does not expose the current missions count (142)
-FAIL release-readiness (1)
+Release-readiness audit passed: version=1.1.0, missions=142, vehicles=46, infrastructure=18, training=11
+PASS release-readiness
 
 ## links-and-anchors
 Documentation link audit passed across 75 Markdown files
@@ -16814,6 +16818,6 @@ INFO    -  Documentation built in 1.39 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit failed: README does not expose the current missions count (142)
-FAIL built-site-readiness (1)
+Release-readiness audit passed: version=1.1.0, missions=142, vehicles=46, infrastructure=18, training=11; built site=site
+PASS built-site-readiness
 
