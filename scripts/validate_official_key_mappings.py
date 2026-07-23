@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Any
 
 from conditional_resource_contract import (
+    active_chance_keys as active_conditional_chance_keys,
+    active_requirement_keys as active_conditional_requirement_keys,
     load_mapping_registry as load_conditional_mappings,
     owned_paths as conditional_owned_paths,
     validate_promoted_conditionals,
@@ -360,12 +362,21 @@ def audit_promoted_mission(
         if not isinstance(values, dict):
             raise ValueError(f"Official mission {mission_id} field {group} must be an object")
 
+    conditional_requirement_keys = active_conditional_requirement_keys(
+        official, CONDITIONAL_MAPPINGS
+    )
+    conditional_chance_keys = active_conditional_chance_keys(
+        official, CONDITIONAL_MAPPINGS
+    )
+
     expected_guaranteed: dict[str, int] = {}
     expected_probabilistic: dict[str, tuple[int, float]] = {}
     expected_alternatives: dict[tuple[str, ...], AlternativeValue] = {}
     expected_preconditions: dict[str, int] = {}
 
     for official_key, value in official_requirements.items():
+        if str(official_key) in conditional_requirement_keys:
+            continue
         mapping = mappings["requirements"].get(str(official_key))
         if mapping is None:
             if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
@@ -457,6 +468,8 @@ def audit_promoted_mission(
             add_expected_probability(expected_probabilistic, resource, value, percent / 100, mission_id)
 
     for official_key, value in official_chances.items():
+        if str(official_key) in conditional_chance_keys:
+            continue
         mapping = mappings["chances"].get(str(official_key))
         if mapping is None:
             if str(official_key) in CONDITIONAL_CHANCE_KEYS:

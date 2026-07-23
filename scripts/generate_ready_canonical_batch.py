@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from conditional_resource_contract import (
+    active_requirement_keys as active_conditional_requirement_keys,
     build_expected_conditionals,
     load_mapping_registry as load_conditional_mappings,
     owned_paths as conditional_owned_paths,
@@ -134,8 +135,13 @@ def translate_requirements(
     probabilistic: dict[str, tuple[int, float]] = {}
     alternatives: dict[tuple[str, ...], tuple[list[str], int]] = {}
     conditionals = build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
+    conditional_requirement_keys = active_conditional_requirement_keys(
+        official, CONDITIONAL_MAPPINGS
+    )
 
     for official_key, raw_quantity in official_requirements.items():
+        if str(official_key) in conditional_requirement_keys:
+            continue
         mapping = mappings["requirements"].get(str(official_key))
         if not isinstance(mapping, dict):
             if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
