@@ -6,6 +6,7 @@ import argparse
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,11 @@ def stable_id(value: Any) -> tuple[int, int | str]:
         return (0, int(value))
     except (TypeError, ValueError):
         return (1, str(value))
+
+
+def mission_name(record: dict[str, Any]) -> str:
+    value = record.get("name") or record.get("caption") or record.get("title")
+    return str(value).strip() if value is not None else ""
 
 
 def slugify(value: str) -> str:
@@ -104,12 +110,35 @@ def operational_blockers(record: dict[str, Any]) -> list[str]:
     return blockers
 
 
-def candidate_record(record: dict[str, Any]) -> dict[str, Any]:
+def resolve_relationships(values: Any, official_by_id: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    if not isinstance(values, list):
+        return []
+    result: list[dict[str, Any]] = []
+    for value in values:
+        key = str(value)
+        related = official_by_id.get(key)
+        result.append({
+            "id": value,
+            "name": mission_name(related) if related is not None else None,
+        })
+    return result
+
+
+def candidate_record(
+    record: dict[str, Any],
+    official_by_id: dict[str, dict[str, Any]],
+    duplicate_names: Counter[str],
+) -> dict[str, Any]:
     additional = record.get("additional", {}) if isinstance(record.get("additional"), dict) else {}
+    mission_id = str(record.get("id"))
+    name = mission_name(record)
+    slug = slugify(name)
+    if duplicate_names[name.casefold()] > 1:
+        slug = f"{slug}-{mission_id}"
     return {
         "id": record.get("id"),
-        "name": record.get("name"),
-        "suggested_path": f"data/uk/missions/{slugify(str(record.get('name', 'mission')))}.json",
+        "name": name,
+        "suggested_path": f"data/uk/missions/{slug}.json",
         "average_credits": record.get("average_credits"),
         "mission_categories": record.get("mission_categories", []),
         "place": record.get("place"),
@@ -117,8 +146,9 @@ def candidate_record(record: dict[str, Any]) -> dict[str, Any]:
         "requirements": record.get("requirements", {}),
         "chances": record.get("chances", {}),
         "prerequisites": record.get("prerequisites", {}),
-        "expansion_missions_ids": additional.get("expansion_missions_ids", []),
-        "followup_missions_ids": additional.get("followup_missions_ids", []),
+        "base_mission_id": record.get("base_mission_id"),
+        "expansion_missions": resolve_relationships(additional.get("expansion_missions_ids", []), official_by_id),
+        "followup_missions": resolve_relationships(additional.get("followup_missions_ids", []), official_by_id),
     }
 
 
@@ -127,14 +157,15 @@ def report() -> dict[str, Any]:
     if not isinstance(envelope, dict) or not isinstance(envelope.get("records"), list):
         raise ValueError("Official UK mission source envelope is invalid")
 
+    records = [record for record in envelope["records"] if isinstance(record, dict) and record.get("id") is not None]
+    official_by_id = {str(record["id"]): record for record in records}
+    duplicate_names = Counter(mission_name(record).casefold() for record in records)
     existing = canonical_ids()
     mappings = mapped_keys()
     ready: list[dict[str, Any]] = []
     blocked: list[dict[str, Any]] = []
 
-    for record in envelope["records"]:
-        if not isinstance(record, dict) or record.get("id") is None:
-            continue
+    for record in records:
         mission_id = str(record["id"])
         if mission_id in existing:
             continue
@@ -143,17 +174,17 @@ def report() -> dict[str, Any]:
         if blockers:
             blocked.append({
                 "id": record.get("id"),
-                "name": record.get("name"),
+                "name": mission_name(record),
                 "blockers": blockers,
             })
         else:
-            ready.append(candidate_record(record))
+            ready.append(candidate_record(record, official_by_id, duplicate_names))
 
     ready.sort(key=lambda item: stable_id(item["id"]))
     blocked.sort(key=lambda item: stable_id(item["id"]))
     return {
         "schema_version": "1",
-        "official_count": len(envelope["records"]),
+        "official_count": len(records),
         "canonical_count": len(existing),
         "ready_count": len(ready),
         "blocked_count": len(blocked),
