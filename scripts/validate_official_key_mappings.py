@@ -18,13 +18,17 @@ KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 MAPPING_STATUSES = {"verified", "not-applicable"}
+PATIENT_CHANCE_TARGETS = {
+    "patients.transport_probability",
+    "patients.critical_care_probability",
+}
 TARGETS_BY_GROUP = {
     "requirements": {
         "requirements.guaranteed",
         "requirements.chance-aware",
         "requirements.alternatives",
     },
-    "chances": {"requirements.probabilistic"},
+    "chances": {"requirements.probabilistic", *PATIENT_CHANCE_TARGETS},
     "prerequisites": {"preconditions"},
 }
 
@@ -125,11 +129,13 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
                     raise ValueError(f"{label} uses unsupported canonical target {target!r}")
                 if group == "requirements" and target == "requirements.alternatives":
                     validated_resource_list(mapping.get("canonical_ids"), label)
+                elif group == "chances" and target in PATIENT_CHANCE_TARGETS:
+                    pass
                 else:
                     canonical_id = mapping.get("canonical_id")
                     if not isinstance(canonical_id, str) or not canonical_id:
                         raise ValueError(f"{label} requires canonical_id")
-                if group == "chances":
+                if group == "chances" and target == "requirements.probabilistic":
                     requirement_key = mapping.get("requirement_key", official_key)
                     if not isinstance(requirement_key, str) or not requirement_key:
                         raise ValueError(f"{label} requires requirement_key")
@@ -158,7 +164,7 @@ def guaranteed_requirements(record: dict[str, Any], mission_id: str) -> dict[str
             raise ValueError(f"Canonical mission {mission_id} has an invalid guaranteed requirement")
         resource = item.get("resource")
         quantity = item.get("quantity")
-        if not isinstance(resource, str) or not resource or not isinstance(quantity, int) or quantity < 1:
+        if not isinstance(resource, str) or not resource or not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 1:
             raise ValueError(f"Canonical mission {mission_id} has an invalid guaranteed requirement")
         if resource in result:
             raise ValueError(f"Canonical mission {mission_id} repeats guaranteed resource {resource}")
@@ -181,6 +187,7 @@ def probabilistic_requirements(record: dict[str, Any], mission_id: str) -> dict[
             not isinstance(resource, str)
             or not resource
             or not isinstance(quantity, int)
+            or isinstance(quantity, bool)
             or quantity < 1
             or not isinstance(probability, (int, float))
             or isinstance(probability, bool)
@@ -209,6 +216,7 @@ def alternative_requirements(record: dict[str, Any], mission_id: str) -> dict[tu
             or not all(isinstance(resource, str) and resource for resource in resources)
             or len(resources) != len(set(resources))
             or not isinstance(quantity, int)
+            or isinstance(quantity, bool)
             or quantity < 1
         ):
             raise ValueError(f"Canonical mission {mission_id} has an invalid alternative requirement")
@@ -251,6 +259,12 @@ def add_expected_alternative(
     if previous is not None and previous != quantity:
         raise ValueError(f"Mission {mission_id} maps conflicting alternative quantities for {key}: {previous} and {quantity}")
     target[key] = quantity
+
+
+def validated_percent(value: Any, label: str) -> int:
+    if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 100:
+        raise ValueError(f"{label} must be an integer percentage from 0 to 100")
+    return value
 
 
 def audit_promoted_mission(
@@ -327,7 +341,7 @@ def audit_promoted_mission(
                 f"Mission {mission_id} maps chance-aware requirements.{official_key} but chances.{chance_key} is unmapped"
             )
         if chance_mapping["status"] != "verified" or chance_mapping["canonical_target"] != "requirements.probabilistic":
-            raise ValueError(f"Mission {mission_id} chance mapping chances.{chance_key} is not probabilistic")
+            raise ValueError(f"Mission {mission_id} chance mapping chances.{chance_key} is not a resource probability")
         if chance_mapping["canonical_id"] != resource:
             raise ValueError(
                 f"Mission {mission_id} chance mapping chances.{chance_key} targets {chance_mapping['canonical_id']} "
@@ -337,14 +351,13 @@ def audit_promoted_mission(
             raise ValueError(
                 f"Mission {mission_id} chance mapping chances.{chance_key} does not link to requirements.{official_key}"
             )
-        if not isinstance(chance, int) or isinstance(chance, bool) or not 0 <= chance <= 100:
-            raise ValueError(f"Mission {mission_id} uses invalid chance chances.{chance_key}={chance!r}")
-        if chance <= 0 or value <= 0:
+        percent = validated_percent(chance, f"Mission {mission_id} chances.{chance_key}")
+        if percent <= 0 or value <= 0:
             continue
-        if chance >= 100:
+        if percent >= 100:
             add_expected(expected_guaranteed, resource, value, mission_id, "guaranteed")
         else:
-            add_expected_probability(expected_probabilistic, resource, value, chance / 100, mission_id)
+            add_expected_probability(expected_probabilistic, resource, value, percent / 100, mission_id)
 
     for official_key, value in official_chances.items():
         mapping = mappings["chances"].get(str(official_key))
@@ -356,6 +369,10 @@ def audit_promoted_mission(
                     f"Mission {mission_id} uses chances.{official_key}={value!r}, outside the "
                     f"not-applicable allow-list {mapping['allowed_values']!r}"
                 )
+            continue
+        validated_percent(value, f"Mission {mission_id} chances.{official_key}")
+        target = mapping["canonical_target"]
+        if target in PATIENT_CHANCE_TARGETS:
             continue
         requirement_key = str(mapping.get("requirement_key", official_key))
         if requirement_key not in official_requirements:
