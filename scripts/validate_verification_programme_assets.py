@@ -20,6 +20,7 @@ REQUIRED_FILES = (
     "data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json",
     "data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json",
     "data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json",
+    "data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json",
     "scripts/reconcile_official_mission_coverage.py",
     "scripts/verification_registry.py",
     "scripts/merge_verification_registry_batches.py",
@@ -37,6 +38,7 @@ REQUIRED_FILES = (
     "docs/reference/fully-canonical-mission-batch-3.md",
     "docs/reference/fully-canonical-mission-batch-4.md",
     "docs/reference/fully-canonical-mission-batch-5.md",
+    "docs/reference/fully-canonical-mission-batch-6.md",
 )
 
 REQUIRED_NAV_TARGETS = (
@@ -46,6 +48,7 @@ REQUIRED_NAV_TARGETS = (
     "reference/fully-canonical-mission-batch-3.md",
     "reference/fully-canonical-mission-batch-4.md",
     "reference/fully-canonical-mission-batch-5.md",
+    "reference/fully-canonical-mission-batch-6.md",
 )
 
 COMMON_WORKFLOW_MARKERS = (
