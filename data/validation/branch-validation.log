@@ -27,7 +27,7 @@ Official key mapping failure report passed: all 84 promoted missions are equival
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 84 promoted missions, 84 fully canonical, 5 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 84 promoted missions, 84 fully canonical, 6 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -35,9 +35,179 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 142,
-  "ready_count": 0,
-  "blocked_count": 937,
-  "ready": [],
+  "ready_count": 6,
+  "blocked_count": 931,
+  "ready": [
+    {
+      "id": "169",
+      "name": "Heathland fire - large",
+      "suggested_path": "data/uk/missions/heathland-fire-large-169.json",
+      "average_credits": 8000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Heathland",
+      "place_array": [
+        "Heathland"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 3,
+        "firetrucks": 8,
+        "mobile_command_vehicles": 1,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 13,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "177",
+      "name": "Large field fire",
+      "suggested_path": "data/uk/missions/large-field-fire-177.json",
+      "average_credits": 7000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "battalion_chief_vehicles": 6,
+        "firetrucks": 10,
+        "mobile_command_vehicles": 1,
+        "water_tankers": 2
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 20,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "243",
+      "name": "Large Forest Fire",
+      "suggested_path": "data/uk/missions/large-forest-fire-243.json",
+      "average_credits": 9500,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Forest",
+      "place_array": [
+        "Forest"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 4,
+        "firetrucks": 10,
+        "mobile_command_vehicles": 1,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 15,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "244",
+      "name": "Stack of tyres on fire",
+      "suggested_path": "data/uk/missions/stack-of-tyres-on-fire-244.json",
+      "average_credits": 13000,
+      "mission_categories": [
+        "fire",
+        "fire_support_specialization",
+        "urban"
+      ],
+      "place": "Recycling Centre\nFactory\nScrap yard\nLandfill site",
+      "place_array": [
+        "Recycling Centre",
+        "Factory",
+        "Scrap yard",
+        "Landfill site"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 6,
+        "firetrucks": 15,
+        "mobile_command_vehicles": 1,
+        "platform_trucks": 2,
+        "water_tankers": 2
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 15,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "256",
+      "name": "Heathland fire - medium",
+      "suggested_path": "data/uk/missions/heathland-fire-medium.json",
+      "average_credits": 6000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Heathland",
+      "place_array": [
+        "Heathland"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 3,
+        "firetrucks": 6,
+        "mobile_command_vehicles": 1,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 13,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "518",
+      "name": "Prison Wing Fire (Major Incident)",
+      "suggested_path": "data/uk/missions/prison-wing-fire-major-incident.json",
+      "average_credits": 10000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Prison",
+      "place_array": [
+        "Prison"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 5,
+        "firetrucks": 8,
+        "heavy_rescue_vehicles": 1,
+        "mobile_command_vehicles": 1,
+        "platform_trucks": 1,
+        "water_tankers": 1
+      },
+      "chances": {
+        "water_tankers": 5
+      },
+      "prerequisites": {
+        "fire_stations": 15,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -48,198 +218,12 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 142,
   "mapped_key_counts": {
-    "requirements": 5,
+    "requirements": 6,
     "chances": 4,
     "prerequisites": 2
   },
-  "unmapped_key_count": 85,
+  "unmapped_key_count": 84,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "mobile_command_vehicles",
-      "remaining_mission_count": 218,
-      "single_key_unlock_count": 6,
-      "examples": [
-        {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
-          "value": 1,
-          "average_credits": 10750,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
-        },
-        {
-          "id": "108",
-          "name": "Thatched cottage fire",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/108"
-        },
-        {
-          "id": "122",
-          "name": "Burning thatched roof house ignited by fireworks",
-          "value": 1,
-          "average_credits": 4200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/122"
-        },
-        {
-          "id": "134",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134"
-        },
-        {
-          "id": "145",
-          "name": "Fire in an office building - Major Incident",
-          "value": 1,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/145"
-        },
-        {
-          "id": "149",
-          "name": "Building collapse",
-          "value": 1,
-          "average_credits": 9000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.police_cars",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/149"
-        },
-        {
-          "id": "169",
-          "name": "Heathland fire - large",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/169"
-        },
-        {
-          "id": "173",
-          "name": "Warehouse Fire - Major Incident",
-          "value": 1,
-          "average_credits": 14000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_air_vehicles",
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
-        },
-        {
-          "id": "177",
-          "name": "Large field fire",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/177"
-        },
-        {
-          "id": "181",
-          "name": "Flat Fire in High Rise",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/181"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "hazmat_vehicles",
@@ -382,7 +366,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations"
           ],
@@ -409,7 +392,6 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -429,6 +411,217 @@ PASS canonical-candidates
             "generator:'police_station_missions'"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/215"
+        }
+      ]
+    },
+    {
+      "group": "requirements",
+      "key": "mobile_air_vehicles",
+      "remaining_mission_count": 137,
+      "single_key_unlock_count": 2,
+      "examples": [
+        {
+          "id": "34",
+          "name": "Fire in Hospital - Major Incident",
+          "value": 1,
+          "average_credits": 10750,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "requirements.police_cars",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
+        },
+        {
+          "id": "122",
+          "name": "Burning thatched roof house ignited by fireworks",
+          "value": 1,
+          "average_credits": 4200,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.police_cars",
+            "chances.mobile_air_vehicles",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/122"
+        },
+        {
+          "id": "134",
+          "name": "Goods Train Fire",
+          "value": 1,
+          "average_credits": 2000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/134"
+        },
+        {
+          "id": "145",
+          "name": "Fire in an office building - Major Incident",
+          "value": 1,
+          "average_credits": 12000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.police_cars",
+            "chances.mobile_air_vehicles",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/145"
+        },
+        {
+          "id": "173",
+          "name": "Warehouse Fire - Major Incident",
+          "value": 1,
+          "average_credits": 14000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.hazmat_vehicles",
+            "requirements.police_cars",
+            "prerequisites.police_stations"
+          ],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
+        },
+        {
+          "id": "192",
+          "name": "Hotel fire (large)",
+          "value": 1,
+          "average_credits": 8000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "requirements.police_cars",
+            "chances.mobile_air_vehicles",
+            "chances.patient_critical_care",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/192"
+        },
+        {
+          "id": "193",
+          "name": "Hotel fire (major)",
+          "value": 1,
+          "average_credits": 12000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "requirements.police_cars",
+            "chances.patient_critical_care",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/193"
+        },
+        {
+          "id": "235",
+          "name": "Museum Fire",
+          "value": 2,
+          "average_credits": 7500,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.police_cars",
+            "prerequisites.police_stations"
+          ],
+          "operational_complexity": [
+            "additional.fire_alarm_system_possible"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/235"
+        },
+        {
+          "id": "240",
+          "name": "Fire in shopping centre",
+          "value": 1,
+          "average_credits": 7000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.police_cars",
+            "chances.mobile_air_vehicles",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/240"
+        },
+        {
+          "id": "241",
+          "name": "HGV carrying hazardous load on fire",
+          "value": 1,
+          "average_credits": 13000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.hazmat_vehicles",
+            "requirements.police_cars",
+            "chances.patient_transport",
+            "prerequisites.police_stations",
+            "prerequisites.rescue_stations"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/241"
         }
       ]
     },
@@ -794,7 +987,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -946,7 +1138,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -1119,7 +1310,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "chances.patient_transport",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -1313,7 +1503,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations"
@@ -1616,7 +1805,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -1746,7 +1934,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -1958,7 +2145,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -1992,7 +2178,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -2017,227 +2202,6 @@ PASS canonical-candidates
             "additional.possible_patient_min"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "mobile_air_vehicles",
-      "remaining_mission_count": 137,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
-          "value": 1,
-          "average_credits": 10750,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
-        },
-        {
-          "id": "122",
-          "name": "Burning thatched roof house ignited by fireworks",
-          "value": 1,
-          "average_credits": 4200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/122"
-        },
-        {
-          "id": "134",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134"
-        },
-        {
-          "id": "145",
-          "name": "Fire in an office building - Major Incident",
-          "value": 1,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/145"
-        },
-        {
-          "id": "173",
-          "name": "Warehouse Fire - Major Incident",
-          "value": 1,
-          "average_credits": 14000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/173"
-        },
-        {
-          "id": "192",
-          "name": "Hotel fire (large)",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/192"
-        },
-        {
-          "id": "193",
-          "name": "Hotel fire (major)",
-          "value": 1,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/193"
-        },
-        {
-          "id": "235",
-          "name": "Museum Fire",
-          "value": 2,
-          "average_credits": 7500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/235"
-        },
-        {
-          "id": "240",
-          "name": "Fire in shopping centre",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.mobile_air_vehicles",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/240"
-        },
-        {
-          "id": "241",
-          "name": "HGV carrying hazardous load on fire",
-          "value": 1,
-          "average_credits": 13000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/241"
         }
       ]
     },
@@ -2289,7 +2253,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -2475,7 +2438,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2509,7 +2471,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -2552,7 +2513,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -2601,7 +2561,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations"
           ],
@@ -2650,7 +2609,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -2836,7 +2794,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2870,7 +2827,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -2913,7 +2869,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -3013,7 +2968,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3104,7 +3058,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3127,7 +3080,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport"
           ],
@@ -3166,7 +3118,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -3290,7 +3241,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3324,7 +3274,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -3367,7 +3316,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -4076,7 +4024,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -4130,7 +4077,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -4158,7 +4104,6 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -4186,7 +4131,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.flood_equipment",
             "prerequisites.police_stations",
@@ -4207,7 +4151,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -4239,7 +4182,6 @@ PASS canonical-candidates
             "requirements.ambulances",
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -4266,7 +4208,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -4302,7 +4243,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
@@ -4343,7 +4283,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -4397,7 +4336,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -4425,7 +4363,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
@@ -4443,7 +4380,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ambulances",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
@@ -4470,7 +4406,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -4513,7 +4448,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -4554,7 +4488,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
@@ -4580,7 +4513,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
@@ -4609,7 +4541,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -4876,7 +4807,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -4910,7 +4840,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5064,7 +4993,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5098,7 +5026,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -5141,7 +5068,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -5184,7 +5110,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5231,7 +5156,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -5355,7 +5279,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5389,7 +5312,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -5432,7 +5354,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -5475,7 +5396,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5504,7 +5424,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5828,7 +5747,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -6276,7 +6194,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -6313,7 +6230,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6347,7 +6263,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -6390,7 +6305,6 @@ PASS canonical-candidates
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -6435,7 +6349,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6465,7 +6378,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6497,7 +6409,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6532,7 +6443,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6570,7 +6480,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6601,7 +6510,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6707,7 +6615,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -6733,7 +6640,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -6759,7 +6665,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -6951,7 +6856,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -7136,7 +7040,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -7179,7 +7082,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -7294,7 +7196,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
@@ -7317,7 +7218,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
@@ -7370,7 +7270,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -7396,7 +7295,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -7430,7 +7328,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -7477,7 +7374,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.two_way",
@@ -7520,7 +7416,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -7635,7 +7530,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.two_way",
             "prerequisites.fire_support_count",
@@ -7658,7 +7552,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.two_way",
             "prerequisites.personnel_educations",
@@ -7711,7 +7604,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "prerequisites.personnel_educations",
@@ -7737,7 +7629,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -7771,7 +7662,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -7961,7 +7851,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -7986,7 +7875,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -8850,7 +8738,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -8889,7 +8776,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -8930,7 +8816,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -8970,7 +8855,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -9007,7 +8891,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -9043,7 +8926,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -9081,7 +8963,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -9118,7 +8999,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
@@ -9384,8 +9264,7 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles"
+            "requirements.hazmat_vehicles"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel"
@@ -9402,7 +9281,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
             "chances.patient_critical_care",
@@ -9444,7 +9322,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -9471,7 +9348,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
             "chances.patient_transport",
@@ -9498,7 +9374,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -9523,7 +9398,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
@@ -9543,7 +9417,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.foam",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems"
           ],
@@ -9563,7 +9436,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
@@ -10425,7 +10297,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -10451,7 +10322,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -10499,7 +10369,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -10524,7 +10393,6 @@ PASS canonical-candidates
             "requirements.hazmat_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.hazmat_vehicles",
             "chances.patient_critical_care",
@@ -10601,7 +10469,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations"
           ],
           "operational_complexity": [
@@ -10620,7 +10487,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
@@ -10648,7 +10514,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -10930,7 +10795,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -10973,7 +10837,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -11013,7 +10876,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
@@ -11036,7 +10898,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
@@ -11060,7 +10921,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11092,7 +10952,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11127,7 +10986,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11163,7 +11021,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11199,7 +11056,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11232,7 +11088,6 @@ PASS canonical-candidates
           "average_credits": 16900,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11281,7 +11136,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11324,7 +11178,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -11364,7 +11217,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "prerequisites.fire_support_count",
@@ -11387,7 +11239,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "prerequisites.personnel_educations",
@@ -11411,7 +11262,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11443,7 +11293,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11478,7 +11327,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11514,7 +11362,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11550,7 +11397,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -11583,7 +11429,6 @@ PASS canonical-candidates
           "average_credits": 16900,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -12506,7 +12351,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment"
           ],
@@ -12525,7 +12369,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment"
           ],
@@ -12544,7 +12387,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
@@ -12565,7 +12407,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.flood_equipment",
@@ -12708,7 +12549,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12797,7 +12637,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -12946,7 +12785,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -12965,7 +12803,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -12984,7 +12821,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
@@ -13005,7 +12841,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.flood_equipment",
@@ -13165,7 +13000,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -13430,7 +13264,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -13629,7 +13462,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.water_damage_pump_count"
           ],
@@ -13648,7 +13480,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.water_damage_pump_count"
           ],
@@ -13667,7 +13498,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.coastal_rescue_count",
             "prerequisites.police_stations",
@@ -13688,7 +13518,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.police_stations",
@@ -13801,7 +13630,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -13820,7 +13648,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
@@ -13839,7 +13666,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.coastal_rescue_count",
             "prerequisites.flood_equipment",
@@ -13860,7 +13686,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "prerequisites.fire_support_count",
             "prerequisites.flood_equipment",
@@ -14216,7 +14041,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -14437,7 +14261,6 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -14841,7 +14664,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
@@ -14872,7 +14694,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
@@ -14901,7 +14722,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -14931,7 +14751,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -15103,7 +14922,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.arff",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -15131,7 +14949,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
@@ -15343,7 +15160,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -15424,7 +15240,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -15513,7 +15328,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -15656,7 +15470,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -15755,7 +15568,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -16140,7 +15952,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
             "requirements.mass_casualty_equipment",
-            "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -16365,7 +16176,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.arff",
-            "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.airport",
@@ -16393,7 +16203,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -16454,7 +16263,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -16630,7 +16438,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -16739,7 +16546,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazmat_vehicles",
             "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -16770,8 +16576,8 @@ Mission verification status generated: 7.91% fully canonical, 978 of 1062 missio
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=142, direct=125, fully=84, remaining=978, batches=7, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
-PASS public-metric-sync
+Public verification metric synchronization failed: Expected exactly one README batch summary pattern; found 0
+FAIL public-metric-sync (1)
 
 ## verification-assets
 Mission verification programme asset audit passed: 84/1062 fully canonical, 142 canonical records, 5 batch registry files and 978 missions remaining.
@@ -16814,7 +16620,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.39 seconds
+INFO    -  Documentation built in 1.10 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
