@@ -42,7 +42,19 @@ jobs:
         run: python scripts/merge_verification_registry_batches.py
 
       - name: Validate official-to-canonical key mappings
-        run: python scripts/validate_official_key_mappings.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_official_key_mappings.py 2>&1 | tee key-mapping-validation.log
+
+      - name: Upload key mapping diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: key-mapping-validation-diagnostics
+          path: key-mapping-validation.log
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Report next evidence-safe canonical candidates
         run: |
