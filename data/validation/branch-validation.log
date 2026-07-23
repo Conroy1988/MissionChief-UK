@@ -35,7 +35,7 @@ Official key mapping failure report passed: all 111 promoted missions are equiva
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 111 promoted missions, 111 fully canonical, 14 requirement keys, 6 chance keys and 5 prerequisite keys mapped.
+Official key mapping audit passed: 111 promoted missions, 111 fully canonical, 15 requirement keys, 6 chance keys and 6 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -43,9 +43,81 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 169,
-  "ready_count": 0,
-  "blocked_count": 910,
-  "ready": [],
+  "ready_count": 2,
+  "blocked_count": 908,
+  "ready": [
+    {
+      "id": "734",
+      "name": "Fire in a lithium battery manufacturing factory",
+      "suggested_path": "data/uk/missions/fire-in-a-lithium-battery-manufacturing-factory.json",
+      "average_credits": 11500,
+      "mission_categories": [
+        "fire",
+        "fire_support_specialization",
+        "rural"
+      ],
+      "place": "Factory",
+      "place_array": [
+        "Factory"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 3,
+        "firetrucks": 12,
+        "foam": 2,
+        "hazmat_vehicles": 2,
+        "heavy_rescue_vehicles": 2,
+        "mobile_air_vehicles": 1,
+        "mobile_command_vehicles": 1,
+        "platform_trucks": 3,
+        "police_cars": 6,
+        "water_tankers": 2
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 20,
+        "fire_support_count": 2,
+        "main_building": 0,
+        "police_stations": 6,
+        "rescue_stations": 1
+      },
+      "generator_family": "firehouse_missions",
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "735",
+      "name": "Fire in an abandoned hospital",
+      "suggested_path": "data/uk/missions/fire-in-an-abandoned-hospital.json",
+      "average_credits": 7500,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Hospital",
+      "place_array": [
+        "Hospital"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 2,
+        "firetrucks": 4,
+        "heavy_rescue_vehicles": 1,
+        "mobile_air_vehicles": 1,
+        "platform_trucks": 1,
+        "police_cars": 2,
+        "water_tankers": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 8,
+        "fire_support_count": 1,
+        "main_building": 0,
+        "police_stations": 2
+      },
+      "generator_family": "firehouse_missions",
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -56,228 +128,12 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 169,
   "mapped_key_counts": {
-    "requirements": 14,
+    "requirements": 15,
     "chances": 6,
-    "prerequisites": 5
+    "prerequisites": 6
   },
-  "unmapped_key_count": 71,
+  "unmapped_key_count": 69,
   "entries": [
-    {
-      "group": "prerequisites",
-      "key": "fire_support_count",
-      "remaining_mission_count": 65,
-      "single_key_unlock_count": 1,
-      "examples": [
-        {
-          "id": "583",
-          "name": "Medium Aircraft Emergency Landing in Estuary Mud",
-          "value": 2,
-          "average_credits": 30000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.coastal_support",
-            "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.foam",
-            "requirements.mass_casualty_equipment",
-            "requirements.mud_rescue",
-            "requirements.personnel_educations",
-            "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.mud_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.water_rescue_2"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.personnel_educations",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/583"
-        },
-        {
-          "id": "626",
-          "name": "Sauna on Fire",
-          "value": 1,
-          "average_credits": 2500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam",
-            "chances.patient_critical_care",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/626"
-        },
-        {
-          "id": "662",
-          "name": "Fire in a town hall",
-          "value": 1,
-          "average_credits": 8850,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam",
-            "chances.patient_critical_care",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/662"
-        },
-        {
-          "id": "677",
-          "name": "Fire on a cruise ship at the dock",
-          "value": 2,
-          "average_credits": 20500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.wasserrettung"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/677"
-        },
-        {
-          "id": "720",
-          "name": "Flooded subway station",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.flood_equipment",
-            "requirements.min_pump_speed",
-            "prerequisites.flood_equipment",
-            "prerequisites.water_damage_pump_count"
-          ],
-          "operational_complexity": [
-            "additional.pump_water_amount"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/720"
-        },
-        {
-          "id": "734",
-          "name": "Fire in a lithium battery manufacturing factory",
-          "value": 2,
-          "average_credits": 11500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/734"
-        },
-        {
-          "id": "735",
-          "name": "Fire in an abandoned hospital",
-          "value": 1,
-          "average_credits": 7500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/735"
-        },
-        {
-          "id": "769",
-          "name": "Grain dryer fires",
-          "value": 1,
-          "average_credits": 9500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.ambulances",
-            "requirements.foam"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "additional.average_min_police_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/769"
-        },
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 2,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.foam",
-            "requirements.kdow_orgl",
-            "requirements.mass_casualty_equipment",
-            "requirements.personnel_educations",
-            "requirements.railway_police",
-            "requirements.two_way",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.personnel_educations",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.personnel_educations",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "823",
-          "name": "Fire in furniture shop",
-          "value": 1,
-          "average_credits": 12270,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam",
-            "chances.hazmat_vehicles",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/823"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "ambulances",
@@ -589,9 +445,7 @@ PASS canonical-candidates
           "average_credits": 12270,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -608,10 +462,7 @@ PASS canonical-candidates
           "value": 5,
           "average_credits": 8800,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam",
-            "prerequisites.fire_support_count"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
             "variant:272",
@@ -626,9 +477,7 @@ PASS canonical-candidates
           "average_credits": 9300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.emergency_welfare",
-            "requirements.foam",
-            "prerequisites.fire_support_count"
+            "requirements.emergency_welfare"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -1288,12 +1137,10 @@ PASS canonical-candidates
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -1409,7 +1256,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -1417,7 +1263,6 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -1442,7 +1287,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -1509,10 +1353,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 4300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.foam",
-            "prerequisites.fire_support_count"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "variant:107",
             "additive_overlays"
@@ -2068,255 +1909,6 @@ PASS canonical-candidates
     },
     {
       "group": "requirements",
-      "key": "foam",
-      "remaining_mission_count": 63,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "583",
-          "name": "Medium Aircraft Emergency Landing in Estuary Mud",
-          "value": 6,
-          "average_credits": 30000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat",
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.coastal_support",
-            "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.mass_casualty_equipment",
-            "requirements.mud_rescue",
-            "requirements.personnel_educations",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.mud_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.water_rescue_2"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.personnel_educations",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/583"
-        },
-        {
-          "id": "626",
-          "name": "Sauna on Fire",
-          "value": 2,
-          "average_credits": 2500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/626"
-        },
-        {
-          "id": "662",
-          "name": "Fire in a town hall",
-          "value": 1,
-          "average_credits": 8850,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/662"
-        },
-        {
-          "id": "734",
-          "name": "Fire in a lithium battery manufacturing factory",
-          "value": 2,
-          "average_credits": 11500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/734"
-        },
-        {
-          "id": "769",
-          "name": "Grain dryer fires",
-          "value": 1,
-          "average_credits": 9500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.ambulances",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "additional.average_min_police_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/769"
-        },
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 2,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
-            "requirements.mass_casualty_equipment",
-            "requirements.personnel_educations",
-            "requirements.railway_police",
-            "requirements.two_way",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.personnel_educations",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.personnel_educations",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 1,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.emergency_welfare",
-            "requirements.ems_mobile_command",
-            "requirements.kdow_orgl",
-            "requirements.mass_casualty_equipment",
-            "requirements.oneof_police_drone_or_helicopter",
-            "requirements.personnel_educations",
-            "requirements.railway_police",
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.personnel_educations",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.personnel_educations",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "823",
-          "name": "Fire in furniture shop",
-          "value": 1,
-          "average_credits": 12270,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.hazmat_vehicles",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/823"
-        },
-        {
-          "id": "827",
-          "name": "Fire at control tower",
-          "value": 1,
-          "average_credits": 21500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.oneof_fire_engine_or_airport_fire_engine",
-            "requirements.oneof_fire_ladder_or_rescue_stairs",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.airport",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/827"
-        },
-        {
-          "id": "828",
-          "name": "Party centre on fire",
-          "value": 1,
-          "average_credits": 10640,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/828"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
       "key": "traffic_car",
       "remaining_mission_count": 60,
       "single_key_unlock_count": 0,
@@ -2526,12 +2118,10 @@ PASS canonical-candidates
             "requirements.coastal_mud_rescue",
             "requirements.coastal_support",
             "requirements.emergency_welfare",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -2700,7 +2290,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -2708,7 +2297,6 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -2733,7 +2321,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -2809,12 +2396,10 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
             "prerequisites.water_rescue_2"
@@ -2930,7 +2515,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -2938,7 +2522,6 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
@@ -2963,7 +2546,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -3522,11 +3104,9 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -3576,14 +3156,12 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -3609,7 +3187,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -4218,7 +3795,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -4226,7 +3802,6 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire"
@@ -4251,7 +3826,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -4349,11 +3923,9 @@ PASS canonical-candidates
           "average_credits": 3400,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire"
           ],
@@ -4502,14 +4074,12 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -4535,7 +4105,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -4633,10 +4202,8 @@ PASS canonical-candidates
           "average_credits": 3400,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.personnel_educations",
             "requirements.two_way",
-            "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
@@ -5564,13 +5131,11 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.police_helicopter_stations"
           ],
@@ -5596,13 +5161,11 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.police_helicopter_stations"
           ],
@@ -5683,12 +5246,10 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
@@ -5712,12 +5273,10 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
@@ -6934,9 +6493,7 @@ PASS canonical-candidates
           "average_credits": 1800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
-            "requirements.traffic_car",
-            "prerequisites.fire_support_count"
+            "requirements.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -6962,7 +6519,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -6970,7 +6526,6 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police"
@@ -6995,7 +6550,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -7031,11 +6585,9 @@ PASS canonical-candidates
           "average_credits": 3400,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.two_way",
-            "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police"
           ],
@@ -7255,14 +6807,12 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
@@ -7288,7 +6838,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -7324,10 +6873,8 @@ PASS canonical-candidates
           "average_credits": 3400,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.personnel_educations",
             "requirements.railway_police",
-            "prerequisites.fire_support_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police"
@@ -8436,7 +7983,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "prerequisites.fire_support_count",
             "prerequisites.flood_equipment"
           ],
           "operational_complexity": [
@@ -8563,12 +8109,10 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -8644,7 +8188,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -8838,7 +8381,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "prerequisites.fire_support_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
           ],
@@ -8969,7 +8511,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
@@ -9191,7 +8732,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -9434,7 +8974,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "prerequisites.fire_support_count",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -9590,7 +9129,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "prerequisites.fire_support_count",
             "prerequisites.flood_equipment",
             "prerequisites.water_damage_pump_count"
           ],
@@ -9917,7 +9455,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -10123,8 +9660,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_boat",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -10491,9 +10027,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
-            "requirements.foam",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -10747,12 +10281,10 @@ PASS canonical-candidates
           "average_credits": 21500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.fire_support_count"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -10944,12 +10476,10 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.water_rescue_2"
@@ -11014,7 +10544,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -11095,12 +10624,10 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -11226,12 +10753,10 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -11316,12 +10841,10 @@ PASS canonical-candidates
             "requirements.coastal_mud_rescue",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -11680,11 +11203,9 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.mass_casualty_equipment",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
@@ -11919,12 +11440,10 @@ PASS canonical-candidates
           "average_credits": 21500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.airport",
-            "prerequisites.fire_support_count"
+            "prerequisites.airport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -11969,7 +11488,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
-            "requirements.foam",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.oneof_police_drone_or_helicopter",
@@ -12203,12 +11721,10 @@ PASS canonical-candidates
           "average_credits": 21500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.airport",
-            "prerequisites.fire_support_count"
+            "prerequisites.airport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12231,7 +11747,7 @@ Mission verification status generated: 10.45% fully canonical, 951 of 1062 missi
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=169, direct=152, fully=111, remaining=951, batches=15, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=169, direct=152, fully=111, remaining=951, batches=15, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 15 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -12277,7 +11793,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.57 seconds
+INFO    -  Documentation built in 1.46 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
