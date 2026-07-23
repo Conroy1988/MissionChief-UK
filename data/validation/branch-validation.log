@@ -10,11 +10,11 @@ Official key mapping synchronization passed: 7 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
-Prisoner schema synchronized: change required.
+Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 23: 3 mission(s), 5 file(s) written.
+Ready canonical batch generation is stable: no analyser-approved missions remain.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
@@ -26,7 +26,7 @@ Canonical mapped personnel fields synchronized: 236 direct canonical records, 0 
 PASS canonical-personnel-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 236 direct canonical records, 5 file(s) changed.
+Canonical prisoner fields synchronized: 236 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-data
@@ -10033,7 +10033,7 @@ Mission verification status generated: 18.36% fully canonical, 867 of 1062 missi
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=253, direct=236, fully=195, remaining=867, batches=23, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=253, direct=236, fully=195, remaining=867, batches=23, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 23 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -10079,7 +10079,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.54 seconds
+INFO    -  Documentation built in 0.97 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
