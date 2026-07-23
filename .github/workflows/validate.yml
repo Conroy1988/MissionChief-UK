@@ -44,6 +44,9 @@ jobs:
       - name: Generate 100% mission verification status
         run: python scripts/generate_mission_verification_status.py
 
+      - name: Validate mission verification programme assets
+        run: python scripts/validate_verification_programme_assets.py
+
       - name: Generate public data exports
         run: python scripts/generate_exports.py
 
