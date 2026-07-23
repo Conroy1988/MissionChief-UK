@@ -38,6 +38,9 @@ jobs:
       - name: Validate official UK mission catalogue
         run: python scripts/validate_official_mission_catalogue.py
 
+      - name: Merge mission verification batch registries
+        run: python scripts/merge_verification_registry_batches.py
+
       - name: Validate official-to-canonical key mappings
         run: python scripts/validate_official_key_mappings.py
 
