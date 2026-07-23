@@ -5,209 +5,40 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-7.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-8.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
-Validated 224 structured data file(s) successfully, including 356 mission resource reference(s) and 85 infrastructure precondition reference(s).
+Validated 231 structured data file(s) successfully, including 389 mission resource reference(s) and 85 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 125/1062 direct official/canonical matches, 937 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 131/1062 direct official/canonical matches, 931 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 125/142 canonical ID matches, 937 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 131/148 canonical ID matches, 931 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 84 decisions from 6 source files.
+Mission verification registry merged: 90 decisions from 7 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 84 promoted missions are equivalent.
+Official key mapping failure report passed: all 90 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 84 promoted missions, 84 fully canonical, 6 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 90 promoted missions, 90 fully canonical, 6 requirement keys, 4 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 142,
-  "ready_count": 6,
+  "canonical_count": 148,
+  "ready_count": 0,
   "blocked_count": 931,
-  "ready": [
-    {
-      "id": "169",
-      "name": "Heathland fire - large",
-      "suggested_path": "data/uk/missions/heathland-fire-large-169.json",
-      "average_credits": 8000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Heathland",
-      "place_array": [
-        "Heathland"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 3,
-        "firetrucks": 8,
-        "mobile_command_vehicles": 1,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 13,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "177",
-      "name": "Large field fire",
-      "suggested_path": "data/uk/missions/large-field-fire-177.json",
-      "average_credits": 7000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "",
-      "place_array": [],
-      "requirements": {
-        "battalion_chief_vehicles": 6,
-        "firetrucks": 10,
-        "mobile_command_vehicles": 1,
-        "water_tankers": 2
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 20,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "243",
-      "name": "Large Forest Fire",
-      "suggested_path": "data/uk/missions/large-forest-fire-243.json",
-      "average_credits": 9500,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Forest",
-      "place_array": [
-        "Forest"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 4,
-        "firetrucks": 10,
-        "mobile_command_vehicles": 1,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 15,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "244",
-      "name": "Stack of tyres on fire",
-      "suggested_path": "data/uk/missions/stack-of-tyres-on-fire-244.json",
-      "average_credits": 13000,
-      "mission_categories": [
-        "fire",
-        "fire_support_specialization",
-        "urban"
-      ],
-      "place": "Recycling Centre\nFactory\nScrap yard\nLandfill site",
-      "place_array": [
-        "Recycling Centre",
-        "Factory",
-        "Scrap yard",
-        "Landfill site"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 6,
-        "firetrucks": 15,
-        "mobile_command_vehicles": 1,
-        "platform_trucks": 2,
-        "water_tankers": 2
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 15,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "256",
-      "name": "Heathland fire - medium",
-      "suggested_path": "data/uk/missions/heathland-fire-medium.json",
-      "average_credits": 6000,
-      "mission_categories": [
-        "fire",
-        "rural"
-      ],
-      "place": "Heathland",
-      "place_array": [
-        "Heathland"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 3,
-        "firetrucks": 6,
-        "mobile_command_vehicles": 1,
-        "water_tankers": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 13,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    },
-    {
-      "id": "518",
-      "name": "Prison Wing Fire (Major Incident)",
-      "suggested_path": "data/uk/missions/prison-wing-fire-major-incident.json",
-      "average_credits": 10000,
-      "mission_categories": [
-        "fire",
-        "urban"
-      ],
-      "place": "Prison",
-      "place_array": [
-        "Prison"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 5,
-        "firetrucks": 8,
-        "heavy_rescue_vehicles": 1,
-        "mobile_command_vehicles": 1,
-        "platform_trucks": 1,
-        "water_tankers": 1
-      },
-      "chances": {
-        "water_tankers": 5
-      },
-      "prerequisites": {
-        "fire_stations": 15,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    }
-  ],
+  "ready": [],
   "blocked": []
 }
 PASS canonical-candidates
@@ -216,7 +47,7 @@ PASS canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 142,
+  "canonical_count": 148,
   "mapped_key_counts": {
     "requirements": 6,
     "chances": 4,
@@ -16572,16 +16403,16 @@ PASS canonical-candidates
 PASS key-mapping-backlog
 
 ## verification-status
-Mission verification status generated: 7.91% fully canonical, 978 of 1062 missions remaining.
+Mission verification status generated: 8.47% fully canonical, 972 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=142, direct=125, fully=84, remaining=978, batches=7, changed=README.md, docs/releases/v1.1.0.md.
+Public verification metrics synchronized: canonical=148, direct=131, fully=90, remaining=972, batches=8, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
 Repeatable public verification synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 84/1062 fully canonical, 142 canonical records, 5 batch registry files and 978 missions remaining.
+Mission verification programme asset audit passed: 90/1062 fully canonical, 148 canonical records, 8 evidence batch pages, 69 dynamic batch decisions and 972 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -16593,11 +16424,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=142, vehicles=46, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=148, vehicles=46, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 75 Markdown files
+Documentation link audit passed across 76 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -16625,6 +16456,6 @@ INFO    -  Documentation built in 1.44 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=142, vehicles=46, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=148, vehicles=46, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 
