@@ -16576,8 +16576,9 @@ Mission verification status generated: 7.91% fully canonical, 978 of 1062 missio
 PASS verification-status
 
 ## public-metric-sync
-Public verification metric synchronization failed: Expected exactly one README batch summary pattern; found 0
-FAIL public-metric-sync (1)
+Public verification metrics synchronized: canonical=142, direct=125, fully=84, remaining=978, batches=7, changed=README.md, docs/releases/v1.1.0.md.
+Repeatable public verification synchronization passed.
+PASS public-metric-sync
 
 ## verification-assets
 Mission verification programme asset audit passed: 84/1062 fully canonical, 142 canonical records, 5 batch registry files and 978 missions remaining.
@@ -16620,7 +16621,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.10 seconds
+INFO    -  Documentation built in 1.41 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
