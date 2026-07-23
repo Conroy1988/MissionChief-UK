@@ -3,7 +3,7 @@
   "name": "Chimney fire",
   "service": "fire",
   "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
-  "preconditions": {"fire_stations": 2},
+  "preconditions": {"fire_stations": 3},
   "requirements": {
     "guaranteed": [
       {"resource": "fire_engine", "quantity": 1},
