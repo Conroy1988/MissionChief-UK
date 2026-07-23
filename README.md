@@ -86,6 +86,8 @@ Current progress:
 | Fully canonical | **21 / 1,062 — 1.98%** |
 | Remaining to fully canonical | **1,041** |
 
+Batch 1 established **11 fully canonical missions**. Batch 2 adds ten more, taking the current total to **21 fully canonical missions**.
+
 The first two fully canonical batches cover IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10`, `11`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `23`, `24` and `27`.
 
 [Review the live verification backlog →](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/)
