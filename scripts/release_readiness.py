@@ -35,6 +35,8 @@ EXPECTED_STATIC_PAGES = (
     "reference/official-mission-catalogue.md",
     "reference/mission-verification-status.md",
     "reference/fully-canonical-mission-batch-1.md",
+    "reference/fully-canonical-mission-batch-2.md",
+    "reference/fully-canonical-mission-batch-3.md",
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
@@ -48,7 +50,10 @@ REQUIRED_QA_FILES = (
     "scripts/audit_links.py",
     "scripts/validate_official_mission_catalogue.py",
     "scripts/reconcile_official_mission_coverage.py",
+    "scripts/verification_registry.py",
+    "scripts/merge_verification_registry_batches.py",
     "scripts/validate_official_key_mappings.py",
+    "scripts/report_canonical_candidates.py",
     "scripts/generate_mission_verification_status.py",
     "scripts/validate_verification_programme_assets.py",
     "docs/quality-assurance.md",
@@ -60,6 +65,7 @@ REQUIRED_OFFICIAL_FILES = (
     "scripts/compact_official_mission_catalogue.py",
     ".github/workflows/import-official-uk-missions.yml",
     "data/uk/mission-verification-registry.json",
+    "data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json",
     "data/uk/official-key-mappings.json",
     "data/sources/missionchief-uk/README.md",
     "data/sources/missionchief-uk/einsaetze.raw.json",
@@ -73,6 +79,8 @@ REQUIRED_OFFICIAL_FILES = (
     "docs/javascripts/official-mission-details.js",
     "docs/reference/mission-verification-status.md",
     "docs/reference/fully-canonical-mission-batch-1.md",
+    "docs/reference/fully-canonical-mission-batch-2.md",
+    "docs/reference/fully-canonical-mission-batch-3.md",
 )
 
 REQUIRED_JAVASCRIPT_ORDER = (
@@ -159,6 +167,9 @@ def audit_quality_assets(release_version: str) -> None:
     for relative in (*REQUIRED_QA_FILES, *REQUIRED_OFFICIAL_FILES):
         require((ROOT / relative).is_file(), f"Release-critical file is missing: {relative}")
 
+    batch_files = sorted((DATA_ROOT / "mission-verification-batches").glob("*.json"))
+    require(bool(batch_files), "No mission verification batch registry files exist")
+
     package = read_json(ROOT / "package.json")
     require(isinstance(package, dict), "package.json must contain an object")
     require(package.get("version") == release_version, "package.json version does not match data/version.json")
@@ -197,7 +208,9 @@ def audit_quality_assets(release_version: str) -> None:
         "schedule:",
         "reconcile_official_mission_coverage.py",
         "validate_official_mission_catalogue.py",
+        "merge_verification_registry_batches.py",
         "validate_official_key_mappings.py",
+        "report_canonical_candidates.py",
         "generate_mission_verification_status.py",
         "validate_verification_programme_assets.py",
         "git diff --cached --quiet",
@@ -290,6 +303,17 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
     require(manifest.get("faq", {}).get("path") == "faq.json", "Manifest FAQ path mismatch")
     require(manifest.get("openapi", {}).get("path") == "openapi.json", "Manifest OpenAPI path mismatch")
 
+    verification = read_json(OFFICIAL_OUTPUT_ROOT / "uk-mission-verification.json")
+    verification_summary = verification.get("summary")
+    require(isinstance(verification_summary, dict), "Verification endpoint summary is missing")
+    fully_canonical = verification_summary.get("cumulative_stage_counts", {}).get("fully-canonical")
+    direct_matches = verification_summary.get("direct_canonical_id_matches")
+    remaining = verification_summary.get("remaining_to_fully_canonical")
+    require(verification_summary.get("canonical_count") == counts["missions"], "Verification canonical count mismatch")
+    require(isinstance(fully_canonical, int), "Verification fully canonical count is invalid")
+    require(isinstance(direct_matches, int), "Verification direct match count is invalid")
+    require(isinstance(remaining, int), "Verification remaining count is invalid")
+
     readme = README_PATH.read_text(encoding="utf-8")
     readme_lower = readme.lower()
     readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
@@ -304,7 +328,10 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
         f"README does not identify Static API v{release_version}",
     )
     require("1,062" in readme or "1062" in readme, "README does not expose the official UK mission catalogue baseline")
-    require("11 fully canonical" in readme_lower, "README does not expose the first fully canonical batch count")
+    require(f"{fully_canonical} fully canonical" in readme_lower, "README fully canonical count is stale")
+    require(str(direct_matches) in readme, "README direct canonical match count is stale")
+    require(str(remaining) in readme, "README remaining verification count is stale")
+    require("11 fully canonical" in readme_lower, "README does not preserve the Batch 1 historical milestone")
     return counts
 
 
@@ -319,6 +346,8 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "reference/official-mission-catalogue/index.html",
         "reference/mission-verification-status/index.html",
         "reference/fully-canonical-mission-batch-1/index.html",
+        "reference/fully-canonical-mission-batch-2/index.html",
+        "reference/fully-canonical-mission-batch-3/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
