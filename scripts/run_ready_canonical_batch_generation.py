@@ -6,11 +6,13 @@ from typing import Any
 
 import generate_ready_canonical_batch as generator
 from personnel_contract import build_expected_personnel, load_mapping_registry, owned_paths
+from prisoner_contract import build_expected_prisoners, load_mapping_registry as load_prisoner_mappings
 from verification_registry import load_verification_registry
 
 ORIGINAL_BUILD_CANONICAL_RECORD = generator.build_canonical_record
 ORIGINAL_TRANSLATE_REQUIREMENTS = generator.translate_requirements
 PERSONNEL_MAPPINGS = load_mapping_registry()
+PRISONER_MAPPINGS = load_prisoner_mappings()
 PERSONNEL_REQUIREMENT_KEYS, PERSONNEL_CHANCE_KEYS, _ = owned_paths(PERSONNEL_MAPPINGS)
 PROBABILISTIC_ALTERNATIVE_TARGET = "requirements.probabilistic-alternatives"
 
@@ -120,7 +122,7 @@ def translate_requirements_with_probabilistic_alternatives(
     return output
 
 
-def build_canonical_record_with_personnel(
+def build_canonical_record_with_operational_contracts(
     official: dict[str, Any],
     mappings: dict[str, Any],
     patient_mappings: dict[str, dict[str, Any]],
@@ -133,13 +135,16 @@ def build_canonical_record_with_personnel(
     personnel = build_expected_personnel(official, PERSONNEL_MAPPINGS)
     if personnel:
         output["personnel"] = personnel
+    prisoners = build_expected_prisoners(official, PRISONER_MAPPINGS)
+    if prisoners:
+        output["prisoners"] = prisoners
     return output
 
 
 def main() -> int:
     generator.count_fully_canonical = merged_fully_canonical_count
     generator.translate_requirements = translate_requirements_with_probabilistic_alternatives
-    generator.build_canonical_record = build_canonical_record_with_personnel
+    generator.build_canonical_record = build_canonical_record_with_operational_contracts
     return generator.main()
 
 
