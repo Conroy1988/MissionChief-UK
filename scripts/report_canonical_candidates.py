@@ -17,10 +17,7 @@ KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
-SAFE_ADDITIONAL_KEYS = {
-    "filter_id",
-    *RELATIONSHIP_KEYS,
-}
+SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS}
 
 
 def read_json(path: Path) -> Any:
@@ -123,8 +120,10 @@ def operational_blockers(
             blockers.append(f"generator family requires review: {filter_id!r}")
         blockers.extend(relationship_blockers(additional, official_by_id))
 
-    if record.get("base_mission_id") is not None:
-        blockers.append("base mission or variant relationship requires explicit modelling")
+    mission_id = record.get("id")
+    base_mission_id = record.get("base_mission_id")
+    if base_mission_id is not None and str(base_mission_id) != str(mission_id):
+        blockers.append(f"variant of base mission {base_mission_id} requires explicit modelling")
     if record.get("additive_overlays") not in (None, ""):
         blockers.append("additive overlay requires explicit modelling")
     if record.get("overlay_index") is not None:
@@ -138,10 +137,7 @@ def resolve_relationships(values: Any, official_by_id: dict[str, dict[str, Any]]
     if not isinstance(values, list):
         return []
     return [
-        {
-            "id": value,
-            "name": mission_name(official_by_id.get(str(value))),
-        }
+        {"id": value, "name": mission_name(official_by_id.get(str(value)))}
         for value in values
     ]
 
@@ -193,11 +189,7 @@ def report() -> dict[str, Any]:
 
         blockers = key_blockers(record, mappings) + operational_blockers(record, official_by_id)
         if blockers:
-            blocked.append({
-                "id": record.get("id"),
-                "name": mission_name(record),
-                "blockers": blockers,
-            })
+            blocked.append({"id": record.get("id"), "name": mission_name(record), "blockers": blockers})
         else:
             ready.append(candidate_record(record, official_by_id, duplicate_names))
 
