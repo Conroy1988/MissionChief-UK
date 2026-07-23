@@ -10,6 +10,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from patient_contract import build_expected_patient, load_mapping_registry, patient_owned_paths
+
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
@@ -17,8 +19,10 @@ KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
-SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS}
-SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions"}
+PATIENT_MAPPINGS = load_mapping_registry()
+PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
+SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS, *PATIENT_ADDITIONAL_KEYS}
+SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
 
 def read_json(path: Path) -> Any:
@@ -160,7 +164,7 @@ def candidate_record(
     slug = slugify(name)
     if duplicate_names[name.casefold()] > 1:
         slug = f"{slug}-{mission_id}"
-    return {
+    output = {
         "id": record.get("id"),
         "name": name,
         "suggested_path": f"data/uk/missions/{slug}.json",
@@ -175,6 +179,10 @@ def candidate_record(
         "expansion_missions": resolve_relationships(additional.get("expansion_missions_ids", []), official_by_id),
         "followup_missions": resolve_relationships(additional.get("followup_missions_ids", []), official_by_id),
     }
+    patients = build_expected_patient(record, PATIENT_MAPPINGS)
+    if patients:
+        output["patients"] = patients
+    return output
 
 
 def report() -> dict[str, Any]:
@@ -204,9 +212,10 @@ def report() -> dict[str, Any]:
     ready.sort(key=lambda item: stable_id(item["id"]))
     blocked.sort(key=lambda item: stable_id(item["id"]))
     return {
-        "schema_version": "1",
+        "schema_version": "2",
         "official_count": len(records),
         "canonical_count": len(existing),
+        "patient_contract_fields": len(PATIENT_MAPPINGS),
         "ready_count": len(ready),
         "blocked_count": len(blocked),
         "ready": ready,
@@ -232,6 +241,7 @@ def main() -> int:
         "schema_version": result["schema_version"],
         "official_count": result["official_count"],
         "canonical_count": result["canonical_count"],
+        "patient_contract_fields": result["patient_contract_fields"],
         "ready_count": result["ready_count"],
         "blocked_count": result["blocked_count"],
         "ready": result["ready"][: max(0, args.limit)],
