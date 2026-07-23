@@ -95,34 +95,34 @@
   "personnel": {
     "available": [
       {
-        "role": "Railway Police Officer",
-        "quantity": 12
-      },
-      {
         "role": "Mobile Operations Manager",
         "quantity": 4
       },
       {
         "role": "Police Sergeant",
         "quantity": 4
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 12
       }
     ],
     "required": [
       {
-        "role": "Railway Police Officer",
-        "quantity": 4
-      },
-      {
         "role": "Mobile Operations Manager",
-        "quantity": 1
-      },
-      {
-        "role": "Police Sergeant",
         "quantity": 1
       },
       {
         "role": "Operational Team Leader",
         "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
       }
     ]
   },

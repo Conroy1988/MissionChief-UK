@@ -15,6 +15,11 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import load_mapping_registry, patient_owned_paths
+from personnel_education_contract import (
+    build_expected_personnel_educations,
+    load_mapping_registry as load_personnel_education_mappings,
+    owned_paths as personnel_education_owned_paths,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -24,6 +29,7 @@ KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 PATIENT_MAPPINGS = load_mapping_registry()
 CONDITIONAL_MAPPINGS = load_conditional_mappings()
+PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
 (
     CONDITIONAL_REQUIREMENT_KEYS,
@@ -31,11 +37,18 @@ PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPI
     CONDITIONAL_ADDITIONAL_KEYS,
     CONDITIONAL_RESOURCES,
 ) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
+(
+    PERSONNEL_EDUCATION_REQUIREMENT_KEYS,
+    PERSONNEL_EDUCATION_PREREQUISITE_KEYS,
+    PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
+    PERSONNEL_EDUCATION_ROLES,
+) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
     *RELATIONSHIP_KEYS,
     *PATIENT_ADDITIONAL_KEYS,
     *CONDITIONAL_ADDITIONAL_KEYS,
+    *PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
 }
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
@@ -73,6 +86,8 @@ def load_mapped_keys() -> dict[str, set[str]]:
         result[group] = {str(key) for key in values}
     result["requirements"].update(CONDITIONAL_REQUIREMENT_KEYS)
     result["chances"].update(CONDITIONAL_CHANCE_KEYS)
+    result["requirements"].update(PERSONNEL_EDUCATION_REQUIREMENT_KEYS)
+    result["prerequisites"].update(PERSONNEL_EDUCATION_PREREQUISITE_KEYS)
     return result
 
 
@@ -95,6 +110,10 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
     if isinstance(additional, dict):
         try:
             build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
+        except ValueError as exc:
+            blockers.append(str(exc))
+        try:
+            build_expected_personnel_educations(record, PERSONNEL_EDUCATION_MAPPINGS)
         except ValueError as exc:
             blockers.append(str(exc))
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
@@ -190,6 +209,7 @@ def build_report(example_limit: int) -> dict[str, Any]:
         "canonical_count": len(existing),
         "patient_contract_fields": len(PATIENT_MAPPINGS),
         "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
+        "personnel_education_roles": len(PERSONNEL_EDUCATION_MAPPINGS["roles"]),
         "mapped_key_counts": {group: len(mapped[group]) for group in KEY_GROUPS},
         "unmapped_key_count": len(entries),
         "entries": entries,

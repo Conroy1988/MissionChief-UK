@@ -73,22 +73,22 @@
   "personnel": {
     "available": [
       {
-        "role": "Search Advisor",
-        "quantity": 2
-      },
-      {
         "role": "SAR Commander",
         "quantity": 4
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 2
       }
     ],
     "required": [
       {
-        "role": "Search Advisor",
-        "quantity": 1
-      },
-      {
         "role": "SAR Commander",
         "quantity": 2
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 1
       }
     ],
     "average_minimum": [

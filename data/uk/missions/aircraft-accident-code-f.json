@@ -141,12 +141,12 @@
   "personnel": {
     "available": [
       {
-        "role": "Police Sergeant",
-        "quantity": 10
-      },
-      {
         "role": "Police Inspector",
         "quantity": 5
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 10
       }
     ],
     "required": [
@@ -159,16 +159,16 @@
         "quantity": 1
       },
       {
-        "role": "Police Sergeant",
-        "quantity": 4
+        "role": "Operational Team Leader",
+        "quantity": 5
       },
       {
         "role": "Police Inspector",
         "quantity": 1
       },
       {
-        "role": "Operational Team Leader",
-        "quantity": 5
+        "role": "Police Sergeant",
+        "quantity": 4
       }
     ],
     "average_minimum": []

@@ -14,6 +14,11 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
     validate_promoted_conditionals,
 )
+from personnel_education_contract import (
+    load_mapping_registry as load_personnel_education_mappings,
+    owned_paths as personnel_education_owned_paths,
+    validate_promoted_personnel_educations,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -27,6 +32,13 @@ CONDITIONAL_MAPPINGS = load_conditional_mappings()
     CONDITIONAL_ADDITIONAL_KEYS,
     CONDITIONAL_RESOURCES,
 ) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
+PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
+(
+    PERSONNEL_EDUCATION_REQUIREMENT_KEYS,
+    PERSONNEL_EDUCATION_PREREQUISITE_KEYS,
+    PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
+    PERSONNEL_EDUCATION_ROLES,
+) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
@@ -358,6 +370,8 @@ def audit_promoted_mission(
         if mapping is None:
             if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
                 continue
+            if str(official_key) in PERSONNEL_EDUCATION_REQUIREMENT_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} is promoted but official key requirements.{official_key} is unmapped")
         if mapping["status"] == "not-applicable":
             if value not in mapping["allowed_values"]:
@@ -485,6 +499,8 @@ def audit_promoted_mission(
     for official_key, value in official_prerequisites.items():
         mapping = mappings["prerequisites"].get(str(official_key))
         if mapping is None:
+            if str(official_key) in PERSONNEL_EDUCATION_PREREQUISITE_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} is promoted but official key prerequisites.{official_key} is unmapped")
         if mapping["status"] == "not-applicable":
             if value not in mapping["allowed_values"]:
@@ -596,6 +612,9 @@ def audit() -> dict[str, int]:
         audit_promoted_mission(key, decision, official, canonical, mappings)
         validate_promoted_conditionals(
             key, decision, official, canonical, CONDITIONAL_MAPPINGS
+        )
+        validate_promoted_personnel_educations(
+            key, decision, official, canonical, PERSONNEL_EDUCATION_MAPPINGS
         )
         promoted += 1
         if decision.get("stage") == "fully-canonical":

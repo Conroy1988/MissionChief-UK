@@ -39,6 +39,32 @@
       {
         "role": "Operational Team Leader",
         "quantity": 1
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 8
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 24
       }
     ]
   }

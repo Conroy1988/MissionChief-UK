@@ -92,11 +92,11 @@
   "personnel": {
     "available": [
       {
-        "role": "Police Sergeant",
+        "role": "Police Inspector",
         "quantity": 5
       },
       {
-        "role": "Police Inspector",
+        "role": "Police Sergeant",
         "quantity": 5
       }
     ],
@@ -110,16 +110,16 @@
         "quantity": 1
       },
       {
-        "role": "Police Sergeant",
-        "quantity": 1
+        "role": "Operational Team Leader",
+        "quantity": 2
       },
       {
         "role": "Police Inspector",
         "quantity": 1
       },
       {
-        "role": "Operational Team Leader",
-        "quantity": 2
+        "role": "Police Sergeant",
+        "quantity": 1
       }
     ]
   },

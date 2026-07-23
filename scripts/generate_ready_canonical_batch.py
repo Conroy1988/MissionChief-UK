@@ -16,6 +16,11 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import ROOT, build_expected_patient, load_mapping_registry
+from personnel_education_contract import (
+    build_expected_personnel_educations,
+    load_mapping_registry as load_personnel_education_mappings,
+    owned_paths as personnel_education_owned_paths,
+)
 from report_canonical_candidates import report as candidate_report
 
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -34,6 +39,13 @@ CONDITIONAL_MAPPINGS = load_conditional_mappings()
     CONDITIONAL_ADDITIONAL_KEYS,
     CONDITIONAL_RESOURCES,
 ) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
+PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
+(
+    PERSONNEL_EDUCATION_REQUIREMENT_KEYS,
+    PERSONNEL_EDUCATION_PREREQUISITE_KEYS,
+    PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
+    PERSONNEL_EDUCATION_ROLES,
+) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 
 GENERATOR_METADATA = {
     "firehouse_missions": ("fire", ["Fire Fighting Missions"]),
@@ -128,6 +140,8 @@ def translate_requirements(
         if not isinstance(mapping, dict):
             if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
                 continue
+            if str(official_key) in PERSONNEL_EDUCATION_REQUIREMENT_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} requirement {official_key} is unmapped")
         if mapping.get("status") == "not-applicable":
             if raw_quantity not in mapping.get("allowed_values", []):
@@ -201,6 +215,8 @@ def translate_preconditions(official: dict[str, Any], mappings: dict[str, Any]) 
     for official_key, raw_quantity in prerequisites.items():
         mapping = mappings["prerequisites"].get(str(official_key))
         if not isinstance(mapping, dict):
+            if str(official_key) in PERSONNEL_EDUCATION_PREREQUISITE_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} prerequisite {official_key} is unmapped")
         if mapping.get("status") == "not-applicable":
             if raw_quantity not in mapping.get("allowed_values", []):
@@ -280,6 +296,11 @@ def build_canonical_record(
     patients = build_expected_patient(official, patient_mappings)
     if patients:
         record["patients"] = patients
+    personnel_educations = build_expected_personnel_educations(
+        official, PERSONNEL_EDUCATION_MAPPINGS
+    )
+    if personnel_educations:
+        record["personnel"] = personnel_educations
     reward = official.get("average_credits")
     if isinstance(reward, (int, float)) and not isinstance(reward, bool):
         record["reward"] = {"average_credits": reward}
@@ -448,10 +469,15 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
             "strict_conditional_equivalence": bool(
                 build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
             ),
+            "strict_personnel_education_equivalence": bool(
+                build_expected_personnel_educations(
+                    official, PERSONNEL_EDUCATION_MAPPINGS
+                )
+            ),
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
             "notes": [
                 "Generated from the retained official UK snapshot after all candidate blockers cleared.",
-                "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required.",
+                "Exact resource, prerequisite, patient, personnel-education, conditional-resource and relationship equivalence is required.",
             ],
         }
 

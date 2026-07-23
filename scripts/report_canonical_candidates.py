@@ -17,6 +17,11 @@ from conditional_resource_contract import (
 )
 from patient_contract import build_expected_patient, load_mapping_registry as load_patient_mappings, patient_owned_paths
 from personnel_contract import build_expected_personnel, load_mapping_registry as load_personnel_mappings
+from personnel_education_contract import (
+    build_expected_personnel_educations,
+    load_mapping_registry as load_personnel_education_mappings,
+    owned_paths as personnel_education_owned_paths,
+)
 from prisoner_contract import build_expected_prisoners, load_mapping_registry as load_prisoner_mappings, owned_additional_keys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,6 +35,7 @@ PATIENT_MAPPINGS = load_patient_mappings()
 PERSONNEL_MAPPINGS = load_personnel_mappings()
 PRISONER_MAPPINGS = load_prisoner_mappings()
 CONDITIONAL_MAPPINGS = load_conditional_mappings()
+PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
 PRISONER_ADDITIONAL_KEYS = owned_additional_keys(PRISONER_MAPPINGS)
 (
@@ -38,12 +44,19 @@ PRISONER_ADDITIONAL_KEYS = owned_additional_keys(PRISONER_MAPPINGS)
     CONDITIONAL_ADDITIONAL_KEYS,
     CONDITIONAL_RESOURCES,
 ) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
+(
+    PERSONNEL_EDUCATION_REQUIREMENT_KEYS,
+    PERSONNEL_EDUCATION_PREREQUISITE_KEYS,
+    PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
+    PERSONNEL_EDUCATION_ROLES,
+) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
     *RELATIONSHIP_KEYS,
     *PATIENT_ADDITIONAL_KEYS,
     *PRISONER_ADDITIONAL_KEYS,
     *CONDITIONAL_ADDITIONAL_KEYS,
+    *PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
 }
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
@@ -110,6 +123,10 @@ def key_blockers(record: dict[str, Any], mappings: dict[str, dict[str, dict[str,
                     continue
                 if group == "chances" and str(official_key) in CONDITIONAL_CHANCE_KEYS:
                     continue
+                if group == "requirements" and str(official_key) in PERSONNEL_EDUCATION_REQUIREMENT_KEYS:
+                    continue
+                if group == "prerequisites" and str(official_key) in PERSONNEL_EDUCATION_PREREQUISITE_KEYS:
+                    continue
                 blockers.append(f"unmapped {group}.{official_key}")
                 continue
             if mapping.get("status") == "not-applicable" and value not in mapping.get("allowed_values", []):
@@ -152,6 +169,10 @@ def operational_blockers(
     else:
         try:
             build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
+        except ValueError as exc:
+            blockers.append(str(exc))
+        try:
+            build_expected_personnel_educations(record, PERSONNEL_EDUCATION_MAPPINGS)
         except ValueError as exc:
             blockers.append(str(exc))
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
@@ -222,6 +243,11 @@ def candidate_record(
     conditionals = build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
     if conditionals:
         output["conditional_requirements"] = conditionals
+    personnel_educations = build_expected_personnel_educations(
+        record, PERSONNEL_EDUCATION_MAPPINGS
+    )
+    if personnel_educations:
+        output["personnel_educations"] = personnel_educations
     return output
 
 
@@ -252,11 +278,12 @@ def report() -> dict[str, Any]:
     ready.sort(key=lambda item: stable_id(item["id"]))
     blocked.sort(key=lambda item: stable_id(item["id"]))
     return {
-        "schema_version": "5",
+        "schema_version": "6",
         "official_count": len(records),
         "canonical_count": len(existing),
         "patient_contract_fields": len(PATIENT_MAPPINGS),
         "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
+        "personnel_education_roles": len(PERSONNEL_EDUCATION_MAPPINGS["roles"]),
         "personnel_contract_roles": len(PERSONNEL_MAPPINGS),
         "prisoner_contract_fields": len(PRISONER_MAPPINGS),
         "ready_count": len(ready),
@@ -286,6 +313,7 @@ def main() -> int:
         "canonical_count": result["canonical_count"],
         "patient_contract_fields": result["patient_contract_fields"],
         "conditional_resource_contracts": result["conditional_resource_contracts"],
+        "personnel_education_roles": result["personnel_education_roles"],
         "personnel_contract_roles": result["personnel_contract_roles"],
         "prisoner_contract_fields": result["prisoner_contract_fields"],
         "ready_count": result["ready_count"],

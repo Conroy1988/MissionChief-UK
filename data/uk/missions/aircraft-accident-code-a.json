@@ -56,6 +56,16 @@
       {
         "role": "Operational Team Leader",
         "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
       }
     ]
   }

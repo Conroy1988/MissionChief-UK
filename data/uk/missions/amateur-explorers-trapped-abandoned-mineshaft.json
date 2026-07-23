@@ -71,25 +71,21 @@
   "personnel": {
     "available": [
       {
-        "role": "Search Advisor",
-        "quantity": 2
+        "role": "Cave Rescue Specialist",
+        "quantity": 20
       },
       {
         "role": "Police Sergeant",
         "quantity": 2
       },
       {
-        "role": "Cave Rescue Specialist",
-        "quantity": 20
+        "role": "Search Advisor",
+        "quantity": 2
       }
     ],
     "required": [
       {
-        "role": "Search Advisor",
-        "quantity": 1
-      },
-      {
-        "role": "Police Sergeant",
+        "role": "Ambulance Officer",
         "quantity": 1
       },
       {
@@ -101,11 +97,15 @@
         "quantity": 3
       },
       {
-        "role": "Ambulance Officer",
+        "role": "Operational Team Leader",
         "quantity": 1
       },
       {
-        "role": "Operational Team Leader",
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Search Advisor",
         "quantity": 1
       }
     ]
