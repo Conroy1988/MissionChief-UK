@@ -12,6 +12,7 @@ from typing import Any
 
 from patient_contract import build_expected_patient, load_mapping_registry as load_patient_mappings, patient_owned_paths
 from personnel_contract import build_expected_personnel, load_mapping_registry as load_personnel_mappings
+from prisoner_contract import build_expected_prisoners, load_mapping_registry as load_prisoner_mappings, owned_additional_keys
 
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -22,8 +23,15 @@ KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 PATIENT_MAPPINGS = load_patient_mappings()
 PERSONNEL_MAPPINGS = load_personnel_mappings()
+PRISONER_MAPPINGS = load_prisoner_mappings()
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
-SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS, *PATIENT_ADDITIONAL_KEYS}
+PRISONER_ADDITIONAL_KEYS = owned_additional_keys(PRISONER_MAPPINGS)
+SAFE_ADDITIONAL_KEYS = {
+    "filter_id",
+    *RELATIONSHIP_KEYS,
+    *PATIENT_ADDITIONAL_KEYS,
+    *PRISONER_ADDITIONAL_KEYS,
+}
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
 
@@ -187,6 +195,9 @@ def candidate_record(
     personnel = build_expected_personnel(record, PERSONNEL_MAPPINGS)
     if personnel:
         output["personnel"] = personnel
+    prisoners = build_expected_prisoners(record, PRISONER_MAPPINGS)
+    if prisoners:
+        output["prisoners"] = prisoners
     return output
 
 
@@ -217,11 +228,12 @@ def report() -> dict[str, Any]:
     ready.sort(key=lambda item: stable_id(item["id"]))
     blocked.sort(key=lambda item: stable_id(item["id"]))
     return {
-        "schema_version": "3",
+        "schema_version": "4",
         "official_count": len(records),
         "canonical_count": len(existing),
         "patient_contract_fields": len(PATIENT_MAPPINGS),
         "personnel_contract_roles": len(PERSONNEL_MAPPINGS),
+        "prisoner_contract_fields": len(PRISONER_MAPPINGS),
         "ready_count": len(ready),
         "blocked_count": len(blocked),
         "ready": ready,
@@ -249,6 +261,7 @@ def main() -> int:
         "canonical_count": result["canonical_count"],
         "patient_contract_fields": result["patient_contract_fields"],
         "personnel_contract_roles": result["personnel_contract_roles"],
+        "prisoner_contract_fields": result["prisoner_contract_fields"],
         "ready_count": result["ready_count"],
         "blocked_count": result["blocked_count"],
         "ready": result["ready"][: max(0, args.limit)],
