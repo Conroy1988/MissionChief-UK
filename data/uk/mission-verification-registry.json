@@ -155,6 +155,136 @@
         "Official identity, prerequisite, guaranteed requirement, reward and follow-up relationships are represented.",
         "Final evidence-completeness audit completed for the published operational fields."
       ]
+    },
+    "13": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/13",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "14": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/14",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement, base reward and expansion relationship are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "15": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/15",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Forest POI, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "16": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/16",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "17": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/17",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement, base reward and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "18": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/18",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "19": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/19",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement, base reward and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "23": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/23",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "24": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/24",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Bus stop POI, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "27": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/27",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
     }
   }
 }
