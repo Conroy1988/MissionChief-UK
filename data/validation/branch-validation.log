@@ -10,9 +10,13 @@ PASS conditional-resource-modes-sync
 Recovery contract integration synchronized: already current.
 PASS recovery-contract-sync
 
+## coastguard-generator-sync
+Coastguard generator integration synchronized: scripts/report_canonical_candidates.py, scripts/generate_ready_canonical_batch.py, scripts/report_key_mapping_backlog.py.
+PASS coastguard-generator-sync
+
 ## official-key-mapping-sync
 Official Ambulance key mapping synchronized: already current.
-Core Coastguard mappings synchronized: change required.
+Core Coastguard mappings synchronized: already current.
 GP Surgery mapping synchronized: already current.
 Inland water rescue mapping synchronized: already current.
 Mass Casualty core mappings synchronized: already current.
@@ -33,27 +37,27 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 30: 1 mission(s), 3 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 266 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 267 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 266 direct canonical records, 16 file(s) changed.
+Canonical mapped personnel fields synchronized: 267 direct canonical records, 16 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-personnel-education-sync
-Canonical personnel education fields synchronized: 266 direct canonical records, 16 file(s) changed.
+Canonical personnel education fields synchronized: 267 direct canonical records, 16 file(s) changed.
 PASS canonical-personnel-education-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 266 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 267 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-recovery-sync
-Canonical recovery outcomes synchronized: 266 direct canonical records, 0 file(s) changed.
+Canonical recovery outcomes synchronized: 267 direct canonical records, 0 file(s) changed.
 PASS canonical-recovery-sync
 
 ## canonical-data
@@ -79,6 +83,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-28.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-29.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-30.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json: no schema mapping for directory 'mission-verification-batches'
@@ -93,54 +98,54 @@ Structured data validation warnings:
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-recovery-field-mappings.json: no schema mapping for directory 'uk'
-Validated 396 structured data file(s) successfully, including 1163 mission resource reference(s) and 112 infrastructure precondition reference(s).
+Validated 398 structured data file(s) successfully, including 1166 mission resource reference(s) and 113 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 266/1062 direct official/canonical matches, 796 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 267/1062 direct official/canonical matches, 795 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 266/283 canonical ID matches, 796 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 267/284 canonical ID matches, 795 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 225 decisions from 28 source files.
+Mission verification registry merged: 226 decisions from 29 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 225 promoted missions are equivalent.
+Official key mapping failure report passed: all 226 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 225 promoted missions, 225 fully canonical, 29 requirement keys, 11 chance keys and 16 prerequisite keys mapped.
+Official key mapping audit passed: 226 promoted missions, 226 fully canonical, 29 requirement keys, 11 chance keys and 16 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 225/225 promoted missions exact, 99 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 226/226 promoted missions exact, 100 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 225/225 promoted missions exact, 20 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 226/226 promoted missions exact, 20 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-personnel-education-equivalence
-Official personnel education mapping audit passed: 225 promoted missions inspected, 6 exact personnel-education missions, 6 strict decisions and 13 mapped roles.
+Official personnel education mapping audit passed: 226 promoted missions inspected, 6 exact personnel-education missions, 6 strict decisions and 13 mapped roles.
 PASS official-personnel-education-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 225/225 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 226/226 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
 
 ## official-recovery-equivalence
-Official recovery mapping audit passed: 225 promoted missions inspected, 1 exact recovery missions, 1 strict decisions and 2 mapped asset types.
+Official recovery mapping audit passed: 226 promoted missions inspected, 1 exact recovery missions, 1 strict decisions and 2 mapped asset types.
 PASS official-recovery-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "7",
   "official_count": 1062,
-  "canonical_count": 283,
+  "canonical_count": 284,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
@@ -148,7 +153,7 @@ PASS official-recovery-equivalence
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 796,
+  "blocked_count": 795,
   "ready": [],
   "blocked": []
 }
@@ -158,7 +163,7 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 283,
+  "canonical_count": 284,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
@@ -174,7 +179,7 @@ PASS canonical-candidates
       "group": "prerequisites",
       "key": "coastal_rescue_count",
       "remaining_mission_count": 19,
-      "single_key_unlock_count": 0,
+      "single_key_unlock_count": 2,
       "examples": [
         {
           "id": "544",
@@ -188,8 +193,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/544"
         },
@@ -206,9 +210,7 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -225,8 +227,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/553"
         },
@@ -244,8 +245,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/554"
         },
@@ -256,9 +256,7 @@ PASS canonical-candidates
           "average_credits": 1500,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/563"
         },
         {
@@ -268,9 +266,7 @@ PASS canonical-candidates
           "average_credits": 2500,
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/564"
         },
         {
@@ -288,9 +284,7 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         },
         {
@@ -308,8 +302,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/598"
         },
@@ -326,8 +319,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/599"
         },
@@ -346,10 +338,103 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/600"
+        }
+      ]
+    },
+    {
+      "group": "requirements",
+      "key": "height_rescue_units",
+      "remaining_mission_count": 3,
+      "single_key_unlock_count": 2,
+      "examples": [
+        {
+          "id": "548",
+          "name": "Person Stuck on Cliff",
+          "value": 2,
+          "average_credits": 6000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/548"
+        },
+        {
+          "id": "549",
+          "name": "Fallen From Cliff",
+          "value": 2,
+          "average_credits": 7000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/549"
+        },
+        {
+          "id": "550",
+          "name": "Fallen From Cliff, Winch Required",
+          "value": 2,
+          "average_credits": 8000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [
+            "requirements.coastal_helicopter",
+            "prerequisites.coastal_helicopter_count"
+          ],
+          "operational_complexity": [
+            "additional.vehicle_groups"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/550"
+        }
+      ]
+    },
+    {
+      "group": "requirements",
+      "key": "coastal_support",
+      "remaining_mission_count": 3,
+      "single_key_unlock_count": 1,
+      "examples": [
+        {
+          "id": "560",
+          "name": "Man Remote Radio Site - Prolonged Outage",
+          "value": 1,
+          "average_credits": 40000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/560"
+        },
+        {
+          "id": "568",
+          "name": "Mud Rescue MAJOR",
+          "value": 1,
+          "average_credits": 18000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [
+            "requirements.coastal_boat_hover",
+            "requirements.coastal_command",
+            "requirements.coastal_mud_rescue",
+            "requirements.mud_rescue",
+            "prerequisites.coastal_hover_boat",
+            "prerequisites.coastal_rescue_count",
+            "prerequisites.mud_rescue"
+          ],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/568"
+        },
+        {
+          "id": "583",
+          "name": "Medium Aircraft Emergency Landing in Estuary Mud",
+          "value": 2,
+          "average_credits": 30000,
+          "filter_id": "coastal_rescue_missions",
+          "other_unmapped_keys": [
+            "requirements.coastal_command",
+            "requirements.coastal_mud_rescue",
+            "requirements.mud_rescue",
+            "prerequisites.mud_rescue"
+          ],
+          "operational_complexity": [],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/583"
         }
       ]
     },
@@ -871,8 +956,7 @@ PASS canonical-candidates
             "requirements.height_rescue_units"
           ],
           "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/550"
         },
@@ -890,8 +974,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/553"
         },
@@ -909,8 +992,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/554"
         },
@@ -929,8 +1011,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/598"
         },
@@ -947,8 +1028,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/599"
         },
@@ -967,8 +1047,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/600"
         },
@@ -984,8 +1063,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/743"
         },
@@ -1003,8 +1081,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/761"
         },
@@ -1043,7 +1120,6 @@ PASS canonical-candidates
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
             "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'",
             "variant:787",
             "additive_overlays"
           ],
@@ -1068,8 +1144,7 @@ PASS canonical-candidates
             "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/550"
         },
@@ -1087,8 +1162,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/553"
         },
@@ -1106,8 +1180,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/554"
         },
@@ -1126,8 +1199,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/598"
         },
@@ -1144,8 +1216,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/599"
         },
@@ -1164,8 +1235,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/600"
         },
@@ -1181,8 +1251,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/743"
         },
@@ -1200,8 +1269,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/761"
         },
@@ -1240,7 +1308,6 @@ PASS canonical-candidates
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
             "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'",
             "variant:787",
             "additive_overlays"
           ],
@@ -1568,9 +1635,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "prerequisites.technical_aid"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/722"
         },
         {
@@ -1721,9 +1786,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/566"
         },
         {
@@ -1822,7 +1885,6 @@ PASS canonical-candidates
             "requirements.flood_equipment"
           ],
           "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
             "variant:565",
             "additive_overlays"
           ],
@@ -1845,9 +1907,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "prerequisites.flood_equipment"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/566"
         },
         {
@@ -1946,7 +2006,6 @@ PASS canonical-candidates
             "prerequisites.flood_equipment"
           ],
           "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
             "variant:565",
             "additive_overlays"
           ],
@@ -1972,8 +2031,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/544"
         },
@@ -1991,8 +2049,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/553"
         },
@@ -2010,8 +2067,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/554"
         },
@@ -2030,8 +2086,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/598"
         },
@@ -2047,8 +2102,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/766"
         },
@@ -2065,8 +2119,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/787"
         },
@@ -2086,7 +2139,6 @@ PASS canonical-candidates
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
             "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'",
             "variant:787",
             "additive_overlays"
           ],
@@ -2408,8 +2460,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/598"
         },
@@ -2427,8 +2478,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/761"
         },
@@ -2445,8 +2495,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/787"
         },
@@ -2466,7 +2515,6 @@ PASS canonical-candidates
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
             "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'",
             "variant:787",
             "additive_overlays"
           ],
@@ -2610,9 +2658,7 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -2630,9 +2676,7 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         },
         {
@@ -2647,9 +2691,7 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "requirements.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/583"
         }
       ]
@@ -2670,8 +2712,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.duration",
             "additional.duration_text",
-            "additional.guard_mission",
-            "generator:'coastal_rescue_missions'"
+            "additional.guard_mission"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/637"
         },
@@ -2685,9 +2726,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/722"
         },
         {
@@ -2727,9 +2766,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         },
         {
@@ -2744,9 +2781,7 @@ PASS canonical-candidates
             "requirements.mud_rescue",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/583"
         },
         {
@@ -2761,8 +2796,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/743"
         }
@@ -2787,9 +2821,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -2807,9 +2839,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         },
         {
@@ -2824,66 +2854,7 @@ PASS canonical-candidates
             "requirements.mud_rescue",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/583"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "coastal_support",
-      "remaining_mission_count": 3,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "560",
-          "name": "Man Remote Radio Site - Prolonged Outage",
-          "value": 1,
-          "average_credits": 40000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/560"
-        },
-        {
-          "id": "568",
-          "name": "Mud Rescue MAJOR",
-          "value": 1,
-          "average_credits": 18000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_boat_hover",
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.mud_rescue",
-            "prerequisites.coastal_hover_boat",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.mud_rescue"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/568"
-        },
-        {
-          "id": "583",
-          "name": "Medium Aircraft Emergency Landing in Estuary Mud",
-          "value": 2,
-          "average_credits": 30000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_command",
-            "requirements.coastal_mud_rescue",
-            "requirements.mud_rescue",
-            "prerequisites.mud_rescue"
-          ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/583"
         }
       ]
@@ -2961,54 +2932,6 @@ PASS canonical-candidates
     },
     {
       "group": "requirements",
-      "key": "height_rescue_units",
-      "remaining_mission_count": 3,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "548",
-          "name": "Person Stuck on Cliff",
-          "value": 2,
-          "average_credits": 6000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/548"
-        },
-        {
-          "id": "549",
-          "name": "Fallen From Cliff",
-          "value": 2,
-          "average_credits": 7000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/549"
-        },
-        {
-          "id": "550",
-          "name": "Fallen From Cliff, Winch Required",
-          "value": 2,
-          "average_credits": 8000,
-          "filter_id": "coastal_rescue_missions",
-          "other_unmapped_keys": [
-            "requirements.coastal_helicopter",
-            "prerequisites.coastal_helicopter_count"
-          ],
-          "operational_complexity": [
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/550"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
       "key": "mud_rescue",
       "remaining_mission_count": 3,
       "single_key_unlock_count": 0,
@@ -3026,9 +2949,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -3046,9 +2967,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         },
         {
@@ -3063,9 +2982,7 @@ PASS canonical-candidates
             "requirements.coastal_support",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/583"
         }
       ]
@@ -3089,9 +3006,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -3109,9 +3024,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         }
       ]
@@ -3169,9 +3082,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/547"
         },
         {
@@ -3189,9 +3100,7 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/568"
         }
       ]
@@ -3246,9 +3155,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "prerequisites.technical_aid"
           ],
-          "operational_complexity": [
-            "generator:'coastal_rescue_missions'"
-          ],
+          "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/722"
         },
         {
@@ -3288,8 +3195,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/600"
         }
@@ -3312,7 +3218,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
             "variant:563",
             "additive_overlays"
           ],
@@ -3378,7 +3283,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_extension"
           ],
           "operational_complexity": [
-            "generator:'coastal_rescue_missions'",
             "variant:563",
             "additive_overlays"
           ],
@@ -3407,8 +3311,7 @@ PASS canonical-candidates
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
             "additional.uses_custom_spawn_area",
-            "additional.vehicle_groups",
-            "generator:'coastal_rescue_missions'"
+            "additional.vehicle_groups"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/600"
         }
@@ -6820,17 +6723,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 21.19% fully canonical, 837 of 1062 missions remaining.
+Mission verification status generated: 21.28% fully canonical, 836 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=283, direct=266, fully=225, remaining=837, batches=29, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 29 evidence pages.
+Public verification metrics synchronized: canonical=284, direct=267, fully=226, remaining=836, batches=30, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 30 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 225/1062 fully canonical, 283 canonical records, 29 evidence batch pages, 204 dynamic batch decisions and 837 missions remaining.
+Mission verification programme asset audit passed: 226/1062 fully canonical, 284 canonical records, 30 evidence batch pages, 205 dynamic batch decisions and 836 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -6842,11 +6745,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=283, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=284, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 97 Markdown files
+Documentation link audit passed across 98 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -6874,6 +6777,6 @@ INFO    -  Documentation built in 1.71 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=283, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=284, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 

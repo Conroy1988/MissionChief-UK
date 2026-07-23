@@ -63,6 +63,7 @@ SAFE_GENERATOR_FAMILIES = {
     "police_station_missions",
     "ambulance_station_missions",
     "tow_trucks_missions",
+    "coastal_rescue_missions",
 }
 
 

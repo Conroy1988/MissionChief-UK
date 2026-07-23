@@ -55,6 +55,7 @@ GENERATOR_METADATA = {
     "police_station_missions": ("police", ["Police Missions"]),
     "ambulance_station_missions": ("ambulance", ["Ambulance Missions"]),
     "tow_trucks_missions": ("recovery", ["Recovery Vehicle Missions"]),
+    "coastal_rescue_missions": ("coastguard", ["Coastguard Missions"]),
 }
 
 
