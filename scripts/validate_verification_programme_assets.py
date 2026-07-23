@@ -19,10 +19,12 @@ REQUIRED_FILES = (
     "data/uk/official-key-mappings.json",
     "data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json",
     "data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json",
+    "data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json",
     "scripts/reconcile_official_mission_coverage.py",
     "scripts/verification_registry.py",
     "scripts/merge_verification_registry_batches.py",
     "scripts/validate_official_key_mappings.py",
+    "scripts/report_promoted_mapping_failures.py",
     "scripts/report_canonical_candidates.py",
     "scripts/report_key_mapping_backlog.py",
     "scripts/generate_mission_verification_status.py",
@@ -34,6 +36,7 @@ REQUIRED_FILES = (
     "docs/reference/fully-canonical-mission-batch-2.md",
     "docs/reference/fully-canonical-mission-batch-3.md",
     "docs/reference/fully-canonical-mission-batch-4.md",
+    "docs/reference/fully-canonical-mission-batch-5.md",
 )
 
 REQUIRED_NAV_TARGETS = (
@@ -42,6 +45,7 @@ REQUIRED_NAV_TARGETS = (
     "reference/fully-canonical-mission-batch-2.md",
     "reference/fully-canonical-mission-batch-3.md",
     "reference/fully-canonical-mission-batch-4.md",
+    "reference/fully-canonical-mission-batch-5.md",
 )
 
 COMMON_WORKFLOW_MARKERS = (
@@ -55,6 +59,7 @@ COMMON_WORKFLOW_MARKERS = (
 WORKFLOW_MARKERS = {
     ".github/workflows/validate.yml": (
         *COMMON_WORKFLOW_MARKERS,
+        "report_promoted_mapping_failures.py",
         "report_canonical_candidates.py",
         "canonical-candidates",
         "report_key_mapping_backlog.py",
