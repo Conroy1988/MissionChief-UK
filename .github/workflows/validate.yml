@@ -1,5 +1,6 @@
 name: Validate guide
 
+# Aggregate mapping diagnostics are retained before strict validation.
 on:
   push:
     branches: [main]
