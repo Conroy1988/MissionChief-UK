@@ -1,0 +1,19 @@
+{
+  "id": 317,
+  "name": "Burning Substation",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "preconditions": {"fire_stations": 2},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 2},
+      {"resource": "fire_officer", "quantity": 1}
+    ],
+    "probabilistic": []
+  },
+  "reward": {"average_credits": 1000},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": ["All published operational fields are represented from the retained official UK catalogue."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/317", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
