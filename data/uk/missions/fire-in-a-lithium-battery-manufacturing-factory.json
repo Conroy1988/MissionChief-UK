@@ -1,0 +1,30 @@
+{
+  "id": 734,
+  "name": "Fire in a lithium battery manufacturing factory",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Fire Support Specialisation Missions", "Rural Fire Missions"],
+  "poi": ["Factory"],
+  "preconditions": {"fire_stations": 20, "foam_extensions": 2, "police_stations": 6, "rescue_stations": 1},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 12},
+      {"resource": "fire_officer", "quantity": 3},
+      {"resource": "foam_unit", "quantity": 2},
+      {"resource": "rescue_support_vehicle", "quantity": 2},
+      {"resource": "breathing_apparatus_support_unit", "quantity": 1},
+      {"resource": "aerial_appliance_truck", "quantity": 3},
+      {"resource": "police_car", "quantity": 6},
+      {"resource": "water_carrier", "quantity": 2}
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {"resources": ["hazmat_unit", "cbrn_vehicle"], "quantity": 2},
+      {"resources": ["iccu", "ambulance_control_unit"], "quantity": 1}
+    ]
+  },
+  "reward": {"average_credits": 11500},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": ["The Factory POI and two Foam Extension prerequisites are retained.", "HazMat/CBRN and ICCU/Ambulance Control requirements remain qualifying alternative groups."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/734", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
