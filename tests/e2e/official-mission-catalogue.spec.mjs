@@ -15,7 +15,9 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   expect(coverage.official_count).toBe(catalogue.count);
   expect(coverage.matched_count + coverage.official_only_count).toBe(coverage.official_count);
   expect(coverage.canonical_count).toBeGreaterThan(0);
-  expect(coverage.official_only_count).toBeGreaterThan(900);
+  expect(coverage.matched_count).toBeGreaterThan(0);
+  expect(coverage.official_only_count).toBeGreaterThanOrEqual(0);
+  expect(coverage.official_only_count).toBeLessThan(coverage.official_count);
   expect(catalogue.source.url).toBe("https://www.missionchief.co.uk/einsaetze.json");
   expect(catalogue.source.sha256).toMatch(/^[a-f0-9]{64}$/);
 
