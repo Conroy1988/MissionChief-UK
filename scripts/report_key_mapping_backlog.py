@@ -15,6 +15,7 @@ MAPPINGS_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 SAFE_ADDITIONAL_KEYS = {"filter_id", "expansion_missions_ids", "followup_missions_ids"}
+SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions"}
 
 
 def read_json(path: Path) -> Any:
@@ -70,7 +71,7 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
     if isinstance(additional, dict):
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
         blockers.extend(f"additional.{key}" for key in unsupported)
-        if additional.get("filter_id") != "firehouse_missions":
+        if additional.get("filter_id") not in SAFE_GENERATOR_FAMILIES:
             blockers.append(f"generator:{additional.get('filter_id')!r}")
     elif additional not in (None, {}):
         blockers.append("additional")
