@@ -107,6 +107,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official field is displayed as HazMat Units or CBRN Vehicles. The quantity is a qualifying total across the two canonical resource types. Missions with a same-key probability remain blocked until probabilistic alternative groups are supported."
+    },
+    "mobile_air_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "breathing_apparatus_support_unit",
+      "chance_key": "mobile_air_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b",
+        "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mobile_air_vehicles count represents Breathing Apparatus Support Units. A same-key chance field converts the quantity to a probabilistic canonical requirement."
     }
   },
   "chances": {
@@ -157,6 +170,18 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The percentage is the probability that the published Water Carrier quantity is required."
+    },
+    "mobile_air_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "breathing_apparatus_support_unit",
+      "requirement_key": "mobile_air_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Breathing Apparatus Support Unit quantity is required."
     }
   },
   "prerequisites": {
