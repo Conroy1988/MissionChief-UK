@@ -1,3 +1,7 @@
+## conditional-resource-contract-sync
+Conditional resource contract integration synchronized: scripts/report_canonical_candidates.py, scripts/generate_ready_canonical_batch.py, scripts/validate_official_key_mappings.py, scripts/report_key_mapping_backlog.py.
+PASS conditional-resource-contract-sync
+
 ## official-key-mapping-sync
 Official Ambulance key mapping synchronized: already current.
 GP Surgery mapping synchronized: already current.
@@ -17,19 +21,19 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 26: 20 mission(s), 22 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 240 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 260 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 240 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 260 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 240 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 260 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-data
@@ -50,6 +54,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-23.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-24.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-25.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-26.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -63,51 +68,52 @@ Structured data validation warnings:
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
-Validated 364 structured data file(s) successfully, including 995 mission resource reference(s) and 103 infrastructure precondition reference(s).
+Validated 385 structured data file(s) successfully, including 1103 mission resource reference(s) and 103 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 240/1062 direct official/canonical matches, 822 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 260/1062 direct official/canonical matches, 802 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 240/257 canonical ID matches, 822 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 260/277 canonical ID matches, 802 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 199 decisions from 24 source files.
+Mission verification registry merged: 219 decisions from 25 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 199 promoted missions are equivalent.
+Official key mapping failure report passed: all 219 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 199 promoted missions, 199 fully canonical, 25 requirement keys, 10 chance keys and 11 prerequisite keys mapped.
+Official key mapping audit passed: 219 promoted missions, 219 fully canonical, 25 requirement keys, 10 chance keys and 11 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 199/199 promoted missions exact, 83 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 219/219 promoted missions exact, 93 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 199/199 promoted missions exact, 14 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 219/219 promoted missions exact, 18 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 199/199 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 219/219 promoted missions exact, 3 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
 
 ## canonical-candidates
 {
-  "schema_version": "4",
+  "schema_version": "5",
   "official_count": 1062,
-  "canonical_count": 257,
+  "canonical_count": 277,
   "patient_contract_fields": 10,
+  "conditional_resource_contracts": 1,
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 822,
+  "blocked_count": 802,
   "ready": [],
   "blocked": []
 }
@@ -117,14 +123,15 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 257,
+  "canonical_count": 277,
   "patient_contract_fields": 10,
+  "conditional_resource_contracts": 1,
   "mapped_key_counts": {
-    "requirements": 25,
-    "chances": 10,
+    "requirements": 26,
+    "chances": 11,
     "prerequisites": 11
   },
-  "unmapped_key_count": 50,
+  "unmapped_key_count": 48,
   "entries": [
     {
       "group": "requirements",
@@ -543,148 +550,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "requirements",
-      "key": "traffic_car",
-      "remaining_mission_count": 60,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "29",
-          "name": "Unknown Tanker Spill",
-          "value": 1,
-          "average_credits": 5300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/29"
-        },
-        {
-          "id": "69",
-          "name": "Unknown Tanker Spill",
-          "value": 1,
-          "average_credits": 4300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/69"
-        },
-        {
-          "id": "73",
-          "name": "Serious Accident Involving a Bus",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/73"
-        },
-        {
-          "id": "90",
-          "name": "Cyclist hit by HGV",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/90"
-        },
-        {
-          "id": "91",
-          "name": "Fail to stop",
-          "value": 2,
-          "average_credits": 5000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/91"
-        },
-        {
-          "id": "106",
-          "name": "Hit and Run",
-          "value": 1,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/106"
-        },
-        {
-          "id": "126",
-          "name": "HGV Fire",
-          "value": 1,
-          "average_credits": 1400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/126"
-        },
-        {
-          "id": "128",
-          "name": "RTC Entrapment",
-          "value": 1,
-          "average_credits": 1250,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128"
-        },
-        {
-          "id": "129",
-          "name": "Multi vehicle RTC",
-          "value": 1,
-          "average_credits": 1600,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/129"
-        },
-        {
-          "id": "130",
-          "name": "Multi vehicle RTC entrapment",
-          "value": 1,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/130"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "railway_police",
       "remaining_mission_count": 24,
@@ -760,11 +625,11 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.personnel_educations",
             "requirements.railway_police",
-            "requirements.traffic_car",
             "prerequisites.personnel_educations",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
+            "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.personnel_educations",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min"
@@ -964,12 +829,12 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.personnel_educations",
-            "requirements.traffic_car",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
+            "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.personnel_educations",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min"
@@ -1106,10 +971,9 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 2000,
           "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
+            "Mission 776 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.max_possible_prisoners",
             "additional.min_possible_prisoners",
             "additional.possible_crashed_car_max",
@@ -1124,10 +988,9 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 6000,
           "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
+            "Mission 777 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.max_possible_prisoners",
             "additional.possible_crashed_car_max",
             "additional.possible_crashed_car_min",
@@ -1186,10 +1049,9 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 3900,
           "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
+            "Mission 782 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.possible_crashed_car_max",
             "additional.possible_crashed_car_min",
             "generator:'tow_trucks_missions'"
@@ -1216,13 +1078,9 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 1500,
           "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_max",
             "additional.possible_crashed_car_min",
             "variant:106",
@@ -1236,12 +1094,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 1550,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_max",
             "additional.possible_crashed_car_min",
             "variant:128",
@@ -1255,12 +1109,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 1900,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "chances.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_max",
             "additional.possible_crashed_car_min",
             "variant:129",
@@ -2305,165 +2155,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "chances",
-      "key": "traffic_car",
-      "remaining_mission_count": 13,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "29",
-          "name": "Unknown Tanker Spill",
-          "value": 25,
-          "average_credits": 5300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/29"
-        },
-        {
-          "id": "90",
-          "name": "Cyclist hit by HGV",
-          "value": 75,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/90"
-        },
-        {
-          "id": "106",
-          "name": "Hit and Run",
-          "value": 25,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/106"
-        },
-        {
-          "id": "126",
-          "name": "HGV Fire",
-          "value": 50,
-          "average_credits": 1400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/126"
-        },
-        {
-          "id": "128",
-          "name": "RTC Entrapment",
-          "value": 50,
-          "average_credits": 1250,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128"
-        },
-        {
-          "id": "129",
-          "name": "Multi vehicle RTC",
-          "value": 50,
-          "average_credits": 1600,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/129"
-        },
-        {
-          "id": "131",
-          "name": "HGV Lost its load",
-          "value": 25,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/131"
-        },
-        {
-          "id": "405",
-          "name": "Kidnapping",
-          "value": 75,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
-        },
-        {
-          "id": "106/a",
-          "name": "Hit and Run",
-          "value": 25,
-          "average_credits": 1500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car",
-            "prerequisites.tow_trucks"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "variant:106",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/106/a"
-        },
-        {
-          "id": "126/a",
-          "name": "HGV Fire",
-          "value": 50,
-          "average_credits": 1800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
-            "variant:126",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/126/a"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "railway_fire",
       "remaining_mission_count": 13,
@@ -2891,10 +2582,9 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 750,
           "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
+            "Mission 778 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min",
             "generator:'tow_trucks_missions'"
@@ -2910,11 +2600,11 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.personnel_educations",
             "requirements.railway_police",
-            "requirements.traffic_car",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police"
           ],
           "operational_complexity": [
+            "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.personnel_educations",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min"
@@ -2957,11 +2647,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 2500,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min",
             "variant:322",
@@ -2990,11 +2677,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 7300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min",
             "variant:467",
@@ -3023,11 +2707,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 3300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min",
             "variant:73",
@@ -3041,11 +2722,8 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 2300,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
             "additional.possible_crashed_car_large_max",
             "additional.possible_crashed_car_large_min",
             "variant:73",
@@ -9232,17 +8910,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 18.74% fully canonical, 863 of 1062 missions remaining.
+Mission verification status generated: 20.62% fully canonical, 843 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=257, direct=240, fully=199, remaining=863, batches=25, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 25 evidence pages.
+Public verification metrics synchronized: canonical=277, direct=260, fully=219, remaining=843, batches=26, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 26 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 199/1062 fully canonical, 257 canonical records, 25 evidence batch pages, 178 dynamic batch decisions and 863 missions remaining.
+Mission verification programme asset audit passed: 219/1062 fully canonical, 277 canonical records, 26 evidence batch pages, 198 dynamic batch decisions and 843 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -9254,11 +8932,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=257, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=277, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 93 Markdown files
+Documentation link audit passed across 94 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -9282,10 +8960,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.24 seconds
+INFO    -  Documentation built in 1.71 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=257, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=277, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 

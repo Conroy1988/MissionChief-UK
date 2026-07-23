@@ -10,6 +10,11 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from conditional_resource_contract import (
+    build_expected_conditionals,
+    load_mapping_registry as load_conditional_mappings,
+    owned_paths as conditional_owned_paths,
+)
 from patient_contract import ROOT, build_expected_patient, load_mapping_registry
 from report_canonical_candidates import report as candidate_report
 
@@ -22,6 +27,13 @@ VERIFICATION_REGISTRY_PATH = ROOT / "data" / "uk" / "mission-verification-regist
 SNAPSHOT_URL = "https://www.missionchief.co.uk/einsaetze.json"
 CHECKED_AT = "2026-07-23"
 BATCH_PATTERN = re.compile(r"fully-canonical-fire-batch-(\d+)\.json$")
+CONDITIONAL_MAPPINGS = load_conditional_mappings()
+(
+    CONDITIONAL_REQUIREMENT_KEYS,
+    CONDITIONAL_CHANCE_KEYS,
+    CONDITIONAL_ADDITIONAL_KEYS,
+    CONDITIONAL_RESOURCES,
+) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
 
 GENERATOR_METADATA = {
     "firehouse_missions": ("fire", ["Fire Fighting Missions"]),
@@ -109,10 +121,13 @@ def translate_requirements(
     guaranteed: dict[str, int] = {}
     probabilistic: dict[str, tuple[int, float]] = {}
     alternatives: dict[tuple[str, ...], tuple[list[str], int]] = {}
+    conditionals = build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
 
     for official_key, raw_quantity in official_requirements.items():
         mapping = mappings["requirements"].get(str(official_key))
         if not isinstance(mapping, dict):
+            if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} requirement {official_key} is unmapped")
         if mapping.get("status") == "not-applicable":
             if raw_quantity not in mapping.get("allowed_values", []):
@@ -172,6 +187,8 @@ def translate_requirements(
             }
             for _, (resources, quantity) in sorted(alternatives.items())
         ]
+    if conditionals:
+        output["conditional"] = conditionals
     return output
 
 
@@ -428,10 +445,13 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
             "checked_at": CHECKED_AT,
             "strict_key_equivalence": True,
             "strict_patient_equivalence": True,
+            "strict_conditional_equivalence": bool(
+                build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
+            ),
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
             "notes": [
                 "Generated from the retained official UK snapshot after all candidate blockers cleared.",
-                "Exact resource, prerequisite, patient and relationship equivalence is required.",
+                "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required.",
             ],
         }
 

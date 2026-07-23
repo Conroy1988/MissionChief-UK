@@ -9,15 +9,15 @@ This page is generated from the complete official UK mission catalogue, the cano
 
 | Verification gate | Missions at or beyond gate | Coverage | Exact current stage |
 |---|---:|---:|---:|
-| Captured | 1,062 / 1,062 | 100.00% | 822 |
-| Identity verified | 240 / 1,062 | 22.60% | 41 |
-| Requirements mapped | 199 / 1,062 | 18.74% | 0 |
-| Operationally verified | 199 / 1,062 | 18.74% | 0 |
-| Fully canonical | 199 / 1,062 | 18.74% | 199 |
+| Captured | 1,062 / 1,062 | 100.00% | 802 |
+| Identity verified | 260 / 1,062 | 24.48% | 41 |
+| Requirements mapped | 219 / 1,062 | 20.62% | 0 |
+| Operationally verified | 219 / 1,062 | 20.62% | 0 |
+| Fully canonical | 219 / 1,062 | 20.62% | 219 |
 
-**Remaining to fully canonical:** 863
+**Remaining to fully canonical:** 843
 
-**Direct canonical ID matches:** 240
+**Direct canonical ID matches:** 260
 
 **Canonical overlay or derived records:** 17
 
@@ -37,7 +37,6 @@ The table below shows the first 100 incomplete missions in deterministic mission
 |---:|---|---|---|
 | `26` | Small Supermarket Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `28` | Burning machine | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `29` | Unknown Tanker Spill | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `33` | Small Supermarket Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `34` | Fire in Hospital - Major Incident | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `35` | Alcoholic intoxication | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
@@ -65,9 +64,7 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `63` | Transient Ischemic Attack | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `67` | Brawl | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `68` | Big Supermarket Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `69` | Unknown Tanker Spill | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `71` | Nosebleed | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `73` | Serious Accident Involving a Bus | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `74` | Major fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `76` | Industrial Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `77` | Patient Transfer | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
@@ -83,7 +80,6 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `87` | Frankenstein sighted | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `88` | Candy theft | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `89` | Road Traffic Collision (Major) | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `90` | Cyclist hit by HGV | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `91` | Fail to stop | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `92` | Person with a weapon | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `93` | High-Risk Warrant | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
@@ -112,13 +108,7 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `123` | Car damaged by fireworks | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `124` | Violation of Explosives Law | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `125` | Hand injury caused by fireworks | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `126` | HGV Fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `128` | RTC Entrapment | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `129` | Multi vehicle RTC | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `130` | Multi vehicle RTC entrapment | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `131` | HGV Lost its load | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `132` | HGV Lost its load (Livestock) | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
-| `133` | HGV Lost its load (milk) | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `138` | Large Drunken Disorder | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `140` | Domestic Violence | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `141` | Choking | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
@@ -135,6 +125,16 @@ The table below shows the first 100 incomplete missions in deterministic mission
 | `156` | Heatstroke | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `157` | Easter egg stolen from basket | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 | `158` | Chocolate Egg heist | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `159` | Collapsed rabbit hole | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `160` | Easter bunny hit by car | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `161` | Bulk Easter Egg pile fire | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `162` | Chocolate Tanker Spill | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `163` | Flashover when boiling eggs | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `164` | Easter market fair | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `165` | Easter Egg lorry crash | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `166` | Easter egg hunt | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `167` | Easter bunny on crane | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
+| `170` | Anaphylaxis | Captured | Create a canonical record and verify the official ID and exact UK mission name. |
 
 ## Machine-readable status
 

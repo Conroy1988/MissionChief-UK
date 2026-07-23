@@ -9,6 +9,11 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from conditional_resource_contract import (
+    build_expected_conditionals,
+    load_mapping_registry as load_conditional_mappings,
+    owned_paths as conditional_owned_paths,
+)
 from patient_contract import load_mapping_registry, patient_owned_paths
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,8 +23,20 @@ CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 PATIENT_MAPPINGS = load_mapping_registry()
+CONDITIONAL_MAPPINGS = load_conditional_mappings()
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
-SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS, *PATIENT_ADDITIONAL_KEYS}
+(
+    CONDITIONAL_REQUIREMENT_KEYS,
+    CONDITIONAL_CHANCE_KEYS,
+    CONDITIONAL_ADDITIONAL_KEYS,
+    CONDITIONAL_RESOURCES,
+) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
+SAFE_ADDITIONAL_KEYS = {
+    "filter_id",
+    *RELATIONSHIP_KEYS,
+    *PATIENT_ADDITIONAL_KEYS,
+    *CONDITIONAL_ADDITIONAL_KEYS,
+}
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
 
@@ -54,6 +71,8 @@ def load_mapped_keys() -> dict[str, set[str]]:
         if not isinstance(values, dict):
             raise ValueError(f"Official key mapping group {group} must be an object")
         result[group] = {str(key) for key in values}
+    result["requirements"].update(CONDITIONAL_REQUIREMENT_KEYS)
+    result["chances"].update(CONDITIONAL_CHANCE_KEYS)
     return result
 
 
@@ -74,6 +93,10 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
     blockers: list[str] = []
     additional = record.get("additional")
     if isinstance(additional, dict):
+        try:
+            build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
+        except ValueError as exc:
+            blockers.append(str(exc))
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
         blockers.extend(f"additional.{key}" for key in unsupported)
         if additional.get("filter_id") not in SAFE_GENERATOR_FAMILIES:
@@ -166,6 +189,7 @@ def build_report(example_limit: int) -> dict[str, Any]:
         "official_count": len(records),
         "canonical_count": len(existing),
         "patient_contract_fields": len(PATIENT_MAPPINGS),
+        "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
         "mapped_key_counts": {group: len(mapped[group]) for group in KEY_GROUPS},
         "unmapped_key_count": len(entries),
         "entries": entries,

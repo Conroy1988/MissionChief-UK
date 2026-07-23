@@ -10,6 +10,11 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from conditional_resource_contract import (
+    build_expected_conditionals,
+    load_mapping_registry as load_conditional_mappings,
+    owned_paths as conditional_owned_paths,
+)
 from patient_contract import build_expected_patient, load_mapping_registry as load_patient_mappings, patient_owned_paths
 from personnel_contract import build_expected_personnel, load_mapping_registry as load_personnel_mappings
 from prisoner_contract import build_expected_prisoners, load_mapping_registry as load_prisoner_mappings, owned_additional_keys
@@ -24,13 +29,21 @@ RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 PATIENT_MAPPINGS = load_patient_mappings()
 PERSONNEL_MAPPINGS = load_personnel_mappings()
 PRISONER_MAPPINGS = load_prisoner_mappings()
+CONDITIONAL_MAPPINGS = load_conditional_mappings()
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
 PRISONER_ADDITIONAL_KEYS = owned_additional_keys(PRISONER_MAPPINGS)
+(
+    CONDITIONAL_REQUIREMENT_KEYS,
+    CONDITIONAL_CHANCE_KEYS,
+    CONDITIONAL_ADDITIONAL_KEYS,
+    CONDITIONAL_RESOURCES,
+) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
     *RELATIONSHIP_KEYS,
     *PATIENT_ADDITIONAL_KEYS,
     *PRISONER_ADDITIONAL_KEYS,
+    *CONDITIONAL_ADDITIONAL_KEYS,
 }
 SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
 
@@ -93,6 +106,10 @@ def key_blockers(record: dict[str, Any], mappings: dict[str, dict[str, dict[str,
         for official_key, value in values.items():
             mapping = mappings[group].get(str(official_key))
             if mapping is None:
+                if group == "requirements" and str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
+                    continue
+                if group == "chances" and str(official_key) in CONDITIONAL_CHANCE_KEYS:
+                    continue
                 blockers.append(f"unmapped {group}.{official_key}")
                 continue
             if mapping.get("status") == "not-applicable" and value not in mapping.get("allowed_values", []):
@@ -133,6 +150,10 @@ def operational_blockers(
     if not isinstance(additional, dict):
         blockers.append("additional is not an object")
     else:
+        try:
+            build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
+        except ValueError as exc:
+            blockers.append(str(exc))
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
         if unsupported:
             blockers.append("additional fields require mapping: " + ", ".join(unsupported))
@@ -198,6 +219,9 @@ def candidate_record(
     prisoners = build_expected_prisoners(record, PRISONER_MAPPINGS)
     if prisoners:
         output["prisoners"] = prisoners
+    conditionals = build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
+    if conditionals:
+        output["conditional_requirements"] = conditionals
     return output
 
 
@@ -228,10 +252,11 @@ def report() -> dict[str, Any]:
     ready.sort(key=lambda item: stable_id(item["id"]))
     blocked.sort(key=lambda item: stable_id(item["id"]))
     return {
-        "schema_version": "4",
+        "schema_version": "5",
         "official_count": len(records),
         "canonical_count": len(existing),
         "patient_contract_fields": len(PATIENT_MAPPINGS),
+        "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
         "personnel_contract_roles": len(PERSONNEL_MAPPINGS),
         "prisoner_contract_fields": len(PRISONER_MAPPINGS),
         "ready_count": len(ready),
@@ -260,6 +285,7 @@ def main() -> int:
         "official_count": result["official_count"],
         "canonical_count": result["canonical_count"],
         "patient_contract_fields": result["patient_contract_fields"],
+        "conditional_resource_contracts": result["conditional_resource_contracts"],
         "personnel_contract_roles": result["personnel_contract_roles"],
         "prisoner_contract_fields": result["prisoner_contract_fields"],
         "ready_count": result["ready_count"],

@@ -9,11 +9,24 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from conditional_resource_contract import (
+    load_mapping_registry as load_conditional_mappings,
+    owned_paths as conditional_owned_paths,
+    validate_promoted_conditionals,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
 CANONICAL_ROOT = ROOT / "data" / "uk" / "missions"
 VERIFICATION_REGISTRY_PATH = ROOT / "data" / "uk" / "mission-verification-registry.json"
 KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
+CONDITIONAL_MAPPINGS = load_conditional_mappings()
+(
+    CONDITIONAL_REQUIREMENT_KEYS,
+    CONDITIONAL_CHANCE_KEYS,
+    CONDITIONAL_ADDITIONAL_KEYS,
+    CONDITIONAL_RESOURCES,
+) = conditional_owned_paths(CONDITIONAL_MAPPINGS)
 
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
@@ -343,6 +356,8 @@ def audit_promoted_mission(
     for official_key, value in official_requirements.items():
         mapping = mappings["requirements"].get(str(official_key))
         if mapping is None:
+            if str(official_key) in CONDITIONAL_REQUIREMENT_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} is promoted but official key requirements.{official_key} is unmapped")
         if mapping["status"] == "not-applicable":
             if value not in mapping["allowed_values"]:
@@ -430,6 +445,8 @@ def audit_promoted_mission(
     for official_key, value in official_chances.items():
         mapping = mappings["chances"].get(str(official_key))
         if mapping is None:
+            if str(official_key) in CONDITIONAL_CHANCE_KEYS:
+                continue
             raise ValueError(f"Mission {mission_id} is promoted but official key chances.{official_key} is unmapped")
         if mapping["status"] == "not-applicable":
             if value not in mapping["allowed_values"]:
@@ -577,6 +594,9 @@ def audit() -> dict[str, int]:
         if official is None or canonical is None:
             raise ValueError(f"Promoted mission {key} must exist in official and canonical collections")
         audit_promoted_mission(key, decision, official, canonical, mappings)
+        validate_promoted_conditionals(
+            key, decision, official, canonical, CONDITIONAL_MAPPINGS
+        )
         promoted += 1
         if decision.get("stage") == "fully-canonical":
             fully_canonical += 1
