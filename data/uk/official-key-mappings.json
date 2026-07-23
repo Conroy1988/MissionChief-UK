@@ -274,6 +274,48 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official midwife quantity is displayed as required Community Midwives. The verified records publish no chance field, so the quantity is guaranteed."
+    },
+    "ems_mobile_command": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "iccu",
+        "ambulance_control_unit",
+        "airfield_firefighting_command_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as ICCU, Ambulance Control Unit or Airfield Firefighting Command Vehicle. The quantity is a qualifying total across the three canonical command resources."
+    },
+    "emergency_welfare": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "welfare_vehicle",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/760",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official emergency_welfare count represents guaranteed Welfare Vehicles."
+    },
+    "mass_casualty_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "mass_casualty_equipment",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mass_casualty_equipment count represents guaranteed Mass Casualty Equipment units."
     }
   },
   "chances": {
@@ -518,6 +560,18 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official general_practitioner value is displayed as the minimum GP Surgery count required to generate the mission."
+    },
+    "mass_casualty_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "mass_casualty_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mass_casualty_count value is the minimum Mass Casualty Extension count required to generate the mission."
     }
   }
 }
