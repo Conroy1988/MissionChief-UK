@@ -11,25 +11,149 @@
   },
   "records": {
     "0": {
-      "stage": "requirements-mapped",
+      "stage": "fully-canonical",
       "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
       "sources": [
-        "https://www.missionchief.co.uk/einsaetze/0"
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": [
-        "The official one-Fire-Engine requirement and average reward are represented by the canonical Bin fire record.",
-        "Operational relationship and completeness auditing remain pending before promotion beyond requirements-mapped."
+        "Official identity, Fire Station prerequisite, Fire engine requirement, base reward and follow-up relationships are represented.",
+        "The temporary reward multiplier is separated from the base reward.",
+        "Final evidence-completeness audit completed for the published operational fields."
       ]
     },
     "1": {
-      "stage": "requirements-mapped",
+      "stage": "fully-canonical",
       "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
       "sources": [
-        "https://www.missionchief.co.uk/einsaetze/1"
+        "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": [
-        "The official one-Fire-Engine requirement and average reward are represented by the canonical Container fire record.",
-        "A final operational and evidence-completeness audit remains pending before promotion beyond requirements-mapped."
+        "Official identity, Fire Station prerequisite, Fire engine requirement and base reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "2": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/2",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "The base mission is kept separate from its Recovery Centre additive overlay.",
+        "Official prerequisite, guaranteed requirement, reward, expansion and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the base mission's published operational fields."
+      ]
+    },
+    "3": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/3",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "The base mission is kept separate from its Recovery Centre additive overlay.",
+        "Official prerequisite, guaranteed requirement, reward, expansion and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the base mission's published operational fields."
+      ]
+    },
+    "4": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/4",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward and expansion relationship are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "6": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/6",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "7": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/7",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward and expansion relationship are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "8": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/8",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward, expansion and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "9": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/9",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward and expansion relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "10": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/10",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement and reward are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
+      ]
+    },
+    "11": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/11",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Official identity, prerequisite, guaranteed requirement, reward and follow-up relationships are represented.",
+        "Final evidence-completeness audit completed for the published operational fields."
       ]
     }
   }
