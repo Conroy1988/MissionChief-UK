@@ -1,0 +1,16 @@
+{
+  "id": 344,
+  "name": "Unsafe Structure",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Rural Fire Missions", "Urban Fire Missions"],
+  "preconditions": {"fire_stations": 2},
+  "requirements": {
+    "guaranteed": [{"resource": "fire_engine", "quantity": 1}],
+    "probabilistic": [{"resource": "aerial_appliance_truck", "quantity": 1, "probability": 0.2}]
+  },
+  "reward": {"average_credits": 1000},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": ["The official Aerial Appliance Truck probability is represented as a canonical probabilistic requirement."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/344", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
