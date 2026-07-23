@@ -110,6 +110,7 @@ jobs:
           git add -f \
             README.md \
             CHANGELOG.md \
+            mkdocs.yml \
             docs/index.md \
             docs/api/index.md \
             docs/releases/v1.1.0.md \
