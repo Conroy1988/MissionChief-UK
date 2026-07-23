@@ -62,6 +62,7 @@ jobs:
           }
 
           run_check "conditional-resource-contract-sync" python scripts/sync_conditional_resource_contract_integration.py
+          run_check "conditional-resource-modes-sync" python scripts/sync_conditional_resource_modes_integration.py
           run_check "personnel-education-contract-sync" python scripts/sync_personnel_education_contract_integration.py
           run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
           run_check "prisoner-schema-sync" python scripts/sync_prisoner_schema.py
