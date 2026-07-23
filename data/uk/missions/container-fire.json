@@ -5,6 +5,13 @@
     "Container Fire"
   ],
   "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 1
+  },
   "requirements": {
     "guaranteed": [
       {
@@ -17,14 +24,18 @@
   "reward": {
     "average_credits": 170
   },
+  "follow_up_missions": [],
+  "expandable_missions": [],
   "notes": [
-    "Official UK mission page lists one required fire engine and one required fire station."
+    "The official UK mission page lists one required Fire engine and one required Fire Station.",
+    "All published operational fields are represented directly from the official UK catalogue and mission page."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-23",
     "sources": [
-      "https://www.missionchief.co.uk/einsaetze/1"
+      "https://www.missionchief.co.uk/einsaetze/1",
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
   }
 }
