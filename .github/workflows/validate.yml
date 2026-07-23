@@ -42,7 +42,17 @@ jobs:
         run: python scripts/validate_official_key_mappings.py
 
       - name: Report next evidence-safe canonical candidates
-        run: python scripts/report_canonical_candidates.py --limit 50
+        run: |
+          python scripts/report_canonical_candidates.py --limit 200 > canonical-candidates.json
+          cat canonical-candidates.json
+
+      - name: Upload canonical candidate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-candidates
+          path: canonical-candidates.json
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Generate 100% mission verification status
         run: python scripts/generate_mission_verification_status.py
