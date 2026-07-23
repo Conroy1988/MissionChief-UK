@@ -61,6 +61,7 @@ jobs:
             echo >> data/validation/branch-validation.log
           }
 
+          run_check "conditional-resource-contract-sync" python scripts/sync_conditional_resource_contract_integration.py
           run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
           run_check "prisoner-schema-sync" python scripts/sync_prisoner_schema.py
           run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
@@ -130,7 +131,12 @@ jobs:
             data/schema/mission.schema.json \
             data/uk/missions \
             data/uk/official-key-mappings.json \
+            data/uk/official-conditional-resource-mappings.json \
             data/uk/mission-verification-batches \
+            scripts/report_canonical_candidates.py \
+            scripts/report_key_mapping_backlog.py \
+            scripts/generate_ready_canonical_batch.py \
+            scripts/validate_official_key_mappings.py \
             data/validation/branch-validation.json \
             data/validation/branch-validation.log
           if git diff --cached --quiet; then
