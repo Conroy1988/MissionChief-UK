@@ -117,6 +117,37 @@ def owned_paths(
     return requirements, chances, additional, resources
 
 
+def active_requirement_keys(
+    official_record: dict[str, Any],
+    mappings: dict[str, dict[str, Any]] | None = None,
+) -> set[str]:
+    if mappings is None:
+        mappings = load_mapping_registry()
+    result: set[str] = set()
+    for mapping in mappings.values():
+        raw_quantity = nested_value(official_record, str(mapping["requirement_path"]))
+        raw_flag = nested_value(official_record, str(mapping["condition_flag_path"]))
+        if raw_quantity is not MISSING and raw_flag is True:
+            result.add(str(mapping["requirement_path"]).split(".", 1)[1])
+    return result
+
+
+def active_chance_keys(
+    official_record: dict[str, Any],
+    mappings: dict[str, dict[str, Any]] | None = None,
+) -> set[str]:
+    if mappings is None:
+        mappings = load_mapping_registry()
+    result: set[str] = set()
+    for mapping in mappings.values():
+        raw_quantity = nested_value(official_record, str(mapping["requirement_path"]))
+        raw_flag = nested_value(official_record, str(mapping["condition_flag_path"]))
+        raw_chance = nested_value(official_record, str(mapping["chance_path"]))
+        if raw_quantity is not MISSING and raw_flag is True and raw_chance is not MISSING:
+            result.add(str(mapping["chance_path"]).split(".", 1)[1])
+    return result
+
+
 def build_expected_conditionals(
     official_record: dict[str, Any],
     mappings: dict[str, dict[str, Any]] | None = None,
@@ -142,8 +173,10 @@ def build_expected_conditionals(
             continue
 
         quantity = checked_quantity(raw_quantity, f"Mission {mission_id} {requirement_path}")
+        if raw_flag is MISSING or raw_flag is False:
+            continue
         if raw_flag is not True:
-            raise ValueError(f"Mission {mission_id} {flag_path} must be true for the conditional resource mapping")
+            raise ValueError(f"Mission {mission_id} {flag_path} must be a boolean")
         percent = 100 if raw_chance is MISSING else checked_percent(raw_chance, f"Mission {mission_id} {chance_path}")
         if quantity == 0 or percent == 0:
             continue
