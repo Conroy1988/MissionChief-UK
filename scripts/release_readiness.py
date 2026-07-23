@@ -33,9 +33,6 @@ EXPECTED_STATIC_PAGES = (
     "tools/query-catalogue.md",
     "reference/official-mission-catalogue.md",
     "reference/mission-verification-status.md",
-    "reference/fully-canonical-mission-batch-1.md",
-    "reference/fully-canonical-mission-batch-2.md",
-    "reference/fully-canonical-mission-batch-3.md",
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
@@ -53,6 +50,7 @@ REQUIRED_QA_FILES = (
     "scripts/merge_verification_registry_batches.py",
     "scripts/validate_official_key_mappings.py",
     "scripts/report_canonical_candidates.py",
+    "scripts/report_key_mapping_backlog.py",
     "scripts/generate_mission_verification_status.py",
     "scripts/validate_verification_programme_assets.py",
     "docs/quality-assurance.md",
@@ -64,7 +62,6 @@ REQUIRED_OFFICIAL_FILES = (
     "scripts/compact_official_mission_catalogue.py",
     ".github/workflows/import-official-uk-missions.yml",
     "data/uk/mission-verification-registry.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json",
     "data/uk/official-key-mappings.json",
     "data/sources/missionchief-uk/README.md",
     "data/sources/missionchief-uk/einsaetze.raw.json",
@@ -77,9 +74,6 @@ REQUIRED_OFFICIAL_FILES = (
     "docs/javascripts/official-catalogue-loader.js",
     "docs/javascripts/official-mission-details.js",
     "docs/reference/mission-verification-status.md",
-    "docs/reference/fully-canonical-mission-batch-1.md",
-    "docs/reference/fully-canonical-mission-batch-2.md",
-    "docs/reference/fully-canonical-mission-batch-3.md",
 )
 
 REQUIRED_JAVASCRIPT_ORDER = (
@@ -154,7 +148,11 @@ def audit_navigation(release_version: str) -> None:
     for target in nav_targets:
         require((ROOT / "docs" / target).is_file(), f"MkDocs navigation target does not exist: docs/{target}")
 
-    for target in (*EXPECTED_STATIC_PAGES, f"releases/v{release_version}.md"):
+    dynamic_batches = [
+        path.relative_to(ROOT / "docs").as_posix()
+        for path in sorted((ROOT / "docs" / "reference").glob("fully-canonical-mission-batch-*.md"))
+    ]
+    for target in (*EXPECTED_STATIC_PAGES, *dynamic_batches, f"releases/v{release_version}.md"):
         require(target in nav_targets, f"Release-critical page is not present in MkDocs navigation: {target}")
 
     javascript = config.get("extra_javascript", [])
@@ -198,7 +196,7 @@ def audit_quality_assets(release_version: str) -> None:
         "official-uk-missions",
         "official_only_count",
         "Road accident",
-        '"25"',
+        "https://www.missionchief.co.uk/einsaetze/25",
         "Complete official catalogue record",
         "mcuk-official-field-details",
     ):
@@ -339,7 +337,7 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
 
 def audit_built_site(site_dir: Path, release_version: str) -> None:
     require(site_dir.is_dir(), f"Built site directory does not exist: {site_dir}")
-    expected_files = (
+    expected_files = [
         "index.html",
         "tools/mission-lookup/index.html",
         "tools/resource-comparison/index.html",
@@ -347,9 +345,6 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "tools/query-catalogue/index.html",
         "reference/official-mission-catalogue/index.html",
         "reference/mission-verification-status/index.html",
-        "reference/fully-canonical-mission-batch-1/index.html",
-        "reference/fully-canonical-mission-batch-2/index.html",
-        "reference/fully-canonical-mission-batch-3/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
@@ -368,6 +363,10 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "assets/data/v1/search-index.json",
         "assets/data/v1/faq.json",
         "assets/data/v1/openapi.json",
+    ]
+    expected_files.extend(
+        f"reference/{path.stem}/index.html"
+        for path in sorted((ROOT / "docs" / "reference").glob("fully-canonical-mission-batch-*.md"))
     )
     for relative in expected_files:
         require((site_dir / relative).is_file(), f"Built site is missing release-critical output: {relative}")
