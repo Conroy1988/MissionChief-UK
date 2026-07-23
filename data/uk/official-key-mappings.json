@@ -1,0 +1,55 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "requirements": {
+    "firetrucks": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "fire_engine",
+      "value_semantics": "required quantity",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "The official UK pages label this field as Required Fire engines.",
+        "The numeric value is represented as the guaranteed canonical fire_engine quantity."
+      ]
+    }
+  },
+  "chances": {},
+  "prerequisites": {
+    "fire_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "fire_stations",
+      "value_semantics": "minimum unlocked building count",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "The official UK pages label this field as Required Fire Stations."
+      ]
+    },
+    "main_building": {
+      "status": "not-applicable",
+      "canonical_target": null,
+      "canonical_id": null,
+      "allowed_values": [0],
+      "value_semantics": "upstream internal prerequisite flag",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "The retained UK catalogue currently publishes zero for this field across the mission set.",
+        "Only the value zero may be ignored; any other value fails the mapping audit and requires investigation."
+      ]
+    }
+  }
+}
