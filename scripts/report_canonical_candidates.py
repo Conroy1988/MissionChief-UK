@@ -18,6 +18,7 @@ KEY_MAPPING_PATH = ROOT / "data" / "uk" / "official-key-mappings.json"
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 SAFE_ADDITIONAL_KEYS = {"filter_id", *RELATIONSHIP_KEYS}
+SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions"}
 
 
 def read_json(path: Path) -> Any:
@@ -116,7 +117,7 @@ def operational_blockers(
         if unsupported:
             blockers.append("additional fields require mapping: " + ", ".join(unsupported))
         filter_id = additional.get("filter_id")
-        if filter_id != "firehouse_missions":
+        if filter_id not in SAFE_GENERATOR_FAMILIES:
             blockers.append(f"generator family requires review: {filter_id!r}")
         blockers.extend(relationship_blockers(additional, official_by_id))
 
@@ -164,6 +165,7 @@ def candidate_record(
         "requirements": record.get("requirements", {}),
         "chances": record.get("chances", {}),
         "prerequisites": record.get("prerequisites", {}),
+        "generator_family": additional.get("filter_id"),
         "expansion_missions": resolve_relationships(additional.get("expansion_missions_ids", []), official_by_id),
         "followup_missions": resolve_relationships(additional.get("followup_missions_ids", []), official_by_id),
     }
