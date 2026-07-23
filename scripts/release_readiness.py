@@ -195,8 +195,10 @@ def audit_quality_assets(release_version: str) -> None:
     for marker in (
         "official-uk-missions",
         "official_only_count",
-        "Road accident",
-        "https://www.missionchief.co.uk/einsaetze/25",
+        "officialOnlyIds",
+        "pendingRecord",
+        "Coverage must retain an official-only record",
+        "pendingUrl",
         "Complete official catalogue record",
         "mcuk-official-field-details",
     ):
