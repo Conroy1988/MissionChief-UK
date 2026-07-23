@@ -772,6 +772,21 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official water_rescue_2 prerequisite is the countable Coastguard Rescue Station mission-generation requirement."
+    },
+    "coastal_rescue_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "lifeboat_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/544",
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze/563",
+        "https://www.missionchief.co.uk/einsaetze/564",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_rescue_count prerequisite is the countable Lifeboat Station mission-generation requirement. It remains distinct from water_rescue_2, which represents Coastguard Rescue Stations."
     }
   }
 }
