@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -13,15 +14,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_STATUS = ROOT / "data" / "sources" / "missionchief-uk" / "mission-verification-status.json"
 PUBLIC_STATUS = ROOT / "docs" / "assets" / "data" / "official" / "uk-mission-verification.json"
 BATCH_ROOT = ROOT / "data" / "uk" / "mission-verification-batches"
+REFERENCE_ROOT = ROOT / "docs" / "reference"
+BATCH_REGISTRY_PATTERN = re.compile(r"fully-canonical-fire-batch-(\d+)\.json$")
+BATCH_PAGE_PATTERN = re.compile(r"fully-canonical-mission-batch-(\d+)\.md$")
 
 REQUIRED_FILES = (
     "data/uk/mission-verification-registry.json",
     "data/uk/official-key-mappings.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json",
-    "data/uk/mission-verification-batches/fully-canonical-fire-batch-7.json",
     "scripts/reconcile_official_mission_coverage.py",
     "scripts/verification_registry.py",
     "scripts/merge_verification_registry_batches.py",
@@ -36,24 +35,6 @@ REQUIRED_FILES = (
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
-    "docs/reference/fully-canonical-mission-batch-1.md",
-    "docs/reference/fully-canonical-mission-batch-2.md",
-    "docs/reference/fully-canonical-mission-batch-3.md",
-    "docs/reference/fully-canonical-mission-batch-4.md",
-    "docs/reference/fully-canonical-mission-batch-5.md",
-    "docs/reference/fully-canonical-mission-batch-6.md",
-    "docs/reference/fully-canonical-mission-batch-7.md",
-)
-
-REQUIRED_NAV_TARGETS = (
-    "reference/mission-verification-status.md",
-    "reference/fully-canonical-mission-batch-1.md",
-    "reference/fully-canonical-mission-batch-2.md",
-    "reference/fully-canonical-mission-batch-3.md",
-    "reference/fully-canonical-mission-batch-4.md",
-    "reference/fully-canonical-mission-batch-5.md",
-    "reference/fully-canonical-mission-batch-6.md",
-    "reference/fully-canonical-mission-batch-7.md",
 )
 
 COMMON_WORKFLOW_MARKERS = (
@@ -115,6 +96,41 @@ def flatten_nav(value: Any) -> list[str]:
     return result
 
 
+def numbered_paths(root: Path, glob_pattern: str, pattern: re.Pattern[str]) -> dict[int, Path]:
+    result: dict[int, Path] = {}
+    for path in sorted(root.glob(glob_pattern)):
+        match = pattern.search(path.name)
+        if match is None:
+            continue
+        number = int(match.group(1))
+        if number in result:
+            raise ValueError(f"Duplicate fully canonical batch number {number}")
+        result[number] = path
+    return result
+
+
+def discover_batch_assets() -> tuple[dict[int, Path], dict[int, Path]]:
+    registries = numbered_paths(BATCH_ROOT, "fully-canonical-fire-batch-*.json", BATCH_REGISTRY_PATTERN)
+    pages = numbered_paths(REFERENCE_ROOT, "fully-canonical-mission-batch-*.md", BATCH_PAGE_PATTERN)
+    if not registries:
+        raise ValueError("Mission verification batch directory contains no batch registries")
+    if not pages:
+        raise ValueError("Mission verification reference directory contains no batch pages")
+
+    expected_pages = list(range(1, max(pages) + 1))
+    if sorted(pages) != expected_pages:
+        raise ValueError(f"Fully canonical batch pages are not contiguous: {sorted(pages)}")
+
+    expected_registries = list(range(3, max(registries) + 1))
+    if sorted(registries) != expected_registries:
+        raise ValueError(f"Fully canonical batch registries are not contiguous from Batch 3: {sorted(registries)}")
+    if max(registries) != max(pages):
+        raise ValueError(
+            f"Latest batch registry and evidence page differ: registry={max(registries)}, page={max(pages)}"
+        )
+    return registries, pages
+
+
 def validate_status(status: Any) -> dict[str, Any]:
     if not isinstance(status, dict):
         raise ValueError("Mission verification status must be an object")
@@ -154,12 +170,9 @@ def validate_status(status: Any) -> dict[str, Any]:
     return summary
 
 
-def validate_batch_files() -> int:
-    paths = sorted(BATCH_ROOT.glob("*.json"))
-    if not paths:
-        raise ValueError("Mission verification batch directory contains no batch files")
+def validate_batch_files(registries: dict[int, Path]) -> int:
     seen: set[str] = set()
-    for path in paths:
+    for number, path in sorted(registries.items()):
         document = read_json(path)
         label = path.relative_to(ROOT).as_posix()
         if not isinstance(document, dict) or document.get("schema_version") != "1":
@@ -172,15 +185,18 @@ def validate_batch_files() -> int:
             if key in seen:
                 raise ValueError(f"Duplicate batch verification decision for mission {key}")
             seen.add(key)
-    return len(paths)
+        if number < 3:
+            raise ValueError(f"Dynamic batch registry numbering must begin at Batch 3, found {number}")
+    return len(seen)
 
 
-def audit() -> tuple[dict[str, Any], int]:
+def audit() -> tuple[dict[str, Any], int, int]:
     for relative in REQUIRED_FILES:
         if not (ROOT / relative).is_file():
             raise ValueError(f"Required verification programme file is missing: {relative}")
 
-    batch_count = validate_batch_files()
+    registries, pages = discover_batch_assets()
+    dynamic_decisions = validate_batch_files(registries)
     source_status = read_json(SOURCE_STATUS)
     public_status = read_json(PUBLIC_STATUS)
     if source_status != public_status:
@@ -191,7 +207,9 @@ def audit() -> tuple[dict[str, Any], int]:
     if not isinstance(config, dict):
         raise ValueError("mkdocs.yml must contain an object")
     nav_targets = set(flatten_nav(config.get("nav")))
-    for target in REQUIRED_NAV_TARGETS:
+    required_nav = {"reference/mission-verification-status.md"}
+    required_nav.update(path.relative_to(REFERENCE_ROOT.parent).as_posix() for path in pages.values())
+    for target in sorted(required_nav):
         if target not in nav_targets:
             raise ValueError(f"Verification programme page is missing from MkDocs navigation: {target}")
 
@@ -200,12 +218,12 @@ def audit() -> tuple[dict[str, Any], int]:
         for marker in markers:
             if marker not in text:
                 raise ValueError(f"Workflow {workflow} does not enforce {marker}")
-    return summary, batch_count
+    return summary, len(pages), dynamic_decisions
 
 
 def main() -> int:
     try:
-        summary, batch_count = audit()
+        summary, batch_count, dynamic_decisions = audit()
     except (OSError, ValueError, yaml.YAMLError) as exc:
         print(f"Mission verification programme asset audit failed: {exc}", file=sys.stderr)
         return 1
@@ -215,7 +233,7 @@ def main() -> int:
         "Mission verification programme asset audit passed: "
         f"{fully_canonical}/{summary['official_count']} fully canonical, "
         f"{summary['canonical_count']} canonical records, "
-        f"{batch_count} batch registry files and "
+        f"{batch_count} evidence batch pages, {dynamic_decisions} dynamic batch decisions and "
         f"{summary['remaining_to_fully_canonical']} missions remaining."
     )
     return 0
