@@ -1,0 +1,22 @@
+{
+  "id": 824,
+  "name": "Fire in stables",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Rural Fire Missions"],
+  "poi": ["Farm"],
+  "preconditions": {"fire_stations": 6},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 6},
+      {"resource": "fire_officer", "quantity": 2},
+      {"resource": "rescue_support_vehicle", "quantity": 1},
+      {"resource": "aerial_appliance_truck", "quantity": 1}
+    ],
+    "probabilistic": []
+  },
+  "reward": {"average_credits": 4500},
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": ["The Farm POI and all four verified resource quantities are retained."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/824", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
