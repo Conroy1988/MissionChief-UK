@@ -1,0 +1,128 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "paths": {
+    "required": "requirements.personnel_educations",
+    "available": "prerequisites.personnel_educations",
+    "captions": "additional.personnel_educations"
+  },
+  "roles": {
+    "police_sergeant": {
+      "canonical_role": "Police Sergeant",
+      "official_caption": "Police Sergeant",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/445",
+        "https://www.missionchief.co.uk/einsaetze/448",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "railway_police": {
+      "canonical_role": "Railway Police Officer",
+      "official_caption": "Railway Police Officer",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "level_2_public_order": {
+      "canonical_role": "Level 2 Public Order Officer",
+      "official_caption": "Level 2 Public Order Officer",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/446",
+        "https://www.missionchief.co.uk/einsaetze/447",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "police_inspector": {
+      "canonical_role": "Police Inspector",
+      "official_caption": "Police Inspector",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/448",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "level_1_public_order": {
+      "canonical_role": "Level 1 Public Order Officer",
+      "official_caption": "Level 1 Public Order Officer",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/610",
+        "https://www.missionchief.co.uk/einsaetze/617",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "police_medic": {
+      "canonical_role": "Police Medic",
+      "official_caption": "Police Medic",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/448",
+        "https://www.missionchief.co.uk/einsaetze/608",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "gw_gefahrgut": {
+      "canonical_role": "HazMat Unit",
+      "official_caption": "HazMat Unit",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/687",
+        "https://www.missionchief.co.uk/einsaetze/688",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "search_and_rescue": {
+      "canonical_role": "Search Advisor",
+      "official_caption": "Search Advisor",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/636",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "coastal_mud_rescue": {
+      "canonical_role": "Mud Rescue Operator",
+      "official_caption": "Mud Rescue Operator",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/546",
+        "https://www.missionchief.co.uk/einsaetze/567",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "railway_police_command": {
+      "canonical_role": "Mobile Operations Manager",
+      "official_caption": "Mobile Operations Manager",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "gw_hoehenrettung": {
+      "canonical_role": "Rope Rescue Operator",
+      "official_caption": "Rope Rescue Operator",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/548",
+        "https://www.missionchief.co.uk/einsaetze/549",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "mountain_cave_rescue": {
+      "canonical_role": "Cave Rescue Specialist",
+      "official_caption": "Cave Rescue Specialist",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/754",
+        "https://www.missionchief.co.uk/einsaetze/760",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    },
+    "search_and_rescue_command": {
+      "canonical_role": "SAR Commander",
+      "official_caption": "SAR Commander",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/636",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ]
+    }
+  }
+}
