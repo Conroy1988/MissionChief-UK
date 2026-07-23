@@ -721,6 +721,31 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The prerequisite railway_fire value is the countable Railway fire response mission-generation requirement."
+    },
+    "tow_trucks": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "recovery_centres",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/776",
+        "https://www.missionchief.co.uk/einsaetze/779",
+        "https://www.missionchief.co.uk/einsaetze/784",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official tow_trucks prerequisite is the countable Recovery Centre mission-generation requirement."
+    },
+    "tow_trucks_large": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "hgv_recovery_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/810",
+        "https://police.missionchief.co.uk/einsaetze/13?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official tow_trucks_large prerequisite is the countable HGV Recovery Extension mission-generation requirement."
     }
   }
 }

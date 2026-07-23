@@ -18,8 +18,9 @@ Police Helicopter or Drone mapping synchronized: already current.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
 Core railway mappings synchronized: already current.
+Recovery prerequisites synchronized: change required.
 Traffic Car mapping synchronized: already current.
-Official key mapping synchronization passed: 12 synchronizer(s) executed.
+Official key mapping synchronization passed: 13 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -102,7 +103,7 @@ Official key mapping failure report passed: all 224 promoted missions are equiva
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 224 promoted missions, 224 fully canonical, 28 requirement keys, 11 chance keys and 13 prerequisite keys mapped.
+Official key mapping audit passed: 224 promoted missions, 224 fully canonical, 28 requirement keys, 11 chance keys and 15 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
@@ -149,168 +150,10 @@ PASS canonical-candidates
   "mapped_key_counts": {
     "requirements": 29,
     "chances": 11,
-    "prerequisites": 14
+    "prerequisites": 16
   },
-  "unmapped_key_count": 42,
+  "unmapped_key_count": 40,
   "entries": [
-    {
-      "group": "prerequisites",
-      "key": "tow_trucks",
-      "remaining_mission_count": 22,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "776",
-          "name": "Car into telegraph pole",
-          "value": 1,
-          "average_credits": 2000,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/776"
-        },
-        {
-          "id": "777",
-          "name": "RTC Car into telegraph pole (entrapment)",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/777"
-        },
-        {
-          "id": "779",
-          "name": "Stolen Car Located",
-          "value": 1,
-          "average_credits": 900,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/779"
-        },
-        {
-          "id": "780",
-          "name": "Stolen Moped Located",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/780"
-        },
-        {
-          "id": "781",
-          "name": "Stolen Van Located",
-          "value": 1,
-          "average_credits": 1100,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/781"
-        },
-        {
-          "id": "782",
-          "name": "Non-Injury RTC with Police Car (Recovery Required)",
-          "value": 1,
-          "average_credits": 3900,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/782"
-        },
-        {
-          "id": "783",
-          "name": "S.59 Vehicle Seizure for Anti-Social Use",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/783"
-        },
-        {
-          "id": "106/a",
-          "name": "Hit and Run",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "variant:106",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/106/a"
-        },
-        {
-          "id": "128/a",
-          "name": "RTC Entrapment",
-          "value": 1,
-          "average_credits": 1550,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "variant:128",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/128/a"
-        },
-        {
-          "id": "129/a",
-          "name": "Multi vehicle RTC",
-          "value": 1,
-          "average_credits": 1900,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_max",
-            "additional.possible_crashed_car_min",
-            "variant:129",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/129/a"
-        }
-      ]
-    },
     {
       "group": "prerequisites",
       "key": "water_rescue_2",
@@ -1309,161 +1152,6 @@ PASS canonical-candidates
             "additive_overlays"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/756/a"
-        }
-      ]
-    },
-    {
-      "group": "prerequisites",
-      "key": "tow_trucks_large",
-      "remaining_mission_count": 11,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "778",
-          "name": "Uninsured Heavy Goods Vehicle",
-          "value": 1,
-          "average_credits": 750,
-          "filter_id": "tow_trucks_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "generator:'tow_trucks_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/778"
-        },
-        {
-          "id": "810",
-          "name": "Goods Train Collided with HGV",
-          "value": 1,
-          "average_credits": 24800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/810"
-        },
-        {
-          "id": "13/a",
-          "name": "Burning truck",
-          "value": 1,
-          "average_credits": 1280,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:13",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/13/a"
-        },
-        {
-          "id": "268/a",
-          "name": "HGV Rollover Down Embankment",
-          "value": 1,
-          "average_credits": 4800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:268",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/268/a"
-        },
-        {
-          "id": "322/a",
-          "name": "Dangerous goods truck accident",
-          "value": 1,
-          "average_credits": 2500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:322",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/322/a"
-        },
-        {
-          "id": "466/a",
-          "name": "Caravan roll over RTC",
-          "value": 1,
-          "average_credits": 5300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:466",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/466/a"
-        },
-        {
-          "id": "467/a",
-          "name": "Caravan roll over RTC (Fast Road)",
-          "value": 1,
-          "average_credits": 7300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:467",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/467/a"
-        },
-        {
-          "id": "64/a",
-          "name": "Accident Involving a Bus",
-          "value": 1,
-          "average_credits": 1300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:64",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/64/a"
-        },
-        {
-          "id": "73/ab",
-          "name": "Serious Accident Involving a Bus",
-          "value": 1,
-          "average_credits": 3300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:73",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/73/ab"
-        },
-        {
-          "id": "73/b",
-          "name": "Serious Accident Involving a Bus",
-          "value": 1,
-          "average_credits": 2300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min",
-            "variant:73",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/73/b"
         }
       ]
     },
@@ -7525,7 +7213,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.66 seconds
+INFO    -  Documentation built in 1.67 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
