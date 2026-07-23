@@ -25,7 +25,7 @@ Official key mapping failure report passed: all 69 promoted missions are equival
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 69 promoted missions, 69 fully canonical, 3 requirement keys, 2 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 69 promoted missions, 69 fully canonical, 4 requirement keys, 3 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -33,9 +33,166 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 127,
-  "ready_count": 0,
-  "blocked_count": 952,
-  "ready": [],
+  "ready_count": 6,
+  "blocked_count": 946,
+  "ready": [
+    {
+      "id": "59",
+      "name": "Animal Rescue",
+      "suggested_path": "data/uk/missions/animal-rescue.json",
+      "average_credits": 900,
+      "mission_categories": [
+        "fire",
+        "rural",
+        "urban"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "firetrucks": 1,
+        "heavy_rescue_vehicles": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 6,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "139",
+      "name": "Fire in silo",
+      "suggested_path": "data/uk/missions/fire-in-silo.json",
+      "average_credits": 3000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Silo",
+      "place_array": [
+        "Silo"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 2,
+        "firetrucks": 8,
+        "heavy_rescue_vehicles": 1,
+        "platform_trucks": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 8,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "314",
+      "name": "Rescue from stuck ride",
+      "suggested_path": "data/uk/missions/rescue-from-stuck-ride.json",
+      "average_credits": 2000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Theme Park",
+      "place_array": [
+        "Theme Park"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 1,
+        "firetrucks": 2,
+        "heavy_rescue_vehicles": 1,
+        "platform_trucks": 1
+      },
+      "chances": {
+        "platform_trucks": 80
+      },
+      "prerequisites": {
+        "fire_stations": 6,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "404",
+      "name": "Animal stuck between walls",
+      "suggested_path": "data/uk/missions/animal-stuck-between-walls.json",
+      "average_credits": 1300,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "firetrucks": 1,
+        "heavy_rescue_vehicles": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 4,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "815",
+      "name": "Large Animal Rescue",
+      "suggested_path": "data/uk/missions/large-animal-rescue.json",
+      "average_credits": 2000,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "firetrucks": 1,
+        "heavy_rescue_vehicles": 1,
+        "platform_trucks": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 4,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    },
+    {
+      "id": "824",
+      "name": "Fire in stables",
+      "suggested_path": "data/uk/missions/fire-in-stables.json",
+      "average_credits": 4500,
+      "mission_categories": [
+        "fire",
+        "rural"
+      ],
+      "place": "Farm",
+      "place_array": [
+        "Farm"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 2,
+        "firetrucks": 6,
+        "heavy_rescue_vehicles": 1,
+        "platform_trucks": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 6,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -46,219 +203,12 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 127,
   "mapped_key_counts": {
-    "requirements": 3,
-    "chances": 2,
+    "requirements": 4,
+    "chances": 3,
     "prerequisites": 2
   },
-  "unmapped_key_count": 89,
+  "unmapped_key_count": 87,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "heavy_rescue_vehicles",
-      "remaining_mission_count": 244,
-      "single_key_unlock_count": 6,
-      "examples": [
-        {
-          "id": "28",
-          "name": "Burning machine",
-          "value": 1,
-          "average_credits": 2470,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.water_tankers",
-            "chances.water_tankers"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/28"
-        },
-        {
-          "id": "29",
-          "name": "Unknown Tanker Spill",
-          "value": 2,
-          "average_credits": 5300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.police_cars",
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/29"
-        },
-        {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
-          "value": 2,
-          "average_credits": 10750,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "requirements.mobile_air_vehicles",
-            "requirements.mobile_command_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
-        },
-        {
-          "id": "41",
-          "name": "Car workshop fire - persons reported",
-          "value": 1,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "chances.water_tankers",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/41"
-        },
-        {
-          "id": "59",
-          "name": "Animal Rescue",
-          "value": 1,
-          "average_credits": 900,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/59"
-        },
-        {
-          "id": "64",
-          "name": "Accident Involving a Bus",
-          "value": 1,
-          "average_credits": 1000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/64"
-        },
-        {
-          "id": "68",
-          "name": "Big Supermarket Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.water_tankers",
-            "chances.patient_transport",
-            "chances.water_tankers",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/68"
-        },
-        {
-          "id": "69",
-          "name": "Unknown Tanker Spill",
-          "value": 2,
-          "average_credits": 4300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.police_cars",
-            "requirements.traffic_car",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/69"
-        },
-        {
-          "id": "72",
-          "name": "Light Aircraft Crash",
-          "value": 1,
-          "average_credits": 4000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.hazmat_vehicles",
-            "requirements.water_tankers",
-            "chances.hazmat_vehicles",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/72"
-        },
-        {
-          "id": "73",
-          "name": "Serious Accident Involving a Bus",
-          "value": 2,
-          "average_credits": 2000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/73"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "water_tankers",
@@ -272,7 +222,6 @@ PASS canonical-candidates
           "average_credits": 2470,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "chances.water_tankers"
           ],
           "operational_complexity": [
@@ -287,7 +236,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -314,7 +262,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "chances.water_tankers",
@@ -338,7 +285,6 @@ PASS canonical-candidates
           "average_credits": 3000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "chances.water_tankers",
@@ -363,7 +309,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -383,9 +328,7 @@ PASS canonical-candidates
           "value": 2,
           "average_credits": 10210,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.only_alliance_mission",
             "additional.unavailable_in_normal_missions"
@@ -423,7 +366,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -461,7 +403,7 @@ PASS canonical-candidates
       "group": "requirements",
       "key": "hazmat_vehicles",
       "remaining_mission_count": 155,
-      "single_key_unlock_count": 1,
+      "single_key_unlock_count": 2,
       "examples": [
         {
           "id": "29",
@@ -470,7 +412,6 @@ PASS canonical-candidates
           "average_credits": 5300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.traffic_car",
@@ -488,7 +429,6 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.patient_transport",
@@ -513,7 +453,6 @@ PASS canonical-candidates
           "average_credits": 4300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "prerequisites.police_stations"
@@ -530,7 +469,6 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.water_tankers",
             "chances.hazmat_vehicles",
             "chances.patient_transport",
@@ -588,7 +526,6 @@ PASS canonical-candidates
           "average_credits": 5000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.oneof_fire_engine_or_rescue",
             "requirements.police_cars",
             "prerequisites.police_stations"
@@ -635,7 +572,6 @@ PASS canonical-candidates
           "average_credits": 20000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -684,7 +620,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations"
           ],
@@ -867,7 +802,6 @@ PASS canonical-candidates
           "average_credits": 20000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.water_tankers"
@@ -1024,7 +958,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -1162,7 +1095,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.traffic_car"
@@ -1179,7 +1111,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -1206,7 +1137,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.patient_transport",
@@ -1341,7 +1271,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.traffic_car",
             "chances.traffic_car",
             "prerequisites.police_stations"
@@ -1358,7 +1287,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -1385,7 +1313,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.water_tankers",
             "chances.patient_transport",
             "chances.water_tankers",
@@ -1557,7 +1484,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -1708,7 +1634,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.patient_transport",
@@ -1866,7 +1791,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -1962,7 +1886,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
@@ -1988,7 +1911,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -2048,7 +1970,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -2073,7 +1994,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -2163,7 +2083,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2197,7 +2116,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -2285,7 +2203,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -2324,7 +2241,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -2356,7 +2272,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2385,7 +2300,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2414,7 +2328,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -2447,7 +2360,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -2493,7 +2405,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -2558,7 +2469,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -2602,7 +2512,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -2629,7 +2538,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -2655,7 +2563,6 @@ PASS canonical-candidates
           "average_credits": 7500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -2700,7 +2607,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -2733,7 +2639,6 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2767,7 +2672,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -2829,7 +2733,6 @@ PASS canonical-candidates
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -2868,7 +2771,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -2900,7 +2802,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2929,7 +2830,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -2958,7 +2858,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -2991,7 +2890,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -3035,7 +2933,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -3106,7 +3003,6 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3140,7 +3036,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazard_response_primary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -3202,7 +3097,6 @@ PASS canonical-candidates
             "requirements.atv_carrier",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -3241,7 +3135,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -3273,7 +3166,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3302,7 +3194,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3331,7 +3222,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -3364,7 +3254,6 @@ PASS canonical-candidates
             "requirements.foam",
             "requirements.hazard_response_primary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -3411,7 +3300,6 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -3489,7 +3377,6 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.kdow_orgl",
@@ -3515,7 +3402,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -3582,7 +3468,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -3609,7 +3494,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -3673,7 +3557,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -3711,7 +3594,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -3743,7 +3625,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3772,7 +3653,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -3801,7 +3681,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -3834,7 +3713,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -3878,7 +3756,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -3926,7 +3803,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -4587,7 +4463,6 @@ PASS canonical-candidates
           "average_credits": 2470,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.water_tankers"
           ],
           "operational_complexity": [
@@ -4603,7 +4478,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.patient_transport",
@@ -4627,7 +4501,6 @@ PASS canonical-candidates
           "average_credits": 3000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
             "chances.patient_transport",
@@ -4700,7 +4573,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
@@ -4727,7 +4599,6 @@ PASS canonical-candidates
           "average_credits": 7500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -4746,7 +4617,6 @@ PASS canonical-candidates
           "average_credits": 10000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -4814,7 +4684,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -4869,7 +4738,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.foam",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -4898,7 +4766,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_boat",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -4949,7 +4816,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -4967,7 +4833,6 @@ PASS canonical-candidates
           "average_credits": 7500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -4985,7 +4850,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ambulances",
             "requirements.foam",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -5012,7 +4876,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -5094,7 +4957,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -5149,7 +5011,6 @@ PASS canonical-candidates
           "average_credits": 8850,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -5178,7 +5039,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -5198,7 +5058,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ambulances",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -5225,7 +5084,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -5269,7 +5127,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -5408,7 +5265,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.traffic_car",
             "prerequisites.police_stations"
@@ -5426,7 +5282,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations"
           ],
@@ -5442,7 +5297,6 @@ PASS canonical-candidates
           "average_credits": 2000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "prerequisites.police_stations",
@@ -5465,7 +5319,6 @@ PASS canonical-candidates
           "average_credits": 2000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
             "chances.traffic_car",
@@ -5604,7 +5457,6 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.police_cars",
             "chances.kdow_orgl",
@@ -5647,7 +5499,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -5711,7 +5562,6 @@ PASS canonical-candidates
             "requirements.atv_carrier",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -5750,7 +5600,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -5782,7 +5631,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5811,7 +5659,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -5840,7 +5687,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -5873,7 +5719,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -5917,7 +5762,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -5965,7 +5809,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -6013,7 +5856,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -6051,7 +5893,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.mobile_air_vehicles",
@@ -6083,7 +5924,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6112,7 +5952,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -6141,7 +5980,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -6174,7 +6012,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -6218,7 +6055,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -6266,7 +6102,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -6296,7 +6131,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -6325,7 +6159,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
@@ -6623,7 +6456,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7075,7 +6907,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
             "requirements.personnel_educations",
@@ -7113,7 +6944,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -7146,7 +6976,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7190,7 +7019,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
@@ -7238,7 +7066,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7270,7 +7097,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7305,7 +7131,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -7341,7 +7166,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -7379,7 +7203,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7412,7 +7235,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7520,7 +7342,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7548,7 +7369,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7576,7 +7396,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7770,7 +7589,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -7956,7 +7774,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -8000,7 +7817,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -8048,7 +7864,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -8085,7 +7900,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -8169,7 +7983,6 @@ PASS canonical-candidates
           "average_credits": 7800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "requirements.railway_police",
@@ -8312,7 +8125,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -8356,7 +8168,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -8404,7 +8215,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -8441,7 +8251,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -8525,7 +8334,6 @@ PASS canonical-candidates
           "average_credits": 7800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -8723,7 +8531,6 @@ PASS canonical-candidates
           "average_credits": 20000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "prerequisites.police_stations",
             "prerequisites.rescue_stations"
@@ -8813,7 +8620,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -8840,7 +8646,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -8926,7 +8731,6 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "tow_trucks_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.police_cars",
             "requirements.traffic_car",
@@ -9666,7 +9470,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -9707,7 +9510,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -9748,7 +9550,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -9791,7 +9592,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -9833,7 +9633,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -9873,7 +9672,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -9911,7 +9709,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -9951,7 +9748,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -9990,7 +9786,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
@@ -10241,7 +10036,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.water_tankers",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -10353,7 +10147,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -10531,7 +10324,6 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.police_cars",
             "requirements.traffic_car",
@@ -10622,7 +10414,6 @@ PASS canonical-candidates
           "average_credits": 1000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -10753,7 +10544,6 @@ PASS canonical-candidates
           "average_credits": 9600,
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -10865,7 +10655,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -10902,7 +10691,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.kdow_orgl",
@@ -11050,7 +10838,6 @@ PASS canonical-candidates
           "average_credits": 9600,
           "filter_id": "mountain_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -11162,7 +10949,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -11199,7 +10985,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "chances.kdow_orgl",
             "chances.patient_transport",
@@ -11349,7 +11134,6 @@ PASS canonical-candidates
           "average_credits": 12000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -11374,7 +11158,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
@@ -11458,7 +11241,6 @@ PASS canonical-candidates
           "average_credits": 2500,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "prerequisites.police_stations"
           ],
@@ -11480,7 +11262,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
@@ -11530,7 +11311,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -11559,7 +11339,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -11596,7 +11375,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "prerequisites.police_stations"
@@ -11613,7 +11391,6 @@ PASS canonical-candidates
           "average_credits": 2000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.patient_transport",
@@ -11846,7 +11623,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -11890,7 +11666,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -11985,7 +11760,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12018,7 +11792,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12053,7 +11826,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
@@ -12090,7 +11862,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
@@ -12128,7 +11899,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12162,7 +11932,6 @@ PASS canonical-candidates
           "average_credits": 16900,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12209,7 +11978,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_air_vehicles",
@@ -12253,7 +12021,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -12348,7 +12115,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12381,7 +12147,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12416,7 +12181,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
@@ -12453,7 +12217,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ems_mobile_command",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
@@ -12491,7 +12254,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12525,7 +12287,6 @@ PASS canonical-candidates
           "average_credits": 16900,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -12587,7 +12348,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
@@ -12638,7 +12398,6 @@ PASS canonical-candidates
           "average_credits": 4800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -12665,7 +12424,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.traffic_car",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
@@ -12732,7 +12490,6 @@ PASS canonical-candidates
           "average_credits": 1300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
           ],
@@ -12758,7 +12515,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.patient_transport",
@@ -12787,7 +12543,6 @@ PASS canonical-candidates
           "average_credits": 2300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "requirements.traffic_car",
             "chances.patient_transport",
@@ -12998,7 +12753,6 @@ PASS canonical-candidates
             "requirements.coastal_command",
             "requirements.coastal_helicopter",
             "requirements.coastal_rescue",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -13292,7 +13046,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_command",
             "requirements.coastal_rescue",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -13456,7 +13209,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -13477,7 +13229,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -13498,7 +13249,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -13560,7 +13310,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -13665,7 +13414,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -13755,7 +13503,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -13785,7 +13532,6 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
@@ -13908,7 +13654,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
@@ -13929,7 +13674,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
             "prerequisites.coastal_rescue_count",
@@ -13950,7 +13694,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "requirements.water_tankers",
@@ -14012,7 +13755,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -14130,7 +13872,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -14177,7 +13918,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.personnel_educations",
             "requirements.police_cars",
@@ -14358,7 +14098,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -14399,7 +14138,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -14603,7 +14341,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -14624,7 +14361,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -14645,7 +14381,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -14691,7 +14426,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -14782,7 +14516,6 @@ PASS canonical-candidates
           "average_credits": 3220,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -14803,7 +14536,6 @@ PASS canonical-candidates
           "average_credits": 9500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.water_tankers",
@@ -14824,7 +14556,6 @@ PASS canonical-candidates
           "average_credits": 17500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.min_pump_speed",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -14870,7 +14601,6 @@ PASS canonical-candidates
             "requirements.emergency_welfare",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.min_pump_speed",
             "requirements.personnel_educations",
@@ -15161,7 +14891,6 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
-            "requirements.heavy_rescue_vehicles",
             "requirements.kdow_orgl",
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "requirements.personnel_educations",
@@ -15202,7 +14931,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -15428,7 +15156,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_boat",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_air_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
@@ -15458,7 +15185,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.coastal_boat",
-            "requirements.heavy_rescue_vehicles",
             "chances.patient_transport",
             "prerequisites.rescue_stations"
           ],
@@ -15836,7 +15562,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -15868,7 +15593,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -16100,7 +15824,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.arff",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
@@ -16341,7 +16064,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -16420,7 +16142,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -16514,7 +16235,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -16551,7 +16271,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_helicopter",
             "requirements.coastal_rescue",
-            "requirements.heavy_rescue_vehicles",
             "requirements.police_cars",
             "chances.patient_critical_care",
             "chances.patient_transport",
@@ -16659,7 +16378,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -16759,7 +16477,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.mud_rescue",
@@ -17145,7 +16862,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mass_casualty_equipment",
             "requirements.mobile_command_vehicles",
             "requirements.personnel_educations",
@@ -17171,62 +16887,6 @@ PASS canonical-candidates
             "generator:'coastal_rescue_missions'"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/583"
-        }
-      ]
-    },
-    {
-      "group": "chances",
-      "key": "heavy_rescue_vehicles",
-      "remaining_mission_count": 2,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "642",
-          "name": "Kid stuck in Climbing Frame",
-          "value": 20,
-          "average_credits": 1420,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
-            "requirements.police_cars",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/642"
-        },
-        {
-          "id": "840",
-          "name": "Person trapped under vehicle",
-          "value": 60,
-          "average_credits": 3500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
-            "requirements.police_cars",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.police_stations",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/840"
         }
       ]
     },
@@ -17327,7 +16987,6 @@ PASS canonical-candidates
           "average_credits": 2200,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "chances.patient_transport"
           ],
           "operational_complexity": [
@@ -17429,7 +17088,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.arff",
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.police_cars",
             "chances.patient_transport",
@@ -17516,7 +17174,6 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "requirements.hazmat_vehicles",
-            "requirements.heavy_rescue_vehicles",
             "requirements.k9",
             "requirements.kdow_orgl",
             "requirements.mass_casualty_equipment",
@@ -17698,7 +17355,6 @@ PASS canonical-candidates
           "average_credits": 9000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.heavy_rescue_vehicles",
             "requirements.mobile_command_vehicles",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "requirements.police_cars",
@@ -17880,7 +17536,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.33 seconds
+INFO    -  Documentation built in 1.23 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
