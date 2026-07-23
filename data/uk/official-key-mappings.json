@@ -48,6 +48,18 @@
         "https://www.missionchief.co.uk/einsaetze/588"
       ],
       "notes": "The official battalion_chief_vehicles count represents Fire Officers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "heavy_rescue_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "rescue_support_vehicle",
+      "chance_key": "heavy_rescue_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official heavy_rescue_vehicles count represents Rescue Support Vehicles. A same-key chance field converts the quantity to a probabilistic canonical requirement."
     }
   },
   "chances": {
@@ -74,6 +86,18 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The percentage is the probability that the published Fire Officer quantity is required."
+    },
+    "heavy_rescue_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "rescue_support_vehicle",
+      "requirement_key": "heavy_rescue_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Rescue Support Vehicle quantity is required."
     }
   },
   "prerequisites": {
@@ -100,9 +124,7 @@
     },
     "main_building": {
       "status": "not-applicable",
-      "allowed_values": [
-        0
-      ],
+      "allowed_values": [0],
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze.json"
