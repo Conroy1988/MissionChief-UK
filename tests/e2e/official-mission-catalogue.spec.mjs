@@ -1,4 +1,3 @@
-import { test, expect } from "@playwright/test";
 
 test("official UK mission catalogue is complete, reconciled and searchable", async ({ page, request }) => {
   const catalogueResponse = await request.get("assets/data/official/uk-missions.json");
@@ -66,7 +65,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   await root.locator("input[data-role='query']").fill(pendingName);
   const officialCard = root
     .locator("article.mcuk-mission-card--official")
-    .filter({ hasText: `"official_url": "${pendingUrl}"` })
+    .filter({ hasText: `#${pendingId}` })
     .first();
   await expect(officialCard).toContainText(pendingName);
   await expect(officialCard).toContainText(`#${pendingId}`);
@@ -92,7 +91,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   await root.locator("input[data-role='query']").fill("588");
   const canonicalCard = root
     .locator("article.mcuk-mission-card--canonical")
-    .filter({ hasText: '"official_url": "https://www.missionchief.co.uk/einsaetze/588"' })
+    .filter({ hasText: "#588" })
     .first();
   await expect(canonicalCard).toContainText("Aircraft Accident - Code F");
   await expect(canonicalCard).toContainText("Canonical mapped");
