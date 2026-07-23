@@ -33,6 +33,8 @@ EXPECTED_STATIC_PAGES = (
     "tools/fleet-planner.md",
     "tools/query-catalogue.md",
     "reference/official-mission-catalogue.md",
+    "reference/mission-verification-status.md",
+    "reference/fully-canonical-mission-batch-1.md",
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
@@ -45,6 +47,10 @@ REQUIRED_QA_FILES = (
     "tests/e2e/official-mission-catalogue.spec.mjs",
     "scripts/audit_links.py",
     "scripts/validate_official_mission_catalogue.py",
+    "scripts/reconcile_official_mission_coverage.py",
+    "scripts/validate_official_key_mappings.py",
+    "scripts/generate_mission_verification_status.py",
+    "scripts/validate_verification_programme_assets.py",
     "docs/quality-assurance.md",
 )
 
@@ -53,14 +59,20 @@ REQUIRED_OFFICIAL_FILES = (
     "scripts/publish_official_mission_catalogue.py",
     "scripts/compact_official_mission_catalogue.py",
     ".github/workflows/import-official-uk-missions.yml",
+    "data/uk/mission-verification-registry.json",
+    "data/uk/official-key-mappings.json",
     "data/sources/missionchief-uk/README.md",
     "data/sources/missionchief-uk/einsaetze.raw.json",
     "data/sources/missionchief-uk/mission-coverage.json",
+    "data/sources/missionchief-uk/mission-verification-status.json",
     "data/sources/missionchief-uk/official-key-inventory.json",
     "docs/assets/data/official/uk-missions.json",
     "docs/assets/data/official/uk-mission-coverage.json",
+    "docs/assets/data/official/uk-mission-verification.json",
     "docs/javascripts/official-catalogue-loader.js",
     "docs/javascripts/official-mission-details.js",
+    "docs/reference/mission-verification-status.md",
+    "docs/reference/fully-canonical-mission-batch-1.md",
 )
 
 REQUIRED_JAVASCRIPT_ORDER = (
@@ -172,7 +184,8 @@ def audit_quality_assets(release_version: str) -> None:
     for marker in (
         "official-uk-missions",
         "official_only_count",
-        "Burning motorbike",
+        "Road accident",
+        '"25"',
         "Complete official catalogue record",
         "mcuk-official-field-details",
     ):
@@ -182,7 +195,11 @@ def audit_quality_assets(release_version: str) -> None:
     for marker in (
         "workflow_dispatch",
         "schedule:",
+        "reconcile_official_mission_coverage.py",
         "validate_official_mission_catalogue.py",
+        "validate_official_key_mappings.py",
+        "generate_mission_verification_status.py",
+        "validate_verification_programme_assets.py",
         "git diff --cached --quiet",
         "gh workflow run deploy-pages.yml --ref main",
     ):
@@ -287,6 +304,7 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
         f"README does not identify Static API v{release_version}",
     )
     require("1,062" in readme or "1062" in readme, "README does not expose the official UK mission catalogue baseline")
+    require("11 fully canonical" in readme_lower, "README does not expose the first fully canonical batch count")
     return counts
 
 
@@ -299,6 +317,8 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "tools/fleet-planner/index.html",
         "tools/query-catalogue/index.html",
         "reference/official-mission-catalogue/index.html",
+        "reference/mission-verification-status/index.html",
+        "reference/fully-canonical-mission-batch-1/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
@@ -308,6 +328,7 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "javascripts/official-mission-details.js",
         "assets/data/official/uk-missions.json",
         "assets/data/official/uk-mission-coverage.json",
+        "assets/data/official/uk-mission-verification.json",
         "assets/data/v1/manifest.json",
         "assets/data/v1/missions.json",
         "assets/data/v1/vehicles.json",
@@ -324,7 +345,7 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
     source_manifest = read_json(OUTPUT_ROOT / "manifest.json")
     require(built_manifest == source_manifest, "Built-site manifest differs from the generated source manifest")
 
-    for filename in ("uk-missions.json", "uk-mission-coverage.json"):
+    for filename in ("uk-missions.json", "uk-mission-coverage.json", "uk-mission-verification.json"):
         built = read_json(site_dir / "assets" / "data" / "official" / filename)
         source = read_json(OFFICIAL_OUTPUT_ROOT / filename)
         require(built == source, f"Built official catalogue asset differs from source: {filename}")
