@@ -34,6 +34,9 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
 
+      - name: Synchronize deterministic official key mappings
+        run: python scripts/sync_all_official_key_mappings.py
+
       - name: Validate canonical JSON documents
         run: python scripts/validate_data.py
 
