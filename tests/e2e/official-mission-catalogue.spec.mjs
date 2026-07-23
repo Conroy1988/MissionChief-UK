@@ -37,10 +37,10 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   );
 
   await root.locator("select[data-role='source']").selectOption("official");
-  await root.locator("input[data-role='query']").fill("Burning motorbike");
-  const officialCard = root.locator("article.mcuk-mission-card--official").first();
-  await expect(officialCard).toContainText("Burning motorbike");
-  await expect(officialCard).toContainText("#3");
+  await root.locator("input[data-role='query']").fill("Road accident");
+  const officialCard = root.locator("article.mcuk-mission-card--official", { hasText: "Road accident #25" }).first();
+  await expect(officialCard).toContainText("Road accident");
+  await expect(officialCard).toContainText("#25");
   await expect(officialCard).toContainText("Official UK catalogue");
   await expect(officialCard).toContainText("Canonical mapping pending");
 
@@ -54,7 +54,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   const officialDetails = officialCard.locator("details.mcuk-official-record-details");
   await expect(officialDetails).toContainText("Complete official catalogue record");
   await officialDetails.locator("summary").click();
-  await expect(officialDetails.locator("pre")).toContainText('"id": "3"');
+  await expect(officialDetails.locator("pre")).toContainText('"id": "25"');
   await expect(officialDetails.locator("pre")).toContainText('"requirements"');
   await expect(officialDetails.locator("pre")).toContainText('"prerequisites"');
 
