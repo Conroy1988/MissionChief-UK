@@ -57,6 +57,19 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+      - name: Report official key mapping backlog
+        run: |
+          python scripts/report_key_mapping_backlog.py --limit 200 --examples 10 > key-mapping-backlog.json
+          cat key-mapping-backlog.json
+
+      - name: Upload official key mapping backlog
+        uses: actions/upload-artifact@v4
+        with:
+          name: key-mapping-backlog
+          path: key-mapping-backlog.json
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Generate 100% mission verification status
         run: python scripts/generate_mission_verification_status.py
 
