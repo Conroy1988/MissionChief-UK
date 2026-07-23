@@ -50,5 +50,17 @@
     ],
     "transport_probability": 0.5,
     "critical_care_probability": 0.4
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "truck",
+        "minimum": 2,
+        "maximum": 2,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
   }
 }

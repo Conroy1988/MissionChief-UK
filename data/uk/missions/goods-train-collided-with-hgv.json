@@ -1,0 +1,149 @@
+{
+  "id": 810,
+  "name": "Goods Train Collided with HGV",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 3
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      },
+      {
+        "resource": "traffic_car",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "police_helicopter",
+          "drone"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/810",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Railroad Crossing",
+    "Rail Crossing",
+    "Railroad Crossing\nRail Crossing"
+  ],
+  "preconditions": {
+    "fire_stations": 11,
+    "hart_bases": 1,
+    "police_helicopter_stations": 1,
+    "police_stations": 8,
+    "railway_police": 1,
+    "rescue_stations": 3,
+    "hgv_recovery_extensions": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1"
+    ],
+    "transport_probability": 1.0,
+    "critical_care_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ],
+    "available": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 3
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 12
+      }
+    ]
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "truck",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 24800
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

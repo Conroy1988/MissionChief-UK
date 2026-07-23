@@ -22,6 +22,7 @@ from personnel_education_contract import (
     load_mapping_registry as load_personnel_education_mappings,
     owned_paths as personnel_education_owned_paths,
 )
+from recovery_contract import build_expected_recovery, load_mapping_registry as load_recovery_mappings
 from report_canonical_candidates import report as candidate_report
 
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -47,11 +48,13 @@ PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
     PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
     PERSONNEL_EDUCATION_ROLES,
 ) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
+RECOVERY_MAPPINGS = load_recovery_mappings()
 
 GENERATOR_METADATA = {
     "firehouse_missions": ("fire", ["Fire Fighting Missions"]),
     "police_station_missions": ("police", ["Police Missions"]),
     "ambulance_station_missions": ("ambulance", ["Ambulance Missions"]),
+    "tow_trucks_missions": ("recovery", ["Recovery Vehicle Missions"]),
 }
 
 
@@ -307,6 +310,9 @@ def build_canonical_record(
     )
     if personnel_educations:
         record["personnel"] = personnel_educations
+    recovery = build_expected_recovery(official, RECOVERY_MAPPINGS)
+    if recovery:
+        record["recovery"] = recovery
     reward = official.get("average_credits")
     if isinstance(reward, (int, float)) and not isinstance(reward, bool):
         record["reward"] = {"average_credits": reward}
@@ -480,10 +486,13 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
                     official, PERSONNEL_EDUCATION_MAPPINGS
                 )
             ),
+            "strict_recovery_equivalence": bool(
+                build_expected_recovery(official, RECOVERY_MAPPINGS)
+            ),
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
             "notes": [
                 "Generated from the retained official UK snapshot after all candidate blockers cleared.",
-                "Exact resource, prerequisite, patient, personnel-education, conditional-resource and relationship equivalence is required.",
+                "Exact resource, prerequisite, patient, personnel-education, conditional-resource, recovery-outcome and relationship equivalence is required.",
             ],
         }
 

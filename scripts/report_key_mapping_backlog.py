@@ -15,6 +15,11 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import load_mapping_registry, patient_owned_paths
+from recovery_contract import (
+    build_expected_recovery,
+    load_mapping_registry as load_recovery_mappings,
+    owned_additional_keys as recovery_owned_additional_keys,
+)
 from personnel_education_contract import (
     build_expected_personnel_educations,
     load_mapping_registry as load_personnel_education_mappings,
@@ -30,6 +35,8 @@ RELATIONSHIP_KEYS = ("expansion_missions_ids", "followup_missions_ids")
 PATIENT_MAPPINGS = load_mapping_registry()
 CONDITIONAL_MAPPINGS = load_conditional_mappings()
 PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
+RECOVERY_MAPPINGS = load_recovery_mappings()
+RECOVERY_ADDITIONAL_KEYS = recovery_owned_additional_keys(RECOVERY_MAPPINGS)
 PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPINGS)
 (
     CONDITIONAL_REQUIREMENT_KEYS,
@@ -49,8 +56,14 @@ SAFE_ADDITIONAL_KEYS = {
     *PATIENT_ADDITIONAL_KEYS,
     *CONDITIONAL_ADDITIONAL_KEYS,
     *PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
+    *RECOVERY_ADDITIONAL_KEYS,
 }
-SAFE_GENERATOR_FAMILIES = {"firehouse_missions", "police_station_missions", "ambulance_station_missions"}
+SAFE_GENERATOR_FAMILIES = {
+    "firehouse_missions",
+    "police_station_missions",
+    "ambulance_station_missions",
+    "tow_trucks_missions",
+}
 
 
 def read_json(path: Path) -> Any:
@@ -114,6 +127,10 @@ def operational_complexity(record: dict[str, Any]) -> list[str]:
             blockers.append(str(exc))
         try:
             build_expected_personnel_educations(record, PERSONNEL_EDUCATION_MAPPINGS)
+        except ValueError as exc:
+            blockers.append(str(exc))
+        try:
+            build_expected_recovery(record, RECOVERY_MAPPINGS)
         except ValueError as exc:
             blockers.append(str(exc))
         unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
@@ -210,6 +227,7 @@ def build_report(example_limit: int) -> dict[str, Any]:
         "patient_contract_fields": len(PATIENT_MAPPINGS),
         "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
         "personnel_education_roles": len(PERSONNEL_EDUCATION_MAPPINGS["roles"]),
+        "recovery_asset_contracts": len(RECOVERY_MAPPINGS),
         "mapped_key_counts": {group: len(mapped[group]) for group in KEY_GROUPS},
         "unmapped_key_count": len(entries),
         "entries": entries,

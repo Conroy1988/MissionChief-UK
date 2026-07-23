@@ -6,6 +6,10 @@ PASS conditional-resource-contract-sync
 Conditional resource mode integration synchronized: already current.
 PASS conditional-resource-modes-sync
 
+## recovery-contract-sync
+Recovery contract integration synchronized: scripts/report_canonical_candidates.py, scripts/generate_ready_canonical_batch.py, scripts/report_key_mapping_backlog.py.
+PASS recovery-contract-sync
+
 ## official-key-mapping-sync
 Official Ambulance key mapping synchronized: already current.
 GP Surgery mapping synchronized: already current.
@@ -28,24 +32,28 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Ready canonical batch generation is stable: no analyser-approved missions remain.
+Generated fully canonical Batch 29: 1 mission(s), 3 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 265 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 266 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 265 direct canonical records, 15 file(s) changed.
+Canonical mapped personnel fields synchronized: 266 direct canonical records, 15 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-personnel-education-sync
-Canonical personnel education fields synchronized: 265 direct canonical records, 15 file(s) changed.
+Canonical personnel education fields synchronized: 266 direct canonical records, 16 file(s) changed.
 PASS canonical-personnel-education-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 265 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 266 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
+
+## canonical-recovery-sync
+Canonical recovery outcomes synchronized: 266 direct canonical records, 3 file(s) changed.
+PASS canonical-recovery-sync
 
 ## canonical-data
 Structured data validation warnings:
@@ -68,6 +76,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-26.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-27.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-28.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-29.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -83,57 +92,62 @@ Structured data validation warnings:
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-recovery-field-mappings.json: no schema mapping for directory 'uk'
-Validated 394 structured data file(s) successfully, including 1151 mission resource reference(s) and 108 infrastructure precondition reference(s).
+Validated 396 structured data file(s) successfully, including 1163 mission resource reference(s) and 112 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 265/1062 direct official/canonical matches, 797 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 266/1062 direct official/canonical matches, 796 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 265/282 canonical ID matches, 797 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 266/283 canonical ID matches, 796 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 224 decisions from 27 source files.
+Mission verification registry merged: 225 decisions from 28 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 224 promoted missions are equivalent.
+Official key mapping failure report passed: all 225 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 224 promoted missions, 224 fully canonical, 28 requirement keys, 11 chance keys and 15 prerequisite keys mapped.
+Official key mapping audit passed: 225 promoted missions, 225 fully canonical, 28 requirement keys, 11 chance keys and 15 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 224/224 promoted missions exact, 98 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 225/225 promoted missions exact, 99 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 224/224 promoted missions exact, 19 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 225/225 promoted missions exact, 20 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-personnel-education-equivalence
-Official personnel education mapping audit passed: 224 promoted missions inspected, 5 exact personnel-education missions, 5 strict decisions and 13 mapped roles.
+Official personnel education mapping audit passed: 225 promoted missions inspected, 6 exact personnel-education missions, 6 strict decisions and 13 mapped roles.
 PASS official-personnel-education-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 224/224 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 225/225 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
+
+## official-recovery-equivalence
+Official recovery mapping audit passed: 225 promoted missions inspected, 1 exact recovery missions, 1 strict decisions and 2 mapped asset types.
+PASS official-recovery-equivalence
 
 ## canonical-candidates
 {
-  "schema_version": "6",
+  "schema_version": "7",
   "official_count": 1062,
-  "canonical_count": 282,
+  "canonical_count": 283,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
+  "recovery_asset_contracts": 2,
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 797,
+  "blocked_count": 796,
   "ready": [],
   "blocked": []
 }
@@ -143,10 +157,11 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 282,
+  "canonical_count": 283,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
+  "recovery_asset_contracts": 2,
   "mapped_key_counts": {
     "requirements": 29,
     "chances": 11,
@@ -7163,17 +7178,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 21.09% fully canonical, 838 of 1062 missions remaining.
+Mission verification status generated: 21.19% fully canonical, 837 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=282, direct=265, fully=224, remaining=838, batches=28, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 28 evidence pages.
+Public verification metrics synchronized: canonical=283, direct=266, fully=225, remaining=837, batches=29, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 29 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 224/1062 fully canonical, 282 canonical records, 28 evidence batch pages, 203 dynamic batch decisions and 838 missions remaining.
+Mission verification programme asset audit passed: 225/1062 fully canonical, 283 canonical records, 29 evidence batch pages, 204 dynamic batch decisions and 837 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -7185,11 +7200,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=282, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=283, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 96 Markdown files
+Documentation link audit passed across 97 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -7213,10 +7228,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.78 seconds
+INFO    -  Documentation built in 1.55 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=282, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=283, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 
