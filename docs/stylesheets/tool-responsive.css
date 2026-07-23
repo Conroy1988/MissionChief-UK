@@ -60,6 +60,19 @@
   word-break: break-word;
 }
 
+/* MkDocs styles preformatted values as intrinsically sized blocks. WebKit
+ * otherwise lets long canonical identifiers enlarge the outer content column
+ * even though the comparison table itself is fixed-width. Keep those values
+ * inside their table cell while retaining their formatting. */
+[data-mcuk-tool="comparison"] [data-role="results"] pre {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 @container (max-width: 34rem) {
   [data-mcuk-tool="comparison"] .mcuk-tool-controls {
     grid-template-columns: minmax(0, 1fr);
