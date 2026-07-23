@@ -86,6 +86,10 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_data.py
 
+      - name: Reconcile official/canonical mission coverage
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/reconcile_official_mission_coverage.py
+
       - name: Validate official UK mission catalogue
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_official_mission_catalogue.py
