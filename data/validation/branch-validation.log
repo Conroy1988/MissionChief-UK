@@ -41,124 +41,9 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 167,
-  "ready_count": 3,
-  "blocked_count": 909,
+  "ready_count": 1,
+  "blocked_count": 911,
   "ready": [
-    {
-      "id": "354",
-      "name": "Large fire in nightclub",
-      "suggested_path": "data/uk/missions/large-fire-in-nightclub.json",
-      "average_credits": 9000,
-      "mission_categories": [
-        "fire",
-        "urban"
-      ],
-      "place": "Nightclub",
-      "place_array": [
-        "Nightclub"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 4,
-        "firetrucks": 6,
-        "mobile_command_vehicles": 1,
-        "platform_trucks": 1,
-        "police_cars": 2
-      },
-      "chances": {
-        "platform_trucks": 20
-      },
-      "prerequisites": {
-        "fire_stations": 15,
-        "main_building": 0,
-        "police_stations": 2,
-        "rescue_stations": 7
-      },
-      "generator_family": "firehouse_missions",
-      "expansion_missions": [
-        {
-          "id": 355,
-          "name": "Large fire in nightclub (Major Incident)"
-        }
-      ],
-      "followup_missions": [
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        }
-      ]
-    },
-    {
-      "id": "355",
-      "name": "Large fire in nightclub (Major Incident)",
-      "suggested_path": "data/uk/missions/large-fire-in-nightclub-major-incident-355.json",
-      "average_credits": 15000,
-      "mission_categories": [
-        "fire",
-        "urban"
-      ],
-      "place": "Nightclub",
-      "place_array": [
-        "Nightclub"
-      ],
-      "requirements": {
-        "battalion_chief_vehicles": 8,
-        "firetrucks": 10,
-        "heavy_rescue_vehicles": 1,
-        "mobile_air_vehicles": 1,
-        "mobile_command_vehicles": 1,
-        "platform_trucks": 1,
-        "police_cars": 2
-      },
-      "chances": {
-        "platform_trucks": 20
-      },
-      "prerequisites": {
-        "fire_stations": 25,
-        "main_building": 0,
-        "police_stations": 2,
-        "rescue_stations": 15
-      },
-      "generator_family": "firehouse_missions",
-      "expansion_missions": [],
-      "followup_missions": [
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        },
-        {
-          "id": 349,
-          "name": "Smoke Inhalation"
-        }
-      ]
-    },
     {
       "id": "703",
       "name": "Fire in Derelict Shop",
@@ -1315,7 +1200,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/34"
         },
@@ -1497,7 +1383,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/94"
         },
@@ -2244,7 +2131,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/34"
         },
@@ -2372,7 +2260,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/190"
         },
@@ -2391,7 +2280,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/192"
         },
@@ -2410,7 +2300,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/193"
         },
@@ -4319,6 +4210,7 @@ PASS canonical-candidates
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:192",
             "additive_overlays"
           ],
@@ -4945,6 +4837,7 @@ PASS canonical-candidates
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:193",
             "overlay_index"
           ],
@@ -4969,6 +4862,7 @@ PASS canonical-candidates
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:193",
             "overlay_index"
           ],
@@ -7443,7 +7337,8 @@ PASS canonical-candidates
             "additional.patient_specialization_ids",
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
-            "additional.possible_patient"
+            "additional.possible_patient",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/190"
         },
@@ -7465,7 +7360,8 @@ PASS canonical-candidates
             "additional.patient_specializations",
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
-            "additional.possible_patient_min"
+            "additional.possible_patient_min",
+            "additional.followup_missions_ids.duplicate-multiplicity"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/210"
         },
@@ -11981,6 +11877,7 @@ PASS canonical-candidates
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
             "additional.possible_patient_min",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:329",
             "additive_overlays"
           ],
@@ -12006,6 +11903,7 @@ PASS canonical-candidates
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
             "additional.possible_patient_min",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:329",
             "additive_overlays"
           ],
@@ -12032,6 +11930,7 @@ PASS canonical-candidates
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
             "additional.possible_patient_min",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:356",
             "additive_overlays"
           ],
@@ -12058,6 +11957,7 @@ PASS canonical-candidates
             "additional.patient_uk_code_possible",
             "additional.possible_patient",
             "additional.possible_patient_min",
+            "additional.followup_missions_ids.duplicate-multiplicity",
             "variant:356",
             "additive_overlays"
           ],
@@ -13814,7 +13714,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.10 seconds
+INFO    -  Documentation built in 1.55 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
