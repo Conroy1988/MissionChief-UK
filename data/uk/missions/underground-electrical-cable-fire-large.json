@@ -1,0 +1,28 @@
+{
+  "id": 477,
+  "name": "Underground electrical cable fire (Large)",
+  "service": "fire",
+  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "poi": [],
+  "preconditions": {"fire_stations": 13, "police_stations": 6},
+  "requirements": {
+    "guaranteed": [
+      {"resource": "fire_engine", "quantity": 8},
+      {"resource": "fire_officer", "quantity": 4},
+      {"resource": "rescue_support_vehicle", "quantity": 1},
+      {"resource": "police_car", "quantity": 4}
+    ],
+    "probabilistic": [
+      {"resource": "water_carrier", "quantity": 1, "probability": 0.5}
+    ],
+    "alternatives": [
+      {"resources": ["hazmat_unit", "cbrn_vehicle"], "quantity": 1},
+      {"resources": ["iccu", "ambulance_control_unit"], "quantity": 1}
+    ]
+  },
+  "reward": {"average_credits": 8000},
+  "follow_up_missions": [],
+  "expandable_missions": ["Underground electrical cable fire (Major)"],
+  "notes": ["The 50% Water Carrier requirement and published expansion into the major incident are retained.", "HazMat/CBRN and ICCU/Ambulance Control requirements remain qualifying alternative groups."],
+  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/477", "https://www.missionchief.co.uk/einsaetze.json"]}
+}
