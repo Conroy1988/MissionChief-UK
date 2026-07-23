@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
-  "validated_commit": "8927329575b3bab98e203981e1033d8049afd89a",
-  "generated_at": "2026-07-23T19:33:18Z",
-  "status": "success",
+  "validated_commit": "87bdf552cec4c38d553f3ce585f493fa83dde44e",
+  "generated_at": "2026-07-23T23:54:33Z",
+  "status": "failure",
   "log_path": "data/validation/branch-validation.log"
 }
