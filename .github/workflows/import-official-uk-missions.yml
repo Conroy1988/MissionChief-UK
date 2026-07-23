@@ -38,6 +38,7 @@ jobs:
           python -m py_compile scripts/validate_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_key_mappings.py
           python -m py_compile scripts/generate_mission_verification_status.py
+          python -m py_compile scripts/validate_verification_programme_assets.py
 
       - name: Download and reconcile official UK missions
         run: python scripts/import_official_uk_missions.py
@@ -59,6 +60,9 @@ jobs:
 
       - name: Regenerate 100% mission verification backlog
         run: python scripts/generate_mission_verification_status.py
+
+      - name: Validate mission verification programme assets
+        run: python scripts/validate_verification_programme_assets.py
 
       - name: Commit source changes only
         id: commit
