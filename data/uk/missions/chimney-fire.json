@@ -13,9 +13,9 @@
       {"resource": "aerial_appliance_truck", "quantity": 1, "probability": 0.1}
     ]
   },
-  "reward": {"average_credits": 1300},
+  "reward": {"average_credits": 1900},
   "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": ["Official Aerial Appliance Truck probability is retained separately from the guaranteed Fire Officer requirement."],
+  "expandable_missions": ["Roof fire"],
+  "notes": ["Official Aerial Appliance Truck probability is retained separately from the guaranteed Fire Officer requirement.", "The published Roof fire expansion relationship is retained."],
   "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/21", "https://www.missionchief.co.uk/einsaetze.json"]}
 }
