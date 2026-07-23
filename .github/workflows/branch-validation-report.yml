@@ -68,6 +68,7 @@ jobs:
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
           run_check "verification-status" python scripts/generate_mission_verification_status.py
+          run_check "public-metric-sync" python scripts/sync_public_verification_metrics.py
           run_check "verification-assets" python scripts/validate_verification_programme_assets.py
           run_check "public-exports" python scripts/generate_exports.py
           run_check "generated-faq" python scripts/generate_faq.py
@@ -100,16 +101,23 @@ jobs:
 
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
 
-      - name: Commit validation report
+      - name: Commit synchronized publication and validation report
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/validation/branch-validation.json data/validation/branch-validation.log
+          git add -f \
+            README.md \
+            CHANGELOG.md \
+            docs/index.md \
+            docs/api/index.md \
+            docs/releases/v1.1.0.md \
+            data/validation/branch-validation.json \
+            data/validation/branch-validation.log
           if git diff --cached --quiet; then
-            echo "Validation report is unchanged."
+            echo "Synchronized publication and validation report are unchanged."
           else
-            git commit -m "Record release-candidate validation"
+            git commit -m "Synchronize verification publication and validation"
             git push origin HEAD:feature/uk-mission-catalogue-expansion
           fi
 
