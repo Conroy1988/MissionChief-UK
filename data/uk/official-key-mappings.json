@@ -399,6 +399,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official traffic_car count represents Traffic Cars. Missions carrying need_traffic_car_only_if_present=true are delegated to the conditional resource contract; all other records use the standard guaranteed or same-key probabilistic mapping."
+    },
+    "coastal_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "coastguard_rescue_vehicle",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/543",
+        "https://www.missionchief.co.uk/einsaetze/545",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_rescue count is displayed as the required Coastguard Rescue Vehicle quantity."
     }
   },
   "chances": {
@@ -746,6 +759,19 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official tow_trucks_large prerequisite is the countable HGV Recovery Extension mission-generation requirement."
+    },
+    "water_rescue_2": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "coastguard_rescue_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/543",
+        "https://www.missionchief.co.uk/einsaetze/545",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official water_rescue_2 prerequisite is the countable Coastguard Rescue Station mission-generation requirement."
     }
   }
 }
