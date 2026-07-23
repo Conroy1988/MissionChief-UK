@@ -384,6 +384,21 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The top-level official railway_police count is displayed as the required EIU quantity. Railway Police Officer staffing remains separately represented by personnel_educations."
+    },
+    "traffic_car": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "traffic_car",
+      "chance_key": "traffic_car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://www.missionchief.co.uk/einsaetze/73",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official traffic_car count represents Traffic Cars. Missions carrying need_traffic_car_only_if_present=true are delegated to the conditional resource contract; all other records use the standard guaranteed or same-key probabilistic mapping."
     }
   },
   "chances": {
@@ -513,6 +528,20 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The integer percentage is the probability that the published HazMat Unit or CBRN Vehicle alternative quantity is required."
+    },
+    "traffic_car": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "traffic_car",
+      "requirement_key": "traffic_car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/29",
+        "https://www.missionchief.co.uk/einsaetze/90",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The same-key percentage is the Traffic Car requirement probability. Conditional availability remains separately retained when the official flag is true."
     }
   },
   "prerequisites": {

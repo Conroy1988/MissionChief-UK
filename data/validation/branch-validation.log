@@ -18,7 +18,8 @@ Police Helicopter or Drone mapping synchronized: already current.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
 Core railway mappings synchronized: already current.
-Official key mapping synchronization passed: 11 synchronizer(s) executed.
+Traffic Car mapping synchronized: change required.
+Official key mapping synchronization passed: 12 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -96,12 +97,32 @@ Mission verification registry merged: 224 decisions from 27 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 224 promoted missions are equivalent.
-PASS promoted-mapping-report
+Official key mapping failure report found 20 failing missions across 224 promoted records:
+- Mission 29 maps official requirement to probabilistic traffic_car=(1, 0.25), canonical value is None
+- Mission 69 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 73 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 90 maps official requirement to probabilistic traffic_car=(1, 0.75), canonical value is None
+- Mission 126 maps official requirement to probabilistic traffic_car=(1, 0.5), canonical value is None
+- Mission 128 maps official requirement to probabilistic traffic_car=(1, 0.5), canonical value is None
+- Mission 129 maps official requirement to probabilistic traffic_car=(1, 0.5), canonical value is None
+- Mission 130 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 131 maps official requirement to probabilistic traffic_car=(1, 0.25), canonical value is None
+- Mission 133 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 322 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 393 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 442 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 443 maps official requirement to guaranteed traffic_car=2, canonical value is None
+- Mission 444 maps official requirement to guaranteed traffic_car=1, canonical value is None
+- Mission 451 maps official requirement to guaranteed traffic_car=2, canonical value is None
+- Mission 467 maps official requirement to guaranteed traffic_car=2, canonical value is None
+- Mission 478 maps official requirement to guaranteed traffic_car=2, canonical value is None
+- Mission 484 maps official requirement to guaranteed traffic_car=2, canonical value is None
+- Mission 485 maps official requirement to guaranteed traffic_car=2, canonical value is None
+FAIL promoted-mapping-report (1)
 
 ## official-key-equivalence
-Official key mapping audit passed: 224 promoted missions, 224 fully canonical, 27 requirement keys, 10 chance keys and 13 prerequisite keys mapped.
-PASS official-key-equivalence
+Official key mapping audit failed: Mission 29 maps official requirement to probabilistic traffic_car=(1, 0.25), canonical value is None
+FAIL official-key-equivalence (1)
 
 ## official-patient-equivalence
 Official patient mapping audit passed: 224/224 promoted missions exact, 98 patient-bearing promoted missions and 10 patient fields mapped.
@@ -7523,7 +7544,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.70 seconds
+INFO    -  Documentation built in 1.76 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
