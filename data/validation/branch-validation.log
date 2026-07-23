@@ -18241,8 +18241,8 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit failed: README does not preserve the Batch 1 historical milestone
-FAIL release-readiness (1)
+Release-readiness audit passed: version=1.1.0, missions=112, vehicles=46, infrastructure=18, training=11
+PASS release-readiness
 
 ## links-and-anchors
 Documentation link audit passed across 72 Markdown files
@@ -18271,10 +18271,10 @@ INFO    -  The following pages exist in the docs directory, but are not included
   - reference/fully-canonical-mission-batch-4.md
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.26 seconds
+INFO    -  Documentation built in 1.20 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit failed: README does not preserve the Batch 1 historical milestone
-FAIL built-site-readiness (1)
+Release-readiness audit passed: version=1.1.0, missions=112, vehicles=46, infrastructure=18, training=11; built site=site
+PASS built-site-readiness
 
