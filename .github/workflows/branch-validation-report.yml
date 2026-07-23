@@ -64,6 +64,7 @@ jobs:
           run_check "conditional-resource-contract-sync" python scripts/sync_conditional_resource_contract_integration.py
           run_check "conditional-resource-modes-sync" python scripts/sync_conditional_resource_modes_integration.py
           run_check "recovery-contract-sync" python scripts/sync_recovery_contract_integration.py
+          run_check "coastguard-generator-sync" python scripts/sync_coastguard_generator_integration.py
           run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
           run_check "prisoner-schema-sync" python scripts/sync_prisoner_schema.py
           run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
