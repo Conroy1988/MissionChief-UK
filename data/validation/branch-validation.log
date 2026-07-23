@@ -33,7 +33,7 @@ Official key mapping failure report passed: all 109 promoted missions are equiva
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 109 promoted missions, 109 fully canonical, 11 requirement keys, 5 chance keys and 3 prerequisite keys mapped.
+Official key mapping audit passed: 109 promoted missions, 109 fully canonical, 11 requirement keys, 5 chance keys and 4 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -41,9 +41,155 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 167,
-  "ready_count": 0,
-  "blocked_count": 912,
-  "ready": [],
+  "ready_count": 3,
+  "blocked_count": 909,
+  "ready": [
+    {
+      "id": "354",
+      "name": "Large fire in nightclub",
+      "suggested_path": "data/uk/missions/large-fire-in-nightclub.json",
+      "average_credits": 9000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Nightclub",
+      "place_array": [
+        "Nightclub"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 4,
+        "firetrucks": 6,
+        "mobile_command_vehicles": 1,
+        "platform_trucks": 1,
+        "police_cars": 2
+      },
+      "chances": {
+        "platform_trucks": 20
+      },
+      "prerequisites": {
+        "fire_stations": 15,
+        "main_building": 0,
+        "police_stations": 2,
+        "rescue_stations": 7
+      },
+      "generator_family": "firehouse_missions",
+      "expansion_missions": [
+        {
+          "id": 355,
+          "name": "Large fire in nightclub (Major Incident)"
+        }
+      ],
+      "followup_missions": [
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        }
+      ]
+    },
+    {
+      "id": "355",
+      "name": "Large fire in nightclub (Major Incident)",
+      "suggested_path": "data/uk/missions/large-fire-in-nightclub-major-incident-355.json",
+      "average_credits": 15000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "Nightclub",
+      "place_array": [
+        "Nightclub"
+      ],
+      "requirements": {
+        "battalion_chief_vehicles": 8,
+        "firetrucks": 10,
+        "heavy_rescue_vehicles": 1,
+        "mobile_air_vehicles": 1,
+        "mobile_command_vehicles": 1,
+        "platform_trucks": 1,
+        "police_cars": 2
+      },
+      "chances": {
+        "platform_trucks": 20
+      },
+      "prerequisites": {
+        "fire_stations": 25,
+        "main_building": 0,
+        "police_stations": 2,
+        "rescue_stations": 15
+      },
+      "generator_family": "firehouse_missions",
+      "expansion_missions": [],
+      "followup_missions": [
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        },
+        {
+          "id": 349,
+          "name": "Smoke Inhalation"
+        }
+      ]
+    },
+    {
+      "id": "703",
+      "name": "Fire in Derelict Shop",
+      "suggested_path": "data/uk/missions/fire-in-derelict-shop.json",
+      "average_credits": 7000,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "battalion_chief_vehicles": 2,
+        "firetrucks": 4,
+        "heavy_rescue_vehicles": 1,
+        "mobile_air_vehicles": 1,
+        "platform_trucks": 1,
+        "police_cars": 2
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 12,
+        "main_building": 0,
+        "police_stations": 2,
+        "rescue_stations": 2
+      },
+      "generator_family": "firehouse_missions",
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -56,219 +202,10 @@ PASS canonical-candidates
   "mapped_key_counts": {
     "requirements": 11,
     "chances": 5,
-    "prerequisites": 3
+    "prerequisites": 4
   },
-  "unmapped_key_count": 77,
+  "unmapped_key_count": 76,
   "entries": [
-    {
-      "group": "prerequisites",
-      "key": "rescue_stations",
-      "remaining_mission_count": 532,
-      "single_key_unlock_count": 3,
-      "examples": [
-        {
-          "id": "26",
-          "name": "Small Supermarket Fire",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/26"
-        },
-        {
-          "id": "33",
-          "name": "Small Supermarket Fire",
-          "value": 1,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/33"
-        },
-        {
-          "id": "34",
-          "name": "Fire in Hospital - Major Incident",
-          "value": 6,
-          "average_credits": 10750,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/34"
-        },
-        {
-          "id": "35",
-          "name": "Alcoholic intoxication",
-          "value": 1,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/35"
-        },
-        {
-          "id": "36",
-          "name": "Chest Pains",
-          "value": 3,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/36"
-        },
-        {
-          "id": "37",
-          "name": "Acute asthma",
-          "value": 3,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/37"
-        },
-        {
-          "id": "38",
-          "name": "Seizure",
-          "value": 3,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/38"
-        },
-        {
-          "id": "39",
-          "name": "Fever",
-          "value": 3,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_allow_first_responder_chance",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/39"
-        },
-        {
-          "id": "40",
-          "name": "Fallen person",
-          "value": 1,
-          "average_credits": null,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.patient_allow_first_responder_chance",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/40"
-        },
-        {
-          "id": "41",
-          "name": "Car workshop fire - persons reported",
-          "value": 2,
-          "average_credits": 6000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport"
-          ],
-          "operational_complexity": [
-            "additional.fire_alarm_system_possible",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/41"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "k9",
@@ -441,8 +378,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -479,7 +415,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -506,7 +441,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -537,8 +471,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -567,8 +500,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -594,8 +526,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -620,8 +551,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -647,8 +577,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -683,8 +612,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -729,7 +657,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -773,8 +700,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -797,7 +723,6 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -835,8 +760,7 @@ PASS canonical-candidates
           "average_credits": 11500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.foam",
-            "prerequisites.rescue_stations"
+            "requirements.foam"
           ],
           "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/734"
@@ -859,8 +783,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ambulances",
-            "requirements.foam",
-            "prerequisites.rescue_stations"
+            "requirements.foam"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -891,8 +814,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -914,8 +836,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "chances.hazmat_vehicles",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -925,6 +846,201 @@ PASS canonical-candidates
             "additional.possible_patient"
           ],
           "official_url": "https://www.missionchief.co.uk/einsaetze/823"
+        }
+      ]
+    },
+    {
+      "group": "requirements",
+      "key": "ambulances",
+      "remaining_mission_count": 23,
+      "single_key_unlock_count": 1,
+      "examples": [
+        {
+          "id": "164",
+          "name": "Easter market fair",
+          "value": 4,
+          "average_credits": 10400,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/164"
+        },
+        {
+          "id": "234",
+          "name": "Concert",
+          "value": 1,
+          "average_credits": 7000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/234"
+        },
+        {
+          "id": "261",
+          "name": "Guarding inner-city New Year's Eve party",
+          "value": 2,
+          "average_credits": 20000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission",
+            "additional.swat_personnel"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/261"
+        },
+        {
+          "id": "306",
+          "name": "Great St. Patricks Day parade",
+          "value": 4,
+          "average_credits": 20000,
+          "filter_id": "police_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/306"
+        },
+        {
+          "id": "346",
+          "name": "Safeguarding a swimming competition",
+          "value": 2,
+          "average_credits": 2400,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.duration",
+            "additional.duration_text",
+            "additional.guard_mission",
+            "generator:'ambulance_station_missions'"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/346"
+        },
+        {
+          "id": "434",
+          "name": "Thief attacked by a cow",
+          "value": 1,
+          "average_credits": 860,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [
+            "chances.patient_transport"
+          ],
+          "operational_complexity": [
+            "additional.date_end",
+            "additional.date_start",
+            "additional.patient_allow_first_responder_chance",
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min",
+            "additional.subsequent_mission_only",
+            "generator:'ambulance_station_missions'"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/434"
+        },
+        {
+          "id": "474",
+          "name": "Penetrating Trauma - Central Wound",
+          "value": 1,
+          "average_credits": 800,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "chances.patient_critical_care",
+            "chances.patient_transport"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min",
+            "generator:'ambulance_station_missions'"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/474"
+        },
+        {
+          "id": "527",
+          "name": "Factory Fire (Major Incident)",
+          "value": 1,
+          "average_credits": 25000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "chances.patient_transport"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/527"
+        },
+        {
+          "id": "528",
+          "name": "Factory Fire (Major Incident) (Persons Reported)",
+          "value": 1,
+          "average_credits": 30000,
+          "filter_id": "firehouse_missions",
+          "other_unmapped_keys": [
+            "requirements.kdow_orgl",
+            "chances.patient_critical_care",
+            "chances.patient_transport"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/528"
+        },
+        {
+          "id": "578",
+          "name": "Hypovolemic shock",
+          "value": 1,
+          "average_credits": 500,
+          "filter_id": "ambulance_station_missions",
+          "other_unmapped_keys": [
+            "chances.patient_critical_care",
+            "chances.patient_transport"
+          ],
+          "operational_complexity": [
+            "additional.patient_specialization_captions",
+            "additional.patient_specialization_ids",
+            "additional.patient_specializations",
+            "additional.patient_uk_code_possible",
+            "additional.possible_patient",
+            "additional.possible_patient_min",
+            "generator:'ambulance_station_missions'"
+          ],
+          "official_url": "https://www.missionchief.co.uk/einsaetze/578"
         }
       ]
     },
@@ -941,8 +1057,7 @@ PASS canonical-candidates
           "average_credits": 4000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -974,8 +1089,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -1006,8 +1120,7 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
@@ -1028,8 +1141,7 @@ PASS canonical-candidates
           "average_credits": 9560,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1050,8 +1162,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.foam",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1161,9 +1272,7 @@ PASS canonical-candidates
           "value": 30,
           "average_credits": 1500,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
             "additional.patient_specialization_captions",
@@ -1180,9 +1289,7 @@ PASS canonical-candidates
           "value": 30,
           "average_credits": 1500,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
             "additional.patient_specialization_captions",
@@ -1200,8 +1307,7 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "prerequisites.rescue_stations"
+            "requirements.kdow_orgl"
           ],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
@@ -1219,9 +1325,7 @@ PASS canonical-candidates
           "value": 30,
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.patient_specialization_captions",
             "additional.patient_specialization_ids",
@@ -1240,8 +1344,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "prerequisites.rescue_stations"
+            "chances.patient_critical_care"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1260,9 +1363,7 @@ PASS canonical-candidates
           "value": 50,
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.patient_specialization_captions",
             "additional.patient_specialization_ids",
@@ -1281,8 +1382,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "prerequisites.rescue_stations"
+            "chances.patient_critical_care"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1301,9 +1401,7 @@ PASS canonical-candidates
           "value": 90,
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
             "additional.patient_specialization_captions",
@@ -1331,8 +1429,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1352,8 +1449,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1373,8 +1469,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1394,8 +1489,7 @@ PASS canonical-candidates
           "average_credits": 5300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
@@ -1414,8 +1508,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -1436,8 +1529,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1458,8 +1550,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1478,8 +1569,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1499,8 +1589,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1520,8 +1609,7 @@ PASS canonical-candidates
           "average_credits": null,
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1553,8 +1641,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1591,7 +1678,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -1618,7 +1704,6 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -1640,8 +1725,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -1675,8 +1759,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -1705,8 +1788,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1732,8 +1814,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1758,8 +1839,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1785,8 +1865,7 @@ PASS canonical-candidates
             "requirements.mass_casualty_equipment",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1821,8 +1900,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1854,8 +1932,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -1892,7 +1969,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -1919,7 +1995,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -1950,8 +2025,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -1980,8 +2054,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2007,8 +2080,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2033,8 +2105,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2060,8 +2131,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2096,8 +2166,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2139,7 +2208,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -2168,8 +2236,7 @@ PASS canonical-candidates
           "average_credits": 10750,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.fire_alarm_system_possible",
@@ -2191,8 +2258,7 @@ PASS canonical-candidates
             "requirements.traffic_car",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -2215,8 +2281,7 @@ PASS canonical-candidates
             "requirements.traffic_car",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -2238,8 +2303,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.traffic_car",
             "chances.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -2260,8 +2324,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2282,8 +2345,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2303,8 +2365,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2323,8 +2384,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2343,8 +2403,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2407,7 +2466,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -2435,8 +2493,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2462,8 +2519,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2488,8 +2544,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2515,8 +2570,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2551,8 +2605,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -2594,7 +2647,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -2628,7 +2680,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -2876,7 +2927,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -2903,7 +2953,6 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -2930,7 +2979,6 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3146,7 +3194,6 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3173,7 +3220,6 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3200,7 +3246,6 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3247,7 +3292,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3291,8 +3335,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -3312,8 +3355,7 @@ PASS canonical-candidates
           "average_credits": 11500,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/734"
@@ -3326,8 +3368,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.ambulances",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -3358,8 +3399,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3401,7 +3441,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -3424,8 +3463,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.hazmat_vehicles",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3448,8 +3486,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3469,8 +3506,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -3524,8 +3560,7 @@ PASS canonical-candidates
           "average_credits": 2000,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -3583,8 +3618,7 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -3621,8 +3655,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -3645,8 +3678,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -3668,8 +3700,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -3714,7 +3745,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -3737,8 +3767,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -3770,8 +3799,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -3800,8 +3828,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3827,8 +3854,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3853,8 +3879,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3880,8 +3905,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3916,8 +3940,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -3959,7 +3982,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -3987,8 +4009,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4034,7 +4055,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -4062,8 +4082,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4089,8 +4108,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4115,8 +4133,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4142,8 +4159,7 @@ PASS canonical-candidates
             "requirements.mass_casualty_equipment",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4178,8 +4194,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4221,7 +4236,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -4249,8 +4263,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4274,8 +4287,7 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4299,8 +4311,7 @@ PASS canonical-candidates
             "requirements.ems_mobile_command",
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4349,8 +4360,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -4375,8 +4385,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -4400,8 +4409,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.police_helicopters",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4438,8 +4446,7 @@ PASS canonical-candidates
             "requirements.k9",
             "requirements.oneof_police_drone_or_helicopter",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -4462,8 +4469,7 @@ PASS canonical-candidates
             "requirements.k9",
             "requirements.oneof_police_drone_or_helicopter",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -4534,7 +4540,6 @@ PASS canonical-candidates
             "requirements.police_helicopters",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.riot_police"
           ],
           "operational_complexity": [
@@ -4718,8 +4723,7 @@ PASS canonical-candidates
           "average_credits": 6000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4738,8 +4742,7 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.k9",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4758,8 +4761,7 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.k9",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4802,7 +4804,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -4831,8 +4832,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4867,8 +4867,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4910,7 +4909,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -4939,8 +4937,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4964,8 +4961,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -4993,8 +4989,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -5022,8 +5017,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -5055,8 +5049,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -5080,8 +5073,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mass_casualty_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.mass_casualty_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -5171,8 +5163,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -5193,8 +5184,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -5215,8 +5205,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -5249,8 +5238,7 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -5330,8 +5318,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -5356,8 +5343,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -5381,8 +5367,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -5467,7 +5452,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations",
             "prerequisites.riot_police"
           ],
           "operational_complexity": [
@@ -5551,8 +5535,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_fire",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_fire"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -5594,7 +5577,6 @@ PASS canonical-candidates
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -5628,7 +5610,6 @@ PASS canonical-candidates
             "prerequisites.flood_equipment",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -5662,7 +5643,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
@@ -5731,8 +5711,7 @@ PASS canonical-candidates
             "requirements.railway_police",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -5859,8 +5838,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -5902,7 +5880,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -5936,7 +5913,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -5970,7 +5946,6 @@ PASS canonical-candidates
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
@@ -6039,8 +6014,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -6139,216 +6113,6 @@ PASS canonical-candidates
       ]
     },
     {
-      "group": "requirements",
-      "key": "ambulances",
-      "remaining_mission_count": 23,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "164",
-          "name": "Easter market fair",
-          "value": 4,
-          "average_credits": 10400,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/164"
-        },
-        {
-          "id": "234",
-          "name": "Concert",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/234"
-        },
-        {
-          "id": "261",
-          "name": "Guarding inner-city New Year's Eve party",
-          "value": 2,
-          "average_credits": 20000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/261"
-        },
-        {
-          "id": "306",
-          "name": "Great St. Patricks Day parade",
-          "value": 4,
-          "average_credits": 20000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/306"
-        },
-        {
-          "id": "346",
-          "name": "Safeguarding a swimming competition",
-          "value": 2,
-          "average_credits": 2400,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.duration",
-            "additional.duration_text",
-            "additional.guard_mission",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/346"
-        },
-        {
-          "id": "434",
-          "name": "Thief attacked by a cow",
-          "value": 1,
-          "average_credits": 860,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start",
-            "additional.patient_allow_first_responder_chance",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "additional.subsequent_mission_only",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/434"
-        },
-        {
-          "id": "474",
-          "name": "Penetrating Trauma - Central Wound",
-          "value": 1,
-          "average_credits": 800,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/474"
-        },
-        {
-          "id": "527",
-          "name": "Factory Fire (Major Incident)",
-          "value": 1,
-          "average_credits": 25000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/527"
-        },
-        {
-          "id": "528",
-          "name": "Factory Fire (Major Incident) (Persons Reported)",
-          "value": 1,
-          "average_credits": 30000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.kdow_orgl",
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/528"
-        },
-        {
-          "id": "578",
-          "name": "Hypovolemic shock",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "ambulance_station_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min",
-            "generator:'ambulance_station_missions'"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/578"
-        }
-      ]
-    },
-    {
       "group": "prerequisites",
       "key": "tow_trucks",
       "remaining_mission_count": 22,
@@ -6362,8 +6126,7 @@ PASS canonical-candidates
           "filter_id": "tow_trucks_missions",
           "other_unmapped_keys": [
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -6390,8 +6153,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.traffic_car",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -6490,8 +6252,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.traffic_car",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -6519,8 +6280,7 @@ PASS canonical-candidates
             "requirements.traffic_car",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -6548,8 +6308,7 @@ PASS canonical-candidates
             "requirements.traffic_car",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -6617,8 +6376,7 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6642,8 +6400,7 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6667,8 +6424,7 @@ PASS canonical-candidates
             "requirements.height_rescue_units",
             "requirements.personnel_educations",
             "chances.patient_transport",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6694,8 +6450,7 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6718,8 +6473,7 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "requirements.coastal_rescue",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6740,8 +6494,7 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "requirements.coastal_rescue",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6762,8 +6515,7 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "requirements.coastal_rescue",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6784,8 +6536,7 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "requirements.coastal_rescue",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -6815,8 +6566,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.large_coastal_boat",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -6847,7 +6597,6 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -6872,8 +6621,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -6900,8 +6648,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -6928,7 +6675,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -6951,7 +6697,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -6983,7 +6728,6 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7009,8 +6753,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -7039,7 +6782,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7068,8 +6810,7 @@ PASS canonical-candidates
             "requirements.oneof_coastal_guard_boat_or_boat_large",
             "chances.coastal_helicopter",
             "chances.patient_transport",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -7113,8 +6854,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7148,8 +6888,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7183,8 +6922,7 @@ PASS canonical-candidates
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7219,8 +6957,7 @@ PASS canonical-candidates
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7253,8 +6990,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7284,8 +7020,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7316,8 +7051,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7349,8 +7083,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.fire_support_count",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7380,8 +7113,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7404,8 +7136,7 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -7465,7 +7196,6 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7487,7 +7217,6 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7509,7 +7238,6 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7531,7 +7259,6 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -7622,8 +7349,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.traffic_car",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -7646,8 +7372,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.traffic_car",
             "chances.patient_transport",
-            "chances.traffic_car",
-            "prerequisites.rescue_stations"
+            "chances.traffic_car"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -7669,8 +7394,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -7692,8 +7416,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7713,8 +7436,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7734,8 +7456,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -7757,8 +7478,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.average_min_fire_personnel",
@@ -7780,8 +7500,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7802,8 +7521,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -7825,7 +7543,6 @@ PASS canonical-candidates
             "requirements.traffic_car",
             "chances.patient_transport",
             "chances.traffic_car",
-            "prerequisites.rescue_stations",
             "prerequisites.tow_trucks"
           ],
           "operational_complexity": [
@@ -7860,8 +7577,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7887,8 +7603,7 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7912,8 +7627,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7939,8 +7653,7 @@ PASS canonical-candidates
             "requirements.rescue_dogs",
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7964,8 +7677,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -7999,8 +7711,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8029,8 +7740,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.kdow_orgl",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8056,8 +7766,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.coastal_helicopter_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_helicopter_count"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8084,8 +7793,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8115,8 +7823,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.drone",
-            "prerequisites.rescue_stations"
+            "prerequisites.drone"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8149,8 +7856,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8176,8 +7882,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8201,8 +7906,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8228,8 +7932,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8253,8 +7956,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8288,8 +7990,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8318,8 +8019,7 @@ PASS canonical-candidates
             "chances.kdow_orgl",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8345,8 +8045,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8373,8 +8072,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8404,8 +8102,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -8472,8 +8169,7 @@ PASS canonical-candidates
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -8510,8 +8206,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.traffic_car",
             "chances.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -8534,8 +8229,7 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "requirements.traffic_car",
             "chances.kdow_orgl",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -8600,7 +8294,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.traffic_car",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.tow_trucks"
           ],
           "operational_complexity": [
@@ -8667,8 +8360,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8710,7 +8402,6 @@ PASS canonical-candidates
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -8781,8 +8472,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8808,8 +8498,7 @@ PASS canonical-candidates
             "requirements.two_way",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8843,8 +8532,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8875,8 +8563,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8908,8 +8595,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8937,8 +8623,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -8984,8 +8669,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9027,7 +8711,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -9098,8 +8781,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9125,8 +8807,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9160,8 +8841,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9192,8 +8872,7 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9225,8 +8904,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9254,8 +8932,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.personnel_educations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9313,8 +8990,7 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9352,8 +9028,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9377,8 +9052,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -9435,8 +9109,7 @@ PASS canonical-candidates
           "average_credits": 1300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -9462,8 +9135,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.traffic_car",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -9487,8 +9159,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.traffic_car",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.need_traffic_car_only_if_present",
@@ -9524,7 +9195,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -9550,8 +9220,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9578,8 +9247,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9607,8 +9275,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "requirements.large_coastal_boat",
             "chances.patient_transport",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9637,7 +9304,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "chances.patient_transport",
             "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -9666,8 +9332,7 @@ PASS canonical-candidates
             "requirements.oneof_coastal_guard_boat_or_boat_large",
             "chances.coastal_helicopter",
             "chances.patient_transport",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9749,8 +9414,7 @@ PASS canonical-candidates
             "requirements.oneof_mountain_atv_or_search_and_rescue_atv",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -9816,7 +9480,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -9842,8 +9505,7 @@ PASS canonical-candidates
             "requirements.large_coastal_boat",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9870,8 +9532,7 @@ PASS canonical-candidates
             "requirements.large_coastal_boat",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9899,8 +9560,7 @@ PASS canonical-candidates
             "requirements.large_coastal_boat",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -9929,7 +9589,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
             "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -9958,8 +9617,7 @@ PASS canonical-candidates
             "chances.coastal_helicopter",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -10041,8 +9699,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -10245,8 +9902,7 @@ PASS canonical-candidates
             "prerequisites.flood_equipment",
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -10276,7 +9932,6 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10307,7 +9962,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -10346,7 +10000,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -10373,7 +10026,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
             "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -10403,7 +10055,6 @@ PASS canonical-candidates
             "requirements.kdow_orgl",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10425,7 +10076,6 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10447,7 +10097,6 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10471,7 +10120,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10495,7 +10143,6 @@ PASS canonical-candidates
             "requirements.flood_equipment",
             "chances.patient_transport",
             "prerequisites.flood_equipment",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -10667,7 +10314,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -10700,8 +10346,7 @@ PASS canonical-candidates
             "requirements.k9",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -10724,8 +10369,7 @@ PASS canonical-candidates
             "requirements.k9",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -10781,7 +10425,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -10814,7 +10457,6 @@ PASS canonical-candidates
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.tow_trucks_large"
           ],
           "operational_complexity": [
@@ -10866,8 +10508,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -10896,8 +10537,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
-            "prerequisites.police_helicopter_stations",
-            "prerequisites.rescue_stations"
+            "prerequisites.police_helicopter_stations"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -10947,8 +10587,7 @@ PASS canonical-candidates
             "requirements.rescue_dogs",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -10981,8 +10620,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11027,7 +10665,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -11054,8 +10691,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11086,8 +10722,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.drone",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11117,8 +10752,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11148,8 +10782,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11183,7 +10816,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "requirements.flood_equipment",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -11288,7 +10920,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -11313,7 +10944,6 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "requirements.flood_equipment",
             "chances.patient_transport",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -11346,7 +10976,6 @@ PASS canonical-candidates
             "requirements.coastal_rescue",
             "chances.patient_transport",
             "prerequisites.flood_equipment",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -11451,7 +11080,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.personnel_educations",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -11476,7 +11104,6 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "chances.patient_transport",
             "prerequisites.flood_equipment",
-            "prerequisites.rescue_stations",
             "prerequisites.wasserrettung"
           ],
           "operational_complexity": [
@@ -11508,8 +11135,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -11535,8 +11161,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -11563,8 +11188,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -11592,8 +11216,7 @@ PASS canonical-candidates
             "requirements.coastal_helicopter",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -11703,8 +11326,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11737,8 +11359,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.hazard_response_ems",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11783,7 +11404,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -11810,8 +11430,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11842,8 +11461,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.drone",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11873,8 +11491,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11904,8 +11521,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -11937,8 +11553,7 @@ PASS canonical-candidates
           "filter_id": "coastal_rescue_missions",
           "other_unmapped_keys": [
             "requirements.coastal_boat",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -11962,8 +11577,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "requirements.kdow_orgl",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -11984,8 +11598,7 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12006,8 +11619,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.coastal_boat",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.date_end",
@@ -12030,8 +11642,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.coastal_boat",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12054,8 +11665,7 @@ PASS canonical-candidates
             "requirements.coastal_boat",
             "requirements.flood_equipment",
             "chances.patient_transport",
-            "prerequisites.flood_equipment",
-            "prerequisites.rescue_stations"
+            "prerequisites.flood_equipment"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12259,8 +11869,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ambulances",
             "requirements.midwife",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12284,8 +11893,7 @@ PASS canonical-candidates
             "requirements.ambulances",
             "requirements.midwife",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12307,8 +11915,7 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "requirements.midwife",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -12331,8 +11938,7 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12366,8 +11972,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_transport",
             "prerequisites.fire_support_count",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12392,8 +11997,7 @@ PASS canonical-candidates
             "requirements.hazard_response_primary",
             "requirements.hazard_response_secondary",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12419,8 +12023,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12446,8 +12049,7 @@ PASS canonical-candidates
             "requirements.hazard_response_secondary",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.hazard_response_ems",
-            "prerequisites.rescue_stations"
+            "prerequisites.hazard_response_ems"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12480,8 +12082,7 @@ PASS canonical-candidates
             "requirements.large_coastal_boat",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -12610,8 +12211,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.arff",
             "requirements.oneof_fire_engine_or_airport_fire_engine",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12636,8 +12236,7 @@ PASS canonical-candidates
             "requirements.oneof_fire_ladder_or_rescue_stairs",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12670,8 +12269,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12702,8 +12300,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12733,8 +12330,7 @@ PASS canonical-candidates
             "requirements.search_and_rescue_command",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -12773,7 +12369,6 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -12806,7 +12401,6 @@ PASS canonical-candidates
             "prerequisites.coastal_hover_boat",
             "prerequisites.coastal_rescue_count",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -12845,7 +12439,6 @@ PASS canonical-candidates
             "prerequisites.hazard_response_ems",
             "prerequisites.mass_casualty_count",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -12928,8 +12521,7 @@ PASS canonical-candidates
             "prerequisites.personnel_educations",
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.rescue_stations"
+            "prerequisites.railway_police"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -12968,7 +12560,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13007,7 +12598,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13072,7 +12662,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13105,7 +12694,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13144,7 +12732,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13200,7 +12787,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13239,7 +12825,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13275,8 +12860,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13307,8 +12891,7 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.drone",
             "prerequisites.mountain_rescue",
-            "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations"
+            "prerequisites.personnel_educations"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13338,8 +12921,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.drone",
-            "prerequisites.mountain_rescue",
-            "prerequisites.rescue_stations"
+            "prerequisites.mountain_rescue"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13373,7 +12955,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13398,7 +12979,6 @@ PASS canonical-candidates
             "requirements.personnel_educations",
             "chances.patient_transport",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13425,7 +13005,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13458,8 +13037,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.ambulances",
             "chances.patient_transport",
-            "prerequisites.general_practitioner",
-            "prerequisites.rescue_stations"
+            "prerequisites.general_practitioner"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13483,8 +13061,7 @@ PASS canonical-candidates
             "requirements.ambulances",
             "chances.patient_critical_care",
             "chances.patient_transport",
-            "prerequisites.general_practitioner",
-            "prerequisites.rescue_stations"
+            "prerequisites.general_practitioner"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13506,8 +13083,7 @@ PASS canonical-candidates
           "filter_id": "ambulance_station_missions",
           "other_unmapped_keys": [
             "chances.patient_transport",
-            "prerequisites.general_practitioner",
-            "prerequisites.rescue_stations"
+            "prerequisites.general_practitioner"
           ],
           "operational_complexity": [
             "additional.patient_allow_first_responder_chance",
@@ -13545,7 +13121,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13578,7 +13153,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13617,7 +13191,6 @@ PASS canonical-candidates
             "prerequisites.mass_casualty_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13655,7 +13228,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13688,7 +13260,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13768,7 +13339,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13801,7 +13371,6 @@ PASS canonical-candidates
             "prerequisites.coastal_rescue_count",
             "prerequisites.mud_rescue",
             "prerequisites.personnel_educations",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -13833,8 +13402,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.arff",
             "chances.patient_transport",
-            "prerequisites.airport",
-            "prerequisites.rescue_stations"
+            "prerequisites.airport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -13859,8 +13427,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -13925,7 +13492,6 @@ PASS canonical-candidates
             "prerequisites.police_helicopter_stations",
             "prerequisites.railway_fire",
             "prerequisites.railway_police",
-            "prerequisites.rescue_stations",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [
@@ -13958,8 +13524,7 @@ PASS canonical-candidates
             "requirements.oneof_coastal_guard_boat_or_boat_large",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -13993,8 +13558,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.k9",
             "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
+            "chances.patient_transport"
           ],
           "operational_complexity": [
             "additional.max_possible_prisoners",
@@ -14027,7 +13591,6 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -14079,8 +13642,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.oneof_fire_engine_or_airport_fire_engine",
             "chances.patient_transport",
-            "prerequisites.airport",
-            "prerequisites.rescue_stations"
+            "prerequisites.airport"
           ],
           "operational_complexity": [
             "additional.patient_at_end_of_mission",
@@ -14113,7 +13675,6 @@ PASS canonical-candidates
             "chances.patient_transport",
             "prerequisites.coastal_rescue_count",
             "prerequisites.coastal_rescue_extension",
-            "prerequisites.rescue_stations",
             "prerequisites.water_rescue_2"
           ],
           "operational_complexity": [
@@ -14147,8 +13708,7 @@ PASS canonical-candidates
             "chances.coastal_helicopter",
             "chances.patient_transport",
             "prerequisites.coastal_helicopter_count",
-            "prerequisites.coastal_rescue_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.coastal_rescue_count"
           ],
           "operational_complexity": [
             "additional.handoff_possible_via_building_types",
@@ -14185,8 +13745,7 @@ PASS canonical-candidates
             "chances.patient_critical_care",
             "chances.patient_transport",
             "prerequisites.airport",
-            "prerequisites.fire_support_count",
-            "prerequisites.rescue_stations"
+            "prerequisites.fire_support_count"
           ],
           "operational_complexity": [
             "additional.patient_specialization_captions",
@@ -14209,7 +13768,7 @@ Mission verification status generated: 10.26% fully canonical, 953 of 1062 missi
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=167, direct=150, fully=109, remaining=953, batches=13, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=167, direct=150, fully=109, remaining=953, batches=13, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 13 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -14255,7 +13814,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.47 seconds
+INFO    -  Documentation built in 1.10 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
