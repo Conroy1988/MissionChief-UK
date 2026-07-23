@@ -1,6 +1,7 @@
 ## canonical-data
 Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-10.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-11.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -10,61 +11,37 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-9.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
-Validated 238 structured data file(s) successfully, including 415 mission resource reference(s) and 85 infrastructure precondition reference(s).
+Validated 240 structured data file(s) successfully, including 418 mission resource reference(s) and 85 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 136/1062 direct official/canonical matches, 926 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 137/1062 direct official/canonical matches, 925 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 136/153 canonical ID matches, 926 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 137/154 canonical ID matches, 925 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 95 decisions from 9 source files.
+Mission verification registry merged: 96 decisions from 10 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 95 promoted missions are equivalent.
+Official key mapping failure report passed: all 96 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 95 promoted missions, 95 fully canonical, 9 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 96 promoted missions, 96 fully canonical, 9 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 153,
-  "ready_count": 1,
+  "canonical_count": 154,
+  "ready_count": 0,
   "blocked_count": 925,
-  "ready": [
-    {
-      "id": "30",
-      "name": "Fuel spill from car",
-      "suggested_path": "data/uk/missions/fuel-spill-from-car.json",
-      "average_credits": 400,
-      "mission_categories": [
-        "fire",
-        "urban"
-      ],
-      "place": "",
-      "place_array": [],
-      "requirements": {
-        "firetrucks": 1,
-        "oneof_fire_engine_or_rescue": 1
-      },
-      "chances": {},
-      "prerequisites": {
-        "fire_stations": 1,
-        "main_building": 0
-      },
-      "expansion_missions": [],
-      "followup_missions": []
-    }
-  ],
+  "ready": [],
   "blocked": []
 }
 PASS canonical-candidates
@@ -73,7 +50,7 @@ PASS canonical-candidates
 {
   "schema_version": "1",
   "official_count": 1062,
-  "canonical_count": 153,
+  "canonical_count": 154,
   "mapped_key_counts": {
     "requirements": 9,
     "chances": 5,
@@ -15403,17 +15380,17 @@ PASS canonical-candidates
 PASS key-mapping-backlog
 
 ## verification-status
-Mission verification status generated: 8.95% fully canonical, 967 of 1062 missions remaining.
+Mission verification status generated: 9.04% fully canonical, 966 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=153, direct=136, fully=95, remaining=967, batches=10, changed=README.md, docs/releases/v1.1.0.md.
-Verification batch navigation synchronized for 10 evidence pages.
+Public verification metrics synchronized: canonical=154, direct=137, fully=96, remaining=966, batches=11, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 11 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 95/1062 fully canonical, 153 canonical records, 10 evidence batch pages, 74 dynamic batch decisions and 967 missions remaining.
+Mission verification programme asset audit passed: 96/1062 fully canonical, 154 canonical records, 11 evidence batch pages, 75 dynamic batch decisions and 966 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -15425,11 +15402,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=153, vehicles=46, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=154, vehicles=46, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 78 Markdown files
+Documentation link audit passed across 79 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -15453,10 +15430,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.01 seconds
+INFO    -  Documentation built in 1.29 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=153, vehicles=46, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=154, vehicles=46, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 
