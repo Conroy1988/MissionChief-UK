@@ -79,10 +79,7 @@
     "mobile_command_vehicles": {
       "status": "verified",
       "canonical_target": "requirements.alternatives",
-      "canonical_ids": [
-        "iccu",
-        "ambulance_control_unit"
-      ],
+      "canonical_ids": ["iccu", "ambulance_control_unit"],
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze/169",
@@ -95,10 +92,7 @@
     "hazmat_vehicles": {
       "status": "verified",
       "canonical_target": "requirements.alternatives",
-      "canonical_ids": [
-        "hazmat_unit",
-        "cbrn_vehicle"
-      ],
+      "canonical_ids": ["hazmat_unit", "cbrn_vehicle"],
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze/180",
@@ -120,6 +114,18 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official mobile_air_vehicles count represents Breathing Apparatus Support Units. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "oneof_fire_engine_or_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": ["fire_engine", "rescue_support_vehicle"],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/30",
+        "https://www.missionchief.co.uk/einsaetze/422",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Fire Engines or Rescue Support Vehicles. The quantity is a qualifying total across the two canonical resource types."
     }
   },
   "chances": {
@@ -129,10 +135,7 @@
       "canonical_id": "aerial_appliance_truck",
       "requirement_key": "platform_trucks",
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://police.missionchief.co.uk/einsaetze/22",
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://police.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "The percentage is the probability that the published Aerial Appliance Truck quantity is required."
     },
     "battalion_chief_vehicles": {
@@ -141,10 +144,7 @@
       "canonical_id": "fire_officer",
       "requirement_key": "battalion_chief_vehicles",
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://police.missionchief.co.uk/einsaetze/22",
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://police.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "The percentage is the probability that the published Fire Officer quantity is required."
     },
     "heavy_rescue_vehicles": {
@@ -153,10 +153,7 @@
       "canonical_id": "rescue_support_vehicle",
       "requirement_key": "heavy_rescue_vehicles",
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://www.missionchief.co.uk/einsaetze/143",
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://www.missionchief.co.uk/einsaetze/143", "https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "The percentage is the probability that the published Rescue Support Vehicle quantity is required."
     },
     "water_tankers": {
@@ -165,10 +162,7 @@
       "canonical_id": "water_carrier",
       "requirement_key": "water_tankers",
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://www.missionchief.co.uk/einsaetze/41",
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://www.missionchief.co.uk/einsaetze/41", "https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "The percentage is the probability that the published Water Carrier quantity is required."
     },
     "mobile_air_vehicles": {
@@ -177,10 +171,7 @@
       "canonical_id": "breathing_apparatus_support_unit",
       "requirement_key": "mobile_air_vehicles",
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a", "https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "The percentage is the probability that the published Breathing Apparatus Support Unit quantity is required."
     }
   },
@@ -210,9 +201,7 @@
       "status": "not-applicable",
       "allowed_values": [0],
       "checked_at": "2026-07-23",
-      "sources": [
-        "https://www.missionchief.co.uk/einsaetze.json"
-      ],
+      "sources": ["https://www.missionchief.co.uk/einsaetze.json"],
       "notes": "A zero main_building value is an upstream sentinel and does not create a canonical operational prerequisite. Any non-zero value must be reviewed before promotion."
     }
   }
