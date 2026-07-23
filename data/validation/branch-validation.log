@@ -6,16 +6,20 @@ PASS official-personnel-key-sync
 Official Ambulance key mapping synchronized: already current.
 PASS official-ambulance-key-sync
 
+## official-police-car-or-arv-sync
+Police Car or ARV mapping synchronized: change required.
+PASS official-police-car-or-arv-sync
+
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 19: 4 mission(s), 6 file(s) written.
+Generated fully canonical Batch 20: 3 mission(s), 5 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 223 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 226 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 223 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 226 direct canonical records, 0 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-data
@@ -30,6 +34,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-17.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-18.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-19.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-20.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -41,46 +46,46 @@ Structured data validation warnings:
 - data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
-Validated 337 structured data file(s) successfully, including 845 mission resource reference(s) and 89 infrastructure precondition reference(s).
+Validated 342 structured data file(s) successfully, including 881 mission resource reference(s) and 89 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 223/1062 direct official/canonical matches, 839 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 226/1062 direct official/canonical matches, 836 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 223/240 canonical ID matches, 839 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 226/243 canonical ID matches, 836 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 182 decisions from 18 source files.
+Mission verification registry merged: 185 decisions from 19 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 182 promoted missions are equivalent.
+Official key mapping failure report passed: all 185 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 182 promoted missions, 182 fully canonical, 17 requirement keys, 9 chance keys and 6 prerequisite keys mapped.
+Official key mapping audit passed: 185 promoted missions, 185 fully canonical, 18 requirement keys, 9 chance keys and 6 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 182/182 promoted missions exact, 68 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 185/185 promoted missions exact, 71 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 182/182 promoted missions exact, 9 mapped-personnel missions and 1 personnel role(s) mapped.
+Official personnel mapping audit passed: 185/185 promoted missions exact, 12 mapped-personnel missions and 1 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "3",
   "official_count": 1062,
-  "canonical_count": 240,
+  "canonical_count": 243,
   "patient_contract_fields": 10,
   "personnel_contract_roles": 1,
   "ready_count": 0,
-  "blocked_count": 839,
+  "blocked_count": 836,
   "ready": [],
   "blocked": []
 }
@@ -90,154 +95,15 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 240,
+  "canonical_count": 243,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 17,
+    "requirements": 18,
     "chances": 9,
     "prerequisites": 6
   },
-  "unmapped_key_count": 64,
+  "unmapped_key_count": 63,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "oneof_police_patrol_or_swat",
-      "remaining_mission_count": 29,
-      "single_key_unlock_count": 4,
-      "examples": [
-        {
-          "id": "93",
-          "name": "High-Risk Warrant",
-          "value": 4,
-          "average_credits": 1200,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/93"
-        },
-        {
-          "id": "155",
-          "name": "Suspicious package",
-          "value": 8,
-          "average_credits": 2000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/155"
-        },
-        {
-          "id": "405",
-          "name": "Kidnapping",
-          "value": 5,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.police_helicopters",
-            "requirements.traffic_car",
-            "chances.traffic_car",
-            "prerequisites.police_helicopter_stations"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/405"
-        },
-        {
-          "id": "408",
-          "name": "Small Fuel storage tank explosion",
-          "value": 2,
-          "average_credits": 7000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/408"
-        },
-        {
-          "id": "409",
-          "name": "Large Fuel storage tank explosion",
-          "value": 4,
-          "average_credits": 12000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/409"
-        },
-        {
-          "id": "410",
-          "name": "Fuel Storage Depot Explosion (Major Incident)",
-          "value": 8,
-          "average_credits": 20000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/410"
-        },
-        {
-          "id": "411",
-          "name": "Out of control argument",
-          "value": 2,
-          "average_credits": 900,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/411"
-        },
-        {
-          "id": "412",
-          "name": "Concern for welfare on bridge",
-          "value": 3,
-          "average_credits": 1300,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/412"
-        },
-        {
-          "id": "418",
-          "name": "Drunk and disorderly person",
-          "value": 1,
-          "average_credits": 500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/418"
-        },
-        {
-          "id": "425",
-          "name": "Armed Robbery of Motor Vehicle",
-          "value": 3,
-          "average_credits": 7000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.min_possible_prisoners",
-            "additional.need_traffic_car_only_if_present",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/425"
-        }
-      ]
-    },
     {
       "group": "chances",
       "key": "hazmat_vehicles",
@@ -1831,7 +1697,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_patrol_or_swat",
             "requirements.police_helicopters",
             "requirements.traffic_car",
             "chances.traffic_car"
@@ -2174,7 +2039,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_patrol_or_swat",
             "requirements.traffic_car",
             "chances.traffic_car",
             "prerequisites.police_helicopter_stations"
@@ -4075,7 +3939,6 @@ PASS canonical-candidates
           "average_credits": 8000,
           "filter_id": "police_station_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_patrol_or_swat",
             "requirements.police_helicopters",
             "requirements.traffic_car",
             "prerequisites.police_helicopter_stations"
@@ -9708,17 +9571,17 @@ PASS key-mapping-backlog
 PASS patient-field-contract
 
 ## verification-status
-Mission verification status generated: 17.14% fully canonical, 880 of 1062 missions remaining.
+Mission verification status generated: 17.42% fully canonical, 877 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=240, direct=223, fully=182, remaining=880, batches=19, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
-Verification batch navigation synchronized for 19 evidence pages.
+Public verification metrics synchronized: canonical=243, direct=226, fully=185, remaining=877, batches=20, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 20 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 182/1062 fully canonical, 240 canonical records, 19 evidence batch pages, 161 dynamic batch decisions and 880 missions remaining.
+Mission verification programme asset audit passed: 185/1062 fully canonical, 243 canonical records, 20 evidence batch pages, 164 dynamic batch decisions and 877 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -9730,11 +9593,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=240, vehicles=47, infrastructure=18, training=11
+Release-readiness audit passed: version=1.1.0, missions=243, vehicles=48, infrastructure=18, training=11
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 87 Markdown files
+Documentation link audit passed across 88 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -9758,10 +9621,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.40 seconds
+INFO    -  Documentation built in 1.55 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=240, vehicles=47, infrastructure=18, training=11; built site=site
+Release-readiness audit passed: version=1.1.0, missions=243, vehicles=48, infrastructure=18, training=11; built site=site
 PASS built-site-readiness
 

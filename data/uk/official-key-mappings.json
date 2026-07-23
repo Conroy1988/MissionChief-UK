@@ -242,6 +242,22 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official ambulances count is the guaranteed number of frontline Ambulance vehicles."
+    },
+    "oneof_police_patrol_or_swat": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "police_car",
+        "armed_response_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/408",
+        "https://www.missionchief.co.uk/einsaetze/410",
+        "https://www.missionchief.co.uk/einsaetze/454",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Police Cars or Armed Response Vehicles (ARVs). The quantity is a qualifying total across the two canonical resource types."
     }
   },
   "chances": {
