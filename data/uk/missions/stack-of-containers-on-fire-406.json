@@ -2,22 +2,55 @@
   "id": 406,
   "name": "Stack of containers on fire",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Fire Support Specialisation Missions", "Urban Fire Missions"],
-  "poi": ["Container Holding Area"],
-  "preconditions": {"fire_stations": 10},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Fire Support Specialisation Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "Container Holding Area"
+  ],
+  "preconditions": {
+    "fire_stations": 10
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 8},
-      {"resource": "fire_officer", "quantity": 6}
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      }
     ],
     "probabilistic": [
-      {"resource": "aerial_appliance_truck", "quantity": 1, "probability": 0.4},
-      {"resource": "water_carrier", "quantity": 1, "probability": 0.6}
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.4
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.6
+      }
     ]
   },
-  "reward": {"average_credits": 8000},
+  "reward": {
+    "average_credits": 8000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["The Container Holding Area POI and independent Aerial Appliance Truck and Water Carrier probabilities are retained."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/406", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "notes": [
+    "The Container Holding Area POI and independent Aerial Appliance Truck and Water Carrier probabilities are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/406",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

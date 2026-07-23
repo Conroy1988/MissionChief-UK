@@ -2,22 +2,55 @@
   "id": 841,
   "name": "Smoke coming from company premises",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
-  "poi": ["Office Building"],
-  "preconditions": {"fire_stations": 6, "police_stations": 2},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "Office Building"
+  ],
+  "preconditions": {
+    "fire_stations": 6,
+    "police_stations": 2
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 4},
-      {"resource": "fire_officer", "quantity": 1},
-      {"resource": "aerial_appliance_truck", "quantity": 1},
-      {"resource": "police_car", "quantity": 2}
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
     ],
     "probabilistic": [],
     "alternatives": []
   },
-  "reward": {"average_credits": 5000},
+  "reward": {
+    "average_credits": 5000
+  },
   "follow_up_missions": [],
-  "expandable_missions": ["Fire in an office building - Major Incident"],
-  "notes": ["The Office Building POI and published major-incident expansion are retained."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/841", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "expandable_missions": [
+    "Fire in an office building - Major Incident"
+  ],
+  "notes": [
+    "The Office Building POI and published major-incident expansion are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/841",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

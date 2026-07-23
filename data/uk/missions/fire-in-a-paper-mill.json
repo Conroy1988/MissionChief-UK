@@ -2,12 +2,36 @@
   "id": 570,
   "name": "Fire in a paper mill",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
-  "preconditions": {"fire_stations": 2},
-  "requirements": {"guaranteed": [{"resource": "fire_engine", "quantity": 4}], "probabilistic": []},
-  "reward": {"average_credits": 780},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 780
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["All published operational fields are represented directly from the official UK catalogue and mission directory."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/570", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "notes": [
+    "All published operational fields are represented directly from the official UK catalogue and mission directory."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/570",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

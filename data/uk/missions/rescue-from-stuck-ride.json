@@ -2,22 +2,53 @@
   "id": 314,
   "name": "Rescue from stuck ride",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
-  "poi": ["Theme Park"],
-  "preconditions": {"fire_stations": 6},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "Theme Park"
+  ],
+  "preconditions": {
+    "fire_stations": 6
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 2},
-      {"resource": "fire_officer", "quantity": 1},
-      {"resource": "rescue_support_vehicle", "quantity": 1}
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
     ],
     "probabilistic": [
-      {"resource": "aerial_appliance_truck", "quantity": 1, "probability": 0.8}
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.8
+      }
     ]
   },
-  "reward": {"average_credits": 2000},
+  "reward": {
+    "average_credits": 2000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["The Theme Park POI and 80% Aerial Appliance Truck probability are retained separately from guaranteed resources."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/314", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "notes": [
+    "The Theme Park POI and 80% Aerial Appliance Truck probability are retained separately from guaranteed resources."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/314",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

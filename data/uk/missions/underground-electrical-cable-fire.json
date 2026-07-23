@@ -2,12 +2,38 @@
   "id": 475,
   "name": "Underground electrical cable fire",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
-  "preconditions": {"fire_stations": 2},
-  "requirements": {"guaranteed": [{"resource": "fire_engine", "quantity": 2}], "probabilistic": []},
-  "reward": {"average_credits": 800},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 800
+  },
   "follow_up_missions": [],
-  "expandable_missions": ["Underground electrical cable fire (Medium)"],
-  "notes": ["All published operational fields are represented directly from the official UK catalogue and mission directory."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/475", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "expandable_missions": [
+    "Underground electrical cable fire (Medium)"
+  ],
+  "notes": [
+    "All published operational fields are represented directly from the official UK catalogue and mission directory."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/475",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

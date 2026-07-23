@@ -27,15 +27,20 @@
     ]
   },
   "patients": {
-    "minimum": 1,
     "maximum": 1,
-    "transport_probability": 0.3,
+    "minimum": 1,
     "specializations": [
       "General Internal"
     ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
     "codes": [
       "C-4"
-    ]
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.3
   },
   "reward": {
     "average_credits": 500

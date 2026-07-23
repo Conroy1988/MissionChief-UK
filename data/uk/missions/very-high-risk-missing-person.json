@@ -1,9 +1,13 @@
 {
   "id": 636,
   "name": "Very High Risk Missing Person",
-  "aliases": ["Very-high-risk missing person"],
+  "aliases": [
+    "Very-high-risk missing person"
+  ],
   "service": "search_and_rescue",
-  "mission_types": ["SAR Missions"],
+  "mission_types": [
+    "SAR Missions"
+  ],
   "poi": [],
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
@@ -96,13 +100,23 @@
     "probabilistic": []
   },
   "patients": {
-    "minimum": 1,
     "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
     "transport_probability": 0.4,
-    "critical_care_probability": 0.05,
-    "first_responder_full_care_probability": 0,
-    "specializations": ["General Internal"],
-    "codes": ["C-1", "C-2", "C-3"]
+    "critical_care_probability": 0.05
   },
   "prisoners": {
     "maximum": 0

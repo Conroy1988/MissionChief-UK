@@ -1,9 +1,13 @@
 {
   "id": 756,
   "name": "Overdue Hikers",
-  "aliases": ["Overdue hikers"],
+  "aliases": [
+    "Overdue hikers"
+  ],
   "service": "mountain_rescue",
-  "mission_types": ["Mountain Rescue"],
+  "mission_types": [
+    "Mountain Rescue"
+  ],
   "custom_spawn_area": true,
   "preconditions": {
     "rescue_stations": 3,
@@ -12,24 +16,46 @@
   },
   "requirements": {
     "guaranteed": [
-      {"resource": "control_van", "quantity": 1},
-      {"resource": "search_dog_unit", "quantity": 1}
+      {
+        "resource": "control_van",
+        "quantity": 1
+      },
+      {
+        "resource": "search_dog_unit",
+        "quantity": 1
+      }
     ],
     "probabilistic": [],
     "alternatives": [
       {
-        "resources": ["mountain_rescue_4x4", "sar_4x4"],
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
         "quantity": 2,
-        "notes": ["Two qualifying 4x4 vehicles are required in total."]
+        "notes": [
+          "Two qualifying 4x4 vehicles are required in total."
+        ]
       }
     ]
   },
   "patients": {
     "maximum": 3,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "generated_at_end": true,
     "transport_probability": 0.25,
-    "critical_care_probability": 0,
-    "specializations": ["General Internal"],
-    "codes": ["C-2", "C-3", "C-4"]
+    "critical_care_probability": 0.0
   },
   "reward": {
     "average_credits": 6400,
@@ -42,6 +68,8 @@
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://police.missionchief.co.uk/einsaetze/756"]
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/756"
+    ]
   }
 }

@@ -1,14 +1,25 @@
 {
   "id": 588,
   "name": "Aircraft Accident - Code F",
-  "aliases": ["Aircraft Accident Code F"],
+  "aliases": [
+    "Aircraft Accident Code F"
+  ],
   "service": "airfield_operations",
-  "mission_types": ["Airfield firefighting operations", "Mass Casualty Missions (Specialization)"],
-  "poi": ["Large Airport (Runway)"],
+  "mission_types": [
+    "Airfield firefighting operations",
+    "Mass Casualty Missions (Specialization)"
+  ],
+  "poi": [
+    "Large Airport (Runway)"
+  ],
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
   "handoff_destinations": [],
-  "variant": {"source_mission_id": 588, "kind": "base", "key": "aircraft-accident-code-f"},
+  "variant": {
+    "source_mission_id": 588,
+    "kind": "base",
+    "key": "aircraft-accident-code-f"
+  },
   "preconditions": {
     "fire_stations": 15,
     "rescue_stations": 15,
@@ -21,16 +32,46 @@
   },
   "requirements": {
     "guaranteed": [
-      {"resource": "rescue_support_vehicle", "quantity": 2},
-      {"resource": "water_carrier", "quantity": 1},
-      {"resource": "major_foam_tender", "quantity": 5},
-      {"resource": "airfield_firefighting_command_vehicle", "quantity": 1},
-      {"resource": "airfield_operations_vehicle", "quantity": 4},
-      {"resource": "prv", "quantity": 4},
-      {"resource": "srv", "quantity": 4},
-      {"resource": "welfare_vehicle", "quantity": 2},
-      {"resource": "mass_casualty_equipment", "quantity": 1},
-      {"resource": "police_car", "quantity": 12}
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      },
+      {
+        "resource": "major_foam_tender",
+        "quantity": 5
+      },
+      {
+        "resource": "airfield_firefighting_command_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "airfield_operations_vehicle",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 4
+      },
+      {
+        "resource": "srv",
+        "quantity": 4
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 12
+      }
     ],
     "probabilistic": [],
     "conditional": [
@@ -38,43 +79,124 @@
         "resource": "traffic_car",
         "quantity": 6,
         "condition": "only_when_available",
-        "notes": ["The official page states that Traffic Cars are required only when available."]
+        "notes": [
+          "The official page states that Traffic Cars are required only when available."
+        ]
       }
     ],
     "alternatives": [
-      {"resources": ["fire_engine", "major_foam_tender"], "quantity": 10, "notes": ["Ten qualifying Fire Engines or Major Foam Tenders are required in total."]},
-      {"resources": ["fire_officer", "airfield_firefighting_command_vehicle"], "quantity": 6, "notes": ["Six qualifying Fire Officers or Airfield Firefighting Command Vehicles are required in total."]},
-      {"resources": ["hazmat_unit", "cbrn_vehicle"], "quantity": 2, "notes": ["Two qualifying HazMat Units or CBRN Vehicles are required in total."]},
-      {"resources": ["iccu", "ambulance_control_unit", "airfield_firefighting_command_vehicle"], "quantity": 1, "notes": ["One qualifying command resource satisfies this requirement."]},
-      {"resources": ["aerial_appliance_truck", "rescue_stairs"], "quantity": 1, "notes": ["One Aerial Appliance Truck or Rescue Stairs satisfies the aircraft-access requirement."]}
+      {
+        "resources": [
+          "fire_engine",
+          "major_foam_tender"
+        ],
+        "quantity": 10,
+        "notes": [
+          "Ten qualifying Fire Engines or Major Foam Tenders are required in total."
+        ]
+      },
+      {
+        "resources": [
+          "fire_officer",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 6,
+        "notes": [
+          "Six qualifying Fire Officers or Airfield Firefighting Command Vehicles are required in total."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Two qualifying HazMat Units or CBRN Vehicles are required in total."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One qualifying command resource satisfies this requirement."
+        ]
+      },
+      {
+        "resources": [
+          "aerial_appliance_truck",
+          "rescue_stairs"
+        ],
+        "quantity": 1,
+        "notes": [
+          "One Aerial Appliance Truck or Rescue Stairs satisfies the aircraft-access requirement."
+        ]
+      }
     ]
   },
   "personnel": {
     "available": [
-      {"role": "Police Sergeant", "quantity": 10},
-      {"role": "Police Inspector", "quantity": 5}
+      {
+        "role": "Police Sergeant",
+        "quantity": 10
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 5
+      }
     ],
     "required": [
-      {"role": "Airfield Operations Supervisor", "quantity": 2},
-      {"role": "Ambulance Officer", "quantity": 1},
-      {"role": "Operational Team Leader", "quantity": 5},
-      {"role": "Police Sergeant", "quantity": 4},
-      {"role": "Police Inspector", "quantity": 1}
+      {
+        "role": "Airfield Operations Supervisor",
+        "quantity": 2
+      },
+      {
+        "role": "Ambulance Officer",
+        "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 5
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 4
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      }
     ],
     "average_minimum": [],
     "probabilistic": []
   },
   "patients": {
-    "minimum": 150,
     "maximum": 250,
+    "minimum": 150,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
     "transport_probability": 0.15,
-    "critical_care_probability": 0.8,
-    "first_responder_full_care_probability": 0,
-    "specializations": ["General Internal"],
-    "codes": ["C-2", "C-3"]
+    "critical_care_probability": 0.8
   },
-  "prisoners": {"maximum": 0},
-  "reward": {"average_credits": 24000},
+  "prisoners": {
+    "maximum": 0
+  },
+  "reward": {
+    "average_credits": 24000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
   "notes": [
@@ -82,5 +204,11 @@
     "The dedicated Airfield Firefighting Command Vehicle requirement remains separate from two alternative groups that can also use that resource.",
     "Overlapping alternative groups require later dispatch-allocation testing before a minimum unique-vehicle total is calculated."
   ],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/588"]}
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/588"
+    ]
+  }
 }

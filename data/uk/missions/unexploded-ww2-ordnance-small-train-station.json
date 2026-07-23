@@ -3,8 +3,12 @@
   "name": "Unexploded WW2 Ordnance Discovered at Small Train Station",
   "aliases": [],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
-  "poi": ["Train station (regional traffic)"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "poi": [
+    "Train station (regional traffic)"
+  ],
   "preconditions": {
     "fire_stations": 6,
     "rescue_stations": 6,
@@ -13,12 +17,20 @@
     "hart_bases": 1,
     "railway_police": 3
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 7250},
-  "notes": ["The official directory verifies the railway and Bomb Disposal generation dependencies. Response-table values remain unavailable."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 7250
+  },
+  "notes": [
+    "The official directory verifies the railway and Bomb Disposal generation dependencies. Response-table values remain unavailable."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
   }
 }

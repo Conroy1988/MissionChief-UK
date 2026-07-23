@@ -2,22 +2,51 @@
   "id": 127,
   "name": "Bin Lorry Fire",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Urban Fire Missions"],
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
   "poi": [],
-  "preconditions": {"fire_stations": 7, "police_stations": 1},
+  "preconditions": {
+    "fire_stations": 7,
+    "police_stations": 1
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 3},
-      {"resource": "fire_officer", "quantity": 2},
-      {"resource": "police_car", "quantity": 1},
-      {"resource": "water_carrier", "quantity": 1}
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
     ],
     "probabilistic": [],
     "alternatives": []
   },
-  "reward": {"average_credits": 2000},
+  "reward": {
+    "average_credits": 2000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["Police Car and Police Station fields are retained through the verified core police mapping."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/127", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "notes": [
+    "Police Car and Police Station fields are retained through the verified core police mapping."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/127",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

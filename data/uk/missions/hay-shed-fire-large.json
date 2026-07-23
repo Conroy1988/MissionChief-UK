@@ -2,21 +2,51 @@
   "id": 153,
   "name": "Hay shed fire - Large",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Rural Fire Missions"],
-  "poi": ["Farm"],
-  "preconditions": {"fire_stations": 13},
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Rural Fire Missions"
+  ],
+  "poi": [
+    "Farm"
+  ],
+  "preconditions": {
+    "fire_stations": 13
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 8},
-      {"resource": "fire_officer", "quantity": 6},
-      {"resource": "aerial_appliance_truck", "quantity": 1},
-      {"resource": "water_carrier", "quantity": 2}
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 2
+      }
     ],
     "probabilistic": []
   },
-  "reward": {"average_credits": 9000},
+  "reward": {
+    "average_credits": 9000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["The Farm POI and two guaranteed Water Carriers are retained."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/153", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "notes": [
+    "The Farm POI and two guaranteed Water Carriers are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/153",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

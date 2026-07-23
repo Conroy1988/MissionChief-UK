@@ -1,14 +1,24 @@
 {
   "id": 832,
   "name": "Unexploded WW2 Ordnance in Harbour",
-  "aliases": ["Unexploded Second World War ordnance in harbour"],
+  "aliases": [
+    "Unexploded Second World War ordnance in harbour"
+  ],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
-  "poi": ["Harbour"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "poi": [
+    "Harbour"
+  ],
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
   "handoff_destinations": [],
-  "variant": {"source_mission_id": 832, "kind": "base", "key": "harbour-ordnance"},
+  "variant": {
+    "source_mission_id": 832,
+    "kind": "base",
+    "key": "harbour-ordnance"
+  },
   "preconditions": {
     "fire_stations": 6,
     "rescue_stations": 6,
@@ -20,8 +30,14 @@
     "active_drones": 1,
     "other": []
   },
-  "requirements": {"guaranteed": [], "probabilistic": [], "alternatives": []},
-  "reward": {"average_credits": 15000},
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "reward": {
+    "average_credits": 15000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
   "notes": [
@@ -31,6 +47,9 @@
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/832", "https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/832",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
   }
 }

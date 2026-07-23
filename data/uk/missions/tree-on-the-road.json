@@ -2,21 +2,51 @@
   "id": 12,
   "name": "Tree on the road",
   "service": "fire",
-  "mission_types": ["Fire Fighting Missions", "Rural Fire Missions", "Urban Fire Missions"],
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Rural Fire Missions",
+    "Urban Fire Missions"
+  ],
   "poi": [],
-  "preconditions": {"fire_stations": 1},
+  "preconditions": {
+    "fire_stations": 1
+  },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 1}
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
     ],
     "probabilistic": [],
     "alternatives": [
-      {"resources": ["fire_engine", "rescue_support_vehicle", "aerial_appliance_truck"], "quantity": 1}
+      {
+        "resources": [
+          "fire_engine",
+          "rescue_support_vehicle",
+          "aerial_appliance_truck"
+        ],
+        "quantity": 1
+      }
     ]
   },
-  "reward": {"average_credits": 310},
+  "reward": {
+    "average_credits": 310
+  },
   "follow_up_missions": [],
-  "expandable_missions": ["Road accident"],
-  "notes": ["The retained official source contains one guaranteed Fire Engine plus one additional Fire Engine, Rescue Support Vehicle or Aerial Appliance Truck choice.", "The published expansion into Road accident is retained."],
-  "verification": {"status": "verified", "checked_at": "2026-07-23", "sources": ["https://www.missionchief.co.uk/einsaetze/12", "https://www.missionchief.co.uk/einsaetze.json"]}
+  "expandable_missions": [
+    "Road accident"
+  ],
+  "notes": [
+    "The retained official source contains one guaranteed Fire Engine plus one additional Fire Engine, Rescue Support Vehicle or Aerial Appliance Truck choice.",
+    "The published expansion into Road accident is retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/12",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
 }

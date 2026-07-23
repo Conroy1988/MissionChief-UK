@@ -3,8 +3,12 @@
   "name": "Unexploded WW2 Ordnance Discovered at Large Train Station",
   "aliases": [],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
-  "poi": ["Train station (regional traffic and long-distance travel)"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "poi": [
+    "Train station (regional traffic and long-distance travel)"
+  ],
   "preconditions": {
     "fire_stations": 6,
     "rescue_stations": 15,
@@ -14,12 +18,20 @@
     "railway_police": 6,
     "active_drones": 1
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 12000},
-  "notes": ["The official directory verifies the populated generation fields. Response-table data remains unavailable and is not inferred."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 12000
+  },
+  "notes": [
+    "The official directory verifies the populated generation fields. Response-table data remains unavailable and is not inferred."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
   }
 }
