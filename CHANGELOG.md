@@ -14,8 +14,8 @@ No unreleased changes are currently recorded.
 
 - Added a lossless snapshot of all 1,062 missions published by the public MissionChief UK mission feed.
 - Preserved every official top-level and nested mission field with source URL, retrieval time and SHA-256 provenance.
-- Added offline reconciliation reporting against 69 canonical mission records.
-- Identified 52 direct official/canonical ID matches, 1,010 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
+- Added offline reconciliation reporting against 79 canonical mission records.
+- Identified 62 direct official/canonical ID matches, 1,000 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
 - Added inventories for every published requirement, chance and prerequisite key.
 - Added separate public catalogue, coverage and verification endpoints under `assets/data/official/`.
 
@@ -26,8 +26,8 @@ No unreleased changes are currently recorded.
 - Added an official-key mapping registry that requires evidence for every mapped requirement, chance and prerequisite key.
 - Added strict key-equivalence validation for missions promoted to fully canonical.
 - Added offline coverage reconciliation so canonical batches update official/canonical match counts without redownloading the source feed.
-- Fully canonicalized the first 11 missions: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10` and `11`.
-- Expanded the canonical mission collection from 62 to 69 records.
+- Fully canonicalized 21 missions across the first two Fire and Rescue batches: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10`, `11`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `23`, `24` and `27`.
+- Expanded the canonical mission collection from 62 to 79 records.
 - Published a generated verification dashboard and `uk-mission-verification.json` endpoint.
 
 ### Mission Lookup
