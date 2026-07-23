@@ -27,8 +27,8 @@
   <div><strong data-mcuk-metric="version">v1.1.0</strong><span>Data release</span></div>
   <div><strong data-mcuk-metric="stage">Stage 34</strong><span>Core programme</span></div>
   <div><strong data-mcuk-metric="official">1,062</strong><span>Official UK missions</span></div>
-  <div><strong data-mcuk-metric="missions">112</strong><span>Canonical mapped</span></div>
-  <div><strong>54</strong><span>Fully canonical</span></div>
+  <div><strong data-mcuk-metric="missions">127</strong><span>Canonical mapped</span></div>
+  <div><strong>69</strong><span>Fully canonical</span></div>
 </div>
 
 <div class="mcuk-radar" aria-hidden="true">
@@ -58,7 +58,7 @@
   <span class="mcuk-command-icon">01</span>
   <small>COMPLETE MISSION INTELLIGENCE</small>
   <strong>Mission Lookup</strong>
-  <p>Search 1,062 official UK missions alongside 112 higher-trust canonical mappings, with every published field retained.</p>
+  <p>Search 1,062 official UK missions alongside 127 higher-trust canonical mappings, with every published field retained.</p>
   <em>Launch lookup →</em>
 </a>
 
@@ -123,16 +123,16 @@
     <span data-mcuk-release-date>Released 23 July 2026</span>
   </div>
   <div class="mcuk-board-metrics">
-    <div><strong data-mcuk-collection="missions">112</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
-    <div><strong>54</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
+    <div><strong data-mcuk-collection="missions">127</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
+    <div><strong>69</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
     <div><strong data-mcuk-collection="vehicles">46</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
     <div><strong data-mcuk-collection="infrastructure">18</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
     <div><strong data-mcuk-collection="training">11</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
   </div>
   <div class="mcuk-board-footer">
     <span><b>1,062</b> official UK missions</span>
-    <span><b>95</b> direct ID matches</span>
-    <span><b data-mcuk-search-count>187</b> canonical search entities</span>
+    <span><b>110</b> direct ID matches</span>
+    <span><b data-mcuk-search-count>202</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
     <a href="reference/mission-verification-status/">Track verification →</a>
   </div>
