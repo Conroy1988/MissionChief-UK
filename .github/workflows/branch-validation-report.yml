@@ -61,12 +61,14 @@ jobs:
             echo >> data/validation/branch-validation.log
           }
 
+          run_check "canonical-patient-sync" python scripts/sync_canonical_patient_fields.py
           run_check "canonical-data" python scripts/validate_data.py
           run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
           run_check "official-catalogue" python scripts/validate_official_mission_catalogue.py
           run_check "registry-merge" python scripts/merge_verification_registry_batches.py
           run_check "promoted-mapping-report" python scripts/report_promoted_mapping_failures.py
           run_check "official-key-equivalence" python scripts/validate_official_key_mappings.py
+          run_check "official-patient-equivalence" python scripts/validate_official_patient_mappings.py
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
           run_check "patient-field-contract" python scripts/report_patient_field_contract.py
@@ -116,6 +118,7 @@ jobs:
             docs/index.md \
             docs/api/index.md \
             docs/releases/v1.1.0.md \
+            data/uk/missions \
             data/validation/branch-validation.json \
             data/validation/branch-validation.log
           if git diff --cached --quiet; then
