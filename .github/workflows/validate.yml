@@ -3,7 +3,10 @@ name: Validate guide
 # Corrected Batch 4 validation generates the next evidence-safe candidate and key-backlog artifacts.
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/uk-mission-catalogue-expansion
+      - validation/canonical-batch-4
   pull_request:
   workflow_dispatch:
 
