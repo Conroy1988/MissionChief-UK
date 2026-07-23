@@ -1,0 +1,66 @@
+{
+  "id": 168,
+  "name": "Trench Rescue",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/168",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 5,
+    "police_stations": 1,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 4,
+    "minimum": 1,
+    "specializations": [
+      "General Surgeon",
+      "Critical Care"
+    ],
+    "specialization_ids": [
+      1,
+      14
+    ],
+    "specialization_text": "General Surgeon, Critical Care",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 1.0
+  },
+  "reward": {
+    "average_credits": 2500
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

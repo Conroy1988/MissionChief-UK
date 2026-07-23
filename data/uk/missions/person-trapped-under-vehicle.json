@@ -1,0 +1,63 @@
+{
+  "id": 840,
+  "name": "Person trapped under vehicle",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2,
+        "probability": 0.6
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/840",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 4,
+    "police_stations": 2,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 2,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 1.0,
+    "critical_care_probability": 1.0
+  },
+  "reward": {
+    "average_credits": 3500
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

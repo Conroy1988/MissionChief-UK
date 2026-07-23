@@ -1,0 +1,70 @@
+{
+  "id": 774,
+  "name": "Crane fell over on construction site",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/774",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Construction site"
+  ],
+  "preconditions": {
+    "fire_stations": 4,
+    "police_stations": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 2,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 0.2
+  },
+  "reward": {
+    "average_credits": 1500
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

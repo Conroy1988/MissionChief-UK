@@ -1,0 +1,64 @@
+{
+  "id": 639,
+  "name": "Child stuck in tree",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.8
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/639",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Park"
+  ],
+  "preconditions": {
+    "fire_stations": 3,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "specializations": [
+      "General Surgeon",
+      "Children"
+    ],
+    "specialization_ids": [
+      1,
+      13
+    ],
+    "specialization_text": "General Surgeon, Children",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 340
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

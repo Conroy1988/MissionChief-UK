@@ -1,0 +1,95 @@
+{
+  "id": 516,
+  "name": "Prison Wing Fire (Major Incident) (Persons Reported)",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 5
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.05
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/516",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Prison"
+  ],
+  "preconditions": {
+    "fire_stations": 15,
+    "police_stations": 7,
+    "rescue_stations": 7
+  },
+  "patients": {
+    "maximum": 10,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.6,
+    "critical_care_probability": 0.05
+  },
+  "reward": {
+    "average_credits": 12000
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}
