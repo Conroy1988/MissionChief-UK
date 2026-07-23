@@ -76,6 +76,7 @@ jobs:
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
           run_check "patient-field-contract" python scripts/report_patient_field_contract.py
+          run_check "operational-field-contract" python scripts/report_operational_field_contract.py
           run_check "verification-status" python scripts/generate_mission_verification_status.py
           run_check "public-metric-sync" python scripts/run_public_verification_sync.py
           run_check "verification-assets" python scripts/validate_verification_programme_assets.py
