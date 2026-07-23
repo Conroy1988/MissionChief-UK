@@ -70,7 +70,19 @@ jobs:
         run: python scripts/generate_faq.py
 
       - name: Audit repository and generated API
-        run: python scripts/release_readiness.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/release_readiness.py 2>&1 | tee release-readiness.log
+
+      - name: Upload release-readiness diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-readiness-diagnostics
+          path: release-readiness.log
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Audit documentation links and anchors
         run: python scripts/audit_links.py
