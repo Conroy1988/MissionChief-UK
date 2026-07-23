@@ -6,50 +6,108 @@
       "status": "verified",
       "canonical_target": "requirements.guaranteed",
       "canonical_id": "fire_engine",
-      "value_semantics": "required quantity",
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze/0",
         "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze/2",
+        "https://www.missionchief.co.uk/einsaetze/3",
+        "https://www.missionchief.co.uk/einsaetze/4",
+        "https://www.missionchief.co.uk/einsaetze/6",
+        "https://www.missionchief.co.uk/einsaetze/7",
+        "https://www.missionchief.co.uk/einsaetze/8",
+        "https://www.missionchief.co.uk/einsaetze/9",
+        "https://www.missionchief.co.uk/einsaetze/10",
+        "https://www.missionchief.co.uk/einsaetze/11",
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": [
-        "The official UK pages label this field as Required Fire engines.",
-        "The numeric value is represented as the guaranteed canonical fire_engine quantity."
-      ]
+      "notes": "The official firetrucks count is the guaranteed Fire engine quantity when the mission has no separate chance field for this key."
+    },
+    "platform_trucks": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "aerial_appliance_truck",
+      "chance_key": "platform_trucks",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json",
+        "https://www.missionchief.co.uk/einsaetze/797"
+      ],
+      "notes": "The official platform_trucks count represents Aerial Appliance Trucks. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "battalion_chief_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "fire_officer",
+      "chance_key": "battalion_chief_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json",
+        "https://www.missionchief.co.uk/einsaetze/588"
+      ],
+      "notes": "The official battalion_chief_vehicles count represents Fire Officers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
     }
   },
-  "chances": {},
+  "chances": {
+    "platform_trucks": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "aerial_appliance_truck",
+      "requirement_key": "platform_trucks",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Aerial Appliance Truck quantity is required."
+    },
+    "battalion_chief_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "fire_officer",
+      "requirement_key": "battalion_chief_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Fire Officer quantity is required."
+    }
+  },
   "prerequisites": {
     "fire_stations": {
       "status": "verified",
       "canonical_target": "preconditions",
       "canonical_id": "fire_stations",
-      "value_semantics": "minimum unlocked building count",
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze/0",
         "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze/2",
+        "https://www.missionchief.co.uk/einsaetze/3",
+        "https://www.missionchief.co.uk/einsaetze/4",
+        "https://www.missionchief.co.uk/einsaetze/6",
+        "https://www.missionchief.co.uk/einsaetze/7",
+        "https://www.missionchief.co.uk/einsaetze/8",
+        "https://www.missionchief.co.uk/einsaetze/9",
+        "https://www.missionchief.co.uk/einsaetze/10",
+        "https://www.missionchief.co.uk/einsaetze/11",
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": [
-        "The official UK pages label this field as Required Fire Stations."
-      ]
+      "notes": "The official fire_stations value is the minimum Fire Station count used to generate the mission."
     },
     "main_building": {
       "status": "not-applicable",
-      "canonical_target": null,
-      "canonical_id": null,
-      "allowed_values": [0],
-      "value_semantics": "upstream internal prerequisite flag",
+      "allowed_values": [
+        0
+      ],
       "checked_at": "2026-07-23",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": [
-        "The retained UK catalogue currently publishes zero for this field across the mission set.",
-        "Only the value zero may be ignored; any other value fails the mapping audit and requires investigation."
-      ]
+      "notes": "A zero main_building value is an upstream sentinel and does not create a canonical operational prerequisite. Any non-zero value must be reviewed before promotion."
     }
   }
 }
