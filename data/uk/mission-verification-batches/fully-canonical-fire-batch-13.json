@@ -1,0 +1,18 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "127": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/127", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, fire, police and water requirements verified."]},
+    "392": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/392", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed fire and police resources plus additive Fire-Engine-or-Rescue-Support group verified."]},
+    "419": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/419", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Scrap yard POI, all resources and expansion into mission 420 verified."]},
+    "440": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/440", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, prerequisites and fire/police resources verified."]},
+    "441": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/441", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, prerequisites and fire/police resources verified."]},
+    "466": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/466", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, police resources and additive Fire-Engine-or-Rescue-Support group verified."]},
+    "476": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/476", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, fire/police resources and expansion into mission 477 verified."]},
+    "477": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/477", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, alternative groups, 50% Water Carrier probability and expansion into mission 478 verified."]},
+    "670": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/670", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Take Away Shop POI, resources and command alternative verified."]},
+    "682": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/682", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Forest POI, resources and command alternative verified."]},
+    "775": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/775", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, prerequisites and all guaranteed resources verified."]},
+    "841": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/841", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Office Building POI, resources and expansion into mission 145 verified."]}
+  }
+}
