@@ -358,6 +358,32 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official coastal_boat count is displayed as the required Inland Rescue Boat (Trailer) quantity on the verified UK incidents."
+    },
+    "two_way": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "road_rail_unit",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official two_way count is displayed as the required Road Rail Unit quantity on verified UK railway incidents."
+    },
+    "railway_police": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "eiu",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/809",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The top-level official railway_police count is displayed as the required EIU quantity. Railway Police Officer staffing remains separately represented by personnel_educations."
     }
   },
   "chances": {
@@ -640,6 +666,32 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official wasserrettung prerequisite is displayed as the required Technical Rescue Extension count on the verified UK incidents."
+    },
+    "railway_police": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "railway_police",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/809",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The prerequisite railway_police value is the countable Railway Police mission-generation requirement."
+    },
+    "railway_fire": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "railway_fire_responses",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The prerequisite railway_fire value is the countable Railway fire response mission-generation requirement."
     }
   }
 }

@@ -1,0 +1,179 @@
+{
+  "id": 806,
+  "name": "Passenger Train Fire in Tunnel",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 6
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "road_rail_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/806",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Railway tunnel"
+  ],
+  "preconditions": {
+    "fire_stations": 20,
+    "foam_extensions": 2,
+    "hart_bases": 2,
+    "mass_casualty_extensions": 1,
+    "police_stations": 10,
+    "railway_fire_responses": 2,
+    "railway_police": 1,
+    "rescue_stations": 18
+  },
+  "patients": {
+    "maximum": 150,
+    "minimum": 25,
+    "specializations": [
+      "General Internal",
+      "Burns"
+    ],
+    "specialization_ids": [
+      0,
+      12
+    ],
+    "specialization_text": "General Internal, Burns",
+    "codes": [
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.75,
+    "critical_care_probability": 0.01
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 4
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ],
+    "available": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 4
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 4
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 12
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 16660
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

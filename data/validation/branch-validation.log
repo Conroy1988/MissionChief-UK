@@ -1,9 +1,9 @@
 ## conditional-resource-contract-sync
-Conditional resource contract integration synchronized: already current.
-PASS conditional-resource-contract-sync
+Conditional resource contract integration failed: scripts/report_canonical_candidates.py: unable to locate integration point conditional imports
+FAIL conditional-resource-contract-sync (1)
 
 ## personnel-education-contract-sync
-Personnel education contract integration synchronized: scripts/report_canonical_candidates.py, scripts/generate_ready_canonical_batch.py, scripts/validate_official_key_mappings.py, scripts/report_key_mapping_backlog.py.
+Personnel education contract integration synchronized: already current.
 PASS personnel-education-contract-sync
 
 ## official-key-mapping-sync
@@ -17,7 +17,8 @@ Police Helicopter mapping synchronized: already current.
 Police Helicopter or Drone mapping synchronized: already current.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
-Official key mapping synchronization passed: 10 synchronizer(s) executed.
+Core railway mappings synchronized: change required.
+Official key mapping synchronization passed: 11 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -25,23 +26,23 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 27: 4 mission(s), 6 file(s) written.
+Generated fully canonical Batch 28: 1 mission(s), 3 file(s) written.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
-Canonical patient fields synchronized: 264 direct canonical records, 0 file(s) changed.
+Canonical patient fields synchronized: 265 direct canonical records, 0 file(s) changed.
 PASS canonical-patient-sync
 
 ## canonical-personnel-sync
-Canonical mapped personnel fields synchronized: 264 direct canonical records, 0 file(s) changed.
+Canonical mapped personnel fields synchronized: 265 direct canonical records, 14 file(s) changed.
 PASS canonical-personnel-sync
 
 ## canonical-personnel-education-sync
-Canonical personnel education fields synchronized: 264 direct canonical records, 17 file(s) changed.
+Canonical personnel education fields synchronized: 265 direct canonical records, 15 file(s) changed.
 PASS canonical-personnel-education-sync
 
 ## canonical-prisoner-sync
-Canonical prisoner fields synchronized: 264 direct canonical records, 0 file(s) changed.
+Canonical prisoner fields synchronized: 265 direct canonical records, 0 file(s) changed.
 PASS canonical-prisoner-sync
 
 ## canonical-data
@@ -64,6 +65,7 @@ Structured data validation warnings:
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-25.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-26.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-27.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-28.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
 - data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
@@ -78,57 +80,57 @@ Structured data validation warnings:
 - data/uk/official-personnel-education-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
 - data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
-Validated 391 structured data file(s) successfully, including 1131 mission resource reference(s) and 103 infrastructure precondition reference(s).
+Validated 393 structured data file(s) successfully, including 1151 mission resource reference(s) and 108 infrastructure precondition reference(s).
 PASS canonical-data
 
 ## coverage-reconciliation
-Official mission coverage reconciled: 264/1062 direct official/canonical matches, 798 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+Official mission coverage reconciled: 265/1062 direct official/canonical matches, 797 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
 PASS coverage-reconciliation
 
 ## official-catalogue
-Official UK mission catalogue audit passed: 1062 official missions, 264/281 canonical ID matches, 798 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+Official UK mission catalogue audit passed: 1062 official missions, 265/282 canonical ID matches, 797 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
 PASS official-catalogue
 
 ## registry-merge
-Mission verification registry merged: 223 decisions from 26 source files.
+Mission verification registry merged: 224 decisions from 27 source files.
 PASS registry-merge
 
 ## promoted-mapping-report
-Official key mapping failure report passed: all 223 promoted missions are equivalent.
+Official key mapping failure report passed: all 224 promoted missions are equivalent.
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 223 promoted missions, 223 fully canonical, 25 requirement keys, 10 chance keys and 11 prerequisite keys mapped.
+Official key mapping audit passed: 224 promoted missions, 224 fully canonical, 27 requirement keys, 10 chance keys and 13 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
-Official patient mapping audit passed: 223/223 promoted missions exact, 97 patient-bearing promoted missions and 10 patient fields mapped.
+Official patient mapping audit passed: 224/224 promoted missions exact, 98 patient-bearing promoted missions and 10 patient fields mapped.
 PASS official-patient-equivalence
 
 ## official-personnel-equivalence
-Official personnel mapping audit passed: 223/223 promoted missions exact, 18 mapped-personnel missions and 2 personnel role(s) mapped.
+Official personnel mapping audit passed: 224/224 promoted missions exact, 19 mapped-personnel missions and 2 personnel role(s) mapped.
 PASS official-personnel-equivalence
 
 ## official-personnel-education-equivalence
-Official personnel education mapping audit passed: 223 promoted missions inspected, 4 exact personnel-education missions, 4 strict decisions and 13 mapped roles.
+Official personnel education mapping audit passed: 224 promoted missions inspected, 5 exact personnel-education missions, 5 strict decisions and 13 mapped roles.
 PASS official-personnel-education-equivalence
 
 ## official-prisoner-equivalence
-Official prisoner mapping audit passed: 223/223 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+Official prisoner mapping audit passed: 224/224 promoted missions exact, 4 prisoner-bearing promoted missions and 2 prisoner fields mapped.
 PASS official-prisoner-equivalence
 
 ## canonical-candidates
 {
   "schema_version": "6",
   "official_count": 1062,
-  "canonical_count": 281,
+  "canonical_count": 282,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
   "personnel_contract_roles": 2,
   "prisoner_contract_fields": 2,
   "ready_count": 0,
-  "blocked_count": 798,
+  "blocked_count": 797,
   "ready": [],
   "blocked": []
 }
@@ -138,363 +140,17 @@ PASS canonical-candidates
 {
   "schema_version": "2",
   "official_count": 1062,
-  "canonical_count": 281,
+  "canonical_count": 282,
   "patient_contract_fields": 10,
   "conditional_resource_contracts": 1,
   "personnel_education_roles": 13,
   "mapped_key_counts": {
-    "requirements": 27,
+    "requirements": 29,
     "chances": 11,
-    "prerequisites": 12
+    "prerequisites": 14
   },
-  "unmapped_key_count": 46,
+  "unmapped_key_count": 42,
   "entries": [
-    {
-      "group": "prerequisites",
-      "key": "railway_police",
-      "remaining_mission_count": 24,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 1,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_fire"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 2,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "809",
-          "name": "Flooded Railway Station (Persons Trapped)",
-          "value": 1,
-          "average_credits": 10100,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.flood_equipment",
-            "requirements.min_pump_speed",
-            "requirements.railway_police",
-            "prerequisites.flood_equipment",
-            "prerequisites.water_damage_pump_count"
-          ],
-          "operational_complexity": [
-            "additional.pump_water_amount"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/809"
-        },
-        {
-          "id": "810",
-          "name": "Goods Train Collided with HGV",
-          "value": 1,
-          "average_credits": 24800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.tow_trucks_large"
-          ],
-          "operational_complexity": [
-            "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/810"
-        },
-        {
-          "id": "134/ab",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_fire"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/ab"
-        },
-        {
-          "id": "134/b",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_fire"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/b"
-        },
-        {
-          "id": "291/a",
-          "name": "Person under train",
-          "value": 1,
-          "average_credits": 7800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:291",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/291/a"
-        },
-        {
-          "id": "294/a",
-          "name": "Train station fire (Large)",
-          "value": 1,
-          "average_credits": 8800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:294",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/294/a"
-        },
-        {
-          "id": "295/ab",
-          "name": "Train station fire (Major)",
-          "value": 1,
-          "average_credits": 18700,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:295",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/295/ab"
-        },
-        {
-          "id": "295/abc",
-          "name": "Train station fire (Major)",
-          "value": 1,
-          "average_credits": 19200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:295",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/295/abc"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "railway_police",
-      "remaining_mission_count": 24,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 1,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 2,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "809",
-          "name": "Flooded Railway Station (Persons Trapped)",
-          "value": 1,
-          "average_credits": 10100,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.flood_equipment",
-            "requirements.min_pump_speed",
-            "prerequisites.flood_equipment",
-            "prerequisites.railway_police",
-            "prerequisites.water_damage_pump_count"
-          ],
-          "operational_complexity": [
-            "additional.pump_water_amount"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/809"
-        },
-        {
-          "id": "810",
-          "name": "Goods Train Collided with HGV",
-          "value": 1,
-          "average_credits": 24800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.railway_police",
-            "prerequisites.tow_trucks_large"
-          ],
-          "operational_complexity": [
-            "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/810"
-        },
-        {
-          "id": "134/ab",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/ab"
-        },
-        {
-          "id": "134/b",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/b"
-        },
-        {
-          "id": "291/a",
-          "name": "Person under train",
-          "value": 1,
-          "average_credits": 7800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:291",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/291/a"
-        },
-        {
-          "id": "294/a",
-          "name": "Train station fire (Large)",
-          "value": 1,
-          "average_credits": 8800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:294",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/294/a"
-        },
-        {
-          "id": "295/ab",
-          "name": "Train station fire (Major)",
-          "value": 1,
-          "average_credits": 18700,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:295",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/295/ab"
-        },
-        {
-          "id": "295/abc",
-          "name": "Train station fire (Major)",
-          "value": 1,
-          "average_credits": 19200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "additional.average_min_fire_personnel",
-            "variant:295",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/295/abc"
-        }
-      ]
-    },
     {
       "group": "prerequisites",
       "key": "tow_trucks",
@@ -1659,358 +1315,6 @@ PASS canonical-candidates
     },
     {
       "group": "prerequisites",
-      "key": "railway_fire",
-      "remaining_mission_count": 13,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 2,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 2,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_police",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "134/ab",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/ab"
-        },
-        {
-          "id": "134/b",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/b"
-        },
-        {
-          "id": "324/ab",
-          "name": "Freight Train Derailment",
-          "value": 1,
-          "average_credits": 12400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:324",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/324/ab"
-        },
-        {
-          "id": "324/b",
-          "name": "Freight Train Derailment",
-          "value": 1,
-          "average_credits": 11400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:324",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/324/b"
-        },
-        {
-          "id": "372/abc",
-          "name": "Passenger Train Derailment",
-          "value": 1,
-          "average_credits": 20200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/abc"
-        },
-        {
-          "id": "372/ac",
-          "name": "Passenger Train Derailment",
-          "value": 1,
-          "average_credits": 17700,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/ac"
-        },
-        {
-          "id": "372/bc",
-          "name": "Passenger Train Derailment",
-          "value": 1,
-          "average_credits": 19400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/bc"
-        },
-        {
-          "id": "372/c",
-          "name": "Passenger Train Derailment",
-          "value": 1,
-          "average_credits": 16900,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.two_way",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/c"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
-      "key": "two_way",
-      "remaining_mission_count": 13,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "806",
-          "name": "Passenger Train Fire in Tunnel",
-          "value": 2,
-          "average_credits": 16660,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/806"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 2,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "134/ab",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/ab"
-        },
-        {
-          "id": "134/b",
-          "name": "Goods Train Fire",
-          "value": 1,
-          "average_credits": 3000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:134",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/134/b"
-        },
-        {
-          "id": "324/ab",
-          "name": "Freight Train Derailment",
-          "value": 1,
-          "average_credits": 12400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:324",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/324/ab"
-        },
-        {
-          "id": "324/b",
-          "name": "Freight Train Derailment",
-          "value": 1,
-          "average_credits": 11400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:324",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/324/b"
-        },
-        {
-          "id": "372/abc",
-          "name": "Passenger Train Derailment",
-          "value": 2,
-          "average_credits": 20200,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/abc"
-        },
-        {
-          "id": "372/ac",
-          "name": "Passenger Train Derailment",
-          "value": 2,
-          "average_credits": 17700,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/ac"
-        },
-        {
-          "id": "372/bc",
-          "name": "Passenger Train Derailment",
-          "value": 2,
-          "average_credits": 19400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/bc"
-        },
-        {
-          "id": "372/c",
-          "name": "Passenger Train Derailment",
-          "value": 2,
-          "average_credits": 16900,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
-          ],
-          "operational_complexity": [
-            "variant:372",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/372/c"
-        }
-      ]
-    },
-    {
-      "group": "prerequisites",
       "key": "tow_trucks_large",
       "remaining_mission_count": 11,
       "single_key_unlock_count": 0,
@@ -2036,10 +1340,7 @@ PASS canonical-candidates
           "value": 1,
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.railway_police",
-            "prerequisites.railway_police"
-          ],
+          "other_unmapped_keys": [],
           "operational_complexity": [
             "Mission 810 additional.need_traffic_car_only_if_present must be true for the conditional resource mapping",
             "additional.possible_crashed_car_large_max",
@@ -2714,9 +2015,7 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.railway_police",
-            "prerequisites.flood_equipment",
-            "prerequisites.railway_police"
+            "prerequisites.flood_equipment"
           ],
           "operational_complexity": [
             "additional.pump_water_amount"
@@ -2867,9 +2166,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.flood_equipment",
-            "requirements.railway_police",
             "prerequisites.flood_equipment",
-            "prerequisites.railway_police",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -2942,12 +2239,8 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.railway_police",
             "requirements.rescue_dogs",
             "requirements.search_and_rescue",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [],
@@ -3138,8 +2431,6 @@ PASS canonical-candidates
           "other_unmapped_keys": [
             "requirements.flood_equipment",
             "requirements.min_pump_speed",
-            "requirements.railway_police",
-            "prerequisites.railway_police",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -3265,9 +2556,7 @@ PASS canonical-candidates
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
             "requirements.min_pump_speed",
-            "requirements.railway_police",
             "prerequisites.flood_equipment",
-            "prerequisites.railway_police",
             "prerequisites.water_damage_pump_count"
           ],
           "operational_complexity": [
@@ -3481,12 +2770,8 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.railway_police",
             "requirements.search_and_rescue",
             "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [],
@@ -4043,13 +3328,9 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.railway_police",
             "requirements.rescue_dogs",
             "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police"
+            "requirements.search_and_rescue_command"
           ],
           "operational_complexity": [],
           "official_url": "https://www.missionchief.co.uk/einsaetze/808"
@@ -4631,12 +3912,8 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.railway_police",
             "requirements.rescue_dogs",
             "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
             "prerequisites.technical_aid"
           ],
           "operational_complexity": [],
@@ -8201,17 +7478,17 @@ PASS patient-field-contract
 PASS operational-field-contract
 
 ## verification-status
-Mission verification status generated: 21.00% fully canonical, 839 of 1062 missions remaining.
+Mission verification status generated: 21.09% fully canonical, 838 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=281, direct=264, fully=223, remaining=839, batches=27, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
-Verification batch navigation synchronized for 27 evidence pages.
+Public verification metrics synchronized: canonical=282, direct=265, fully=224, remaining=838, batches=28, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Verification batch navigation synchronized for 28 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
 
 ## verification-assets
-Mission verification programme asset audit passed: 223/1062 fully canonical, 281 canonical records, 27 evidence batch pages, 202 dynamic batch decisions and 839 missions remaining.
+Mission verification programme asset audit passed: 224/1062 fully canonical, 282 canonical records, 28 evidence batch pages, 203 dynamic batch decisions and 838 missions remaining.
 PASS verification-assets
 
 ## public-exports
@@ -8223,11 +7500,11 @@ Generated 8 FAQ entries
 PASS generated-faq
 
 ## release-readiness
-Release-readiness audit passed: version=1.1.0, missions=281, vehicles=48, infrastructure=18, training=12
+Release-readiness audit passed: version=1.1.0, missions=282, vehicles=48, infrastructure=18, training=12
 PASS release-readiness
 
 ## links-and-anchors
-Documentation link audit passed across 95 Markdown files
+Documentation link audit passed across 96 Markdown files
 PASS links-and-anchors
 
 ## strict-mkdocs-build
@@ -8251,10 +7528,10 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.64 seconds
+INFO    -  Documentation built in 1.75 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
-Release-readiness audit passed: version=1.1.0, missions=281, vehicles=48, infrastructure=18, training=12; built site=site
+Release-readiness audit passed: version=1.1.0, missions=282, vehicles=48, infrastructure=18, training=12; built site=site
 PASS built-site-readiness
 

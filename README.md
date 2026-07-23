@@ -16,7 +16,7 @@
 
 ### **Mission control for the United Kingdom game. Not another loose collection of tips.**
 
-**1,062 official UK missions · 281 canonical mission records · 223 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
+**1,062 official UK missions · 282 canonical mission records · 224 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
 
 [**Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Complete Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Verification Status**](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**v1.1.0 Notes**](docs/releases/v1.1.0.md)
 
@@ -50,15 +50,15 @@ The numbered core programme is complete through **Stage 34**. Version **1.1.0** 
 | Intelligence domain | Current baseline | Operational result |
 |---|---:|---|
 | **Official UK missions** | **1,062** | Complete searchable catalogue with published fields retained |
-| **Canonical missions** | **281** | Normalized higher-trust records |
-| **Official/canonical ID matches** | **264** | Direct exact-ID evidence links |
-| **Fully canonical missions** | **223** | Passed identity, mapping, operational and final evidence gates |
-| **Official records awaiting canonical records** | **798** | Published records whose remaining semantics stay unguessed |
+| **Canonical missions** | **282** | Normalized higher-trust records |
+| **Official/canonical ID matches** | **265** | Direct exact-ID evidence links |
+| **Fully canonical missions** | **224** | Passed identity, mapping, operational and final evidence gates |
+| **Official records awaiting canonical records** | **797** | Published records whose remaining semantics stay unguessed |
 | **Canonical-only overlays** | **17** | Derived records without standalone official IDs |
 | **Deployable resources** | **46** | Vehicles, boats, trailers and specialist equipment |
 | **Infrastructure** | **18** | Buildings and extensions |
 | **Qualifications** | **11** | Operational roles and verified course fields |
-| **Canonical searchable entities** | **359** | Missions, resources, infrastructure and qualifications |
+| **Canonical searchable entities** | **360** | Missions, resources, infrastructure and qualifications |
 | **Public interface** | **Static API v1.1.0** | Versioned canonical and official data surfaces |
 
 > [!IMPORTANT]
@@ -79,9 +79,9 @@ Every official mission progresses through five enforced gates:
 | Verification gate | Current position |
 |---|---:|
 | Captured | **1,062 / 1,062 — 100%** |
-| Identity verified | **264 / 1,062 — 24.86%** |
-| Fully canonical | **223 / 1,062 — 21.00%** |
-| Remaining to fully canonical | **839** |
+| Identity verified | **265 / 1,062 — 24.95%** |
+| Fully canonical | **224 / 1,062 — 21.09%** |
+| Remaining to fully canonical | **838** |
 
 Batch 1 established **11 fully canonical missions**. The current evidence-controlled batches are:
 
@@ -124,9 +124,10 @@ Batch 25: 625, 677, 718
 Batch 26: 29, 69, 73, 90, 126, 128, 129, 130, 131, 133,
          322, 393, 442, 443, 444, 451, 467, 478, 484, 485
 Batch 27: 687, 688, 717, 733
+Batch 28: 806
 ```
 
-Batches 4–27 extend the verified vehicle-key contract through evidence-safe, exact-ID promotions. All 223 records pass aggregate identity and strict-equivalence validation.
+Batches 4–28 extend the verified vehicle-key contract through evidence-safe, exact-ID promotions. All 224 records pass aggregate identity and strict-equivalence validation.
 
 [Review the live verification backlog →](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/)
 
@@ -138,7 +139,7 @@ Mission Lookup combines two evidence tiers in one interface:
 
 | Evidence tier | What it contains | How it is shown |
 |---|---|---|
-| **Canonical mapped** | 281 normalized project records | Verified resources, alternatives, probabilities, patients, personnel and preconditions where supported |
+| **Canonical mapped** | 282 normalized project records | Verified resources, alternatives, probabilities, patients, personnel and preconditions where supported |
 | **Official UK catalogue** | 1,062 public records | Published fields reproduced with canonical status explicit |
 
 Search covers mission IDs, names, POIs, service families, requirements, probabilities, prerequisites, patients, personnel, availability, follow-ups, expansions, overlays and additional fields.
@@ -168,7 +169,7 @@ All tools are browser-side and read-only. They do not authenticate against, acce
 
 ```text
 data/uk/
-├── missions/                       281 canonical mission records
+├── missions/                       282 canonical mission records
 ├── mission-verification-registry.json
 ├── mission-verification-batches/   evidence-controlled promotions
 ├── official-key-mappings.json
