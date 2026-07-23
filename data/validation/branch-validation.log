@@ -11671,12 +11671,1635 @@ PASS canonical-candidates
 }
 PASS key-mapping-backlog
 
+## patient-field-contract
+{
+  "schema_version": "1",
+  "official_count": 1062,
+  "patient_record_count": 605,
+  "additional_fields": [
+    {
+      "key": "possible_patient",
+      "count": 595,
+      "types": {
+        "integer": 595
+      }
+    },
+    {
+      "key": "possible_patient_min",
+      "count": 413,
+      "types": {
+        "integer": 413
+      }
+    },
+    {
+      "key": "patient_specialization_captions",
+      "count": 601,
+      "types": {
+        "array": 601
+      }
+    },
+    {
+      "key": "patient_specialization_ids",
+      "count": 601,
+      "types": {
+        "array": 601
+      }
+    },
+    {
+      "key": "patient_specializations",
+      "count": 601,
+      "types": {
+        "string": 601
+      }
+    },
+    {
+      "key": "patient_uk_code_possible",
+      "count": 603,
+      "types": {
+        "array": 603
+      }
+    },
+    {
+      "key": "patient_allow_first_responder_chance",
+      "count": 48,
+      "types": {
+        "integer": 48
+      }
+    },
+    {
+      "key": "patient_at_end_of_mission",
+      "count": 69,
+      "types": {
+        "boolean": 69
+      }
+    }
+  ],
+  "chance_fields": [
+    {
+      "key": "patient_transport",
+      "count": 603,
+      "types": {
+        "integer": 603
+      }
+    },
+    {
+      "key": "patient_critical_care",
+      "count": 276,
+      "types": {
+        "integer": 276
+      }
+    }
+  ],
+  "range_diagnostics": {
+    "maximum_without_minimum": 182,
+    "minimum_without_maximum": 0
+  },
+  "shape_count": 20,
+  "shapes": [
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport"
+      ],
+      "count": 168,
+      "examples": [
+        {
+          "id": "35",
+          "name": "Alcoholic intoxication",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-3"
+            ]
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "37",
+          "name": "Acute asthma",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50
+          }
+        },
+        {
+          "id": "63",
+          "name": "Transient Ischemic Attack",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Neurosurgery"
+            ],
+            "patient_specialization_ids": [
+              6
+            ],
+            "patient_specializations": "Neurosurgery",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3"
+            ]
+          },
+          "chances": {
+            "patient_transport": 70
+          }
+        },
+        {
+          "id": "78",
+          "name": "Cardiac Arrest",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Surgeon"
+            ],
+            "patient_specialization_ids": [
+              1
+            ],
+            "patient_specializations": "General Surgeon",
+            "patient_uk_code_possible": [
+              "C-1"
+            ]
+          },
+          "chances": {
+            "patient_transport": 100
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 159,
+      "examples": [
+        {
+          "id": "36",
+          "name": "Chest Pains",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Cardiology"
+            ],
+            "patient_specialization_ids": [
+              7
+            ],
+            "patient_specializations": "Cardiology",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 100,
+            "patient_critical_care": 10
+          }
+        },
+        {
+          "id": "38",
+          "name": "Seizure",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Neurology"
+            ],
+            "patient_specialization_ids": [
+              5
+            ],
+            "patient_specializations": "Neurology",
+            "patient_uk_code_possible": [
+              "C-1"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        },
+        {
+          "id": "79",
+          "name": "Respiratory Arrest",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Surgeon"
+            ],
+            "patient_specialization_ids": [
+              1
+            ],
+            "patient_specializations": "General Surgeon",
+            "patient_uk_code_possible": [
+              "C-1"
+            ]
+          },
+          "chances": {
+            "patient_transport": 100,
+            "patient_critical_care": 70
+          }
+        },
+        {
+          "id": "147",
+          "name": "Spinal injury",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Surgeon"
+            ],
+            "patient_specialization_ids": [
+              1
+            ],
+            "patient_specializations": "General Surgeon",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 50
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport"
+      ],
+      "count": 109,
+      "examples": [
+        {
+          "id": "20",
+          "name": "Basement fire",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "25",
+          "name": "Road accident",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3"
+            ]
+          },
+          "chances": {
+            "patient_transport": 40
+          }
+        },
+        {
+          "id": "26",
+          "name": "Small Supermarket Fire",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "33",
+          "name": "Small Supermarket Fire",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 45,
+      "examples": [
+        {
+          "id": "94",
+          "name": "School fire",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 6,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        },
+        {
+          "id": "189",
+          "name": "Hotel fire (small)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 6,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 40,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "190",
+          "name": "Hotel fire (medium)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 10,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 40,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "192",
+          "name": "Hotel fire (large)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 20,
+            "patient_specialization_captions": [
+              "General Internal",
+              "Critical Care"
+            ],
+            "patient_specialization_ids": [
+              0,
+              14
+            ],
+            "patient_specializations": "General Internal, Critical Care",
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {
+            "patient_transport": 40,
+            "patient_critical_care": 100
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 28,
+      "examples": [
+        {
+          "id": "233",
+          "name": "Person under tree",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Traumatology",
+              "Critical Care"
+            ],
+            "patient_specialization_ids": [
+              4,
+              14
+            ],
+            "patient_specializations": "Traumatology, Critical Care",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 100,
+            "patient_critical_care": 100
+          }
+        },
+        {
+          "id": "291",
+          "name": "Person under train",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Traumatology",
+              "Critical Care"
+            ],
+            "patient_specialization_ids": [
+              4,
+              14
+            ],
+            "patient_specializations": "Traumatology, Critical Care",
+            "patient_uk_code_possible": [
+              "C-1"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 100,
+            "patient_critical_care": 100
+          }
+        },
+        {
+          "id": "315",
+          "name": "Collision on ride",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 10,
+            "possible_patient_min": 4,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 80,
+            "patient_critical_care": 80
+          }
+        },
+        {
+          "id": "422",
+          "name": "Assisting the ambulance service",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 80,
+            "patient_critical_care": 20
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "chances.patient_transport"
+      ],
+      "count": 23,
+      "examples": [
+        {
+          "id": "39",
+          "name": "Fever",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 90
+          }
+        },
+        {
+          "id": "40",
+          "name": "Fallen person",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "42",
+          "name": "Fallen person",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-3"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "43",
+          "name": "Fallen person",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-4"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport"
+      ],
+      "count": 20,
+      "examples": [
+        {
+          "id": "143",
+          "name": "Stuck Climber",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "320",
+          "name": "Person trapped in agricultural machinery",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-1"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 100
+          }
+        },
+        {
+          "id": "367",
+          "name": "Unwell Person Stuck in lift",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 75
+          }
+        },
+        {
+          "id": "553",
+          "name": "Evacuation from Cruise Liner",
+          "filter_id": "coastal_rescue_missions",
+          "additional": {
+            "possible_patient": 20,
+            "possible_patient_min": 3,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 100
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 14,
+      "examples": [
+        {
+          "id": "457",
+          "name": "Care home fire (Persons Reported)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 12,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 70,
+            "patient_critical_care": 20
+          }
+        },
+        {
+          "id": "544",
+          "name": "Investigate Flare",
+          "filter_id": "coastal_rescue_missions",
+          "additional": {
+            "possible_patient": 3,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 70,
+            "patient_critical_care": 30
+          }
+        },
+        {
+          "id": "753",
+          "name": "Belay Failure Whilst Abseiling",
+          "filter_id": "mountain_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 80,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "754",
+          "name": "Teenager Trapped in Small Cave Complex",
+          "filter_id": "mountain_missions",
+          "additional": {
+            "possible_patient": 1,
+            "patient_specialization_captions": [
+              "General Internal",
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              0,
+              4
+            ],
+            "patient_specializations": "General Internal, Traumatology",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3",
+              "C-4"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 5
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 12,
+      "examples": [
+        {
+          "id": "141",
+          "name": "Choking",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 90,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "410",
+          "name": "Fuel Storage Depot Explosion (Major Incident)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 20,
+            "possible_patient_min": 5,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 70
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "430",
+          "name": "Food poisoning from wild berries",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Surgeon"
+            ],
+            "patient_specialization_ids": [
+              1
+            ],
+            "patient_specializations": "General Surgeon",
+            "patient_uk_code_possible": [
+              "C-3"
+            ],
+            "patient_allow_first_responder_chance": 50
+          },
+          "chances": {
+            "patient_transport": 30,
+            "patient_critical_care": 15
+          }
+        },
+        {
+          "id": "627",
+          "name": "Altered Consciousness",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 20
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 10
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 8,
+      "examples": [
+        {
+          "id": "295",
+          "name": "Train station fire (Major)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "patient_specialization_captions": [
+              "General Internal",
+              "Burns"
+            ],
+            "patient_specialization_ids": [
+              0,
+              12
+            ],
+            "patient_specializations": "General Internal, Burns",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3",
+              "C-4"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        },
+        {
+          "id": "295/a",
+          "name": "Train station fire (Major)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "patient_specialization_captions": [
+              "General Internal",
+              "Burns"
+            ],
+            "patient_specialization_ids": [
+              0,
+              12
+            ],
+            "patient_specializations": "General Internal, Burns",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3",
+              "C-4"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        },
+        {
+          "id": "295/ab",
+          "name": "Train station fire (Major)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "patient_specialization_captions": [
+              "General Internal",
+              "Burns"
+            ],
+            "patient_specialization_ids": [
+              0,
+              12
+            ],
+            "patient_specializations": "General Internal, Burns",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3",
+              "C-4"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        },
+        {
+          "id": "295/abc",
+          "name": "Train station fire (Major)",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "patient_specialization_captions": [
+              "General Internal",
+              "Burns"
+            ],
+            "patient_specialization_ids": [
+              0,
+              12
+            ],
+            "patient_specializations": "General Internal, Burns",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3",
+              "C-4"
+            ]
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 25
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 8,
+      "examples": [
+        {
+          "id": "408",
+          "name": "Small Fuel storage tank explosion",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 6,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 70
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "409",
+          "name": "Large Fuel storage tank explosion",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 8,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 70
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "408/a",
+          "name": "Small Fuel storage tank explosion",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 6,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 70
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 50
+          }
+        },
+        {
+          "id": "408/ab",
+          "name": "Small Fuel storage tank explosion",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 6,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-1"
+            ],
+            "patient_allow_first_responder_chance": 70
+          },
+          "chances": {
+            "patient_transport": 60,
+            "patient_critical_care": 50
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport",
+        "chances.patient_critical_care"
+      ],
+      "count": 2,
+      "examples": [
+        {
+          "id": "405",
+          "name": "Kidnapping",
+          "filter_id": "police_station_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 80,
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 60
+          }
+        },
+        {
+          "id": "405-0",
+          "name": "Kidnapping",
+          "filter_id": "police_station_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 80,
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 50,
+            "patient_critical_care": 60
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport"
+      ],
+      "count": 2,
+      "examples": [
+        {
+          "id": "639",
+          "name": "Child stuck in tree",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "patient_specialization_captions": [
+              "General Surgeon",
+              "Children"
+            ],
+            "patient_specialization_ids": [
+              1,
+              13
+            ],
+            "patient_specializations": "General Surgeon, Children",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        },
+        {
+          "id": "804",
+          "name": "Powerline sparks fire on farmland",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "possible_patient": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-2"
+            ],
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.patient_at_end_of_mission"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "766",
+          "name": "Dis-Masted sailing boat (inshore)",
+          "filter_id": "coastal_rescue_missions",
+          "additional": {
+            "patient_at_end_of_mission": true
+          },
+          "chances": {}
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.patient_uk_code_possible"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "171",
+          "name": "Thatched Cottage Chimney Fire",
+          "filter_id": "firehouse_missions",
+          "additional": {
+            "patient_uk_code_possible": [
+              "C-2"
+            ]
+          },
+          "chances": {}
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "412",
+          "name": "Concern for welfare on bridge",
+          "filter_id": "police_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "patient_specialization_captions": [
+              "General Internal"
+            ],
+            "patient_specialization_ids": [
+              0
+            ],
+            "patient_specializations": "General Internal",
+            "patient_uk_code_possible": [
+              "C-3"
+            ],
+            "patient_allow_first_responder_chance": 70,
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 60
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "chances.patient_transport"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "816",
+          "name": "School buses collide due to black ice",
+          "filter_id": "police_station_missions",
+          "additional": {
+            "possible_patient": 2,
+            "patient_specialization_captions": [
+              "Traumatology"
+            ],
+            "patient_specialization_ids": [
+              4
+            ],
+            "patient_specializations": "Traumatology",
+            "patient_uk_code_possible": [
+              "C-2",
+              "C-3"
+            ],
+            "patient_allow_first_responder_chance": 40
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_specialization_captions",
+        "additional.patient_specialization_ids",
+        "additional.patient_specializations",
+        "additional.patient_uk_code_possible",
+        "additional.patient_allow_first_responder_chance",
+        "additional.patient_at_end_of_mission",
+        "chances.patient_transport"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "692",
+          "name": "Labour - Home Birth",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_specialization_captions": [
+              "Central Delivery Suite"
+            ],
+            "patient_specialization_ids": [
+              15
+            ],
+            "patient_specializations": "Central Delivery Suite",
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2"
+            ],
+            "patient_allow_first_responder_chance": 100,
+            "patient_at_end_of_mission": true
+          },
+          "chances": {
+            "patient_transport": 30
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "additional.patient_uk_code_possible",
+        "chances.patient_transport"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "716",
+          "name": "Interfacility Transfer - Critical Care",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1,
+            "patient_uk_code_possible": [
+              "C-1",
+              "C-2",
+              "C-3",
+              "C-4"
+            ]
+          },
+          "chances": {
+            "patient_transport": 0
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        "additional.possible_patient",
+        "additional.possible_patient_min",
+        "chances.patient_transport"
+      ],
+      "count": 1,
+      "examples": [
+        {
+          "id": "77",
+          "name": "Patient Transfer",
+          "filter_id": "ambulance_station_missions",
+          "additional": {
+            "possible_patient": 1,
+            "possible_patient_min": 1
+          },
+          "chances": {
+            "patient_transport": 0
+          }
+        }
+      ]
+    }
+  ]
+}
+PASS patient-field-contract
+
 ## verification-status
 Mission verification status generated: 10.64% fully canonical, 949 of 1062 missions remaining.
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=171, direct=154, fully=113, remaining=949, batches=16, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=171, direct=154, fully=113, remaining=949, batches=16, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 16 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -11722,7 +13345,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.47 seconds
+INFO    -  Documentation built in 1.57 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
