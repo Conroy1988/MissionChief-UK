@@ -30,7 +30,7 @@ Official key mapping failure report passed: all 95 promoted missions are equival
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 95 promoted missions, 95 fully canonical, 8 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
+Official key mapping audit passed: 95 promoted missions, 95 fully canonical, 9 requirement keys, 5 chance keys and 2 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## canonical-candidates
@@ -38,9 +38,33 @@ PASS official-key-equivalence
   "schema_version": "1",
   "official_count": 1062,
   "canonical_count": 153,
-  "ready_count": 0,
-  "blocked_count": 926,
-  "ready": [],
+  "ready_count": 1,
+  "blocked_count": 925,
+  "ready": [
+    {
+      "id": "30",
+      "name": "Fuel spill from car",
+      "suggested_path": "data/uk/missions/fuel-spill-from-car.json",
+      "average_credits": 400,
+      "mission_categories": [
+        "fire",
+        "urban"
+      ],
+      "place": "",
+      "place_array": [],
+      "requirements": {
+        "firetrucks": 1,
+        "oneof_fire_engine_or_rescue": 1
+      },
+      "chances": {},
+      "prerequisites": {
+        "fire_stations": 1,
+        "main_building": 0
+      },
+      "expansion_missions": [],
+      "followup_missions": []
+    }
+  ],
   "blocked": []
 }
 PASS canonical-candidates
@@ -51,171 +75,12 @@ PASS canonical-candidates
   "official_count": 1062,
   "canonical_count": 153,
   "mapped_key_counts": {
-    "requirements": 8,
+    "requirements": 9,
     "chances": 5,
     "prerequisites": 2
   },
-  "unmapped_key_count": 81,
+  "unmapped_key_count": 80,
   "entries": [
-    {
-      "group": "requirements",
-      "key": "oneof_fire_engine_or_rescue",
-      "remaining_mission_count": 18,
-      "single_key_unlock_count": 1,
-      "examples": [
-        {
-          "id": "30",
-          "name": "Fuel spill from car",
-          "value": 1,
-          "average_credits": 400,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/30"
-        },
-        {
-          "id": "162",
-          "name": "Chocolate Tanker Spill",
-          "value": 4,
-          "average_credits": 5000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/162"
-        },
-        {
-          "id": "336",
-          "name": "Inflate Soccer ball",
-          "value": 1,
-          "average_credits": 300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/336"
-        },
-        {
-          "id": "340",
-          "name": "Goal fell down",
-          "value": 1,
-          "average_credits": 300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/340"
-        },
-        {
-          "id": "380",
-          "name": "Storm drain clogged with leaves",
-          "value": 1,
-          "average_credits": 300,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.date_end",
-            "additional.date_start"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/380"
-        },
-        {
-          "id": "392",
-          "name": "Large fuel leak from vehicle",
-          "value": 2,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/392"
-        },
-        {
-          "id": "393",
-          "name": "Large fuel leak from vehicle (fast road)",
-          "value": 2,
-          "average_credits": 1500,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "requirements.traffic_car",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/393"
-        },
-        {
-          "id": "422",
-          "name": "Assisting the ambulance service",
-          "value": 1,
-          "average_credits": 700,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/422"
-        },
-        {
-          "id": "423",
-          "name": "Assisting the ambulance service [Bariatric]",
-          "value": 2,
-          "average_credits": 1000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "chances.patient_critical_care",
-            "chances.patient_transport",
-            "prerequisites.rescue_stations"
-          ],
-          "operational_complexity": [
-            "additional.patient_at_end_of_mission",
-            "additional.patient_specialization_captions",
-            "additional.patient_specialization_ids",
-            "additional.patient_specializations",
-            "additional.patient_uk_code_possible",
-            "additional.possible_patient",
-            "additional.possible_patient_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/423"
-        },
-        {
-          "id": "466",
-          "name": "Caravan roll over RTC",
-          "value": 1,
-          "average_credits": 5000,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.police_cars",
-            "prerequisites.police_stations"
-          ],
-          "operational_complexity": [],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/466"
-        }
-      ]
-    },
     {
       "group": "requirements",
       "key": "oneof_fire_engine_or_rescue_or_ladder",
@@ -10588,7 +10453,6 @@ PASS canonical-candidates
           "average_credits": 5300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_fire_engine_or_rescue",
             "requirements.police_cars",
             "prerequisites.police_stations"
           ],
@@ -10607,7 +10471,6 @@ PASS canonical-candidates
           "average_credits": 7300,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_fire_engine_or_rescue",
             "requirements.police_cars",
             "requirements.traffic_car",
             "prerequisites.police_stations"
@@ -15544,7 +15407,7 @@ Mission verification status generated: 8.95% fully canonical, 967 of 1062 missio
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=153, direct=136, fully=95, remaining=967, batches=10, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=153, direct=136, fully=95, remaining=967, batches=10, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 10 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -15590,7 +15453,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.40 seconds
+INFO    -  Documentation built in 1.01 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
