@@ -16,7 +16,7 @@
 
 ### **Mission control for the United Kingdom game. Not another loose collection of tips.**
 
-**1,062 official UK missions · 107 canonical mission records · 49 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
+**1,062 official UK missions · 127 canonical mission records · 69 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
 
 [**Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Complete Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Verification Status**](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**v1.1.0 Notes**](docs/releases/v1.1.0.md)
 
@@ -50,15 +50,15 @@ The numbered programme is complete through **Stage 34**. MissionChief UK **v1.1.
 | Intelligence domain | v1.1.0 baseline | Operational result |
 |---|---:|---|
 | **Official UK missions** | **1,062** | Complete searchable public UK mission catalogue with every published field retained |
-| **Canonical missions** | **107** | Higher-trust normalized requirements, probabilities, alternatives, patients and preconditions |
-| **Official/canonical ID matches** | **90** | Official records linked directly to canonical evidence |
-| **Fully canonical missions** | **49** | Missions that passed identity, mapping, operational and final evidence-completeness gates |
-| **Official records awaiting canonical records** | **972** | Searchable official records whose internal keys remain visible and unguessed |
+| **Canonical missions** | **127** | Higher-trust normalized requirements, probabilities, alternatives, patients and preconditions |
+| **Official/canonical ID matches** | **110** | Official records linked directly to canonical evidence |
+| **Fully canonical missions** | **69** | Missions that passed identity, mapping, operational and final evidence-completeness gates |
+| **Official records awaiting canonical records** | **952** | Searchable official records whose internal keys remain visible and unguessed |
 | **Canonical-only overlays** | **17** | Derived or overlay records without a standalone official mission ID |
 | **Canonical resources** | **46** | Vehicles, boats, trailers, specialist equipment and deployment metadata |
 | **Infrastructure** | **18** | Buildings and extensions enforced through schema-controlled references |
 | **Qualifications** | **11** | Operational roles with unsupported course details deliberately omitted |
-| **Canonical searchable entities** | **182** | Global command palette across missions, resources, infrastructure and training |
+| **Canonical searchable entities** | **202** | Global command palette across missions, resources, infrastructure and training |
 | **Public interface** | **Static API v1.1.0** | Versioned canonical exports plus official catalogue, coverage and verification endpoints |
 | **Quality assurance** | **Cross-browser** | Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance |
 
@@ -80,13 +80,13 @@ Every official mission progresses through five enforced gates:
 | Verification gate | Current position |
 |---|---:|
 | Captured | **1,062 / 1,062 — 100%** |
-| Identity verified | **90 / 1,062 — 8.47%** |
-| Fully canonical | **49 / 1,062 — 4.61%** |
-| Remaining to fully canonical | **1,013** |
+| Identity verified | **110 / 1,062 — 10.36%** |
+| Fully canonical | **69 / 1,062 — 6.50%** |
+| Remaining to fully canonical | **993** |
 
-Batch 1 established **11 fully canonical missions**. Batch 2 added 10. Batch 3 adds 28, taking the current total to **49 fully canonical missions**.
+Batch 1 established **11 fully canonical missions**. Batch 2 added 10. Batch 3 added 28. Batch 4 adds 20 chance-aware Fire and Rescue missions, taking the current total to **69 fully canonical missions**.
 
-The first three batches cover:
+The first four batches cover:
 
 ```text
 Batch 1: 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11
@@ -94,9 +94,11 @@ Batch 2: 13, 14, 15, 16, 17, 18, 19, 23, 24, 27
 Batch 3: 32, 58, 65, 202, 203, 313, 334, 352, 365, 366,
          388, 399, 400, 421, 435, 468, 472, 475, 535, 541,
          570, 577, 624, 638, 668, 772, 857, 858
+Batch 4: 21, 22, 31, 180, 344, 353, 361, 452, 456, 460,
+         494, 512, 520, 547, 672, 708, 734, 768, 774, 779
 ```
 
-Two superficially eligible records were withheld because their official expansion relationships referenced IDs absent from the retained catalogue snapshot. They remain blocked rather than being promoted with incomplete evidence.
+Batch 4 adds strict chance-aware interpretation for Aerial Appliance Trucks and Fire Officers. Same-key official percentages remain probabilistic rather than being flattened into guaranteed requirements.
 
 [Review the live verification backlog →](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/)
 
@@ -108,7 +110,7 @@ Mission Lookup combines two evidence tiers in one interface:
 
 | Evidence tier | What it contains | How it is shown |
 |---|---|---|
-| **Canonical mapped** | 107 normalized project records | Verified resources, alternatives, probabilities, patients, personnel and preconditions where supported |
+| **Canonical mapped** | 127 normalized project records | Verified resources, alternatives, probabilities, patients, personnel and preconditions where supported |
 | **Official UK catalogue** | 1,062 public MissionChief UK records | Official fields reproduced verbatim with canonical mapping status made explicit |
 
 Search covers IDs, names, aliases, POIs, service families, requirements, probabilities, prerequisites, patients, personnel, duration, seasonal availability, follow-ups, expansions, overlays and every additional published field through the complete-record viewer.
@@ -141,7 +143,7 @@ All tools are browser-side and read-only. They do not authenticate against, acce
 ```text
 data/
 ├── uk/
-│   ├── missions/                       107 canonical mission records
+│   ├── missions/                       127 canonical mission records
 │   ├── mission-verification-registry.json
 │   ├── mission-verification-batches/   scalable promotion decisions
 │   ├── official-key-mappings.json
@@ -210,6 +212,8 @@ Merge verification batch registries
       ↓
 Verified official-key mapping audit
       ↓
+Evidence-safe candidate and key-backlog reports
+      ↓
 Lossless browser publication
       ↓
 100% verification backlog regeneration
@@ -221,7 +225,7 @@ Pages deployment and cross-browser acceptance
 
 An unchanged source digest and unchanged verification state produce no commit or deployment churn.
 
-The candidate analyser scans the full retained catalogue after every validation cycle. It reports missions whose published operational surface is already covered by verified mappings and blocks unresolved relationships, overlays, probabilities, patients, personnel and unsupported service families.
+The candidate analyser scans the complete retained catalogue after every validation cycle. It reports missions whose published operational surface is already covered by verified mappings and blocks unresolved relationships, overlays, patients, personnel and unsupported service families. The key-mapping backlog ranks the remaining internal keys by the number of missions they can safely unlock.
 
 ---
 
@@ -236,9 +240,9 @@ Official catalogue losslessness
         ↓
 Verification registry batch merge
         ↓
-Official-key strict-equivalence audit
+Official-key chance-aware equivalence audit
         ↓
-Evidence-safe candidate analysis
+Evidence-safe candidate and key-backlog analysis
         ↓
 Verification status generation
         ↓
@@ -263,6 +267,7 @@ python scripts/validate_official_mission_catalogue.py
 python scripts/merge_verification_registry_batches.py
 python scripts/validate_official_key_mappings.py
 python scripts/report_canonical_candidates.py --limit 50
+python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
 python scripts/generate_mission_verification_status.py
 python scripts/validate_verification_programme_assets.py
 python scripts/generate_exports.py
