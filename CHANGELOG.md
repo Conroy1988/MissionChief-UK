@@ -14,20 +14,28 @@ No unreleased changes are currently recorded.
 
 - Added a lossless snapshot of all 1,062 missions published by the public MissionChief UK mission feed.
 - Preserved every official top-level and nested mission field with source URL, retrieval time and SHA-256 provenance.
-- Added offline reconciliation reporting against 79 canonical mission records.
-- Identified 62 direct official/canonical ID matches, 1,000 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
+- Added offline reconciliation reporting against 107 canonical mission records.
+- Identified 90 direct official/canonical ID matches, 972 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
 - Added inventories for every published requirement, chance and prerequisite key.
 - Added separate public catalogue, coverage and verification endpoints under `assets/data/official/`.
 
 ### 100% verification programme
 
 - Added five evidence gates: captured, identity verified, requirements mapped, operationally verified and fully canonical.
-- Added a machine-readable mission-verification registry and deterministic per-mission blockers and next actions.
-- Added an official-key mapping registry that requires evidence for every mapped requirement, chance and prerequisite key.
+- Added a machine-readable base mission-verification registry and scalable batch registries.
+- Added deterministic registry merging with duplicate-decision protection.
+- Added deterministic per-mission blockers and next actions.
+- Added an official-key mapping registry requiring evidence for every mapped requirement, chance and prerequisite key.
 - Added strict key-equivalence validation for missions promoted to fully canonical.
 - Added offline coverage reconciliation so canonical batches update official/canonical match counts without redownloading the source feed.
-- Fully canonicalized 21 missions across the first two Fire and Rescue batches: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10`, `11`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `23`, `24` and `27`.
-- Expanded the canonical mission collection from 62 to 79 records.
+- Added an evidence-safe candidate analyser across the complete retained official catalogue.
+- The analyser resolves relationship IDs, creates collision-free paths for duplicate mission names and blocks overlays, unsupported service families, probabilities, patients, personnel and unresolved relationships.
+- Fully canonicalized 49 missions across three Fire and Rescue batches.
+- Batch 1: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10`, `11`.
+- Batch 2: IDs `13`, `14`, `15`, `16`, `17`, `18`, `19`, `23`, `24`, `27`.
+- Batch 3: IDs `32`, `58`, `65`, `202`, `203`, `313`, `334`, `352`, `365`, `366`, `388`, `399`, `400`, `421`, `435`, `468`, `472`, `475`, `535`, `541`, `570`, `577`, `624`, `638`, `668`, `772`, `857`, `858`.
+- Withheld two otherwise simple candidates because their official expansion relationships referenced IDs absent from the retained source snapshot.
+- Expanded the canonical mission collection from 62 to 107 records.
 - Published a generated verification dashboard and `uk-mission-verification.json` endpoint.
 
 ### Mission Lookup
@@ -56,7 +64,9 @@ No unreleased changes are currently recorded.
 - Added a daily and manually dispatchable catalogue refresh workflow.
 - Added automatic Pages deployment after a real official-source or generated verification-state change.
 - Added an offline catalogue auditor covering IDs, names, ordering, field preservation, checksums, reconciliation, inventories and built-site equality.
-- Added official-to-canonical key mapping validation to CI, deployment, release publication and catalogue refresh.
+- Added verification-registry batch merging to CI, deployment, release publication and catalogue refresh.
+- Added official-to-canonical key mapping validation to every publication path.
+- Added candidate-report generation and retained Actions artifacts for subsequent canonical batches.
 - Added browser acceptance coverage for catalogue completeness, official-only search, canonical search, structured metadata, complete records and horizontal containment.
 - Protected catalogue source, automation, verification, browser and QA assets as release-critical.
 
