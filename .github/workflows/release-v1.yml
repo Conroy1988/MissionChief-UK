@@ -102,6 +102,10 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_mission_verification_status.py
 
+      - name: Validate mission verification programme assets
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_verification_programme_assets.py
+
       - name: Generate public data exports
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_exports.py
