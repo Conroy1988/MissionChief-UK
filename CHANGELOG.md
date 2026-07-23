@@ -14,10 +14,21 @@ No unreleased changes are currently recorded.
 
 - Added a lossless snapshot of all 1,062 missions published by the public MissionChief UK mission feed.
 - Preserved every official top-level and nested mission field with source URL, retrieval time and SHA-256 provenance.
-- Added reconciliation reporting against the 62 canonical mission records.
-- Identified 45 official/canonical ID matches, 1,017 official records awaiting full mapping and 17 canonical overlay or derived records without standalone official IDs.
+- Added offline reconciliation reporting against 69 canonical mission records.
+- Identified 52 direct official/canonical ID matches, 1,010 official records awaiting direct canonical records and 17 canonical overlay or derived records without standalone official IDs.
 - Added inventories for every published requirement, chance and prerequisite key.
-- Added separate public official-catalogue and coverage endpoints under `assets/data/official/`.
+- Added separate public catalogue, coverage and verification endpoints under `assets/data/official/`.
+
+### 100% verification programme
+
+- Added five evidence gates: captured, identity verified, requirements mapped, operationally verified and fully canonical.
+- Added a machine-readable mission-verification registry and deterministic per-mission blockers and next actions.
+- Added an official-key mapping registry that requires evidence for every mapped requirement, chance and prerequisite key.
+- Added strict key-equivalence validation for missions promoted to fully canonical.
+- Added offline coverage reconciliation so canonical batches update official/canonical match counts without redownloading the source feed.
+- Fully canonicalized the first 11 missions: IDs `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, `9`, `10` and `11`.
+- Expanded the canonical mission collection from 62 to 69 records.
+- Published a generated verification dashboard and `uk-mission-verification.json` endpoint.
 
 ### Mission Lookup
 
@@ -43,15 +54,16 @@ No unreleased changes are currently recorded.
 - Added a deterministic importer for the official UK mission feed.
 - Added content-addressed refresh behaviour so an unchanged source produces no commit.
 - Added a daily and manually dispatchable catalogue refresh workflow.
-- Added automatic Pages deployment after a real official-source change.
+- Added automatic Pages deployment after a real official-source or generated verification-state change.
 - Added an offline catalogue auditor covering IDs, names, ordering, field preservation, checksums, reconciliation, inventories and built-site equality.
+- Added official-to-canonical key mapping validation to CI, deployment, release publication and catalogue refresh.
 - Added browser acceptance coverage for catalogue completeness, official-only search, canonical search, structured metadata, complete records and horizontal containment.
-- Protected all catalogue source, automation, browser and QA assets as release-critical.
+- Protected catalogue source, automation, verification, browser and QA assets as release-critical.
 
 ### Compatibility
 
 - Retained all canonical API v1 paths, envelopes, canonical IDs and evidence semantics.
-- Published the complete official catalogue as a separate data tier rather than silently mixing internal official keys into the canonical API.
+- Published the complete official catalogue and verification status as separate data tiers rather than silently mixing internal official keys into the canonical API.
 - Added no MissionChief authentication, account access or data mutation capability.
 
 ## [1.0.1] — 2026-07-22
