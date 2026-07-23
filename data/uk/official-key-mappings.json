@@ -75,6 +75,22 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official water_tankers count represents UK Water Carriers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "mobile_command_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "iccu",
+        "ambulance_control_unit"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/169",
+        "https://www.missionchief.co.uk/einsaetze/177",
+        "https://www.missionchief.co.uk/einsaetze/181",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as ICCU or Ambulance Control Units. The quantity is a qualifying total across the two canonical resource types, not two simultaneous guaranteed vehicles."
     }
   },
   "chances": {
