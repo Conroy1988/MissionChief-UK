@@ -101,6 +101,12 @@ def relationship_blockers(
         missing = [str(value) for value in values if str(value) not in official_by_id]
         if missing:
             blockers.append(f"unresolved additional.{field}: {', '.join(missing)}")
+        counts = Counter(str(value) for value in values)
+        duplicates = [f"{value} x{count}" for value, count in sorted(counts.items()) if count > 1]
+        if duplicates:
+            blockers.append(
+                f"duplicate additional.{field} requires relationship multiplicity modelling: {', '.join(duplicates)}"
+            )
     return blockers
 
 
