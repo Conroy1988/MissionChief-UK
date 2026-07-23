@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def patch(path: Path, replacements: list[tuple[str, str, str]]) -> bool:
     text = path.read_text(encoding="utf-8")
+    if "CONDITIONAL_MAPPINGS = load_conditional_mappings()" in text:
+        return False
     original = text
     for label, old, new in replacements:
         if new in text:
