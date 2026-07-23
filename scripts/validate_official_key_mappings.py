@@ -24,6 +24,7 @@ DELEGATED_CHANCE_TARGETS = {
     "patients.critical_care_probability",
     "personnel.probabilistic",
 }
+PROBABILISTIC_ALTERNATIVE_TARGET = "requirements.probabilistic-alternatives"
 TARGETS_BY_GROUP = {
     "requirements": {
         "requirements.guaranteed",
@@ -31,9 +32,15 @@ TARGETS_BY_GROUP = {
         "requirements.alternatives",
         *DELEGATED_REQUIREMENT_TARGETS,
     },
-    "chances": {"requirements.probabilistic", *DELEGATED_CHANCE_TARGETS},
+    "chances": {
+        "requirements.probabilistic",
+        PROBABILISTIC_ALTERNATIVE_TARGET,
+        *DELEGATED_CHANCE_TARGETS,
+    },
     "prerequisites": {"preconditions"},
 }
+
+AlternativeValue = tuple[int, float | None]
 
 
 def read_json(path: Path) -> Any:
@@ -130,7 +137,9 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
                 target = mapping.get("canonical_target")
                 if target not in TARGETS_BY_GROUP[group]:
                     raise ValueError(f"{label} uses unsupported canonical target {target!r}")
-                if group == "requirements" and target == "requirements.alternatives":
+                if (
+                    group == "requirements" and target == "requirements.alternatives"
+                ) or target == PROBABILISTIC_ALTERNATIVE_TARGET:
                     validated_resource_list(mapping.get("canonical_ids"), label)
                 elif target in DELEGATED_REQUIREMENT_TARGETS or target == "personnel.probabilistic":
                     role = mapping.get("canonical_role")
@@ -142,7 +151,11 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
                     canonical_id = mapping.get("canonical_id")
                     if not isinstance(canonical_id, str) or not canonical_id:
                         raise ValueError(f"{label} requires canonical_id")
-                if group == "chances" and target in {"requirements.probabilistic", "personnel.probabilistic"}:
+                if group == "chances" and target in {
+                    "requirements.probabilistic",
+                    "personnel.probabilistic",
+                    PROBABILISTIC_ALTERNATIVE_TARGET,
+                }:
                     requirement_key = mapping.get("requirement_key", official_key)
                     if not isinstance(requirement_key, str) or not requirement_key:
                         raise ValueError(f"{label} requires requirement_key")
@@ -207,16 +220,17 @@ def probabilistic_requirements(record: dict[str, Any], mission_id: str) -> dict[
     return result
 
 
-def alternative_requirements(record: dict[str, Any], mission_id: str) -> dict[tuple[str, ...], int]:
+def alternative_requirements(record: dict[str, Any], mission_id: str) -> dict[tuple[str, ...], AlternativeValue]:
     alternatives = requirements_object(record, mission_id).get("alternatives", [])
     if not isinstance(alternatives, list):
         raise ValueError(f"Canonical mission {mission_id} has an invalid alternatives requirement array")
-    result: dict[tuple[str, ...], int] = {}
+    result: dict[tuple[str, ...], AlternativeValue] = {}
     for item in alternatives:
         if not isinstance(item, dict):
             raise ValueError(f"Canonical mission {mission_id} has an invalid alternative requirement")
         resources = item.get("resources")
         quantity = item.get("quantity")
+        raw_probability = item.get("probability")
         if (
             not isinstance(resources, list)
             or len(resources) < 2
@@ -227,10 +241,21 @@ def alternative_requirements(record: dict[str, Any], mission_id: str) -> dict[tu
             or quantity < 1
         ):
             raise ValueError(f"Canonical mission {mission_id} has an invalid alternative requirement")
+        probability: float | None = None
+        if raw_probability is not None:
+            if (
+                not isinstance(raw_probability, (int, float))
+                or isinstance(raw_probability, bool)
+                or not 0 < float(raw_probability) < 1
+            ):
+                raise ValueError(
+                    f"Canonical mission {mission_id} alternative probability must be greater than 0 and less than 1"
+                )
+            probability = float(raw_probability)
         key = tuple(sorted(resources))
         if key in result:
             raise ValueError(f"Canonical mission {mission_id} repeats alternative resource group {key}")
-        result[key] = quantity
+        result[key] = (quantity, probability)
     return result
 
 
@@ -256,22 +281,32 @@ def add_expected_probability(
 
 
 def add_expected_alternative(
-    target: dict[tuple[str, ...], int],
+    target: dict[tuple[str, ...], AlternativeValue],
     resources: list[str],
     quantity: int,
+    probability: float | None,
     mission_id: str,
 ) -> None:
     key = tuple(sorted(resources))
+    value = (quantity, probability)
     previous = target.get(key)
-    if previous is not None and previous != quantity:
-        raise ValueError(f"Mission {mission_id} maps conflicting alternative quantities for {key}: {previous} and {quantity}")
-    target[key] = quantity
+    if previous is not None and previous != value:
+        raise ValueError(f"Mission {mission_id} maps conflicting alternative values for {key}: {previous} and {value}")
+    target[key] = value
 
 
 def validated_percent(value: Any, label: str) -> int:
     if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 100:
         raise ValueError(f"{label} must be an integer percentage from 0 to 100")
     return value
+
+
+def alternative_values_equal(actual: AlternativeValue, expected: AlternativeValue) -> bool:
+    if actual[0] != expected[0]:
+        return False
+    if actual[1] is None or expected[1] is None:
+        return actual[1] is None and expected[1] is None
+    return math.isclose(actual[1], expected[1], abs_tol=1e-9)
 
 
 def audit_promoted_mission(
@@ -302,7 +337,7 @@ def audit_promoted_mission(
 
     expected_guaranteed: dict[str, int] = {}
     expected_probabilistic: dict[str, tuple[int, float]] = {}
-    expected_alternatives: dict[tuple[str, ...], int] = {}
+    expected_alternatives: dict[tuple[str, ...], AlternativeValue] = {}
     expected_preconditions: dict[str, int] = {}
 
     for official_key, value in official_requirements.items():
@@ -323,13 +358,37 @@ def audit_promoted_mission(
         if target in DELEGATED_REQUIREMENT_TARGETS:
             continue
         if target == "requirements.alternatives":
-            if official_key in official_chances:
-                raise ValueError(
-                    f"Mission {mission_id} publishes a chance for alternative requirements.{official_key}; "
-                    "probabilistic alternative groups are not yet supported"
-                )
+            chance_key = str(mapping.get("chance_key", official_key))
+            chance = official_chances.get(chance_key)
+            probability: float | None = None
+            if chance is not None:
+                chance_mapping = mappings["chances"].get(chance_key)
+                if chance_mapping is None or chance_mapping.get("canonical_target") != PROBABILISTIC_ALTERNATIVE_TARGET:
+                    raise ValueError(
+                        f"Mission {mission_id} maps alternative requirements.{official_key} with chances.{chance_key} "
+                        "but no probabilistic-alternative mapping exists"
+                    )
+                if tuple(sorted(chance_mapping.get("canonical_ids", []))) != tuple(sorted(mapping["canonical_ids"])):
+                    raise ValueError(
+                        f"Mission {mission_id} alternative requirement and chance mappings target different resources"
+                    )
+                if str(chance_mapping.get("requirement_key", chance_key)) != str(official_key):
+                    raise ValueError(
+                        f"Mission {mission_id} chance mapping chances.{chance_key} does not link to requirements.{official_key}"
+                    )
+                percent = validated_percent(chance, f"Mission {mission_id} chances.{chance_key}")
+                if percent <= 0 or value <= 0:
+                    continue
+                if percent < 100:
+                    probability = percent / 100
             if value > 0:
-                add_expected_alternative(expected_alternatives, mapping["canonical_ids"], value, mission_id)
+                add_expected_alternative(
+                    expected_alternatives,
+                    mapping["canonical_ids"],
+                    value,
+                    probability,
+                    mission_id,
+                )
             continue
 
         resource = mapping["canonical_id"]
@@ -389,6 +448,16 @@ def audit_promoted_mission(
                 f"Mission {mission_id} publishes chances.{official_key} without linked requirements.{requirement_key}"
             )
         requirement_mapping = mappings["requirements"].get(requirement_key)
+        if target == PROBABILISTIC_ALTERNATIVE_TARGET:
+            if requirement_mapping is None or requirement_mapping.get("canonical_target") != "requirements.alternatives":
+                raise ValueError(
+                    f"Mission {mission_id} chance chances.{official_key} requires an alternative requirements.{requirement_key} mapping"
+                )
+            if tuple(sorted(requirement_mapping.get("canonical_ids", []))) != tuple(sorted(mapping.get("canonical_ids", []))):
+                raise ValueError(
+                    f"Mission {mission_id} probabilistic alternative chance and requirement mappings target different resources"
+                )
+            continue
         if requirement_mapping is None or requirement_mapping.get("canonical_target") != "requirements.chance-aware":
             raise ValueError(
                 f"Mission {mission_id} chance chances.{official_key} requires a chance-aware requirements.{requirement_key} mapping"
@@ -431,11 +500,12 @@ def audit_promoted_mission(
                 f"Mission {mission_id} maps official requirement to probabilistic {resource}="
                 f"({quantity}, {probability}), canonical value is {actual!r}"
             )
-    for resources, quantity in expected_alternatives.items():
-        if canonical_alternatives.get(resources) != quantity:
+    for resources, expected in expected_alternatives.items():
+        actual = canonical_alternatives.get(resources)
+        if actual is None or not alternative_values_equal(actual, expected):
             raise ValueError(
-                f"Mission {mission_id} maps official requirement to alternative {resources}={quantity}, "
-                f"canonical value is {canonical_alternatives.get(resources)!r}"
+                f"Mission {mission_id} maps official requirement to alternative {resources}={expected}, "
+                f"canonical value is {actual!r}"
             )
     for precondition, quantity in expected_preconditions.items():
         if canonical_preconditions.get(precondition) != quantity:
@@ -462,11 +532,18 @@ def audit_promoted_mission(
                     f"Mission {mission_id} strict probabilistic value differs for {resource}: "
                     f"expected={expected}, canonical={actual}"
                 )
-        if canonical_alternatives != expected_alternatives:
+        if canonical_alternatives.keys() != expected_alternatives.keys():
             raise ValueError(
-                f"Mission {mission_id} strict alternative requirements differ: "
+                f"Mission {mission_id} strict alternative resource groups differ: "
                 f"expected={expected_alternatives}, canonical={canonical_alternatives}"
             )
+        for resources, expected in expected_alternatives.items():
+            actual = canonical_alternatives[resources]
+            if not alternative_values_equal(actual, expected):
+                raise ValueError(
+                    f"Mission {mission_id} strict alternative value differs for {resources}: "
+                    f"expected={expected}, canonical={actual}"
+                )
         if canonical_preconditions != expected_preconditions:
             raise ValueError(
                 f"Mission {mission_id} strict preconditions differ: "
