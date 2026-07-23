@@ -4,10 +4,11 @@ GP Surgery mapping synchronized: already current.
 Mass Casualty core mappings synchronized: already current.
 Official personnel key mappings synchronized: already current.
 Police Car or ARV mapping synchronized: already current.
-Police Helicopter mapping synchronized: change required.
+Police Helicopter mapping synchronized: already current.
+Police Helicopter or Drone mapping synchronized: change required.
 Probabilistic HazMat alternative mapping synchronized: already current.
 Public Order Extension mapping synchronized: already current.
-Official key mapping synchronization passed: 8 synchronizer(s) executed.
+Official key mapping synchronization passed: 9 synchronizer(s) executed.
 PASS official-key-mapping-sync
 
 ## prisoner-schema-sync
@@ -15,7 +16,7 @@ Prisoner schema synchronized: already current.
 PASS prisoner-schema-sync
 
 ## generate-ready-canonical-batch
-Generated fully canonical Batch 24: 1 mission(s), 3 file(s) written.
+Ready canonical batch generation is stable: no analyser-approved missions remain.
 PASS generate-ready-canonical-batch
 
 ## canonical-patient-sync
@@ -79,7 +80,7 @@ Official key mapping failure report passed: all 196 promoted missions are equiva
 PASS promoted-mapping-report
 
 ## official-key-equivalence
-Official key mapping audit passed: 196 promoted missions, 196 fully canonical, 23 requirement keys, 10 chance keys and 10 prerequisite keys mapped.
+Official key mapping audit passed: 196 promoted missions, 196 fully canonical, 24 requirement keys, 10 chance keys and 10 prerequisite keys mapped.
 PASS official-key-equivalence
 
 ## official-patient-equivalence
@@ -116,11 +117,11 @@ PASS canonical-candidates
   "canonical_count": 254,
   "patient_contract_fields": 10,
   "mapped_key_counts": {
-    "requirements": 23,
+    "requirements": 24,
     "chances": 10,
     "prerequisites": 10
   },
-  "unmapped_key_count": 53,
+  "unmapped_key_count": 52,
   "entries": [
     {
       "group": "requirements",
@@ -711,7 +712,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -755,7 +755,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.traffic_car",
@@ -918,7 +917,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.rescue_dogs",
             "requirements.search_and_rescue",
@@ -962,7 +960,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.traffic_car",
             "prerequisites.personnel_educations",
@@ -2496,7 +2493,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -2705,7 +2701,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -2912,7 +2907,6 @@ PASS canonical-candidates
           "average_credits": 24800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.traffic_car",
@@ -3945,140 +3939,6 @@ PASS canonical-candidates
     },
     {
       "group": "requirements",
-      "key": "oneof_police_drone_or_helicopter",
-      "remaining_mission_count": 8,
-      "single_key_unlock_count": 0,
-      "examples": [
-        {
-          "id": "363",
-          "name": "Standoff with armed suspect",
-          "value": 1,
-          "average_credits": 8000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/363"
-        },
-        {
-          "id": "364",
-          "name": "Standoff with armed suspect (Threatening to set fire)",
-          "value": 1,
-          "average_credits": 8500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/364"
-        },
-        {
-          "id": "788",
-          "name": "Possible Illegal Plantation (Aerial Thermal Imaging Required)",
-          "value": 1,
-          "average_credits": 7000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.subsequent_missions_ids"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/788"
-        },
-        {
-          "id": "808",
-          "name": "Passenger Train Caught in Landslide (Major Incident)",
-          "value": 1,
-          "average_credits": 26800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.personnel_educations",
-            "requirements.railway_police",
-            "requirements.rescue_dogs",
-            "requirements.search_and_rescue",
-            "requirements.search_and_rescue_command",
-            "requirements.two_way",
-            "prerequisites.personnel_educations",
-            "prerequisites.railway_fire",
-            "prerequisites.railway_police",
-            "prerequisites.technical_aid"
-          ],
-          "operational_complexity": [
-            "additional.personnel_educations"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/808"
-        },
-        {
-          "id": "810",
-          "name": "Goods Train Collided with HGV",
-          "value": 1,
-          "average_credits": 24800,
-          "filter_id": "firehouse_missions",
-          "other_unmapped_keys": [
-            "requirements.personnel_educations",
-            "requirements.railway_police",
-            "requirements.traffic_car",
-            "prerequisites.personnel_educations",
-            "prerequisites.railway_police",
-            "prerequisites.tow_trucks_large"
-          ],
-          "operational_complexity": [
-            "additional.personnel_educations",
-            "additional.possible_crashed_car_large_max",
-            "additional.possible_crashed_car_large_min"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/810"
-        },
-        {
-          "id": "862",
-          "name": "ANPR Activation - High Risk Missing Person",
-          "value": 1,
-          "average_credits": 7500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [
-            "requirements.traffic_car"
-          ],
-          "operational_complexity": [
-            "additional.need_traffic_car_only_if_present"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/862"
-        },
-        {
-          "id": "363/a",
-          "name": "Standoff with armed suspect",
-          "value": 1,
-          "average_credits": 9500,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel",
-            "variant:363",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/363/a"
-        },
-        {
-          "id": "364/a",
-          "name": "Standoff with armed suspect (Threatening to set fire)",
-          "value": 1,
-          "average_credits": 10000,
-          "filter_id": "police_station_missions",
-          "other_unmapped_keys": [],
-          "operational_complexity": [
-            "additional.max_possible_prisoners",
-            "additional.swat_personnel",
-            "variant:364",
-            "additive_overlays"
-          ],
-          "official_url": "https://www.missionchief.co.uk/einsaetze/364/a"
-        }
-      ]
-    },
-    {
-      "group": "requirements",
       "key": "search_and_rescue_command",
       "remaining_mission_count": 8,
       "single_key_unlock_count": 0,
@@ -4144,7 +4004,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -4707,7 +4566,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.search_and_rescue",
@@ -5410,7 +5268,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -6068,7 +5925,6 @@ PASS canonical-candidates
           "average_credits": 26800,
           "filter_id": "firehouse_missions",
           "other_unmapped_keys": [
-            "requirements.oneof_police_drone_or_helicopter",
             "requirements.personnel_educations",
             "requirements.railway_police",
             "requirements.rescue_dogs",
@@ -9647,7 +9503,7 @@ Mission verification status generated: 18.46% fully canonical, 866 of 1062 missi
 PASS verification-status
 
 ## public-metric-sync
-Public verification metrics synchronized: canonical=254, direct=237, fully=196, remaining=866, batches=24, changed=README.md, docs/index.md, docs/api/index.md, docs/releases/v1.1.0.md, CHANGELOG.md.
+Public verification metrics synchronized: canonical=254, direct=237, fully=196, remaining=866, batches=24, changed=README.md, docs/releases/v1.1.0.md.
 Verification batch navigation synchronized for 24 evidence pages.
 Repeatable public verification and navigation synchronization passed.
 PASS public-metric-sync
@@ -9693,7 +9549,7 @@ INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/runner/work/MissionChief-UK/MissionChief-UK/site
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 1.51 seconds
+INFO    -  Documentation built in 1.65 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness

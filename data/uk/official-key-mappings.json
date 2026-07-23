@@ -329,6 +329,22 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official police_helicopters count is the guaranteed number of Police Helicopters."
+    },
+    "oneof_police_drone_or_helicopter": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "police_helicopter",
+        "drone"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/636",
+        "https://police.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Police Helicopters or Drones. The quantity is a qualifying total across the two canonical aerial-search resources."
     }
   },
   "chances": {
