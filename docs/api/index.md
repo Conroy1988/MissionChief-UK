@@ -19,10 +19,10 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 API contract: v1
 Data version: 1.1.0
 Released: 23 July 2026
-Canonical missions: 107
+Canonical missions: 127
 Official UK missions: 1,062
-Direct official/canonical ID matches: 90
-Fully canonical missions: 49
+Direct official/canonical ID matches: 110
+Fully canonical missions: 69
 ```
 
 Version 1.1.0 retains the canonical v1 contract, adds the complete official catalogue as a separate surface and exposes a deterministic route to 100% fully canonical coverage.
@@ -70,7 +70,7 @@ The verification endpoint is generated after merging the base registry with scal
   "data_version": "1.1.0",
   "released_at": "2026-07-23",
   "collection": "missions",
-  "count": 107,
+  "count": 127,
   "records": []
 }
 ```
@@ -103,10 +103,10 @@ The deployed records are generated during the build.
   "target_stage": "fully-canonical",
   "summary": {
     "official_count": 1062,
-    "canonical_count": 107,
-    "direct_canonical_id_matches": 90,
-    "fully_canonical_percent": 4.61,
-    "remaining_to_fully_canonical": 1013
+    "canonical_count": 127,
+    "direct_canonical_id_matches": 110,
+    "fully_canonical_percent": 6.50,
+    "remaining_to_fully_canonical": 993
   },
   "records": []
 }
@@ -160,9 +160,9 @@ Every publication is checked against:
 - requirement, chance and prerequisite inventories;
 - merged verification batch registries;
 - explicit official-key mappings for every promoted mission;
-- strict key equivalence for fully canonical missions;
+- strict chance-aware key equivalence for fully canonical missions;
 - deterministic verification stages, blockers and actions;
-- evidence-safe candidate analysis;
+- evidence-safe candidate and key-backlog analysis;
 - deterministic collections, manifest and FAQ generation;
 - strict documentation, link and built-site audits;
 - deployed HTTP and data smoke testing; and
