@@ -1,5 +1,6 @@
 name: Report release-candidate validation
 
+# Repeatability check: the synchronized publication must remain stable on consecutive runs.
 on:
   push:
     branches:
