@@ -18271,7 +18271,7 @@ INFO    -  The following pages exist in the docs directory, but are not included
   - reference/fully-canonical-mission-batch-4.md
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#belay-failure-whilst-abseiling--helicopter-overlay'.
 INFO    -  Doc file 'services/mountain-rescue.md' contains a link '../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay', but the doc 'reference/verified-mission-batch-5.md' does not contain an anchor '#fall-whilst-fell-running--hart-overlay'.
-INFO    -  Documentation built in 0.93 seconds
+INFO    -  Documentation built in 1.26 seconds
 PASS strict-mkdocs-build
 
 ## built-site-readiness
