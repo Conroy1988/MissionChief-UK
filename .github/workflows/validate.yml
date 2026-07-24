@@ -66,10 +66,10 @@ jobs:
             node --check "$file"
           done
 
-      - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium and WebKit for Playwright
+        run: npx playwright install --with-deps chromium webkit
 
-      - name: Run Chromium acceptance tests against built site
+      - name: Run browser acceptance tests against built site
         shell: bash
         run: |
           python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
@@ -87,7 +87,13 @@ jobs:
             sleep 1
           done
 
-          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- \
+              tests/e2e/live-site.spec.mjs \
+              --project=webkit-iphone \
+              --grep "tools/resource-comparison/ renders without runtime or viewport failures"
 
       - name: Upload browser-test diagnostics
         if: failure()
