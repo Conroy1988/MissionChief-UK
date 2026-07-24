@@ -32,6 +32,7 @@ jobs:
           name: canonical-coverage-payload-fragments-${{ github.sha }}
           path: .agent/canonical-coverage-payload.part.*
           if-no-files-found: error
+          include-hidden-files: true
           retention-days: 7
 
       - name: Reconstruct payload diagnostics
