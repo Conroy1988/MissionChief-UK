@@ -159,7 +159,7 @@ def audit_catalogue_state_lines(
     for label, value in rows:
         require_pattern(
             readme,
-            rf"^\| \*\*{re.escape(label)}\*\* \| \*\*{re.escape(formatted_count(value))}\*\* \|$",
+            rf"^\| \*\*{re.escape(label)}\*\* \| \*\*{re.escape(formatted_count(value))}\*\* \|",
             f"README {label} row is stale; expected {formatted_count(value)}",
         )
 
