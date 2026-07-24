@@ -1,0 +1,55 @@
+{
+  "id": 177,
+  "name": "Large field fire",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Rural Fire Missions"
+  ],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 20
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 10
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 7000
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "One ICCU or Ambulance Control Unit is represented as a qualifying alternative-group total, not two simultaneous guaranteed resources."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/177",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

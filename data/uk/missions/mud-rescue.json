@@ -46,17 +46,21 @@
     ]
   },
   "patients": {
-    "minimum": 1,
     "maximum": 3,
-    "transport_probability": 0.7,
+    "minimum": 1,
     "specializations": [
       "General Internal"
     ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
     "codes": [
       "C-1",
       "C-2",
       "C-3"
-    ]
+    ],
+    "transport_probability": 0.7
   },
   "reward": {
     "average_credits": 6000

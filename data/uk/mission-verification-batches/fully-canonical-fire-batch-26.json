@@ -1,0 +1,306 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "29": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/29",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "69": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "73": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/73",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "90": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/90",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "126": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/126",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "128": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/128",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "129": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/129",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "130": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/130",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "131": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/131",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "133": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/133",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "322": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/322",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "393": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/393",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "442": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/442",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "443": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/443",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "444": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/444",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "451": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/451",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "467": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/467",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "478": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/478",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "484": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/484",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    },
+    "485": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "strict_conditional_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/485",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient, conditional-resource and relationship equivalence is required."
+      ]
+    }
+  }
+}

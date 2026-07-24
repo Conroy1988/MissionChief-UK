@@ -1,0 +1,7 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "30": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/30", "https://www.missionchief.co.uk/einsaetze/422", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, one guaranteed Fire Engine and one additive Fire-Engine-or-Rescue-Support alternative verified."]}
+  }
+}

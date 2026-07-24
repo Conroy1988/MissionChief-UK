@@ -1,0 +1,12 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "59": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/59", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI, Fire Engine and Rescue Support Vehicle requirements verified."]},
+    "139": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/139", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Silo POI and all four verified resource quantities verified."]},
+    "314": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/314", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Theme Park POI, guaranteed resources and 80% Aerial Appliance Truck probability verified."]},
+    "404": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/404", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Fire Engine and Rescue Support Vehicle requirements verified."]},
+    "815": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/815", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity and all three verified resource quantities verified."]},
+    "824": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/824", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI and all four verified resource quantities verified."]}
+  }
+}

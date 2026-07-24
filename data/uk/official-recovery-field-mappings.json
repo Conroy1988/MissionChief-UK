@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "assets": {
+    "car": {
+      "minimum_path": "additional.possible_crashed_car_min",
+      "maximum_path": "additional.possible_crashed_car_max",
+      "canonical_asset_type": "car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/776",
+        "https://www.missionchief.co.uk/einsaetze/779",
+        "https://police.missionchief.co.uk/einsaetze/129?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published minimum and maximum are the range of cars requiring towing. They are operational outcomes and do not create a dispatch requirement."
+    },
+    "truck": {
+      "minimum_path": "additional.possible_crashed_car_large_min",
+      "maximum_path": "additional.possible_crashed_car_large_max",
+      "canonical_asset_type": "truck",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/810",
+        "https://police.missionchief.co.uk/einsaetze/13?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published large-vehicle minimum and maximum are the range of trucks or other heavy vehicles requiring towing. They remain separate from emergency response requirements."
+    }
+  }
+}

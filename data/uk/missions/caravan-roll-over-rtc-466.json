@@ -1,0 +1,52 @@
+{
+  "id": 466,
+  "name": "Caravan roll over RTC",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 1,
+    "police_stations": 4
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": [
+      {
+        "resources": [
+          "fire_engine",
+          "rescue_support_vehicle"
+        ],
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 5000
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The official model retains one guaranteed Fire Engine plus one additional Fire Engine or Rescue Support Vehicle."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/466",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

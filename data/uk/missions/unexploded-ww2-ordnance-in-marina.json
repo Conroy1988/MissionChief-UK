@@ -3,8 +3,12 @@
   "name": "Unexploded WW2 Ordnance in Marina",
   "aliases": [],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
-  "poi": ["Marina"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "poi": [
+    "Marina"
+  ],
   "preconditions": {
     "fire_stations": 6,
     "rescue_stations": 6,
@@ -15,12 +19,46 @@
     "hart_bases": 1,
     "active_drones": 1
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 17000},
-  "notes": ["The official mission directory verifies the populated fields. No unavailable response-table data has been inferred."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 17000
+  },
+  "notes": [
+    "The official mission directory verifies the populated fields. No unavailable response-table data has been inferred."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
+    ]
   }
 }

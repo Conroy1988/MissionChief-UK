@@ -1,0 +1,41 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "21": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/21", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "Final evidence-completeness audit completed."]
+    },
+    "22": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://police.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze/22", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Aerial Appliance Truck quantities are represented.", "The Fire Officer probability is represented canonically.", "The official self-referential follow-up is retained.", "Final evidence-completeness audit completed."]
+    },
+    "31": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/31", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The current six-station prerequisite and base reward are retained.", "Final evidence-completeness audit completed."]
+    },
+    "301": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/301", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["The mission was rebound from an obsolete ID to the exact current official identity.", "Mapped Fire Engine quantity and Aerial Appliance Truck probability are represented.", "Final evidence-completeness audit completed."]
+    },
+    "353": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "sources": ["https://www.missionchief.co.uk/einsaetze/353", "https://www.missionchief.co.uk/einsaetze.json"],
+      "notes": ["Mapped Fire Engine and Fire Officer quantities are represented.", "The Aerial Appliance Truck probability is represented canonically.", "The current six-station prerequisite, base reward, POI and relationships are retained.", "Final evidence-completeness audit completed."]
+    }
+  }
+}

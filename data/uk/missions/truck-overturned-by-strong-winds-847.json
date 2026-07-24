@@ -1,0 +1,64 @@
+{
+  "id": 847,
+  "name": "Truck overturned by strong winds",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/847",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "police_stations": 2,
+    "rescue_stations": 2
+  },
+  "patients": {
+    "maximum": 2,
+    "specializations": [
+      "General Surgeon",
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      1,
+      4
+    ],
+    "specialization_text": "General Surgeon, Traumatology",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 0.25
+  },
+  "reward": {
+    "average_credits": 1760
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

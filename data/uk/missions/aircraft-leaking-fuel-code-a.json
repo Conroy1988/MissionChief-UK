@@ -1,20 +1,34 @@
 {
   "id": 591,
   "name": "Aircraft Leaking Fuel - Code A",
-  "aliases": ["Fuel leak - Code A"],
+  "aliases": [
+    "Fuel leak - Code A"
+  ],
   "service": "airfield_operations",
-  "mission_types": ["Airfield firefighting operations"],
-  "poi": ["Small Airport (Runway)"],
+  "mission_types": [
+    "Airfield firefighting operations"
+  ],
+  "poi": [
+    "Small Airport (Runway)"
+  ],
   "preconditions": {
     "fire_stations": 6,
     "aviation_firefighting_extensions": 1
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 2000},
-  "notes": ["The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 2000
+  },
+  "notes": [
+    "The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
   }
 }

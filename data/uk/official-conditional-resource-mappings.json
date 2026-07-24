@@ -1,0 +1,24 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "resources": {
+    "traffic_car": {
+      "status": "verified",
+      "canonical_resource": "traffic_car",
+      "requirement_path": "requirements.traffic_car",
+      "chance_path": "chances.traffic_car",
+      "condition_flag_path": "additional.need_traffic_car_only_if_present",
+      "condition": "only_when_available",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/29",
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published Traffic Car quantity is conditional on availability. A same-key chance, when present, is retained as the probability that the conditional requirement applies."
+    }
+  }
+}

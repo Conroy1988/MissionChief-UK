@@ -1,0 +1,45 @@
+{
+  "id": 507,
+  "name": "Small Abandoned Building Fire",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/507",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Abandoned Building"
+  ],
+  "preconditions": {
+    "fire_stations": 2,
+    "police_stations": 2
+  },
+  "reward": {
+    "average_credits": 1200
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ],
+  "prisoners": {
+    "maximum": 2
+  }
+}

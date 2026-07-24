@@ -1,0 +1,8 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "734": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/734", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Factory POI, all station and Foam Extension prerequisites, guaranteed resources and both alternative groups verified."]},
+    "735": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/735", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Hospital POI, station and Foam Extension prerequisites and all guaranteed resources verified."]}
+  }
+}

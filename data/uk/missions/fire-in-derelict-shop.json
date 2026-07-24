@@ -1,0 +1,61 @@
+{
+  "id": 703,
+  "name": "Fire in Derelict Shop",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [],
+  "preconditions": {
+    "fire_stations": 12,
+    "police_stations": 2,
+    "rescue_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "reward": {
+    "average_credits": 7000
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "Fire, Police and Ambulance Station prerequisites and all guaranteed resources are retained exactly."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/703",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

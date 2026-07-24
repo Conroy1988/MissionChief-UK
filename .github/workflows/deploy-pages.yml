@@ -39,14 +39,53 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Validate structured data
+      - name: Validate canonical structured data
         run: python scripts/validate_data.py
+
+      - name: Reconcile official/canonical mission coverage
+        run: python scripts/reconcile_official_mission_coverage.py
+
+      - name: Validate official UK mission catalogue
+        run: python scripts/validate_official_mission_catalogue.py
+
+      - name: Merge mission verification batch registries
+        run: python scripts/merge_verification_registry_batches.py
+
+      - name: Validate official-to-canonical key mappings
+        run: python scripts/validate_official_key_mappings.py
+
+      - name: Validate official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+
+      - name: Generate 100% mission verification status
+        run: python scripts/generate_mission_verification_status.py
+
+      - name: Validate mission verification programme assets
+        run: python scripts/validate_verification_programme_assets.py
 
       - name: Generate public data exports
         run: python scripts/generate_exports.py
 
       - name: Generate FAQ
         run: python scripts/generate_faq.py
+
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py'
 
       - name: Audit repository and generated API
         run: python scripts/release_readiness.py

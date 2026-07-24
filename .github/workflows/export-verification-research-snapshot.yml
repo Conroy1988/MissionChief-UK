@@ -1,0 +1,42 @@
+name: Export verification research snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/uk-mission-catalogue-expansion
+    paths:
+      - .github/workflows/export-verification-research-snapshot.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out release-candidate branch
+        uses: actions/checkout@v6
+        with:
+          ref: feature/uk-mission-catalogue-expansion
+
+      - name: Upload verification research snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: missionchief-uk-verification-research-snapshot
+          path: |
+            .github/workflows
+            data
+            docs
+            scripts
+            tests
+            README.md
+            CHANGELOG.md
+            mkdocs.yml
+            package.json
+            playwright.config.mjs
+            requirements.txt
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 7

@@ -1,0 +1,43 @@
+{
+  "id": 301,
+  "name": "Unsafe Structure",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 3
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.2
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "Rebound from an obsolete catalogue identity after exact-name and detail-page verification."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/301",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "fields": {
+    "additional.min_possible_prisoners": {
+      "status": "verified",
+      "canonical_target": "prisoners.minimum",
+      "value_transform": "identity-integer",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/92",
+        "https://www.missionchief.co.uk/einsaetze/93",
+        "https://www.missionchief.co.uk/einsaetze/140",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The optional published minimum prisoner count is preserved exactly, including zero."
+    },
+    "additional.max_possible_prisoners": {
+      "status": "verified",
+      "canonical_target": "prisoners.maximum",
+      "value_transform": "identity-integer",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/44",
+        "https://www.missionchief.co.uk/einsaetze/55",
+        "https://www.missionchief.co.uk/einsaetze/91",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published maximum prisoner count is preserved exactly."
+    }
+  },
+  "catalogue_audit": {
+    "official_records": 1062,
+    "minimum_records": 43,
+    "maximum_records": 132,
+    "minimum_types": {"integer": 43},
+    "maximum_types": {"integer": 132}
+  }
+}

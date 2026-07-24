@@ -1,0 +1,792 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "requirements": {
+    "firetrucks": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "fire_engine",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze/2",
+        "https://www.missionchief.co.uk/einsaetze/3",
+        "https://www.missionchief.co.uk/einsaetze/4",
+        "https://www.missionchief.co.uk/einsaetze/6",
+        "https://www.missionchief.co.uk/einsaetze/7",
+        "https://www.missionchief.co.uk/einsaetze/8",
+        "https://www.missionchief.co.uk/einsaetze/9",
+        "https://www.missionchief.co.uk/einsaetze/10",
+        "https://www.missionchief.co.uk/einsaetze/11",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official firetrucks count is the guaranteed Fire engine quantity when the mission has no separate chance field for this key."
+    },
+    "platform_trucks": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "aerial_appliance_truck",
+      "chance_key": "platform_trucks",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json",
+        "https://www.missionchief.co.uk/einsaetze/797"
+      ],
+      "notes": "The official platform_trucks count represents Aerial Appliance Trucks. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "battalion_chief_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "fire_officer",
+      "chance_key": "battalion_chief_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json",
+        "https://www.missionchief.co.uk/einsaetze/588"
+      ],
+      "notes": "The official battalion_chief_vehicles count represents Fire Officers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "heavy_rescue_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "rescue_support_vehicle",
+      "chance_key": "heavy_rescue_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official heavy_rescue_vehicles count represents Rescue Support Vehicles. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "water_tankers": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "water_carrier",
+      "chance_key": "water_tankers",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/41",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/593",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official water_tankers count represents UK Water Carriers. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "mobile_command_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "iccu",
+        "ambulance_control_unit"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/169",
+        "https://www.missionchief.co.uk/einsaetze/177",
+        "https://www.missionchief.co.uk/einsaetze/181",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as ICCU or Ambulance Control Units. The quantity is a qualifying total across the two canonical resource types, not two simultaneous guaranteed vehicles."
+    },
+    "hazmat_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "hazmat_unit",
+        "cbrn_vehicle"
+      ],
+      "chance_key": "hazmat_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/72",
+        "https://www.missionchief.co.uk/einsaetze/180",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as HazMat Units or CBRN Vehicles. A same-key chance applies to the qualifying alternative group as a whole."
+    },
+    "mobile_air_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "breathing_apparatus_support_unit",
+      "chance_key": "mobile_air_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b",
+        "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mobile_air_vehicles count represents Breathing Apparatus Support Units. A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "oneof_fire_engine_or_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "fire_engine",
+        "rescue_support_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/30",
+        "https://www.missionchief.co.uk/einsaetze/422",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Fire Engines or Rescue Support Vehicles. The quantity is a qualifying total across the two canonical resource types."
+    },
+    "oneof_fire_engine_or_rescue_or_ladder": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "fire_engine",
+        "rescue_support_vehicle",
+        "aerial_appliance_truck"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/12",
+        "https://www.missionchief.co.uk/einsaetze/233",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Fire Engines, Rescue Support Vehicles or Aerial Appliance Trucks. The quantity is a qualifying total across the three canonical resource types."
+    },
+    "police_cars": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "police_car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/46",
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://police.missionchief.co.uk/einsaetze/622",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_cars count is the published Police Car quantity. Mission pages may describe compatible ARV substitution separately, but the retained requirement identity remains Police Cars."
+    },
+    "k9": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "dog_support_unit",
+      "chance_key": "k9",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/465",
+        "https://police.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze/92",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official k9 count represents Dog Support Units (DSU). A same-key chance field converts the quantity to a probabilistic canonical requirement."
+    },
+    "hazard_response_primary": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "prv",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/420?additive_overlays=ab",
+        "https://www.missionchief.co.uk/einsaetze/760",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official hazard_response_primary field is displayed as PRVs. The abbreviation remains unexpanded."
+    },
+    "hazard_response_secondary": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "srv",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/420?additive_overlays=b",
+        "https://www.missionchief.co.uk/einsaetze/760",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official hazard_response_secondary field is displayed as SRVs. The abbreviation remains unexpanded."
+    },
+    "foam": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "foam_unit",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/734",
+        "https://www.missionchief.co.uk/einsaetze/720",
+        "https://police.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official foam count represents guaranteed Foam Units."
+    },
+    "kdow_orgl": {
+      "status": "verified",
+      "canonical_target": "personnel.chance-aware",
+      "canonical_role": "Operational Team Leader",
+      "chance_key": "kdow_orgl",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze/149",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official kdow_orgl quantity is displayed as required Operational Team Leaders. A same-key chance field converts the quantity to probabilistic personnel."
+    },
+    "ambulances": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "ambulance",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/234",
+        "https://www.missionchief.co.uk/einsaetze/527",
+        "https://www.missionchief.co.uk/einsaetze/691",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official ambulances count is the guaranteed number of frontline Ambulance vehicles."
+    },
+    "oneof_police_patrol_or_swat": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "police_car",
+        "armed_response_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/408",
+        "https://www.missionchief.co.uk/einsaetze/410",
+        "https://www.missionchief.co.uk/einsaetze/454",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Police Cars or Armed Response Vehicles (ARVs). The quantity is a qualifying total across the two canonical resource types."
+    },
+    "midwife": {
+      "status": "verified",
+      "canonical_target": "personnel.chance-aware",
+      "canonical_role": "Community Midwife",
+      "chance_key": "midwife",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/690",
+        "https://www.missionchief.co.uk/einsaetze/691",
+        "https://www.missionchief.co.uk/einsaetze/692",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official midwife quantity is displayed as required Community Midwives. The verified records publish no chance field, so the quantity is guaranteed."
+    },
+    "ems_mobile_command": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "iccu",
+        "ambulance_control_unit",
+        "airfield_firefighting_command_vehicle"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as ICCU, Ambulance Control Unit or Airfield Firefighting Command Vehicle. The quantity is a qualifying total across the three canonical command resources."
+    },
+    "emergency_welfare": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "welfare_vehicle",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/760",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official emergency_welfare count represents guaranteed Welfare Vehicles."
+    },
+    "mass_casualty_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "mass_casualty_equipment",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mass_casualty_equipment count represents guaranteed Mass Casualty Equipment units."
+    },
+    "police_helicopters": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "police_helicopter",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/91",
+        "https://www.missionchief.co.uk/einsaetze/206",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_helicopters count is the guaranteed number of Police Helicopters."
+    },
+    "oneof_police_drone_or_helicopter": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "canonical_ids": [
+        "police_helicopter",
+        "drone"
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/636",
+        "https://police.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official field is displayed as Police Helicopters or Drones. The quantity is a qualifying total across the two canonical aerial-search resources."
+    },
+    "coastal_boat": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "inland_rescue_boat_trailer",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/625",
+        "https://www.missionchief.co.uk/einsaetze/677",
+        "https://www.missionchief.co.uk/einsaetze/718",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_boat count is displayed as the required Inland Rescue Boat (Trailer) quantity on the verified UK incidents."
+    },
+    "two_way": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "road_rail_unit",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official two_way count is displayed as the required Road Rail Unit quantity on verified UK railway incidents."
+    },
+    "railway_police": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "eiu",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/809",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The top-level official railway_police count is displayed as the required EIU quantity. Railway Police Officer staffing remains separately represented by personnel_educations."
+    },
+    "traffic_car": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "canonical_id": "traffic_car",
+      "chance_key": "traffic_car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://www.missionchief.co.uk/einsaetze/73",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official traffic_car count represents Traffic Cars. Missions carrying need_traffic_car_only_if_present=true are delegated to the conditional resource contract; all other records use the standard guaranteed or same-key probabilistic mapping."
+    },
+    "coastal_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "canonical_id": "coastguard_rescue_vehicle",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/543",
+        "https://www.missionchief.co.uk/einsaetze/545",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_rescue count is displayed as the required Coastguard Rescue Vehicle quantity."
+    }
+  },
+  "chances": {
+    "platform_trucks": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "aerial_appliance_truck",
+      "requirement_key": "platform_trucks",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Aerial Appliance Truck quantity is required."
+    },
+    "battalion_chief_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "fire_officer",
+      "requirement_key": "battalion_chief_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/22",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Fire Officer quantity is required."
+    },
+    "heavy_rescue_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "rescue_support_vehicle",
+      "requirement_key": "heavy_rescue_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Rescue Support Vehicle quantity is required."
+    },
+    "water_tankers": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "water_carrier",
+      "requirement_key": "water_tankers",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/41",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Water Carrier quantity is required."
+    },
+    "mobile_air_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "breathing_apparatus_support_unit",
+      "requirement_key": "mobile_air_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Breathing Apparatus Support Unit quantity is required."
+    },
+    "k9": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "dog_support_unit",
+      "requirement_key": "k9",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/763",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The percentage is the probability that the published Dog Support Unit quantity is required."
+    },
+    "patient_transport": {
+      "status": "verified",
+      "canonical_target": "patients.transport_probability",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/20",
+        "https://www.missionchief.co.uk/einsaetze/36",
+        "https://www.missionchief.co.uk/einsaetze/141",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published integer percentage is owned by the patient contract and maps to patients.transport_probability."
+    },
+    "patient_critical_care": {
+      "status": "verified",
+      "canonical_target": "patients.critical_care_probability",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/36",
+        "https://www.missionchief.co.uk/einsaetze/141",
+        "https://www.missionchief.co.uk/einsaetze/457",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The published integer percentage is owned by the patient contract and maps to patients.critical_care_probability."
+    },
+    "kdow_orgl": {
+      "status": "verified",
+      "canonical_target": "personnel.probabilistic",
+      "canonical_role": "Operational Team Leader",
+      "requirement_key": "kdow_orgl",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze/189",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The integer percentage is the probability that the published Operational Team Leader quantity is required."
+    },
+    "hazmat_vehicles": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic-alternatives",
+      "canonical_ids": [
+        "hazmat_unit",
+        "cbrn_vehicle"
+      ],
+      "requirement_key": "hazmat_vehicles",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/72",
+        "https://www.missionchief.co.uk/einsaetze/479",
+        "https://www.missionchief.co.uk/einsaetze/805",
+        "https://www.missionchief.co.uk/einsaetze/823",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The integer percentage is the probability that the published HazMat Unit or CBRN Vehicle alternative quantity is required."
+    },
+    "traffic_car": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "canonical_id": "traffic_car",
+      "requirement_key": "traffic_car",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/29",
+        "https://www.missionchief.co.uk/einsaetze/90",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The same-key percentage is the Traffic Car requirement probability. Conditional availability remains separately retained when the official flag is true."
+    }
+  },
+  "prerequisites": {
+    "fire_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "fire_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze/1",
+        "https://www.missionchief.co.uk/einsaetze/2",
+        "https://www.missionchief.co.uk/einsaetze/3",
+        "https://www.missionchief.co.uk/einsaetze/4",
+        "https://www.missionchief.co.uk/einsaetze/6",
+        "https://www.missionchief.co.uk/einsaetze/7",
+        "https://www.missionchief.co.uk/einsaetze/8",
+        "https://www.missionchief.co.uk/einsaetze/9",
+        "https://www.missionchief.co.uk/einsaetze/10",
+        "https://www.missionchief.co.uk/einsaetze/11",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official fire_stations value is the minimum Fire Station count used to generate the mission."
+    },
+    "police_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "police_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/46",
+        "https://www.missionchief.co.uk/einsaetze/69",
+        "https://police.missionchief.co.uk/einsaetze/622",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_stations value is the minimum Police Station count used to generate the mission."
+    },
+    "rescue_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "rescue_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/26",
+        "https://www.missionchief.co.uk/einsaetze/35",
+        "https://www.missionchief.co.uk/einsaetze/36",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official internal rescue_stations value is the minimum UK Ambulance Station prerequisite retained as canonical rescue_stations."
+    },
+    "hazard_response_ems": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "hart_bases",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://police.missionchief.co.uk/einsaetze/420?additive_overlays=ab",
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/593",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official hazard_response_ems value is the minimum HART Base prerequisite."
+    },
+    "fire_support_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "foam_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/720",
+        "https://www.missionchief.co.uk/einsaetze/734",
+        "https://www.missionchief.co.uk/einsaetze/735",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official fire_support_count value is the minimum Foam Extension prerequisite shown on current UK mission pages."
+    },
+    "main_building": {
+      "status": "not-applicable",
+      "allowed_values": [
+        0
+      ],
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "A zero main_building value is an upstream sentinel and does not create a canonical operational prerequisite. Any non-zero value must be reviewed before promotion."
+    },
+    "riot_police": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "police_public_order_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/198",
+        "https://www.missionchief.co.uk/einsaetze/510",
+        "https://www.missionchief.co.uk/einsaetze/511",
+        "https://www.missionchief.co.uk/einsaetze/512",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official riot_police value is displayed as the minimum Police & Public Order Extension count required to generate the mission."
+    },
+    "general_practitioner": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "gp_surgeries",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/689",
+        "https://www.missionchief.co.uk/einsaetze/690",
+        "https://www.missionchief.co.uk/einsaetze/693",
+        "https://www.missionchief.co.uk/einsaetze/773",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official general_practitioner value is displayed as the minimum GP Surgery count required to generate the mission."
+    },
+    "mass_casualty_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "mass_casualty_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official mass_casualty_count value is the minimum Mass Casualty Extension count required to generate the mission."
+    },
+    "police_helicopter_stations": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "police_helicopter_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/91",
+        "https://www.missionchief.co.uk/einsaetze/206",
+        "https://www.missionchief.co.uk/einsaetze/300",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official police_helicopter_stations value is the minimum Police Helicopter Station count used to generate the mission."
+    },
+    "wasserrettung": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "technical_rescue_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/625",
+        "https://www.missionchief.co.uk/einsaetze/677",
+        "https://www.missionchief.co.uk/einsaetze/718",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official wasserrettung prerequisite is displayed as the required Technical Rescue Extension count on the verified UK incidents."
+    },
+    "railway_police": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "railway_police",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/809",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The prerequisite railway_police value is the countable Railway Police mission-generation requirement."
+    },
+    "railway_fire": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "railway_fire_responses",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/806",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The prerequisite railway_fire value is the countable Railway fire response mission-generation requirement."
+    },
+    "tow_trucks": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "recovery_centres",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/776",
+        "https://www.missionchief.co.uk/einsaetze/779",
+        "https://www.missionchief.co.uk/einsaetze/784",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official tow_trucks prerequisite is the countable Recovery Centre mission-generation requirement."
+    },
+    "tow_trucks_large": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "hgv_recovery_extensions",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/810",
+        "https://police.missionchief.co.uk/einsaetze/13?additive_overlays=a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official tow_trucks_large prerequisite is the countable HGV Recovery Extension mission-generation requirement."
+    },
+    "water_rescue_2": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "coastguard_rescue_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/543",
+        "https://www.missionchief.co.uk/einsaetze/545",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official water_rescue_2 prerequisite is the countable Coastguard Rescue Station mission-generation requirement."
+    },
+    "coastal_rescue_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "canonical_id": "lifeboat_stations",
+      "checked_at": "2026-07-23",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/544",
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze/563",
+        "https://www.missionchief.co.uk/einsaetze/564",
+        "https://www.missionchief.co.uk/einsaetze/569",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official coastal_rescue_count prerequisite is the countable Lifeboat Station mission-generation requirement. It remains distinct from water_rescue_2, which represents Coastguard Rescue Stations."
+    }
+  }
+}

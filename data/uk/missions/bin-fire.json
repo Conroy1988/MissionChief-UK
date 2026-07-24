@@ -5,6 +5,13 @@
     "Bin Fire"
   ],
   "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 1
+  },
   "requirements": {
     "guaranteed": [
       {
@@ -18,15 +25,23 @@
     "average_credits": 110,
     "event_multiplier_observed": 2
   },
+  "follow_up_missions": [
+    "Phonebox on fire",
+    "Burning leaves",
+    "Burning bus shelter"
+  ],
+  "expandable_missions": [],
   "notes": [
-    "Official UK mission page lists one required fire engine and one required fire station.",
-    "Follow-up missions listed by the official page: Phonebox on fire, Burning leaves and Burning bus shelter."
+    "The official UK mission page lists one required Fire engine and one required Fire Station.",
+    "The temporary x2 presentation is retained as an observed event multiplier rather than changing the base average reward.",
+    "All published operational fields are represented directly from the official UK catalogue and mission page."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-23",
     "sources": [
-      "https://www.missionchief.co.uk/einsaetze/0"
+      "https://www.missionchief.co.uk/einsaetze/0",
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
   }
 }

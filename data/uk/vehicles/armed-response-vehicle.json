@@ -1,0 +1,21 @@
+{
+  "id": "armed_response_vehicle",
+  "name": "Armed Response Vehicle (ARV)",
+  "aliases": ["Armed Response Vehicle", "Armed Response Vehicles", "ARV", "ARVs"],
+  "service": "police",
+  "category": "Armed response",
+  "capabilities": ["armed_police_response"],
+  "notes": [
+    "Current UK mission pages publish Armed Response Vehicles as an alternative to Police Cars on selected missions.",
+    "Staffing, price, training and station-capacity details remain unverified and are therefore omitted."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/408",
+      "https://www.missionchief.co.uk/einsaetze/410",
+      "https://www.missionchief.co.uk/einsaetze/454"
+    ]
+  }
+}

@@ -1,9 +1,13 @@
 {
   "id": 143,
   "name": "Stuck Climber",
-  "aliases": ["Stuck climber"],
+  "aliases": [
+    "Stuck climber"
+  ],
   "service": "mountain_rescue",
-  "mission_types": ["Mountain Rescue"],
+  "mission_types": [
+    "Mountain Rescue"
+  ],
   "custom_spawn_area": true,
   "preconditions": {
     "fire_stations": 4,
@@ -12,39 +16,72 @@
   },
   "requirements": {
     "guaranteed": [
-      {"resource": "fire_engine", "quantity": 1},
-      {"resource": "rescue_support_vehicle", "quantity": 1}
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
     ],
     "probabilistic": [
-      {"resource": "aerial_appliance_truck", "quantity": 1, "probability": 0.5}
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.5
+      }
     ],
     "alternatives": [
       {
-        "resources": ["mountain_rescue_4x4", "sar_4x4"],
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
         "quantity": 1,
-        "notes": ["One qualifying 4x4 satisfies the requirement."]
+        "notes": [
+          "One qualifying 4x4 satisfies the requirement."
+        ]
       }
     ]
   },
   "personnel": {
     "probabilistic": [
-      {"role": "Operational Team Leader", "quantity": 1, "probability": 0.75}
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1,
+        "probability": 0.75
+      }
     ]
   },
   "patients": {
-    "minimum": 1,
     "maximum": 1,
-    "transport_probability": 0.3,
-    "specializations": ["General Internal"],
-    "codes": ["C-2", "C-3"]
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.3
   },
-  "reward": {"average_credits": 650},
+  "reward": {
+    "average_credits": 650
+  },
   "notes": [
     "The Aerial Appliance Truck and Operational Team Leader are probability-based requirements, not guaranteed resources."
   ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/143"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/143"
+    ]
   }
 }

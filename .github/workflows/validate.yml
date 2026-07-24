@@ -1,9 +1,14 @@
 name: Validate guide
 
+# Validate the corrected 54-mission canonical baseline and generate the next evidence backlog.
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/uk-mission-catalogue-expansion
+      - validation/canonical-batch-4
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,8 +34,85 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Validate JSON documents
+      - name: Validate canonical JSON documents
         run: python scripts/validate_data.py
+
+      - name: Reconcile official/canonical mission coverage
+        run: python scripts/reconcile_official_mission_coverage.py
+
+      - name: Validate official UK mission catalogue
+        run: python scripts/validate_official_mission_catalogue.py
+
+      - name: Merge mission verification batch registries
+        run: python scripts/merge_verification_registry_batches.py
+
+      - name: Report all promoted mapping failures
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/report_promoted_mapping_failures.py 2>&1 | tee key-mapping-validation.log
+
+      - name: Upload key mapping diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: key-mapping-validation-diagnostics
+          path: key-mapping-validation.log
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Validate official-to-canonical key mappings
+        run: python scripts/validate_official_key_mappings.py
+
+      - name: Validate official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+
+      - name: Report next evidence-safe canonical candidates
+        run: |
+          python scripts/report_canonical_candidates.py --limit 200 > canonical-candidates.json
+          cat canonical-candidates.json
+
+      - name: Upload canonical candidate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-candidates
+          path: canonical-candidates.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Report official key mapping backlog
+        run: |
+          python scripts/report_key_mapping_backlog.py --limit 200 --examples 10 > key-mapping-backlog.json
+          cat key-mapping-backlog.json
+
+      - name: Upload official key mapping backlog
+        uses: actions/upload-artifact@v4
+        with:
+          name: key-mapping-backlog
+          path: key-mapping-backlog.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Generate 100% mission verification status
+        run: python scripts/generate_mission_verification_status.py
+
+      - name: Validate mission verification programme assets
+        run: python scripts/validate_verification_programme_assets.py
 
       - name: Generate public data exports
         run: python scripts/generate_exports.py
@@ -38,8 +120,26 @@ jobs:
       - name: Generate FAQ
         run: python scripts/generate_faq.py
 
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
+
       - name: Audit repository and generated API
-        run: python scripts/release_readiness.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/release_readiness.py 2>&1 | tee release-readiness.log
+
+      - name: Upload release-readiness diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-readiness-diagnostics
+          path: release-readiness.log
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Test documentation link auditor
+        run: python -m unittest tests/test_audit_links.py
 
       - name: Audit documentation links and anchors
         run: python scripts/audit_links.py

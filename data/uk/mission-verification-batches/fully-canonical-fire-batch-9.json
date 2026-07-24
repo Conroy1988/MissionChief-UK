@@ -1,0 +1,9 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "180": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/180", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed resources and one HazMat-or-CBRN alternative verified."]},
+    "251": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/251", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Munition dump POI, guaranteed resources and one HazMat-or-CBRN alternative verified."]},
+    "469": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/469", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Tram stop POI, expansion relationship, guaranteed resources and one HazMat-or-CBRN alternative verified."]}
+  }
+}

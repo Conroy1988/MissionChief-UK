@@ -1,0 +1,40 @@
+{
+  "id": 13,
+  "name": "Burning truck",
+  "aliases": [
+    "Burning Truck"
+  ],
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 980
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "All published operational fields are represented directly from the official UK catalogue and mission directory."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/13",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}
