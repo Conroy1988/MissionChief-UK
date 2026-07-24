@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from collections import Counter
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -23,6 +24,7 @@ from personnel_education_contract import (
     owned_paths as personnel_education_owned_paths,
 )
 from recovery_contract import build_expected_recovery, load_mapping_registry as load_recovery_mappings
+from report_canonical_candidates import canonical_records_by_id
 from report_canonical_candidates import report as candidate_report
 
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -32,7 +34,6 @@ BATCH_ROOT = ROOT / "data" / "uk" / "mission-verification-batches"
 REFERENCE_ROOT = ROOT / "docs" / "reference"
 VERIFICATION_REGISTRY_PATH = ROOT / "data" / "uk" / "mission-verification-registry.json"
 SNAPSHOT_URL = "https://www.missionchief.co.uk/einsaetze.json"
-CHECKED_AT = "2026-07-23"
 BATCH_PATTERN = re.compile(r"fully-canonical-fire-batch-(\d+)\.json$")
 CONDITIONAL_MAPPINGS = load_conditional_mappings()
 (
@@ -71,6 +72,21 @@ def write_json(path: Path, document: Any) -> None:
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def current_utc_date() -> str:
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+def resolve_checked_at(value: str | None) -> str:
+    candidate = value or current_utc_date()
+    try:
+        parsed = date.fromisoformat(candidate)
+    except ValueError as exc:
+        raise ValueError("--checked-at must be an ISO date in YYYY-MM-DD form") from exc
+    if parsed.isoformat() != candidate:
+        raise ValueError("--checked-at must be an ISO date in YYYY-MM-DD form")
+    return candidate
+
+
 def records_by_id(records: Any) -> dict[str, dict[str, Any]]:
     if not isinstance(records, list):
         raise ValueError("Official UK mission records must be an array")
@@ -83,6 +99,56 @@ def records_by_id(records: Any) -> dict[str, dict[str, Any]]:
             raise ValueError(f"Official UK mission source repeats id {mission_id}")
         result[mission_id] = record
     return result
+
+
+def creation_ready_candidates(document: dict[str, Any]) -> list[dict[str, Any]]:
+    new_records = document.get("new_records")
+    if not isinstance(new_records, dict):
+        raise ValueError("Canonical candidate report did not return a new_records object")
+    ready = new_records.get("ready")
+    if not isinstance(ready, list):
+        raise ValueError("Canonical candidate report did not return a new_records.ready array")
+    if not all(isinstance(candidate, dict) for candidate in ready):
+        raise ValueError("Canonical candidate report returned an invalid creation-ready candidate")
+    return ready
+
+
+def validate_creation_candidates(
+    candidates: list[dict[str, Any]],
+    official_by_id: dict[str, dict[str, Any]],
+    canonical: dict[str, dict[str, Any]],
+) -> list[tuple[dict[str, Any], str, Path]]:
+    prepared: list[tuple[dict[str, Any], str, Path]] = []
+    seen_ids: set[str] = set()
+    seen_paths: set[str] = set()
+    for candidate in candidates:
+        raw_id = candidate.get("id")
+        if raw_id is None:
+            raise ValueError("Creation-ready candidate is missing an id")
+        mission_id = str(raw_id)
+        if mission_id in seen_ids:
+            raise ValueError(f"Creation-ready candidate id is repeated: {mission_id}")
+        seen_ids.add(mission_id)
+        if mission_id not in official_by_id:
+            raise ValueError(f"Candidate mission {mission_id} is absent from the official source")
+        if mission_id in canonical:
+            raise ValueError(
+                f"Candidate mission {mission_id} already has canonical record "
+                f"{canonical[mission_id]['path']}"
+            )
+        relative_path = candidate.get("suggested_path")
+        if not isinstance(relative_path, str) or not relative_path.startswith(
+            "data/uk/missions/"
+        ):
+            raise ValueError(f"Candidate mission {mission_id} has an invalid suggested path")
+        if relative_path in seen_paths:
+            raise ValueError(f"Creation-ready candidate path is repeated: {relative_path}")
+        seen_paths.add(relative_path)
+        path = ROOT / relative_path
+        if path.exists():
+            raise ValueError(f"Candidate mission path already exists: {relative_path}")
+        prepared.append((candidate, mission_id, path))
+    return prepared
 
 
 def canonical_id(value: Any) -> int | str:
@@ -271,6 +337,7 @@ def build_canonical_record(
     official: dict[str, Any],
     mappings: dict[str, Any],
     patient_mappings: dict[str, dict[str, Any]],
+    checked_at: str,
 ) -> dict[str, Any]:
     mission_id = str(official.get("id"))
     additional = official.get("additional", {})
@@ -293,7 +360,7 @@ def build_canonical_record(
         "requirements": translate_requirements(official, mappings),
         "verification": {
             "status": "verified",
-            "checked_at": CHECKED_AT,
+            "checked_at": checked_at,
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
         },
     }
@@ -427,7 +494,11 @@ def evidence_page(
     )
 
 
-def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
+def generate(
+    limit: int,
+    check_only: bool,
+    checked_at: str | None = None,
+) -> tuple[int, int, list[str]]:
     envelope = read_json(OFFICIAL_PATH)
     if not isinstance(envelope, dict):
         raise ValueError("Official UK mission source envelope must be an object")
@@ -438,15 +509,18 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
     patient_mappings = load_mapping_registry()
 
     candidate_document = candidate_report()
-    ready = candidate_document.get("ready")
-    if not isinstance(ready, list):
-        raise ValueError("Canonical candidate report did not return a ready array")
+    ready = creation_ready_candidates(candidate_document)
     selected = ready[:limit]
+    canonical = canonical_records_by_id()
+    validated = validate_creation_candidates(selected, official_by_id, canonical)
     if not selected:
         return 0, next_batch_number(), []
     if check_only:
-        return len(selected), next_batch_number(), [str(item.get("id")) for item in selected]
+        return len(validated), next_batch_number(), [
+            mission_id for _, mission_id, _ in validated
+        ]
 
+    effective_checked_at = resolve_checked_at(checked_at)
     batch_number = next_batch_number()
     registry_path = BATCH_ROOT / f"fully-canonical-fire-batch-{batch_number}.json"
     page_path = REFERENCE_ROOT / f"fully-canonical-mission-batch-{batch_number}.md"
@@ -459,24 +533,20 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
     ))
     fully_before = count_fully_canonical()
 
-    decisions: dict[str, Any] = {}
-    generated_paths: list[str] = []
-    for candidate in selected:
-        mission_id = str(candidate.get("id"))
-        official = official_by_id.get(mission_id)
-        if official is None:
-            raise ValueError(f"Candidate mission {mission_id} is absent from the official source")
-        relative_path = candidate.get("suggested_path")
-        if not isinstance(relative_path, str) or not relative_path.startswith("data/uk/missions/"):
-            raise ValueError(f"Candidate mission {mission_id} has an invalid suggested path")
-        path = ROOT / relative_path
-        if path.exists():
-            raise ValueError(f"Candidate mission path already exists: {relative_path}")
-        write_json(path, build_canonical_record(official, mappings, patient_mappings))
-        generated_paths.append(relative_path)
-        decisions[mission_id] = {
+    prepared: list[
+        tuple[dict[str, Any], str, Path, dict[str, Any], dict[str, Any]]
+    ] = []
+    for candidate, mission_id, path in validated:
+        official = official_by_id[mission_id]
+        canonical_record = build_canonical_record(
+            official,
+            mappings,
+            patient_mappings,
+            effective_checked_at,
+        )
+        decision = {
             "stage": "fully-canonical",
-            "checked_at": CHECKED_AT,
+            "checked_at": effective_checked_at,
             "strict_key_equivalence": True,
             "strict_patient_equivalence": True,
             "strict_conditional_equivalence": bool(
@@ -496,23 +566,29 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
                 "Exact resource, prerequisite, patient, personnel-education, conditional-resource, recovery-outcome and relationship equivalence is required.",
             ],
         }
+        prepared.append((candidate, mission_id, path, canonical_record, decision))
+
+    page_content = evidence_page(
+        batch_number,
+        selected,
+        official_by_id,
+        canonical_before,
+        direct_before,
+        fully_before,
+        len(official_by_id),
+    )
+    decisions: dict[str, Any] = {}
+    generated_paths: list[str] = []
+    for _, mission_id, path, canonical_record, decision in prepared:
+        write_json(path, canonical_record)
+        generated_paths.append(path.relative_to(ROOT).as_posix())
+        decisions[mission_id] = decision
 
     write_json(
         registry_path,
-        {"schema_version": "1", "updated_at": CHECKED_AT, "records": decisions},
+        {"schema_version": "1", "updated_at": effective_checked_at, "records": decisions},
     )
-    page_path.write_text(
-        evidence_page(
-            batch_number,
-            selected,
-            official_by_id,
-            canonical_before,
-            direct_before,
-            fully_before,
-            len(official_by_id),
-        ),
-        encoding="utf-8",
-    )
+    page_path.write_text(page_content, encoding="utf-8")
     generated_paths.extend(
         [registry_path.relative_to(ROOT).as_posix(), page_path.relative_to(ROOT).as_posix()]
     )
@@ -523,10 +599,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate one fully canonical batch from all analyser-approved missions")
     parser.add_argument("--limit", type=int, default=200, help="Maximum missions to promote in one batch")
     parser.add_argument("--check", action="store_true", help="Fail when analyser-approved missions remain ungenerated")
+    parser.add_argument(
+        "--checked-at",
+        help="ISO evidence date for an actual generated batch; defaults to the current UTC date",
+    )
     args = parser.parse_args()
 
     try:
-        count, batch_number, paths = generate(max(1, args.limit), args.check)
+        count, batch_number, paths = generate(max(1, args.limit), args.check, args.checked_at)
     except ValueError as exc:
         print(f"Ready canonical batch generation failed: {exc}", file=sys.stderr)
         return 1

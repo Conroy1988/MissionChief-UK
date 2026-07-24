@@ -54,6 +54,24 @@ jobs:
       - name: Validate official-to-canonical key mappings
         run: python scripts/validate_official_key_mappings.py
 
+      - name: Validate official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+
       - name: Generate 100% mission verification status
         run: python scripts/generate_mission_verification_status.py
 
@@ -65,6 +83,9 @@ jobs:
 
       - name: Generate FAQ
         run: python scripts/generate_faq.py
+
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py'
 
       - name: Audit repository and generated API
         run: python scripts/release_readiness.py

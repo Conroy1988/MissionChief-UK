@@ -39,9 +39,18 @@ jobs:
           python -m py_compile scripts/merge_verification_registry_batches.py
           python -m py_compile scripts/validate_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_key_mappings.py
+          python -m py_compile scripts/validate_official_patient_mappings.py
+          python -m py_compile scripts/validate_official_personnel_mappings.py
+          python -m py_compile scripts/validate_official_personnel_education_mappings.py
+          python -m py_compile scripts/validate_official_prisoner_mappings.py
+          python -m py_compile scripts/validate_official_recovery_mappings.py
           python -m py_compile scripts/report_canonical_candidates.py
           python -m py_compile scripts/report_key_mapping_backlog.py
           python -m py_compile scripts/generate_mission_verification_status.py
+          python -m py_compile scripts/sync_public_verification_metrics.py
+          python -m py_compile scripts/generate_exports.py
+          python -m py_compile scripts/generate_faq.py
+          python -m py_compile scripts/release_readiness.py
           python -m py_compile scripts/validate_verification_programme_assets.py
 
       - name: Download and reconcile official UK missions
@@ -65,6 +74,24 @@ jobs:
       - name: Audit official-to-canonical key mappings
         run: python scripts/validate_official_key_mappings.py
 
+      - name: Audit official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Audit official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Audit official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Audit official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Audit official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+
       - name: Report next evidence-safe canonical candidates
         run: python scripts/report_canonical_candidates.py --limit 50
 
@@ -77,16 +104,46 @@ jobs:
       - name: Validate mission verification programme assets
         run: python scripts/validate_verification_programme_assets.py
 
-      - name: Commit source changes only
+      - name: Synchronize public verification metrics
+        run: python scripts/sync_public_verification_metrics.py
+
+      - name: Generate public data exports
+        run: python scripts/generate_exports.py
+
+      - name: Generate FAQ
+        run: python scripts/generate_faq.py
+
+      - name: Audit synchronized release publication
+        run: python scripts/release_readiness.py
+
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
+
+      - name: Commit synchronized source and publication changes
         id: commit
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/sources/missionchief-uk docs/assets/data/official docs/reference/mission-verification-status.md
+          git add -f \
+            CHANGELOG.md \
+            README.md \
+            data/sources/missionchief-uk/einsaetze.raw.json \
+            data/sources/missionchief-uk/mission-coverage.json \
+            data/sources/missionchief-uk/official-key-inventory.json \
+            docs/api/index.md \
+            docs/assets/data/official/uk-mission-coverage.json \
+            docs/assets/data/official/uk-missions.json \
+            docs/index.md \
+            docs/reference/generated-faq.md \
+            docs/reference/mission-verification-status.md \
+            docs/reference/official-mission-catalogue.md \
+            docs/releases/v1.1.0.md \
+            docs/tools/mission-lookup.md
+          git add -A -- data/sources/missionchief-uk/official-missions.json
 
           if git diff --cached --quiet; then
-            echo "Official UK mission source and verification backlog are unchanged; no commit is required."
+            echo "Official UK mission source and synchronized publication are unchanged; no commit is required."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi

@@ -126,11 +126,13 @@ def build_canonical_record_with_operational_contracts(
     official: dict[str, Any],
     mappings: dict[str, Any],
     patient_mappings: dict[str, dict[str, Any]],
+    checked_at: str,
 ) -> dict[str, Any]:
     output = ORIGINAL_BUILD_CANONICAL_RECORD(
         without_personnel_owned_keys(official),
         mappings,
         patient_mappings,
+        checked_at,
     )
     personnel = build_expected_personnel(official, PERSONNEL_MAPPINGS)
     if personnel:
