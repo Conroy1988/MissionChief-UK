@@ -1,38 +1,95 @@
 {
   "id": 586,
   "name": "Aircraft Accident - Code A",
-  "aliases": [],
-  "service": "airfield_operations",
-  "mission_types": [
-    "Airfield firefighting operations",
-    "Mass Casualty Missions (Specialization)"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "fire_officer",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 3,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "fire_engine",
+          "riv"
+        ],
+        "quantity": 3,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "riv",
+          "major_foam_tender"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/586",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Small Airport (Runway)"
   ],
   "preconditions": {
+    "aviation_firefighting_extensions": 1,
     "fire_stations": 7,
-    "rescue_stations": 7,
-    "police_stations": 8,
     "hart_bases": 1,
     "mass_casualty_extensions": 1,
-    "aviation_firefighting_extensions": 1
-  },
-  "requirements": {
-    "guaranteed": []
-  },
-  "reward": {
-    "average_credits": 8000
-  },
-  "notes": [
-    "The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
+    "police_stations": 8,
+    "rescue_stations": 7
   },
   "patients": {
     "maximum": 10,
@@ -68,5 +125,37 @@
         "quantity": 5
       }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/planecrash_gruen.png",
+      "/images/planecrash_gelb.png",
+      "/images/planecrash_rot.png"
+    ],
+    "base_mission_id": 586,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

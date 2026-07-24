@@ -1,0 +1,137 @@
+{
+  "id": 457,
+  "name": "Care home fire (Persons Reported)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.8
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1,
+        "probability": 0.7
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.02
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ],
+        "probability": 0.1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/457",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Care Home"
+  ],
+  "preconditions": {
+    "fire_stations": 14,
+    "police_stations": 2,
+    "rescue_stations": 8
+  },
+  "patients": {
+    "maximum": 12,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.7,
+    "critical_care_probability": 0.2
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 457,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "average_min_fire_personnel": 8,
+      "fire_alarm_system_possible": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "fire_alarm_system_possible": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

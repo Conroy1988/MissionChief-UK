@@ -1,0 +1,67 @@
+{
+  "id": 307,
+  "name": "Skin is turning green",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/307",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 4,
+    "minimum": 3,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 0.3
+  },
+  "availability_window": {
+    "starts_at": "2026-03-17T11:00:00+00:00",
+    "ends_at": "2026-03-20T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 307,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-03-20T23:59:59+00:00",
+      "date_start": "2026-03-17T11:00:00+00:00"
+    }
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

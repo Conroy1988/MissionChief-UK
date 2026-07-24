@@ -1,0 +1,93 @@
+{
+  "id": 459,
+  "name": "Trooping The Colour Parade",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "mounted_unit",
+        "quantity": 3
+      },
+      {
+        "resource": "police_car",
+        "quantity": 5
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/459",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 8,
+    "police_public_order_extensions": 2
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 10
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 25
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 2
+  },
+  "reward": {
+    "average_credits": 10000
+  },
+  "availability_window": {
+    "starts_at": "2022-06-02T09:00:00Z",
+    "ends_at": "2022-06-06T09:00:00Z"
+  },
+  "duration_minutes": 120,
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 459,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2022-06-06T09:00:00Z",
+      "date_start": "2022-06-02T09:00:00Z",
+      "duration": 7200,
+      "duration_text": "2 hours",
+      "guard_mission": true,
+      "swat_personnel": 6
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

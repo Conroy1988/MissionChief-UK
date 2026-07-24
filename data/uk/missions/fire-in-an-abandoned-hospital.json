@@ -1,21 +1,16 @@
 {
   "id": 735,
   "name": "Fire in an abandoned hospital",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Hospital"
-  ],
-  "preconditions": {
-    "fire_stations": 8,
-    "foam_extensions": 1,
-    "police_stations": 2
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 4
@@ -25,43 +20,64 @@
         "quantity": 2
       },
       {
-        "resource": "rescue_support_vehicle",
-        "quantity": 1
-      },
-      {
-        "resource": "breathing_apparatus_support_unit",
-        "quantity": 1
-      },
-      {
-        "resource": "aerial_appliance_truck",
-        "quantity": 1
-      },
-      {
         "resource": "police_car",
         "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
       },
       {
         "resource": "water_carrier",
         "quantity": 1
       }
-    ],
-    "probabilistic": [],
-    "alternatives": []
+    ]
   },
-  "reward": {
-    "average_credits": 7500
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Hospital POI and Foam Extension prerequisite are retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/735",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Hospital"
+  ],
+  "preconditions": {
+    "fire_stations": 8,
+    "foam_extensions": 1,
+    "police_stations": 2
+  },
+  "reward": {
+    "average_credits": 7500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 735,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

@@ -1,0 +1,124 @@
+{
+  "id": 754,
+  "name": "Teenager Trapped in Small Cave Complex",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/754",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Cave"
+  ],
+  "preconditions": {
+    "fire_stations": 3,
+    "mountain_rescue_stations": 2,
+    "police_stations": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "specializations": [
+      "General Internal",
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      0,
+      4
+    ],
+    "specialization_text": "General Internal, Traumatology",
+    "codes": [
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.05
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Cave Rescue Specialist",
+        "quantity": 6
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Cave Rescue Specialist",
+        "quantity": 12
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 9600
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 754,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": 429,
+  "name": "Wild animal attack during spring picnic",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/429",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 1,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 3,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.6,
+    "critical_care_probability": 0.1
+  },
+  "reward": {
+    "average_credits": 600
+  },
+  "availability_window": {
+    "starts_at": "2026-03-13T10:00:00Z",
+    "ends_at": "2026-06-19T22:00:00Z"
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/spring_gruen.png",
+      "/images/spring_gelb.png",
+      "/images/spring_rot.png"
+    ],
+    "base_mission_id": 429,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-06-19T22:00:00Z",
+      "date_start": "2026-03-13T10:00:00Z"
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

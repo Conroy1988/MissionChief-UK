@@ -1,0 +1,269 @@
+{
+  "collection": "training",
+  "count": 12,
+  "data_version": "1.2.0",
+  "records": [
+    {
+      "aliases": [],
+      "id": "airfield_operations_supervisor",
+      "name": "Airfield Operations Supervisor",
+      "notes": [
+        "Official aircraft-incident pages verify this operational role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Airfield Operations Supervisor"
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "ambulance_officer",
+      "name": "Ambulance Officer",
+      "notes": [
+        "Official mass-casualty, railway and specialist missions verify this command role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Ambulance Officer"
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc",
+          "https://www.missionchief.co.uk/einsaetze/587"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "cave_rescue_specialist",
+      "name": "Cave Rescue Specialist",
+      "notes": [
+        "Official UK cave-rescue missions verify this specialist personnel role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Cave Rescue Specialist"
+      ],
+      "service": "mountain_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/760"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Midwife"
+      ],
+      "id": "community_midwife",
+      "name": "Community Midwife",
+      "notes": [
+        "Current UK maternity missions verify Community Midwife as a required personnel role.",
+        "Course name, duration, prerequisites and eligible vehicle assignments remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Community Midwife"
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-23",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/690",
+          "https://www.missionchief.co.uk/einsaetze/691",
+          "https://www.missionchief.co.uk/einsaetze/692"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "mobile_operations_manager",
+      "name": "Mobile Operations Manager",
+      "notes": [
+        "Official railway missions verify this operational role.",
+        "Course name, duration and prerequisites remain unpublished because they are not shown on the current mission page."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Mobile Operations Manager"
+      ],
+      "service": "railway_response",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "operational_team_leader",
+      "name": "Operational Team Leader",
+      "notes": [
+        "Official UK missions verify Operational Team Leader as a required or probabilistic personnel role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Operational Team Leader"
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/143",
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "police_inspector",
+      "name": "Police Inspector",
+      "notes": [
+        "Official railway and airfield missions verify this command role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Police Inspector"
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc",
+          "https://www.missionchief.co.uk/einsaetze/589"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "police_sergeant",
+      "name": "Police Sergeant",
+      "notes": [
+        "Official Police, Railway and Recovery missions verify this supervisory role.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Police Sergeant"
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://www.missionchief.co.uk/einsaetze/782?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "railway_police_officer",
+      "name": "Railway Police Officer",
+      "notes": [
+        "Official railway missions verify this operational role.",
+        "The current sources do not verify the associated course name, duration or prerequisites; those fields are intentionally omitted."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Railway Police Officer"
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "sar_commander",
+      "name": "SAR Commander",
+      "notes": [
+        "Official Search and Rescue missions verify this role as an available and required personnel type.",
+        "The associated course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "SAR Commander"
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "search_advisor",
+      "name": "Search Advisor",
+      "notes": [
+        "Official Search and Rescue missions verify this role as both an available and required personnel type.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Search Advisor"
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "id": "search_technician",
+      "name": "Search Technician",
+      "notes": [
+        "Official Search and Rescue missions verify Search Technicians through an average-minimum personnel requirement.",
+        "Course name, duration and prerequisites remain unverified."
+      ],
+      "qualification_type": "role-qualification",
+      "roles": [
+        "Search Technician"
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635"
+        ],
+        "status": "verified"
+      }
+    }
+  ],
+  "released_at": "2026-07-24",
+  "schema_version": "1"
+}

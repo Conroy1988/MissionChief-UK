@@ -1,0 +1,105 @@
+{
+  "id": "374-2",
+  "name": "Mass crush at festival",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/374-2",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Festival"
+  ],
+  "preconditions": {
+    "fire_stations": 6,
+    "mass_casualty_extensions": 1,
+    "police_stations": 6,
+    "rescue_stations": 40
+  },
+  "patients": {
+    "maximum": 140,
+    "minimum": 20,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 12800
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/dancinghall_gruen.png",
+      "/images/dancinghall_gelb.png",
+      "/images/dancinghall_rot.png"
+    ],
+    "base_mission_id": 374,
+    "additive_overlays": "",
+    "overlay_index": 2,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

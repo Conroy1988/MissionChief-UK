@@ -1,16 +1,6 @@
 {
   "id": 127,
   "name": "Bin Lorry Fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [],
-  "preconditions": {
-    "fire_stations": 7,
-    "police_stations": 1
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -29,24 +19,49 @@
         "resource": "water_carrier",
         "quantity": 1
       }
-    ],
-    "probabilistic": [],
-    "alternatives": []
+    ]
   },
-  "reward": {
-    "average_credits": 2000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "Police Car and Police Station fields are retained through the verified core police mapping."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/127",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 7,
+    "police_stations": 1
+  },
+  "reward": {
+    "average_credits": 2000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 127,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

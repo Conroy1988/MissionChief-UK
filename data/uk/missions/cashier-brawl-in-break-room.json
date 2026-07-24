@@ -1,0 +1,79 @@
+{
+  "id": 731,
+  "name": "Cashier Brawl in Break Room",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 3
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/731",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Supermarket (small)",
+    "Supermarket (big)",
+    "Supermarket (small)\nSupermarket (big)"
+  ],
+  "preconditions": {
+    "police_stations": 3,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 12,
+    "minimum": 2,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.3
+  },
+  "prisoners": {
+    "minimum": 1,
+    "maximum": 10
+  },
+  "reward": {
+    "average_credits": 1800
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/cuffs_gruen.png",
+      "/images/cuffs_gelb.png",
+      "/images/cuffs_rot.png"
+    ],
+    "base_mission_id": 731,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

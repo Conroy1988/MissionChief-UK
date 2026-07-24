@@ -1,0 +1,68 @@
+{
+  "id": 462,
+  "name": "The principle Beacon",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/462",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "reward": {
+    "average_credits": 1600
+  },
+  "availability_window": {
+    "starts_at": "2022-06-02T09:00:00Z",
+    "ends_at": "2022-06-06T09:00:00Z"
+  },
+  "duration_minutes": 60,
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 462,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "average_min_fire_personnel": 9,
+      "date_end": "2022-06-06T09:00:00Z",
+      "date_start": "2022-06-02T09:00:00Z",
+      "duration": 3600,
+      "duration_text": "1 hour",
+      "guard_mission": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

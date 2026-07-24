@@ -1,18 +1,8 @@
 {
   "id": 693,
   "name": "HCP Home Visit",
-  "aliases": [],
-  "service": "ambulance",
-  "mission_types": [
-    "Ambulance Missions"
-  ],
-  "preconditions": {
-    "rescue_stations": 1,
-    "gp_surgeries": 1
-  },
   "requirements": {
     "guaranteed": [],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
@@ -21,10 +11,22 @@
         ],
         "quantity": 1,
         "notes": [
-          "One vehicle from the listed alternatives satisfies the requirement."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/693",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "gp_surgeries": 1,
+    "rescue_stations": 1
   },
   "patients": {
     "maximum": 1,
@@ -45,14 +47,32 @@
   "reward": {
     "average_credits": 500
   },
-  "notes": [
-    "Official UK mission page requires one RRV or Specialist Paramedic RRV."
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 693,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/693"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

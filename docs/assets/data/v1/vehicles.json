@@ -1,0 +1,1511 @@
+{
+  "collection": "vehicles",
+  "count": 59,
+  "data_version": "1.2.0",
+  "records": [
+    {
+      "aliases": [
+        "Aerial Appliance",
+        "Aerial Appliance Truck"
+      ],
+      "building_requirements": [],
+      "capabilities": [
+        "aerial_appliance_requirement"
+      ],
+      "category": "specialist",
+      "id": "aerial_appliance_truck",
+      "name": "Aerial Appliance Truck",
+      "notes": [
+        "Official UK mission records identify Aerial Appliance Trucks as a possible specialist requirement.",
+        "Cost, staffing, training and station restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+      ],
+      "service": "fire",
+      "training": [],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/797"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "airfield_firefighting_command"
+      ],
+      "category": "Command",
+      "id": "airfield_firefighting_command_vehicle",
+      "name": "Airfield Firefighting Command Vehicle",
+      "notes": [
+        "Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/590"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "airfield_operations"
+      ],
+      "category": "Airfield operations",
+      "id": "airfield_operations_vehicle",
+      "name": "Airfield Operations Vehicle",
+      "notes": [
+        "Verified as a dedicated response requirement on Aircraft Accident Codes C, D and F."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/589"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "All-weather Lifeboat"
+      ],
+      "capabilities": [
+        "ocean_rescue"
+      ],
+      "category": "ocean rescue boat",
+      "deployment": {
+        "operating_environments": [
+          "ocean"
+        ]
+      },
+      "id": "all_weather_lifeboat",
+      "name": "ALB",
+      "notes": [
+        "Official UK mission requirements use the abbreviation ALB."
+      ],
+      "service": "lifeboat",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/561",
+          "https://www.missionchief.co.uk/einsaetze/562"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Ambulances"
+      ],
+      "capabilities": [
+        "patient_treatment",
+        "patient_transport"
+      ],
+      "category": "Frontline ambulance",
+      "id": "ambulance",
+      "name": "Ambulance",
+      "notes": [
+        "Current UK mission pages publish Ambulance as a dedicated guaranteed vehicle requirement.",
+        "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-23",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/234",
+          "https://www.missionchief.co.uk/einsaetze/527",
+          "https://www.missionchief.co.uk/einsaetze/691"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "ambulance_incident_command"
+      ],
+      "category": "Command and control",
+      "id": "ambulance_control_unit",
+      "name": "Ambulance Control Unit",
+      "notes": [
+        "Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Armed Response Vehicle",
+        "Armed Response Vehicles",
+        "ARV",
+        "ARVs"
+      ],
+      "capabilities": [
+        "armed_police_response"
+      ],
+      "category": "Armed response",
+      "id": "armed_response_vehicle",
+      "name": "Armed Response Vehicle (ARV)",
+      "notes": [
+        "Current UK mission pages publish Armed Response Vehicles as an alternative to Police Cars on selected missions.",
+        "Staffing, price, training and station-capacity details remain unverified and are therefore omitted."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-23",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/408",
+          "https://www.missionchief.co.uk/einsaetze/410",
+          "https://www.missionchief.co.uk/einsaetze/454"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "ATV Carriers"
+      ],
+      "capabilities": [
+        "all_terrain_transport",
+        "hart_support"
+      ],
+      "category": "specialist_support",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land",
+          "off_road",
+          "mountain"
+        ]
+      },
+      "id": "atv_carrier",
+      "name": "ATV Carrier",
+      "notes": [
+        "The official HART additive-overlay version of Fall Whilst Fell Running lists one ATV Carrier.",
+        "Price, staffing, training and building requirements are not published in this record."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_command"
+      ],
+      "category": "Bomb disposal command",
+      "id": "bomb_disposal_command",
+      "name": "Bomb Disposal Command",
+      "notes": [
+        "The retained UK source identifies Bomb Disposal Command as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/832",
+          "https://www.missionchief.co.uk/einsaetze/839",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_response"
+      ],
+      "category": "Bomb disposal personnel",
+      "id": "bomb_disposal_crew",
+      "name": "Bomb Disposal Crew",
+      "notes": [
+        "The retained UK source identifies Bomb Disposal Crew as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/829",
+          "https://www.missionchief.co.uk/einsaetze/839",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_diving"
+      ],
+      "category": "Bomb disposal diving",
+      "id": "bomb_disposal_diver_crew",
+      "name": "Bomb Disposal Diver Crew",
+      "notes": [
+        "The retained UK source identifies Bomb Disposal Diver Crew as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/830",
+          "https://www.missionchief.co.uk/einsaetze/832",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_diving_equipment"
+      ],
+      "category": "Bomb disposal diving",
+      "id": "bomb_disposal_diver_equipment",
+      "name": "Bomb Disposal Diver Equipment",
+      "notes": [
+        "The retained UK source identifies Bomb Disposal Diver Equipment as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/830",
+          "https://www.missionchief.co.uk/einsaetze/832",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_equipment"
+      ],
+      "category": "Bomb disposal equipment",
+      "id": "bomb_disposal_equipment",
+      "name": "Bomb Disposal Equipment",
+      "notes": [
+        "The retained UK source identifies Bomb Disposal Equipment as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/829",
+          "https://www.missionchief.co.uk/einsaetze/838",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "heavy_bomb_disposal_equipment"
+      ],
+      "category": "Bomb disposal equipment",
+      "id": "bomb_disposal_heavy_equipment",
+      "name": "Heavy Bomb Disposal Equipment",
+      "notes": [
+        "The retained UK source identifies Heavy Bomb Disposal Equipment as a discrete required resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/835",
+          "https://www.missionchief.co.uk/einsaetze/839",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "breathing_apparatus_support"
+      ],
+      "category": "Specialist support",
+      "id": "breathing_apparatus_support_unit",
+      "name": "Breathing Apparatus Support Unit",
+      "notes": [
+        "Official UK railway mission pages list this resource as guaranteed or probabilistic depending on the incident."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "cbrn_response"
+      ],
+      "category": "CBRN response",
+      "id": "cbrn_vehicle",
+      "name": "CBRN Vehicle",
+      "notes": [
+        "Official UK airfield pages use the label CBRN Vehicle and pair it with HazMat Units in an alternative requirement group."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Coastguard Rescue Station",
+        "Home Response Location"
+      ],
+      "capabilities": [
+        "coastguard_command"
+      ],
+      "category": "command",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
+      "id": "coastguard_commander",
+      "name": "Coastguard Commander",
+      "notes": [
+        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations."
+      ],
+      "service": "coastguard",
+      "staffing": {
+        "maximum": 5,
+        "minimum": 1
+      },
+      "training": [
+        "Coastal Command Training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Coastguard Rescue Station"
+      ],
+      "capabilities": [
+        "mud_rescue"
+      ],
+      "category": "specialist rescue",
+      "cost": {
+        "coins": 15,
+        "credits": 20000
+      },
+      "id": "coastguard_mud_rescue_unit",
+      "name": "Coastguard Mud Rescue Unit",
+      "notes": [
+        "Official UK Coastguard missions identify this as a required specialist resource.",
+        "Current official Help Center guidance verifies the purchase cost, crew range, training and available building."
+      ],
+      "service": "coastguard",
+      "staffing": {
+        "maximum": 5,
+        "minimum": 1
+      },
+      "training": [
+        "Mud Rescue Training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/546",
+          "https://www.missionchief.co.uk/einsaetze/567",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "air_rescue",
+        "ocean_rescue"
+      ],
+      "category": "air rescue",
+      "deployment": {
+        "operating_environments": [
+          "air",
+          "ocean"
+        ]
+      },
+      "id": "coastguard_rescue_helicopter",
+      "name": "Coastguard Rescue Helicopter",
+      "notes": [
+        "The verified Medivac from vessel mission applies a 50% requirement probability to this resource."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/562"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Coastguard Rescue Vehicle"
+      ],
+      "building_requirements": [
+        "Coastguard Rescue Station",
+        "Home Response Location"
+      ],
+      "capabilities": [
+        "coastguard_response"
+      ],
+      "category": "response",
+      "cost": {
+        "coins": 15,
+        "credits": 20000
+      },
+      "id": "coastguard_rescue_vehicle",
+      "name": "CRV",
+      "notes": [
+        "Official UK mission requirements use the abbreviation CRV for this resource.",
+        "Current official Help Center guidance verifies the purchase cost, crew range and available locations."
+      ],
+      "service": "coastguard",
+      "staffing": {
+        "maximum": 5,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/569",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Coastguard Rescue Station"
+      ],
+      "capabilities": [
+        "coastguard_rope_rescue"
+      ],
+      "category": "specialist rescue",
+      "cost": {
+        "coins": 20,
+        "credits": 35000
+      },
+      "id": "coastguard_rope_rescue_unit",
+      "name": "Coastguard Rope Rescue Unit",
+      "notes": [
+        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building."
+      ],
+      "service": "coastguard",
+      "staffing": {
+        "maximum": 5,
+        "minimum": 1
+      },
+      "training": [
+        "Rope Rescue Training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "coastguard_support"
+      ],
+      "category": "Coastguard support",
+      "id": "coastguard_support_unit",
+      "name": "Coastguard Support Unit",
+      "notes": [
+        "The official coastal_support field is displayed as required Support Units on Coastguard and Coastal Rescue missions. It is distinct from the CRV/coastal_rescue requirement.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/560",
+          "https://www.missionchief.co.uk/einsaetze/583",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Control Vans"
+      ],
+      "capabilities": [
+        "incident_command",
+        "search_coordination"
+      ],
+      "category": "command",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land",
+          "off_road"
+        ]
+      },
+      "id": "control_van",
+      "name": "Control Van",
+      "notes": [
+        "The official Overdue Hikers mission page lists one Control Van.",
+        "Price, staffing, training and building requirements are not published in this record."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/756"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Dog Support Unit",
+        "DSU"
+      ],
+      "capabilities": [
+        "police_dog_support"
+      ],
+      "category": "Dog support",
+      "id": "dog_support_unit",
+      "name": "Dog Support Unit (DSU)",
+      "notes": [
+        "Official UK mission pages use both Dog Support Unit and DSU terminology."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/465",
+          "https://police.missionchief.co.uk/einsaetze/808"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "UAV",
+        "Uncrewed Aerial Vehicle"
+      ],
+      "capabilities": [
+        "aerial_search",
+        "reconnaissance"
+      ],
+      "category": "Aerial search and reconnaissance",
+      "id": "drone",
+      "name": "Drone",
+      "notes": [
+        "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement."
+      ],
+      "service": "shared",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635",
+          "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "railway_incident_support"
+      ],
+      "category": "Railway investigation and support",
+      "id": "eiu",
+      "name": "EIU",
+      "notes": [
+        "Official UK railway mission pages use the abbreviation EIU.",
+        "The abbreviation remains unexpanded because the current primary sources do not provide a verified full name."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://police.missionchief.co.uk/einsaetze/291?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Fire Engine",
+        "Pump"
+      ],
+      "building_requirements": [],
+      "capabilities": [
+        "fire_engine_requirement"
+      ],
+      "category": "response",
+      "id": "fire_engine",
+      "name": "Fire engine",
+      "notes": [
+        "Official UK mission records repeatedly identify Fire engines as required response resources.",
+        "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+      ],
+      "service": "fire",
+      "training": [],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/0",
+          "https://www.missionchief.co.uk/einsaetze/6",
+          "https://www.missionchief.co.uk/einsaetze/521"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Fire Officers"
+      ],
+      "capabilities": [
+        "incident_command"
+      ],
+      "category": "Command",
+      "id": "fire_officer",
+      "name": "Fire Officer",
+      "notes": [
+        "The record represents the deployable Fire Officer resource named in official alternative requirements; it is distinct from personnel-role fields."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "flood_rescue"
+      ],
+      "category": "Flood rescue",
+      "id": "flood_rescue_unit",
+      "name": "Flood Rescue Unit",
+      "notes": [
+        "The official field represents Flood Rescue Units/equipment as a discrete dispatch resource.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/566",
+          "https://www.missionchief.co.uk/einsaetze/616",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "foam_response"
+      ],
+      "category": "Foam response",
+      "id": "foam_unit",
+      "name": "Foam Unit",
+      "notes": [
+        "Official UK railway and major-incident pages list Foam Unit as a deployable requirement."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/808"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "hazardous_materials_response"
+      ],
+      "category": "Hazardous materials",
+      "id": "hazmat_unit",
+      "name": "HazMat Unit",
+      "notes": [
+        "Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "hovercraft_response"
+      ],
+      "category": "Coastguard water rescue",
+      "deployment": {
+        "is_trailer": true
+      },
+      "id": "hovercraft_trailer",
+      "name": "Hovercraft (Trailer)",
+      "notes": [
+        "The official page displays Hovercraft (Trailer).",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/547",
+          "https://www.missionchief.co.uk/einsaetze/568",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "incident_command_and_control"
+      ],
+      "category": "Command and control",
+      "id": "iccu",
+      "name": "ICCU",
+      "notes": [
+        "Official pages use the abbreviation ICCU; no expanded name is published without separate evidence."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Inland Rescue Boat",
+        "IRB"
+      ],
+      "capabilities": [
+        "inland_water_rescue",
+        "coastal_water_rescue"
+      ],
+      "category": "water rescue trailer",
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "inland_water",
+          "coastal_water"
+        ]
+      },
+      "id": "inland_rescue_boat_trailer",
+      "name": "Inland Rescue Boat (Trailer)",
+      "notes": [
+        "Recorded as a trailer because the official UK resource name explicitly includes '(Trailer)'."
+      ],
+      "service": "lifeboat",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/567",
+          "https://www.missionchief.co.uk/einsaetze/569"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Inshore Lifeboat"
+      ],
+      "capabilities": [
+        "ocean_rescue"
+      ],
+      "category": "ocean rescue boat",
+      "deployment": {
+        "operating_environments": [
+          "ocean"
+        ]
+      },
+      "id": "inshore_lifeboat",
+      "name": "ILB",
+      "notes": [
+        "Official UK mission requirements use the abbreviation ILB."
+      ],
+      "service": "lifeboat",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/561",
+          "https://www.missionchief.co.uk/einsaetze/562"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "airfield_firefighting",
+        "foam_delivery"
+      ],
+      "category": "Foam firefighting",
+      "id": "major_foam_tender",
+      "name": "Major Foam Tender",
+      "notes": [
+        "The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "mass_casualty_support"
+      ],
+      "category": "Mass casualty support",
+      "id": "mass_casualty_equipment",
+      "name": "Mass Casualty Equipment",
+      "notes": [
+        "Verified as a guaranteed resource on Aircraft Accident Codes C and F."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Mountain Rescue 4x4 Vehicle"
+      ],
+      "capabilities": [
+        "mountain_rescue_response",
+        "off_road_access"
+      ],
+      "category": "response",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land",
+          "off_road",
+          "mountain"
+        ]
+      },
+      "id": "mountain_rescue_4x4",
+      "name": "Mountain Rescue 4x4",
+      "notes": [
+        "Official UK mission pages present Mountain Rescue 4x4 as one alternative to SAR 4x4.",
+        "Price, staffing and training requirements are not published in this record."
+      ],
+      "service": "mountain_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/143",
+          "https://police.missionchief.co.uk/einsaetze/756"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "mounted_policing"
+      ],
+      "category": "Mounted policing",
+      "id": "mounted_unit",
+      "name": "Mounted Unit",
+      "notes": [
+        "The official page labels this requirement Mounted Units.",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/448",
+          "https://www.missionchief.co.uk/einsaetze/449",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "mud_decontamination"
+      ],
+      "category": "specialist support",
+      "id": "mud_decontamination_unit",
+      "name": "Mud Decontamination Unit",
+      "notes": [
+        "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/546",
+          "https://www.missionchief.co.uk/einsaetze/567"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "SAR Operational Support Trailer"
+      ],
+      "capabilities": [
+        "search_support",
+        "incident_logistics"
+      ],
+      "category": "Operational support trailer",
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "land"
+        ]
+      },
+      "id": "operational_support_trailer",
+      "name": "Operational Support Trailer",
+      "notes": [
+        "The official requirement identifies this as a trailer but does not identify compatible towing vehicles."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635",
+          "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "OSV"
+      ],
+      "capabilities": [
+        "search_support",
+        "incident_logistics"
+      ],
+      "category": "Operational support",
+      "id": "operational_support_van",
+      "name": "Operational Support Van",
+      "notes": [
+        "Official SAR mission pages group this resource with Operational Support Trailers and Personal SAR Vehicles as alternative ways to satisfy one requirement."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635",
+          "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Personal Search and Rescue Vehicle"
+      ],
+      "capabilities": [
+        "search_support",
+        "personnel_transport"
+      ],
+      "category": "Personnel transport and support",
+      "id": "personal_sar_vehicle",
+      "name": "Personal SAR Vehicle",
+      "notes": [
+        "Official SAR mission pages list Personal SAR Vehicles as one alternative within the operational-support requirement group."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635",
+          "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Police Car",
+        "Police vehicle"
+      ],
+      "building_requirements": [],
+      "capabilities": [
+        "police_car_requirement"
+      ],
+      "category": "response",
+      "id": "police_car",
+      "name": "Police car",
+      "notes": [
+        "Official UK mission records identify Police Cars as a required policing resource.",
+        "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+      ],
+      "service": "police",
+      "training": [],
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/454",
+          "https://www.missionchief.co.uk/einsaetze/797"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Police Air Support"
+      ],
+      "capabilities": [
+        "aerial_search",
+        "police_air_support"
+      ],
+      "category": "Air support",
+      "id": "police_helicopter",
+      "name": "Police Helicopter",
+      "notes": [
+        "Official SAR mission pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/635",
+          "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "PRVs"
+      ],
+      "capabilities": [
+        "specialist_ambulance_response"
+      ],
+      "category": "specialist_response",
+      "id": "prv",
+      "name": "PRV",
+      "notes": [
+        "The official UK mission page uses the label PRV without expanding the abbreviation.",
+        "No expanded name, price, staffing or training requirement is inferred in this record."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/760"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "RRV"
+      ],
+      "capabilities": [
+        "ambulance_first_response"
+      ],
+      "category": "response",
+      "id": "rapid_response_vehicle",
+      "name": "Rapid Response Vehicle",
+      "notes": [
+        "Official UK mission pages identify an RRV as one valid response option for HCP Home Visit and Palliative Care Visit.",
+        "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/693",
+          "https://www.missionchief.co.uk/einsaetze/762"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "aircraft_access"
+      ],
+      "category": "Aircraft access and rescue",
+      "id": "rescue_stairs",
+      "name": "Rescue Stairs",
+      "notes": [
+        "Aircraft Accident Code F accepts this resource as an alternative to an Aerial Appliance Truck."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "RSV",
+        "Rescue Support Vehicles"
+      ],
+      "capabilities": [
+        "technical_rescue_support"
+      ],
+      "category": "specialist_support",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land"
+        ]
+      },
+      "id": "rescue_support_vehicle",
+      "name": "Rescue Support Vehicle",
+      "notes": [
+        "The official Stuck Climber mission page lists one Rescue Support Vehicle.",
+        "Price, staffing, training and building requirements are not published in this record."
+      ],
+      "service": "fire",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/143"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "rescue_watercraft_response"
+      ],
+      "category": "Coastguard water rescue",
+      "deployment": {
+        "is_trailer": true
+      },
+      "id": "rescue_watercraft_trailer",
+      "name": "Rescue Watercraft (Trailer)",
+      "notes": [
+        "The official overlay page displays Rescue Watercraft (Trailer).",
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/563/a",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "airfield_firefighting"
+      ],
+      "category": "Airfield firefighting response",
+      "id": "riv",
+      "name": "RIV",
+      "notes": [
+        "Official mission pages use the abbreviation RIV; no expanded name is published without separate evidence."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "rail_access",
+        "railway_incident_response"
+      ],
+      "category": "Railway response",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "road",
+          "railway"
+        ]
+      },
+      "id": "road_rail_unit",
+      "name": "Road Rail Unit",
+      "notes": [
+        "Official UK railway mission pages list Road Rail Unit as a deployable requirement."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Search and Rescue 4x4",
+        "4x4 Vehicle"
+      ],
+      "capabilities": [
+        "search_and_rescue_response",
+        "off_road_access"
+      ],
+      "category": "response",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land",
+          "off_road",
+          "mountain"
+        ]
+      },
+      "id": "sar_4x4",
+      "name": "SAR 4x4",
+      "notes": [
+        "Official UK Mountain Rescue mission pages present SAR 4x4 as one alternative to Mountain Rescue 4x4.",
+        "Price, staffing and training requirements are not published in this record."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/143",
+          "https://police.missionchief.co.uk/einsaetze/756"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Search Dog Units"
+      ],
+      "capabilities": [
+        "search_dog",
+        "missing_person_search"
+      ],
+      "category": "specialist_search",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "land",
+          "off_road",
+          "mountain"
+        ]
+      },
+      "id": "search_dog_unit",
+      "name": "Search Dog Unit",
+      "notes": [
+        "The official Overdue Hikers mission page lists one Search Dog Unit.",
+        "Price, staffing, training and building requirements are not published in this record."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://police.missionchief.co.uk/einsaetze/756"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Specialist Paramedic Rapid Response Vehicle"
+      ],
+      "capabilities": [
+        "specialist_paramedic_response"
+      ],
+      "category": "specialist-response",
+      "id": "specialist_paramedic_rrv",
+      "name": "Specialist Paramedic RRV",
+      "notes": [
+        "Official UK mission pages identify a Specialist Paramedic RRV as one valid response option for HCP Home Visit and Palliative Care Visit.",
+        "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/693",
+          "https://www.missionchief.co.uk/einsaetze/762"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "SRVs"
+      ],
+      "capabilities": [
+        "specialist_ambulance_response"
+      ],
+      "category": "specialist_response",
+      "id": "srv",
+      "name": "SRV",
+      "notes": [
+        "The official UK mission page uses the label SRV without expanding the abbreviation.",
+        "No expanded name, price, staffing or training requirement is inferred in this record."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/760"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "traffic_management"
+      ],
+      "category": "Traffic policing",
+      "id": "traffic_car",
+      "name": "Traffic Car",
+      "notes": [
+        "On verified airfield incidents this resource is conditional: required only when available."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/590"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "bulk_water_supply"
+      ],
+      "category": "Water supply",
+      "id": "water_carrier",
+      "name": "Water Carrier",
+      "notes": [
+        "Verified as a guaranteed requirement on current UK airfield incident pages."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Welfare Vehicles"
+      ],
+      "capabilities": [
+        "incident_welfare_support"
+      ],
+      "category": "support",
+      "id": "welfare_vehicle",
+      "name": "Welfare Vehicle",
+      "notes": [
+        "The official Amateur Explorers Trapped in Abandoned Mineshaft mission page lists one Welfare Vehicle.",
+        "Price, staffing, training and building requirements are not published in this record."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/760"
+        ],
+        "status": "verified"
+      }
+    }
+  ],
+  "released_at": "2026-07-24",
+  "schema_version": "1"
+}

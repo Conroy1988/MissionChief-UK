@@ -1,19 +1,12 @@
 {
   "id": 153,
   "name": "Hay shed fire - Large",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Rural Fire Missions"
-  ],
-  "poi": [
-    "Farm"
-  ],
-  "preconditions": {
-    "fire_stations": 13
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 8
@@ -23,30 +16,54 @@
         "quantity": 6
       },
       {
-        "resource": "aerial_appliance_truck",
-        "quantity": 1
-      },
-      {
         "resource": "water_carrier",
         "quantity": 2
       }
-    ],
-    "probabilistic": []
+    ]
   },
-  "reward": {
-    "average_credits": 9000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Farm POI and two guaranteed Water Carriers are retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/153",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Farm"
+  ],
+  "preconditions": {
+    "fire_stations": 13
+  },
+  "reward": {
+    "average_credits": 9000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 153,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

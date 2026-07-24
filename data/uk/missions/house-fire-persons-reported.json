@@ -1,0 +1,98 @@
+{
+  "id": 210,
+  "name": "House fire (Persons Reported)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/210",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 4
+  },
+  "patients": {
+    "maximum": 4,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.6,
+    "critical_care_probability": 0.5
+  },
+  "personnel": {
+    "probabilistic": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1,
+        "probability": 0.5
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 2000
+  },
+  "follow_up_missions": [
+    "349",
+    "349",
+    "349"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 210,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "average_min_fire_personnel": 16
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

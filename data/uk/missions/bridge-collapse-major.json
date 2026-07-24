@@ -1,10 +1,6 @@
 {
   "id": 795,
   "name": "Bridge collapse (major)",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
   "requirements": {
     "guaranteed": [
       {
@@ -70,7 +66,7 @@
   },
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/795",
       "https://www.missionchief.co.uk/einsaetze.json"
@@ -108,8 +104,33 @@
   "reward": {
     "average_credits": 20115
   },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/bridge_gruen.png",
+      "/images/bridge_gelb.png",
+      "/images/bridge_rot.png"
+    ],
+    "base_mission_id": 795,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
   "notes": [
     "Generated deterministically from the retained official UK mission snapshot.",
-    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
   ]
 }

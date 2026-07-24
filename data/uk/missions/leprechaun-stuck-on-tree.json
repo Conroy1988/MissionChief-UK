@@ -1,0 +1,69 @@
+{
+  "id": 304,
+  "name": "Leprechaun stuck on tree",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1,
+        "probability": 0.1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/304",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 3
+  },
+  "reward": {
+    "average_credits": 800
+  },
+  "availability_window": {
+    "starts_at": "2026-03-17T11:00:00+00:00",
+    "ends_at": "2026-03-20T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/cat_gruen.png",
+      "/images/cat_gelb.png",
+      "/images/cat_rot.png"
+    ],
+    "base_mission_id": 304,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-03-20T23:59:59+00:00",
+      "date_start": "2026-03-17T11:00:00+00:00"
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

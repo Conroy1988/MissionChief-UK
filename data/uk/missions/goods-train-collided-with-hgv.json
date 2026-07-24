@@ -1,10 +1,6 @@
 {
   "id": 810,
   "name": "Goods Train Collided with HGV",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
   "requirements": {
     "guaranteed": [
       {
@@ -65,7 +61,7 @@
   },
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/810",
       "https://www.missionchief.co.uk/einsaetze.json"
@@ -142,8 +138,33 @@
   "reward": {
     "average_credits": 24800
   },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "railway_police",
+      "railway_fire",
+      "tow_trucks"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 810,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
   "notes": [
     "Generated deterministically from the retained official UK mission snapshot.",
-    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "id": 846,
+  "name": "Fans fight at basketball game",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "police_car",
+          "armed_response_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/846",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 6,
+    "rescue_stations": 3,
+    "police_public_order_extensions": 1
+  },
+  "patients": {
+    "maximum": 8,
+    "minimum": 4,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.3
+  },
+  "prisoners": {
+    "minimum": 10,
+    "maximum": 20
+  },
+  "reward": {
+    "average_credits": 1600
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 846,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "allow_ktw_instead_of_rtw": true
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "allow_ktw_instead_of_rtw": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

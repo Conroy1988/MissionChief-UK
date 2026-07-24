@@ -1,0 +1,92 @@
+{
+  "id": 822,
+  "name": "Driver hit by loose truck wheel",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "fire_engine",
+          "rescue_support_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/822",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Highway exit",
+    "Intersection with lights",
+    "Highway exit\nIntersection with lights"
+  ],
+  "preconditions": {
+    "fire_stations": 1,
+    "police_stations": 2,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 3,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 3000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 822,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

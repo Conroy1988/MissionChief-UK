@@ -1,36 +1,53 @@
 {
   "id": 772,
   "name": "Vehicle Fluids Wash Down",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
-  "preconditions": {
-    "fire_stations": 1
-  },
   "requirements": {
     "guaranteed": [
       {
         "resource": "fire_engine",
         "quantity": 1
       }
-    ],
-    "probabilistic": []
+    ]
   },
-  "reward": {
-    "average_credits": 800
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "All published operational fields are represented directly from the official UK catalogue and mission directory."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/772",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 1
+  },
+  "reward": {
+    "average_credits": 800
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire"
+    ],
+    "icons": [
+      "/images/constructioncrane_gruen.png",
+      "/images/constructioncrane_gelb.png",
+      "/images/constructioncrane_rot.png"
+    ],
+    "base_mission_id": 772,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

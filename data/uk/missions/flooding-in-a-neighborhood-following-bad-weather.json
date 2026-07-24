@@ -1,0 +1,87 @@
+{
+  "id": 614,
+  "name": "Flooding in a neighborhood following bad weather",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "flood_rescue_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/614",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "lifeboat_stations": 1,
+    "fire_stations": 7,
+    "flood_rescue_extensions": 1,
+    "water_damage_pump_extensions": 1
+  },
+  "reward": {
+    "average_credits": 3220
+  },
+  "expandable_missions": [
+    "615"
+  ],
+  "water_requirements": {
+    "minimum_pump_speed": 1000,
+    "pump_water_amount": 70000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "water_damage_and_flood"
+    ],
+    "icons": [
+      "/images/flood_gruen.png",
+      "/images/flood_gelb.png",
+      "/images/flood_rot.png"
+    ],
+    "base_mission_id": 614,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "pump_water_amount": 70000,
+      "unavailable_in_normal_missions": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "unavailable_in_normal_missions": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

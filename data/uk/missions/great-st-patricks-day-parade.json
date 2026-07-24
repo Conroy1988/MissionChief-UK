@@ -1,0 +1,87 @@
+{
+  "id": 306,
+  "name": "Great St. Patricks Day parade",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 3
+      },
+      {
+        "resource": "ambulance",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 6
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 5
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/306",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 12,
+    "police_stations": 8,
+    "rescue_stations": 4
+  },
+  "reward": {
+    "average_credits": 20000
+  },
+  "availability_window": {
+    "starts_at": "2026-03-17T11:00:00+00:00",
+    "ends_at": "2026-03-20T23:59:59+00:00"
+  },
+  "duration_minutes": 60,
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 306,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-03-20T23:59:59+00:00",
+      "date_start": "2026-03-17T11:00:00+00:00",
+      "duration": 3600,
+      "duration_text": "1 hour",
+      "guard_mission": true
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

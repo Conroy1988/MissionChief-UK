@@ -1,18 +1,6 @@
 {
   "id": 251,
   "name": "Fire in munitions dump",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Fire Support Specialisation Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Munition dump"
-  ],
-  "preconditions": {
-    "fire_stations": 11
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -28,31 +16,63 @@
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
           "hazmat_unit",
           "cbrn_vehicle"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 3500
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Munition dump POI is retained. One HazMat Unit or CBRN Vehicle is represented as a qualifying alternative-group total."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/251",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Munition dump"
+  ],
+  "preconditions": {
+    "fire_stations": 11
+  },
+  "reward": {
+    "average_credits": 3500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 251,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

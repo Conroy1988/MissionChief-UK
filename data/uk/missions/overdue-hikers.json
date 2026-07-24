@@ -1,19 +1,6 @@
 {
   "id": 756,
   "name": "Overdue Hikers",
-  "aliases": [
-    "Overdue hikers"
-  ],
-  "service": "mountain_rescue",
-  "mission_types": [
-    "Mountain Rescue"
-  ],
-  "custom_spawn_area": true,
-  "preconditions": {
-    "rescue_stations": 3,
-    "police_stations": 1,
-    "mountain_rescue_stations": 3
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -25,7 +12,6 @@
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
@@ -34,10 +20,23 @@
         ],
         "quantity": 2,
         "notes": [
-          "Two qualifying 4x4 vehicles are required in total."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/756",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "mountain_rescue_stations": 3,
+    "police_stations": 1,
+    "rescue_stations": 3
   },
   "patients": {
     "maximum": 3,
@@ -58,18 +57,39 @@
     "critical_care_probability": 0.0
   },
   "reward": {
-    "average_credits": 6400,
-    "event_multiplier_observed": 2
+    "average_credits": 6400
   },
-  "notes": [
-    "The official page displayed a temporary x2 reward marker; 6,400 remains the stored base average.",
-    "The official page lists multiple mission variations but does not expose a minimum patient count in the captured record."
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 756,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://police.missionchief.co.uk/einsaetze/756"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Overdue hikers"
+  ]
 }

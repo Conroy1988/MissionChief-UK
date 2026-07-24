@@ -1,0 +1,23 @@
+{
+  "id": "bomb_disposal_command",
+  "name": "Bomb Disposal Command",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal command",
+  "capabilities": [
+    "bomb_disposal_command"
+  ],
+  "notes": [
+    "The retained UK source identifies Bomb Disposal Command as a discrete required resource.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/832",
+      "https://www.missionchief.co.uk/einsaetze/839",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

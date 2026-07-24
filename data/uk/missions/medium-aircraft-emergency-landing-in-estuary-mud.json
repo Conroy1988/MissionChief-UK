@@ -1,0 +1,175 @@
+{
+  "id": 583,
+  "name": "Medium Aircraft Emergency Landing in Estuary Mud",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_commander",
+        "quantity": 1
+      },
+      {
+        "resource": "coastguard_mud_rescue_unit",
+        "quantity": 3
+      },
+      {
+        "resource": "coastguard_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 6
+      },
+      {
+        "resource": "inland_rescue_boat_trailer",
+        "quantity": 2
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "mud_decontamination_unit",
+        "quantity": 6
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 6,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/583",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Estuary"
+  ],
+  "preconditions": {
+    "foam_extensions": 2,
+    "hart_bases": 2,
+    "mass_casualty_extensions": 2,
+    "mud_decontamination_extensions": 4,
+    "police_stations": 3,
+    "rescue_stations": 6,
+    "coastguard_rescue_stations": 6
+  },
+  "patients": {
+    "maximum": 40,
+    "minimum": 20,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.7
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 30
+      }
+    ],
+    "available": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 60
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 30000
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue"
+    ],
+    "icons": [
+      "/images/planecrash_gruen.png",
+      "/images/planecrash_gelb.png",
+      "/images/planecrash_rot.png"
+    ],
+    "base_mission_id": 583,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "coastguard",
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

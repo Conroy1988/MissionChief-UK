@@ -1,0 +1,23 @@
+{
+  "id": "coastguard_support_unit",
+  "name": "Coastguard Support Unit",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "Coastguard support",
+  "capabilities": [
+    "coastguard_support"
+  ],
+  "notes": [
+    "The official coastal_support field is displayed as required Support Units on Coastguard and Coastal Rescue missions. It is distinct from the CRV/coastal_rescue requirement.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/560",
+      "https://www.missionchief.co.uk/einsaetze/583",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

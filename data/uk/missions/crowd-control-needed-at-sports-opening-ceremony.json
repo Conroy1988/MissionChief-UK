@@ -1,0 +1,102 @@
+{
+  "id": 708,
+  "name": "Crowd control needed at sports opening ceremony",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 5
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/708",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "police_stations": 5,
+    "rescue_stations": 8,
+    "police_public_order_extensions": 1
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 6
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 12
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 9000
+  },
+  "availability_window": {
+    "starts_at": "2024-07-26T09:00:00Z",
+    "ends_at": "2024-08-11T23:59:59Z"
+  },
+  "duration_minutes": 90,
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 708,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2024-08-11T23:59:59Z",
+      "date_start": "2024-07-26T09:00:00Z",
+      "duration": 5400,
+      "duration_text": "1 hour 30 minutes",
+      "guard_mission": true
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

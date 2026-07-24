@@ -29,10 +29,10 @@ Search the complete official MissionChief UK mission catalogue alongside the hig
 
 ```text
 1,062 official UK missions
-284 canonical mission records
-267 direct official/canonical ID matches
-226 fully canonical missions
-795 official missions awaiting direct canonical records
+1,079 canonical mission records
+1,062 direct official/canonical ID matches
+1,062 fully canonical missions
+0 official missions awaiting direct canonical records
 ```
 
 The full five-gate position and per-mission blockers are published on the [Mission Verification Status](../reference/mission-verification-status.md) page.

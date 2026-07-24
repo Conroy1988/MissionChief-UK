@@ -1,0 +1,23 @@
+{
+  "id": "beach_lifeguard_extensions",
+  "name": "Beach Lifeguard Extension",
+  "aliases": [],
+  "kind": "extension",
+  "service": "coastguard",
+  "parent_buildings": [],
+  "capabilities": [
+    "beach_lifeguard_mission_generation"
+  ],
+  "notes": [
+    "Required Beach Lifeguard Extension count.",
+    "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/563/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

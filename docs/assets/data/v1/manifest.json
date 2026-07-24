@@ -1,0 +1,35 @@
+{
+  "api_version": "v1",
+  "collections": {
+    "infrastructure": {
+      "count": 19,
+      "path": "infrastructure.json"
+    },
+    "missions": {
+      "count": 1079,
+      "path": "missions.json"
+    },
+    "training": {
+      "count": 12,
+      "path": "training.json"
+    },
+    "vehicles": {
+      "count": 59,
+      "path": "vehicles.json"
+    }
+  },
+  "data_version": "1.2.0",
+  "faq": {
+    "path": "faq.json"
+  },
+  "openapi": {
+    "path": "openapi.json"
+  },
+  "released_at": "2026-07-24",
+  "search_index": {
+    "count": 1169,
+    "path": "search-index.json"
+  },
+  "stage": 35,
+  "status": "production"
+}

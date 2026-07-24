@@ -1,10 +1,6 @@
 {
   "id": 828,
   "name": "Party centre on fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
   "requirements": {
     "guaranteed": [
       {
@@ -51,7 +47,7 @@
   },
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/828",
       "https://www.missionchief.co.uk/einsaetze.json"
@@ -84,14 +80,37 @@
     ],
     "transport_probability": 0.45
   },
+  "prisoners": {
+    "maximum": 2
+  },
   "reward": {
     "average_credits": 10640
   },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 828,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
   "notes": [
     "Generated deterministically from the retained official UK mission snapshot.",
-    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
-  ],
-  "prisoners": {
-    "maximum": 2
-  }
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

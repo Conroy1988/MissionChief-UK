@@ -1,0 +1,96 @@
+{
+  "id": 776,
+  "name": "Car into telegraph pole",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "traffic_car",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/776",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 2,
+    "police_stations": 3,
+    "rescue_stations": 1,
+    "recovery_centres": 1
+  },
+  "patients": {
+    "maximum": 2,
+    "minimum": 0,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.4
+  },
+  "prisoners": {
+    "minimum": 0,
+    "maximum": 1
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "car",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 2000
+  },
+  "expandable_missions": [
+    "777"
+  ],
+  "official_metadata": {
+    "generator_family": "tow_trucks_missions",
+    "mission_categories": [
+      "tow_trucks",
+      "police"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 776,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "recovery",
+  "generation_rules": {
+    "main_building_type": 34
+  },
+  "mission_types": [
+    "Recovery Vehicle Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

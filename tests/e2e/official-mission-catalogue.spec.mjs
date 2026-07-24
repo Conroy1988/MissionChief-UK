@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("official UK mission catalogue is complete, reconciled and searchable", async ({ page, request }) => {
+test("official UK mission catalogue is complete, fully canonical and searchable", async ({ page, request }) => {
   const catalogueResponse = await request.get("assets/data/official/uk-missions.json");
   expect(catalogueResponse.ok(), "Official UK mission catalogue endpoint must be available").toBeTruthy();
   const catalogue = await catalogueResponse.json();
@@ -13,37 +13,36 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   expect(catalogue.count).toBe(catalogue.records.length);
   expect(catalogue.count).toBeGreaterThan(1000);
   expect(coverage.official_count).toBe(catalogue.count);
+  expect(coverage.matched_count).toBe(coverage.official_count);
   expect(coverage.matched_count + coverage.official_only_count).toBe(coverage.official_count);
-  expect(coverage.canonical_count).toBeGreaterThan(0);
-  expect(coverage.matched_count).toBeGreaterThan(0);
-  expect(coverage.official_only_count).toBeGreaterThanOrEqual(0);
-  expect(coverage.official_only_count).toBeLessThan(coverage.official_count);
+  expect(coverage.canonical_count).toBeGreaterThan(coverage.official_count);
+  expect(coverage.official_only_count).toBe(0);
+  expect(coverage.official_only).toEqual([]);
+  expect(coverage.coverage_percent).toBe(100);
   expect(catalogue.source.url).toBe("https://www.missionchief.co.uk/einsaetze.json");
   expect(catalogue.source.sha256).toMatch(/^[a-f0-9]{64}$/);
 
-  const officialOnlyIds = new Set(
-    coverage.official_only.map((record) => String(record.id))
-  );
-  const pendingRecord = catalogue.records.find((record) => {
+  const fullyMappedRecord = catalogue.records.find((record) => {
     const additional = record.additional;
-    return officialOnlyIds.has(String(record.id))
-      && additional
+    return additional
       && typeof additional === "object"
       && !Array.isArray(additional)
       && Object.keys(additional).length > 0
       && record.base_mission_id !== undefined;
   });
   expect(
-    pendingRecord,
-    "Coverage must retain an official-only record with structured additional and base-mission evidence"
+    fullyMappedRecord,
+    "Every official mission must have a canonical match, including records with structured additional and base-mission evidence"
   ).toBeTruthy();
 
-  const pendingId = String(pendingRecord.id);
-  const pendingName = String(
-    pendingRecord.name ?? pendingRecord.caption ?? pendingRecord.title
+  const mappedId = String(fullyMappedRecord.id);
+  const mappedName = String(
+    fullyMappedRecord.name ?? fullyMappedRecord.caption ?? fullyMappedRecord.title
   );
-  const pendingUrl = `https://www.missionchief.co.uk/einsaetze/${pendingId}`;
-  const additionalKey = Object.keys(pendingRecord.additional).sort()[0];
+  const mappedUrl = String(
+    fullyMappedRecord.official_url ?? `https://www.missionchief.co.uk/einsaetze/${mappedId}`
+  );
+  const additionalKey = Object.keys(fullyMappedRecord.additional).sort()[0];
 
   let catalogueRequests = 0;
   page.on("request", (browserRequest) => {
@@ -59,36 +58,35 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
   const root = page.locator("[data-mcuk-tool='mission-lookup']");
   await expect(root).toHaveAttribute("data-mcuk-ready", "true");
   await expect(root.locator("[data-role='summary']")).toContainText(
-    `${coverage.official_only_count} official records awaiting full mapping`
+    "0 official records awaiting full mapping"
   );
 
-  await root.locator("select[data-role='source']").selectOption("official");
-  await root.locator("input[data-role='query']").fill(pendingName);
-  const officialCard = root
-    .locator("article.mcuk-mission-card--official")
-    .filter({ hasText: `#${pendingId}` })
+  await root.locator("select[data-role='source']").selectOption("canonical");
+  await root.locator("input[data-role='query']").fill(mappedName);
+  const mappedCard = root
+    .locator("article.mcuk-mission-card--canonical")
+    .filter({ hasText: `#${mappedId}` })
     .first();
-  await expect(officialCard).toContainText(pendingName);
-  await expect(officialCard).toContainText(`#${pendingId}`);
-  await expect(officialCard).toContainText("Official UK catalogue");
-  await expect(officialCard).toContainText("Canonical mapping pending");
+  await expect(mappedCard).toContainText(mappedName);
+  await expect(mappedCard).toContainText(`#${mappedId}`);
+  await expect(mappedCard).toContainText("Canonical mapped");
+  await expect(mappedCard).toContainText("Official ID matched");
 
-  const fieldDetails = officialCard.locator("details.mcuk-official-field-details");
+  const fieldDetails = mappedCard.locator("details.mcuk-official-field-details");
   await expect(fieldDetails).toContainText("Patients, personnel, variants and additional fields");
   await fieldDetails.locator("summary").click();
   await expect(fieldDetails.locator("table")).toContainText(`additional.${additionalKey}`);
   await expect(fieldDetails.locator("table")).toContainText("base_mission_id");
 
-  const officialDetails = officialCard.locator("details.mcuk-official-record-details");
-  await expect(officialDetails).toContainText("Complete official catalogue record");
-  await officialDetails.locator("summary").click();
-  await expect(officialDetails.locator("pre")).toContainText(
-    `"official_url": "${pendingUrl}"`
+  const mappedDetails = mappedCard.locator("details.mcuk-official-record-details");
+  await expect(mappedDetails).toContainText("Complete official catalogue record");
+  await mappedDetails.locator("summary").click();
+  await expect(mappedDetails.locator("pre")).toContainText(
+    `"official_url": "${mappedUrl}"`
   );
-  await expect(officialDetails.locator("pre")).toContainText('"requirements"');
-  await expect(officialDetails.locator("pre")).toContainText('"prerequisites"');
+  await expect(mappedDetails.locator("pre")).toContainText('"requirements"');
+  await expect(mappedDetails.locator("pre")).toContainText('"prerequisites"');
 
-  await root.locator("select[data-role='source']").selectOption("canonical");
   await root.locator("input[data-role='query']").fill("588");
   const canonicalCard = root
     .locator("article.mcuk-mission-card--canonical")
@@ -96,6 +94,7 @@ test("official UK mission catalogue is complete, reconciled and searchable", asy
     .first();
   await expect(canonicalCard).toContainText("Aircraft Accident - Code F");
   await expect(canonicalCard).toContainText("Canonical mapped");
+  await expect(canonicalCard).toContainText("Official ID matched");
 
   const canonicalDetails = canonicalCard.locator("details.mcuk-official-record-details");
   await expect(canonicalDetails).toContainText("Complete official catalogue record");

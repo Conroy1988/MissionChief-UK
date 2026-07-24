@@ -1,0 +1,81 @@
+{
+  "id": 544,
+  "name": "Investigate Flare",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "all_weather_lifeboat",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/544",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "lifeboat_stations": 2,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 3,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.7,
+    "critical_care_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 3500
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue_ocean"
+    ],
+    "icons": [
+      "/images/zoom_gruen.png",
+      "/images/zoom_gelb.png",
+      "/images/zoom_rot.png"
+    ],
+    "base_mission_id": 544,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "handoff_possible_via_building_types": [
+        27
+      ],
+      "uses_custom_spawn_area": true,
+      "vehicle_groups": [
+        "ocean_missions"
+      ]
+    }
+  },
+  "service": "coastguard",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

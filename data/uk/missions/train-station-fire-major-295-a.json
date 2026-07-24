@@ -1,0 +1,130 @@
+{
+  "id": "295/a",
+  "name": "Train station fire (Major)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 12
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 8
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.3
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/295/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Train station (regional traffic)",
+    "Train station (regional traffic and long-distance travel)",
+    "Train station (regional traffic)\nTrain station (regional traffic and long-distance travel)"
+  ],
+  "preconditions": {
+    "fire_stations": 20,
+    "hart_bases": 2,
+    "police_stations": 4
+  },
+  "patients": {
+    "specializations": [
+      "General Internal",
+      "Burns"
+    ],
+    "specialization_ids": [
+      0,
+      12
+    ],
+    "specialization_text": "General Internal, Burns",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.25
+  },
+  "reward": {
+    "average_credits": 17500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "railway_fire"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 295,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "average_min_fire_personnel": 63
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

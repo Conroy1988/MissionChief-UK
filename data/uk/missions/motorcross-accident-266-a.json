@@ -1,0 +1,81 @@
+{
+  "id": "266/a",
+  "name": "Motorcross Accident",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/266/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Dirt Race Track"
+  ],
+  "preconditions": {
+    "rescue_stations": 3,
+    "recovery_centres": 1
+  },
+  "patients": {
+    "maximum": 3,
+    "minimum": 1,
+    "specializations": [
+      "General Surgeon"
+    ],
+    "specialization_ids": [
+      1
+    ],
+    "specialization_text": "General Surgeon",
+    "codes": [
+      "C-2",
+      "C-1"
+    ],
+    "transport_probability": 1.0,
+    "critical_care_probability": 0.25
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "car",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 300
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 266,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

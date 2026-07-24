@@ -1,10 +1,6 @@
 {
   "id": 686,
   "name": "Confined Space Rescue",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
   "requirements": {
     "guaranteed": [
       {
@@ -19,7 +15,7 @@
   },
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/686",
       "https://www.missionchief.co.uk/einsaetze.json"
@@ -47,8 +43,32 @@
   "reward": {
     "average_credits": 1500
   },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fallingrocks_gruen.png",
+      "/images/fallingrocks_gelb.png",
+      "/images/fallingrocks_rot.png"
+    ],
+    "base_mission_id": 686,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
   "notes": [
     "Generated deterministically from the retained official UK mission snapshot.",
-    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
   ]
 }

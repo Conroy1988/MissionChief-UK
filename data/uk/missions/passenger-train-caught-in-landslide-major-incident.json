@@ -1,0 +1,251 @@
+{
+  "id": 808,
+  "name": "Passenger Train Caught in Landslide (Major Incident)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "control_van",
+        "quantity": 1
+      },
+      {
+        "resource": "dog_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "eiu",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 10
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 8
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 10
+      },
+      {
+        "resource": "prv",
+        "quantity": 4
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 4
+      },
+      {
+        "resource": "road_rail_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "search_dog_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 4
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "police_helicopter",
+          "drone"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "operational_support_van",
+          "operational_support_trailer",
+          "personal_sar_vehicle"
+        ],
+        "quantity": 5,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/808",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Railroad Crossing",
+    "Rail Crossing",
+    "Railroad Crossing\nRail Crossing"
+  ],
+  "preconditions": {
+    "fire_stations": 22,
+    "hart_bases": 4,
+    "mass_casualty_extensions": 2,
+    "police_helicopter_stations": 1,
+    "police_stations": 15,
+    "railway_fire_responses": 2,
+    "railway_police": 2,
+    "rescue_stations": 35,
+    "search_and_rescue_hqs": 2
+  },
+  "patients": {
+    "maximum": 200,
+    "minimum": 50,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.75,
+    "critical_care_probability": 0.05
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 2
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 6
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 8
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 8
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 4
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 8
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 16
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 4
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 26800
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "railway_police",
+      "railway_fire",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/fallingrocks_gruen.png",
+      "/images/fallingrocks_gelb.png",
+      "/images/fallingrocks_rot.png"
+    ],
+    "base_mission_id": 808,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

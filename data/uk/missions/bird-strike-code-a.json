@@ -1,34 +1,98 @@
 {
   "id": 592,
   "name": "Bird Strike - Code A",
-  "aliases": [],
-  "service": "airfield_operations",
-  "mission_types": [
-    "Airfield firefighting operations"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "fire_engine",
+          "riv"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "riv",
+          "major_foam_tender"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/592",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Small Airport (Runway)"
   ],
   "preconditions": {
+    "aviation_firefighting_extensions": 1,
     "fire_stations": 4,
-    "rescue_stations": 4,
     "hart_bases": 2,
-    "aviation_firefighting_extensions": 1
-  },
-  "requirements": {
-    "guaranteed": []
+    "rescue_stations": 4
   },
   "reward": {
     "average_credits": 3000
   },
-  "notes": [
-    "The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport"
+    ],
+    "icons": [
+      "/images/planecrash_gruen.png",
+      "/images/planecrash_gelb.png",
+      "/images/planecrash_rot.png"
+    ],
+    "base_mission_id": 592,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

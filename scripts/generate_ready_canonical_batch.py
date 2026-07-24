@@ -18,11 +18,24 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import ROOT, build_expected_patient, load_mapping_registry
+from operational_metadata_contract import (
+    GENERATOR_METADATA,
+    build_expected_operational_fields,
+    merge_operational_fields,
+)
+from personnel_contract import (
+    build_expected_personnel,
+    load_mapping_registry as load_personnel_mappings,
+    merge_mapped_personnel,
+    owned_paths as personnel_owned_paths,
+)
 from personnel_education_contract import (
     build_expected_personnel_educations,
+    merge_personnel_educations,
     load_mapping_registry as load_personnel_education_mappings,
     owned_paths as personnel_education_owned_paths,
 )
+from prisoner_contract import build_expected_prisoners, load_mapping_registry as load_prisoner_mappings
 from recovery_contract import build_expected_recovery, load_mapping_registry as load_recovery_mappings
 from report_canonical_candidates import canonical_records_by_id
 from report_canonical_candidates import report as candidate_report
@@ -50,14 +63,10 @@ PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
     PERSONNEL_EDUCATION_ROLES,
 ) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 RECOVERY_MAPPINGS = load_recovery_mappings()
+PRISONER_MAPPINGS = load_prisoner_mappings()
 
-GENERATOR_METADATA = {
-    "firehouse_missions": ("fire", ["Fire Fighting Missions"]),
-    "police_station_missions": ("police", ["Police Missions"]),
-    "ambulance_station_missions": ("ambulance", ["Ambulance Missions"]),
-    "tow_trucks_missions": ("recovery", ["Recovery Vehicle Missions"]),
-    "coastal_rescue_missions": ("coastguard", ["Coastguard Missions"]),
-}
+PERSONNEL_MAPPINGS = load_personnel_mappings()
+PERSONNEL_REQUIREMENT_KEYS, PERSONNEL_CHANCE_KEYS, PERSONNEL_ROLES = personnel_owned_paths(PERSONNEL_MAPPINGS)
 
 
 def read_json(path: Path) -> Any:
@@ -203,7 +212,7 @@ def translate_requirements(
 
     guaranteed: dict[str, int] = {}
     probabilistic: dict[str, tuple[int, float]] = {}
-    alternatives: dict[tuple[str, ...], tuple[list[str], int]] = {}
+    alternatives: dict[tuple[str, ...], tuple[list[str], int, float | None]] = {}
     conditionals = build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
     conditional_requirement_keys = active_conditional_requirement_keys(
         official, CONDITIONAL_MAPPINGS
@@ -223,18 +232,27 @@ def translate_requirements(
             if raw_quantity not in mapping.get("allowed_values", []):
                 raise ValueError(f"Mission {mission_id} requirement {official_key} is outside its allow-list")
             continue
+        target = mapping.get("canonical_target")
+        if target in {"personnel.chance-aware", "water_requirements.minimum_pump_speed"}:
+            continue
         quantity = checked_integer(raw_quantity, f"Mission {mission_id} requirements.{official_key}")
         if quantity == 0:
             continue
-        target = mapping.get("canonical_target")
         if target == "requirements.alternatives":
-            if official_key in official_chances:
-                raise ValueError(f"Mission {mission_id} requires probabilistic alternative-group support")
             resources = mapping.get("canonical_ids")
             if not isinstance(resources, list) or len(resources) < 2:
                 raise ValueError(f"Mission {mission_id} alternative mapping {official_key} is invalid")
+            chance_key = str(mapping.get("chance_key", official_key))
+            probability: float | None = None
+            raw_chance = official_chances.get(chance_key)
+            if raw_chance is not None:
+                percent = checked_percent(raw_chance, f"Mission {mission_id} chances.{chance_key}")
+                if percent == 0:
+                    continue
+                if percent < 100:
+                    probability = percent / 100
             key = tuple(sorted(str(resource) for resource in resources))
-            alternatives[key] = ([str(resource) for resource in resources], quantity)
+            alternatives[key] = ([str(resource) for resource in resources], quantity, probability)
             continue
         resource = mapping.get("canonical_id")
         if not isinstance(resource, str) or not resource:
@@ -269,14 +287,16 @@ def translate_requirements(
             for resource, (quantity, probability) in sorted(probabilistic.items())
         ]
     if alternatives:
-        output["alternatives"] = [
-            {
+        output["alternatives"] = []
+        for _, (resources, quantity, probability) in sorted(alternatives.items()):
+            item: dict[str, Any] = {
                 "resources": resources,
                 "quantity": quantity,
                 "notes": ["Any listed qualifying resource may satisfy this official alternative group."],
             }
-            for _, (resources, quantity) in sorted(alternatives.items())
-        ]
+            if probability is not None:
+                item["probability"] = probability
+            output["alternatives"].append(item)
     if conditionals:
         output["conditional"] = conditionals
     return output
@@ -298,6 +318,13 @@ def translate_preconditions(official: dict[str, Any], mappings: dict[str, Any]) 
             if raw_quantity not in mapping.get("allowed_values", []):
                 raise ValueError(f"Mission {mission_id} prerequisite {official_key} is outside its allow-list")
             continue
+        target = mapping.get("canonical_target")
+        if target == "generation_rules.max_police_stations":
+            continue
+        if target != "preconditions":
+            raise ValueError(
+                f"Mission {mission_id} prerequisite mapping {official_key} has unsupported target {target!r}"
+            )
         quantity = checked_integer(raw_quantity, f"Mission {mission_id} prerequisites.{official_key}")
         canonical_target = mapping.get("canonical_id")
         if not isinstance(canonical_target, str) or not canonical_target:
@@ -327,10 +354,7 @@ def relationship_ids(official: dict[str, Any], key: str) -> list[str]:
     values = additional.get(key, [])
     if not isinstance(values, list):
         raise ValueError(f"Mission {official.get('id')} additional.{key} is not an array")
-    strings = [str(value) for value in values]
-    if len(strings) != len(set(strings)):
-        raise ValueError(f"Mission {official.get('id')} additional.{key} contains duplicate multiplicity")
-    return strings
+    return [str(value) for value in values]
 
 
 def build_canonical_record(
@@ -343,11 +367,7 @@ def build_canonical_record(
     additional = official.get("additional", {})
     if not isinstance(additional, dict):
         raise ValueError(f"Mission {mission_id} additional must be an object")
-    generator = additional.get("filter_id")
-    metadata = GENERATOR_METADATA.get(generator)
-    if metadata is None:
-        raise ValueError(f"Mission {mission_id} generator {generator!r} is not approved")
-    service, mission_types = metadata
+    operational_fields = build_expected_operational_fields(official)
     name = official.get("name")
     if not isinstance(name, str) or not name:
         raise ValueError(f"Mission {mission_id} has no official name")
@@ -355,8 +375,6 @@ def build_canonical_record(
     record: dict[str, Any] = {
         "id": canonical_id(official["id"]),
         "name": name,
-        "service": service,
-        "mission_types": mission_types,
         "requirements": translate_requirements(official, mappings),
         "verification": {
             "status": "verified",
@@ -373,11 +391,17 @@ def build_canonical_record(
     patients = build_expected_patient(official, patient_mappings)
     if patients:
         record["patients"] = patients
+    expected_personnel = build_expected_personnel(official, PERSONNEL_MAPPINGS)
+    record = merge_mapped_personnel(record, expected_personnel, PERSONNEL_ROLES)
     personnel_educations = build_expected_personnel_educations(
         official, PERSONNEL_EDUCATION_MAPPINGS
     )
-    if personnel_educations:
-        record["personnel"] = personnel_educations
+    record = merge_personnel_educations(
+        record, personnel_educations, PERSONNEL_EDUCATION_ROLES
+    )
+    prisoners = build_expected_prisoners(official, PRISONER_MAPPINGS)
+    if prisoners:
+        record["prisoners"] = prisoners
     recovery = build_expected_recovery(official, RECOVERY_MAPPINGS)
     if recovery:
         record["recovery"] = recovery
@@ -390,9 +414,10 @@ def build_canonical_record(
         record["follow_up_missions"] = followups
     if expansions:
         record["expandable_missions"] = expansions
+    record = merge_operational_fields(record, operational_fields)
     record["notes"] = [
         "Generated deterministically from the retained official UK mission snapshot.",
-        "Resource, prerequisite and patient fields are protected by strict official equivalence validators.",
+        "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators.",
     ]
     return record
 
@@ -549,6 +574,10 @@ def generate(
             "checked_at": effective_checked_at,
             "strict_key_equivalence": True,
             "strict_patient_equivalence": True,
+            "strict_personnel_equivalence": bool(
+                build_expected_personnel(official, PERSONNEL_MAPPINGS)
+            ),
+            "strict_operational_equivalence": True,
             "strict_conditional_equivalence": bool(
                 build_expected_conditionals(official, CONDITIONAL_MAPPINGS)
             ),

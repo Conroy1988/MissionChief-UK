@@ -190,6 +190,10 @@
             "type": "string"
           },
           "uniqueItems": true
+        },
+        "beach_lifeguard_extensions": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -246,15 +250,13 @@
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "uniqueItems": true
+      }
     },
     "expandable_missions": {
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "uniqueItems": true
+      }
     },
     "notes": {
       "type": "array",
@@ -264,6 +266,210 @@
     },
     "verification": {
       "$ref": "#/$defs/verification"
+    },
+    "availability_window": {
+      "type": "object",
+      "properties": {
+        "starts_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ends_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "generation_rules": {
+      "type": "object",
+      "properties": {
+        "main_building_type": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_police_stations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "allow_ktw_instead_of_rtw": {
+          "type": "boolean"
+        },
+        "allow_without_poi": {
+          "type": "boolean"
+        },
+        "fire_alarm_system_possible": {
+          "type": "boolean"
+        },
+        "guard_mission": {
+          "type": "boolean"
+        },
+        "only_alliance_mission": {
+          "type": "boolean"
+        },
+        "subsequent_mission_only": {
+          "type": "boolean"
+        },
+        "unavailable_in_normal_missions": {
+          "type": "boolean"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "water_requirements": {
+      "type": "object",
+      "properties": {
+        "minimum_pump_speed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pump_water_amount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "subsequent_missions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "official_metadata": {
+      "type": "object",
+      "required": [
+        "generator_family",
+        "mission_categories",
+        "icons",
+        "base_mission_id",
+        "additive_overlays",
+        "overlay_index",
+        "generated_by",
+        "additional"
+      ],
+      "properties": {
+        "generator_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mission_categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "icons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "base_mission_id": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "additive_overlays": {
+          "type": "string"
+        },
+        "overlay_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "generated_by": {
+          "type": "string"
+        },
+        "additional": {
+          "type": "object",
+          "properties": {
+            "allow_ktw_instead_of_rtw": {
+              "type": "boolean"
+            },
+            "allow_without_poi": {
+              "type": "boolean"
+            },
+            "average_min_fire_personnel": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "average_min_police_personnel": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "date_end": {
+              "type": "string"
+            },
+            "date_start": {
+              "type": "string"
+            },
+            "duration": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "duration_text": {
+              "type": "string"
+            },
+            "fire_alarm_system_possible": {
+              "type": "boolean"
+            },
+            "guard_mission": {
+              "type": "boolean"
+            },
+            "handoff_possible_via_building_types": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "only_alliance_mission": {
+              "type": "boolean"
+            },
+            "pump_water_amount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "subsequent_mission_only": {
+              "type": "boolean"
+            },
+            "subsequent_missions_ids": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              }
+            },
+            "swat_personnel": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unavailable_in_normal_missions": {
+              "type": "boolean"
+            },
+            "uses_custom_spawn_area": {
+              "type": "boolean"
+            },
+            "vehicle_groups": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   },
   "$defs": {

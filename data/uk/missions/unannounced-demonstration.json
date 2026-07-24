@@ -1,0 +1,55 @@
+{
+  "id": 57,
+  "name": "Unannounced demonstration",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 7
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/57",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "reward": {
+    "average_credits": 10020
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 57,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "only_alliance_mission": true,
+      "unavailable_in_normal_missions": true
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "only_alliance_mission": true,
+    "unavailable_in_normal_missions": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -1,36 +1,65 @@
 {
   "id": 522,
   "name": "Community Engagement (Ambulance)",
-  "aliases": [],
-  "service": "ambulance",
-  "mission_types": [
-    "Ambulance Missions"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/522",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "School",
-    "Mall"
+    "Mall",
+    "School\nMall"
   ],
   "preconditions": {
     "rescue_stations": 1
   },
-  "requirements": {
-    "guaranteed": [],
-    "probabilistic": [],
-    "alternatives": []
-  },
   "reward": {
     "average_credits": 6000
   },
-  "notes": [
-    "Official UK mission directory confirms the mission name, POIs, average credits and one required Rescue Station.",
-    "Vehicle requirements are intentionally not populated because the individual mission page was not available during this verification pass."
+  "duration_minutes": 60,
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/dancinghall_gruen.png",
+      "/images/dancinghall_gelb.png",
+      "/images/dancinghall_rot.png"
+    ],
+    "base_mission_id": 522,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "duration": 3600,
+      "duration_text": "1 hour",
+      "guard_mission": true
+    }
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Ambulance Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/522",
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

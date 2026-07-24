@@ -8,6 +8,21 @@ The project follows semantic versioning for its public static-data API and relea
 
 No unreleased changes are currently recorded.
 
+## [1.2.0] — 2026-07-24
+
+### Complete canonical UK mission catalogue
+
+- Added 795 new direct canonical records and completed strict source-equivalence audits for 41 existing records.
+- Promoted all 836 previously incomplete official missions in Batch 31.
+- Reached 1,062 / 1,062 direct official/canonical ID matches and 1,062 / 1,062 fully canonical missions.
+- Expanded the canonical mission collection from 284 to 1,079 records while retaining 17 intentional overlays and derived records.
+- Reduced the official mission backlog and unmapped-key backlog to zero.
+- Added lossless operational metadata contracts for variants, relationships, availability, duration, generation rules, source flags and capability thresholds.
+- Added 11 verified deployable-resource records and one verified infrastructure record.
+- Added strict operational metadata equivalence to validation, refresh, deployment and release controls.
+- Hardened duplicate-name filename generation for official IDs containing slash variants.
+- Published Static Data API v1.2.0 without breaking the v1 contract.
+
 ## [1.1.0] — 2026-07-24
 
 ### Complete UK mission catalogue

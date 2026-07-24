@@ -1,0 +1,110 @@
+{
+  "id": "207/a",
+  "name": "Firearms Attack (Major Incident)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 4
+      },
+      {
+        "resource": "police_car",
+        "quantity": 12
+      },
+      {
+        "resource": "police_helicopter",
+        "quantity": 1
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/207/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "hart_bases": 1,
+    "police_helicopter_stations": 1,
+    "police_stations": 18,
+    "rescue_stations": 9
+  },
+  "patients": {
+    "maximum": 15,
+    "minimum": 8,
+    "specializations": [
+      "Traumatology",
+      "Critical Care"
+    ],
+    "specialization_ids": [
+      4,
+      14
+    ],
+    "specialization_text": "Traumatology, Critical Care",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 2
+  },
+  "reward": {
+    "average_credits": 17500
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "mass_casualty_ambulance_specialization",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/shooting_gruen.png",
+      "/images/shooting_gelb.png",
+      "/images/shooting_rot.png"
+    ],
+    "base_mission_id": 207,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 10
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

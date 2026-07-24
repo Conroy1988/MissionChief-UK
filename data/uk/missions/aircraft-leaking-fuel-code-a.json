@@ -1,34 +1,73 @@
 {
   "id": 591,
   "name": "Aircraft Leaking Fuel - Code A",
-  "aliases": [
-    "Fuel leak - Code A"
-  ],
-  "service": "airfield_operations",
-  "mission_types": [
-    "Airfield firefighting operations"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "fire_engine",
+          "riv",
+          "major_foam_tender"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/591",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Small Airport (Runway)"
   ],
   "preconditions": {
-    "fire_stations": 6,
-    "aviation_firefighting_extensions": 1
-  },
-  "requirements": {
-    "guaranteed": []
+    "aviation_firefighting_extensions": 1,
+    "fire_stations": 6
   },
   "reward": {
     "average_credits": 2000
   },
-  "notes": [
-    "The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport"
+    ],
+    "icons": [
+      "/images/oil_gruen.png",
+      "/images/oil_gelb.png",
+      "/images/oil_rot.png"
+    ],
+    "base_mission_id": 591,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Fuel leak - Code A"
+  ]
 }

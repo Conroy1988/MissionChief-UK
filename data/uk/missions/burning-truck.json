@@ -1,40 +1,57 @@
 {
   "id": 13,
   "name": "Burning truck",
-  "aliases": [
-    "Burning Truck"
-  ],
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "preconditions": {
-    "fire_stations": 2
-  },
   "requirements": {
     "guaranteed": [
       {
         "resource": "fire_engine",
         "quantity": 2
       }
-    ],
-    "probabilistic": []
+    ]
   },
-  "reward": {
-    "average_credits": 980
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "All published operational fields are represented directly from the official UK catalogue and mission directory."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/13",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 2
+  },
+  "reward": {
+    "average_credits": 980
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 13,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Burning Truck"
+  ]
 }

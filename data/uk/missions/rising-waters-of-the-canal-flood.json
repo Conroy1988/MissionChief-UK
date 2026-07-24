@@ -1,0 +1,93 @@
+{
+  "id": 616,
+  "name": "Rising waters of the canal (Flood)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 6
+      },
+      {
+        "resource": "flood_rescue_unit",
+        "quantity": 5
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 6
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 4
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 5,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/616",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "lifeboat_stations": 3,
+    "fire_stations": 20,
+    "flood_rescue_extensions": 3,
+    "police_stations": 5,
+    "water_damage_pump_extensions": 1
+  },
+  "reward": {
+    "average_credits": 17500
+  },
+  "water_requirements": {
+    "minimum_pump_speed": 1500,
+    "pump_water_amount": 150000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "water_damage_and_flood"
+    ],
+    "icons": [
+      "/images/flood_gruen.png",
+      "/images/flood_gelb.png",
+      "/images/flood_rot.png"
+    ],
+    "base_mission_id": 616,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "pump_water_amount": 150000,
+      "unavailable_in_normal_missions": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "unavailable_in_normal_missions": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

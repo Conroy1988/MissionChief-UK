@@ -1,21 +1,8 @@
 {
   "id": 561,
   "name": "Broken Down Boat",
-  "aliases": [],
-  "service": "lifeboat",
-  "mission_types": [
-    "Ocean Rescue Missions"
-  ],
-  "custom_spawn_area": true,
-  "restricted_vehicle_types": [
-    "Ocean"
-  ],
-  "preconditions": {
-    "lifeboat_stations": 1
-  },
   "requirements": {
     "guaranteed": [],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
@@ -24,23 +11,60 @@
         ],
         "quantity": 1,
         "notes": [
-          "One ILB or ALB satisfies the requirement."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
   },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/561",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "lifeboat_stations": 1
+  },
   "reward": {
     "average_credits": 6000
   },
-  "notes": [
-    "The official mission page displayed a temporary x2 reward marker during verification; 6000 is retained as the base average shown in the mission directory."
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue_ocean"
+    ],
+    "icons": [
+      "/images/waterpark_gruen.png",
+      "/images/waterpark_gelb.png",
+      "/images/waterpark_rot.png"
+    ],
+    "base_mission_id": 561,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true,
+      "vehicle_groups": [
+        "ocean_missions"
+      ]
+    }
+  },
+  "service": "coastguard",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze",
-      "https://www.missionchief.co.uk/einsaetze/561"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [],
+  "restricted_vehicle_types": [
+    "Ocean"
+  ]
 }

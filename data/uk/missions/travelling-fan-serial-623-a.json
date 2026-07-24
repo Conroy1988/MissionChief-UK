@@ -1,0 +1,79 @@
+{
+  "id": "623/a",
+  "name": "Travelling Fan Serial",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/623/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Train station (regional traffic and long-distance travel)"
+  ],
+  "preconditions": {
+    "police_stations": 1
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 6
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 2
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 12
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "duration_minutes": 90,
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 623,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "duration": 5400,
+      "duration_text": "1 hour 30 minutes",
+      "guard_mission": true
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

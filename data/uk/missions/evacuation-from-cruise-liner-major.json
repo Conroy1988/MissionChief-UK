@@ -1,0 +1,85 @@
+{
+  "id": 554,
+  "name": "Evacuation from Cruise Liner MAJOR",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "all_weather_lifeboat",
+        "quantity": 6
+      },
+      {
+        "resource": "coastguard_rescue_helicopter",
+        "quantity": 3
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/554",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "helicopter_hangars": 4,
+    "lifeboat_stations": 10,
+    "rescue_stations": 14
+  },
+  "patients": {
+    "maximum": 60,
+    "minimum": 6,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 1.0
+  },
+  "reward": {
+    "average_credits": 25000
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue_ocean"
+    ],
+    "icons": [
+      "/images/cruiseship_gruen.png",
+      "/images/cruiseship_gelb.png",
+      "/images/cruiseship_rot.png"
+    ],
+    "base_mission_id": 554,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "handoff_possible_via_building_types": [
+        27
+      ],
+      "uses_custom_spawn_area": true,
+      "vehicle_groups": [
+        "ocean_missions"
+      ]
+    }
+  },
+  "service": "coastguard",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

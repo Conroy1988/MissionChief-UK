@@ -1,27 +1,20 @@
 {
   "id": 807,
   "name": "Evacuation of Stranded Passenger Train",
-  "aliases": [],
-  "service": "railway_response",
-  "mission_types": [
-    "Railway Fire Missions",
-    "Railway Police"
-  ],
-  "poi": [
-    "Railroad Crossing",
-    "Rail Crossing"
-  ],
-  "preconditions": {
-    "fire_stations": 15,
-    "rescue_stations": 12,
-    "police_stations": 9,
-    "hart_bases": 1,
-    "search_and_rescue_hqs": 2,
-    "railway_fire_responses": 1,
-    "railway_police": 1
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "control_van",
+        "quantity": 1
+      },
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 4
@@ -31,28 +24,20 @@
         "quantity": 4
       },
       {
-        "resource": "road_rail_unit",
-        "quantity": 1
+        "resource": "police_car",
+        "quantity": 6
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
       },
       {
         "resource": "rescue_support_vehicle",
         "quantity": 1
       },
       {
-        "resource": "breathing_apparatus_support_unit",
+        "resource": "road_rail_unit",
         "quantity": 1
-      },
-      {
-        "resource": "police_car",
-        "quantity": 6
-      },
-      {
-        "resource": "eiu",
-        "quantity": 1
-      },
-      {
-        "resource": "prv",
-        "quantity": 2
       },
       {
         "resource": "srv",
@@ -60,10 +45,6 @@
       },
       {
         "resource": "welfare_vehicle",
-        "quantity": 1
-      },
-      {
-        "resource": "control_van",
         "quantity": 1
       }
     ],
@@ -73,14 +54,20 @@
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       },
       {
         "resources": [
           "hazmat_unit",
           "cbrn_vehicle"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       },
       {
         "resources": [
@@ -88,43 +75,34 @@
           "operational_support_trailer",
           "personal_sar_vehicle"
         ],
-        "quantity": 5
+        "quantity": 5,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "personnel": {
-    "available": [
-      {
-        "role": "Mobile Operations Manager",
-        "quantity": 4
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 4
-      },
-      {
-        "role": "Railway Police Officer",
-        "quantity": 12
-      }
-    ],
-    "required": [
-      {
-        "role": "Mobile Operations Manager",
-        "quantity": 1
-      },
-      {
-        "role": "Operational Team Leader",
-        "quantity": 1
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 1
-      },
-      {
-        "role": "Railway Police Officer",
-        "quantity": 4
-      }
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/807",
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
+  },
+  "poi": [
+    "Railroad Crossing",
+    "Rail Crossing",
+    "Railroad Crossing\nRail Crossing"
+  ],
+  "preconditions": {
+    "fire_stations": 15,
+    "hart_bases": 1,
+    "police_stations": 9,
+    "railway_fire_responses": 1,
+    "railway_police": 1,
+    "rescue_stations": 12,
+    "search_and_rescue_hqs": 2
   },
   "patients": {
     "maximum": 50,
@@ -142,14 +120,70 @@
     ],
     "transport_probability": 0.1
   },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ],
+    "available": [
+      {
+        "role": "Mobile Operations Manager",
+        "quantity": 4
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 4
+      },
+      {
+        "role": "Railway Police Officer",
+        "quantity": 12
+      }
+    ]
+  },
   "reward": {
     "average_credits": 13600
   },
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/807"
-    ]
-  }
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "railway_police",
+      "railway_fire"
+    ],
+    "icons": [
+      "/images/tramway_gruen.png",
+      "/images/tramway_gelb.png",
+      "/images/tramway_rot.png"
+    ],
+    "base_mission_id": 807,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

@@ -1,0 +1,23 @@
+{
+  "id": "bomb_disposal_heavy_equipment",
+  "name": "Heavy Bomb Disposal Equipment",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal equipment",
+  "capabilities": [
+    "heavy_bomb_disposal_equipment"
+  ],
+  "notes": [
+    "The retained UK source identifies Heavy Bomb Disposal Equipment as a discrete required resource.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/835",
+      "https://www.missionchief.co.uk/einsaetze/839",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

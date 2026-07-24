@@ -1,0 +1,54 @@
+{
+  "id": 637,
+  "name": "Community event",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/637",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "search_and_rescue_hqs": 1
+  },
+  "reward": {
+    "average_credits": 10000
+  },
+  "duration_minutes": 60,
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "search_and_rescue"
+    ],
+    "icons": [
+      "/images/clock_gruen.png",
+      "/images/clock_gelb.png",
+      "/images/clock_rot.png"
+    ],
+    "base_mission_id": 637,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "duration": 3600,
+      "duration_text": "1 hour",
+      "guard_mission": true
+    }
+  },
+  "service": "coastguard",
+  "generation_rules": {
+    "main_building_type": 31,
+    "guard_mission": true
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

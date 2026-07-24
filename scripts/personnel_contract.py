@@ -173,6 +173,7 @@ def merge_mapped_personnel(
             if item.get("role") not in roles:
                 retained.append(item)
         retained.extend(expected.get(field, []))
+        retained.sort(key=lambda item: str(item.get("role")))
         if retained:
             personnel[field] = retained
         else:

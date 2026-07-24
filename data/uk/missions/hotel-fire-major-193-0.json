@@ -1,0 +1,157 @@
+{
+  "id": "193-0",
+  "name": "Hotel fire (major)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 2
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 14
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 8
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/193-0",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Hotel"
+  ],
+  "preconditions": {
+    "fire_stations": 20,
+    "hart_bases": 1,
+    "mass_casualty_extensions": 1,
+    "police_stations": 6,
+    "rescue_stations": 15
+  },
+  "patients": {
+    "maximum": 50,
+    "specializations": [
+      "General Internal",
+      "Critical Care"
+    ],
+    "specialization_ids": [
+      0,
+      14
+    ],
+    "specialization_text": "General Internal, Critical Care",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.4,
+    "critical_care_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 15800
+  },
+  "follow_up_missions": [
+    "349",
+    "349",
+    "349",
+    "349",
+    "349"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 193,
+    "additive_overlays": "",
+    "overlay_index": 0,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

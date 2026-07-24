@@ -6,55 +6,44 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-
-
-def patch(path: Path, old: str, new: str, sentinel: str) -> bool:
-    text = path.read_text(encoding="utf-8")
-    if sentinel in text:
-        return False
-    if old not in text:
-        raise ValueError(f"{path.relative_to(ROOT)}: Coastguard generator integration point is missing")
-    path.write_text(text.replace(old, new, 1), encoding="utf-8")
-    return True
+EXPECTED_FAMILIES = {
+    "firehouse_missions",
+    "police_station_missions",
+    "ambulance_station_missions",
+    "tow_trucks_missions",
+    "coastal_rescue_missions",
+    "mountain_missions",
+    "bomb_disposal_missions",
+}
 
 
 def main() -> int:
     try:
-        changed: list[str] = []
-        candidate = ROOT / "scripts" / "report_canonical_candidates.py"
-        if patch(
-            candidate,
-            '    "tow_trucks_missions",\n}\n',
-            '    "tow_trucks_missions",\n    "coastal_rescue_missions",\n}\n',
-            '    "coastal_rescue_missions",\n',
-        ):
-            changed.append(candidate.relative_to(ROOT).as_posix())
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from operational_metadata_contract import GENERATOR_METADATA
 
-        generator = ROOT / "scripts" / "generate_ready_canonical_batch.py"
-        if patch(
-            generator,
-            '    "tow_trucks_missions": ("recovery", ["Recovery Vehicle Missions"]),\n}\n',
-            '    "tow_trucks_missions": ("recovery", ["Recovery Vehicle Missions"]),\n    "coastal_rescue_missions": ("coastguard", ["Coastguard Missions"]),\n}\n',
-            '    "coastal_rescue_missions": ("coastguard", ["Coastguard Missions"]),\n',
-        ):
-            changed.append(generator.relative_to(ROOT).as_posix())
-
-        backlog = ROOT / "scripts" / "report_key_mapping_backlog.py"
-        if patch(
-            backlog,
-            '    "tow_trucks_missions",\n}\n',
-            '    "tow_trucks_missions",\n    "coastal_rescue_missions",\n}\n',
-            '    "coastal_rescue_missions",\n',
-        ):
-            changed.append(backlog.relative_to(ROOT).as_posix())
+        if set(GENERATOR_METADATA) != EXPECTED_FAMILIES:
+            raise ValueError(
+                "operational generator contract differs: "
+                f"expected={sorted(EXPECTED_FAMILIES)}, actual={sorted(GENERATOR_METADATA)}"
+            )
+        required_imports = {
+            ROOT / "scripts" / "report_canonical_candidates.py": "GENERATOR_METADATA",
+            ROOT / "scripts" / "generate_ready_canonical_batch.py": "GENERATOR_METADATA",
+            ROOT / "scripts" / "report_key_mapping_backlog.py": "GENERATOR_METADATA",
+        }
+        for path, sentinel in required_imports.items():
+            text = path.read_text(encoding="utf-8")
+            if sentinel not in text:
+                raise ValueError(
+                    f"{path.relative_to(ROOT)}: shared operational generator integration is missing"
+                )
     except (OSError, ValueError) as exc:
         print(f"Coastguard generator integration failed: {exc}", file=sys.stderr)
         return 1
 
     print(
-        "Coastguard generator integration synchronized: "
-        + (", ".join(changed) if changed else "already current")
-        + "."
+        "Coastguard generator integration synchronized: shared seven-family operational contract is current."
     )
     return 0
 

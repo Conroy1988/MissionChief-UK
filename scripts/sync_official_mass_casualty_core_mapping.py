@@ -31,16 +31,19 @@ REQUIREMENT_MAPPINGS = {
     },
     "emergency_welfare": {
         "status": "verified",
-        "canonical_target": "requirements.guaranteed",
+        "canonical_target": "requirements.chance-aware",
         "canonical_id": "welfare_vehicle",
-        "checked_at": "2026-07-23",
+        "chance_key": "emergency_welfare",
+        "checked_at": "2026-07-24",
         "sources": [
+            "https://www.missionchief.co.uk/einsaetze/329/ab",
+            "https://www.missionchief.co.uk/einsaetze/356/a",
             "https://www.missionchief.co.uk/einsaetze/587",
             "https://www.missionchief.co.uk/einsaetze/588",
             "https://www.missionchief.co.uk/einsaetze/760",
             "https://www.missionchief.co.uk/einsaetze.json",
         ],
-        "notes": "The official emergency_welfare count represents guaranteed Welfare Vehicles.",
+        "notes": "The official emergency_welfare count represents Welfare Vehicles. A same-key chance converts the quantity to a probabilistic requirement where published.",
     },
     "mass_casualty_equipment": {
         "status": "verified",

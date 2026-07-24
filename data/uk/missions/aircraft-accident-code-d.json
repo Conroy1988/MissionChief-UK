@@ -1,39 +1,30 @@
 {
   "id": 589,
   "name": "Aircraft Accident - Code D",
-  "aliases": [],
-  "service": "airfield_operations",
-  "mission_types": [
-    "Airfield firefighting operations"
-  ],
-  "poi": [
-    "Large Airport (Runway)"
-  ],
-  "preconditions": {
-    "fire_stations": 11,
-    "rescue_stations": 6,
-    "police_stations": 10,
-    "hart_bases": 2,
-    "aviation_firefighting_extensions": 3,
-    "airfield_operations_extensions": 2,
-    "mass_casualty_extensions": 1
-  },
   "requirements": {
     "guaranteed": [
-      {
-        "resource": "water_carrier",
-        "quantity": 4
-      },
-      {
-        "resource": "major_foam_tender",
-        "quantity": 5
-      },
       {
         "resource": "airfield_firefighting_command_vehicle",
         "quantity": 1
       },
       {
         "resource": "airfield_operations_vehicle",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "major_foam_tender",
+        "quantity": 5
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
         "quantity": 4
       },
       {
@@ -45,61 +36,83 @@
         "quantity": 2
       },
       {
+        "resource": "water_carrier",
+        "quantity": 4
+      },
+      {
         "resource": "welfare_vehicle",
         "quantity": 1
-      },
-      {
-        "resource": "mass_casualty_equipment",
-        "quantity": 1
-      },
-      {
-        "resource": "police_car",
-        "quantity": 4
-      }
-    ],
-    "conditional": [
-      {
-        "resource": "traffic_car",
-        "quantity": 2,
-        "condition": "only_when_available"
       }
     ],
     "alternatives": [
       {
         "resources": [
-          "fire_engine",
-          "major_foam_tender"
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
         ],
-        "quantity": 5
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       },
       {
         "resources": [
           "hazmat_unit",
           "cbrn_vehicle"
         ],
-        "quantity": 2
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "fire_engine",
+          "major_foam_tender"
+        ],
+        "quantity": 5,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 2,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ]
       }
     ]
   },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/589",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Large Airport (Runway)"
+  ],
+  "preconditions": {
+    "aviation_firefighting_extensions": 3,
+    "airfield_operations_extensions": 2,
+    "fire_stations": 11,
+    "hart_bases": 2,
+    "mass_casualty_extensions": 1,
+    "police_stations": 10,
+    "rescue_stations": 6
+  },
   "personnel": {
-    "available": [
-      {
-        "role": "Police Inspector",
-        "quantity": 5
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 5
-      }
-    ],
     "required": [
       {
         "role": "Airfield Operations Supervisor",
         "quantity": 2
-      },
-      {
-        "role": "Ambulance Officer",
-        "quantity": 1
       },
       {
         "role": "Operational Team Leader",
@@ -113,16 +126,48 @@
         "role": "Police Sergeant",
         "quantity": 1
       }
+    ],
+    "available": [
+      {
+        "role": "Police Inspector",
+        "quantity": 5
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
+      }
     ]
   },
   "reward": {
     "average_credits": 16000
   },
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/589"
-    ]
-  }
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/planecrash_gruen.png",
+      "/images/planecrash_gelb.png",
+      "/images/planecrash_rot.png"
+    ],
+    "base_mission_id": 589,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

@@ -4,15 +4,15 @@ MissionChief UK is maintained as an evidence-led information system rather than 
 
 ## Core programme status
 
-**Stages 1–34 are delivered.**
+**Stages 1–35 are delivered.**
 
 ```text
-62 mission records
-46 deployable-resource records
-18 infrastructure records
-11 qualification records
-13 verified mission batches
-Static data API v1.0.0
+1,079 canonical mission records
+1,062 / 1,062 official missions fully canonical
+59 deployable-resource records
+19 infrastructure records
+12 qualification records
+Static data API v1.2.0
 ```
 
 ## Delivered foundation — Stages 1–12
@@ -37,7 +37,7 @@ Static data API v1.0.0
 - [x] Airfield Operations, airport infrastructure and Code C/F incidents
 - [x] Recovery Centres, HGV extensions and structured towing outcomes
 
-## Delivered completion programme — Stages 21–34
+## Delivered completion programme — Stages 21–35
 
 ### Stage 21 — Railway response
 
@@ -134,9 +134,17 @@ Static data API v1.0.0
 - [x] OpenAPI 3.1 contract
 - [x] API guide and compatibility policy
 
+### Stage 35 — Complete canonical coverage
+
+- [x] direct canonical records for all 1,062 official UK missions
+- [x] strict source equivalence across requirements, patients, personnel, prisoners, recovery and operational metadata
+- [x] lossless variants, overlays, relationships, duration, availability and generation controls
+- [x] zero unmapped official requirement, chance or prerequisite keys
+- [x] Batch 31 completion ledger and v1.2.0 publication
+
 ## Ongoing evidence maintenance
 
-The numbered core programme is complete. Remaining work is continuous maintenance rather than unfinished architecture:
+The numbered core programme and canonical mission backlog are complete. Remaining work is continuous source monitoring and evidence maintenance:
 
 - reproduce additional vehicle prices, staffing and training durations;
 - verify currently unavailable EOD and Recovery response tables;

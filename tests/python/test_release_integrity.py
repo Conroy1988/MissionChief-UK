@@ -17,11 +17,11 @@ class PublicMetricSyncTests(unittest.TestCase):
     def test_collection_counts_are_named_and_complete(self) -> None:
         metrics = sync.load_metrics()
 
-        self.assertEqual(metrics["canonical"], 284)
-        self.assertEqual(metrics["vehicles"], 48)
-        self.assertEqual(metrics["infrastructure"], 18)
+        self.assertEqual(metrics["canonical"], 1079)
+        self.assertEqual(metrics["vehicles"], 59)
+        self.assertEqual(metrics["infrastructure"], 19)
         self.assertEqual(metrics["training"], 12)
-        self.assertEqual(metrics["search_entities"], 362)
+        self.assertEqual(metrics["search_entities"], 1169)
 
     def test_home_sync_targets_hero_and_board_independently(self) -> None:
         metrics = sync.load_metrics()
@@ -42,9 +42,9 @@ class PublicMetricSyncTests(unittest.TestCase):
 
         updated = sync.sync_home(fixture, metrics)
 
-        self.assertIn('data-mcuk-metric="fully-canonical">226<', updated)
-        self.assertIn('data-mcuk-verification="fully-canonical">226<', updated)
-        self.assertIn('data-mcuk-collection="vehicles">48<', updated)
+        self.assertIn('data-mcuk-metric="fully-canonical">1,062<', updated)
+        self.assertIn('data-mcuk-verification="fully-canonical">1,062<', updated)
+        self.assertIn('data-mcuk-collection="vehicles">59<', updated)
         self.assertIn('data-mcuk-collection="training">12<', updated)
         self.assertEqual(sync.sync_home(updated, metrics), updated)
 
@@ -64,8 +64,8 @@ class ReleaseReadinessTests(unittest.TestCase):
     def test_structured_marker_does_not_accept_number_substrings(self) -> None:
         with self.assertRaises(readiness.AuditFailure):
             readiness.require_pattern(
-                "| **Deployable resources** | **481** |",
-                r"^\| \*\*Deployable resources\*\* \| \*\*48\*\* \|",
+                "| **Deployable resources** | **591** |",
+                r"^\| \*\*Deployable resources\*\* \| \*\*59\*\* \|",
                 "stale count",
             )
 
@@ -98,49 +98,49 @@ class ReleaseReadinessTests(unittest.TestCase):
     def test_catalogue_state_lines_accept_exact_values(self) -> None:
         readme = "\n".join(
             (
-                "| **Official records awaiting canonical records** | **795** |",
+                "| **Official records awaiting canonical records** | **0** |",
                 "| **Canonical-only overlays** | **17** |",
             )
         )
         notes = "\n".join(
             (
-                "795 official records awaiting direct canonical records",
+                "0 official records awaiting direct canonical records",
                 "17 canonical overlay or derived records without standalone official IDs",
             )
         )
-        readiness.audit_catalogue_state_lines(readme, notes, 795, 17)
+        readiness.audit_catalogue_state_lines(readme, notes, 0, 17)
 
     def test_catalogue_state_lines_reject_stale_awaiting_count(self) -> None:
         stale_readme = "\n".join(
             (
-                "| **Official records awaiting canonical records** | **794** |",
+                "| **Official records awaiting canonical records** | **1** |",
                 "| **Canonical-only overlays** | **17** |",
             )
         )
         stale_notes = "\n".join(
             (
-                "794 official records awaiting direct canonical records",
+                "1 official records awaiting direct canonical records",
                 "17 canonical overlay or derived records without standalone official IDs",
             )
         )
         with self.assertRaises(readiness.AuditFailure):
-            readiness.audit_catalogue_state_lines(stale_readme, stale_notes, 795, 17)
+            readiness.audit_catalogue_state_lines(stale_readme, stale_notes, 0, 17)
 
     def test_catalogue_state_lines_reject_stale_overlay_count(self) -> None:
         stale_readme = "\n".join(
             (
-                "| **Official records awaiting canonical records** | **795** |",
+                "| **Official records awaiting canonical records** | **0** |",
                 "| **Canonical-only overlays** | **16** |",
             )
         )
         stale_notes = "\n".join(
             (
-                "795 official records awaiting direct canonical records",
+                "0 official records awaiting direct canonical records",
                 "16 canonical overlay or derived records without standalone official IDs",
             )
         )
         with self.assertRaises(readiness.AuditFailure):
-            readiness.audit_catalogue_state_lines(stale_readme, stale_notes, 795, 17)
+            readiness.audit_catalogue_state_lines(stale_readme, stale_notes, 0, 17)
 
     def test_publication_metadata_matches_release_source(self) -> None:
         release = readiness.release_metadata()

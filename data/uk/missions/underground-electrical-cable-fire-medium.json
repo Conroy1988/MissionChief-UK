@@ -1,16 +1,6 @@
 {
   "id": 476,
   "name": "Underground electrical cable fire (Medium)",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [],
-  "preconditions": {
-    "fire_stations": 6,
-    "police_stations": 2
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -25,26 +15,52 @@
         "resource": "police_car",
         "quantity": 2
       }
-    ],
-    "probabilistic": [],
-    "alternatives": []
+    ]
   },
-  "reward": {
-    "average_credits": 2000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [
-    "Underground electrical cable fire (Large)"
-  ],
-  "notes": [
-    "The published expansion into the large cable-fire incident is retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/476",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "police_stations": 2
+  },
+  "reward": {
+    "average_credits": 2000
+  },
+  "expandable_missions": [
+    "477"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 476,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

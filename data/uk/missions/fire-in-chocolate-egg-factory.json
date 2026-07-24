@@ -1,0 +1,111 @@
+{
+  "id": 764,
+  "name": "Fire in chocolate egg factory",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 4
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 16
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 4
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 4
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/764",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 25,
+    "police_stations": 8,
+    "rescue_stations": 20
+  },
+  "patients": {
+    "maximum": 80,
+    "minimum": 20,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.75
+  },
+  "reward": {
+    "average_credits": 13755
+  },
+  "availability_window": {
+    "starts_at": "2026-03-20T10:00:00Z",
+    "ends_at": "2026-04-07T23:59:59+01:00"
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 764,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-04-07T23:59:59+01:00",
+      "date_start": "2026-03-20T10:00:00Z"
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

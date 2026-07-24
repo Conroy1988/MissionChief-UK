@@ -61,9 +61,13 @@ REQUIRED_QA_FILES = (
     "scripts/validate_official_personnel_education_mappings.py",
     "scripts/validate_official_prisoner_mappings.py",
     "scripts/validate_official_recovery_mappings.py",
+    "scripts/validate_official_operational_mappings.py",
     "scripts/report_canonical_candidates.py",
     "scripts/report_key_mapping_backlog.py",
     "scripts/generate_ready_canonical_batch.py",
+    "scripts/generate_full_canonical_catalogue.py",
+    "scripts/sync_canonical_operational_fields.py",
+    "scripts/operational_metadata_contract.py",
     "scripts/generate_mission_verification_status.py",
     "scripts/sync_public_verification_metrics.py",
     "scripts/validate_verification_programme_assets.py",
@@ -243,10 +247,10 @@ def audit_quality_assets(release_version: str) -> None:
     for marker in (
         "official-uk-missions",
         "official_only_count",
-        "officialOnlyIds",
-        "pendingRecord",
-        "Coverage must retain an official-only record",
-        "pendingUrl",
+        "coverage.official_only_count).toBe(0)",
+        "fullyMappedRecord",
+        "Every official mission must have a canonical match",
+        "mappedUrl",
         "Complete official catalogue record",
         "mcuk-official-field-details",
     ):
@@ -324,7 +328,7 @@ def release_metadata() -> dict[str, Any]:
         isinstance(version, str) and re.fullmatch(r"1\.\d+\.\d+", version) is not None,
         "data/version.json must contain a v1 semantic version",
     )
-    require(release.get("stage") == 34, "The v1 release must identify Stage 34")
+    require(release.get("stage") == 35, "The v1.2 release must identify Stage 35")
     require(release.get("status") == "production", "The v1 release status must be production")
     released_at = release.get("released_at")
     require(isinstance(released_at, str), "Release metadata must contain released_at")
@@ -405,8 +409,8 @@ def audit_publication_metadata(
             f"README data estate {label} count is stale",
         )
     require(
-        "stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
-        "README stage badge is not synchronized to Stage 34",
+        "stage_35_complete" in readme_lower or "stage 35 complete" in readme_words,
+        "README stage badge is not synchronized to Stage 35",
     )
     require(
         version in readme_lower and "static api" in readme_words,
@@ -442,7 +446,7 @@ def audit_publication_metadata(
     release_lines = (
         f"{formatted_count(official)} official UK mission records",
         f"{formatted_count(counts['missions'])} canonical mission records",
-        f"{formatted_count(direct)} official IDs matched to canonical records",
+        f"{formatted_count(direct)} direct official/canonical ID matches",
         f"{formatted_count(fully)} fully canonical mission records",
         f"{formatted_count(counts['vehicles'])} canonical deployable-resource records",
         f"{formatted_count(counts['infrastructure'])} canonical infrastructure records",

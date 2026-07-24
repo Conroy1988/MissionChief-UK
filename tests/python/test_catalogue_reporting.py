@@ -204,6 +204,11 @@ class CanonicalRecordDateTests(unittest.TestCase):
         official = {
             "id": 999999,
             "name": "Unit Test Mission",
+            "requirements": {},
+            "chances": {},
+            "prerequisites": {},
+            "mission_categories": [],
+            "icons": [],
             "additional": {"filter_id": "firehouse_missions"},
         }
         with (
@@ -220,17 +225,17 @@ class CanonicalRecordDateTests(unittest.TestCase):
             mock.patch.object(
                 batch_generator,
                 "build_expected_patient",
-                return_value=None,
+                return_value={},
             ),
             mock.patch.object(
                 batch_generator,
                 "build_expected_personnel_educations",
-                return_value=None,
+                return_value={},
             ),
             mock.patch.object(
                 batch_generator,
                 "build_expected_recovery",
-                return_value=None,
+                return_value={},
             ),
         ):
             record = batch_generator.build_canonical_record(
@@ -393,21 +398,12 @@ class BacklogReportTests(unittest.TestCase):
             )
         )
 
-    def test_known_false_unlocks_are_zero_and_show_the_remaining_blocker(self) -> None:
-        entries = {
-            (entry["group"], entry["key"]): entry for entry in self.report["entries"]
-        }
-        for key in ("height_rescue_units", "coastal_support"):
-            entry = entries[("requirements", key)]
-            self.assertEqual(entry["single_key_creation_unlock_count"], 0)
-            examples = entry["examples_by_state"]["official-only"]
-            self.assertTrue(
-                any(
-                    "outside allow-list" in blocker
-                    for example in examples
-                    for blocker in example["other_blockers"]
-                )
-            )
+    def test_complete_mapping_backlog_is_empty(self) -> None:
+        self.assertEqual(self.report["catalogue_unmapped_key_count"], 0)
+        self.assertEqual(self.report["catalogue_unmapped_occurrence_count"], 0)
+        self.assertEqual(self.report["official_only_unmapped_key_count"], 0)
+        self.assertEqual(self.report["canonical_unpromoted_unmapped_key_count"], 0)
+        self.assertEqual(self.report["entries"], [])
 
 
 if __name__ == "__main__":
