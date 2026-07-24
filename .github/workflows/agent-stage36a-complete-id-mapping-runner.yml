@@ -36,6 +36,17 @@ jobs:
           payload = Path(os.environ['RUNNER_TEMP'], 'payload.xz').read_bytes()
           source = lzma.decompress(payload).decode('utf-8')
           exec(compile(source, 'stage36a-complete-id-mapping.py', 'exec'), {'__name__': '__main__'})
+
+          repaired = []
+          for root in (Path('data'), Path('docs/assets/data')):
+              for path in root.rglob('*.json'):
+                  data = path.read_bytes()
+                  if data.endswith(b'\\n'):
+                      path.write_bytes(data[:-2] + b'\n')
+                      repaired.append(path.as_posix())
+          print(f'Repaired literal newline suffixes: {len(repaired)}')
+          for path in repaired:
+              print(f'- {path}')
           PY
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
