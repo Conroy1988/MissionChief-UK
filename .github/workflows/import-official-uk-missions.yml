@@ -20,8 +20,6 @@ jobs:
     timeout-minutes: 25
     env:
       BASELINE_PATH: data/sources/missionchief-uk/einsaetze.raw.json
-      CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate
-      DRIFT_DIR: ${{ runner.temp }}/official-uk-drift
     steps:
       - name: Check out current main
         uses: actions/checkout@v6
@@ -33,6 +31,12 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      - name: Configure isolated candidate paths
+        shell: bash
+        run: |
+          echo "CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate" >> "$GITHUB_ENV"
+          echo "DRIFT_DIR=$RUNNER_TEMP/official-uk-drift" >> "$GITHUB_ENV"
 
       - name: Validate drift tooling
         run: |
