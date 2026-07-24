@@ -28,7 +28,7 @@
   <div><strong data-mcuk-metric="stage">Stage 34</strong><span>Core programme</span></div>
   <div><strong data-mcuk-metric="official">1,062</strong><span>Official UK missions</span></div>
   <div><strong data-mcuk-metric="missions">284</strong><span>Canonical mapped</span></div>
-  <div><strong>226</strong><span>Fully canonical</span></div>
+  <div><strong data-mcuk-metric="fully-canonical">226</strong><span>Fully canonical</span></div>
 </div>
 
 <div class="mcuk-radar" aria-hidden="true">
@@ -120,14 +120,14 @@
       <small>PRODUCTION POSTURE</small>
       <h3>Complete official coverage, controlled canonical interpretation</h3>
     </div>
-    <span data-mcuk-release-date>Released 23 July 2026</span>
+    <span data-mcuk-release-date>Released 24 July 2026</span>
   </div>
   <div class="mcuk-board-metrics">
     <div><strong data-mcuk-collection="missions">284</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
-    <div><strong>75</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
-    <div><strong data-mcuk-collection="vehicles">46</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
+    <div><strong data-mcuk-verification="fully-canonical">226</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
+    <div><strong data-mcuk-collection="vehicles">48</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
     <div><strong data-mcuk-collection="infrastructure">18</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
-    <div><strong data-mcuk-collection="training">11</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
+    <div><strong data-mcuk-collection="training">12</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
   </div>
   <div class="mcuk-board-footer">
     <span><b>1,062</b> official UK missions</span>

@@ -102,6 +102,9 @@ jobs:
       - name: Generate FAQ
         run: python scripts/generate_faq.py
 
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
+
       - name: Audit repository and generated API
         shell: bash
         run: |
