@@ -1,0 +1,60 @@
+name: Test official catalogue drift integration
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/detect_official_mission_drift.py
+      - scripts/import_official_uk_missions.py
+      - tests/test_official_mission_drift.py
+      - .github/workflows/import-official-uk-missions.yml
+      - .github/workflows/agent-test-official-drift.yml
+
+permissions:
+  contents: read
+
+jobs:
+  live-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Run detector unit tests
+        run: python -m unittest tests/test_official_mission_drift.py -v
+
+      - name: Download isolated live candidate
+        run: |
+          mkdir -p "$RUNNER_TEMP/candidate" "$RUNNER_TEMP/report"
+          python scripts/import_official_uk_missions.py \
+            --output-dir "$RUNNER_TEMP/candidate" \
+            --canonical-dir data/uk/missions
+
+      - name: Materialize effective verification registry
+        run: python scripts/merge_verification_registry_batches.py
+
+      - name: Compare live candidate with production snapshot
+        run: |
+          python scripts/detect_official_mission_drift.py \
+            --baseline data/sources/missionchief-uk/einsaetze.raw.json \
+            --candidate "$RUNNER_TEMP/candidate/einsaetze.raw.json" \
+            --canonical-dir data/uk/missions \
+            --registry data/uk/mission-verification-registry.json \
+            --json-output "$RUNNER_TEMP/report/official-catalogue-drift.json" \
+            --markdown-output "$RUNNER_TEMP/report/official-catalogue-drift.md"
+
+      - name: Upload live integration evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-drift-live-integration-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/candidate
+            ${{ runner.temp }}/report
+          if-no-files-found: error
+          retention-days: 7
