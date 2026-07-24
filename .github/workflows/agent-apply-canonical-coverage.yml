@@ -65,8 +65,8 @@ jobs:
 
           payload = json.loads(Path("data/uk/mission-verification-registry.json").read_text(encoding="utf-8"))
           records = payload.get("records")
-          if not isinstance(records, list) or len(records) != 21:
-              raise SystemExit(f"Expected the 21-record base registry; found {len(records) if isinstance(records, list) else 'invalid'}")
+          if not isinstance(records, dict) or len(records) != 21:
+              raise SystemExit(f"Expected the 21-record keyed base registry; found {len(records) if isinstance(records, dict) else 'invalid'}")
           PY
 
           tar -xJf "$seed_archive" -C .
