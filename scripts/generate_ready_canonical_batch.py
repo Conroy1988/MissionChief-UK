@@ -337,6 +337,7 @@ def build_canonical_record(
     official: dict[str, Any],
     mappings: dict[str, Any],
     patient_mappings: dict[str, dict[str, Any]],
+    checked_at: str,
 ) -> dict[str, Any]:
     mission_id = str(official.get("id"))
     additional = official.get("additional", {})
@@ -359,7 +360,7 @@ def build_canonical_record(
         "requirements": translate_requirements(official, mappings),
         "verification": {
             "status": "verified",
-            "checked_at": effective_checked_at,
+            "checked_at": checked_at,
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
         },
     }
@@ -537,7 +538,12 @@ def generate(
     ] = []
     for candidate, mission_id, path in validated:
         official = official_by_id[mission_id]
-        canonical_record = build_canonical_record(official, mappings, patient_mappings)
+        canonical_record = build_canonical_record(
+            official,
+            mappings,
+            patient_mappings,
+            effective_checked_at,
+        )
         decision = {
             "stage": "fully-canonical",
             "checked_at": effective_checked_at,

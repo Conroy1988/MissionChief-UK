@@ -199,6 +199,50 @@ class GeneratorDateTests(unittest.TestCase):
             batch_generator.resolve_checked_at("23 July 2026")
 
 
+class CanonicalRecordDateTests(unittest.TestCase):
+    def test_record_construction_uses_resolved_checked_at(self) -> None:
+        official = {
+            "id": 999999,
+            "name": "Unit Test Mission",
+            "additional": {"filter_id": "firehouse_missions"},
+        }
+        with (
+            mock.patch.object(
+                batch_generator,
+                "translate_requirements",
+                return_value={"resources": []},
+            ),
+            mock.patch.object(
+                batch_generator,
+                "translate_preconditions",
+                return_value={},
+            ),
+            mock.patch.object(
+                batch_generator,
+                "build_expected_patient",
+                return_value=None,
+            ),
+            mock.patch.object(
+                batch_generator,
+                "build_expected_personnel_educations",
+                return_value=None,
+            ),
+            mock.patch.object(
+                batch_generator,
+                "build_expected_recovery",
+                return_value=None,
+            ),
+        ):
+            record = batch_generator.build_canonical_record(
+                official,
+                {},
+                {},
+                "2026-07-25",
+            )
+
+        self.assertEqual(record["verification"]["checked_at"], "2026-07-25")
+
+
 class GeneratorSafetyTests(unittest.TestCase):
     def test_generator_reads_only_the_new_record_creation_pool(self) -> None:
         creation_candidate = {
