@@ -39,6 +39,11 @@ jobs:
           python -m py_compile scripts/merge_verification_registry_batches.py
           python -m py_compile scripts/validate_official_mission_catalogue.py
           python -m py_compile scripts/validate_official_key_mappings.py
+          python -m py_compile scripts/validate_official_patient_mappings.py
+          python -m py_compile scripts/validate_official_personnel_mappings.py
+          python -m py_compile scripts/validate_official_personnel_education_mappings.py
+          python -m py_compile scripts/validate_official_prisoner_mappings.py
+          python -m py_compile scripts/validate_official_recovery_mappings.py
           python -m py_compile scripts/report_canonical_candidates.py
           python -m py_compile scripts/report_key_mapping_backlog.py
           python -m py_compile scripts/generate_mission_verification_status.py
@@ -64,6 +69,24 @@ jobs:
 
       - name: Audit official-to-canonical key mappings
         run: python scripts/validate_official_key_mappings.py
+
+      - name: Audit official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Audit official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Audit official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Audit official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Audit official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_*.py'
 
       - name: Report next evidence-safe canonical candidates
         run: python scripts/report_canonical_candidates.py --limit 50
