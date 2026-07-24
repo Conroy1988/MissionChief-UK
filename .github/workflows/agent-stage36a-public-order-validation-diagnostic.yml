@@ -28,6 +28,13 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          path = Path('.github/workflows/agent-stage36a/public-order-vehicle-batch-1-fix2.yml')
+          PY
+      - name: Apply batch in worktree safely
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
           path = Path('.github/workflows/agent-stage36a-public-order-batch-1-fix2.yml')
           text = path.read_text(encoding='utf-8')
           start_marker = "          python - <<'PY'\n"
@@ -51,6 +58,7 @@ jobs:
           python scripts/validate_vehicle_inventory.py
           python scripts/generate_vehicle_coverage.py
           python scripts/generate_vehicle_coverage.py --check
+          python scripts/merge_verification_registry_batches.py
           python scripts/generate_mission_verification_status.py
           python scripts/run_public_verification_sync.py
           python scripts/generate_exports.py
