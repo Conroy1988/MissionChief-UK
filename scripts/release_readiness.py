@@ -263,7 +263,8 @@ def audit_quality_assets(release_version: str) -> None:
     for marker in (
         "workflow_dispatch",
         "schedule:",
-        "CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate",
+        'echo "CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate" >> "$GITHUB_ENV"',
+        'echo "DRIFT_DIR=$RUNNER_TEMP/official-uk-drift" >> "$GITHUB_ENV"',
         "detect_official_mission_drift.py",
         "merge_verification_registry_batches.py",
         "steps.drift.outputs.has_drift == 'false'",
