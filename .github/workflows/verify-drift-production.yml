@@ -1,4 +1,4 @@
-name: Diagnose production drift workflow
+name: Probe production drift dispatch
 
 on:
   pull_request:
@@ -7,58 +7,43 @@ on:
       - .github/workflows/verify-drift-production.yml
 
 permissions:
-  actions: read
+  actions: write
   contents: read
 
 jobs:
-  diagnose:
+  probe:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      EXPECTED_MAIN_SHA: 1ac1773a1f89007409d172bf857d51d62493495f
     steps:
-      - name: Locate latest production drift run
-        id: locate
+      - name: Capture dispatch response
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/drift-diagnostic"
-          gh run list \
+          mkdir -p "$RUNNER_TEMP/dispatch-probe"
+          set +e
+          gh workflow run import-official-uk-missions.yml \
             --repo "$GITHUB_REPOSITORY" \
-            --workflow import-official-uk-missions.yml \
-            --event workflow_dispatch \
-            --branch main \
-            --limit 10 \
-            --json databaseId,status,conclusion,headSha,createdAt,url \
-            > "$RUNNER_TEMP/drift-diagnostic/recent-runs.json"
-          run_id="$(jq -r --arg sha "$EXPECTED_MAIN_SHA" '[.[] | select(.headSha == $sha)] | sort_by(.createdAt) | reverse | .[0].databaseId // empty' "$RUNNER_TEMP/drift-diagnostic/recent-runs.json")"
-          test -n "$run_id"
-          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+            --ref main \
+            > "$RUNNER_TEMP/dispatch-probe/stdout.txt" \
+            2> "$RUNNER_TEMP/dispatch-probe/stderr.txt"
+          code=$?
+          set -e
+          printf '%s\n' "$code" > "$RUNNER_TEMP/dispatch-probe/exit-code.txt"
+          gh workflow view import-official-uk-missions.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --yaml \
+            > "$RUNNER_TEMP/dispatch-probe/workflow.yml" 2>&1 || true
+          gh api "repos/$GITHUB_REPOSITORY/actions/workflows/import-official-uk-missions.yml" \
+            > "$RUNNER_TEMP/dispatch-probe/workflow.json" 2>&1 || true
+          cat "$RUNNER_TEMP/dispatch-probe/stdout.txt"
+          cat "$RUNNER_TEMP/dispatch-probe/stderr.txt" >&2
+          echo "dispatch exit code: $code"
 
-      - name: Capture run metadata and logs
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RUN_ID: ${{ steps.locate.outputs.run_id }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          gh run view "$RUN_ID" \
-            --repo "$GITHUB_REPOSITORY" \
-            --json databaseId,status,conclusion,headSha,workflowName,url,jobs \
-            > "$RUNNER_TEMP/drift-diagnostic/run.json"
-          gh run view "$RUN_ID" \
-            --repo "$GITHUB_REPOSITORY" \
-            --log \
-            > "$RUNNER_TEMP/drift-diagnostic/run.log" 2>&1 || true
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/artifacts" \
-            > "$RUNNER_TEMP/drift-diagnostic/artifacts.json"
-
-      - name: Upload drift diagnostics
+      - name: Upload dispatch probe
         uses: actions/upload-artifact@v4
         with:
-          name: production-drift-diagnostic-${{ github.run_id }}
-          path: ${{ runner.temp }}/drift-diagnostic
+          name: production-drift-dispatch-probe-${{ github.run_id }}
+          path: ${{ runner.temp }}/dispatch-probe
           if-no-files-found: error
           retention-days: 14
