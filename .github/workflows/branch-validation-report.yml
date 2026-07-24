@@ -79,15 +79,28 @@ jobs:
             echo >> "$log_path"
           }
 
+          capture_worktree() {
+            label="$1"
+            git status --porcelain --untracked-files=all > "$VALIDATION_DIR/$label-status.txt"
+            git diff HEAD --binary -- . > "$VALIDATION_DIR/$label.patch"
+          }
+
+          check_validation_worktree() {
+            label="$1"
+            shift
+            capture_worktree "$label"
+            python scripts/check_validation_worktree.py "$@"
+          }
+
           check_publication_clean() {
             label="$1"
             status_path="$VALIDATION_DIR/$label-status.txt"
             diff_path="$VALIDATION_DIR/$label.patch"
             git status --porcelain --untracked-files=no -- "${publication_paths[@]}" > "$status_path"
-            git diff --binary -- "${publication_paths[@]}" > "$diff_path"
-            git diff --check -- "${publication_paths[@]}"
+            git diff HEAD --binary -- "${publication_paths[@]}" > "$diff_path"
+            git diff HEAD --check -- "${publication_paths[@]}"
             diff_check=$?
-            git diff --quiet --ignore-submodules -- "${publication_paths[@]}"
+            git diff HEAD --quiet --ignore-submodules -- "${publication_paths[@]}"
             diff_status=$?
             if [ "$diff_status" -ne 0 ] || [ "$diff_check" -ne 0 ]; then
               echo "Public metric or navigation synchronization left repository changes:"
@@ -110,6 +123,7 @@ jobs:
           run_check "canonical-personnel-education-sync" python scripts/sync_canonical_personnel_education_fields.py
           run_check "canonical-prisoner-sync" python scripts/sync_canonical_prisoner_fields.py
           run_check "canonical-recovery-sync" python scripts/sync_canonical_recovery_fields.py
+          run_check "synchronizer-working-tree-clean" check_validation_worktree synchronizer
           run_check "canonical-data" python scripts/validate_data.py
           run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
           run_check "official-catalogue" python scripts/validate_official_mission_catalogue.py
@@ -136,6 +150,7 @@ jobs:
           run_check "links-and-anchors" python scripts/audit_links.py
           run_check "strict-mkdocs-build" python -m mkdocs build --strict --site-dir site
           run_check "built-site-readiness" python scripts/release_readiness.py --site-dir site
+          run_check "final-working-tree-clean" check_validation_worktree final-working-tree --allow-validation-generated-outputs
 
           export VALIDATION_FAILED="$failed"
           python - <<'PY'
