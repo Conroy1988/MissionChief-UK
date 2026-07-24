@@ -74,7 +74,8 @@ class ReleaseReadinessTests(unittest.TestCase):
             ROOT / ".github" / "workflows" / "import-official-uk-missions.yml"
         ).read_text(encoding="utf-8")
         required = (
-            "CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate",
+            'echo "CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate" >> "$GITHUB_ENV"',
+            'echo "DRIFT_DIR=$RUNNER_TEMP/official-uk-drift" >> "$GITHUB_ENV"',
             "detect_official_mission_drift.py",
             "steps.drift.outputs.has_drift == 'false'",
             "steps.drift.outputs.has_drift == 'true'",
