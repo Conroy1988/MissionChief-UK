@@ -69,31 +69,35 @@ class ReleaseReadinessTests(unittest.TestCase):
                 "stale count",
             )
 
-    def test_catalogue_refresh_stages_only_durable_outputs(self) -> None:
+    def test_catalogue_refresh_is_fail_closed_on_drift(self) -> None:
         workflow = (
             ROOT / ".github" / "workflows" / "import-official-uk-missions.yml"
         ).read_text(encoding="utf-8")
-        durable = (
+        required = (
+            "CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate",
+            "detect_official_mission_drift.py",
+            "steps.drift.outputs.has_drift == 'false'",
+            "steps.drift.outputs.has_drift == 'true'",
             "data/sources/missionchief-uk/einsaetze.raw.json",
             "data/sources/missionchief-uk/mission-coverage.json",
             "data/sources/missionchief-uk/official-key-inventory.json",
-            "docs/assets/data/official/uk-mission-coverage.json",
-            "docs/assets/data/official/uk-missions.json",
-            "docs/reference/mission-verification-status.md",
-            "git add -A -- data/sources/missionchief-uk/official-missions.json",
+            "data/validation/official-catalogue-drift.json",
+            "automation/official-catalogue-drift-${FINGERPRINT_SHORT}",
+            "gh issue create",
+            "gh pr create",
+            "Fail closed on official drift",
         )
-        for path in durable:
-            self.assertIn(path, workflow)
+        for marker in required:
+            self.assertIn(marker, workflow)
 
         forbidden = (
-            "git add -f data/sources/missionchief-uk",
-            "data/sources/missionchief-uk \\",
-            "docs/assets/data/official \\",
-            "data/sources/missionchief-uk/mission-verification-status.json",
-            "docs/assets/data/official/uk-mission-verification.json",
+            "git push origin HEAD:main",
+            "gh workflow run deploy-pages.yml",
+            "Deploy refreshed catalogue",
+            "git add -f",
         )
-        for path in forbidden:
-            self.assertNotIn(path, workflow)
+        for marker in forbidden:
+            self.assertNotIn(marker, workflow)
 
     def test_catalogue_state_lines_accept_exact_values(self) -> None:
         readme = "\n".join(
