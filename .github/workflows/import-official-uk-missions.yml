@@ -140,6 +140,7 @@ jobs:
             docs/reference/official-mission-catalogue.md \
             docs/releases/v1.1.0.md \
             docs/tools/mission-lookup.md
+          git add -A -- data/sources/missionchief-uk/official-missions.json
 
           if git diff --cached --quiet; then
             echo "Official UK mission source and synchronized publication are unchanged; no commit is required."

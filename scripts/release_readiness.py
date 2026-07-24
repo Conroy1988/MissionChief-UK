@@ -250,6 +250,7 @@ def audit_quality_assets(release_version: str) -> None:
         "docs/assets/data/official/uk-mission-coverage.json",
         "docs/assets/data/official/uk-missions.json",
         "docs/reference/mission-verification-status.md",
+        "git add -A -- data/sources/missionchief-uk/official-missions.json",
         "git diff --cached --quiet",
         "gh workflow run deploy-pages.yml --ref main",
     ):

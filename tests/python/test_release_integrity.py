@@ -80,6 +80,7 @@ class ReleaseReadinessTests(unittest.TestCase):
             "docs/assets/data/official/uk-mission-coverage.json",
             "docs/assets/data/official/uk-missions.json",
             "docs/reference/mission-verification-status.md",
+            "git add -A -- data/sources/missionchief-uk/official-missions.json",
         )
         for path in durable:
             self.assertIn(path, workflow)
