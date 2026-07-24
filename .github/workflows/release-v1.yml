@@ -172,7 +172,7 @@ jobs:
 
       - name: Run catalogue reporting unit tests
         if: steps.existing.outputs.exists != 'true'
-        run: python -m unittest discover -s tests/python -p 'test_*.py'
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
 
       - name: Generate 100% mission verification status
         if: steps.existing.outputs.exists != 'true'
@@ -189,6 +189,10 @@ jobs:
       - name: Generate FAQ
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_faq.py
+
+      - name: Run release-integrity regressions
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py'
 
       - name: Audit repository and generated API
         if: steps.existing.outputs.exists != 'true'

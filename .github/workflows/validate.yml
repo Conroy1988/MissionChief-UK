@@ -80,7 +80,7 @@ jobs:
         run: python scripts/validate_official_recovery_mappings.py
 
       - name: Run catalogue reporting unit tests
-        run: python -m unittest discover -s tests/python -p 'test_*.py'
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
 
       - name: Report next evidence-safe canonical candidates
         run: |
