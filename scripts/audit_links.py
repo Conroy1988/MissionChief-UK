@@ -105,6 +105,14 @@ def mkdocs_slug(text: str) -> str:
     return re.sub(r"[-\s]+", "-", value).strip("-")
 
 
+def slug_for_renderer(path: Path, heading: str) -> str:
+    try:
+        path.resolve().relative_to(DOCS_ROOT.resolve())
+    except ValueError:
+        return github_slug(heading)
+    return mkdocs_slug(heading)
+
+
 def anchors(path: Path) -> set[str]:
     if path.suffix.lower() != ".md":
         return set()
@@ -127,12 +135,12 @@ def anchors(path: Path) -> set[str]:
         if explicit:
             values.add(explicit.group(1))
             heading = EXPLICIT_ID_RE.sub("", heading).strip()
-        for base in {github_slug(heading), mkdocs_slug(heading)}:
-            if not base:
-                continue
-            count = occurrence.get(base, 0)
-            values.add(base if count == 0 else f"{base}_{count}")
-            occurrence[base] = count + 1
+        base = slug_for_renderer(path, heading)
+        if not base:
+            continue
+        count = occurrence.get(base, 0)
+        values.add(base if count == 0 else f"{base}_{count}")
+        occurrence[base] = count + 1
     return values
 
 
