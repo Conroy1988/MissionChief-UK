@@ -1,5 +1,5 @@
 {
-  "count": 1169,
+  "count": 1174,
   "data_version": "1.2.0",
   "records": [
     {
@@ -96,8 +96,8 @@
     {
       "collection": "infrastructure",
       "id": "police_public_order_extension",
-      "name": "Police Public Order Extension",
-      "search_text": "police_public_order_extension police public order extension police public order extension public_order_mission_generation",
+      "name": "Police & Public Safety Extension",
+      "search_text": "police_public_order_extension police & public safety extension police police public order extension public order extension public_order_mission_generation public_safety_vehicle_purchase detention_van_parking",
       "service": "police"
     },
     {
@@ -7935,6 +7935,13 @@
     },
     {
       "collection": "vehicles",
+      "id": "detention_van",
+      "name": "Detention Van",
+      "search_text": "detention_van detention van police custody transport prisoner_transport",
+      "service": "police"
+    },
+    {
+      "collection": "vehicles",
       "id": "dog_support_unit",
       "name": "Dog Support Unit (DSU)",
       "search_text": "dog_support_unit dog support unit (dsu) police dog support dog support unit dsu police_dog_support",
@@ -7967,6 +7974,13 @@
       "name": "Fire Officer",
       "search_text": "fire_officer fire officer fire_and_rescue command fire officers incident_command",
       "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "firearms_personnel_carrier",
+      "name": "Firearms Personnel Carrier",
+      "search_text": "firearms_personnel_carrier firearms personnel carrier police firearms personnel transport armed_police_personnel_transport firearms training",
+      "service": "police"
     },
     {
       "collection": "vehicles",
@@ -8019,6 +8033,13 @@
     },
     {
       "collection": "vehicles",
+      "id": "m_rav",
+      "name": "M-RAV",
+      "search_text": "m_rav m-rav police armed response mrav armed_police_response firearms training",
+      "service": "police"
+    },
+    {
+      "collection": "vehicles",
       "id": "major_foam_tender",
       "name": "Major Foam Tender",
       "search_text": "major_foam_tender major foam tender airfield_operations foam firefighting airfield_firefighting foam_delivery",
@@ -8042,7 +8063,7 @@
       "collection": "vehicles",
       "id": "mounted_unit",
       "name": "Mounted Unit",
-      "search_text": "mounted_unit mounted unit police mounted policing mounted_policing",
+      "search_text": "mounted_unit mounted unit police mounted policing transport mounted units mounted_policing mounted_officer_transport mounted training",
       "service": "police"
     },
     {
@@ -8051,6 +8072,13 @@
       "name": "Mud Decontamination Unit",
       "search_text": "mud_decontamination_unit mud decontamination unit coastguard specialist support mud_decontamination",
       "service": "coastguard"
+    },
+    {
+      "collection": "vehicles",
+      "id": "multiple_dog_carrier",
+      "name": "Multiple Dog Carrier",
+      "search_text": "multiple_dog_carrier multiple dog carrier police police dog transport multiple_police_dog_transport dog handling",
+      "service": "police"
     },
     {
       "collection": "vehicles",
@@ -8093,6 +8121,13 @@
       "name": "PRV",
       "search_text": "prv prv ambulance specialist_response prvs specialist_ambulance_response",
       "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
+      "id": "psu_carrier",
+      "name": "PSU Carrier",
+      "search_text": "psu_carrier psu carrier police public order transport police support unit carrier public_order_personnel_transport",
+      "service": "police"
     },
     {
       "collection": "vehicles",

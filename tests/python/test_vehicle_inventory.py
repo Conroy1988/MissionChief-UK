@@ -96,6 +96,7 @@ class VehicleInventoryTests(unittest.TestCase):
         self.assertEqual(report["summary"]["canonical_records_without_inventory_entry"], 1)
         self.assertEqual(report["field_completeness"]["cost"]["complete"], 1)
         self.assertEqual(report["field_completeness"]["staffing"]["complete"], 0)
+        self.assertEqual(report["field_completeness"]["transport_capacity"]["complete"], 0)
 
     def test_dangling_mapping_is_reported(self) -> None:
         document = self.document([inventory_record(1, "Missing", "not_present")])

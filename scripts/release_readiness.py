@@ -461,14 +461,29 @@ def audit_publication_metadata(
     notes_path = ROOT / "docs" / "releases" / f"v{version}.md"
     notes = notes_path.read_text(encoding="utf-8")
     audit_catalogue_state_lines(readme, notes, awaiting, overlays)
+    snapshot = release.get("release_snapshot")
+    require(isinstance(snapshot, dict), "data/version.json release_snapshot is missing")
+    snapshot_keys = (
+        "official_missions",
+        "canonical_missions",
+        "direct_matches",
+        "fully_canonical",
+        "vehicles",
+        "infrastructure",
+        "training",
+    )
+    require(
+        all(isinstance(snapshot.get(key), int) for key in snapshot_keys),
+        "data/version.json release_snapshot is incomplete",
+    )
     release_lines = (
-        f"{formatted_count(official)} official UK mission records",
-        f"{formatted_count(counts['missions'])} canonical mission records",
-        f"{formatted_count(direct)} direct official/canonical ID matches",
-        f"{formatted_count(fully)} fully canonical mission records",
-        f"{formatted_count(counts['vehicles'])} canonical deployable-resource records",
-        f"{formatted_count(counts['infrastructure'])} canonical infrastructure records",
-        f"{formatted_count(counts['training'])} qualification records",
+        f"{formatted_count(snapshot['official_missions'])} official UK mission records",
+        f"{formatted_count(snapshot['canonical_missions'])} canonical mission records",
+        f"{formatted_count(snapshot['direct_matches'])} direct official/canonical ID matches",
+        f"{formatted_count(snapshot['fully_canonical'])} fully canonical mission records",
+        f"{formatted_count(snapshot['vehicles'])} canonical deployable-resource records",
+        f"{formatted_count(snapshot['infrastructure'])} canonical infrastructure records",
+        f"{formatted_count(snapshot['training'])} qualification records",
     )
     require(f"**Released:** {human_date}" in notes, "Release notes date does not match data/version.json")
     for line in release_lines:

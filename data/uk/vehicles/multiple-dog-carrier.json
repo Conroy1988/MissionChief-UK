@@ -1,0 +1,40 @@
+{
+  "id": "multiple_dog_carrier",
+  "name": "Multiple Dog Carrier",
+  "aliases": [],
+  "service": "police",
+  "category": "Police dog transport",
+  "cost": {
+    "credits": 50000,
+    "coins": 15
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 4
+  },
+  "training": [
+    "Dog handling"
+  ],
+  "building_requirements": [
+    "Police Station",
+    "Large Police Depot",
+    "Police & Public Safety Extension"
+  ],
+  "transport_capacity": {
+    "dogs": 4
+  },
+  "capabilities": [
+    "multiple_police_dog_transport"
+  ],
+  "notes": [
+    "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+    ]
+  }
+}

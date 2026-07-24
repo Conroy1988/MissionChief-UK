@@ -1,23 +1,40 @@
 {
   "id": "mounted_unit",
   "name": "Mounted Unit",
-  "aliases": [],
+  "aliases": [
+    "Mounted Units"
+  ],
   "service": "police",
-  "category": "Mounted policing",
+  "category": "Mounted policing transport",
   "capabilities": [
-    "mounted_policing"
+    "mounted_policing",
+    "mounted_officer_transport"
   ],
   "notes": [
-    "The official page labels this requirement Mounted Units.",
-    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+    "The official Help Centre verifies transport of up to 8 Mounted Officers."
   ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-24",
     "sources": [
-      "https://www.missionchief.co.uk/einsaetze/448",
-      "https://www.missionchief.co.uk/einsaetze/449",
-      "https://www.missionchief.co.uk/einsaetze.json"
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
     ]
-  }
+  },
+  "cost": {
+    "credits": 15000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 8
+  },
+  "training": [
+    "Mounted Training"
+  ],
+  "building_requirements": [
+    "Police Station",
+    "Large Police Depot",
+    "Police & Public Safety Extension"
+  ]
 }

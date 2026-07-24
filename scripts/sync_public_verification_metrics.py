@@ -388,16 +388,37 @@ def sync_api(text: str, metrics: dict[str, int | float]) -> str:
     return text
 
 
+def release_snapshot_counts() -> dict[str, int]:
+    document = read_json(ROOT / "data" / "version.json")
+    if not isinstance(document, dict):
+        raise SyncFailure("Release metadata must be an object")
+    snapshot = document.get("release_snapshot")
+    required = (
+        "official_missions",
+        "canonical_missions",
+        "direct_matches",
+        "fully_canonical",
+        "vehicles",
+        "infrastructure",
+        "training",
+    )
+    if not isinstance(snapshot, dict) or not all(isinstance(snapshot.get(key), int) for key in required):
+        raise SyncFailure("data/version.json release_snapshot is incomplete")
+    return {key: int(snapshot[key]) for key in required}
+
+
 def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
+    snapshot = release_snapshot_counts()
+    awaiting = snapshot["official_missions"] - snapshot["direct_matches"]
     baseline_values = (
-        (r"[\d,]+ official UK mission records", f"{format_number(metrics['official'])} official UK mission records", "release official baseline"),
-        (r"[\d,]+ canonical mission records", f"{format_number(metrics['canonical'])} canonical mission records", "release canonical baseline"),
-        (r"[\d,]+ direct official/canonical ID matches", f"{format_number(metrics['direct'])} direct official/canonical ID matches", "release direct baseline"),
-        (r"[\d,]+ fully canonical mission records", f"{format_number(metrics['fully'])} fully canonical mission records", "release fully baseline"),
-        (r"[\d,]+ official-only mission records", f"{format_number(metrics['awaiting'])} official-only mission records", "release awaiting baseline"),
-        (r"[\d,]+ canonical deployable-resource records", f"{format_number(metrics['vehicles'])} canonical deployable-resource records", "release resource baseline"),
-        (r"[\d,]+ canonical infrastructure records", f"{format_number(metrics['infrastructure'])} canonical infrastructure records", "release infrastructure baseline"),
-        (r"[\d,]+ qualification records", f"{format_number(metrics['training'])} qualification records", "release qualification baseline"),
+        (r"[\d,]+ official UK mission records", f"{format_number(snapshot['official_missions'])} official UK mission records", "release official baseline"),
+        (r"[\d,]+ canonical mission records", f"{format_number(snapshot['canonical_missions'])} canonical mission records", "release canonical baseline"),
+        (r"[\d,]+ direct official/canonical ID matches", f"{format_number(snapshot['direct_matches'])} direct official/canonical ID matches", "release direct baseline"),
+        (r"[\d,]+ fully canonical mission records", f"{format_number(snapshot['fully_canonical'])} fully canonical mission records", "release fully baseline"),
+        (r"[\d,]+ official-only mission records", f"{format_number(awaiting)} official-only mission records", "release awaiting baseline"),
+        (r"[\d,]+ canonical deployable-resource records", f"{format_number(snapshot['vehicles'])} canonical deployable-resource records", "release resource baseline"),
+        (r"[\d,]+ canonical infrastructure records", f"{format_number(snapshot['infrastructure'])} canonical infrastructure records", "release infrastructure baseline"),
+        (r"[\d,]+ qualification records", f"{format_number(snapshot['training'])} qualification records", "release qualification baseline"),
     )
     for pattern, replacement_value, label in baseline_values:
         text = replace_once(text, pattern, replacement_value, label)
@@ -412,12 +433,10 @@ def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, 
     text = replace_once(
         text,
         r"- \*\*[\d,]+\*\* missions left outside the fully canonical gate\.",
-        f"- **{format_number(metrics['remaining'])}** missions left outside the fully canonical gate.",
+        f"- **{format_number(awaiting)}** missions left outside the fully canonical gate.",
         "release remaining count",
     )
     return text
-
-
 def sync_changelog(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
     final_batch = max(batches)
     final_count = len(batches[final_batch])
