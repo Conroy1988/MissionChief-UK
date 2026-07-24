@@ -1,0 +1,77 @@
+name: Diagnose canonical coverage seed
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agent-seed-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-coverage-100
+
+      - name: Inspect exact seed gate
+        shell: bash
+        run: |
+          set -u
+          b64="$RUNNER_TEMP/seed.b64"
+          archive="$RUNNER_TEMP/seed.tar.xz"
+          manifest="$RUNNER_TEMP/manifest.txt"
+          failed=0
+
+          echo '=== fragments ==='
+          find .handoff -maxdepth 1 -type f -name 'canonical-100-seed.part.*' -printf '%f %s bytes\n' | LC_ALL=C sort
+          sha256sum .handoff/canonical-100-seed.part.*
+
+          cat .handoff/canonical-100-seed.part.* > "$b64"
+          actual_b64="$(sha256sum "$b64" | awk '{print $1}')"
+          echo "combined_base64_sha=$actual_b64"
+          test "$actual_b64" = 'b7858115ff81d68f258d59520b1382634000cc5574ba851f0e5830eb3d73eab0' || failed=1
+
+          if base64 --decode "$b64" > "$archive"; then
+            echo 'base64_decode=success'
+            actual_archive="$(sha256sum "$archive" | awk '{print $1}')"
+            echo "archive_sha=$actual_archive"
+            test "$actual_archive" = '6317a49f3dc77c6fa32c1dfcfdeaf0c6b5f605a4c8291df22b7df5657103b1b2' || failed=1
+            if xz --test "$archive"; then
+              echo 'xz_test=success'
+              tar -tJf "$archive" > "$manifest"
+              echo "manifest_entries=$(wc -l < "$manifest")"
+              forbidden="$(grep -E '(^|/)\.git(/|$)|(^|/)\.agent(/|$)|(^|/)\.handoff(/|$)|(^|/)\.github/workflows/agent-' "$manifest" || true)"
+              if test -n "$forbidden"; then
+                echo 'forbidden_paths:'
+                printf '%s\n' "$forbidden"
+                failed=1
+              else
+                echo 'forbidden_paths=none'
+              fi
+            else
+              echo 'xz_test=failure'
+              failed=1
+            fi
+          else
+            echo 'base64_decode=failure'
+            failed=1
+          fi
+
+          registry_count="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          payload=json.loads(Path('data/uk/mission-verification-registry.json').read_text())
+          records=payload.get('records')
+          print(len(records) if isinstance(records,list) else 'invalid')
+          PY
+          )"
+          echo "registry_count=$registry_count"
+          test "$registry_count" = '21' || failed=1
+          exit "$failed"
