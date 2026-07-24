@@ -1,9 +1,9 @@
 name: Apply complete canonical coverage
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/canonical-coverage-100
+      - main
     paths:
       - .handoff/canonical-100-seed.part.*
       - .github/workflows/agent-apply-canonical-coverage.yml
@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: apply-complete-canonical-coverage
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   apply:
