@@ -26,8 +26,17 @@ jobs:
       - name: Check out branch
         uses: actions/checkout@v6
 
-      - name: Reconstruct and inspect payload
+      - name: Retain exact committed fragments
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-coverage-payload-fragments-${{ github.sha }}
+          path: .agent/canonical-coverage-payload.part.*
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Reconstruct payload diagnostics
         id: inspect
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -58,7 +67,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: canonical-coverage-payload-manifest-${{ github.sha }}
+          name: canonical-coverage-payload-diagnostics-${{ github.sha }}
           path: |
             ${{ runner.temp }}/payload/base64.sha256
             ${{ runner.temp }}/payload/archive.sha256
@@ -67,17 +76,15 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
-      - name: Enforce bound payload checksum
-        if: steps.inspect.outcome == 'success'
+      - name: Enforce payload integrity
         shell: bash
         run: |
           set -euo pipefail
+          test "${{ steps.inspect.outcome }}" = "success"
           actual_b64_sha="$(awk '{print $1}' "$RUNNER_TEMP/payload/base64.sha256")"
           actual_archive_sha="$(awk '{print $1}' "$RUNNER_TEMP/payload/archive.sha256")"
           expected="9611c38f88d56b704874f0596e58454b8406cf240a7a79a985c2154583e778ab"
           if [[ "$actual_b64_sha" != "$expected" && "$actual_archive_sha" != "$expected" ]]; then
             echo "Neither normalized base64 nor decoded archive matches the bound checksum." >&2
-            echo "normalized_base64=$actual_b64_sha" >&2
-            echo "decoded_archive=$actual_archive_sha" >&2
             exit 1
           fi
