@@ -117,6 +117,9 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
+      - name: Test documentation link auditor
+        run: python -m unittest tests/test_audit_links.py
+
       - name: Audit documentation links and anchors
         run: python scripts/audit_links.py
 
