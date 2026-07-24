@@ -47,6 +47,9 @@ jobs:
             --output-dir "$CANDIDATE_DIR" \
             --canonical-dir data/uk/missions
 
+      - name: Materialize effective verification registry
+        run: python scripts/merge_verification_registry_batches.py
+
       - name: Detect semantic catalogue drift
         id: drift
         run: |
