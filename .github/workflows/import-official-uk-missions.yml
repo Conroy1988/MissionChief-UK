@@ -6,8 +6,9 @@ on:
     - cron: "17 4 * * *"
 
 permissions:
-  actions: write
   contents: write
+  issues: write
+  pull-requests: write
 
 concurrency:
   group: official-uk-mission-catalogue-refresh
@@ -16,7 +17,11 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    env:
+      BASELINE_PATH: data/sources/missionchief-uk/einsaetze.raw.json
+      CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate
+      DRIFT_DIR: ${{ runner.temp }}/official-uk-drift
     steps:
       - name: Check out current main
         uses: actions/checkout@v6
@@ -29,149 +34,188 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate catalogue tooling
+      - name: Validate drift tooling
         run: |
           python -m py_compile scripts/import_official_uk_missions.py
-          python -m py_compile scripts/publish_official_mission_catalogue.py
-          python -m py_compile scripts/compact_official_mission_catalogue.py
-          python -m py_compile scripts/reconcile_official_mission_coverage.py
-          python -m py_compile scripts/verification_registry.py
-          python -m py_compile scripts/merge_verification_registry_batches.py
-          python -m py_compile scripts/validate_official_mission_catalogue.py
-          python -m py_compile scripts/validate_official_key_mappings.py
-          python -m py_compile scripts/validate_official_patient_mappings.py
-          python -m py_compile scripts/validate_official_personnel_mappings.py
-          python -m py_compile scripts/validate_official_personnel_education_mappings.py
-          python -m py_compile scripts/validate_official_prisoner_mappings.py
-          python -m py_compile scripts/validate_official_recovery_mappings.py
-          python -m py_compile scripts/operational_metadata_contract.py
-          python -m py_compile scripts/sync_canonical_operational_fields.py
-          python -m py_compile scripts/validate_official_operational_mappings.py
-          python -m py_compile scripts/generate_full_canonical_catalogue.py
-          python -m py_compile scripts/report_canonical_candidates.py
-          python -m py_compile scripts/report_key_mapping_backlog.py
-          python -m py_compile scripts/generate_mission_verification_status.py
-          python -m py_compile scripts/sync_public_verification_metrics.py
-          python -m py_compile scripts/generate_exports.py
-          python -m py_compile scripts/generate_faq.py
-          python -m py_compile scripts/release_readiness.py
-          python -m py_compile scripts/validate_verification_programme_assets.py
+          python -m py_compile scripts/detect_official_mission_drift.py
+          python -m unittest tests/test_official_mission_drift.py -v
 
-      - name: Download and reconcile official UK missions
-        run: python scripts/import_official_uk_missions.py
-
-      - name: Publish browser catalogue
-        run: python scripts/publish_official_mission_catalogue.py
-
-      - name: Compact tracked catalogue files
-        run: python scripts/compact_official_mission_catalogue.py
-
-      - name: Reconcile official/canonical mission coverage
-        run: python scripts/reconcile_official_mission_coverage.py
-
-      - name: Audit refreshed official catalogue
-        run: python scripts/validate_official_mission_catalogue.py
-
-      - name: Merge mission verification batch registries
-        run: python scripts/merge_verification_registry_batches.py
-
-      - name: Audit official-to-canonical key mappings
-        run: python scripts/validate_official_key_mappings.py
-
-      - name: Audit official patient mappings
-        run: python scripts/validate_official_patient_mappings.py
-
-      - name: Audit official personnel mappings
-        run: python scripts/validate_official_personnel_mappings.py
-
-      - name: Audit official personnel education mappings
-        run: python scripts/validate_official_personnel_education_mappings.py
-
-      - name: Audit official prisoner mappings
-        run: python scripts/validate_official_prisoner_mappings.py
-
-      - name: Audit official recovery mappings
-        run: python scripts/validate_official_recovery_mappings.py
-
-      - name: Audit official operational metadata mappings
-        run: python scripts/validate_official_operational_mappings.py
-
-      - name: Validate complete canonical catalogue generation
-        run: python scripts/generate_full_canonical_catalogue.py --check
-
-      - name: Run catalogue reporting unit tests
-        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
-
-      - name: Report next evidence-safe canonical candidates
-        run: python scripts/report_canonical_candidates.py --limit 50
-
-      - name: Report official key mapping backlog
-        run: python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
-
-      - name: Regenerate 100% mission verification backlog
-        run: python scripts/generate_mission_verification_status.py
-
-      - name: Validate mission verification programme assets
-        run: python scripts/validate_verification_programme_assets.py
-
-      - name: Synchronize public verification metrics
-        run: python scripts/sync_public_verification_metrics.py
-
-      - name: Generate public data exports
-        run: python scripts/generate_exports.py
-
-      - name: Generate FAQ
-        run: python scripts/generate_faq.py
-
-      - name: Audit synchronized release publication
-        run: python scripts/release_readiness.py
-
-      - name: Run release-integrity regressions
-        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
-
-      - name: Commit synchronized source and publication changes
-        id: commit
-        shell: bash
+      - name: Download isolated candidate catalogue
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f \
-            CHANGELOG.md \
-            README.md \
-            data/sources/missionchief-uk/einsaetze.raw.json \
-            data/sources/missionchief-uk/mission-coverage.json \
-            data/sources/missionchief-uk/official-key-inventory.json \
-            docs/api/index.md \
-            docs/assets/data/official/uk-mission-coverage.json \
-            docs/assets/data/official/uk-missions.json \
-            docs/index.md \
-            docs/reference/generated-faq.md \
-            docs/reference/mission-verification-status.md \
-            docs/reference/official-mission-catalogue.md \
-            docs/releases/v1.2.0.md \
-            docs/tools/mission-lookup.md
-          git add -A -- data/sources/missionchief-uk/official-missions.json
+          mkdir -p "$CANDIDATE_DIR"
+          python scripts/import_official_uk_missions.py \
+            --output-dir "$CANDIDATE_DIR" \
+            --canonical-dir data/uk/missions
 
-          if git diff --cached --quiet; then
-            echo "Official UK mission source and synchronized publication are unchanged; no commit is required."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+      - name: Detect semantic catalogue drift
+        id: drift
+        run: |
+          mkdir -p "$DRIFT_DIR"
+          python scripts/detect_official_mission_drift.py \
+            --baseline "$BASELINE_PATH" \
+            --candidate "$CANDIDATE_DIR/einsaetze.raw.json" \
+            --canonical-dir data/uk/missions \
+            --registry data/uk/mission-verification-registry.json \
+            --json-output "$DRIFT_DIR/official-catalogue-drift.json" \
+            --markdown-output "$DRIFT_DIR/official-catalogue-drift.md" \
+            --github-output "$GITHUB_OUTPUT"
 
-          checked_out=$(git rev-parse HEAD)
-          git fetch origin main
-          current_main=$(git rev-parse origin/main)
-          if [ "$checked_out" != "$current_main" ]; then
-            echo "main moved from $checked_out to $current_main during refresh; rerun against the new baseline."
-            exit 1
-          fi
+      - name: Upload candidate and drift evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-uk-catalogue-drift-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/official-uk-candidate
+            ${{ runner.temp }}/official-uk-drift
+          if-no-files-found: error
+          retention-days: 30
 
-          git commit -m "Refresh official UK mission catalogue"
-          git push origin HEAD:main
-          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Confirm clean production baseline
+        if: steps.drift.outputs.has_drift == 'false'
+        run: |
+          python scripts/validate_official_mission_catalogue.py
+          python scripts/generate_full_canonical_catalogue.py --check
+          python scripts/release_readiness.py
+          echo "The official feed is semantically identical to the committed production snapshot."
 
-      - name: Deploy refreshed catalogue
-        if: steps.commit.outputs.changed == 'true'
+      - name: Create evidence-review queue
+        if: steps.drift.outputs.has_drift == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run deploy-pages.yml --ref main
+          FINGERPRINT: ${{ steps.drift.outputs.fingerprint }}
+          FINGERPRINT_SHORT: ${{ steps.drift.outputs.fingerprint_short }}
+          ADDED_COUNT: ${{ steps.drift.outputs.added_count }}
+          REMOVED_COUNT: ${{ steps.drift.outputs.removed_count }}
+          MODIFIED_COUNT: ${{ steps.drift.outputs.modified_count }}
+          INVALIDATED_COUNT: ${{ steps.drift.outputs.invalidated_count }}
+          PROJECTED_COVERAGE: ${{ steps.drift.outputs.projected_coverage_percent }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          branch="automation/official-catalogue-drift-${FINGERPRINT_SHORT}"
+          report_json="$DRIFT_DIR/official-catalogue-drift.json"
+          report_md="$DRIFT_DIR/official-catalogue-drift.md"
+          issue_title="Official UK mission catalogue drift requires review"
+          branch_created=false
+
+          if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
+            echo "Review branch $branch already exists for fingerprint $FINGERPRINT."
+          else
+            git switch -c "$branch"
+            mkdir -p data/validation docs/reference
+            cp "$CANDIDATE_DIR/einsaetze.raw.json" data/sources/missionchief-uk/einsaetze.raw.json
+            cp "$CANDIDATE_DIR/mission-coverage.json" data/sources/missionchief-uk/mission-coverage.json
+            cp "$CANDIDATE_DIR/official-key-inventory.json" data/sources/missionchief-uk/official-key-inventory.json
+            cp "$report_json" data/validation/official-catalogue-drift.json
+            cp "$report_md" docs/reference/official-catalogue-drift-report.md
+
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add \
+              data/sources/missionchief-uk/einsaetze.raw.json \
+              data/sources/missionchief-uk/mission-coverage.json \
+              data/sources/missionchief-uk/official-key-inventory.json \
+              data/validation/official-catalogue-drift.json \
+              docs/reference/official-catalogue-drift-report.md
+            git diff --cached --check
+            git commit -m "Capture official catalogue drift ${FINGERPRINT_SHORT}"
+            git push --set-upstream origin "$branch"
+            branch_created=true
+          fi
+
+          queue_body="$RUNNER_TEMP/official-catalogue-drift-queue.md"
+          {
+            echo "<!-- official-catalogue-drift -->"
+            echo
+            echo "A semantic change was detected in the official MissionChief UK mission feed."
+            echo
+            echo "- Fingerprint: \`$FINGERPRINT\`"
+            echo "- Review branch: \`$branch\`"
+            echo "- Added: $ADDED_COUNT"
+            echo "- Removed: $REMOVED_COUNT"
+            echo "- Modified: $MODIFIED_COUNT"
+            echo "- Fully canonical identities invalidated: $INVALIDATED_COUNT"
+            echo "- Projected verified coverage: $PROJECTED_COVERAGE%"
+            echo
+            cat "$report_md"
+          } > "$queue_body"
+
+          issue_number="$(gh issue list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --search "\"$issue_title\" in:title" \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [ -z "$issue_number" ]; then
+            issue_url="$(gh issue create \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$issue_title" \
+              --body-file "$queue_body")"
+            issue_number="${issue_url##*/}"
+            echo "Created evidence-review issue #$issue_number."
+          elif gh issue view "$issue_number" \
+            --repo "$GITHUB_REPOSITORY" \
+            --comments \
+            --json body,comments \
+            --jq '[.body, (.comments[].body // "")] | join("\n")' \
+            | grep -F "$FINGERPRINT" >/dev/null; then
+            echo "Issue #$issue_number already records fingerprint $FINGERPRINT."
+          else
+            gh issue comment "$issue_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --body-file "$queue_body"
+            echo "Updated evidence-review issue #$issue_number."
+          fi
+
+          existing_pr="$(gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state all \
+            --head "$branch" \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [ -z "$existing_pr" ]; then
+            pr_body="$RUNNER_TEMP/official-catalogue-drift-pr.md"
+            {
+              echo "## Automated evidence queue"
+              echo
+              echo "This draft captures official catalogue drift fingerprint \`$FINGERPRINT\`."
+              echo
+              echo "Production \`main\` was not modified. This branch cannot land until evidence, canonical records and strict equivalence have been restored."
+              echo
+              echo "Tracking issue: #$issue_number"
+              echo
+              cat "$report_md"
+            } > "$pr_body"
+
+            if gh pr create \
+              --repo "$GITHUB_REPOSITORY" \
+              --base main \
+              --head "$branch" \
+              --draft \
+              --title "Official catalogue drift: +${ADDED_COUNT} / -${REMOVED_COUNT} / ~${MODIFIED_COUNT}" \
+              --body-file "$pr_body"; then
+              echo "Created draft drift pull request."
+            else
+              compare_url="https://github.com/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+              gh issue comment "$issue_number" \
+                --repo "$GITHUB_REPOSITORY" \
+                --body "The review branch was pushed, but GitHub Actions could not create a pull request automatically. Open the comparison: $compare_url"
+              echo "Automated pull-request creation was unavailable; the issue and review branch remain authoritative."
+            fi
+          else
+            echo "Draft drift PR #$existing_pr already exists."
+          fi
+
+          if [ "$branch_created" = true ]; then
+            echo "Created a new immutable review queue for fingerprint $FINGERPRINT."
+          fi
+
+      - name: Fail closed on official drift
+        if: steps.drift.outputs.has_drift == 'true'
+        run: |
+          echo "Official catalogue drift requires evidence review. Production main was not changed."
+          exit 1
