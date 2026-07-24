@@ -102,6 +102,30 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_official_key_mappings.py
 
+      - name: Validate official patient mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m unittest discover -s tests/python -p 'test_*.py'
+
       - name: Generate 100% mission verification status
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_mission_verification_status.py

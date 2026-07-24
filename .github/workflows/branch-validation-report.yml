@@ -84,6 +84,7 @@ jobs:
           run_check "official-personnel-education-equivalence" python scripts/validate_official_personnel_education_mappings.py
           run_check "official-prisoner-equivalence" python scripts/validate_official_prisoner_mappings.py
           run_check "official-recovery-equivalence" python scripts/validate_official_recovery_mappings.py
+          run_check "catalogue-reporting-unit-tests" python -m unittest discover -s tests/python -p 'test_*.py'
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
           run_check "patient-field-contract" python scripts/report_patient_field_contract.py
