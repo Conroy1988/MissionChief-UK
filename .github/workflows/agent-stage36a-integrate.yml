@@ -1,0 +1,105 @@
+name: Integrate Stage 36A vehicle coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agent-stage36a-integrate.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    if: github.event.pull_request.head.ref == 'stage36a/vehicle-inventory-foundation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v6
+        with:
+          ref: stage36a/vehicle-inventory-foundation
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Integrate coverage documentation and governance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          mkdocs = Path('mkdocs.yml')
+          text = mkdocs.read_text(encoding='utf-8')
+          anchor = '          - Verified Vehicle Records: reference/verified-vehicle-records.md\n'
+          addition = anchor + '          - Vehicle Coverage Status: reference/vehicle-coverage-status.md\n'
+          if text.count(anchor) != 1:
+              raise SystemExit('Unable to find unique vehicle navigation anchor')
+          if 'reference/vehicle-coverage-status.md' not in text:
+              text = text.replace(anchor, addition)
+          mkdocs.write_text(text, encoding='utf-8')
+
+          roadmap = Path('docs/ROADMAP.md')
+          text = roadmap.read_text(encoding='utf-8')
+          marker = '## Ongoing evidence maintenance\n'
+          stage = '''## Stage 36A — Complete deployable-resource coverage\n\n**Status: in progress.**\n\n- [x] establish an evidence-tiered UK vehicle type ledger\n- [x] compare source identities with canonical deployable-resource records\n- [x] publish identity and field-completeness coverage separately\n- [x] block duplicate IDs, dangling mappings and stale generated reports in CI\n- [ ] verify every current UK game vehicle type ID directly\n- [ ] create or reconcile every missing canonical resource identity\n- [ ] complete costs, staffing, training, building and deployment fields where reproducible\n- [ ] reach 100% identity coverage without treating unknown enrichment values as zero\n\n'''
+          if marker not in text:
+              raise SystemExit('Roadmap maintenance marker not found')
+          if '## Stage 36A — Complete deployable-resource coverage' not in text:
+              text = text.replace(marker, stage + marker)
+          roadmap.write_text(text, encoding='utf-8')
+
+          verified = Path('docs/reference/verified-vehicle-records.md')
+          verified.write_text('''# Verified Vehicle Records\n\nThe canonical deployable-resource collection is stored under `data/uk/vehicles/` and exported through the versioned static API.\n\nThe authoritative live counts and evidence gaps are no longer maintained manually on this page. See [UK Vehicle Coverage Status](vehicle-coverage-status.md) for the generated comparison between the source ledger and canonical records.\n\n## Evidence model\n\nA canonical record verifies only the attributes it contains:\n\n- omitted prices, crew limits, training and building restrictions remain unknown rather than zero;\n- official MissionChief UK pages and official Help Centre articles are primary sources;\n- authenticated current-game observations may verify market IDs and purchase details;\n- community userscripts may identify candidates, but cannot independently verify market values;\n- abbreviations remain unexpanded until a primary source supplies the exact name.\n\n## Machine-readable records\n\n- canonical records: `data/uk/vehicles/*.json`\n- source ledger: `data/sources/missionchief-uk/vehicle-type-inventory.json`\n- generated coverage: `data/sources/missionchief-uk/vehicle-coverage.json`\n- public coverage endpoint: `assets/data/official/uk-vehicle-coverage.json`\n\nEvery vehicle change must keep the source ledger, generated coverage and canonical records deterministic under the Stage 36A validation workflow.\n''', encoding='utf-8')
+
+          readiness = Path('scripts/release_readiness.py')
+          text = readiness.read_text(encoding='utf-8')
+          page_anchor = '    "reference/mission-verification-status.md",\n'
+          if text.count(page_anchor) != 1:
+              raise SystemExit('Release readiness static-page anchor is not unique')
+          if '"reference/vehicle-coverage-status.md"' not in text:
+              text = text.replace(page_anchor, page_anchor + '    "reference/vehicle-coverage-status.md",\n')
+
+          qa_anchor = '    "tests/python/test_catalogue_reporting.py",\n'
+          qa_addition = qa_anchor + '''    "tests/python/test_vehicle_inventory.py",\n    ".github/workflows/vehicle-inventory-validation.yml",\n    "scripts/vehicle_inventory.py",\n    "scripts/validate_vehicle_inventory.py",\n    "scripts/generate_vehicle_coverage.py",\n    "data/schema/vehicle-inventory.schema.json",\n    "data/sources/missionchief-uk/vehicle-type-inventory.json",\n    "data/sources/missionchief-uk/vehicle-coverage.json",\n    "docs/assets/data/official/uk-vehicle-coverage.json",\n    "docs/reference/vehicle-coverage-status.md",\n'''
+          if text.count(qa_anchor) != 1:
+              raise SystemExit('Release readiness QA anchor is not unique')
+          if '"tests/python/test_vehicle_inventory.py"' not in text:
+              text = text.replace(qa_anchor, qa_addition)
+          readiness.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate integrated foundation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt
+          python scripts/validate_vehicle_inventory.py
+          python scripts/generate_vehicle_coverage.py --check
+          python -m unittest tests/python/test_vehicle_inventory.py -v
+          python scripts/release_readiness.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
+          git diff --check
+
+      - name: Commit documentation and readiness integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            mkdocs.yml \
+            docs/ROADMAP.md \
+            docs/reference/verified-vehicle-records.md \
+            scripts/release_readiness.py
+          git diff --cached --check
+          git commit -m "Stage 36A: integrate vehicle coverage reporting"
+          git push origin HEAD:stage36a/vehicle-inventory-foundation
