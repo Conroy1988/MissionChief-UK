@@ -1,0 +1,39 @@
+name: Clean Stage 36A public order batch scope
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agent-stage36a-public-order-scope-cleanup.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.head.ref == 'stage36a/public-order-vehicle-batch-1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: stage36a/public-order-vehicle-batch-1
+          fetch-depth: 0
+      - name: Remove unrelated and duplicate changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout origin/main -- data/uk/mission-verification-registry.json
+          git rm -f docs/reference/public-order-vehicle-batch-1.md
+          git diff --check
+      - name: Commit scope cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/uk/mission-verification-registry.json
+          git diff --cached --check
+          git commit -m "Stage 36A: keep Public Order batch scope isolated"
+          git push origin HEAD:stage36a/public-order-vehicle-batch-1
