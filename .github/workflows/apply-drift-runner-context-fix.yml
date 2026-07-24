@@ -31,11 +31,12 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
+          runner_expr = '$' + '{{ runner.temp }}'
           workflow_path = Path('.github/workflows/import-official-uk-missions.yml')
           workflow = workflow_path.read_text(encoding='utf-8')
           old_env = (
-              '      CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate\n'
-              '      DRIFT_DIR: ${{ runner.temp }}/official-uk-drift\n'
+              f'      CANDIDATE_DIR: {runner_expr}/official-uk-candidate\n'
+              f'      DRIFT_DIR: {runner_expr}/official-uk-drift\n'
           )
           if workflow.count(old_env) != 1:
               raise SystemExit('Expected exactly one invalid runner.temp job-level env block')
@@ -60,7 +61,7 @@ jobs:
           workflow = workflow.replace(anchor, configure)
           workflow_path.write_text(workflow, encoding='utf-8')
 
-          marker = '"CANDIDATE_DIR: ${{ runner.temp }}/official-uk-candidate",'
+          marker = f'"CANDIDATE_DIR: {runner_expr}/official-uk-candidate",'
           replacements = (
               '\'echo "CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate" >> "$GITHUB_ENV"\'',
               '\'echo "DRIFT_DIR=$RUNNER_TEMP/official-uk-drift" >> "$GITHUB_ENV"\'',
