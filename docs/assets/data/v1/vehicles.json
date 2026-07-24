@@ -1,6 +1,6 @@
 {
   "collection": "vehicles",
-  "count": 64,
+  "count": 92,
   "data_version": "1.2.0",
   "records": [
     {
@@ -30,6 +30,31 @@
       }
     },
     {
+      "aliases": [
+        "HEMS"
+      ],
+      "capabilities": [
+        "air_medical_response",
+        "patient_treatment",
+        "patient_transport"
+      ],
+      "category": "Air medical response",
+      "id": "air_ambulance",
+      "name": "Air Ambulance",
+      "notes": [
+        "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [],
       "capabilities": [
         "airfield_firefighting_command"
@@ -49,6 +74,37 @@
           "https://www.missionchief.co.uk/einsaetze/590"
         ],
         "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "AOS"
+      ],
+      "building_requirements": [
+        "Airfield Operations Extension"
+      ],
+      "capabilities": [
+        "airfield_operations_supervision",
+        "trailer_towing"
+      ],
+      "category": "Airfield supervision",
+      "cost": {
+        "coins": 15,
+        "credits": 15000
+      },
+      "id": "airfield_operations_supervisor_vehicle",
+      "name": "Airfield Operations Supervisor",
+      "service": "airfield_operations",
+      "staffing": {
+        "maximum": 2
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
       }
     },
     {
@@ -150,6 +206,40 @@
     },
     {
       "aliases": [
+        "AO Vehicle"
+      ],
+      "capabilities": [
+        "ambulance_tactical_command",
+        "patient_information"
+      ],
+      "category": "Tactical command",
+      "cost": {
+        "coins": 15,
+        "credits": 25500
+      },
+      "id": "ambulance_officer_vehicle",
+      "name": "Ambulance Officer",
+      "notes": [
+        "This vehicle identity is distinct from the Ambulance Officer qualification record."
+      ],
+      "service": "ambulance",
+      "staffing": {
+        "maximum": 1
+      },
+      "training": [
+        "Ambulance Officer"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
         "Armed Response Vehicle",
         "Armed Response Vehicles",
         "ARV",
@@ -172,6 +262,40 @@
           "https://www.missionchief.co.uk/einsaetze/408",
           "https://www.missionchief.co.uk/einsaetze/410",
           "https://www.missionchief.co.uk/einsaetze/454"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "traffic_policing",
+        "armed_police_response"
+      ],
+      "category": "Armed roads policing",
+      "cost": {
+        "coins": 10,
+        "credits": 19000
+      },
+      "id": "armed_traffic_car",
+      "name": "Armed Traffic Car",
+      "notes": [
+        "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 2
+      },
+      "training": [
+        "Roads Policing Officer Training",
+        "Firearms Training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
         ],
         "status": "verified"
       }
@@ -204,6 +328,40 @@
         "checked_at": "2026-07-22",
         "sources": [
           "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Small Fire Station with Technical Rescue Extension"
+      ],
+      "capabilities": [
+        "water_rescue"
+      ],
+      "category": "Technical rescue boat trailer",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "water"
+        ]
+      },
+      "id": "boat_trailer",
+      "name": "Boat Trailer",
+      "service": "fire_and_rescue",
+      "training": [
+        "Technical Rescue"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -368,6 +526,37 @@
       }
     },
     {
+      "aliases": [
+        "BFU"
+      ],
+      "building_requirements": [
+        "Fire Station with Fire Support"
+      ],
+      "capabilities": [
+        "foam_supply"
+      ],
+      "category": "Foam support",
+      "cost": {
+        "coins": 10,
+        "credits": 17300
+      },
+      "id": "bulk_foam_unit",
+      "name": "Bulk Foam Unit",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 2,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [],
       "capabilities": [
         "cbrn_response"
@@ -386,6 +575,28 @@
           "https://www.missionchief.co.uk/einsaetze/588"
         ],
         "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "prisoner_transport",
+        "police_personnel_transport"
+      ],
+      "category": "Custody transport",
+      "id": "cell_van",
+      "name": "Cell Van",
+      "notes": [
+        "The type ID is current and community-observed. Exact cost, crew and prisoner capacity remain omitted pending direct game evidence."
+      ],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://board.missionchief.com/forum/index.php?pageNo=2&user-post-list%2F358-whitchit%2F="
+        ],
+        "status": "community-report"
       }
     },
     {
@@ -489,6 +700,38 @@
     },
     {
       "aliases": [
+        "Coastguard Rescue Helicopter Large"
+      ],
+      "capabilities": [
+        "air_rescue",
+        "ocean_rescue",
+        "patient_treatment",
+        "patient_transport"
+      ],
+      "category": "Large air rescue",
+      "deployment": {
+        "is_trailer": false,
+        "operating_environments": [
+          "air",
+          "ocean"
+        ]
+      },
+      "id": "coastguard_rescue_helicopter_large",
+      "name": "Coastguard Rescue Helicopter (Large)",
+      "notes": [
+        "The exact type ID and label are community-observed. Detailed market values remain omitted pending a current primary source."
+      ],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
         "Coastguard Rescue Vehicle"
       ],
       "building_requirements": [
@@ -582,6 +825,37 @@
     },
     {
       "aliases": [
+        "CARP"
+      ],
+      "capabilities": [
+        "aerial_appliance_requirement",
+        "rescue_support_requirement"
+      ],
+      "category": "Multipurpose aerial fire appliance",
+      "cost": {
+        "coins": 25,
+        "credits": 19000
+      },
+      "id": "combined_aerial_rescue_pump",
+      "name": "Combined Aerial Rescue Pump",
+      "notes": [
+        "Community catalogue data identifies this as a combined aerial-appliance and rescue-support vehicle."
+      ],
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 6
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
         "Control Vans"
       ],
       "capabilities": [
@@ -607,6 +881,38 @@
         "checked_at": "2026-07-22",
         "sources": [
           "https://police.missionchief.co.uk/einsaetze/756"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Critical Transport Vehicle"
+      ],
+      "capabilities": [
+        "critical_care_transport",
+        "patient_transport"
+      ],
+      "category": "Critical care transport",
+      "cost": {
+        "coins": 20,
+        "credits": 15000
+      },
+      "id": "critical_care_transfer_ambulance",
+      "name": "Critical Care Transfer Ambulance",
+      "service": "ambulance",
+      "staffing": {
+        "maximum": 2
+      },
+      "training": [
+        "Critical Care"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
         ],
         "status": "verified"
       }
@@ -720,6 +1026,45 @@
       }
     },
     {
+      "aliases": [],
+      "capabilities": [
+        "bomb_disposal_equipment_transport"
+      ],
+      "category": "Bomb disposal equipment transport",
+      "id": "eod_medium_equipment_van",
+      "name": "EOD Medium Equipment Van",
+      "notes": [
+        "The relationship to the abstract Bomb Disposal Equipment mission requirement remains intentionally separate."
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
+        "Bomb Disposal Response Vehicle"
+      ],
+      "capabilities": [
+        "bomb_disposal_response"
+      ],
+      "category": "Bomb disposal response",
+      "id": "eod_response_vehicle",
+      "name": "EOD Response Vehicle",
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
       "aliases": [
         "Fire Engine",
         "Pump"
@@ -808,6 +1153,29 @@
       }
     },
     {
+      "aliases": [
+        "FRV"
+      ],
+      "capabilities": [
+        "vehicle_recovery"
+      ],
+      "category": "Vehicle recovery",
+      "id": "flatbed_recovery_vehicle",
+      "name": "Flatbed Recovery Vehicle",
+      "notes": [
+        "Current identity is corroborated by community vehicle graphics and the type-ID map; economics remain unverified."
+      ],
+      "service": "recovery",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://board.missionchief.com/forum/index.php?action=firstNew&thread%2F10925-jxshy-s-graphics-packs-development-update-and-help-needed-uk%2F="
+        ],
+        "status": "community-report"
+      }
+    },
+    {
       "aliases": [],
       "capabilities": [
         "flood_rescue"
@@ -826,6 +1194,44 @@
           "https://www.missionchief.co.uk/einsaetze/566",
           "https://www.missionchief.co.uk/einsaetze/616",
           "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Flood Rescue Unit Trailer"
+      ],
+      "building_requirements": [
+        "Coastguard Rescue Station with Flood Rescue Expansion",
+        "Lifeboat Station with Flood Rescue Expansion"
+      ],
+      "capabilities": [
+        "flood_rescue"
+      ],
+      "category": "Flood rescue trailer",
+      "cost": {
+        "coins": 20,
+        "credits": 35000
+      },
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "flood",
+          "water"
+        ]
+      },
+      "id": "flood_rescue_unit_trailer",
+      "name": "Flood Rescue Unit (Trailer)",
+      "service": "coastguard",
+      "training": [
+        "Flood First Responder Training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -874,6 +1280,27 @@
     {
       "aliases": [],
       "capabilities": [
+        "fire_engine_requirement",
+        "water_carrier_requirement"
+      ],
+      "category": "Rural water support",
+      "id": "heavy_4x4_tanker",
+      "name": "Heavy 4x4 Tanker",
+      "notes": [
+        "Identity and game type ID are community-observed; economics and staffing remain omitted."
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
         "hovercraft_response"
       ],
       "category": "Coastguard water rescue",
@@ -893,6 +1320,36 @@
           "https://www.missionchief.co.uk/einsaetze/547",
           "https://www.missionchief.co.uk/einsaetze/568",
           "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Lifeboat Station with Hover Mud Rescue Boat Expansion"
+      ],
+      "capabilities": [
+        "hovercraft_transport",
+        "trailer_towing"
+      ],
+      "category": "Hovercraft towing vehicle",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
+      "id": "hovercraft_transporter",
+      "name": "Hovercraft Transporter",
+      "service": "lifeboat",
+      "staffing": {
+        "maximum": 1,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -920,32 +1377,42 @@
     },
     {
       "aliases": [
-        "Inland Rescue Boat",
-        "IRB"
+        "ILB Trailer",
+        "IRB",
+        "Inland Rescue Boat"
+      ],
+      "building_requirements": [
+        "Lifeboat Station"
       ],
       "capabilities": [
         "inland_water_rescue",
         "coastal_water_rescue"
       ],
       "category": "water rescue trailer",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
       "deployment": {
         "is_trailer": true,
         "operating_environments": [
-          "inland_water",
-          "coastal_water"
+          "inland_water"
         ]
       },
       "id": "inland_rescue_boat_trailer",
       "name": "Inland Rescue Boat (Trailer)",
       "notes": [
-        "Recorded as a trailer because the official UK resource name explicitly includes '(Trailer)'."
+        "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle."
       ],
       "service": "lifeboat",
+      "training": [
+        "Lifeboat Operations Training"
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/567",
-          "https://www.missionchief.co.uk/einsaetze/569"
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -974,6 +1441,68 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/561",
           "https://www.missionchief.co.uk/einsaetze/562"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Lifeboat 4x4"
+      ],
+      "building_requirements": [
+        "Lifeboat Station"
+      ],
+      "capabilities": [
+        "trailer_towing"
+      ],
+      "category": "Trailer towing vehicle",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
+      "id": "lifeboat_4x4_vehicle",
+      "name": "4x4 Vehicle",
+      "service": "lifeboat",
+      "staffing": {
+        "maximum": 4,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "L4V"
+      ],
+      "building_requirements": [
+        "Small Fire Station with Technical Rescue Extension"
+      ],
+      "capabilities": [
+        "trailer_towing"
+      ],
+      "category": "Technical rescue towing vehicle",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
+      "id": "light_4x4",
+      "name": "Light 4x4",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 4,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -1058,6 +1587,42 @@
           "https://www.missionchief.co.uk/einsaetze/588"
         ],
         "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "MET"
+      ],
+      "building_requirements": [
+        "Airfield Operations Extension"
+      ],
+      "capabilities": [
+        "mass_casualty_support"
+      ],
+      "category": "Airfield mass-casualty support",
+      "cost": {
+        "coins": 15,
+        "credits": 15000
+      },
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "airfield"
+        ]
+      },
+      "id": "medical_equipment_trailer",
+      "name": "Medical Equipment Trailer",
+      "notes": [
+        "Community catalogue data lists Airfield Operations Vehicle and Airfield Operations Supervisor as towing vehicles."
+      ],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
       }
     },
     {
@@ -1226,6 +1791,38 @@
     },
     {
       "aliases": [
+        "OSU"
+      ],
+      "capabilities": [
+        "hazmat_response",
+        "breathing_apparatus_support",
+        "crew_welfare"
+      ],
+      "category": "Hazardous-materials and welfare support",
+      "cost": {
+        "coins": 15,
+        "credits": 30000
+      },
+      "id": "operational_support_unit",
+      "name": "Operational Support Unit",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 6
+      },
+      "training": [
+        "HazMat"
+      ],
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
         "OSV"
       ],
       "capabilities": [
@@ -1244,6 +1841,65 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/635",
           "https://www.missionchief.co.uk/einsaetze/636"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "OTL"
+      ],
+      "capabilities": [
+        "ambulance_operational_command"
+      ],
+      "category": "Operational command",
+      "cost": {
+        "coins": 25,
+        "credits": 20000
+      },
+      "id": "operational_team_leader_vehicle",
+      "name": "Operational Team Leader",
+      "notes": [
+        "This vehicle identity is distinct from the Operational Team Leader qualification record."
+      ],
+      "service": "ambulance",
+      "staffing": {
+        "maximum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
+        "PTS Ambulance",
+        "Ambulance Transport"
+      ],
+      "capabilities": [
+        "patient_transport"
+      ],
+      "category": "Patient transport",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
+      "id": "patient_transport_service_ambulance",
+      "name": "Patient Transport Service Ambulance",
+      "service": "ambulance",
+      "staffing": {
+        "maximum": 2
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1884-how-do-patient-transport-missions-work/",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
         ],
         "status": "verified"
       }
@@ -1402,6 +2058,71 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/693",
           "https://www.missionchief.co.uk/einsaetze/762"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "RP"
+      ],
+      "capabilities": [
+        "fire_engine_requirement",
+        "rescue_support_requirement"
+      ],
+      "category": "Multipurpose fire appliance",
+      "cost": {
+        "coins": 25,
+        "credits": 19000
+      },
+      "id": "rescue_pump",
+      "name": "Rescue Pump",
+      "notes": [
+        "Community catalogue data identifies this as a combined fire-engine and rescue-support appliance."
+      ],
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 9
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
+        "RPF",
+        "RP CAFS"
+      ],
+      "building_requirements": [
+        "Fire Station with Fire Support"
+      ],
+      "capabilities": [
+        "fire_engine_requirement",
+        "rescue_support_requirement",
+        "foam_supply"
+      ],
+      "category": "Compressed-air-foam rescue pump",
+      "cost": {
+        "coins": 10,
+        "credits": 25000
+      },
+      "id": "rescue_pump_with_cafs",
+      "name": "Rescue Pump with CAFS",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 9,
+        "minimum": 2
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
         ],
         "status": "verified"
       }
@@ -1566,6 +2287,57 @@
     },
     {
       "aliases": [
+        "SAR Drone Vehicle"
+      ],
+      "capabilities": [
+        "aerial_search",
+        "reconnaissance",
+        "drone_transport"
+      ],
+      "category": "Drone transport",
+      "id": "sar_drone_vehicle",
+      "name": "Drone Vehicle SAR HQ",
+      "notes": [
+        "This is the deployable vehicle identity and remains distinct from the generic Drone mission capability record."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "flood_rescue"
+      ],
+      "category": "Flood rescue trailer",
+      "deployment": {
+        "is_trailer": true,
+        "operating_environments": [
+          "flood",
+          "water"
+        ]
+      },
+      "id": "sar_flood_rescue_trailer",
+      "name": "SAR Flood Rescue Trailer",
+      "notes": [
+        "Identity is community-observed; towing relationships and economics remain unverified."
+      ],
+      "service": "search_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
+      }
+    },
+    {
+      "aliases": [
         "Search Dog Units"
       ],
       "capabilities": [
@@ -1689,6 +2461,38 @@
     },
     {
       "aliases": [
+        "F/WrC"
+      ],
+      "building_requirements": [
+        "Fire Station with Fire Support"
+      ],
+      "capabilities": [
+        "water_carrier_requirement",
+        "foam_supply"
+      ],
+      "category": "Water and foam support",
+      "cost": {
+        "coins": 15,
+        "credits": 45000
+      },
+      "id": "water_foam_carrier",
+      "name": "Water/Foam Carrier",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 2,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
         "Welfare Vehicles"
       ],
       "capabilities": [
@@ -1708,6 +2512,28 @@
           "https://www.missionchief.co.uk/einsaetze/760"
         ],
         "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Welfare Vehicle Type 115"
+      ],
+      "capabilities": [
+        "crew_welfare"
+      ],
+      "category": "Crew welfare support",
+      "id": "welfare_vehicle_type_115",
+      "name": "Welfare Vehicle",
+      "notes": [
+        "The current game exposes this as a second Welfare Vehicle type ID. It is retained separately until its operational distinction from type 29 is reproduced."
+      ],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+        ],
+        "status": "community-report"
       }
     }
   ],

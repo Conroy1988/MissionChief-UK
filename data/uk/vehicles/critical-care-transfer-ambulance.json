@@ -1,0 +1,32 @@
+{
+  "id": "critical_care_transfer_ambulance",
+  "name": "Critical Care Transfer Ambulance",
+  "aliases": [
+    "Critical Transport Vehicle"
+  ],
+  "service": "ambulance",
+  "category": "Critical care transport",
+  "cost": {
+    "credits": 15000,
+    "coins": 20
+  },
+  "staffing": {
+    "maximum": 2
+  },
+  "training": [
+    "Critical Care"
+  ],
+  "capabilities": [
+    "critical_care_transport",
+    "patient_transport"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

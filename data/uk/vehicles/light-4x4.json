@@ -1,0 +1,31 @@
+{
+  "id": "light_4x4",
+  "name": "Light 4x4",
+  "aliases": [
+    "L4V"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Technical rescue towing vehicle",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 4
+  },
+  "capabilities": [
+    "trailer_towing"
+  ],
+  "building_requirements": [
+    "Small Fire Station with Technical Rescue Extension"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "sar_drone_vehicle",
+  "name": "Drone Vehicle SAR HQ",
+  "aliases": [
+    "SAR Drone Vehicle"
+  ],
+  "service": "search_and_rescue",
+  "category": "Drone transport",
+  "capabilities": [
+    "aerial_search",
+    "reconnaissance",
+    "drone_transport"
+  ],
+  "notes": [
+    "This is the deployable vehicle identity and remains distinct from the generic Drone mission capability record."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "medical_equipment_trailer",
+  "name": "Medical Equipment Trailer",
+  "aliases": [
+    "MET"
+  ],
+  "service": "airfield_operations",
+  "category": "Airfield mass-casualty support",
+  "cost": {
+    "credits": 15000,
+    "coins": 15
+  },
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": [
+      "airfield"
+    ]
+  },
+  "capabilities": [
+    "mass_casualty_support"
+  ],
+  "building_requirements": [
+    "Airfield Operations Extension"
+  ],
+  "notes": [
+    "Community catalogue data lists Airfield Operations Vehicle and Airfield Operations Supervisor as towing vehicles."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "operational_support_unit",
+  "name": "Operational Support Unit",
+  "aliases": [
+    "OSU"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Hazardous-materials and welfare support",
+  "cost": {
+    "credits": 30000,
+    "coins": 15
+  },
+  "staffing": {
+    "maximum": 6
+  },
+  "training": [
+    "HazMat"
+  ],
+  "capabilities": [
+    "hazmat_response",
+    "breathing_apparatus_support",
+    "crew_welfare"
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "coastguard_rescue_helicopter_large",
+  "name": "Coastguard Rescue Helicopter (Large)",
+  "aliases": [
+    "Coastguard Rescue Helicopter Large"
+  ],
+  "service": "coastguard",
+  "category": "Large air rescue",
+  "deployment": {
+    "is_trailer": false,
+    "operating_environments": [
+      "air",
+      "ocean"
+    ]
+  },
+  "capabilities": [
+    "air_rescue",
+    "ocean_rescue",
+    "patient_treatment",
+    "patient_transport"
+  ],
+  "notes": [
+    "The exact type ID and label are community-observed. Detailed market values remain omitted pending a current primary source."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

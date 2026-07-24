@@ -1,0 +1,25 @@
+{
+  "id": "air_ambulance",
+  "name": "Air Ambulance",
+  "aliases": [
+    "HEMS"
+  ],
+  "service": "ambulance",
+  "category": "Air medical response",
+  "capabilities": [
+    "air_medical_response",
+    "patient_treatment",
+    "patient_transport"
+  ],
+  "notes": [
+    "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/"
+    ]
+  }
+}

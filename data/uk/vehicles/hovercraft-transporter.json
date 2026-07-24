@@ -1,0 +1,30 @@
+{
+  "id": "hovercraft_transporter",
+  "name": "Hovercraft Transporter",
+  "aliases": [],
+  "service": "lifeboat",
+  "category": "Hovercraft towing vehicle",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 1
+  },
+  "capabilities": [
+    "hovercraft_transport",
+    "trailer_towing"
+  ],
+  "building_requirements": [
+    "Lifeboat Station with Hover Mud Rescue Boat Expansion"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "cell_van",
+  "name": "Cell Van",
+  "aliases": [],
+  "service": "police",
+  "category": "Custody transport",
+  "capabilities": [
+    "prisoner_transport",
+    "police_personnel_transport"
+  ],
+  "notes": [
+    "The type ID is current and community-observed. Exact cost, crew and prisoner capacity remain omitted pending direct game evidence."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://board.missionchief.com/forum/index.php?pageNo=2&user-post-list%2F358-whitchit%2F="
+    ]
+  }
+}

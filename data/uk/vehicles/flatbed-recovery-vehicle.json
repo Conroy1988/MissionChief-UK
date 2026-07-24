@@ -1,0 +1,23 @@
+{
+  "id": "flatbed_recovery_vehicle",
+  "name": "Flatbed Recovery Vehicle",
+  "aliases": [
+    "FRV"
+  ],
+  "service": "recovery",
+  "category": "Vehicle recovery",
+  "capabilities": [
+    "vehicle_recovery"
+  ],
+  "notes": [
+    "Current identity is corroborated by community vehicle graphics and the type-ID map; economics remain unverified."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://board.missionchief.com/forum/index.php?action=firstNew&thread%2F10925-jxshy-s-graphics-packs-development-update-and-help-needed-uk%2F="
+    ]
+  }
+}

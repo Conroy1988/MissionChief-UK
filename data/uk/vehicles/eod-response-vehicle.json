@@ -1,0 +1,19 @@
+{
+  "id": "eod_response_vehicle",
+  "name": "EOD Response Vehicle",
+  "aliases": [
+    "Bomb Disposal Response Vehicle"
+  ],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal response",
+  "capabilities": [
+    "bomb_disposal_response"
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

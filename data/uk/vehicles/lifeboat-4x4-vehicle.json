@@ -1,0 +1,31 @@
+{
+  "id": "lifeboat_4x4_vehicle",
+  "name": "4x4 Vehicle",
+  "aliases": [
+    "Lifeboat 4x4"
+  ],
+  "service": "lifeboat",
+  "category": "Trailer towing vehicle",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 4
+  },
+  "capabilities": [
+    "trailer_towing"
+  ],
+  "building_requirements": [
+    "Lifeboat Station"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  }
+}
