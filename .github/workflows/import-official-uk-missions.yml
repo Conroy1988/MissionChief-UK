@@ -77,8 +77,21 @@ jobs:
       - name: Confirm clean production baseline
         if: steps.drift.outputs.has_drift == 'false'
         run: |
+          python scripts/reconcile_official_mission_coverage.py
           python scripts/validate_official_mission_catalogue.py
+          python scripts/validate_official_key_mappings.py
+          python scripts/validate_official_patient_mappings.py
+          python scripts/validate_official_personnel_mappings.py
+          python scripts/validate_official_personnel_education_mappings.py
+          python scripts/validate_official_prisoner_mappings.py
+          python scripts/validate_official_recovery_mappings.py
+          python scripts/validate_official_operational_mappings.py
           python scripts/generate_full_canonical_catalogue.py --check
+          python -m unittest discover -s tests/python -p 'test_*.py'
+          python scripts/report_canonical_candidates.py --limit 50
+          python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
+          python scripts/generate_mission_verification_status.py
+          python scripts/validate_verification_programme_assets.py
           python scripts/release_readiness.py
           echo "The official feed is semantically identical to the committed production snapshot."
 
