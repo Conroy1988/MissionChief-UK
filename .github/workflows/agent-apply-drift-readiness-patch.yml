@@ -1,0 +1,33 @@
+name: Apply drift readiness patch
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/agent_patch_release_readiness.py
+      - .github/workflows/agent-apply-drift-readiness-patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out drift branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/official-catalogue-drift-detection
+          fetch-depth: 0
+
+      - name: Apply policy patch
+        run: python scripts/agent_patch_release_readiness.py
+
+      - name: Commit corrected readiness policy
+        run: |
+          rm scripts/agent_patch_release_readiness.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/release_readiness.py scripts/agent_patch_release_readiness.py
+          git commit -m "Align release readiness with drift control"
+          git push origin HEAD:agent/official-catalogue-drift-detection
