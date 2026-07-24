@@ -1,0 +1,47 @@
+name: Agent research export
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Build research export
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/missionchief-research"
+          python scripts/report_key_mapping_backlog.py --limit 500 --examples 25 > "$RUNNER_TEMP/missionchief-research/key-mapping-backlog.json"
+          python scripts/report_canonical_candidates.py --limit 1200 > "$RUNNER_TEMP/missionchief-research/canonical-candidates.json"
+          python scripts/report_operational_field_contract.py > "$RUNNER_TEMP/missionchief-research/operational-field-contract.json"
+          python scripts/report_patient_field_contract.py > "$RUNNER_TEMP/missionchief-research/patient-field-contract.json"
+          tar --exclude=.git --exclude=site -czf "$RUNNER_TEMP/missionchief-research/missionchief-source.tgz" .
+
+      - name: Upload research export
+        uses: actions/upload-artifact@v4
+        with:
+          name: missionchief-agent-research-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/missionchief-research
+          if-no-files-found: error
+          retention-days: 3
