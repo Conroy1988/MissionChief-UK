@@ -1,0 +1,34 @@
+{
+  "id": "boat_trailer",
+  "name": "Boat Trailer",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Technical rescue boat trailer",
+  "cost": {
+    "credits": 25000,
+    "coins": 15
+  },
+  "training": [
+    "Technical Rescue"
+  ],
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": [
+      "water"
+    ]
+  },
+  "capabilities": [
+    "water_rescue"
+  ],
+  "building_requirements": [
+    "Small Fire Station with Technical Rescue Extension"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  }
+}

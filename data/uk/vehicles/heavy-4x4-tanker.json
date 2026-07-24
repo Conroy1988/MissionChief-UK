@@ -1,0 +1,21 @@
+{
+  "id": "heavy_4x4_tanker",
+  "name": "Heavy 4x4 Tanker",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Rural water support",
+  "capabilities": [
+    "fire_engine_requirement",
+    "water_carrier_requirement"
+  ],
+  "notes": [
+    "Identity and game type ID are community-observed; economics and staffing remain omitted."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

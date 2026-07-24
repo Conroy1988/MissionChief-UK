@@ -1,0 +1,20 @@
+{
+  "id": "eod_medium_equipment_van",
+  "name": "EOD Medium Equipment Van",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal equipment transport",
+  "capabilities": [
+    "bomb_disposal_equipment_transport"
+  ],
+  "notes": [
+    "The relationship to the abstract Bomb Disposal Equipment mission requirement remains intentionally separate."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

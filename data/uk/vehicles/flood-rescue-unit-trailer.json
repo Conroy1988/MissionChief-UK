@@ -1,0 +1,38 @@
+{
+  "id": "flood_rescue_unit_trailer",
+  "name": "Flood Rescue Unit (Trailer)",
+  "aliases": [
+    "Flood Rescue Unit Trailer"
+  ],
+  "service": "coastguard",
+  "category": "Flood rescue trailer",
+  "cost": {
+    "credits": 35000,
+    "coins": 20
+  },
+  "training": [
+    "Flood First Responder Training"
+  ],
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": [
+      "flood",
+      "water"
+    ]
+  },
+  "building_requirements": [
+    "Coastguard Rescue Station with Flood Rescue Expansion",
+    "Lifeboat Station with Flood Rescue Expansion"
+  ],
+  "capabilities": [
+    "flood_rescue"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  }
+}

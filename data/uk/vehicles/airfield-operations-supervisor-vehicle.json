@@ -1,0 +1,31 @@
+{
+  "id": "airfield_operations_supervisor_vehicle",
+  "name": "Airfield Operations Supervisor",
+  "aliases": [
+    "AOS"
+  ],
+  "service": "airfield_operations",
+  "category": "Airfield supervision",
+  "cost": {
+    "credits": 15000,
+    "coins": 15
+  },
+  "staffing": {
+    "maximum": 2
+  },
+  "capabilities": [
+    "airfield_operations_supervision",
+    "trailer_towing"
+  ],
+  "building_requirements": [
+    "Airfield Operations Extension"
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

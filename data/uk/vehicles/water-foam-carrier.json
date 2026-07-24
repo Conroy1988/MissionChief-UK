@@ -1,0 +1,32 @@
+{
+  "id": "water_foam_carrier",
+  "name": "Water/Foam Carrier",
+  "aliases": [
+    "F/WrC"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Water and foam support",
+  "cost": {
+    "credits": 45000,
+    "coins": 15
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 2
+  },
+  "building_requirements": [
+    "Fire Station with Fire Support"
+  ],
+  "capabilities": [
+    "water_carrier_requirement",
+    "foam_supply"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+    ]
+  }
+}

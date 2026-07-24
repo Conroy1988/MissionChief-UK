@@ -1,0 +1,27 @@
+{
+  "id": "sar_flood_rescue_trailer",
+  "name": "SAR Flood Rescue Trailer",
+  "aliases": [],
+  "service": "search_and_rescue",
+  "category": "Flood rescue trailer",
+  "deployment": {
+    "is_trailer": true,
+    "operating_environments": [
+      "flood",
+      "water"
+    ]
+  },
+  "capabilities": [
+    "flood_rescue"
+  ],
+  "notes": [
+    "Identity is community-observed; towing relationships and economics remain unverified."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

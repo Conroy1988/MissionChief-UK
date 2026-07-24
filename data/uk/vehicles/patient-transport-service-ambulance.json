@@ -1,0 +1,29 @@
+{
+  "id": "patient_transport_service_ambulance",
+  "name": "Patient Transport Service Ambulance",
+  "aliases": [
+    "PTS Ambulance",
+    "Ambulance Transport"
+  ],
+  "service": "ambulance",
+  "category": "Patient transport",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "staffing": {
+    "maximum": 2
+  },
+  "capabilities": [
+    "patient_transport"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1884-how-do-patient-transport-missions-work/",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

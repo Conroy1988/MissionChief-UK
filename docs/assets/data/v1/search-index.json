@@ -1,5 +1,5 @@
 {
-  "count": 1174,
+  "count": 1202,
   "data_version": "1.2.0",
   "records": [
     {
@@ -7781,9 +7781,23 @@
     },
     {
       "collection": "vehicles",
+      "id": "air_ambulance",
+      "name": "Air Ambulance",
+      "search_text": "air_ambulance air ambulance ambulance air medical response hems air_medical_response patient_treatment patient_transport",
+      "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
       "id": "airfield_firefighting_command_vehicle",
       "name": "Airfield Firefighting Command Vehicle",
       "search_text": "airfield_firefighting_command_vehicle airfield firefighting command vehicle airfield_operations command airfield_firefighting_command",
+      "service": "airfield_operations"
+    },
+    {
+      "collection": "vehicles",
+      "id": "airfield_operations_supervisor_vehicle",
+      "name": "Airfield Operations Supervisor",
+      "search_text": "airfield_operations_supervisor_vehicle airfield operations supervisor airfield_operations airfield supervision aos airfield_operations_supervision trailer_towing",
       "service": "airfield_operations"
     },
     {
@@ -7816,9 +7830,23 @@
     },
     {
       "collection": "vehicles",
+      "id": "ambulance_officer_vehicle",
+      "name": "Ambulance Officer",
+      "search_text": "ambulance_officer_vehicle ambulance officer ambulance tactical command ao vehicle ambulance_tactical_command patient_information ambulance officer",
+      "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
       "id": "armed_response_vehicle",
       "name": "Armed Response Vehicle (ARV)",
       "search_text": "armed_response_vehicle armed response vehicle (arv) police armed response armed response vehicle armed response vehicles arv arvs armed_police_response",
+      "service": "police"
+    },
+    {
+      "collection": "vehicles",
+      "id": "armed_traffic_car",
+      "name": "Armed Traffic Car",
+      "search_text": "armed_traffic_car armed traffic car police armed roads policing traffic_policing armed_police_response roads policing officer training firearms training",
       "service": "police"
     },
     {
@@ -7827,6 +7855,13 @@
       "name": "ATV Carrier",
       "search_text": "atv_carrier atv carrier ambulance specialist_support atv carriers all_terrain_transport hart_support",
       "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
+      "id": "boat_trailer",
+      "name": "Boat Trailer",
+      "search_text": "boat_trailer boat trailer fire_and_rescue technical rescue boat trailer water_rescue technical rescue",
+      "service": "fire_and_rescue"
     },
     {
       "collection": "vehicles",
@@ -7879,10 +7914,24 @@
     },
     {
       "collection": "vehicles",
+      "id": "bulk_foam_unit",
+      "name": "Bulk Foam Unit",
+      "search_text": "bulk_foam_unit bulk foam unit fire_and_rescue foam support bfu foam_supply",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "cbrn_vehicle",
       "name": "CBRN Vehicle",
       "search_text": "cbrn_vehicle cbrn vehicle fire_and_rescue cbrn response cbrn_response",
       "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "cell_van",
+      "name": "Cell Van",
+      "search_text": "cell_van cell van police custody transport prisoner_transport police_personnel_transport",
+      "service": "police"
     },
     {
       "collection": "vehicles",
@@ -7903,6 +7952,13 @@
       "id": "coastguard_rescue_helicopter",
       "name": "Coastguard Rescue Helicopter",
       "search_text": "coastguard_rescue_helicopter coastguard rescue helicopter coastguard air rescue air_rescue ocean_rescue",
+      "service": "coastguard"
+    },
+    {
+      "collection": "vehicles",
+      "id": "coastguard_rescue_helicopter_large",
+      "name": "Coastguard Rescue Helicopter (Large)",
+      "search_text": "coastguard_rescue_helicopter_large coastguard rescue helicopter (large) coastguard large air rescue coastguard rescue helicopter large air_rescue ocean_rescue patient_treatment patient_transport",
       "service": "coastguard"
     },
     {
@@ -7928,10 +7984,24 @@
     },
     {
       "collection": "vehicles",
+      "id": "combined_aerial_rescue_pump",
+      "name": "Combined Aerial Rescue Pump",
+      "search_text": "combined_aerial_rescue_pump combined aerial rescue pump fire_and_rescue multipurpose aerial fire appliance carp aerial_appliance_requirement rescue_support_requirement",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "control_van",
       "name": "Control Van",
       "search_text": "control_van control van search_and_rescue command control vans incident_command search_coordination",
       "service": "search_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "critical_care_transfer_ambulance",
+      "name": "Critical Care Transfer Ambulance",
+      "search_text": "critical_care_transfer_ambulance critical care transfer ambulance ambulance critical care transport critical transport vehicle critical_care_transport patient_transport critical care",
+      "service": "ambulance"
     },
     {
       "collection": "vehicles",
@@ -7963,6 +8033,20 @@
     },
     {
       "collection": "vehicles",
+      "id": "eod_medium_equipment_van",
+      "name": "EOD Medium Equipment Van",
+      "search_text": "eod_medium_equipment_van eod medium equipment van bomb_disposal bomb disposal equipment transport bomb_disposal_equipment_transport",
+      "service": "bomb_disposal"
+    },
+    {
+      "collection": "vehicles",
+      "id": "eod_response_vehicle",
+      "name": "EOD Response Vehicle",
+      "search_text": "eod_response_vehicle eod response vehicle bomb_disposal bomb disposal response bomb disposal response vehicle bomb_disposal_response",
+      "service": "bomb_disposal"
+    },
+    {
+      "collection": "vehicles",
       "id": "fire_engine",
       "name": "Fire engine",
       "search_text": "fire_engine fire engine fire response fire engine pump fire_engine_requirement",
@@ -7984,10 +8068,24 @@
     },
     {
       "collection": "vehicles",
+      "id": "flatbed_recovery_vehicle",
+      "name": "Flatbed Recovery Vehicle",
+      "search_text": "flatbed_recovery_vehicle flatbed recovery vehicle recovery vehicle recovery frv vehicle_recovery",
+      "service": "recovery"
+    },
+    {
+      "collection": "vehicles",
       "id": "flood_rescue_unit",
       "name": "Flood Rescue Unit",
       "search_text": "flood_rescue_unit flood rescue unit fire_and_rescue flood rescue flood_rescue",
       "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "flood_rescue_unit_trailer",
+      "name": "Flood Rescue Unit (Trailer)",
+      "search_text": "flood_rescue_unit_trailer flood rescue unit (trailer) coastguard flood rescue trailer flood rescue unit trailer flood_rescue flood first responder training",
+      "service": "coastguard"
     },
     {
       "collection": "vehicles",
@@ -8005,10 +8103,24 @@
     },
     {
       "collection": "vehicles",
+      "id": "heavy_4x4_tanker",
+      "name": "Heavy 4x4 Tanker",
+      "search_text": "heavy_4x4_tanker heavy 4x4 tanker fire_and_rescue rural water support fire_engine_requirement water_carrier_requirement",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "hovercraft_trailer",
       "name": "Hovercraft (Trailer)",
       "search_text": "hovercraft_trailer hovercraft (trailer) coastguard coastguard water rescue hovercraft_response",
       "service": "coastguard"
+    },
+    {
+      "collection": "vehicles",
+      "id": "hovercraft_transporter",
+      "name": "Hovercraft Transporter",
+      "search_text": "hovercraft_transporter hovercraft transporter lifeboat hovercraft towing vehicle hovercraft_transport trailer_towing",
+      "service": "lifeboat"
     },
     {
       "collection": "vehicles",
@@ -8021,7 +8133,7 @@
       "collection": "vehicles",
       "id": "inland_rescue_boat_trailer",
       "name": "Inland Rescue Boat (Trailer)",
-      "search_text": "inland_rescue_boat_trailer inland rescue boat (trailer) lifeboat water rescue trailer inland rescue boat irb inland_water_rescue coastal_water_rescue",
+      "search_text": "inland_rescue_boat_trailer inland rescue boat (trailer) lifeboat water rescue trailer ilb trailer irb inland rescue boat inland_water_rescue coastal_water_rescue lifeboat operations training",
       "service": "lifeboat"
     },
     {
@@ -8030,6 +8142,20 @@
       "name": "ILB",
       "search_text": "inshore_lifeboat ilb lifeboat ocean rescue boat inshore lifeboat ocean_rescue",
       "service": "lifeboat"
+    },
+    {
+      "collection": "vehicles",
+      "id": "lifeboat_4x4_vehicle",
+      "name": "4x4 Vehicle",
+      "search_text": "lifeboat_4x4_vehicle 4x4 vehicle lifeboat trailer towing vehicle lifeboat 4x4 trailer_towing",
+      "service": "lifeboat"
+    },
+    {
+      "collection": "vehicles",
+      "id": "light_4x4",
+      "name": "Light 4x4",
+      "search_text": "light_4x4 light 4x4 fire_and_rescue technical rescue towing vehicle l4v trailer_towing",
+      "service": "fire_and_rescue"
     },
     {
       "collection": "vehicles",
@@ -8051,6 +8177,13 @@
       "name": "Mass Casualty Equipment",
       "search_text": "mass_casualty_equipment mass casualty equipment ambulance mass casualty support mass_casualty_support",
       "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
+      "id": "medical_equipment_trailer",
+      "name": "Medical Equipment Trailer",
+      "search_text": "medical_equipment_trailer medical equipment trailer airfield_operations airfield mass-casualty support met mass_casualty_support",
+      "service": "airfield_operations"
     },
     {
       "collection": "vehicles",
@@ -8089,10 +8222,31 @@
     },
     {
       "collection": "vehicles",
+      "id": "operational_support_unit",
+      "name": "Operational Support Unit",
+      "search_text": "operational_support_unit operational support unit fire_and_rescue hazardous-materials and welfare support osu hazmat_response breathing_apparatus_support crew_welfare hazmat",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "operational_support_van",
       "name": "Operational Support Van",
       "search_text": "operational_support_van operational support van search_and_rescue operational support osv search_support incident_logistics",
       "service": "search_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "operational_team_leader_vehicle",
+      "name": "Operational Team Leader",
+      "search_text": "operational_team_leader_vehicle operational team leader ambulance operational command otl ambulance_operational_command",
+      "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
+      "id": "patient_transport_service_ambulance",
+      "name": "Patient Transport Service Ambulance",
+      "search_text": "patient_transport_service_ambulance patient transport service ambulance ambulance patient transport pts ambulance ambulance transport patient_transport",
+      "service": "ambulance"
     },
     {
       "collection": "vehicles",
@@ -8138,6 +8292,20 @@
     },
     {
       "collection": "vehicles",
+      "id": "rescue_pump",
+      "name": "Rescue Pump",
+      "search_text": "rescue_pump rescue pump fire_and_rescue multipurpose fire appliance rp fire_engine_requirement rescue_support_requirement",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "rescue_pump_with_cafs",
+      "name": "Rescue Pump with CAFS",
+      "search_text": "rescue_pump_with_cafs rescue pump with cafs fire_and_rescue compressed-air-foam rescue pump rpf rp cafs fire_engine_requirement rescue_support_requirement foam_supply",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "rescue_stairs",
       "name": "Rescue Stairs",
       "search_text": "rescue_stairs rescue stairs airfield_operations aircraft access and rescue aircraft_access",
@@ -8180,6 +8348,20 @@
     },
     {
       "collection": "vehicles",
+      "id": "sar_drone_vehicle",
+      "name": "Drone Vehicle SAR HQ",
+      "search_text": "sar_drone_vehicle drone vehicle sar hq search_and_rescue drone transport sar drone vehicle aerial_search reconnaissance drone_transport",
+      "service": "search_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "sar_flood_rescue_trailer",
+      "name": "SAR Flood Rescue Trailer",
+      "search_text": "sar_flood_rescue_trailer sar flood rescue trailer search_and_rescue flood rescue trailer flood_rescue",
+      "service": "search_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "search_dog_unit",
       "name": "Search Dog Unit",
       "search_text": "search_dog_unit search dog unit search_and_rescue specialist_search search dog units search_dog missing_person_search",
@@ -8215,9 +8397,23 @@
     },
     {
       "collection": "vehicles",
+      "id": "water_foam_carrier",
+      "name": "Water/Foam Carrier",
+      "search_text": "water_foam_carrier water/foam carrier fire_and_rescue water and foam support f/wrc water_carrier_requirement foam_supply",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
       "id": "welfare_vehicle",
       "name": "Welfare Vehicle",
       "search_text": "welfare_vehicle welfare vehicle ambulance support welfare vehicles incident_welfare_support",
+      "service": "ambulance"
+    },
+    {
+      "collection": "vehicles",
+      "id": "welfare_vehicle_type_115",
+      "name": "Welfare Vehicle",
+      "search_text": "welfare_vehicle_type_115 welfare vehicle ambulance crew welfare support welfare vehicle type 115 crew_welfare",
       "service": "ambulance"
     }
   ],

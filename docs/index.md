@@ -125,14 +125,14 @@
   <div class="mcuk-board-metrics">
     <div><strong data-mcuk-collection="missions">1,079</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
     <div><strong data-mcuk-verification="fully-canonical">1,062</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
-    <div><strong data-mcuk-collection="vehicles">64</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
+    <div><strong data-mcuk-collection="vehicles">92</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
     <div><strong data-mcuk-collection="infrastructure">19</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
     <div><strong data-mcuk-collection="training">12</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
   </div>
   <div class="mcuk-board-footer">
     <span><b>1,062</b> official UK missions</span>
     <span><b>1,062</b> direct ID matches</span>
-    <span><b data-mcuk-search-count>1,174</b> canonical search entities</span>
+    <span><b data-mcuk-search-count>1,202</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
     <a href="reference/mission-verification-status/">Audit verification →</a>
   </div>

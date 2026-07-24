@@ -1,0 +1,31 @@
+{
+  "id": "combined_aerial_rescue_pump",
+  "name": "Combined Aerial Rescue Pump",
+  "aliases": [
+    "CARP"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Multipurpose aerial fire appliance",
+  "cost": {
+    "credits": 19000,
+    "coins": 25
+  },
+  "staffing": {
+    "maximum": 6
+  },
+  "capabilities": [
+    "aerial_appliance_requirement",
+    "rescue_support_requirement"
+  ],
+  "notes": [
+    "Community catalogue data identifies this as a combined aerial-appliance and rescue-support vehicle."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

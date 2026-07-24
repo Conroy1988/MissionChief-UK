@@ -1,0 +1,34 @@
+{
+  "id": "rescue_pump_with_cafs",
+  "name": "Rescue Pump with CAFS",
+  "aliases": [
+    "RPF",
+    "RP CAFS"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Compressed-air-foam rescue pump",
+  "cost": {
+    "credits": 25000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 2,
+    "maximum": 9
+  },
+  "building_requirements": [
+    "Fire Station with Fire Support"
+  ],
+  "capabilities": [
+    "fire_engine_requirement",
+    "rescue_support_requirement",
+    "foam_supply"
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+    ]
+  }
+}

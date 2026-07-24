@@ -1,0 +1,30 @@
+{
+  "id": "operational_team_leader_vehicle",
+  "name": "Operational Team Leader",
+  "aliases": [
+    "OTL"
+  ],
+  "service": "ambulance",
+  "category": "Operational command",
+  "cost": {
+    "credits": 20000,
+    "coins": 25
+  },
+  "staffing": {
+    "maximum": 1
+  },
+  "capabilities": [
+    "ambulance_operational_command"
+  ],
+  "notes": [
+    "This vehicle identity is distinct from the Operational Team Leader qualification record."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

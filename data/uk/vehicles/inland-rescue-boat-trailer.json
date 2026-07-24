@@ -2,8 +2,9 @@
   "id": "inland_rescue_boat_trailer",
   "name": "Inland Rescue Boat (Trailer)",
   "aliases": [
-    "Inland Rescue Boat",
-    "IRB"
+    "ILB Trailer",
+    "IRB",
+    "Inland Rescue Boat"
   ],
   "service": "lifeboat",
   "category": "water rescue trailer",
@@ -14,19 +15,28 @@
   "deployment": {
     "is_trailer": true,
     "operating_environments": [
-      "inland_water",
-      "coastal_water"
+      "inland_water"
     ]
   },
   "notes": [
-    "Recorded as a trailer because the official UK resource name explicitly includes '(Trailer)'."
+    "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
-      "https://www.missionchief.co.uk/einsaetze/567",
-      "https://www.missionchief.co.uk/einsaetze/569"
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "cost": {
+    "credits": 25000,
+    "coins": 15
+  },
+  "training": [
+    "Lifeboat Operations Training"
+  ],
+  "building_requirements": [
+    "Lifeboat Station"
+  ]
 }

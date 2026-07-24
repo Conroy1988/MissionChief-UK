@@ -1,0 +1,34 @@
+{
+  "id": "ambulance_officer_vehicle",
+  "name": "Ambulance Officer",
+  "aliases": [
+    "AO Vehicle"
+  ],
+  "service": "ambulance",
+  "category": "Tactical command",
+  "cost": {
+    "credits": 25500,
+    "coins": 15
+  },
+  "staffing": {
+    "maximum": 1
+  },
+  "training": [
+    "Ambulance Officer"
+  ],
+  "capabilities": [
+    "ambulance_tactical_command",
+    "patient_information"
+  ],
+  "notes": [
+    "This vehicle identity is distinct from the Ambulance Officer qualification record."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "welfare_vehicle_type_115",
+  "name": "Welfare Vehicle",
+  "aliases": [
+    "Welfare Vehicle Type 115"
+  ],
+  "service": "ambulance",
+  "category": "Crew welfare support",
+  "capabilities": [
+    "crew_welfare"
+  ],
+  "notes": [
+    "The current game exposes this as a second Welfare Vehicle type ID. It is retained separately until its operational distinction from type 29 is reproduced."
+  ],
+  "verification": {
+    "status": "community-report",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+    ]
+  }
+}

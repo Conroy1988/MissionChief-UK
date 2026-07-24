@@ -1,0 +1,34 @@
+{
+  "id": "armed_traffic_car",
+  "name": "Armed Traffic Car",
+  "aliases": [],
+  "service": "police",
+  "category": "Armed roads policing",
+  "cost": {
+    "credits": 19000,
+    "coins": 10
+  },
+  "staffing": {
+    "maximum": 2
+  },
+  "training": [
+    "Roads Policing Officer Training",
+    "Firearms Training"
+  ],
+  "capabilities": [
+    "traffic_policing",
+    "armed_police_response"
+  ],
+  "notes": [
+    "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+    ]
+  }
+}
