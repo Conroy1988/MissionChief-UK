@@ -1,0 +1,27 @@
+name: Clean Public Order batch 1 branches
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/cleanup-public-order-batch-1-branches.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.head.ref == 'ops/verify-public-order-batch-1'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete completed branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for branch in stage36a/public-order-vehicle-batch-1 ops/verify-public-order-batch-1; do
+            encoded="$(python -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$branch")"
+            gh api --method DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$encoded"
+          done
