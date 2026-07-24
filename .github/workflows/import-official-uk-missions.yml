@@ -128,9 +128,12 @@ jobs:
           git add -f \
             CHANGELOG.md \
             README.md \
-            data/sources/missionchief-uk \
+            data/sources/missionchief-uk/einsaetze.raw.json \
+            data/sources/missionchief-uk/mission-coverage.json \
+            data/sources/missionchief-uk/official-key-inventory.json \
             docs/api/index.md \
-            docs/assets/data/official \
+            docs/assets/data/official/uk-mission-coverage.json \
+            docs/assets/data/official/uk-missions.json \
             docs/index.md \
             docs/reference/generated-faq.md \
             docs/reference/mission-verification-status.md \

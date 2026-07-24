@@ -244,10 +244,28 @@ def audit_quality_assets(release_version: str) -> None:
         "generate_faq.py",
         "release_readiness.py",
         "validate_verification_programme_assets.py",
+        "data/sources/missionchief-uk/einsaetze.raw.json",
+        "data/sources/missionchief-uk/mission-coverage.json",
+        "data/sources/missionchief-uk/official-key-inventory.json",
+        "docs/assets/data/official/uk-mission-coverage.json",
+        "docs/assets/data/official/uk-missions.json",
+        "docs/reference/mission-verification-status.md",
         "git diff --cached --quiet",
         "gh workflow run deploy-pages.yml --ref main",
     ):
         require(marker in workflow_text, f"Official catalogue refresh workflow is missing control: {marker}")
+
+    for forbidden in (
+        "git add -f data/sources/missionchief-uk",
+        "data/sources/missionchief-uk \\",
+        "docs/assets/data/official \\",
+        "data/sources/missionchief-uk/mission-verification-status.json",
+        "docs/assets/data/official/uk-mission-verification.json",
+    ):
+        require(
+            forbidden not in workflow_text,
+            f"Official catalogue refresh workflow stages transient or over-broad path: {forbidden}",
+        )
 
     release_workflow = (ROOT / ".github" / "workflows" / "release-v1.yml").read_text(encoding="utf-8")
     require(

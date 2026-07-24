@@ -69,6 +69,31 @@ class ReleaseReadinessTests(unittest.TestCase):
                 "stale count",
             )
 
+    def test_catalogue_refresh_stages_only_durable_outputs(self) -> None:
+        workflow = (
+            ROOT / ".github" / "workflows" / "import-official-uk-missions.yml"
+        ).read_text(encoding="utf-8")
+        durable = (
+            "data/sources/missionchief-uk/einsaetze.raw.json",
+            "data/sources/missionchief-uk/mission-coverage.json",
+            "data/sources/missionchief-uk/official-key-inventory.json",
+            "docs/assets/data/official/uk-mission-coverage.json",
+            "docs/assets/data/official/uk-missions.json",
+            "docs/reference/mission-verification-status.md",
+        )
+        for path in durable:
+            self.assertIn(path, workflow)
+
+        forbidden = (
+            "git add -f data/sources/missionchief-uk",
+            "data/sources/missionchief-uk \\",
+            "docs/assets/data/official \\",
+            "data/sources/missionchief-uk/mission-verification-status.json",
+            "docs/assets/data/official/uk-mission-verification.json",
+        )
+        for path in forbidden:
+            self.assertNotIn(path, workflow)
+
     def test_publication_metadata_matches_release_source(self) -> None:
         release = readiness.release_metadata()
         counts = {
