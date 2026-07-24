@@ -102,7 +102,7 @@ python scripts/release_readiness.py
 
 stage 'prepare commit'
 rm -rf .handoff .agent site
-rm -f .github/workflows/agent-apply-canonical-coverage.yml scripts/agent_apply_canonical_coverage.sh
+rm -f scripts/agent_apply_canonical_coverage.sh
 find . -type d -name __pycache__ -prune -exec rm -rf {} +
 git config user.name 'github-actions[bot]'
 git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
