@@ -39,7 +39,7 @@ python scripts/publish_official_mission_catalogue.py
 python scripts/compact_official_mission_catalogue.py
 ```
 
-The dedicated GitHub Actions workflow refreshes this snapshot on the feature branch. It validates duplicate IDs, missing names, suspiciously small responses, record counts and reconciliation totals before committing generated data.
+The dedicated GitHub Actions workflow refreshes this snapshot on `main`. It validates duplicate IDs, missing names, suspiciously small responses, record counts and reconciliation totals before committing generated data.
 
 ## Accuracy boundaries
 

@@ -19,12 +19,12 @@ CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 MISSION_LOOKUP_PATH = ROOT / "docs" / "tools" / "mission-lookup.md"
 OFFICIAL_CATALOGUE_PATH = ROOT / "docs" / "reference" / "official-mission-catalogue.md"
 
-COLLECTION_ROOTS = (
-    ROOT / "data" / "uk" / "missions",
-    ROOT / "data" / "uk" / "vehicles",
-    ROOT / "data" / "uk" / "infrastructure",
-    ROOT / "data" / "uk" / "training",
-)
+COLLECTION_ROOTS = {
+    "missions": ROOT / "data" / "uk" / "missions",
+    "vehicles": ROOT / "data" / "uk" / "vehicles",
+    "infrastructure": ROOT / "data" / "uk" / "infrastructure",
+    "training": ROOT / "data" / "uk" / "training",
+}
 
 STATIC_BATCHES: dict[int, list[int]] = {
     1: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11],
@@ -94,10 +94,14 @@ def load_metrics() -> dict[str, int | float]:
     if direct > canonical or fully > direct:
         raise SyncFailure("Canonical verification metric ordering is invalid")
 
-    collection_counts = [len(list(path.glob("*.json"))) for path in COLLECTION_ROOTS]
-    if collection_counts[0] != canonical:
+    collection_counts = {
+        name: len(list(path.glob("*.json")))
+        for name, path in COLLECTION_ROOTS.items()
+    }
+    if collection_counts["missions"] != canonical:
         raise SyncFailure(
-            f"Canonical mission directory contains {collection_counts[0]} records; status reports {canonical}"
+            "Canonical mission directory contains "
+            f"{collection_counts['missions']} records; status reports {canonical}"
         )
 
     return {
@@ -110,7 +114,10 @@ def load_metrics() -> dict[str, int | float]:
         "overlays": canonical - direct,
         "identity_percent": round((direct / official) * 100, 2),
         "fully_percent": round((fully / official) * 100, 2),
-        "search_entities": sum(collection_counts),
+        "vehicles": collection_counts["vehicles"],
+        "infrastructure": collection_counts["infrastructure"],
+        "training": collection_counts["training"],
+        "search_entities": sum(collection_counts.values()),
     }
 
 
@@ -177,6 +184,9 @@ def sync_readme(text: str, metrics: dict[str, int | float], batches: dict[int, l
     remaining = format_number(metrics["remaining"])
     identity_percent = format_number(metrics["identity_percent"])
     fully_percent = format_number(metrics["fully_percent"])
+    vehicles = format_number(metrics["vehicles"])
+    infrastructure = format_number(metrics["infrastructure"])
+    training = format_number(metrics["training"])
     search_entities = format_number(metrics["search_entities"])
     max_batch = max(batches)
     batch_block = render_batch_block(batches)
@@ -193,6 +203,9 @@ def sync_readme(text: str, metrics: dict[str, int | float], batches: dict[int, l
         "Fully canonical missions": fully,
         "Official records awaiting canonical records": awaiting,
         "Canonical-only overlays": overlays,
+        "Deployable resources": vehicles,
+        "Infrastructure": infrastructure,
+        "Qualifications": training,
         "Canonical searchable entities": search_entities,
     }
     for label, value in row_values.items():
@@ -230,7 +243,7 @@ def sync_readme(text: str, metrics: dict[str, int | float], batches: dict[int, l
     )
     text = replace_once(
         text,
-        r"Batch 4 adds strict chance-aware interpretation.*?strict-equivalence validation\.",
+        r"(?:Batch 4 adds strict chance-aware interpretation|Batches 4–\d+ extend the verified vehicle-key contract).*?strict-equivalence validation\.",
         (
             f"Batches 4–{max_batch} extend the verified vehicle-key contract through evidence-safe, "
             f"exact-ID promotions. All {fully} records pass aggregate identity and strict-equivalence validation."
@@ -250,16 +263,37 @@ def sync_readme(text: str, metrics: dict[str, int | float], batches: dict[int, l
         rf"\g<1>{canonical}\g<2>",
         "README data estate mission count",
     )
+    text = replace_once(
+        text,
+        r"(├── vehicles/\s+)[\d,]+( deployable resources)",
+        rf"\g<1>{vehicles}\g<2>",
+        "README data estate resource count",
+    )
+    text = replace_once(
+        text,
+        r"(├── infrastructure/\s+)[\d,]+( buildings and extensions)",
+        rf"\g<1>{infrastructure}\g<2>",
+        "README data estate infrastructure count",
+    )
+    text = replace_once(
+        text,
+        r"(└── training/\s+)[\d,]+( qualification records)",
+        rf"\g<1>{training}\g<2>",
+        "README data estate qualification count",
+    )
     return text
 
 
 def sync_home(text: str, metrics: dict[str, int | float]) -> str:
     replacements = (
         (r'(data-mcuk-metric="missions">)[\d,]+(<)', format_number(metrics["canonical"]), "home hero canonical"),
-        (r'(<div><strong>)[\d,]+(</strong><span>Fully canonical)', format_number(metrics["fully"]), "home hero fully"),
+        (r'(data-mcuk-metric="fully-canonical">)[\d,]+(<)', format_number(metrics["fully"]), "home hero fully"),
         (r'(alongside )[\d,]+( higher-trust canonical mappings)', format_number(metrics["canonical"]), "home lookup canonical"),
         (r'(data-mcuk-collection="missions">)[\d,]+(<)', format_number(metrics["canonical"]), "home board canonical"),
-        (r'(<div><strong>)[\d,]+(</strong><span>Fully canonical</span>)', format_number(metrics["fully"]), "home board fully"),
+        (r'(data-mcuk-verification="fully-canonical">)[\d,]+(<)', format_number(metrics["fully"]), "home board fully"),
+        (r'(data-mcuk-collection="vehicles">)[\d,]+(<)', format_number(metrics["vehicles"]), "home board resource count"),
+        (r'(data-mcuk-collection="infrastructure">)[\d,]+(<)', format_number(metrics["infrastructure"]), "home board infrastructure count"),
+        (r'(data-mcuk-collection="training">)[\d,]+(<)', format_number(metrics["training"]), "home board qualification count"),
         (r'(<span><b>)[\d,]+(</b> direct ID matches)', format_number(metrics["direct"]), "home direct matches"),
         (r'(data-mcuk-search-count>)[\d,]+(<)', format_number(metrics["search_entities"]), "home search count"),
     )
@@ -342,11 +376,15 @@ def sync_api(text: str, metrics: dict[str, int | float]) -> str:
 
 def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, list[int]]) -> str:
     baseline_values = (
+        (r"[\d,]+ official UK mission records", f"{format_number(metrics['official'])} official UK mission records", "release official baseline"),
         (r"[\d,]+ canonical mission records", f"{format_number(metrics['canonical'])} canonical mission records", "release canonical baseline"),
         (r"[\d,]+ official IDs matched to canonical records", f"{format_number(metrics['direct'])} official IDs matched to canonical records", "release direct baseline"),
         (r"[\d,]+ fully canonical mission records", f"{format_number(metrics['fully'])} fully canonical mission records", "release fully baseline"),
         (r"[\d,]+ official records awaiting direct canonical records", f"{format_number(metrics['awaiting'])} official records awaiting direct canonical records", "release awaiting baseline"),
         (r"[\d,]+ canonical overlay or derived records without standalone official IDs", f"{format_number(metrics['overlays'])} canonical overlay or derived records without standalone official IDs", "release overlay baseline"),
+        (r"[\d,]+ canonical deployable-resource records", f"{format_number(metrics['vehicles'])} canonical deployable-resource records", "release resource baseline"),
+        (r"[\d,]+ canonical infrastructure records", f"{format_number(metrics['infrastructure'])} canonical infrastructure records", "release infrastructure baseline"),
+        (r"[\d,]+ qualification records", f"{format_number(metrics['training'])} qualification records", "release qualification baseline"),
     )
     for pattern, replacement, label in baseline_values:
         text = replace_once(text, pattern, replacement, label)
@@ -365,7 +403,7 @@ def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, 
     )
     text = replace_once(
         text,
-        r"The first 49 records use explicitly mapped.*?(?=\n\n## Accuracy controls)",
+        r"(?:The first 49 records use explicitly mapped|All [\d,]+ promoted missions pass exact official identity).*?(?=\n\n## Accuracy controls)",
         (
             f"All {format_number(metrics['fully'])} promoted missions pass exact official identity, aggregate diagnostics "
             f"and strict key equivalence. The current analyser has exhausted every mission covered by the verified "
@@ -445,6 +483,8 @@ def main() -> int:
         "Public verification metrics synchronized: "
         f"canonical={metrics['canonical']}, direct={metrics['direct']}, "
         f"fully={metrics['fully']}, remaining={metrics['remaining']}, "
+        f"vehicles={metrics['vehicles']}, infrastructure={metrics['infrastructure']}, "
+        f"training={metrics['training']}, "
         f"batches={len(batches)}, changed={changed_text}."
     )
     return 0
