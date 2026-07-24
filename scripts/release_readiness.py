@@ -146,6 +146,35 @@ def require_pattern(text: str, pattern: str, message: str) -> None:
     require(re.search(pattern, text, flags=re.MULTILINE) is not None, message)
 
 
+def audit_catalogue_state_lines(
+    readme: str,
+    notes: str,
+    awaiting: int,
+    overlays: int,
+) -> None:
+    rows = (
+        ("Official records awaiting canonical records", awaiting),
+        ("Canonical-only overlays", overlays),
+    )
+    for label, value in rows:
+        require_pattern(
+            readme,
+            rf"^\| \*\*{re.escape(label)}\*\* \| \*\*{re.escape(formatted_count(value))}\*\* \|$",
+            f"README {label} row is stale; expected {formatted_count(value)}",
+        )
+
+    release_lines = (
+        f"{formatted_count(awaiting)} official records awaiting direct canonical records",
+        f"{formatted_count(overlays)} canonical overlay or derived records without standalone official IDs",
+    )
+    for line in release_lines:
+        require_pattern(
+            notes,
+            rf"^{re.escape(line)}$",
+            f"Release notes catalogue state is stale: {line}",
+        )
+
+
 def flatten_nav(value: Any) -> Iterable[str]:
     if isinstance(value, str):
         yield value
@@ -336,6 +365,11 @@ def audit_publication_metadata(
     assert isinstance(fully, int)
     assert isinstance(remaining, int)
 
+    awaiting = official - direct
+    overlays = counts["missions"] - direct
+    require(awaiting >= 0, "Direct canonical matches exceed the official catalogue")
+    require(overlays >= 0, "Direct canonical matches exceed canonical mission records")
+
     readme = README_PATH.read_text(encoding="utf-8")
     readme_lower = readme.lower()
     readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
@@ -404,6 +438,7 @@ def audit_publication_metadata(
 
     notes_path = ROOT / "docs" / "releases" / f"v{version}.md"
     notes = notes_path.read_text(encoding="utf-8")
+    audit_catalogue_state_lines(readme, notes, awaiting, overlays)
     release_lines = (
         f"{formatted_count(official)} official UK mission records",
         f"{formatted_count(counts['missions'])} canonical mission records",

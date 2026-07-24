@@ -179,6 +179,26 @@ class CandidateReportTests(unittest.TestCase):
             candidate_report.merge_verification_decision_documents(documents)
 
 
+class GeneratorDateTests(unittest.TestCase):
+    def test_explicit_checked_at_is_deterministic(self) -> None:
+        self.assertEqual(
+            batch_generator.resolve_checked_at("2026-07-24"),
+            "2026-07-24",
+        )
+
+    def test_default_checked_at_uses_current_utc_date(self) -> None:
+        with mock.patch.object(
+            batch_generator,
+            "current_utc_date",
+            return_value="2026-07-25",
+        ):
+            self.assertEqual(batch_generator.resolve_checked_at(None), "2026-07-25")
+
+    def test_invalid_checked_at_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "ISO date"):
+            batch_generator.resolve_checked_at("23 July 2026")
+
+
 class GeneratorSafetyTests(unittest.TestCase):
     def test_generator_reads_only_the_new_record_creation_pool(self) -> None:
         creation_candidate = {

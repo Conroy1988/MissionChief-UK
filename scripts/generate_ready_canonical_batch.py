@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from collections import Counter
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -33,7 +34,6 @@ BATCH_ROOT = ROOT / "data" / "uk" / "mission-verification-batches"
 REFERENCE_ROOT = ROOT / "docs" / "reference"
 VERIFICATION_REGISTRY_PATH = ROOT / "data" / "uk" / "mission-verification-registry.json"
 SNAPSHOT_URL = "https://www.missionchief.co.uk/einsaetze.json"
-CHECKED_AT = "2026-07-23"
 BATCH_PATTERN = re.compile(r"fully-canonical-fire-batch-(\d+)\.json$")
 CONDITIONAL_MAPPINGS = load_conditional_mappings()
 (
@@ -70,6 +70,21 @@ def read_json(path: Path) -> Any:
 def write_json(path: Path, document: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def current_utc_date() -> str:
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+def resolve_checked_at(value: str | None) -> str:
+    candidate = value or current_utc_date()
+    try:
+        parsed = date.fromisoformat(candidate)
+    except ValueError as exc:
+        raise ValueError("--checked-at must be an ISO date in YYYY-MM-DD form") from exc
+    if parsed.isoformat() != candidate:
+        raise ValueError("--checked-at must be an ISO date in YYYY-MM-DD form")
+    return candidate
 
 
 def records_by_id(records: Any) -> dict[str, dict[str, Any]]:
@@ -344,7 +359,7 @@ def build_canonical_record(
         "requirements": translate_requirements(official, mappings),
         "verification": {
             "status": "verified",
-            "checked_at": CHECKED_AT,
+            "checked_at": effective_checked_at,
             "sources": [official.get("official_url") or f"https://www.missionchief.co.uk/einsaetze/{mission_id}", SNAPSHOT_URL],
         },
     }
@@ -478,7 +493,11 @@ def evidence_page(
     )
 
 
-def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
+def generate(
+    limit: int,
+    check_only: bool,
+    checked_at: str | None = None,
+) -> tuple[int, int, list[str]]:
     envelope = read_json(OFFICIAL_PATH)
     if not isinstance(envelope, dict):
         raise ValueError("Official UK mission source envelope must be an object")
@@ -500,6 +519,7 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
             mission_id for _, mission_id, _ in validated
         ]
 
+    effective_checked_at = resolve_checked_at(checked_at)
     batch_number = next_batch_number()
     registry_path = BATCH_ROOT / f"fully-canonical-fire-batch-{batch_number}.json"
     page_path = REFERENCE_ROOT / f"fully-canonical-mission-batch-{batch_number}.md"
@@ -520,7 +540,7 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
         canonical_record = build_canonical_record(official, mappings, patient_mappings)
         decision = {
             "stage": "fully-canonical",
-            "checked_at": CHECKED_AT,
+            "checked_at": effective_checked_at,
             "strict_key_equivalence": True,
             "strict_patient_equivalence": True,
             "strict_conditional_equivalence": bool(
@@ -560,7 +580,7 @@ def generate(limit: int, check_only: bool) -> tuple[int, int, list[str]]:
 
     write_json(
         registry_path,
-        {"schema_version": "1", "updated_at": CHECKED_AT, "records": decisions},
+        {"schema_version": "1", "updated_at": effective_checked_at, "records": decisions},
     )
     page_path.write_text(page_content, encoding="utf-8")
     generated_paths.extend(
@@ -573,10 +593,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate one fully canonical batch from all analyser-approved missions")
     parser.add_argument("--limit", type=int, default=200, help="Maximum missions to promote in one batch")
     parser.add_argument("--check", action="store_true", help="Fail when analyser-approved missions remain ungenerated")
+    parser.add_argument(
+        "--checked-at",
+        help="ISO evidence date for an actual generated batch; defaults to the current UTC date",
+    )
     args = parser.parse_args()
 
     try:
-        count, batch_number, paths = generate(max(1, args.limit), args.check)
+        count, batch_number, paths = generate(max(1, args.limit), args.check, args.checked_at)
     except ValueError as exc:
         print(f"Ready canonical batch generation failed: {exc}", file=sys.stderr)
         return 1

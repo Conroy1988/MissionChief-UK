@@ -113,6 +113,16 @@ def slug_for_renderer(path: Path, heading: str) -> str:
     return mkdocs_slug(heading)
 
 
+def duplicate_anchor(path: Path, base: str, count: int) -> str:
+    if count == 0:
+        return base
+    try:
+        path.resolve().relative_to(DOCS_ROOT.resolve())
+    except ValueError:
+        return f"{base}-{count}"
+    return f"{base}_{count}"
+
+
 def anchors(path: Path) -> set[str]:
     if path.suffix.lower() != ".md":
         return set()
@@ -139,7 +149,7 @@ def anchors(path: Path) -> set[str]:
         if not base:
             continue
         count = occurrence.get(base, 0)
-        values.add(base if count == 0 else f"{base}_{count}")
+        values.add(duplicate_anchor(path, base, count))
         occurrence[base] = count + 1
     return values
 
