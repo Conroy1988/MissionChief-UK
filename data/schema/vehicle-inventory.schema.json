@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/vehicle-inventory.schema.json",
+  "title": "MissionChief UK Vehicle Source Ledger",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "collection",
+    "updated_at",
+    "type_id_status_default",
+    "sources",
+    "columns",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "collection": {
+      "const": "uk-vehicle-source-ledger"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "type_id_status_default": {
+      "enum": [
+        "verified",
+        "community-candidate",
+        "review-required"
+      ]
+    },
+    "scope_note": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "columns": {
+      "const": [
+        "game_vehicle_type_id",
+        "name",
+        "canonical_id",
+        "service",
+        "resource_class",
+        "label_status",
+        "source_keys",
+        "notes"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "enum": [
+              "vehicle",
+              "aircraft",
+              "vessel",
+              "trailer",
+              "container",
+              "equipment"
+            ]
+          },
+          {
+            "enum": [
+              "verified",
+              "candidate",
+              "review-required"
+            ]
+          },
+          {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "minItems": 8,
+        "maxItems": 8
+      }
+    }
+  },
+  "additionalProperties": false
+}

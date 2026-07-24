@@ -184,6 +184,7 @@ nav:
       - Deployable Resources:
           - Vehicle Catalogue: reference/vehicle-catalogue.md
           - Verified Vehicle Records: reference/verified-vehicle-records.md
+          - Vehicle Coverage Status: reference/vehicle-coverage-status.md
           - Vehicle Economics & Staffing: reference/vehicle-economics-and-staffing.md
       - Infrastructure:
           - Buildings & Extensions: reference/buildings-and-extensions.md

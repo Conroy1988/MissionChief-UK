@@ -142,6 +142,19 @@ Static data API v1.2.0
 - [x] zero unmapped official requirement, chance or prerequisite keys
 - [x] Batch 31 completion ledger and v1.2.0 publication
 
+## Stage 36A — Complete deployable-resource coverage
+
+**Status: in progress.**
+
+- [x] establish an evidence-tiered UK vehicle type ledger
+- [x] compare source identities with canonical deployable-resource records
+- [x] publish identity and field-completeness coverage separately
+- [x] block duplicate IDs, dangling mappings and stale generated reports in CI
+- [ ] verify every current UK game vehicle type ID directly
+- [ ] create or reconcile every missing canonical resource identity
+- [ ] complete costs, staffing, training, building and deployment fields where reproducible
+- [ ] reach 100% identity coverage without treating unknown enrichment values as zero
+
 ## Ongoing evidence maintenance
 
 The numbered core programme and canonical mission backlog are complete. Remaining work is continuous source monitoring and evidence maintenance:
