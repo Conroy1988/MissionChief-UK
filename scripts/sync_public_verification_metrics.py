@@ -16,6 +16,8 @@ HOME_PATH = ROOT / "docs" / "index.md"
 API_PATH = ROOT / "docs" / "api" / "index.md"
 RELEASE_PATH = ROOT / "docs" / "releases" / "v1.1.0.md"
 CHANGELOG_PATH = ROOT / "CHANGELOG.md"
+MISSION_LOOKUP_PATH = ROOT / "docs" / "tools" / "mission-lookup.md"
+OFFICIAL_CATALOGUE_PATH = ROOT / "docs" / "reference" / "official-mission-catalogue.md"
 
 COLLECTION_ROOTS = (
     ROOT / "data" / "uk" / "missions",
@@ -266,6 +268,45 @@ def sync_home(text: str, metrics: dict[str, int | float]) -> str:
     return text
 
 
+def sync_mission_lookup(text: str, metrics: dict[str, int | float]) -> str:
+    block = "\n".join(
+        (
+            f"{format_number(metrics['official'])} official UK missions",
+            f"{format_number(metrics['canonical'])} canonical mission records",
+            f"{format_number(metrics['direct'])} direct official/canonical ID matches",
+            f"{format_number(metrics['fully'])} fully canonical missions",
+            f"{format_number(metrics['awaiting'])} official missions awaiting direct canonical records",
+        )
+    )
+    return replace_once(
+        text,
+        r"(## Current coverage\n\n```text\n).*?(\n```)",
+        lambda match: match.group(1) + block + match.group(2),
+        "Mission Lookup coverage block",
+        flags=re.DOTALL,
+    )
+
+
+def sync_official_catalogue(text: str, metrics: dict[str, int | float]) -> str:
+    block = "\n".join(
+        (
+            f"{format_number(metrics['official'])} official UK missions captured",
+            f"{format_number(metrics['canonical'])} canonical mission records",
+            f"{format_number(metrics['direct'])} direct official/canonical ID matches",
+            f"{format_number(metrics['fully'])} fully canonical missions",
+            f"{format_number(metrics['awaiting'])} official missions awaiting direct canonical records",
+            f"{format_number(metrics['overlays'])} canonical-only overlays or derived records",
+        )
+    )
+    return replace_once(
+        text,
+        r"(## Current programme position\n\n```text\n).*?(\n```)",
+        lambda match: match.group(1) + block + match.group(2),
+        "official catalogue programme block",
+        flags=re.DOTALL,
+    )
+
+
 def sync_api(text: str, metrics: dict[str, int | float]) -> str:
     values = {
         "Canonical missions": metrics["canonical"],
@@ -387,6 +428,12 @@ def main() -> int:
             API_PATH: sync_api(API_PATH.read_text(encoding="utf-8"), metrics),
             RELEASE_PATH: sync_release(RELEASE_PATH.read_text(encoding="utf-8"), metrics, batches),
             CHANGELOG_PATH: sync_changelog(CHANGELOG_PATH.read_text(encoding="utf-8"), metrics, batches),
+            MISSION_LOOKUP_PATH: sync_mission_lookup(
+                MISSION_LOOKUP_PATH.read_text(encoding="utf-8"), metrics
+            ),
+            OFFICIAL_CATALOGUE_PATH: sync_official_catalogue(
+                OFFICIAL_CATALOGUE_PATH.read_text(encoding="utf-8"), metrics
+            ),
         }
         changed = [path for path, content in updates.items() if write_if_changed(path, content)]
     except (OSError, SyncFailure) as exc:
