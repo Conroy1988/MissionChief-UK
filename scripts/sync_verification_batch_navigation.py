@@ -11,10 +11,10 @@ REFERENCE_ROOT = ROOT / "docs" / "reference"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
 PAGE_PATTERN = re.compile(r"fully-canonical-mission-batch-(\d+)\.md$")
 BLOCK_PATTERN = re.compile(
-    r"(?P<indent>\s*)- Fully Canonical Batch 1: reference/fully-canonical-mission-batch-1\.md\n"
+    r"^(?P<indent>[ \t]*)- Fully Canonical Batch 1: reference/fully-canonical-mission-batch-1\.md[ \t]*\r?\n"
     r".*?"
-    r"(?=\s*- Verified Mission Records: reference/verified-mission-records\.md)",
-    re.DOTALL,
+    r"(?=^(?P=indent)- Verified Mission Records: reference/verified-mission-records\.md[ \t]*$)",
+    re.DOTALL | re.MULTILINE,
 )
 
 
