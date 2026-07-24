@@ -65,6 +65,21 @@ def unexpected_changes(
     return sorted(tracked_paths), sorted(untracked_paths)
 
 
+def missing_expected_changes(
+    tracked: Iterable[str],
+    untracked: Iterable[str],
+    *,
+    allow_validation_generated_outputs: bool,
+) -> tuple[list[str], list[str]]:
+    if not allow_validation_generated_outputs:
+        return [], []
+
+    return (
+        sorted(TRANSIENT_TRACKED_OUTPUTS - set(tracked)),
+        sorted(TRANSIENT_UNTRACKED_OUTPUTS - set(untracked)),
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Fail when release-candidate validation leaves unexpected repository changes"
@@ -72,7 +87,7 @@ def main() -> int:
     parser.add_argument(
         "--allow-validation-generated-outputs",
         action="store_true",
-        help="Allow only the explicitly enumerated transient validation outputs",
+        help="Require exactly the explicitly enumerated transient validation outputs",
     )
     args = parser.parse_args()
 
@@ -84,11 +99,16 @@ def main() -> int:
             untracked,
             allow_validation_generated_outputs=args.allow_validation_generated_outputs,
         )
+        missing_tracked, missing_untracked = missing_expected_changes(
+            tracked,
+            untracked,
+            allow_validation_generated_outputs=args.allow_validation_generated_outputs,
+        )
     except WorktreeCheckFailure as exc:
         print(f"Validation worktree check failed: {exc}", file=sys.stderr)
         return 1
 
-    if unexpected_tracked or unexpected_untracked:
+    if unexpected_tracked or unexpected_untracked or missing_tracked or missing_untracked:
         if unexpected_tracked:
             print("Unexpected tracked changes:", file=sys.stderr)
             for path in unexpected_tracked:
@@ -96,6 +116,14 @@ def main() -> int:
         if unexpected_untracked:
             print("Unexpected untracked files:", file=sys.stderr)
             for path in unexpected_untracked:
+                print(f"  {path}", file=sys.stderr)
+        if missing_tracked:
+            print("Missing expected transient tracked outputs:", file=sys.stderr)
+            for path in missing_tracked:
+                print(f"  {path}", file=sys.stderr)
+        if missing_untracked:
+            print("Missing expected transient untracked outputs:", file=sys.stderr)
+            for path in missing_untracked:
                 print(f"  {path}", file=sys.stderr)
         return 1
 

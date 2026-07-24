@@ -1,5 +1,5 @@
 {
-  "canonical_count": 62,
+  "canonical_count": 284,
   "canonical_only": [
     {
       "id": "129-recovery-overlay",
@@ -72,123 +72,19 @@
   ],
   "canonical_only_count": 17,
   "collection": "official-uk-mission-coverage",
-  "coverage_percent": 4.24,
+  "coverage_percent": 25.14,
   "generated_at": "2026-07-22T21:40:36Z",
-  "matched_count": 45,
+  "matched_count": 267,
   "name_mismatches": [],
   "official_count": 1062,
   "official_only": [
-    {
-      "id": "3",
-      "name": "Burning motorbike"
-    },
-    {
-      "id": "4",
-      "name": "Burning grass"
-    },
-    {
-      "id": "7",
-      "name": "Burning leaves"
-    },
-    {
-      "id": "8",
-      "name": "Bulk rubbish fire"
-    },
-    {
-      "id": "9",
-      "name": "Bale of straw fire"
-    },
-    {
-      "id": "10",
-      "name": "Tractor fire"
-    },
-    {
-      "id": "11",
-      "name": "Phonebox on fire"
-    },
-    {
-      "id": "12",
-      "name": "Tree on the road"
-    },
-    {
-      "id": "13",
-      "name": "Burning truck"
-    },
-    {
-      "id": "14",
-      "name": "Little field fire"
-    },
-    {
-      "id": "15",
-      "name": "Little forest fire"
-    },
-    {
-      "id": "16",
-      "name": "Caravan fire"
-    },
-    {
-      "id": "17",
-      "name": "Postbox on fire"
-    },
-    {
-      "id": "18",
-      "name": "Out of control bonfire"
-    },
-    {
-      "id": "19",
-      "name": "Burning trailer"
-    },
-    {
-      "id": "20",
-      "name": "Basement fire"
-    },
-    {
-      "id": "21",
-      "name": "Chimney fire"
-    },
-    {
-      "id": "22",
-      "name": "Roof fire"
-    },
-    {
-      "id": "23",
-      "name": "Grease Fire"
-    },
-    {
-      "id": "24",
-      "name": "Burning bus shelter"
-    },
-    {
-      "id": "25",
-      "name": "Road accident"
-    },
     {
       "id": "26",
       "name": "Small Supermarket Fire"
     },
     {
-      "id": "27",
-      "name": "Garage fire"
-    },
-    {
       "id": "28",
       "name": "Burning machine"
-    },
-    {
-      "id": "29",
-      "name": "Unknown Tanker Spill"
-    },
-    {
-      "id": "30",
-      "name": "Fuel spill from car"
-    },
-    {
-      "id": "31",
-      "name": "Fireplace fire"
-    },
-    {
-      "id": "32",
-      "name": "Harvester fire"
     },
     {
       "id": "33",
@@ -279,14 +175,6 @@
       "name": "Unannounced demonstration"
     },
     {
-      "id": "58",
-      "name": "Kitchen Fire"
-    },
-    {
-      "id": "59",
-      "name": "Animal Rescue"
-    },
-    {
       "id": "60",
       "name": "Sports hall fire"
     },
@@ -299,14 +187,6 @@
       "name": "Transient Ischemic Attack"
     },
     {
-      "id": "64",
-      "name": "Accident Involving a Bus"
-    },
-    {
-      "id": "65",
-      "name": "Kitchen Fire"
-    },
-    {
       "id": "67",
       "name": "Brawl"
     },
@@ -315,28 +195,12 @@
       "name": "Big Supermarket Fire"
     },
     {
-      "id": "69",
-      "name": "Unknown Tanker Spill"
-    },
-    {
       "id": "71",
       "name": "Nosebleed"
     },
     {
-      "id": "72",
-      "name": "Light Aircraft Crash"
-    },
-    {
-      "id": "73",
-      "name": "Serious Accident Involving a Bus"
-    },
-    {
       "id": "74",
       "name": "Major fire"
-    },
-    {
-      "id": "75",
-      "name": "Partial Building Collapse"
     },
     {
       "id": "76",
@@ -395,10 +259,6 @@
       "name": "Road Traffic Collision (Major)"
     },
     {
-      "id": "90",
-      "name": "Cyclist hit by HGV"
-    },
-    {
       "id": "91",
       "name": "Fail to stop"
     },
@@ -453,14 +313,6 @@
     {
       "id": "106",
       "name": "Hit and Run"
-    },
-    {
-      "id": "107",
-      "name": "Row of garages on fire"
-    },
-    {
-      "id": "108",
-      "name": "Thatched cottage fire"
     },
     {
       "id": "109",
@@ -519,48 +371,12 @@
       "name": "Hand injury caused by fireworks"
     },
     {
-      "id": "126",
-      "name": "HGV Fire"
-    },
-    {
-      "id": "127",
-      "name": "Bin Lorry Fire"
-    },
-    {
-      "id": "128",
-      "name": "RTC Entrapment"
-    },
-    {
-      "id": "129",
-      "name": "Multi vehicle RTC"
-    },
-    {
-      "id": "130",
-      "name": "Multi vehicle RTC entrapment"
-    },
-    {
-      "id": "131",
-      "name": "HGV Lost its load"
-    },
-    {
       "id": "132",
       "name": "HGV Lost its load (Livestock)"
     },
     {
-      "id": "133",
-      "name": "HGV Lost its load (milk)"
-    },
-    {
-      "id": "134",
-      "name": "Goods Train Fire"
-    },
-    {
       "id": "138",
       "name": "Large Drunken Disorder"
-    },
-    {
-      "id": "139",
-      "name": "Fire in silo"
     },
     {
       "id": "140",
@@ -591,10 +407,6 @@
       "name": "Spinal injury"
     },
     {
-      "id": "149",
-      "name": "Building collapse"
-    },
-    {
       "id": "150",
       "name": "3rd degree burns"
     },
@@ -605,10 +417,6 @@
     {
       "id": "152",
       "name": "Traumatic limb amputation"
-    },
-    {
-      "id": "153",
-      "name": "Hay shed fire - Large"
     },
     {
       "id": "154",
@@ -667,20 +475,8 @@
       "name": "Easter bunny on crane"
     },
     {
-      "id": "168",
-      "name": "Trench Rescue"
-    },
-    {
-      "id": "169",
-      "name": "Heathland fire - large"
-    },
-    {
       "id": "170",
       "name": "Anaphylaxis"
-    },
-    {
-      "id": "171",
-      "name": "Thatched Cottage Chimney Fire"
     },
     {
       "id": "172",
@@ -691,28 +487,12 @@
       "name": "Warehouse Fire - Major Incident"
     },
     {
-      "id": "175",
-      "name": "Landfill fire"
-    },
-    {
       "id": "176",
       "name": "Possession of illegal weapons"
     },
     {
-      "id": "177",
-      "name": "Large field fire"
-    },
-    {
-      "id": "178",
-      "name": "Medium forest fire"
-    },
-    {
       "id": "179",
       "name": "Hare Coursing"
-    },
-    {
-      "id": "180",
-      "name": "Fire involving Acetylene cylinders"
     },
     {
       "id": "181",
@@ -745,10 +525,6 @@
     {
       "id": "188",
       "name": "Barbecue fire"
-    },
-    {
-      "id": "189",
-      "name": "Hotel fire (small)"
     },
     {
       "id": "190",
@@ -797,18 +573,6 @@
     {
       "id": "201",
       "name": "Possible sighting of wanted person with a firearms markers"
-    },
-    {
-      "id": "202",
-      "name": "Release of a person"
-    },
-    {
-      "id": "203",
-      "name": "Release of an item from a person"
-    },
-    {
-      "id": "204",
-      "name": "Internal flooding (Risk to life)"
     },
     {
       "id": "205",
@@ -903,24 +667,12 @@
       "name": "Speed Enforcement (RPU)"
     },
     {
-      "id": "232",
-      "name": "Manhole fire"
-    },
-    {
-      "id": "233",
-      "name": "Person under tree"
-    },
-    {
       "id": "234",
       "name": "Concert"
     },
     {
       "id": "235",
       "name": "Museum Fire"
-    },
-    {
-      "id": "236",
-      "name": "Burning freight car"
     },
     {
       "id": "237",
@@ -939,38 +691,6 @@
       "name": "Fire in shopping centre"
     },
     {
-      "id": "241",
-      "name": "HGV carrying hazardous load on fire"
-    },
-    {
-      "id": "242",
-      "name": "Nuclear Power Station Incident (Major Incident)"
-    },
-    {
-      "id": "243",
-      "name": "Large Forest Fire"
-    },
-    {
-      "id": "244",
-      "name": "Stack of tyres on fire"
-    },
-    {
-      "id": "248",
-      "name": "Burning manure pile"
-    },
-    {
-      "id": "249",
-      "name": "Large Hay bale stack on fire"
-    },
-    {
-      "id": "250",
-      "name": "Harvester on fire in field"
-    },
-    {
-      "id": "251",
-      "name": "Fire in munitions dump"
-    },
-    {
       "id": "252",
       "name": "Suspicious Person"
     },
@@ -981,14 +701,6 @@
     {
       "id": "254",
       "name": "Street market patrol"
-    },
-    {
-      "id": "255",
-      "name": "Bus on fire"
-    },
-    {
-      "id": "256",
-      "name": "Heathland fire - medium"
     },
     {
       "id": "257",
@@ -1033,10 +745,6 @@
     {
       "id": "267",
       "name": "Flooding on carriageway"
-    },
-    {
-      "id": "268",
-      "name": "HGV Rollover Down Embankment"
     },
     {
       "id": "269",
@@ -1139,14 +847,6 @@
       "name": "Illegal house party"
     },
     {
-      "id": "300",
-      "name": "Large Aircraft Crash Off Airport"
-    },
-    {
-      "id": "301",
-      "name": "Unsafe Structure"
-    },
-    {
       "id": "302",
       "name": "Leprechaun causing public mischief"
     },
@@ -1191,24 +891,8 @@
       "name": "Sepsis"
     },
     {
-      "id": "313",
-      "name": "Natural gas leak"
-    },
-    {
-      "id": "314",
-      "name": "Rescue from stuck ride"
-    },
-    {
-      "id": "315",
-      "name": "Collision on ride"
-    },
-    {
       "id": "316",
       "name": "Domestic drowning"
-    },
-    {
-      "id": "317",
-      "name": "Burning Substation"
     },
     {
       "id": "318",
@@ -1219,48 +903,12 @@
       "name": "Fall from height"
     },
     {
-      "id": "320",
-      "name": "Person trapped in agricultural machinery"
-    },
-    {
       "id": "321",
       "name": "Theft of a motor vehicle"
     },
     {
-      "id": "322",
-      "name": "Dangerous goods truck accident"
-    },
-    {
-      "id": "323",
-      "name": "Chlorine leak"
-    },
-    {
-      "id": "324",
-      "name": "Freight Train Derailment"
-    },
-    {
-      "id": "325",
-      "name": "Ammonia leak (Gas alarm system)"
-    },
-    {
-      "id": "326",
-      "name": "Power station fire"
-    },
-    {
-      "id": "327",
-      "name": "Bulk hazardous storage tank leak (small)"
-    },
-    {
-      "id": "328",
-      "name": "Bulk hazardous storage tank leak (large)"
-    },
-    {
       "id": "329",
       "name": "Car workshop fire with explosion"
-    },
-    {
-      "id": "330",
-      "name": "Large Natural Gas Explosion"
     },
     {
       "id": "331",
@@ -1269,14 +917,6 @@
     {
       "id": "332",
       "name": "Two vehicle RTC (No Injuries)"
-    },
-    {
-      "id": "333",
-      "name": "Child Locked in Car"
-    },
-    {
-      "id": "334",
-      "name": "Arcing power lines"
     },
     {
       "id": "335",
@@ -1347,14 +987,6 @@
       "name": "Gun pulled in nightclub"
     },
     {
-      "id": "352",
-      "name": "Small fire in nightclub"
-    },
-    {
-      "id": "353",
-      "name": "Medium fire in nightclub"
-    },
-    {
       "id": "354",
       "name": "Large fire in nightclub"
     },
@@ -1387,10 +1019,6 @@
       "name": "Non Injury Fall"
     },
     {
-      "id": "362",
-      "name": "Mixing of domestic cleaning chemicals"
-    },
-    {
       "id": "363",
       "name": "Standoff with armed suspect"
     },
@@ -1399,48 +1027,16 @@
       "name": "Standoff with armed suspect (Threatening to set fire)"
     },
     {
-      "id": "365",
-      "name": "Ring Removal"
-    },
-    {
-      "id": "366",
-      "name": "Person Stuck in lift"
-    },
-    {
-      "id": "367",
-      "name": "Unwell Person Stuck in lift"
-    },
-    {
       "id": "368",
       "name": "Person stuck in wood chipper"
-    },
-    {
-      "id": "369",
-      "name": "Crashed military fast jet off airport"
     },
     {
       "id": "370",
       "name": "Panic button activation"
     },
     {
-      "id": "371",
-      "name": "Multiple vehicle RTC - Major Incident"
-    },
-    {
-      "id": "372",
-      "name": "Passenger Train Derailment"
-    },
-    {
-      "id": "373",
-      "name": "Coach rollover RTC"
-    },
-    {
       "id": "374",
       "name": "Mass crush at festival"
-    },
-    {
-      "id": "375",
-      "name": "Stage Collapse at Festival"
     },
     {
       "id": "376",
@@ -1491,10 +1087,6 @@
       "name": "Office burglary"
     },
     {
-      "id": "388",
-      "name": "Smell of burning (Residential)"
-    },
-    {
       "id": "389",
       "name": "Smell of burning (Commercial)"
     },
@@ -1507,80 +1099,16 @@
       "name": "Escaped dog"
     },
     {
-      "id": "392",
-      "name": "Large fuel leak from vehicle"
-    },
-    {
-      "id": "393",
-      "name": "Large fuel leak from vehicle (fast road)"
-    },
-    {
-      "id": "394",
-      "name": "Odour of chemicals"
-    },
-    {
       "id": "395",
       "name": "Criminal damage"
-    },
-    {
-      "id": "396",
-      "name": "Residential Fire (Hoarder level 1-3)"
-    },
-    {
-      "id": "397",
-      "name": "Residential Fire (Hoarder level 4-6)"
-    },
-    {
-      "id": "398",
-      "name": "Residential Fire (Hoarder level 7-9)"
-    },
-    {
-      "id": "399",
-      "name": "Fire in allotment (Small)"
-    },
-    {
-      "id": "400",
-      "name": "Fire in allotment (Small) (Involving Cylinders)"
-    },
-    {
-      "id": "401",
-      "name": "Fire in allotment (Medium)"
-    },
-    {
-      "id": "402",
-      "name": "Fire in allotment (Large)"
-    },
-    {
-      "id": "403",
-      "name": "Substance in letter"
-    },
-    {
-      "id": "404",
-      "name": "Animal stuck between walls"
     },
     {
       "id": "405",
       "name": "Kidnapping"
     },
     {
-      "id": "406",
-      "name": "Stack of containers on fire"
-    },
-    {
       "id": "407",
       "name": "Broken Ankle"
-    },
-    {
-      "id": "408",
-      "name": "Small Fuel storage tank explosion"
-    },
-    {
-      "id": "409",
-      "name": "Large Fuel storage tank explosion"
-    },
-    {
-      "id": "410",
-      "name": "Fuel Storage Depot Explosion (Major Incident)"
     },
     {
       "id": "411",
@@ -1593,26 +1121,6 @@
     {
       "id": "418",
       "name": "Drunk and disorderly person"
-    },
-    {
-      "id": "419",
-      "name": "Scrapyard Fire"
-    },
-    {
-      "id": "420",
-      "name": "Scrapyard Fire Large"
-    },
-    {
-      "id": "421",
-      "name": "Late fire call"
-    },
-    {
-      "id": "422",
-      "name": "Assisting the ambulance service"
-    },
-    {
-      "id": "423",
-      "name": "Assisting the ambulance service [Bariatric]"
     },
     {
       "id": "424",
@@ -1659,10 +1167,6 @@
       "name": "Thief attacked by a cow"
     },
     {
-      "id": "435",
-      "name": "Person Locked Out of House"
-    },
-    {
       "id": "436",
       "name": "Melted Chocolate Bunny"
     },
@@ -1677,26 +1181,6 @@
     {
       "id": "439",
       "name": "Egg hunt under water"
-    },
-    {
-      "id": "440",
-      "name": "Sinkhole opened up in road"
-    },
-    {
-      "id": "441",
-      "name": "LPG Fuelled vehicle fire"
-    },
-    {
-      "id": "442",
-      "name": "LPG Fuelled vehicle fire (Persons Reported)"
-    },
-    {
-      "id": "443",
-      "name": "LPG Fuelled vehicle fire (fast road) (Persons Reported)"
-    },
-    {
-      "id": "444",
-      "name": "LPG Fuelled vehicle fire (fast road)"
     },
     {
       "id": "445",
@@ -1721,10 +1205,6 @@
     {
       "id": "450",
       "name": "Fire in multi-storey car park (Major Incident)"
-    },
-    {
-      "id": "451",
-      "name": "Bridge Strike (Double Decker Bus) (Persons reported)"
     },
     {
       "id": "452",
@@ -1783,56 +1263,12 @@
       "name": "Fight on Train"
     },
     {
-      "id": "466",
-      "name": "Caravan roll over RTC"
-    },
-    {
-      "id": "467",
-      "name": "Caravan roll over RTC (Fast Road)"
-    },
-    {
-      "id": "468",
-      "name": "Tumble dryer fire in residential premises"
-    },
-    {
-      "id": "469",
-      "name": "Tram fire"
-    },
-    {
-      "id": "470",
-      "name": "Tram fire (Persons Reported)"
-    },
-    {
       "id": "471",
       "name": "Prolonged Seizure"
     },
     {
-      "id": "472",
-      "name": "Ceiling Collapse Minor"
-    },
-    {
-      "id": "473",
-      "name": "Ceiling Collapse Minor (Person Trapped)"
-    },
-    {
       "id": "474",
       "name": "Penetrating Trauma - Central Wound"
-    },
-    {
-      "id": "475",
-      "name": "Underground electrical cable fire"
-    },
-    {
-      "id": "476",
-      "name": "Underground electrical cable fire (Medium)"
-    },
-    {
-      "id": "477",
-      "name": "Underground electrical cable fire (Large)"
-    },
-    {
-      "id": "478",
-      "name": "Underground electrical cable fire (Major)"
     },
     {
       "id": "479",
@@ -1843,24 +1279,8 @@
       "name": "Blurred Vision"
     },
     {
-      "id": "481",
-      "name": "Fire in turbine"
-    },
-    {
-      "id": "482",
-      "name": "Fire in turbine (Nuclear Power station)"
-    },
-    {
       "id": "483",
       "name": "Scalded by hot liquid"
-    },
-    {
-      "id": "484",
-      "name": "Tanker on fire"
-    },
-    {
-      "id": "485",
-      "name": "Tanker on fire (Persons reported)"
     },
     {
       "id": "486",
@@ -1947,10 +1367,6 @@
       "name": "Spiking incident"
     },
     {
-      "id": "507",
-      "name": "Small Abandoned Building Fire"
-    },
-    {
       "id": "508",
       "name": "Articles Thrown into Prison"
     },
@@ -1969,34 +1385,6 @@
     {
       "id": "512",
       "name": "Violent Prison Fight (Large)"
-    },
-    {
-      "id": "513",
-      "name": "Cell Fire"
-    },
-    {
-      "id": "514",
-      "name": "Cell Fire (Persons Reported)"
-    },
-    {
-      "id": "515",
-      "name": "Prison Wing Fire (Persons Reported)"
-    },
-    {
-      "id": "516",
-      "name": "Prison Wing Fire (Major Incident) (Persons Reported)"
-    },
-    {
-      "id": "517",
-      "name": "Prison Wing Fire"
-    },
-    {
-      "id": "518",
-      "name": "Prison Wing Fire (Major Incident)"
-    },
-    {
-      "id": "519",
-      "name": "Youths Setting Fire"
     },
     {
       "id": "520",
@@ -2019,14 +1407,6 @@
       "name": "Fire Station Open Day"
     },
     {
-      "id": "527",
-      "name": "Factory Fire (Major Incident)"
-    },
-    {
-      "id": "528",
-      "name": "Factory Fire (Major Incident) (Persons Reported)"
-    },
-    {
       "id": "529",
       "name": "Threats to commit arson"
     },
@@ -2047,10 +1427,6 @@
       "name": "Christmas Presents Stolen in Mall"
     },
     {
-      "id": "535",
-      "name": "Lithium Battery Fire"
-    },
-    {
       "id": "536",
       "name": "Suspect observations"
     },
@@ -2069,10 +1445,6 @@
     {
       "id": "540",
       "name": "Kids throwing snowballs on people and houses"
-    },
-    {
-      "id": "541",
-      "name": "Smoking Electrical Equipment"
     },
     {
       "id": "542",
@@ -2155,20 +1527,12 @@
       "name": "Medical Emergency on beach"
     },
     {
-      "id": "565",
-      "name": "Vehicle trapped in flood water"
-    },
-    {
       "id": "566",
       "name": "Person trapped in flood water"
     },
     {
       "id": "568",
       "name": "Mud Rescue MAJOR"
-    },
-    {
-      "id": "570",
-      "name": "Fire in a paper mill"
     },
     {
       "id": "571",
@@ -2187,24 +1551,12 @@
       "name": "Fire from candle light dinner"
     },
     {
-      "id": "575",
-      "name": "Fire in wind turbine"
-    },
-    {
       "id": "576",
       "name": "Facial Droop"
     },
     {
-      "id": "577",
-      "name": "Person stuck in swing"
-    },
-    {
       "id": "578",
       "name": "Hypovolemic shock"
-    },
-    {
-      "id": "579",
-      "name": "Fire in heritage building"
     },
     {
       "id": "580",
@@ -2239,10 +1591,6 @@
       "name": "Fall detector alarm"
     },
     {
-      "id": "597",
-      "name": "Persons stuck on scaffolding"
-    },
-    {
       "id": "598",
       "name": "EPIRB Activation (Offshore)"
     },
@@ -2259,10 +1607,6 @@
       "name": "Demonstration against the construction of a motorway project"
     },
     {
-      "id": "602",
-      "name": "Motorcycle Hits Pedestrian"
-    },
-    {
       "id": "603",
       "name": "Wasp attack"
     },
@@ -2273,14 +1617,6 @@
     {
       "id": "605",
       "name": "Risk fan escort"
-    },
-    {
-      "id": "606",
-      "name": "Person stuck in bath"
-    },
-    {
-      "id": "607",
-      "name": "Hand stuck in window"
     },
     {
       "id": "608",
@@ -2343,18 +1679,6 @@
       "name": "Travelling Fan Serial"
     },
     {
-      "id": "624",
-      "name": "Smell of petrol (domestic)"
-    },
-    {
-      "id": "625",
-      "name": "Gain entry - houseboat (concern for welfare)"
-    },
-    {
-      "id": "626",
-      "name": "Sauna on Fire"
-    },
-    {
       "id": "627",
       "name": "Altered Consciousness"
     },
@@ -2389,14 +1713,6 @@
     {
       "id": "637",
       "name": "Community event"
-    },
-    {
-      "id": "638",
-      "name": "Fire - Electrical Installation"
-    },
-    {
-      "id": "639",
-      "name": "Child stuck in tree"
     },
     {
       "id": "640",
@@ -2483,10 +1799,6 @@
       "name": "Unconcious Head Injury"
     },
     {
-      "id": "662",
-      "name": "Fire in a town hall"
-    },
-    {
       "id": "663",
       "name": "Vomiting Blood"
     },
@@ -2497,26 +1809,6 @@
     {
       "id": "665",
       "name": "Exacerbation Of COPD"
-    },
-    {
-      "id": "666",
-      "name": "Spillage of chemicals (Small)"
-    },
-    {
-      "id": "667",
-      "name": "Spillage of chemicals (Large)"
-    },
-    {
-      "id": "668",
-      "name": "Take away shop fire (Small)"
-    },
-    {
-      "id": "669",
-      "name": "Take away shop fire (Medium)"
-    },
-    {
-      "id": "670",
-      "name": "Take away shop fire (Large)"
     },
     {
       "id": "671",
@@ -2543,14 +1835,6 @@
       "name": "Injured person found in park"
     },
     {
-      "id": "677",
-      "name": "Fire on a cruise ship at the dock"
-    },
-    {
-      "id": "678",
-      "name": "Leakage of chemicals in a laboratory (hospital)"
-    },
-    {
       "id": "679",
       "name": "Cherry blossoms on fire"
     },
@@ -2563,32 +1847,8 @@
       "name": "Flowers stolen"
     },
     {
-      "id": "682",
-      "name": "Forest fire exercise"
-    },
-    {
-      "id": "683",
-      "name": "Injury at survival game"
-    },
-    {
       "id": "684",
       "name": "Self-Service Laundry Facility Fire"
-    },
-    {
-      "id": "685",
-      "name": "Sports Stadium Collapse"
-    },
-    {
-      "id": "686",
-      "name": "Confined Space Rescue"
-    },
-    {
-      "id": "687",
-      "name": "Pipeline Leak"
-    },
-    {
-      "id": "688",
-      "name": "Pipeline Fire"
     },
     {
       "id": "689",
@@ -2643,14 +1903,6 @@
       "name": "Drive-in Theater Accident"
     },
     {
-      "id": "703",
-      "name": "Fire in Derelict Shop"
-    },
-    {
-      "id": "704",
-      "name": "Fire at a recycling factory"
-    },
-    {
       "id": "705",
       "name": "Sudden illness in spectator stand"
     },
@@ -2699,14 +1951,6 @@
       "name": "Interfacility Transfer - Critical Care"
     },
     {
-      "id": "717",
-      "name": "Pipeline Explosion"
-    },
-    {
-      "id": "718",
-      "name": "Canoeing accident"
-    },
-    {
       "id": "720",
       "name": "Flooded subway station"
     },
@@ -2719,24 +1963,8 @@
       "name": "People missing after canoeing accident"
     },
     {
-      "id": "723",
-      "name": "Hand Laceration Caused By Malfunctioning Deli Slicer"
-    },
-    {
-      "id": "724",
-      "name": "Bakery Oven Explosion In Supermarket"
-    },
-    {
-      "id": "725",
-      "name": "Butcher Injured By Bandsaw Machine Malfunction"
-    },
-    {
       "id": "726",
       "name": "Employee Slipped On Dropped Salmon"
-    },
-    {
-      "id": "727",
-      "name": "Hand Pierced By Sharp Catfish Bone"
     },
     {
       "id": "728",
@@ -2757,18 +1985,6 @@
     {
       "id": "732",
       "name": "Multiple Persons Slashing Car Tyres"
-    },
-    {
-      "id": "733",
-      "name": "Fired Employee Spills Cleaning Chemicals"
-    },
-    {
-      "id": "734",
-      "name": "Fire in a lithium battery manufacturing factory"
-    },
-    {
-      "id": "735",
-      "name": "Fire in an abandoned hospital"
     },
     {
       "id": "736",
@@ -2821,10 +2037,6 @@
     {
       "id": "748",
       "name": "Illegal substances found in Buffet Food"
-    },
-    {
-      "id": "749",
-      "name": "Carbon monoxide poisoning in a school"
     },
     {
       "id": "750",
@@ -2903,20 +2115,8 @@
       "name": "Bilking from Restaurant"
     },
     {
-      "id": "772",
-      "name": "Vehicle Fluids Wash Down"
-    },
-    {
       "id": "773",
       "name": "Delirium"
-    },
-    {
-      "id": "774",
-      "name": "Crane fell over on construction site"
-    },
-    {
-      "id": "775",
-      "name": "Trees blocking the roads after heavy storm"
     },
     {
       "id": "776",
@@ -2975,24 +2175,8 @@
       "name": "Mass influx of sick people - railway station"
     },
     {
-      "id": "793",
-      "name": "Lightning strike at event"
-    },
-    {
-      "id": "794",
-      "name": "Tram derailed"
-    },
-    {
-      "id": "795",
-      "name": "Bridge collapse (major)"
-    },
-    {
       "id": "796",
       "name": "Chain Collision in the tunnel"
-    },
-    {
-      "id": "798",
-      "name": "Person trapped between platform and train"
     },
     {
       "id": "799",
@@ -3015,28 +2199,12 @@
       "name": "Execution of an Interpol arrest warrant"
     },
     {
-      "id": "804",
-      "name": "Powerline sparks fire on farmland"
-    },
-    {
-      "id": "805",
-      "name": "Severe chlorine leak"
-    },
-    {
-      "id": "806",
-      "name": "Passenger Train Fire in Tunnel"
-    },
-    {
       "id": "808",
       "name": "Passenger Train Caught in Landslide (Major Incident)"
     },
     {
       "id": "809",
       "name": "Flooded Railway Station (Persons Trapped)"
-    },
-    {
-      "id": "810",
-      "name": "Goods Train Collided with HGV"
     },
     {
       "id": "811",
@@ -3053,10 +2221,6 @@
     {
       "id": "814",
       "name": "Elves Protesting"
-    },
-    {
-      "id": "815",
-      "name": "Large Animal Rescue"
     },
     {
       "id": "816",
@@ -3087,14 +2251,6 @@
       "name": "Driver hit by loose truck wheel"
     },
     {
-      "id": "823",
-      "name": "Fire in furniture shop"
-    },
-    {
-      "id": "824",
-      "name": "Fire in stables"
-    },
-    {
       "id": "825",
       "name": "Truck carrying Eggnog overturned"
     },
@@ -3105,18 +2261,6 @@
     {
       "id": "827",
       "name": "Fire at control tower"
-    },
-    {
-      "id": "828",
-      "name": "Party centre on fire"
-    },
-    {
-      "id": "840",
-      "name": "Person trapped under vehicle"
-    },
-    {
-      "id": "841",
-      "name": "Smoke coming from company premises"
     },
     {
       "id": "842",
@@ -3139,28 +2283,8 @@
       "name": "Fans fight at basketball game"
     },
     {
-      "id": "847",
-      "name": "Truck overturned by strong winds"
-    },
-    {
       "id": "848",
       "name": "Cyclist blown over by strong winds"
-    },
-    {
-      "id": "849",
-      "name": "Roof tiles loose in the gutter"
-    },
-    {
-      "id": "850",
-      "name": "Roof tiles loose on the roof"
-    },
-    {
-      "id": "851",
-      "name": "Gutter at risk of being blown off"
-    },
-    {
-      "id": "852",
-      "name": "Solar panels at risk of falling off the roof"
     },
     {
       "id": "853",
@@ -3173,18 +2297,6 @@
     {
       "id": "855",
       "name": "Ticket forgery"
-    },
-    {
-      "id": "856",
-      "name": "Fire in inaccessible terrain"
-    },
-    {
-      "id": "857",
-      "name": "Washing machine on fire"
-    },
-    {
-      "id": "858",
-      "name": "Dryer on fire"
     },
     {
       "id": "859",
@@ -4147,7 +3259,7 @@
       "name": "Road Traffic Collision (Major)"
     }
   ],
-  "official_only_count": 1017,
+  "official_only_count": 795,
   "schema_version": "1",
   "source_sha256": "bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878",
   "source_url": "https://www.missionchief.co.uk/einsaetze.json"
