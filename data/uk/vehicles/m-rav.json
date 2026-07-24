@@ -1,24 +1,31 @@
 {
-  "id": "police_public_order_extension",
-  "name": "Police & Public Safety Extension",
+  "id": "m_rav",
+  "name": "M-RAV",
   "aliases": [
-    "Police Public Order Extension",
-    "Public Order Extension"
+    "MRAV"
   ],
-  "kind": "extension",
   "service": "police",
-  "parent_buildings": [
+  "category": "Armed response",
+  "cost": {
+    "credits": 10000,
+    "coins": 23
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 6
+  },
+  "training": [
+    "Firearms training"
+  ],
+  "building_requirements": [
     "Police Station",
     "Large Police Depot"
   ],
   "capabilities": [
-    "public_order_mission_generation",
-    "public_safety_vehicle_purchase",
-    "detention_van_parking"
+    "armed_police_response"
   ],
   "notes": [
-    "The official UK Help Centre publishes this exact extension name.",
-    "It costs 100,000 credits or 15 coins and enables specialist Police and Public Safety vehicles."
+    "The official Help Centre describes the M-RAV as responding to high-risk firearms situations."
   ],
   "verification": {
     "status": "verified",

@@ -5,51 +5,56 @@
   "status": "in-progress",
   "summary": {
     "inventory_entries": 73,
-    "canonical_records": 59,
-    "mapped_inventory_entries": 41,
-    "unresolved_inventory_entries": 32,
+    "canonical_records": 64,
+    "mapped_inventory_entries": 44,
+    "unresolved_inventory_entries": 29,
     "dangling_canonical_mappings": 0,
-    "canonical_records_without_inventory_entry": 18,
-    "identity_coverage_percent": 56.16,
-    "verified_labels": 18,
-    "candidate_labels": 55,
+    "canonical_records_without_inventory_entry": 20,
+    "identity_coverage_percent": 60.27,
+    "verified_labels": 19,
+    "candidate_labels": 54,
     "verified_type_ids": 0,
     "candidate_type_ids": 73
   },
   "field_completeness": {
     "cost": {
-      "complete": 4,
-      "total": 59,
-      "percent": 6.78
+      "complete": 10,
+      "total": 64,
+      "percent": 15.62
     },
     "staffing": {
-      "complete": 4,
-      "total": 59,
-      "percent": 6.78
+      "complete": 10,
+      "total": 64,
+      "percent": 15.62
     },
     "training": {
-      "complete": 3,
-      "total": 59,
-      "percent": 5.08
+      "complete": 7,
+      "total": 64,
+      "percent": 10.94
     },
     "building_requirements": {
-      "complete": 4,
-      "total": 59,
-      "percent": 6.78
+      "complete": 10,
+      "total": 64,
+      "percent": 15.62
+    },
+    "transport_capacity": {
+      "complete": 2,
+      "total": 64,
+      "percent": 3.12
     },
     "deployment": {
       "complete": 14,
-      "total": 59,
-      "percent": 23.73
+      "total": 64,
+      "percent": 21.88
     },
     "capabilities": {
-      "complete": 59,
-      "total": 59,
+      "complete": 64,
+      "total": 64,
       "percent": 100.0
     },
     "verification_sources": {
-      "complete": 59,
-      "total": 59,
+      "complete": 64,
+      "total": 64,
       "percent": 100.0
     }
   },
@@ -216,47 +221,6 @@
         "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
       ],
       "notes": []
-    },
-    {
-      "game_vehicle_type_id": 51,
-      "name": "PSU Carrier",
-      "service": "police",
-      "resource_class": "vehicle",
-      "label_status": "verified",
-      "type_id_status": "community-candidate",
-      "sources": [
-        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
-      ],
-      "notes": []
-    },
-    {
-      "game_vehicle_type_id": 54,
-      "name": "Detention Van",
-      "service": "police",
-      "resource_class": "vehicle",
-      "label_status": "verified",
-      "type_id_status": "community-candidate",
-      "sources": [
-        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
-      ],
-      "notes": []
-    },
-    {
-      "game_vehicle_type_id": 56,
-      "name": "MRAV",
-      "service": "police",
-      "resource_class": "vehicle",
-      "label_status": "candidate",
-      "type_id_status": "community-candidate",
-      "sources": [
-        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
-      ],
-      "notes": [
-        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
-      ]
     },
     {
       "game_vehicle_type_id": 61,
@@ -558,6 +522,11 @@
       "service": "fire"
     },
     {
+      "canonical_id": "firearms_personnel_carrier",
+      "name": "Firearms Personnel Carrier",
+      "service": "police"
+    },
+    {
       "canonical_id": "foam_unit",
       "name": "Foam Unit",
       "service": "fire_and_rescue"
@@ -571,6 +540,11 @@
       "canonical_id": "mud_decontamination_unit",
       "name": "Mud Decontamination Unit",
       "service": "coastguard"
+    },
+    {
+      "canonical_id": "multiple_dog_carrier",
+      "name": "Multiple Dog Carrier",
+      "service": "police"
     },
     {
       "canonical_id": "personal_sar_vehicle",

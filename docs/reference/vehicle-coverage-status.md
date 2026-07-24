@@ -9,13 +9,13 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 | Metric | Value |
 |---|---:|
 | Source-ledger entries | **73** |
-| Canonical deployable-resource records | **59** |
-| Ledger entries mapped to canonical records | **41** |
-| Ledger entries awaiting canonical mapping | **32** |
-| Canonical records without a ledger entry | **18** |
+| Canonical deployable-resource records | **64** |
+| Ledger entries mapped to canonical records | **44** |
+| Ledger entries awaiting canonical mapping | **29** |
+| Canonical records without a ledger entry | **20** |
 | Dangling canonical mappings | **0** |
-| Identity coverage | **56.16%** |
-| Verified labels | **18** |
+| Identity coverage | **60.27%** |
+| Verified labels | **19** |
 | Community-candidate type IDs | **73** |
 
 **Programme status:** `in-progress`
@@ -24,13 +24,14 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 
 | Field | Complete | Coverage |
 |---|---:|---:|
-| Cost | 4 / 59 | 6.78% |
-| Staffing | 4 / 59 | 6.78% |
-| Training | 3 / 59 | 5.08% |
-| Building Requirements | 4 / 59 | 6.78% |
-| Deployment | 14 / 59 | 23.73% |
-| Capabilities | 59 / 59 | 100.00% |
-| Verification Sources | 59 / 59 | 100.00% |
+| Cost | 10 / 64 | 15.62% |
+| Staffing | 10 / 64 | 15.62% |
+| Training | 7 / 64 | 10.94% |
+| Building Requirements | 10 / 64 | 15.62% |
+| Transport Capacity | 2 / 64 | 3.12% |
+| Deployment | 14 / 64 | 21.88% |
+| Capabilities | 64 / 64 | 100.00% |
+| Verification Sources | 64 / 64 | 100.00% |
 
 An omitted value is unknown, not zero. Field completeness is reported separately from identity coverage so partial records cannot be mistaken for complete economics or staffing data.
 
@@ -49,9 +50,6 @@ An omitted value is unknown, not zero. Field completeness is reported separately
 | 36 | F/WrC | fire_and_rescue | vehicle | candidate |
 | 38 | RPF | fire_and_rescue | vehicle | candidate |
 | 39 | Operational Support Unit | ambulance | vehicle | candidate |
-| 51 | PSU Carrier | police | vehicle | verified |
-| 54 | Detention Van | police | vehicle | verified |
-| 56 | MRAV | police | vehicle | candidate |
 | 61 | Flood Rescue Unit Trailer | coastguard | trailer | verified |
 | 65 | Coastguard Rescue Helicopter Large | coastguard | aircraft | candidate |
 | 66 | 4x4 Vehicle | lifeboat | vehicle | verified |
@@ -88,9 +86,11 @@ An omitted value is unknown, not zero. Field completeness is reported separately
 | `drone` | Drone | shared |
 | `eiu` | EIU | police |
 | `fire_engine` | Fire engine | fire |
+| `firearms_personnel_carrier` | Firearms Personnel Carrier | police |
 | `foam_unit` | Foam Unit | fire_and_rescue |
 | `inland_rescue_boat_trailer` | Inland Rescue Boat (Trailer) | lifeboat |
 | `mud_decontamination_unit` | Mud Decontamination Unit | coastguard |
+| `multiple_dog_carrier` | Multiple Dog Carrier | police |
 | `personal_sar_vehicle` | Personal SAR Vehicle | search_and_rescue |
 | `traffic_car` | Traffic Car | police |
 

@@ -1,0 +1,36 @@
+{
+  "id": "psu_carrier",
+  "name": "PSU Carrier",
+  "aliases": [
+    "Police Support Unit Carrier"
+  ],
+  "service": "police",
+  "category": "Public order transport",
+  "cost": {
+    "credits": 8000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 9
+  },
+  "building_requirements": [
+    "Police Station",
+    "Large Police Depot",
+    "Police & Public Safety Extension"
+  ],
+  "capabilities": [
+    "public_order_personnel_transport"
+  ],
+  "notes": [
+    "The official Help Centre states that this unit carries up to 9 educated officers."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+    ]
+  }
+}

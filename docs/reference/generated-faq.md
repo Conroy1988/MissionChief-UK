@@ -7,7 +7,7 @@ This page is generated from MissionChief UK data version **1.2.0** released **20
 
 ## How much verified data is currently published?
 
-Version 1.2.0 contains 1,079 mission records, 59 deployable-resource records, 19 infrastructure records and 12 qualification records.
+Version 1.2.0 contains 1,079 mission records, 64 deployable-resource records, 19 infrastructure records and 12 qualification records.
 
 ## What does verified mean?
 

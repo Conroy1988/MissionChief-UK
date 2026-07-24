@@ -1,6 +1,6 @@
 {
   "collection": "vehicles",
-  "count": 59,
+  "count": 64,
   "data_version": "1.2.0",
   "records": [
     {
@@ -612,6 +612,43 @@
       }
     },
     {
+      "aliases": [],
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot",
+        "Police & Public Safety Extension"
+      ],
+      "capabilities": [
+        "prisoner_transport"
+      ],
+      "category": "Custody transport",
+      "cost": {
+        "coins": 15,
+        "credits": 26000
+      },
+      "id": "detention_van",
+      "name": "Detention Van",
+      "notes": [
+        "The official Help Centre states that this unit transports up to 4 prisoners and cannot use other vehicle slots."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 2,
+        "minimum": 1
+      },
+      "transport_capacity": {
+        "prisoners": 4
+      },
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [
         "Dog Support Unit",
         "DSU"
@@ -729,6 +766,43 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
           "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot",
+        "Police & Public Safety Extension"
+      ],
+      "capabilities": [
+        "armed_police_personnel_transport"
+      ],
+      "category": "Firearms personnel transport",
+      "cost": {
+        "coins": 15,
+        "credits": 8000
+      },
+      "id": "firearms_personnel_carrier",
+      "name": "Firearms Personnel Carrier",
+      "notes": [
+        "The official Help Centre verifies transport of armed police officers. The current game vehicle type ID remains unverified."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 9,
+        "minimum": 1
+      },
+      "training": [
+        "Firearms training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -905,6 +979,44 @@
       }
     },
     {
+      "aliases": [
+        "MRAV"
+      ],
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot"
+      ],
+      "capabilities": [
+        "armed_police_response"
+      ],
+      "category": "Armed response",
+      "cost": {
+        "coins": 23,
+        "credits": 10000
+      },
+      "id": "m_rav",
+      "name": "M-RAV",
+      "notes": [
+        "The official Help Centre describes the M-RAV as responding to high-risk firearms situations."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 6,
+        "minimum": 1
+      },
+      "training": [
+        "Firearms training"
+      ],
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [],
       "capabilities": [
         "airfield_firefighting",
@@ -982,24 +1094,41 @@
       }
     },
     {
-      "aliases": [],
-      "capabilities": [
-        "mounted_policing"
+      "aliases": [
+        "Mounted Units"
       ],
-      "category": "Mounted policing",
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot",
+        "Police & Public Safety Extension"
+      ],
+      "capabilities": [
+        "mounted_policing",
+        "mounted_officer_transport"
+      ],
+      "category": "Mounted policing transport",
+      "cost": {
+        "coins": 10,
+        "credits": 15000
+      },
       "id": "mounted_unit",
       "name": "Mounted Unit",
       "notes": [
-        "The official page labels this requirement Mounted Units.",
-        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+        "The official Help Centre verifies transport of up to 8 Mounted Officers."
       ],
       "service": "police",
+      "staffing": {
+        "maximum": 8,
+        "minimum": 1
+      },
+      "training": [
+        "Mounted Training"
+      ],
       "verification": {
         "checked_at": "2026-07-24",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/448",
-          "https://www.missionchief.co.uk/einsaetze/449",
-          "https://www.missionchief.co.uk/einsaetze.json"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -1021,6 +1150,46 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/546",
           "https://www.missionchief.co.uk/einsaetze/567"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot",
+        "Police & Public Safety Extension"
+      ],
+      "capabilities": [
+        "multiple_police_dog_transport"
+      ],
+      "category": "Police dog transport",
+      "cost": {
+        "coins": 15,
+        "credits": 50000
+      },
+      "id": "multiple_dog_carrier",
+      "name": "Multiple Dog Carrier",
+      "notes": [
+        "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 4,
+        "minimum": 1
+      },
+      "training": [
+        "Dog handling"
+      ],
+      "transport_capacity": {
+        "dogs": 4
+      },
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -1173,6 +1342,42 @@
         "checked_at": "2026-07-22",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/760"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Police Support Unit Carrier"
+      ],
+      "building_requirements": [
+        "Police Station",
+        "Large Police Depot",
+        "Police & Public Safety Extension"
+      ],
+      "capabilities": [
+        "public_order_personnel_transport"
+      ],
+      "category": "Public order transport",
+      "cost": {
+        "coins": 10,
+        "credits": 8000
+      },
+      "id": "psu_carrier",
+      "name": "PSU Carrier",
+      "notes": [
+        "The official Help Centre states that this unit carries up to 9 educated officers."
+      ],
+      "service": "police",
+      "staffing": {
+        "maximum": 9,
+        "minimum": 1
+      },
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
