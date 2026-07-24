@@ -32,9 +32,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          awk '/^PAYLOAD$/{capture=!capture; next} capture' \
+          sed -n "/<<'PAYLOAD'/,/^PAYLOAD$/p" \
             .github/workflows/agent-stage36a-foundation.yml \
+            | sed '1d;$d' \
             > "$RUNNER_TEMP/stage36a-foundation.tar.xz.b64"
+          test -s "$RUNNER_TEMP/stage36a-foundation.tar.xz.b64"
           base64 --decode "$RUNNER_TEMP/stage36a-foundation.tar.xz.b64" \
             > "$RUNNER_TEMP/stage36a-foundation.tar.xz"
           echo "339c56fa70db5c0b6c92ad348a50c5f08930dd41582408ff4601b21fe95e9db1  $RUNNER_TEMP/stage36a-foundation.tar.xz" \
