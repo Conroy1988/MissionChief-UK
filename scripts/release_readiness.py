@@ -297,8 +297,8 @@ def audit_quality_assets(release_version: str) -> None:
         "gh workflow run deploy-pages.yml --ref main",
         "Deploy refreshed catalogue",
         "git add -f",
-        "data/sources/missionchief-uk \",
-        "docs/assets/data/official \",
+        "data/sources/missionchief-uk \\",
+        "docs/assets/data/official \\",
         "data/sources/missionchief-uk/mission-verification-status.json",
         "docs/assets/data/official/uk-mission-verification.json",
     ):
