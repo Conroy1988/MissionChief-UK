@@ -1,4 +1,4 @@
-name: Validate drift dependency hotfix
+name: Verify final production drift controls
 
 on:
   pull_request:
@@ -7,61 +7,75 @@ on:
       - .github/workflows/verify-drift-production.yml
 
 permissions:
-  contents: read
+  actions: write
+  contents: write
 
 jobs:
-  validate:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
+    env:
+      EXPECTED_MAIN_SHA: e5594f6d57a3a8b27974fd26c41e9cd64f361991
+      VERIFY_BRANCH: ops/verify-drift-production
     steps:
-      - name: Check out hotfix branch
+      - name: Check out exact production main
         uses: actions/checkout@v6
         with:
-          ref: fix/drift-workflow-dependencies
+          ref: ${{ env.EXPECTED_MAIN_SHA }}
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        run: python -m pip install -r requirements.txt
-
-      - name: Validate workflow and governance
+      - name: Verify production workflow controls
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          grep -F 'name: Install dependencies' .github/workflows/import-official-uk-missions.yml
-          grep -F 'python -m pip install -r requirements.txt' .github/workflows/import-official-uk-missions.yml
-          python -m py_compile scripts/release_readiness.py
-          python -m unittest tests/test_official_mission_drift.py -v
-          python -m unittest discover -s tests/python -p 'test_*.py' -v
-          python scripts/validate_verification_programme_assets.py
-          python scripts/release_readiness.py
-          python scripts/audit_links.py
-          python -m mkdocs build --strict --site-dir site
-          python scripts/release_readiness.py --site-dir site
+          test "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)" = "$EXPECTED_MAIN_SHA"
+          workflow=.github/workflows/import-official-uk-missions.yml
+          grep -F 'CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate' "$workflow"
+          grep -F 'DRIFT_DIR=$RUNNER_TEMP/official-uk-drift' "$workflow"
+          grep -F 'python -m pip install -r requirements.txt' "$workflow"
+          grep -F 'Fail closed on official drift' "$workflow"
+          ! grep -F 'git push origin HEAD:main' "$workflow"
 
-      - name: Exercise clean production drift path
+      - name: Dispatch and verify production drift workflow
+        id: drift
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          candidate="$RUNNER_TEMP/official-uk-candidate"
-          drift="$RUNNER_TEMP/official-uk-drift"
-          mkdir -p "$candidate" "$drift"
-          python scripts/import_official_uk_missions.py \
-            --output-dir "$candidate" \
-            --canonical-dir data/uk/missions
-          python scripts/merge_verification_registry_batches.py
-          python scripts/detect_official_mission_drift.py \
-            --baseline data/sources/missionchief-uk/einsaetze.raw.json \
-            --candidate "$candidate/einsaetze.raw.json" \
-            --canonical-dir data/uk/missions \
-            --registry data/uk/mission-verification-registry.json \
-            --json-output "$drift/official-catalogue-drift.json" \
-            --markdown-output "$drift/official-catalogue-drift.md"
-          python - "$drift/official-catalogue-drift.json" <<'PY'
+          before="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow import-official-uk-missions.yml --event workflow_dispatch --branch main --limit 1 --json databaseId --jq '.[0].databaseId // 0')"
+          gh workflow run import-official-uk-missions.yml --repo "$GITHUB_REPOSITORY" --ref main
+
+          run_id=""
+          for attempt in {1..90}; do
+            candidate="$(gh run list \
+              --repo "$GITHUB_REPOSITORY" \
+              --workflow import-official-uk-missions.yml \
+              --event workflow_dispatch \
+              --branch main \
+              --limit 5 \
+              --json databaseId,headSha,createdAt \
+              --jq '[.[] | select(.headSha == "e5594f6d57a3a8b27974fd26c41e9cd64f361991")] | sort_by(.createdAt) | reverse | .[0].databaseId // empty')"
+            if [ -n "$candidate" ] && [ "$candidate" != "$before" ]; then
+              run_id="$candidate"
+              break
+            fi
+            sleep 2
+          done
+          test -n "$run_id"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
+          gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,status,conclusion,headSha,workflowName,url > "$RUNNER_TEMP/production-drift-run.json"
+
+          mkdir -p "$RUNNER_TEMP/production-drift-artifact"
+          artifact="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/artifacts" --jq '.artifacts[] | select(.name | startswith("official-uk-catalogue-drift-")) | .name' | head -n 1)"
+          test -n "$artifact"
+          gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name "$artifact" --dir "$RUNNER_TEMP/production-drift-artifact"
+
+          report="$(find "$RUNNER_TEMP/production-drift-artifact" -name official-catalogue-drift.json -print -quit)"
+          python - "$report" <<'PY'
           import json
           import sys
           from pathlib import Path
@@ -78,23 +92,62 @@ jobs:
           assert impact["projected_fully_canonical_count"] == 1062, report
           assert impact["projected_fully_canonical_percent"] == 100.0, report
           PY
-          python scripts/reconcile_official_mission_coverage.py
-          python scripts/validate_official_mission_catalogue.py
-          python scripts/validate_official_key_mappings.py
-          python scripts/validate_official_patient_mappings.py
-          python scripts/validate_official_personnel_mappings.py
-          python scripts/validate_official_personnel_education_mappings.py
-          python scripts/validate_official_prisoner_mappings.py
-          python scripts/validate_official_recovery_mappings.py
-          python scripts/validate_official_operational_mappings.py
-          python scripts/generate_full_canonical_catalogue.py --check
 
-      - name: Upload validation evidence
+      - name: Verify exact Pages deployment and live manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          pages_id=""
+          for attempt in {1..120}; do
+            row="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow deploy-pages.yml --branch main --commit "$EXPECTED_MAIN_SHA" --limit 1 --json databaseId,status,conclusion --jq '.[0] // empty')"
+            if [ -n "$row" ]; then
+              pages_id="$(jq -r .databaseId <<<"$row")"
+              if [ "$(jq -r .status <<<"$row")" = completed ]; then
+                test "$(jq -r .conclusion <<<"$row")" = success
+                break
+              fi
+            fi
+            sleep 3
+          done
+          test -n "$pages_id"
+          gh run view "$pages_id" --repo "$GITHUB_REPOSITORY" --json databaseId,status,conclusion,headSha,workflowName,url > "$RUNNER_TEMP/pages-run.json"
+
+          python - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+
+          request = Request(
+              "https://conroy1988.github.io/MissionChief-UK/assets/data/v1/manifest.json?verify=e5594f6",
+              headers={"Cache-Control": "no-cache", "User-Agent": "MissionChief-UK-final-drift-verifier"},
+          )
+          with urlopen(request, timeout=45) as response:
+              manifest = json.load(response)
+          assert manifest["data_version"] == "1.2.0", manifest
+          assert manifest["stage"] == 35, manifest
+          assert manifest["status"] == "production", manifest
+          assert manifest["collections"]["missions"]["count"] == 1079, manifest
+          assert manifest["collections"]["vehicles"]["count"] == 59, manifest
+          assert manifest["collections"]["infrastructure"]["count"] == 19, manifest
+          assert manifest["collections"]["training"]["count"] == 12, manifest
+          assert manifest["search_index"]["count"] == 1169, manifest
+          PY
+
+      - name: Retain final verification evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: drift-dependency-hotfix-validation-${{ github.run_id }}
+          name: final-production-drift-verification-${{ github.run_id }}
           path: |
-            ${{ runner.temp }}/official-uk-candidate
-            ${{ runner.temp }}/official-uk-drift
-          if-no-files-found: error
-          retention-days: 14
+            ${{ runner.temp }}/production-drift-run.json
+            ${{ runner.temp }}/production-drift-artifact
+            ${{ runner.temp }}/pages-run.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Delete temporary verifier branch
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$VERIFY_BRANCH"
