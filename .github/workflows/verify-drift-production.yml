@@ -1,4 +1,4 @@
-name: Probe production drift dispatch
+name: Verify production drift controls
 
 on:
   pull_request:
@@ -8,42 +8,212 @@ on:
 
 permissions:
   actions: write
-  contents: read
+  contents: write
+  issues: read
+  pull-requests: read
+
+concurrency:
+  group: verify-production-drift-controls
+  cancel-in-progress: false
 
 jobs:
-  probe:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 40
+    env:
+      EXPECTED_MAIN_SHA: 78bd730fdbd890adec012992d1e6a8cab86860a4
+      VERIFY_BRANCH: ops/verify-drift-production
     steps:
-      - name: Capture dispatch response
+      - name: Check out exact production main
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.EXPECTED_MAIN_SHA }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Verify merged repository state
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          mkdir -p "$RUNNER_TEMP/dispatch-probe"
-          set +e
+          set -euo pipefail
+          main_sha="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)"
+          test "$main_sha" = "$EXPECTED_MAIN_SHA"
+          gh api "repos/$GITHUB_REPOSITORY/pulls/17" \
+            --jq 'select(.merged == true and .merge_commit_sha == "1ac1773a1f89007409d172bf857d51d62493495f") | .number' \
+            | grep -qx '17'
+          gh api "repos/$GITHUB_REPOSITORY/pulls/19" \
+            --jq 'select(.merged == true and .merge_commit_sha == "78bd730fdbd890adec012992d1e6a8cab86860a4") | .number' \
+            | grep -qx '19'
+          gh api "repos/$GITHUB_REPOSITORY/issues/15" \
+            --jq 'select(.state == "closed" and .state_reason == "completed") | .number' \
+            | grep -qx '15'
+
+          workflow=.github/workflows/import-official-uk-missions.yml
+          grep -F 'CANDIDATE_DIR=$RUNNER_TEMP/official-uk-candidate' "$workflow"
+          grep -F 'DRIFT_DIR=$RUNNER_TEMP/official-uk-drift' "$workflow"
+          grep -F 'detect_official_mission_drift.py' "$workflow"
+          grep -F 'Fail closed on official drift' "$workflow"
+          grep -F 'gh issue create' "$workflow"
+          grep -F 'gh pr create' "$workflow"
+          ! grep -F 'git push origin HEAD:main' "$workflow"
+          ! grep -F 'gh workflow run deploy-pages.yml' "$workflow"
+
+      - name: Dispatch production drift workflow
+        id: dispatch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          before="$(gh run list \
+            --repo "$GITHUB_REPOSITORY" \
+            --workflow import-official-uk-missions.yml \
+            --event workflow_dispatch \
+            --branch main \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId // 0')"
+
           gh workflow run import-official-uk-missions.yml \
             --repo "$GITHUB_REPOSITORY" \
-            --ref main \
-            > "$RUNNER_TEMP/dispatch-probe/stdout.txt" \
-            2> "$RUNNER_TEMP/dispatch-probe/stderr.txt"
-          code=$?
-          set -e
-          printf '%s\n' "$code" > "$RUNNER_TEMP/dispatch-probe/exit-code.txt"
-          gh workflow view import-official-uk-missions.yml \
-            --repo "$GITHUB_REPOSITORY" \
-            --yaml \
-            > "$RUNNER_TEMP/dispatch-probe/workflow.yml" 2>&1 || true
-          gh api "repos/$GITHUB_REPOSITORY/actions/workflows/import-official-uk-missions.yml" \
-            > "$RUNNER_TEMP/dispatch-probe/workflow.json" 2>&1 || true
-          cat "$RUNNER_TEMP/dispatch-probe/stdout.txt"
-          cat "$RUNNER_TEMP/dispatch-probe/stderr.txt" >&2
-          echo "dispatch exit code: $code"
+            --ref main
 
-      - name: Upload dispatch probe
+          run_id=""
+          for attempt in {1..90}; do
+            candidate="$(gh run list \
+              --repo "$GITHUB_REPOSITORY" \
+              --workflow import-official-uk-missions.yml \
+              --event workflow_dispatch \
+              --branch main \
+              --limit 5 \
+              --json databaseId,headSha,createdAt \
+              --jq '[.[] | select(.headSha == "78bd730fdbd890adec012992d1e6a8cab86860a4")] | sort_by(.createdAt) | reverse | .[0].databaseId // empty')"
+            if [ -n "$candidate" ] && [ "$candidate" != "$before" ]; then
+              run_id="$candidate"
+              break
+            fi
+            sleep 2
+          done
+          test -n "$run_id"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
+          gh run view "$run_id" \
+            --repo "$GITHUB_REPOSITORY" \
+            --json databaseId,status,conclusion,headSha,workflowName,url \
+            > "$RUNNER_TEMP/production-drift-run.json"
+
+      - name: Verify production drift evidence is clean
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ steps.dispatch.outputs.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/production-drift-artifact"
+          artifact_name="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/artifacts" \
+            --jq '.artifacts[] | select(.name | startswith("official-uk-catalogue-drift-")) | .name' \
+            | head -n 1)"
+          test -n "$artifact_name"
+          gh run download "$RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --name "$artifact_name" \
+            --dir "$RUNNER_TEMP/production-drift-artifact"
+
+          report="$(find "$RUNNER_TEMP/production-drift-artifact" -name official-catalogue-drift.json -print -quit)"
+          test -n "$report"
+          python - "$report" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert report["status"] == "clean", report
+          summary = report["summary"]
+          assert summary["added_count"] == 0, report
+          assert summary["removed_count"] == 0, report
+          assert summary["modified_count"] == 0, report
+          assert summary["invalidated_count"] == 0, report
+          assert summary["candidate_official_count"] == 1062, report
+          assert summary["verified_candidate_count"] == 1062, report
+          assert summary["projected_coverage_percent"] == 100.0, report
+          PY
+
+      - name: Verify exact Pages deployment and live site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          pages_id=""
+          for attempt in {1..120}; do
+            row="$(gh run list \
+              --repo "$GITHUB_REPOSITORY" \
+              --workflow deploy-pages.yml \
+              --branch main \
+              --commit "$EXPECTED_MAIN_SHA" \
+              --limit 1 \
+              --json databaseId,status,conclusion,headSha \
+              --jq '.[0] // empty')"
+            if [ -n "$row" ]; then
+              pages_id="$(jq -r .databaseId <<<"$row")"
+              status="$(jq -r .status <<<"$row")"
+              conclusion="$(jq -r '.conclusion // ""' <<<"$row")"
+              if [ "$status" = completed ]; then
+                test "$conclusion" = success
+                break
+              fi
+            fi
+            sleep 3
+          done
+          test -n "$pages_id"
+          gh run view "$pages_id" \
+            --repo "$GITHUB_REPOSITORY" \
+            --json databaseId,status,conclusion,headSha,workflowName,url \
+            > "$RUNNER_TEMP/pages-run.json"
+
+          python - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+
+          def get_json(url):
+              request = Request(url, headers={"Cache-Control": "no-cache", "User-Agent": "MissionChief-UK-post-drift-verifier"})
+              with urlopen(request, timeout=45) as response:
+                  assert response.status == 200
+                  return json.load(response)
+
+          manifest = get_json("https://conroy1988.github.io/MissionChief-UK/assets/data/v1/manifest.json?verify=78bd730")
+          assert manifest["data_version"] == "1.2.0", manifest
+          assert manifest["stage"] == 35, manifest
+          assert manifest["status"] == "production", manifest
+          assert manifest["collections"]["missions"]["count"] == 1079, manifest
+          assert manifest["collections"]["vehicles"]["count"] == 59, manifest
+          assert manifest["collections"]["infrastructure"]["count"] == 19, manifest
+          assert manifest["collections"]["training"]["count"] == 12, manifest
+          assert manifest["search_index"]["count"] == 1169, manifest
+          PY
+
+      - name: Retain verification evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: production-drift-dispatch-probe-${{ github.run_id }}
-          path: ${{ runner.temp }}/dispatch-probe
-          if-no-files-found: error
-          retention-days: 14
+          name: post-drift-merge-verification-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/production-drift-run.json
+            ${{ runner.temp }}/production-drift-artifact
+            ${{ runner.temp }}/pages-run.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Delete one-shot verification branch
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh api --method DELETE \
+            "repos/$GITHUB_REPOSITORY/git/refs/heads/$VERIFY_BRANCH"
