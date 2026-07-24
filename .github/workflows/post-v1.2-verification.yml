@@ -1,0 +1,332 @@
+name: Post-release v1.2.0 verification and cleanup
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/post-v1.2-verification.yml
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  verify-and-clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      EXPECTED_SHA: 25ec4b348792acf141de21301c1d3b317aef3e6b
+      EXPECTED_TAG: v1.2.0
+      LIVE_URL: https://conroy1988.github.io/MissionChief-UK/
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out exact production commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Verify Pages, release, tag and live API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN"]
+          expected_sha = os.environ["EXPECTED_SHA"]
+          expected_tag = os.environ["EXPECTED_TAG"]
+          live_url = os.environ["LIVE_URL"].rstrip("/") + "/"
+          api = f"https://api.github.com/repos/{repo}"
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": f"Bearer {token}",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "missionchief-post-release-verifier",
+          }
+
+          def request_json(url, *, allow_404=False):
+              request = urllib.request.Request(url, headers=headers)
+              try:
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      return json.load(response)
+              except urllib.error.HTTPError as exc:
+                  if allow_404 and exc.code == 404:
+                      return None
+                  raise
+
+          def request_text(url):
+              request = urllib.request.Request(
+                  url,
+                  headers={"User-Agent": "missionchief-post-release-verifier"},
+              )
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  if response.status != 200:
+                      raise RuntimeError(f"{url} returned HTTP {response.status}")
+                  return response.read().decode("utf-8")
+
+          deadline = time.time() + 900
+          deployment = release = tag_ref = None
+          while time.time() < deadline:
+              runs = request_json(
+                  f"{api}/actions/workflows/deploy-pages.yml/runs?branch=main&status=success&per_page=100"
+              )
+              deployment = next(
+                  (
+                      run
+                      for run in runs.get("workflow_runs", [])
+                      if run.get("head_sha") == expected_sha
+                      and run.get("head_branch") == "main"
+                      and run.get("event") == "push"
+                      and run.get("conclusion") == "success"
+                  ),
+                  None,
+              )
+              release = request_json(
+                  f"{api}/releases/tags/{urllib.parse.quote(expected_tag, safe='')}",
+                  allow_404=True,
+              )
+              tag_ref = request_json(
+                  f"{api}/git/ref/tags/{urllib.parse.quote(expected_tag, safe='')}",
+                  allow_404=True,
+              )
+              if deployment and release and tag_ref:
+                  break
+              time.sleep(15)
+
+          if deployment is None:
+              raise SystemExit(f"No successful full Pages run found for {expected_sha}")
+          if release is None:
+              raise SystemExit(f"Published release {expected_tag} was not found")
+          if release.get("draft") or release.get("prerelease"):
+              raise SystemExit(f"{expected_tag} must be published and non-prerelease")
+          if release.get("tag_name") != expected_tag:
+              raise SystemExit("Release tag identity mismatch")
+          if tag_ref is None or tag_ref.get("object", {}).get("type") != "tag":
+              raise SystemExit(f"{expected_tag} must be an annotated tag")
+
+          tag_object_sha = tag_ref["object"]["sha"]
+          tag_object = request_json(f"{api}/git/tags/{tag_object_sha}")
+          target = tag_object.get("object", {})
+          if target.get("type") != "commit" or target.get("sha") != expected_sha:
+              raise SystemExit(
+                  f"{expected_tag} targets {target.get('sha')} ({target.get('type')}) instead of {expected_sha}"
+              )
+
+          homepage = request_text(live_url)
+          lookup = request_text(live_url + "tools/mission-lookup/")
+          manifest = json.loads(request_text(live_url + "assets/data/v1/manifest.json"))
+          expected_manifest = {
+              "api_version": "v1",
+              "data_version": "1.2.0",
+              "stage": 35,
+              "status": "production",
+          }
+          for key, value in expected_manifest.items():
+              if manifest.get(key) != value:
+                  raise SystemExit(f"Live manifest {key}: expected {value!r}, found {manifest.get(key)!r}")
+          expected_counts = {
+              "missions": 1079,
+              "vehicles": 59,
+              "infrastructure": 19,
+              "training": 12,
+          }
+          for collection, count in expected_counts.items():
+              found = manifest.get("collections", {}).get(collection, {}).get("count")
+              if found != count:
+                  raise SystemExit(f"Live {collection} count: expected {count}, found {found!r}")
+          if manifest.get("search_index", {}).get("count") != 1169:
+              raise SystemExit("Live search-index count is not 1,169")
+          if "MissionChief UK" not in homepage or "1.2.0" not in homepage:
+              raise SystemExit("Live homepage does not identify MissionChief UK v1.2.0")
+          if "Mission Requirement Lookup" not in lookup:
+              raise SystemExit("Live Mission Lookup page did not render its expected heading")
+
+          report = {
+              "schema_version": "1",
+              "verified_commit": expected_sha,
+              "tag": expected_tag,
+              "deployment": {
+                  "id": deployment.get("id"),
+                  "html_url": deployment.get("html_url"),
+                  "run_number": deployment.get("run_number"),
+                  "created_at": deployment.get("created_at"),
+                  "updated_at": deployment.get("updated_at"),
+              },
+              "release": {
+                  "id": release.get("id"),
+                  "html_url": release.get("html_url"),
+                  "published_at": release.get("published_at"),
+                  "draft": release.get("draft"),
+                  "prerelease": release.get("prerelease"),
+              },
+              "annotated_tag_object": tag_object_sha,
+              "manifest": manifest,
+              "live_url": live_url,
+          }
+          Path("post-release-report.json").write_text(
+              json.dumps(report, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run live HTTP smoke suite
+        run: python scripts/smoke_pages.py "$LIVE_URL"
+
+      - name: Run desktop, iPhone and iPad acceptance
+        env:
+          MCUK_BASE_URL: ${{ env.LIVE_URL }}
+        run: >-
+          npm run test:e2e --
+          --project=chromium-desktop
+          --project=webkit-iphone
+          --project=webkit-ipad
+
+      - name: Close superseded PRs and delete obsolete release branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN"]
+          api = f"https://api.github.com/repos/{repo}"
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": f"Bearer {token}",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "Content-Type": "application/json",
+              "User-Agent": "missionchief-post-release-cleaner",
+          }
+
+          def api_request(method, path, payload=None, *, allow_404=False):
+              data = None if payload is None else json.dumps(payload).encode("utf-8")
+              request = urllib.request.Request(api + path, data=data, method=method, headers=headers)
+              try:
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      body = response.read()
+                      return json.loads(body) if body else None
+              except urllib.error.HTTPError as exc:
+                  if allow_404 and exc.code == 404:
+                      return None
+                  raise
+
+          prs = {
+              8: "work/mkdocs-anchor-integrity",
+              9: "work/pure-branch-validation",
+              10: "work/catalogue-reporting-integrity",
+              11: "work/v1.1-release-integrity",
+          }
+          result = {"closed_prs": [], "branches": {}}
+          comment = (
+              "Closed without merging: this work was composed into PR #12, delivered through the "
+              "v1.1.0 landing, and superseded by the production v1.2.0 release in PR #13."
+          )
+          for number, expected_branch in prs.items():
+              pr = api_request("GET", f"/pulls/{number}")
+              if pr.get("merged"):
+                  raise SystemExit(f"Superseded PR #{number} unexpectedly reports as merged")
+              if pr.get("head", {}).get("ref") != expected_branch:
+                  raise SystemExit(f"PR #{number} head changed unexpectedly")
+              if pr.get("state") == "open":
+                  api_request("POST", f"/issues/{number}/comments", {"body": comment})
+                  api_request("PATCH", f"/pulls/{number}", {"state": "closed"})
+                  result["closed_prs"].append(number)
+
+          branches = [
+              "work/mkdocs-anchor-integrity",
+              "work/pure-branch-validation",
+              "work/catalogue-reporting-integrity",
+              "work/v1.1-release-integrity",
+              "work/v1.1-hardening-integration",
+              "feature/uk-mission-catalogue-expansion",
+              "fix/v1.0.1-webkit-comparison-overflow",
+              "agent/canonical-coverage-100",
+          ]
+          for branch in branches:
+              encoded = urllib.parse.quote(branch, safe="")
+              existing = api_request("GET", f"/git/ref/heads/{encoded}", allow_404=True)
+              if existing is None:
+                  result["branches"][branch] = "already-absent"
+                  continue
+              api_request("DELETE", f"/git/refs/heads/{encoded}")
+              result["branches"][branch] = "deleted"
+
+          Path("repository-cleanup-report.json").write_text(
+              json.dumps(result, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(result, indent=2))
+          PY
+
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-v1.2-verification-${{ github.run_id }}
+          path: |
+            post-release-report.json
+            repository-cleanup-report.json
+            playwright-report
+            test-results
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Delete one-shot verification branch
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os
+          import urllib.parse
+          import urllib.request
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          branch = "ops/post-v1.2-verification"
+          request = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/git/refs/heads/{urllib.parse.quote(branch, safe='')}",
+              method="DELETE",
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                  "User-Agent": "missionchief-post-release-cleaner",
+              },
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              if response.status != 204:
+                  raise SystemExit(f"Unexpected branch deletion status: {response.status}")
+          print(f"Deleted one-shot verification branch {branch}")
+          PY
