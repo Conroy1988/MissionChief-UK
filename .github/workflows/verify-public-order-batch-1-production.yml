@@ -1,0 +1,122 @@
+name: Verify Public Order vehicle batch 1 production
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/verify-public-order-batch-1-production.yml
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      EXPECTED_MAIN_SHA: bafe8d643799260de83c2a5db348eb6c36bbec8f
+    steps:
+      - name: Check out exact production commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.EXPECTED_MAIN_SHA }}
+          fetch-depth: 0
+
+      - name: Verify repository state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)"
+          test "$actual" = "$EXPECTED_MAIN_SHA"
+          gh api "repos/$GITHUB_REPOSITORY/pulls/22" \
+            --jq 'select(.merged == true and .merge_commit_sha == "bafe8d643799260de83c2a5db348eb6c36bbec8f") | .number' \
+            | grep -qx '22'
+
+      - name: Verify main-branch workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/public-order-production"
+          for workflow in vehicle-inventory-validation.yml deploy-pages.yml; do
+            run_id=""
+            for attempt in {1..120}; do
+              row="$(gh run list \
+                --repo "$GITHUB_REPOSITORY" \
+                --workflow "$workflow" \
+                --branch main \
+                --commit "$EXPECTED_MAIN_SHA" \
+                --limit 1 \
+                --json databaseId,status,conclusion,headSha,url \
+                --jq '.[0] // empty')"
+              if [ -n "$row" ]; then
+                run_id="$(jq -r .databaseId <<<"$row")"
+                status="$(jq -r .status <<<"$row")"
+                conclusion="$(jq -r '.conclusion // ""' <<<"$row")"
+                if [ "$status" = completed ]; then
+                  test "$conclusion" = success
+                  printf '%s\n' "$row" > "$RUNNER_TEMP/public-order-production/${workflow%.yml}.json"
+                  break
+                fi
+              fi
+              sleep 5
+            done
+            test -n "$run_id"
+          done
+
+      - name: Verify live publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/public-order-production"
+          cache="verify=${EXPECTED_MAIN_SHA:0:8}-$(date +%s)"
+          curl --fail --silent --show-error \
+            "https://conroy1988.github.io/MissionChief-UK/assets/data/v1/manifest.json?$cache" \
+            -o "$out/manifest.json"
+          curl --fail --silent --show-error \
+            "https://conroy1988.github.io/MissionChief-UK/assets/data/official/uk-vehicle-coverage.json?$cache" \
+            -o "$out/vehicle-coverage.json"
+          curl --fail --silent --show-error \
+            "https://conroy1988.github.io/MissionChief-UK/reference/verified-vehicle-public-order-batch-1/?$cache" \
+            -o "$out/public-order-batch-1.html"
+
+          jq -e '
+            .data_version == "1.2.0" and
+            .stage == 35 and
+            .status == "production" and
+            .collections.missions.count == 1079 and
+            .collections.vehicles.count == 64 and
+            .collections.infrastructure.count == 19 and
+            .collections.training.count == 12 and
+            .search_index.count == 1174
+          ' "$out/manifest.json" >/dev/null
+
+          jq -e '
+            .status == "in-progress" and
+            .summary.inventory_entries == 73 and
+            .summary.canonical_records == 64 and
+            .summary.mapped_inventory_entries == 44 and
+            .summary.unresolved_inventory_entries == 29 and
+            .summary.identity_coverage_percent == 60.27 and
+            .field_completeness.cost.complete == 10 and
+            .field_completeness.staffing.complete == 10 and
+            .field_completeness.training.complete == 7 and
+            .field_completeness.transport_capacity.complete == 2
+          ' "$out/vehicle-coverage.json" >/dev/null
+
+          grep -F 'Verified Public Order Vehicle Batch 1' "$out/public-order-batch-1.html"
+          grep -F 'PSU Carrier' "$out/public-order-batch-1.html"
+          grep -F 'M-RAV' "$out/public-order-batch-1.html"
+
+      - name: Retain production evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-order-batch-1-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/public-order-production
+          if-no-files-found: error
+          retention-days: 30
