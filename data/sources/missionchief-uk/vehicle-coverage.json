@@ -1,0 +1,586 @@
+{
+  "schema_version": "1",
+  "collection": "uk-vehicle-coverage",
+  "source_updated_at": "2026-07-24",
+  "status": "in-progress",
+  "summary": {
+    "inventory_entries": 73,
+    "canonical_records": 59,
+    "mapped_inventory_entries": 41,
+    "unresolved_inventory_entries": 32,
+    "dangling_canonical_mappings": 0,
+    "canonical_records_without_inventory_entry": 18,
+    "identity_coverage_percent": 56.16,
+    "verified_labels": 18,
+    "candidate_labels": 55,
+    "verified_type_ids": 0,
+    "candidate_type_ids": 73
+  },
+  "field_completeness": {
+    "cost": {
+      "complete": 4,
+      "total": 59,
+      "percent": 6.78
+    },
+    "staffing": {
+      "complete": 4,
+      "total": 59,
+      "percent": 6.78
+    },
+    "training": {
+      "complete": 3,
+      "total": 59,
+      "percent": 5.08
+    },
+    "building_requirements": {
+      "complete": 4,
+      "total": 59,
+      "percent": 6.78
+    },
+    "deployment": {
+      "complete": 14,
+      "total": 59,
+      "percent": 23.73
+    },
+    "capabilities": {
+      "complete": 59,
+      "total": 59,
+      "percent": 100.0
+    },
+    "verification_sources": {
+      "complete": 59,
+      "total": 59,
+      "percent": 100.0
+    }
+  },
+  "service_inventory_counts": {
+    "airfield_operations": 7,
+    "ambulance": 16,
+    "bomb_disposal": 4,
+    "coastguard": 7,
+    "fire_and_rescue": 13,
+    "lifeboat": 7,
+    "mountain_rescue": 1,
+    "police": 9,
+    "railway": 1,
+    "recovery": 1,
+    "search_and_rescue": 7
+  },
+  "resource_class_counts": {
+    "aircraft": 3,
+    "equipment": 1,
+    "trailer": 8,
+    "vehicle": 59,
+    "vessel": 2
+  },
+  "unresolved_inventory": [
+    {
+      "game_vehicle_type_id": 9,
+      "name": "Air Ambulance",
+      "service": "ambulance",
+      "resource_class": "aircraft",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 16,
+      "name": "Rescue Pump",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 17,
+      "name": "Combined Aerial Rescue Pump",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 20,
+      "name": "OTL",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": [
+        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 25,
+      "name": "Armed Traffic Car",
+      "service": "police",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 26,
+      "name": "Heavy 4x4 Tanker",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 34,
+      "name": "Ambulance Officer",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 35,
+      "name": "BFU",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+      ],
+      "notes": [
+        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 36,
+      "name": "F/WrC",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+      ],
+      "notes": [
+        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 38,
+      "name": "RPF",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+      ],
+      "notes": [
+        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 39,
+      "name": "Operational Support Unit",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 51,
+      "name": "PSU Carrier",
+      "service": "police",
+      "resource_class": "vehicle",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 54,
+      "name": "Detention Van",
+      "service": "police",
+      "resource_class": "vehicle",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 56,
+      "name": "MRAV",
+      "service": "police",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/"
+      ],
+      "notes": [
+        "Abbreviated or community-observed label requires exact in-game market confirmation before promotion."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 61,
+      "name": "Flood Rescue Unit Trailer",
+      "service": "coastguard",
+      "resource_class": "trailer",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+      ],
+      "notes": [
+        "Official guidance verifies a Flood Rescue Unit Trailer product, but the current canonical flood_rescue_unit record does not yet distinguish this trailer identity."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 65,
+      "name": "Coastguard Rescue Helicopter Large",
+      "service": "coastguard",
+      "resource_class": "aircraft",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": [
+        "The current canonical helicopter record is generic; small/large market variants require separate confirmation before mapping."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 66,
+      "name": "4x4 Vehicle",
+      "service": "lifeboat",
+      "resource_class": "vehicle",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 67,
+      "name": "ILB Trainer",
+      "service": "lifeboat",
+      "resource_class": "trailer",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": [
+        "Community-observed label may be a trailer/transporter typo and requires exact current-game confirmation."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 72,
+      "name": "Hovercraft Transporter",
+      "service": "lifeboat",
+      "resource_class": "vehicle",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 73,
+      "name": "Light 4x4",
+      "service": "fire_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 74,
+      "name": "Boat Trailer",
+      "service": "fire_and_rescue",
+      "resource_class": "trailer",
+      "label_status": "verified",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+        "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 80,
+      "name": "Airfield Operations Supervisor",
+      "service": "airfield_operations",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 81,
+      "name": "Medical Equipment Trailer",
+      "service": "airfield_operations",
+      "resource_class": "trailer",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 88,
+      "name": "SAR Flood Rescue Trailer",
+      "service": "search_and_rescue",
+      "resource_class": "trailer",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 89,
+      "name": "Drone Vehicle SAR HQ",
+      "service": "search_and_rescue",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 97,
+      "name": "Patient Transport Service Ambulance",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 98,
+      "name": "Critical Care Transfer Ambulance",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 105,
+      "name": "Flatbed Recovery Vehicle",
+      "service": "recovery",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 110,
+      "name": "EOD Response Vehicle",
+      "service": "bomb_disposal",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    },
+    {
+      "game_vehicle_type_id": 111,
+      "name": "EOD Medium Equipment Van",
+      "service": "bomb_disposal",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": [
+        "Potential relationship to Bomb Disposal Equipment is not treated as identity equivalence without direct market evidence."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 115,
+      "name": "Welfare Vehicle",
+      "service": "ambulance",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": [
+        "This later vehicle type ID duplicates the Welfare Vehicle label and remains unresolved until current-game observation establishes whether it is a distinct market entry."
+      ]
+    },
+    {
+      "game_vehicle_type_id": 116,
+      "name": "Cell Van",
+      "service": "police",
+      "resource_class": "vehicle",
+      "label_status": "candidate",
+      "type_id_status": "community-candidate",
+      "sources": [
+        "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
+      ],
+      "notes": []
+    }
+  ],
+  "dangling_mappings": [],
+  "canonical_without_inventory": [
+    {
+      "canonical_id": "aerial_appliance_truck",
+      "name": "Aerial Appliance Truck",
+      "service": "fire"
+    },
+    {
+      "canonical_id": "ambulance_control_unit",
+      "name": "Ambulance Control Unit",
+      "service": "ambulance"
+    },
+    {
+      "canonical_id": "armed_response_vehicle",
+      "name": "Armed Response Vehicle (ARV)",
+      "service": "police"
+    },
+    {
+      "canonical_id": "bomb_disposal_crew",
+      "name": "Bomb Disposal Crew",
+      "service": "bomb_disposal"
+    },
+    {
+      "canonical_id": "bomb_disposal_diver_crew",
+      "name": "Bomb Disposal Diver Crew",
+      "service": "bomb_disposal"
+    },
+    {
+      "canonical_id": "bomb_disposal_diver_equipment",
+      "name": "Bomb Disposal Diver Equipment",
+      "service": "bomb_disposal"
+    },
+    {
+      "canonical_id": "bomb_disposal_equipment",
+      "name": "Bomb Disposal Equipment",
+      "service": "bomb_disposal"
+    },
+    {
+      "canonical_id": "breathing_apparatus_support_unit",
+      "name": "Breathing Apparatus Support Unit",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "cbrn_vehicle",
+      "name": "CBRN Vehicle",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "coastguard_rescue_helicopter",
+      "name": "Coastguard Rescue Helicopter",
+      "service": "coastguard"
+    },
+    {
+      "canonical_id": "drone",
+      "name": "Drone",
+      "service": "shared"
+    },
+    {
+      "canonical_id": "eiu",
+      "name": "EIU",
+      "service": "police"
+    },
+    {
+      "canonical_id": "fire_engine",
+      "name": "Fire engine",
+      "service": "fire"
+    },
+    {
+      "canonical_id": "foam_unit",
+      "name": "Foam Unit",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "inland_rescue_boat_trailer",
+      "name": "Inland Rescue Boat (Trailer)",
+      "service": "lifeboat"
+    },
+    {
+      "canonical_id": "mud_decontamination_unit",
+      "name": "Mud Decontamination Unit",
+      "service": "coastguard"
+    },
+    {
+      "canonical_id": "personal_sar_vehicle",
+      "name": "Personal SAR Vehicle",
+      "service": "search_and_rescue"
+    },
+    {
+      "canonical_id": "traffic_car",
+      "name": "Traffic Car",
+      "service": "police"
+    }
+  ]
+}
