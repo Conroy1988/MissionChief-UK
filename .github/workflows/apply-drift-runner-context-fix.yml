@@ -95,16 +95,15 @@ jobs:
           python scripts/release_readiness.py
           git diff --check
 
-      - name: Commit fix
+      - name: Commit governance updates
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            .github/workflows/import-official-uk-missions.yml \
             scripts/release_readiness.py \
             tests/python/test_release_integrity.py
           git diff --cached --check
-          git commit -m "Fix drift workflow runner temp initialisation"
+          git commit -m "Update drift workflow governance"
           git push origin HEAD:fix/drift-runner-temp-context
