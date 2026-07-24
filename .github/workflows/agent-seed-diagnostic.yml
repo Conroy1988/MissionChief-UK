@@ -16,14 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: agent/canonical-coverage-100
-
       - name: Inspect exact seed gate
         shell: bash
         run: |
           set -u
+          git clone -q --depth 1 --branch agent/canonical-coverage-100 https://github.com/Conroy1988/MissionChief-UK.git repo
+          cd repo
           b64="$RUNNER_TEMP/seed.b64"
           archive="$RUNNER_TEMP/seed.tar.xz"
           manifest="$RUNNER_TEMP/manifest.txt"
