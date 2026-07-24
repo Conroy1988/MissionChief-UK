@@ -1,0 +1,53 @@
+name: Verify canonical coverage payload
+
+on:
+  push:
+    branches:
+      - agent/canonical-coverage-100
+    paths:
+      - .agent/canonical-coverage-payload.part.*
+      - .github/workflows/agent-payload-inspect.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+
+      - name: Reconstruct and inspect payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/payload/extracted"
+          cat .agent/canonical-coverage-payload.part.* > "$RUNNER_TEMP/payload/canonical-coverage-payload.b64"
+          actual_b64_sha="$(sha256sum "$RUNNER_TEMP/payload/canonical-coverage-payload.b64" | awk '{print $1}')"
+          echo "base64_sha256=$actual_b64_sha"
+          test "$actual_b64_sha" = "9611c38f88d56b704874f0596e58454b8406cf240a7a79a985c2154583e778ab"
+          base64 --decode "$RUNNER_TEMP/payload/canonical-coverage-payload.b64" > "$RUNNER_TEMP/payload/canonical-coverage-payload.tar.xz"
+          xz --test "$RUNNER_TEMP/payload/canonical-coverage-payload.tar.xz"
+          sha256sum "$RUNNER_TEMP/payload/canonical-coverage-payload.tar.xz" | tee "$RUNNER_TEMP/payload/archive.sha256"
+          tar -tJf "$RUNNER_TEMP/payload/canonical-coverage-payload.tar.xz" | tee "$RUNNER_TEMP/payload/manifest.txt"
+          tar -xJf "$RUNNER_TEMP/payload/canonical-coverage-payload.tar.xz" -C "$RUNNER_TEMP/payload/extracted"
+          find "$RUNNER_TEMP/payload/extracted" -type f -printf '%P\n' | LC_ALL=C sort > "$RUNNER_TEMP/payload/extracted-files.txt"
+          test -s "$RUNNER_TEMP/payload/extracted-files.txt"
+          if grep -Eq '(^|/)\.git(/|$)|(^|/)\.github/workflows/agent-(research-export|payload-inspect)\.yml$|(^|/)\.agent/' "$RUNNER_TEMP/payload/extracted-files.txt"; then
+            echo "Payload contains forbidden control or transport paths." >&2
+            exit 1
+          fi
+
+      - name: Upload verified manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-coverage-payload-manifest-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/payload/archive.sha256
+            ${{ runner.temp }}/payload/manifest.txt
+            ${{ runner.temp }}/payload/extracted-files.txt
+          if-no-files-found: error
+          retention-days: 7
