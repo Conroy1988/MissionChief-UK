@@ -83,8 +83,8 @@ Verified roles currently include:
 
 - [Stuck Climber](../reference/verified-mission-batch-5.md#stuck-climber)
 - [Overdue Hikers](../reference/verified-mission-batch-5.md#overdue-hikers)
-- [Belay Failure Whilst Abseiling — helicopter overlay](../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling--helicopter-overlay)
-- [Fall Whilst Fell Running — HART overlay](../reference/verified-mission-batch-5.md#fall-whilst-fell-running--hart-overlay)
+- [Belay Failure Whilst Abseiling — helicopter overlay](../reference/verified-mission-batch-5.md#belay-failure-whilst-abseiling-helicopter-overlay)
+- [Fall Whilst Fell Running — HART overlay](../reference/verified-mission-batch-5.md#fall-whilst-fell-running-hart-overlay)
 - [Amateur Explorers Trapped in Abandoned Mineshaft](../reference/verified-mission-batch-5.md#amateur-explorers-trapped-in-abandoned-mineshaft)
 
 ## Planning guidance
