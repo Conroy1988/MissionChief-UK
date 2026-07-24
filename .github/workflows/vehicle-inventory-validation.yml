@@ -1,0 +1,91 @@
+name: Validate UK vehicle inventory
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - data/uk/vehicles/**
+      - data/schema/vehicle.schema.json
+      - data/schema/vehicle-inventory.schema.json
+      - data/sources/missionchief-uk/vehicle-type-inventory.json
+      - data/sources/missionchief-uk/vehicle-coverage.json
+      - docs/assets/data/official/uk-vehicle-coverage.json
+      - docs/reference/vehicle-coverage-status.md
+      - scripts/vehicle_inventory.py
+      - scripts/generate_vehicle_coverage.py
+      - scripts/validate_vehicle_inventory.py
+      - tests/python/test_vehicle_inventory.py
+      - .github/workflows/vehicle-inventory-validation.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/uk/vehicles/**
+      - data/schema/vehicle.schema.json
+      - data/schema/vehicle-inventory.schema.json
+      - data/sources/missionchief-uk/vehicle-type-inventory.json
+      - data/sources/missionchief-uk/vehicle-coverage.json
+      - docs/assets/data/official/uk-vehicle-coverage.json
+      - docs/reference/vehicle-coverage-status.md
+      - scripts/vehicle_inventory.py
+      - scripts/generate_vehicle_coverage.py
+      - scripts/validate_vehicle_inventory.py
+      - tests/python/test_vehicle_inventory.py
+      - .github/workflows/vehicle-inventory-validation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vehicle-inventory-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate inventory schema and mappings
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import jsonschema
+
+          schema = json.loads(Path("data/schema/vehicle-inventory.schema.json").read_text(encoding="utf-8"))
+          document = json.loads(Path("data/sources/missionchief-uk/vehicle-type-inventory.json").read_text(encoding="utf-8"))
+          jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).validate(document)
+          PY
+          python scripts/validate_vehicle_inventory.py
+
+      - name: Check deterministic vehicle coverage outputs
+        run: python scripts/generate_vehicle_coverage.py --check
+
+      - name: Run vehicle inventory regressions
+        run: python -m unittest tests/python/test_vehicle_inventory.py -v
+
+      - name: Upload vehicle coverage evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vehicle-inventory-coverage-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/sources/missionchief-uk/vehicle-coverage.json
+            docs/reference/vehicle-coverage-status.md
+          if-no-files-found: error
+          retention-days: 14
