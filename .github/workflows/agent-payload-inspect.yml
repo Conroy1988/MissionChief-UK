@@ -7,6 +7,12 @@ on:
     paths:
       - .agent/canonical-coverage-payload.part.*
       - .github/workflows/agent-payload-inspect.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .agent/canonical-coverage-payload.part.*
+      - .github/workflows/agent-payload-inspect.yml
   workflow_dispatch:
 
 permissions:
