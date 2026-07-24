@@ -16,10 +16,10 @@ Mission Lookup and the verification dashboard expose these states separately. A 
 
 ```text
 1,062 official UK missions captured
-69 canonical mission records
-52 direct official/canonical ID matches
-11 fully canonical missions
-1,010 official missions awaiting direct canonical records
+284 canonical mission records
+267 direct official/canonical ID matches
+226 fully canonical missions
+795 official missions awaiting direct canonical records
 17 canonical-only overlays or derived records
 ```
 
