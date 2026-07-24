@@ -64,6 +64,24 @@ jobs:
       - name: Validate official-to-canonical key mappings
         run: python scripts/validate_official_key_mappings.py
 
+      - name: Validate official patient mappings
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        run: python -m unittest discover -s tests/python -p 'test_*.py'
+
       - name: Report next evidence-safe canonical candidates
         run: |
           python scripts/report_canonical_candidates.py --limit 200 > canonical-candidates.json
@@ -102,6 +120,9 @@ jobs:
       - name: Generate FAQ
         run: python scripts/generate_faq.py
 
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
+
       - name: Audit repository and generated API
         shell: bash
         run: |
@@ -116,6 +137,9 @@ jobs:
           path: release-readiness.log
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Test documentation link auditor
+        run: python -m unittest tests/test_audit_links.py
 
       - name: Audit documentation links and anchors
         run: python scripts/audit_links.py
@@ -142,10 +166,10 @@ jobs:
             node --check "$file"
           done
 
-      - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium and WebKit for Playwright
+        run: npx playwright install --with-deps chromium webkit
 
-      - name: Run Chromium acceptance tests against built site
+      - name: Run browser acceptance tests against built site
         shell: bash
         run: |
           python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
@@ -163,7 +187,13 @@ jobs:
             sleep 1
           done
 
-          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- \
+              tests/e2e/live-site.spec.mjs \
+              --project=webkit-iphone \
+              --grep "tools/resource-comparison/ renders without runtime or viewport failures"
 
       - name: Upload browser-test diagnostics
         if: failure()

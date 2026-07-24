@@ -25,6 +25,15 @@ from personnel_education_contract import (
     load_mapping_registry as load_personnel_education_mappings,
     owned_paths as personnel_education_owned_paths,
 )
+from report_canonical_candidates import (
+    canonical_records_by_id,
+    effective_verification_decisions,
+    known_keys_by_group,
+    mapped_keys as load_mapping_records,
+    source_blockers,
+    stable_id,
+    unmapped_key_paths,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "einsaetze.raw.json"
@@ -80,29 +89,11 @@ def mission_name(record: dict[str, Any]) -> str:
 
 
 def canonical_ids() -> set[str]:
-    result: set[str] = set()
-    for path in CANONICAL_ROOT.glob("*.json"):
-        record = read_json(path)
-        if isinstance(record, dict) and record.get("id") is not None:
-            result.add(str(record["id"]))
-    return result
+    return set(canonical_records_by_id())
 
 
 def load_mapped_keys() -> dict[str, set[str]]:
-    registry = read_json(MAPPINGS_PATH)
-    if not isinstance(registry, dict):
-        raise ValueError("Official key mapping registry must be an object")
-    result: dict[str, set[str]] = {}
-    for group in KEY_GROUPS:
-        values = registry.get(group)
-        if not isinstance(values, dict):
-            raise ValueError(f"Official key mapping group {group} must be an object")
-        result[group] = {str(key) for key in values}
-    result["requirements"].update(CONDITIONAL_REQUIREMENT_KEYS)
-    result["chances"].update(CONDITIONAL_CHANCE_KEYS)
-    result["requirements"].update(PERSONNEL_EDUCATION_REQUIREMENT_KEYS)
-    result["prerequisites"].update(PERSONNEL_EDUCATION_PREREQUISITE_KEYS)
-    return result
+    return known_keys_by_group(load_mapping_records())
 
 
 def record_unmapped_keys(record: dict[str, Any], mapped: dict[str, set[str]]) -> list[tuple[str, str]]:
@@ -118,45 +109,59 @@ def record_unmapped_keys(record: dict[str, Any], mapped: dict[str, set[str]]) ->
     return result
 
 
-def operational_complexity(record: dict[str, Any]) -> list[str]:
-    blockers: list[str] = []
-    additional = record.get("additional")
-    if isinstance(additional, dict):
-        try:
-            build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        try:
-            build_expected_personnel_educations(record, PERSONNEL_EDUCATION_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        try:
-            build_expected_recovery(record, RECOVERY_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
-        blockers.extend(f"additional.{key}" for key in unsupported)
-        if additional.get("filter_id") not in SAFE_GENERATOR_FAMILIES:
-            blockers.append(f"generator:{additional.get('filter_id')!r}")
-        for field in RELATIONSHIP_KEYS:
-            values = additional.get(field, [])
-            if not isinstance(values, list):
-                blockers.append(f"additional.{field}.invalid")
-                continue
-            counts = Counter(str(value) for value in values)
-            if any(count > 1 for count in counts.values()):
-                blockers.append(f"additional.{field}.duplicate-multiplicity")
-    elif additional not in (None, {}):
-        blockers.append("additional")
+def operational_complexity(
+    record: dict[str, Any],
+    official_by_id: dict[str, dict[str, Any]] | None = None,
+    mappings: dict[str, dict[str, dict[str, Any]]] | None = None,
+) -> list[str]:
+    if official_by_id is None:
+        envelope = read_json(OFFICIAL_PATH)
+        records = envelope.get("records") if isinstance(envelope, dict) else None
+        if not isinstance(records, list):
+            raise ValueError("Official UK mission source envelope is invalid")
+        official_by_id = {
+            str(item["id"]): item
+            for item in records
+            if isinstance(item, dict) and item.get("id") is not None
+        }
+    if mappings is None:
+        mappings = load_mapping_records()
+    return [
+        blocker
+        for blocker in source_blockers(record, mappings, official_by_id)
+        if not blocker.startswith("unmapped ")
+    ]
 
-    mission_id = record.get("id")
-    base_mission_id = record.get("base_mission_id")
-    if base_mission_id is not None and str(base_mission_id) != str(mission_id):
-        blockers.append(f"variant:{base_mission_id}")
-    for key in ("overlay_index", "additive_overlays", "generated_by"):
-        if record.get(key) not in (None, "", []):
-            blockers.append(key)
-    return blockers
+
+def blockers_after_resolving_key(
+    blockers: list[str],
+    group: str,
+    key: str,
+) -> list[str]:
+    target = f"unmapped {group}.{key}"
+    removed = False
+    result: list[str] = []
+    for blocker in blockers:
+        if blocker == target and not removed:
+            removed = True
+            continue
+        result.append(blocker)
+    return result
+
+
+def single_key_unlock_bucket(
+    state: str,
+    blockers: list[str],
+    group: str,
+    key: str,
+) -> str | None:
+    if blockers_after_resolving_key(blockers, group, key):
+        return None
+    if state == "official-only":
+        return "creation"
+    if state == "canonical-unpromoted":
+        return "existing-audit"
+    return None
 
 
 def build_report(example_limit: int) -> dict[str, Any]:
@@ -164,73 +169,190 @@ def build_report(example_limit: int) -> dict[str, Any]:
     if not isinstance(envelope, dict) or not isinstance(envelope.get("records"), list):
         raise ValueError("Official UK mission source envelope is invalid")
     records = [record for record in envelope["records"] if isinstance(record, dict) and record.get("id") is not None]
-    mapped = load_mapped_keys()
-    existing = canonical_ids()
+    official_by_id = {str(record["id"]): record for record in records}
+    if len(official_by_id) != len(records):
+        raise ValueError("Official UK mission source repeats one or more mission ids")
+    mappings = load_mapping_records()
+    mapped = known_keys_by_group(mappings)
+    canonical = canonical_records_by_id()
+    canonical_id_set = set(canonical)
+    decisions = effective_verification_decisions()
+    fully_canonical_decision_ids = {
+        mission_id
+        for mission_id, decision in decisions.items()
+        if decision.get("stage") == "fully-canonical"
+    }
+    missing_official = fully_canonical_decision_ids - set(official_by_id)
+    if missing_official:
+        raise ValueError(
+            "Fully canonical verification decisions lack official records: "
+            + ", ".join(sorted(missing_official, key=stable_id))
+        )
+    fully_canonical_ids = fully_canonical_decision_ids
+    missing_canonical = fully_canonical_ids - canonical_id_set
+    if missing_canonical:
+        raise ValueError(
+            "Fully canonical verification decisions lack direct canonical records: "
+            + ", ".join(sorted(missing_canonical, key=stable_id))
+        )
 
+    states = ("official-only", "canonical-unpromoted", "fully-canonical")
+    state_counts: Counter[str] = Counter()
     counts: Counter[tuple[str, str]] = Counter()
-    single_key_unlocks: Counter[tuple[str, str]] = Counter()
-    examples: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    counts_by_state: Counter[tuple[tuple[str, str], str]] = Counter()
+    creation_unlocks: Counter[tuple[str, str]] = Counter()
+    existing_audit_unlocks: Counter[tuple[str, str]] = Counter()
+    examples_by_state: dict[
+        tuple[str, str],
+        dict[str, list[dict[str, Any]]],
+    ] = defaultdict(lambda: {state: [] for state in states})
+    keys_by_state: dict[str, set[tuple[str, str]]] = {state: set() for state in states}
+    occurrences_by_state: Counter[str] = Counter()
 
     for record in records:
-        if str(record["id"]) in existing:
-            continue
-        unmapped = record_unmapped_keys(record, mapped)
-        complexity = operational_complexity(record)
+        mission_id = str(record["id"])
+        if mission_id in fully_canonical_ids:
+            state = "fully-canonical"
+        elif mission_id in canonical:
+            state = "canonical-unpromoted"
+        else:
+            state = "official-only"
+        state_counts[state] += 1
+
+        unmapped = unmapped_key_paths(record, mappings)
+        blockers = source_blockers(record, mappings, official_by_id)
         for group, key in unmapped:
             identity = (group, key)
             counts[identity] += 1
-            if len(examples[identity]) < example_limit:
+            counts_by_state[(identity, state)] += 1
+            keys_by_state[state].add(identity)
+            occurrences_by_state[state] += 1
+            unlock_bucket = single_key_unlock_bucket(state, blockers, group, key)
+            if unlock_bucket == "creation":
+                creation_unlocks[identity] += 1
+            elif unlock_bucket == "existing-audit":
+                existing_audit_unlocks[identity] += 1
+
+            state_examples = examples_by_state[identity][state]
+            if len(state_examples) < example_limit:
                 value_group = record.get(group, {})
-                examples[identity].append(
+                other_unmapped = [
+                    f"{other_group}.{other_key}"
+                    for other_group, other_key in unmapped
+                    if (other_group, other_key) != identity
+                ]
+                remaining_blockers = blockers_after_resolving_key(blockers, group, key)
+                other_blockers = [
+                    blocker
+                    for blocker in remaining_blockers
+                    if not blocker.startswith("unmapped ")
+                ]
+                canonical_entry = canonical.get(mission_id)
+                decision = decisions.get(mission_id, {})
+                registry_stage = decision.get("stage")
+                if state != "official-only" and (
+                    not isinstance(registry_stage, str) or not registry_stage
+                ):
+                    registry_stage = (
+                        "identity-verified"
+                        if canonical_entry is not None
+                        and mission_name(canonical_entry["record"]) == mission_name(record)
+                        else "captured"
+                    )
+                state_examples.append(
                     {
                         "id": record.get("id"),
                         "name": mission_name(record),
+                        "state": state,
                         "value": value_group.get(key) if isinstance(value_group, dict) else None,
                         "average_credits": record.get("average_credits"),
                         "filter_id": record.get("additional", {}).get("filter_id")
                         if isinstance(record.get("additional"), dict)
                         else None,
-                        "other_unmapped_keys": [
-                            f"{other_group}.{other_key}"
-                            for other_group, other_key in unmapped
-                            if (other_group, other_key) != identity
-                        ],
-                        "operational_complexity": complexity,
-                        "official_url": f"https://www.missionchief.co.uk/einsaetze/{record.get('id')}",
+                        "canonical_path": canonical_entry["path"]
+                        if canonical_entry is not None
+                        else None,
+                        "registry_stage": registry_stage
+                        if state != "official-only"
+                        else None,
+                        "other_unmapped_keys": other_unmapped,
+                        "other_blockers": other_blockers,
+                        "operational_complexity": other_blockers,
+                        "official_url": record.get("official_url")
+                        or f"https://www.missionchief.co.uk/einsaetze/{record.get('id')}",
                     }
                 )
-        if len(unmapped) == 1 and not complexity:
-            single_key_unlocks[unmapped[0]] += 1
 
     entries = [
         {
             "group": group,
             "key": key,
-            "remaining_mission_count": counts[(group, key)],
-            "single_key_unlock_count": single_key_unlocks[(group, key)],
-            "examples": examples[(group, key)],
+            "path": f"{group}.{key}",
+            "catalogue_mission_count": counts[(group, key)],
+            "official_only_mission_count": counts_by_state[((group, key), "official-only")],
+            "canonical_unpromoted_mission_count": counts_by_state[
+                ((group, key), "canonical-unpromoted")
+            ],
+            "fully_canonical_mission_count": counts_by_state[
+                ((group, key), "fully-canonical")
+            ],
+            "single_key_creation_unlock_count": creation_unlocks[(group, key)],
+            "single_key_existing_audit_unlock_count": existing_audit_unlocks[
+                (group, key)
+            ],
+            "examples_by_state": examples_by_state[(group, key)],
+            # Schema v2 compatibility aliases retain their creation-pool meaning.
+            "remaining_mission_count": counts_by_state[((group, key), "official-only")],
+            "single_key_unlock_count": creation_unlocks[(group, key)],
+            "examples": examples_by_state[(group, key)]["official-only"],
         }
         for group, key in counts
     ]
     entries.sort(
         key=lambda item: (
-            -item["single_key_unlock_count"],
-            -item["remaining_mission_count"],
+            -item["single_key_creation_unlock_count"],
+            -item["single_key_existing_audit_unlock_count"],
+            -item["catalogue_mission_count"],
             item["group"],
             item["key"],
         )
     )
 
+    direct_canonical_ids = set(official_by_id) & canonical_id_set
+    canonical_only_ids = canonical_id_set - set(official_by_id)
+    catalogue_occurrences = sum(counts.values())
     return {
-        "schema_version": "2",
+        "schema_version": "3",
         "official_count": len(records),
-        "canonical_count": len(existing),
+        "canonical_count": len(canonical),
+        "direct_canonical_count": len(direct_canonical_ids),
+        "canonical_only_count": len(canonical_only_ids),
+        "fully_canonical_count": state_counts["fully-canonical"],
+        "official_only_count": state_counts["official-only"],
+        "canonical_unpromoted_count": state_counts["canonical-unpromoted"],
         "patient_contract_fields": len(PATIENT_MAPPINGS),
         "conditional_resource_contracts": len(CONDITIONAL_MAPPINGS),
         "personnel_education_roles": len(PERSONNEL_EDUCATION_MAPPINGS["roles"]),
         "recovery_asset_contracts": len(RECOVERY_MAPPINGS),
         "mapped_key_counts": {group: len(mapped[group]) for group in KEY_GROUPS},
-        "unmapped_key_count": len(entries),
+        "catalogue_unmapped_key_count": len(entries),
+        "catalogue_unmapped_occurrence_count": catalogue_occurrences,
+        "official_only_unmapped_key_count": len(keys_by_state["official-only"]),
+        "official_only_unmapped_occurrence_count": occurrences_by_state[
+            "official-only"
+        ],
+        "canonical_unpromoted_unmapped_key_count": len(
+            keys_by_state["canonical-unpromoted"]
+        ),
+        "canonical_unpromoted_unmapped_occurrence_count": occurrences_by_state[
+            "canonical-unpromoted"
+        ],
+        "fully_canonical_unmapped_key_count": len(keys_by_state["fully-canonical"]),
+        "fully_canonical_unmapped_occurrence_count": occurrences_by_state[
+            "fully-canonical"
+        ],
+        # Schema v2 compatibility alias retains its creation-pool meaning.
+        "unmapped_key_count": len(keys_by_state["official-only"]),
         "entries": entries,
     }
 

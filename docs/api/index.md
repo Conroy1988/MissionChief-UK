@@ -18,7 +18,7 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 ```text
 API contract: v1
 Data version: 1.1.0
-Released: 23 July 2026
+Released: 24 July 2026
 Canonical missions: 284
 Official UK missions: 1,062
 Direct official/canonical ID matches: 267
@@ -68,7 +68,7 @@ The verification endpoint is generated after merging the base registry with scal
 {
   "schema_version": "1",
   "data_version": "1.1.0",
-  "released_at": "2026-07-23",
+  "released_at": "2026-07-24",
   "collection": "missions",
   "count": 284,
   "records": []
