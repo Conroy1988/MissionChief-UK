@@ -69,13 +69,14 @@ jobs:
           report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
           assert report["status"] == "clean", report
           summary = report["summary"]
-          assert summary["candidate_official_count"] == 1062, report
-          assert summary["verified_candidate_count"] == 1062, report
+          impact = report["impact"]
           assert summary["added_count"] == 0, report
           assert summary["removed_count"] == 0, report
           assert summary["modified_count"] == 0, report
-          assert summary["invalidated_count"] == 0, report
-          assert summary["projected_coverage_percent"] == 100.0, report
+          assert summary["invalidated_fully_canonical_count"] == 0, report
+          assert impact["candidate_official_count"] == 1062, report
+          assert impact["projected_fully_canonical_count"] == 1062, report
+          assert impact["projected_fully_canonical_percent"] == 100.0, report
           PY
           python scripts/reconcile_official_mission_coverage.py
           python scripts/validate_official_mission_catalogue.py
