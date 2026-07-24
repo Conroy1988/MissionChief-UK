@@ -1,0 +1,99 @@
+name: Verify complete vehicle ID mapping production
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'ops/verify-complete-vehicle-id-mapping'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TARGET_SHA: 3b0d62664523b33164006f3c2b20e5d2d5961562
+      LIVE_ROOT: https://conroy1988.github.io/MissionChief-UK
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check out exact production commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
+
+      - name: Verify repository production state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          test "$(gh api repos/$GITHUB_REPOSITORY/commits/main --jq .sha)" = "$TARGET_SHA"
+          test "$(gh api repos/$GITHUB_REPOSITORY/pulls/24 --jq .merged)" = "true"
+
+      - name: Wait for exact main workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/vehicle-id-production"
+          mkdir -p "$out"
+          for attempt in $(seq 1 120); do
+            gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$TARGET_SHA&event=push&per_page=100" > "$out/workflow-runs.json"
+            vehicle_status=$(jq -r '[.workflow_runs[] | select(.name == "Validate UK vehicle inventory")][0].status // "missing"' "$out/workflow-runs.json")
+            vehicle_result=$(jq -r '[.workflow_runs[] | select(.name == "Validate UK vehicle inventory")][0].conclusion // "pending"' "$out/workflow-runs.json")
+            pages_status=$(jq -r '[.workflow_runs[] | select(.name == "Deploy MissionChief UK Guide")][0].status // "missing"' "$out/workflow-runs.json")
+            pages_result=$(jq -r '[.workflow_runs[] | select(.name == "Deploy MissionChief UK Guide")][0].conclusion // "pending"' "$out/workflow-runs.json")
+            echo "attempt=$attempt vehicle=$vehicle_status/$vehicle_result pages=$pages_status/$pages_result"
+            if [[ "$vehicle_status" == completed && "$pages_status" == completed ]]; then
+              test "$vehicle_result" = success
+              test "$pages_result" = success
+              break
+            fi
+            if [[ "$attempt" == 120 ]]; then
+              cat "$out/workflow-runs.json"
+              exit 1
+            fi
+            sleep 10
+          done
+          jq '[.workflow_runs[] | select(.name == "Validate UK vehicle inventory" or .name == "Deploy MissionChief UK Guide") | {id,name,status,conclusion,head_sha,html_url}]' "$out/workflow-runs.json" > "$out/verified-workflows.json"
+
+      - name: Verify live 100 percent coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/vehicle-id-production"
+          cache="verified=$TARGET_SHA-$(date +%s)"
+          for attempt in $(seq 1 60); do
+            curl --fail --silent --show-error "$LIVE_ROOT/assets/data/v1/manifest.json?$cache-$attempt" -o "$out/manifest.json" || true
+            curl --fail --silent --show-error "$LIVE_ROOT/assets/data/official/uk-vehicle-coverage.json?$cache-$attempt" -o "$out/vehicle-coverage.json" || true
+            curl --fail --silent --show-error "$LIVE_ROOT/reference/vehicle-id-mapping-completion/?$cache-$attempt" -o "$out/evidence-page.html" || true
+            if jq -e '.collections.vehicles.count == 92 and .search_index.count == 1202' "$out/manifest.json" >/dev/null 2>&1 \
+              && jq -e '.summary.inventory_entries == 73 and .summary.mapped_inventory_entries == 73 and .summary.unresolved_inventory_entries == 0 and .summary.identity_coverage_percent == 100.0 and .summary.canonical_records == 92' "$out/vehicle-coverage.json" >/dev/null 2>&1 \
+              && grep -q '73 observed vehicle type IDs' "$out/evidence-page.html"; then
+              break
+            fi
+            if [[ "$attempt" == 60 ]]; then
+              cat "$out/manifest.json" || true
+              cat "$out/vehicle-coverage.json" || true
+              exit 1
+            fi
+            sleep 10
+          done
+          jq '{data_version,stage,status,vehicles:.collections.vehicles.count,search_entities:.search_index.count}' "$out/manifest.json" > "$out/live-summary.json"
+          jq '{summary,field_completeness}' "$out/vehicle-coverage.json" > "$out/live-vehicle-coverage-summary.json"
+
+      - name: Retain verification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: complete-vehicle-id-mapping-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/vehicle-id-production
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Delete completed branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/stage36a/complete-vehicle-id-mapping"
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/ops/verify-complete-vehicle-id-mapping"
