@@ -110,16 +110,32 @@ class ReleaseReadinessTests(unittest.TestCase):
         )
         readiness.audit_catalogue_state_lines(readme, notes, 795, 17)
 
-    def test_catalogue_state_lines_reject_stale_values(self) -> None:
+    def test_catalogue_state_lines_reject_stale_awaiting_count(self) -> None:
         stale_readme = "\n".join(
             (
                 "| **Official records awaiting canonical records** | **794** |",
-                "| **Canonical-only overlays** | **16** |",
+                "| **Canonical-only overlays** | **17** |",
             )
         )
         stale_notes = "\n".join(
             (
                 "794 official records awaiting direct canonical records",
+                "17 canonical overlay or derived records without standalone official IDs",
+            )
+        )
+        with self.assertRaises(readiness.AuditFailure):
+            readiness.audit_catalogue_state_lines(stale_readme, stale_notes, 795, 17)
+
+    def test_catalogue_state_lines_reject_stale_overlay_count(self) -> None:
+        stale_readme = "\n".join(
+            (
+                "| **Official records awaiting canonical records** | **795** |",
+                "| **Canonical-only overlays** | **16** |",
+            )
+        )
+        stale_notes = "\n".join(
+            (
+                "795 official records awaiting direct canonical records",
                 "16 canonical overlay or derived records without standalone official IDs",
             )
         )
