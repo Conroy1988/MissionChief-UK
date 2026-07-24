@@ -1,4 +1,4 @@
-name: Diagnose production drift execution
+name: Validate drift dependency hotfix
 
 on:
   pull_request:
@@ -7,50 +7,93 @@ on:
       - .github/workflows/verify-drift-production.yml
 
 permissions:
-  actions: read
   contents: read
 
 jobs:
-  diagnose:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env:
-      EXPECTED_MAIN_SHA: 78bd730fdbd890adec012992d1e6a8cab86860a4
+    timeout-minutes: 30
     steps:
-      - name: Capture latest production drift run
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Check out hotfix branch
+        uses: actions/checkout@v6
+        with:
+          ref: fix/drift-workflow-dependencies
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate workflow and governance
         shell: bash
         run: |
           set -euo pipefail
-          out="$RUNNER_TEMP/production-drift-diagnostic"
-          mkdir -p "$out"
-          gh run list \
-            --repo "$GITHUB_REPOSITORY" \
-            --workflow import-official-uk-missions.yml \
-            --event workflow_dispatch \
-            --branch main \
-            --limit 10 \
-            --json databaseId,status,conclusion,headSha,createdAt,url \
-            > "$out/recent-runs.json"
-          run_id="$(jq -r --arg sha "$EXPECTED_MAIN_SHA" '[.[] | select(.headSha == $sha)] | sort_by(.createdAt) | reverse | .[0].databaseId // empty' "$out/recent-runs.json")"
-          test -n "$run_id"
-          echo "$run_id" > "$out/run-id.txt"
-          gh run view "$run_id" \
-            --repo "$GITHUB_REPOSITORY" \
-            --json databaseId,status,conclusion,headSha,workflowName,url,jobs \
-            > "$out/run.json"
-          gh run view "$run_id" \
-            --repo "$GITHUB_REPOSITORY" \
-            --log \
-            > "$out/run.log" 2>&1 || true
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/artifacts" \
-            > "$out/artifacts.json"
+          grep -F 'name: Install dependencies' .github/workflows/import-official-uk-missions.yml
+          grep -F 'python -m pip install -r requirements.txt' .github/workflows/import-official-uk-missions.yml
+          python -m py_compile scripts/release_readiness.py
+          python -m unittest tests/test_official_mission_drift.py -v
+          python -m unittest discover -s tests/python -p 'test_*.py' -v
+          python scripts/validate_verification_programme_assets.py
+          python scripts/release_readiness.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
 
-      - name: Upload execution diagnostics
+      - name: Exercise clean production drift path
+        shell: bash
+        run: |
+          set -euo pipefail
+          candidate="$RUNNER_TEMP/official-uk-candidate"
+          drift="$RUNNER_TEMP/official-uk-drift"
+          mkdir -p "$candidate" "$drift"
+          python scripts/import_official_uk_missions.py \
+            --output-dir "$candidate" \
+            --canonical-dir data/uk/missions
+          python scripts/merge_verification_registry_batches.py
+          python scripts/detect_official_mission_drift.py \
+            --baseline data/sources/missionchief-uk/einsaetze.raw.json \
+            --candidate "$candidate/einsaetze.raw.json" \
+            --canonical-dir data/uk/missions \
+            --registry data/uk/mission-verification-registry.json \
+            --json-output "$drift/official-catalogue-drift.json" \
+            --markdown-output "$drift/official-catalogue-drift.md"
+          python - "$drift/official-catalogue-drift.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert report["status"] == "clean", report
+          summary = report["summary"]
+          assert summary["candidate_official_count"] == 1062, report
+          assert summary["verified_candidate_count"] == 1062, report
+          assert summary["added_count"] == 0, report
+          assert summary["removed_count"] == 0, report
+          assert summary["modified_count"] == 0, report
+          assert summary["invalidated_count"] == 0, report
+          assert summary["projected_coverage_percent"] == 100.0, report
+          PY
+          python scripts/reconcile_official_mission_coverage.py
+          python scripts/validate_official_mission_catalogue.py
+          python scripts/validate_official_key_mappings.py
+          python scripts/validate_official_patient_mappings.py
+          python scripts/validate_official_personnel_mappings.py
+          python scripts/validate_official_personnel_education_mappings.py
+          python scripts/validate_official_prisoner_mappings.py
+          python scripts/validate_official_recovery_mappings.py
+          python scripts/validate_official_operational_mappings.py
+          python scripts/generate_full_canonical_catalogue.py --check
+
+      - name: Upload validation evidence
         uses: actions/upload-artifact@v4
         with:
-          name: production-drift-execution-diagnostic-${{ github.run_id }}
-          path: ${{ runner.temp }}/production-drift-diagnostic
+          name: drift-dependency-hotfix-validation-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/official-uk-candidate
+            ${{ runner.temp }}/official-uk-drift
           if-no-files-found: error
           retention-days: 14
