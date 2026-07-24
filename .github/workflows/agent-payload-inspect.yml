@@ -31,7 +31,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/payload/extracted"
-          cat .agent/canonical-coverage-payload.part.* > "$RUNNER_TEMP/payload/canonical-coverage-payload.b64"
+          cat .agent/canonical-coverage-payload.part.* \
+            | tr -d '[:space:]' \
+            > "$RUNNER_TEMP/payload/canonical-coverage-payload.b64"
           actual_b64_sha="$(sha256sum "$RUNNER_TEMP/payload/canonical-coverage-payload.b64" | awk '{print $1}')"
           echo "base64_sha256=$actual_b64_sha"
           test "$actual_b64_sha" = "9611c38f88d56b704874f0596e58454b8406cf240a7a79a985c2154583e778ab"
