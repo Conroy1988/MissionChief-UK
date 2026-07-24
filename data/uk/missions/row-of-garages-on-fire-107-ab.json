@@ -1,0 +1,76 @@
+{
+  "id": "107/ab",
+  "name": "Row of garages on fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 5
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/107/ab",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 8,
+    "foam_extensions": 2,
+    "hart_bases": 1
+  },
+  "reward": {
+    "average_credits": 4300
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 107,
+    "additive_overlays": "ab",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

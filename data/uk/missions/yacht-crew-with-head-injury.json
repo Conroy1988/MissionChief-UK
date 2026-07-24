@@ -1,0 +1,95 @@
+{
+  "id": 600,
+  "name": "Yacht crew with head injury",
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [
+      {
+        "resource": "coastguard_rescue_helicopter",
+        "quantity": 1,
+        "probability": 0.2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "inshore_lifeboat",
+          "all_weather_lifeboat"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/600",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "helicopter_hangars": 1,
+    "lifeboat_stations": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.85
+  },
+  "reward": {
+    "average_credits": 5000
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue_ocean"
+    ],
+    "icons": [
+      "/images/waterpark_gruen.png",
+      "/images/waterpark_gelb.png",
+      "/images/waterpark_rot.png"
+    ],
+    "base_mission_id": 600,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "handoff_possible_via_building_types": [
+        27
+      ],
+      "uses_custom_spawn_area": true,
+      "vehicle_groups": [
+        "ocean_missions"
+      ]
+    }
+  },
+  "service": "coastguard",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

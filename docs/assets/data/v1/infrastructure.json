@@ -1,0 +1,454 @@
+{
+  "collection": "infrastructure",
+  "count": 19,
+  "data_version": "1.2.0",
+  "records": [
+    {
+      "aliases": [],
+      "capabilities": [
+        "airfield_operations_mission_generation"
+      ],
+      "id": "airfield_operations_extension",
+      "kind": "extension",
+      "name": "Airfield Operations Extension",
+      "notes": [
+        "Aircraft Accident Codes C, D and F use this as a mission-generation precondition.",
+        "Parent-building compatibility, price, build time and capacity remain unverified."
+      ],
+      "parent_buildings": [],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Aviation Firefighting Extension"
+      ],
+      "capabilities": [
+        "airfield_firefighting_mission_generation"
+      ],
+      "id": "aviation_firefighting_extension",
+      "kind": "extension",
+      "name": "Aviation firefighting Extension",
+      "notes": [
+        "The canonical display name preserves the capitalization used by current UK mission pages.",
+        "Parent-building compatibility, price, build time and capacity remain unverified."
+      ],
+      "parent_buildings": [],
+      "service": "airfield_operations",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "beach_lifeguard_mission_generation"
+      ],
+      "id": "beach_lifeguard_extensions",
+      "kind": "extension",
+      "name": "Beach Lifeguard Extension",
+      "notes": [
+        "Required Beach Lifeguard Extension count.",
+        "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-24",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/563/a",
+          "https://www.missionchief.co.uk/einsaetze.json"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Bomb Disposal Headquarters"
+      ],
+      "capabilities": [
+        "Generates or unlocks Bomb Disposal missions when the required count is met"
+      ],
+      "id": "bomb_disposal_hq",
+      "kind": "building",
+      "name": "Bomb Disposal HQ",
+      "notes": [
+        "The official mission directory confirms this building as a precondition across the UK Bomb Disposal mission set.",
+        "Construction cost, build duration, capacity and vehicle availability remain unpublished until reproduced from the current building interface."
+      ],
+      "parent_buildings": [],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Marine Bomb Disposal Extension"
+      ],
+      "capabilities": [
+        "Unlocks marine and coastal Bomb Disposal mission preconditions"
+      ],
+      "id": "bomb_disposal_marine_unit_extension",
+      "kind": "extension",
+      "name": "Bomb Disposal Marine Unit Extension",
+      "notes": [
+        "The official mission directory confirms one or two extensions as preconditions for beach, harbour and marina ordnance missions.",
+        "Cost, construction time, capacity and associated vehicles remain unpublished until reproduced from the current extension interface."
+      ],
+      "parent_buildings": [
+        "Bomb Disposal HQ"
+      ],
+      "service": "bomb_disposal",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "flood_rescue_mission_generation"
+      ],
+      "id": "flood_rescue_extension",
+      "kind": "extension",
+      "name": "Flood Rescue Extension",
+      "notes": [
+        "Official UK mission pages use Flood Rescue Extensions as countable mission-generation preconditions.",
+        "Compatible parent buildings, price, build time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "foam_response_mission_generation"
+      ],
+      "id": "foam_extension",
+      "kind": "extension",
+      "name": "Foam Extension",
+      "notes": [
+        "Official UK mission pages use Foam Extensions as countable mission-generation preconditions.",
+        "Compatible parent buildings, price, build time and capacity remain unpublished pending direct building-interface evidence."
+      ],
+      "parent_buildings": [],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "hart_mission_generation"
+      ],
+      "id": "hart_base",
+      "kind": "building",
+      "name": "HART Base",
+      "notes": [
+        "This record establishes the canonical HART Base identifier used across verified specialist missions.",
+        "The abbreviation remains unexpanded without separate primary-source evidence.",
+        "Price, build time, vehicle capacity and personnel capacity remain unverified."
+      ],
+      "parent_buildings": [],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://www.missionchief.co.uk/einsaetze/593"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "hgv_recovery_mission_generation",
+        "truck_towing"
+      ],
+      "id": "hgv_recovery_extension",
+      "kind": "extension",
+      "name": "HGV Recovery Extension",
+      "notes": [
+        "Official UK mission pages use this extension as a generation precondition for truck and HGV recovery variants.",
+        "The compatible parent building, purchase cost, build time and capacity are not populated without direct building-interface evidence."
+      ],
+      "parent_buildings": [],
+      "service": "recovery",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/13?additive_overlays=a",
+          "https://www.missionchief.co.uk/einsaetze/778",
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "hovercraft_mission_generation"
+      ],
+      "id": "hovercraft_extension",
+      "kind": "extension",
+      "name": "Hovercraft Extension",
+      "notes": [
+        "Verified UK coastal missions use Hovercraft Extensions as generation preconditions.",
+        "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "mass_casualty_mission_generation"
+      ],
+      "id": "mass_casualty_extension",
+      "kind": "extension",
+      "name": "Mass Casualty Extension",
+      "notes": [
+        "This record establishes the canonical precondition identifier used by Airfield Operations and other major incidents.",
+        "Parent-building compatibility, price, build time and capacity remain unverified."
+      ],
+      "parent_buildings": [],
+      "service": "ambulance",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/587",
+          "https://www.missionchief.co.uk/einsaetze/588"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "mud_decontamination_mission_generation"
+      ],
+      "id": "mud_decontamination_extension",
+      "kind": "extension",
+      "name": "Mud Decontamination Extension",
+      "notes": [
+        "Verified UK mud-rescue missions use this extension as a countable generation precondition.",
+        "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "coastguard",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/562"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "police_air_support_mission_generation"
+      ],
+      "id": "police_helicopter_station",
+      "kind": "building",
+      "name": "Police Helicopter Station",
+      "notes": [
+        "Official UK mission pages use Police Helicopter Stations as countable mission-generation preconditions.",
+        "Cost, capacity, construction time and aircraft allocation remain unpublished until directly reproduced."
+      ],
+      "parent_buildings": [],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Public Order Extension"
+      ],
+      "capabilities": [
+        "public_order_mission_generation"
+      ],
+      "id": "police_public_order_extension",
+      "kind": "extension",
+      "name": "Police Public Order Extension",
+      "notes": [
+        "Verified UK mission records use Police Public Order Extensions as mission-generation preconditions.",
+        "Compatible parent buildings, cost, construction time and capacity remain unpublished pending direct building-interface evidence."
+      ],
+      "parent_buildings": [],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Railway Fire Response"
+      ],
+      "capabilities": [
+        "railway_fire_mission_generation"
+      ],
+      "id": "railway_fire_response",
+      "kind": "building",
+      "name": "Railway fire response",
+      "notes": [
+        "Official UK mission pages use Railway fire response as a countable mission-generation precondition.",
+        "Cost, capacity, construction time and precise building-interface classification remain unpublished until directly reproduced."
+      ],
+      "parent_buildings": [],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "railway_police_mission_generation"
+      ],
+      "id": "railway_police",
+      "kind": "building",
+      "name": "Railway Police",
+      "notes": [
+        "Official UK mission pages use Railway Police as a countable mission-generation precondition.",
+        "The current source confirms the entity name and generation relationship; cost, capacity, construction time and precise building-interface classification remain unpublished."
+      ],
+      "parent_buildings": [],
+      "service": "police",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/807",
+          "https://police.missionchief.co.uk/einsaetze/372?additive_overlays=abc"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "recovery_mission_generation",
+        "car_towing"
+      ],
+      "id": "recovery_centre",
+      "kind": "building",
+      "name": "Recovery Centre",
+      "notes": [
+        "Official UK mission pages use this building as a generation precondition for Recovery Vehicle Missions and recovery-enabled variants.",
+        "Purchase cost, construction time, capacity, staffing and vehicle inventory remain unverified."
+      ],
+      "parent_buildings": [],
+      "service": "recovery",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze/784",
+          "https://police.missionchief.co.uk/einsaetze/2?additive_overlays=a",
+          "https://police.missionchief.co.uk/einsaetze/129?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "technical_rescue_mission_generation"
+      ],
+      "id": "technical_rescue_extension",
+      "kind": "extension",
+      "name": "Technical Rescue Extension",
+      "notes": [
+        "Official UK mission pages use Technical Rescue Extensions as countable mission-generation preconditions.",
+        "Compatible parent buildings, price, construction time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "capabilities": [
+        "water_damage_pump_mission_generation"
+      ],
+      "id": "water_damage_pump_extension",
+      "kind": "extension",
+      "name": "Water Damage Pump Extension",
+      "notes": [
+        "Official UK mission pages use Water Damage Pump Extensions as countable mission-generation preconditions.",
+        "Compatible parent buildings, price, build time and capacity remain unpublished pending direct evidence."
+      ],
+      "parent_buildings": [],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-22",
+        "sources": [
+          "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    }
+  ],
+  "released_at": "2026-07-24",
+  "schema_version": "1"
+}

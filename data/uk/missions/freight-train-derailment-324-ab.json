@@ -1,0 +1,145 @@
+{
+  "id": "324/ab",
+  "name": "Freight Train Derailment",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 4
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "road_rail_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/324/ab",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Railroad Crossing",
+    "Train station (regional traffic)",
+    "Train station (regional traffic and long-distance travel)",
+    "Railroad Crossing\nTrain station (regional traffic)\nTrain station (regional traffic and long-distance travel)"
+  ],
+  "preconditions": {
+    "fire_stations": 15,
+    "hart_bases": 1,
+    "police_stations": 3,
+    "railway_fire_responses": 1,
+    "railway_police": 1,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 6,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.5
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 6
+      }
+    ],
+    "available": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 12
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 12400
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "railway_fire"
+    ],
+    "icons": [
+      "/images/bus_gruen.png",
+      "/images/bus_gelb.png",
+      "/images/bus_rot.png"
+    ],
+    "base_mission_id": 324,
+    "additive_overlays": "ab",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

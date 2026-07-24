@@ -1,0 +1,71 @@
+{
+  "id": 132,
+  "name": "HGV Lost its load (Livestock)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 1,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/132",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 1,
+    "police_stations": 8
+  },
+  "reward": {
+    "average_credits": 2400
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 132,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 2
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

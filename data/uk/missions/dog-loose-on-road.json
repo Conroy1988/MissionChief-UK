@@ -1,0 +1,53 @@
+{
+  "id": 860,
+  "name": "Dog loose on road",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/860",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 1
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 860,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

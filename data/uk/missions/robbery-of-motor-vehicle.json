@@ -1,0 +1,74 @@
+{
+  "id": 424,
+  "name": "Robbery of Motor Vehicle",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 3
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 4,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/424",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 10
+  },
+  "prisoners": {
+    "minimum": 1,
+    "maximum": 4
+  },
+  "reward": {
+    "average_credits": 5000
+  },
+  "expandable_missions": [
+    "425"
+  ],
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/theft_gruen.png",
+      "/images/theft_gelb.png",
+      "/images/theft_rot.png"
+    ],
+    "base_mission_id": 424,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

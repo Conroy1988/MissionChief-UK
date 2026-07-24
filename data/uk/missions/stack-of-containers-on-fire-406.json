@@ -1,18 +1,6 @@
 {
   "id": 406,
   "name": "Stack of containers on fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Fire Support Specialisation Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Container Holding Area"
-  ],
-  "preconditions": {
-    "fire_stations": 10
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -37,20 +25,50 @@
       }
     ]
   },
-  "reward": {
-    "average_credits": 8000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Container Holding Area POI and independent Aerial Appliance Truck and Water Carrier probabilities are retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/406",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Container Holding Area"
+  ],
+  "preconditions": {
+    "fire_stations": 10
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "fire_support_specialization"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 406,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

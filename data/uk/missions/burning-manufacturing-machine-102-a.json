@@ -1,0 +1,77 @@
+{
+  "id": "102/a",
+  "name": "Burning manufacturing machine",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/102/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Warehouse",
+    "Factory",
+    "Cold Storage Warehouse",
+    "Warehouse\nFactory\nCold Storage Warehouse"
+  ],
+  "preconditions": {
+    "fire_stations": 5,
+    "foam_extensions": 1
+  },
+  "reward": {
+    "average_credits": 2870
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 102,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "fire_alarm_system_possible": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "fire_alarm_system_possible": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

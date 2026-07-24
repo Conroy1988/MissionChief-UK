@@ -1,0 +1,76 @@
+{
+  "id": 93,
+  "name": "High-Risk Warrant",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "police_car",
+          "armed_response_vehicle"
+        ],
+        "quantity": 4,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/93",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 9
+  },
+  "prisoners": {
+    "minimum": 0,
+    "maximum": 4
+  },
+  "reward": {
+    "average_credits": 1200
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 93,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 8
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

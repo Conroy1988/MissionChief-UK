@@ -52,8 +52,9 @@ jobs:
           version = release.get("version")
           if not isinstance(version, str) or re.fullmatch(r"1\.\d+\.\d+", version) is None:
               raise SystemExit("Release version must be a valid v1 semantic version")
-          if release.get("stage") != 34:
-              raise SystemExit("Release metadata must identify Stage 34")
+          stage = release.get("stage")
+          if not isinstance(stage, int) or isinstance(stage, bool) or stage < 35:
+              raise SystemExit("Release metadata must identify Stage 35 or later")
           if release.get("status") != "production":
               raise SystemExit("Release metadata status must be production")
 
@@ -169,6 +170,14 @@ jobs:
       - name: Validate official recovery mappings
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Validate official operational metadata mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_operational_mappings.py
+
+      - name: Validate complete canonical catalogue generation
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/generate_full_canonical_catalogue.py --check
 
       - name: Run catalogue reporting unit tests
         if: steps.existing.outputs.exists != 'true'

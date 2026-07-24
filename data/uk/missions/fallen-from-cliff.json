@@ -1,0 +1,88 @@
+{
+  "id": 549,
+  "name": "Fallen From Cliff",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_rope_rescue_unit",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/549",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Cliff"
+  ],
+  "preconditions": {
+    "rescue_stations": 3,
+    "coastguard_rescue_stations": 4
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Rope Rescue Operator",
+        "quantity": 10
+      }
+    ],
+    "available": [
+      {
+        "role": "Rope Rescue Operator",
+        "quantity": 20
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 7000
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "water_rescue_2"
+    ],
+    "icons": [
+      "/images/climbing_gruen.png",
+      "/images/climbing_gelb.png",
+      "/images/climbing_rot.png"
+    ],
+    "base_mission_id": 549,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "coastguard",
+  "generation_rules": {
+    "main_building_type": 28
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

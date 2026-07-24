@@ -1,0 +1,25 @@
+{
+  "id": "rescue_watercraft_trailer",
+  "name": "Rescue Watercraft (Trailer)",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "Coastguard water rescue",
+  "capabilities": [
+    "rescue_watercraft_response"
+  ],
+  "notes": [
+    "The official overlay page displays Rescue Watercraft (Trailer).",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/563/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "deployment": {
+    "is_trailer": true
+  }
+}

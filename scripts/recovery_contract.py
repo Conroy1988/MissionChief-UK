@@ -63,6 +63,9 @@ def validate_mapping_registry(document: Any) -> dict[str, dict[str, Any]]:
             raise ValueError(f"Canonical recovery asset type {asset_type!r} is mapped more than once")
         asset_types.add(str(asset_type))
         parse_iso_date(mapping.get("checked_at"), f"{label} checked_at")
+        missing_minimum_default = mapping.get("missing_minimum_default", MISSING)
+        if missing_minimum_default is not MISSING:
+            checked_integer(missing_minimum_default, f"{label} missing_minimum_default")
         sources = mapping.get("sources")
         if not isinstance(sources, list) or not sources or not all(isinstance(item, str) and item for item in sources):
             raise ValueError(f"{label} requires evidence sources")
@@ -124,6 +127,10 @@ def build_expected_recovery(
         raw_maximum = nested_value(official_record, maximum_path)
         if raw_minimum is MISSING and raw_maximum is MISSING:
             continue
+        if raw_minimum is MISSING and raw_maximum is not MISSING:
+            default = mapping.get("missing_minimum_default", MISSING)
+            if default is not MISSING:
+                raw_minimum = default
         if raw_minimum is MISSING or raw_maximum is MISSING:
             missing = minimum_path if raw_minimum is MISSING else maximum_path
             raise ValueError(

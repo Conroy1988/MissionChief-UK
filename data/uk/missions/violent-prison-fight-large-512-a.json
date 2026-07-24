@@ -1,0 +1,124 @@
+{
+  "id": "512/a",
+  "name": "Violent Prison Fight (Large)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/512/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Prison"
+  ],
+  "preconditions": {
+    "hart_bases": 1,
+    "police_stations": 25,
+    "rescue_stations": 8,
+    "police_public_order_extensions": 1
+  },
+  "patients": {
+    "maximum": 7,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.4
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 18
+      },
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 24
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 36
+      },
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 35
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 5
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 10
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 17200
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 512,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

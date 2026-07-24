@@ -1,0 +1,82 @@
+{
+  "id": 758,
+  "name": "Cardiac Arrest on Hike",
+  "requirements": {
+    "guaranteed": [],
+    "alternatives": [
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/758",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "hart_bases": 1,
+    "mountain_rescue_stations": 2,
+    "rescue_stations": 5
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "PPCI"
+    ],
+    "specialization_ids": [
+      10
+    ],
+    "specialization_text": "PPCI",
+    "codes": [
+      "C-1"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 1.0,
+    "critical_care_probability": 0.5
+  },
+  "reward": {
+    "average_credits": 2400
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 758,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

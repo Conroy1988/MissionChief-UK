@@ -1,0 +1,82 @@
+{
+  "id": "109/a",
+  "name": "Trespasser on railway line",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/109/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Tram stop",
+    "Train station (regional traffic)",
+    "Train station (regional traffic and long-distance travel)",
+    "Goods station",
+    "Railroad Crossing",
+    "Rail Crossing",
+    "Subway station",
+    "Tram stop\nTrain station (regional traffic)\nTrain station (regional traffic and long-distance travel)\nGoods station\nRailroad Crossing\nRail Crossing\nSubway station"
+  ],
+  "preconditions": {
+    "police_stations": 3
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ],
+    "available": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 8
+      }
+    ]
+  },
+  "prisoners": {
+    "minimum": 1,
+    "maximum": 3
+  },
+  "reward": {
+    "average_credits": 1400
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "railway_police"
+    ],
+    "icons": [
+      "/images/tramway_gruen.png",
+      "/images/tramway_gelb.png",
+      "/images/tramway_rot.png"
+    ],
+    "base_mission_id": 109,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

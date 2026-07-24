@@ -1,20 +1,16 @@
 {
   "id": 419,
   "name": "Scrapyard Fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Scrap yard"
-  ],
-  "preconditions": {
-    "fire_stations": 16,
-    "police_stations": 3
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 14
@@ -22,14 +18,6 @@
       {
         "resource": "fire_officer",
         "quantity": 6
-      },
-      {
-        "resource": "breathing_apparatus_support_unit",
-        "quantity": 1
-      },
-      {
-        "resource": "aerial_appliance_truck",
-        "quantity": 1
       },
       {
         "resource": "police_car",
@@ -40,41 +28,76 @@
         "quantity": 2
       }
     ],
-    "probabilistic": [],
     "alternatives": [
-      {
-        "resources": [
-          "hazmat_unit",
-          "cbrn_vehicle"
-        ],
-        "quantity": 1
-      },
       {
         "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 15000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [
-    "Scrapyard Fire Large"
-  ],
-  "notes": [
-    "The Scrap yard POI and expansion into Scrapyard Fire Large are retained.",
-    "HazMat/CBRN and ICCU/Ambulance Control requirements remain qualifying alternative groups."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/419",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Scrap yard"
+  ],
+  "preconditions": {
+    "fire_stations": 16,
+    "police_stations": 3
+  },
+  "reward": {
+    "average_credits": 15000
+  },
+  "expandable_missions": [
+    "420"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 419,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

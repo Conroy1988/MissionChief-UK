@@ -1,0 +1,62 @@
+{
+  "id": 80,
+  "name": "Burning bogle",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/80",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 1
+  },
+  "reward": {
+    "average_credits": 350
+  },
+  "availability_window": {
+    "starts_at": "2025-10-17T09:00:00Z",
+    "ends_at": "2025-10-31T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/ghost_gruen.png",
+      "/images/ghost_gelb.png",
+      "/images/ghost_rot.png"
+    ],
+    "base_mission_id": 80,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2025-10-31T23:59:59+00:00",
+      "date_start": "2025-10-17T09:00:00Z"
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

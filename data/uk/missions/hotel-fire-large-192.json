@@ -1,0 +1,122 @@
+{
+  "id": 192,
+  "name": "Hotel fire (large)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 3
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1,
+        "probability": 0.3
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/192",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Hotel"
+  ],
+  "preconditions": {
+    "fire_stations": 10,
+    "police_stations": 3,
+    "rescue_stations": 10
+  },
+  "patients": {
+    "maximum": 20,
+    "specializations": [
+      "General Internal",
+      "Critical Care"
+    ],
+    "specialization_ids": [
+      0,
+      14
+    ],
+    "specialization_text": "General Internal, Critical Care",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.4,
+    "critical_care_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "follow_up_missions": [
+    "349",
+    "349",
+    "349",
+    "349"
+  ],
+  "expandable_missions": [
+    "193"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 192,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

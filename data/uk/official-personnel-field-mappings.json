@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-24",
   "roles": {
     "operational_team_leader": {
       "status": "verified",
@@ -31,6 +31,20 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official midwife quantity is displayed as required Community Midwives. No same-key chance is present in the verified maternity records, so the published quantity is guaranteed."
+    },
+    "airfield_operations_supervisor": {
+      "status": "verified",
+      "canonical_role": "Airfield Operations Supervisor",
+      "requirement_path": "requirements.airport_command",
+      "chance_path": "chances.airport_command",
+      "canonical_target": "personnel.chance-aware",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The official airport_command quantity is displayed as required Airfield Operations Supervisors. No same-key chance is published in the retained records, so the quantity is guaranteed."
     }
   }
 }

@@ -9,7 +9,7 @@
 
 # MissionChief UK
 
-<p class="mcuk-hero-lead">A complete UK mission catalogue backed by conservative canonical evidence, measurable verification progress, operational search, fleet planning and structured public data.</p>
+<p class="mcuk-hero-lead">A complete UK mission catalogue with every official mission directly mapped, fully canonical, searchable and protected by strict source-equivalence validation.</p>
 
 <div class="mcuk-actions" markdown>
 [Search all UK missions](tools/mission-lookup.md){ .md-button .md-button--primary }
@@ -24,11 +24,11 @@
 </div>
 
 <div class="mcuk-hero-telemetry">
-  <div><strong data-mcuk-metric="version">v1.1.0</strong><span>Data release</span></div>
-  <div><strong data-mcuk-metric="stage">Stage 34</strong><span>Core programme</span></div>
+  <div><strong data-mcuk-metric="version">v1.2.0</strong><span>Data release</span></div>
+  <div><strong data-mcuk-metric="stage">Stage 35</strong><span>Core programme</span></div>
   <div><strong data-mcuk-metric="official">1,062</strong><span>Official UK missions</span></div>
-  <div><strong data-mcuk-metric="missions">284</strong><span>Canonical mapped</span></div>
-  <div><strong data-mcuk-metric="fully-canonical">226</strong><span>Fully canonical</span></div>
+  <div><strong data-mcuk-metric="missions">1,079</strong><span>Canonical mapped</span></div>
+  <div><strong data-mcuk-metric="fully-canonical">1,062</strong><span>Fully canonical</span></div>
 </div>
 
 <div class="mcuk-radar" aria-hidden="true">
@@ -58,15 +58,15 @@
   <span class="mcuk-command-icon">01</span>
   <small>COMPLETE MISSION INTELLIGENCE</small>
   <strong>Mission Lookup</strong>
-  <p>Search 1,062 official UK missions alongside 284 higher-trust canonical mappings, with every published field retained.</p>
+  <p>Search 1,062 official UK missions alongside 1,079 higher-trust canonical mappings, with every published field retained.</p>
   <em>Launch lookup →</em>
 </a>
 
 <a class="mcuk-command-card mcuk-command-card--red" href="reference/mission-verification-status/">
   <span class="mcuk-command-icon">02</span>
-  <small>100% EVIDENCE PROGRAMME</small>
+  <small>100% EVIDENCE COMPLETE</small>
   <strong>Verification Status</strong>
-  <p>Track all 1,062 missions through captured, identity, mapping, operational and fully canonical gates.</p>
+  <p>Audit all 1,062 missions at the fully canonical gate and monitor future source changes.</p>
   <em>Inspect progress →</em>
 </a>
 
@@ -118,28 +118,28 @@
   <div class="mcuk-board-header">
     <div>
       <small>PRODUCTION POSTURE</small>
-      <h3>Complete official coverage, controlled canonical interpretation</h3>
+      <h3>Complete official coverage and 100% fully canonical intelligence</h3>
     </div>
     <span data-mcuk-release-date>Released 24 July 2026</span>
   </div>
   <div class="mcuk-board-metrics">
-    <div><strong data-mcuk-collection="missions">284</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
-    <div><strong data-mcuk-verification="fully-canonical">226</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
-    <div><strong data-mcuk-collection="vehicles">48</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
-    <div><strong data-mcuk-collection="infrastructure">18</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
+    <div><strong data-mcuk-collection="missions">1,079</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>
+    <div><strong data-mcuk-verification="fully-canonical">1,062</strong><span>Fully canonical</span><i>Passed every evidence gate</i></div>
+    <div><strong data-mcuk-collection="vehicles">59</strong><span>Deployable resources</span><i>Vehicles, trailers, boats and equipment</i></div>
+    <div><strong data-mcuk-collection="infrastructure">19</strong><span>Infrastructure records</span><i>Buildings and extensions</i></div>
     <div><strong data-mcuk-collection="training">12</strong><span>Qualification records</span><i>Roles and verified course fields</i></div>
   </div>
   <div class="mcuk-board-footer">
     <span><b>1,062</b> official UK missions</span>
-    <span><b>267</b> direct ID matches</span>
-    <span><b data-mcuk-search-count>362</b> canonical search entities</span>
+    <span><b>1,062</b> direct ID matches</span>
+    <span><b data-mcuk-search-count>1,169</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
-    <a href="reference/mission-verification-status/">Track verification →</a>
+    <a href="reference/mission-verification-status/">Audit verification →</a>
   </div>
 </div>
 
 !!! important "Evidence boundary"
-    **Official catalogue, canonical mapped and fully canonical are different evidence states.** Official fields are reproduced as published. Internal keys are not guessed into canonical vehicles, personnel or buildings. A mission becomes fully canonical only after identity, mapping, operational and final evidence-completeness audits.
+    **All current official missions have passed every evidence gate; that does not relax the standard.** New or changed fields remain non-operational until their identity, mapping, relationships, variants and source semantics are reproduced and validated.
 
 ## Operational coverage
 

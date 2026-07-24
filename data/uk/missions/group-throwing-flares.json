@@ -1,12 +1,22 @@
 {
   "id": 622,
   "name": "Group Throwing Flares",
-  "aliases": [],
-  "service": "police",
-  "mission_types": [
-    "Police Missions",
-    "Police & Public Order Missions (Specialization)"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/622",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Stadium"
   ],
@@ -14,27 +24,7 @@
     "police_stations": 2,
     "police_public_order_extensions": 1
   },
-  "requirements": {
-    "guaranteed": [
-      {
-        "resource": "police_car",
-        "quantity": 4
-      }
-    ],
-    "probabilistic": [],
-    "alternatives": []
-  },
   "personnel": {
-    "available": [
-      {
-        "role": "Level 2 Public Order Officer",
-        "quantity": 12
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 2
-      }
-    ],
     "required": [
       {
         "role": "Level 2 Public Order Officer",
@@ -44,6 +34,16 @@
         "role": "Police Sergeant",
         "quantity": 1
       }
+    ],
+    "available": [
+      {
+        "role": "Level 2 Public Order Officer",
+        "quantity": 12
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
     ]
   },
   "prisoners": {
@@ -52,14 +52,33 @@
   "reward": {
     "average_credits": 2500
   },
-  "notes": [
-    "Official UK mission page confirms four required Police Cars and the listed public-order personnel requirements."
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 622,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://police.missionchief.co.uk/einsaetze/622"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

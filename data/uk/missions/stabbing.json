@@ -1,0 +1,81 @@
+{
+  "id": 386,
+  "name": "Stabbing",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/386",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 10,
+    "rescue_stations": 4
+  },
+  "patients": {
+    "maximum": 4,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 1.0,
+    "critical_care_probability": 0.6
+  },
+  "prisoners": {
+    "maximum": 1
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/stabbing_gruen.png",
+      "/images/stabbing_gelb.png",
+      "/images/stabbing_rot.png"
+    ],
+    "base_mission_id": 386,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 6
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

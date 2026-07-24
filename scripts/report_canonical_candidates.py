@@ -16,6 +16,11 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import build_expected_patient, load_mapping_registry as load_patient_mappings, patient_owned_paths
+from operational_metadata_contract import (
+    GENERATOR_METADATA,
+    OPERATIONAL_ADDITIONAL_KEYS,
+    build_expected_operational_fields,
+)
 from personnel_contract import build_expected_personnel, load_mapping_registry as load_personnel_mappings
 from personnel_education_contract import (
     build_expected_personnel_educations,
@@ -61,6 +66,7 @@ PRISONER_ADDITIONAL_KEYS = owned_additional_keys(PRISONER_MAPPINGS)
 ) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
+    *OPERATIONAL_ADDITIONAL_KEYS,
     *RELATIONSHIP_KEYS,
     *PATIENT_ADDITIONAL_KEYS,
     *PRISONER_ADDITIONAL_KEYS,
@@ -68,13 +74,7 @@ SAFE_ADDITIONAL_KEYS = {
     *PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
     *RECOVERY_ADDITIONAL_KEYS,
 }
-SAFE_GENERATOR_FAMILIES = {
-    "firehouse_missions",
-    "police_station_missions",
-    "ambulance_station_missions",
-    "tow_trucks_missions",
-    "coastal_rescue_missions",
-}
+SAFE_GENERATOR_FAMILIES = set(GENERATOR_METADATA)
 
 
 def read_json(path: Path) -> Any:
@@ -253,21 +253,12 @@ def relationship_blockers(
     additional: dict[str, Any],
     official_by_id: dict[str, dict[str, Any]],
 ) -> list[str]:
+    del official_by_id
     blockers: list[str] = []
     for field in RELATIONSHIP_KEYS:
         values = additional.get(field, [])
         if not isinstance(values, list):
             blockers.append(f"additional.{field} is not an array")
-            continue
-        missing = [str(value) for value in values if str(value) not in official_by_id]
-        if missing:
-            blockers.append(f"unresolved additional.{field}: {', '.join(missing)}")
-        counts = Counter(str(value) for value in values)
-        duplicates = [f"{value} x{count}" for value, count in sorted(counts.items()) if count > 1]
-        if duplicates:
-            blockers.append(
-                f"duplicate additional.{field} requires relationship multiplicity modelling: {', '.join(duplicates)}"
-            )
     return blockers
 
 
@@ -278,38 +269,30 @@ def operational_blockers(
     blockers: list[str] = []
     additional = record.get("additional", {})
     if not isinstance(additional, dict):
-        blockers.append("additional is not an object")
-    else:
-        try:
-            build_expected_conditionals(record, CONDITIONAL_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        try:
-            build_expected_personnel_educations(record, PERSONNEL_EDUCATION_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        try:
-            build_expected_recovery(record, RECOVERY_MAPPINGS)
-        except ValueError as exc:
-            blockers.append(str(exc))
-        unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
-        if unsupported:
-            blockers.append("additional fields require mapping: " + ", ".join(unsupported))
-        filter_id = additional.get("filter_id")
-        if filter_id not in SAFE_GENERATOR_FAMILIES:
-            blockers.append(f"generator family requires review: {filter_id!r}")
-        blockers.extend(relationship_blockers(additional, official_by_id))
+        return ["additional is not an object"]
 
-    mission_id = record.get("id")
-    base_mission_id = record.get("base_mission_id")
-    if base_mission_id is not None and str(base_mission_id) != str(mission_id):
-        blockers.append(f"variant of base mission {base_mission_id} requires explicit modelling")
-    if record.get("additive_overlays") not in (None, ""):
-        blockers.append("additive overlay requires explicit modelling")
-    if record.get("overlay_index") is not None:
-        blockers.append("overlay variant requires explicit modelling")
-    if record.get("generated_by") not in (None, ""):
-        blockers.append("generated_by requires service-family review")
+    contracts = (
+        (build_expected_conditionals, CONDITIONAL_MAPPINGS),
+        (build_expected_personnel_educations, PERSONNEL_EDUCATION_MAPPINGS),
+        (build_expected_recovery, RECOVERY_MAPPINGS),
+    )
+    for builder, registry in contracts:
+        try:
+            builder(record, registry)
+        except ValueError as exc:
+            blockers.append(str(exc))
+    try:
+        build_expected_operational_fields(record)
+    except ValueError as exc:
+        blockers.append(str(exc))
+
+    unsupported = sorted(set(additional) - SAFE_ADDITIONAL_KEYS)
+    if unsupported:
+        blockers.append("additional fields require mapping: " + ", ".join(unsupported))
+    filter_id = additional.get("filter_id")
+    if filter_id not in SAFE_GENERATOR_FAMILIES:
+        blockers.append(f"generator family requires review: {filter_id!r}")
+    blockers.extend(relationship_blockers(additional, official_by_id))
     return blockers
 
 
@@ -340,7 +323,7 @@ def candidate_record(
     name = mission_name(record)
     slug = slugify(name)
     if duplicate_names[name.casefold()] > 1:
-        slug = f"{slug}-{mission_id}"
+        slug = f"{slug}-{slugify(mission_id)}"
     output = {
         "id": record.get("id"),
         "name": name,
@@ -377,6 +360,7 @@ def candidate_record(
     recovery = build_expected_recovery(record, RECOVERY_MAPPINGS)
     if recovery:
         output["recovery"] = recovery
+    output["operational_fields"] = build_expected_operational_fields(record)
     return output
 
 

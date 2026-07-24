@@ -1,0 +1,60 @@
+{
+  "id": 534,
+  "name": "Christmas Presents Stolen in Mall",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/534",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 1
+  },
+  "reward": {
+    "average_credits": 300
+  },
+  "availability_window": {
+    "starts_at": "2025-12-01T10:00:00Z",
+    "ends_at": "2025-12-26T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/xmas_gruen.png",
+      "/images/xmas_gelb.png",
+      "/images/xmas_rot.png"
+    ],
+    "base_mission_id": 534,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2025-12-26T23:59:59+00:00",
+      "date_start": "2025-12-01T10:00:00Z"
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

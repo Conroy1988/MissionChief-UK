@@ -1,17 +1,6 @@
 {
   "id": 353,
   "name": "Medium fire in nightclub",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Nightclub"
-  ],
-  "preconditions": {
-    "fire_stations": 6
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -31,24 +20,58 @@
       }
     ]
   },
-  "reward": {
-    "average_credits": 6000
-  },
-  "follow_up_missions": [
-    "Smoke Inhalation"
-  ],
-  "expandable_missions": [
-    "Large fire in nightclub"
-  ],
-  "notes": [
-    "The retained official catalogue repeats Smoke Inhalation three times in the follow-up ID array; the schema-compliant canonical relationship is stored once and the source multiplicity is recorded here."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/353",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Nightclub"
+  ],
+  "preconditions": {
+    "fire_stations": 6
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "follow_up_missions": [
+    "349",
+    "349",
+    "349"
+  ],
+  "expandable_missions": [
+    "354",
+    "356"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 353,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

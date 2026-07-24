@@ -1,0 +1,87 @@
+{
+  "id": "320/a",
+  "name": "Person trapped in agricultural machinery",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/320/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "hart_bases": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 1.0
+  },
+  "reward": {
+    "average_credits": 4000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 320,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -5,12 +5,12 @@ name: Validate release candidate
 on:
   push:
     branches:
-      - feature/uk-mission-catalogue-expansion
+      - "agent/**"
     paths-ignore:
       - data/validation/**
   pull_request:
     branches:
-      - feature/uk-mission-catalogue-expansion
+      - main
   workflow_dispatch:
 
 permissions:
@@ -59,7 +59,7 @@ jobs:
             mkdocs.yml
             docs/index.md
             docs/api/index.md
-            docs/releases/v1.1.0.md
+            docs/releases/v1.2.0.md
             docs/tools/mission-lookup.md
             docs/reference/official-mission-catalogue.md
           )
@@ -123,6 +123,7 @@ jobs:
           run_check "canonical-personnel-education-sync" python scripts/sync_canonical_personnel_education_fields.py
           run_check "canonical-prisoner-sync" python scripts/sync_canonical_prisoner_fields.py
           run_check "canonical-recovery-sync" python scripts/sync_canonical_recovery_fields.py
+          run_check "canonical-operational-sync" python scripts/sync_canonical_operational_fields.py
           run_check "synchronizer-working-tree-clean" check_validation_worktree synchronizer
           run_check "canonical-data" python scripts/validate_data.py
           run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
@@ -135,6 +136,8 @@ jobs:
           run_check "official-personnel-education-equivalence" python scripts/validate_official_personnel_education_mappings.py
           run_check "official-prisoner-equivalence" python scripts/validate_official_prisoner_mappings.py
           run_check "official-recovery-equivalence" python scripts/validate_official_recovery_mappings.py
+          run_check "official-operational-equivalence" python scripts/validate_official_operational_mappings.py
+          run_check "complete-catalogue-generation" python scripts/generate_full_canonical_catalogue.py --check
           run_check "catalogue-reporting-unit-tests" python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
           run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
           run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10

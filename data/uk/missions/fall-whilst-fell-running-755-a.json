@@ -1,0 +1,88 @@
+{
+  "id": "755/a",
+  "name": "Fall Whilst Fell Running",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "atv_carrier",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/755/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "hart_bases": 1,
+    "mountain_rescue_stations": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.75,
+    "critical_care_probability": 0.1
+  },
+  "reward": {
+    "average_credits": 2600
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 755,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

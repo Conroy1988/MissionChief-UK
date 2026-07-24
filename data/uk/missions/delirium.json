@@ -1,0 +1,65 @@
+{
+  "id": 773,
+  "name": "Delirium",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/773",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "gp_surgeries": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 0.25,
+    "critical_care_probability": 0.05
+  },
+  "reward": {
+    "average_credits": 800
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "general_practitioner_transfer"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 773,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 32
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

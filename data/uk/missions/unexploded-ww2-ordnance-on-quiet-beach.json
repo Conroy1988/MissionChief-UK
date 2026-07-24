@@ -1,54 +1,52 @@
 {
   "id": 830,
   "name": "Unexploded WW2 Ordnance on Quiet Beach",
-  "aliases": [
-    "Unexploded Second World War ordnance on quiet beach"
-  ],
-  "service": "bomb_disposal",
-  "mission_types": [
-    "Bomb Disposal Missions"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "bomb_disposal_diver_crew",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_diver_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "coastguard_rescue_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/830",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Beach"
   ],
-  "custom_spawn_area": false,
-  "restricted_vehicle_types": [],
-  "handoff_destinations": [],
-  "variant": {
-    "source_mission_id": 830,
-    "kind": "base",
-    "key": "quiet-beach-ordnance"
-  },
   "preconditions": {
-    "fire_stations": 6,
-    "rescue_stations": 6,
-    "police_stations": 10,
-    "coastguard_rescue_stations": 1,
     "bomb_disposal_hqs": 1,
     "bomb_disposal_marine_unit_extensions": 1,
-    "other": []
-  },
-  "requirements": {
-    "guaranteed": [],
-    "probabilistic": [],
-    "alternatives": []
-  },
-  "reward": {
-    "average_credits": 5500
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The official directory confirms the Beach POI, average reward and marine-extension precondition.",
-    "Unavailable vehicle and personnel requirements were not inferred from other Bomb Disposal missions."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/830",
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
+    "fire_stations": 6,
+    "police_stations": 10,
+    "rescue_stations": 6,
+    "coastguard_rescue_stations": 1
   },
   "personnel": {
     "required": [
@@ -57,5 +55,45 @@
         "quantity": 1
       }
     ]
+  },
+  "reward": {
+    "average_credits": 5500
+  },
+  "official_metadata": {
+    "generator_family": "bomb_disposal_missions",
+    "mission_categories": [
+      "bomb_disposal"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 830,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "bomb_disposal",
+  "generation_rules": {
+    "main_building_type": 35
+  },
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Unexploded Second World War ordnance on quiet beach"
+  ],
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {
+    "source_mission_id": 830,
+    "kind": "base",
+    "key": "quiet-beach-ordnance"
   }
 }

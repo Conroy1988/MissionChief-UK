@@ -1,37 +1,11 @@
 {
   "id": 593,
   "name": "Bird Strike - Code B",
-  "aliases": [
-    "Bird Strike Code B"
-  ],
-  "service": "airfield_operations",
-  "mission_types": [
-    "Airfield firefighting operations"
-  ],
-  "poi": [
-    "Medium Airport (Runway)",
-    "Large Airport (Runway)"
-  ],
-  "custom_spawn_area": false,
-  "restricted_vehicle_types": [],
-  "handoff_destinations": [],
-  "variant": {
-    "source_mission_id": 593,
-    "kind": "base",
-    "key": "bird-strike-code-b"
-  },
-  "preconditions": {
-    "fire_stations": 7,
-    "rescue_stations": 6,
-    "hart_bases": 2,
-    "aviation_firefighting_extensions": 1,
-    "other": []
-  },
   "requirements": {
     "guaranteed": [
       {
-        "resource": "water_carrier",
-        "quantity": 3
+        "resource": "fire_engine",
+        "quantity": 1
       },
       {
         "resource": "prv",
@@ -42,12 +16,14 @@
         "quantity": 1
       },
       {
+        "resource": "water_carrier",
+        "quantity": 3
+      },
+      {
         "resource": "welfare_vehicle",
         "quantity": 1
       }
     ],
-    "probabilistic": [],
-    "conditional": [],
     "alternatives": [
       {
         "resources": [
@@ -56,7 +32,7 @@
         ],
         "quantity": 4,
         "notes": [
-          "Four qualifying Fire Engines or RIVs are required in total."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       },
       {
@@ -66,10 +42,29 @@
         ],
         "quantity": 2,
         "notes": [
-          "Two qualifying RIVs or Major Foam Tenders are required in total."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/593",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Medium Airport (Runway)",
+    "Large Airport (Runway)",
+    "Medium Airport (Runway)\nLarge Airport (Runway)"
+  ],
+  "preconditions": {
+    "aviation_firefighting_extensions": 1,
+    "fire_stations": 7,
+    "hart_bases": 2,
+    "rescue_stations": 6
   },
   "personnel": {
     "required": [
@@ -77,22 +72,46 @@
         "role": "Operational Team Leader",
         "quantity": 1
       }
-    ],
-    "average_minimum": []
+    ]
   },
   "reward": {
     "average_credits": 6000
   },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The two alternative groups are independent and must not be merged."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport"
+    ],
+    "icons": [
+      "/images/planecrash_gruen.png",
+      "/images/planecrash_gelb.png",
+      "/images/planecrash_rot.png"
+    ],
+    "base_mission_id": 593,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/593"
-    ]
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Bird Strike Code B"
+  ],
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {
+    "source_mission_id": 593,
+    "kind": "base",
+    "key": "bird-strike-code-b"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "id": "bomb_disposal_crew",
+  "name": "Bomb Disposal Crew",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal personnel",
+  "capabilities": [
+    "bomb_disposal_response"
+  ],
+  "notes": [
+    "The retained UK source identifies Bomb Disposal Crew as a discrete required resource.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/829",
+      "https://www.missionchief.co.uk/einsaetze/839",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

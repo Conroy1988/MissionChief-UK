@@ -1,0 +1,81 @@
+{
+  "id": 763,
+  "name": "Personal Attack Alarm",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 3
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1,
+        "probability": 0.25
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/763",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 4,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.1
+  },
+  "prisoners": {
+    "minimum": 1,
+    "maximum": 3
+  },
+  "reward": {
+    "average_credits": 1200
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/cuffs_gruen.png",
+      "/images/cuffs_gelb.png",
+      "/images/cuffs_rot.png"
+    ],
+    "base_mission_id": 763,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

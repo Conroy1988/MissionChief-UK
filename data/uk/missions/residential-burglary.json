@@ -1,0 +1,72 @@
+{
+  "id": 505,
+  "name": "Residential Burglary",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "police_car",
+          "armed_response_vehicle"
+        ],
+        "quantity": 4,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/505",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 6
+  },
+  "prisoners": {
+    "maximum": 3
+  },
+  "reward": {
+    "average_credits": 4000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/theft_gruen.png",
+      "/images/theft_gelb.png",
+      "/images/theft_rot.png"
+    ],
+    "base_mission_id": 505,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

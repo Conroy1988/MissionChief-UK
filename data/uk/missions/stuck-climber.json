@@ -1,19 +1,6 @@
 {
   "id": 143,
   "name": "Stuck Climber",
-  "aliases": [
-    "Stuck climber"
-  ],
-  "service": "mountain_rescue",
-  "mission_types": [
-    "Mountain Rescue"
-  ],
-  "custom_spawn_area": true,
-  "preconditions": {
-    "fire_stations": 4,
-    "rescue_stations": 1,
-    "mountain_rescue_stations": 2
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -40,19 +27,23 @@
         ],
         "quantity": 1,
         "notes": [
-          "One qualifying 4x4 satisfies the requirement."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
   },
-  "personnel": {
-    "probabilistic": [
-      {
-        "role": "Operational Team Leader",
-        "quantity": 1,
-        "probability": 0.75
-      }
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/143",
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
+  },
+  "preconditions": {
+    "fire_stations": 4,
+    "mountain_rescue_stations": 2,
+    "rescue_stations": 1
   },
   "patients": {
     "maximum": 1,
@@ -71,17 +62,47 @@
     "generated_at_end": true,
     "transport_probability": 0.3
   },
+  "personnel": {
+    "probabilistic": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1,
+        "probability": 0.75
+      }
+    ]
+  },
   "reward": {
     "average_credits": 650
   },
-  "notes": [
-    "The Aerial Appliance Truck and Operational Team Leader are probability-based requirements, not guaranteed resources."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/climbing_gruen.png",
+      "/images/climbing_gelb.png",
+      "/images/climbing_rot.png"
+    ],
+    "base_mission_id": 143,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/143"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Stuck climber"
+  ]
 }

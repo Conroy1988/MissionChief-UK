@@ -56,7 +56,7 @@ def main() -> int:
     entries = [
         {
             "question": "How much verified data is currently published?",
-            "answer": f"Version {version['version']} contains {counts['missions']} mission records, {counts['vehicles']} deployable-resource records, {counts['infrastructure']} infrastructure records and {counts['training']} qualification records.",
+            "answer": f"Version {version['version']} contains {counts['missions']:,} mission records, {counts['vehicles']:,} deployable-resource records, {counts['infrastructure']:,} infrastructure records and {counts['training']:,} qualification records.",
         },
         {
             "question": "What does verified mean?",

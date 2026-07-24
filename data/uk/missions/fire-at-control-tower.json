@@ -1,0 +1,142 @@
+{
+  "id": 827,
+  "name": "Fire at control tower",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 4
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "aerial_appliance_truck",
+          "rescue_stairs"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "fire_engine",
+          "riv"
+        ],
+        "quantity": 8,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/827",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Small Airport (Runway)",
+    "Large Airport (Runway)",
+    "Airport Terminal",
+    "Small Airport (Runway)\nLarge Airport (Runway)\nAirport Terminal"
+  ],
+  "preconditions": {
+    "aviation_firefighting_extensions": 2,
+    "fire_stations": 15,
+    "foam_extensions": 2,
+    "police_stations": 3,
+    "rescue_stations": 6
+  },
+  "patients": {
+    "maximum": 12,
+    "minimum": 4,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.8,
+    "critical_care_probability": 0.2
+  },
+  "reward": {
+    "average_credits": 21500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "airport",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 827,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -17,20 +17,10 @@ TRANSIENT_TRACKED_OUTPUTS = {
     "data/uk/mission-verification-registry.json",
 }
 
-# These generated documents are consumed by validation or built-site checks and
-# are intentionally absent from the source branch.
-TRANSIENT_UNTRACKED_OUTPUTS = {
-    "data/sources/missionchief-uk/mission-verification-status.json",
-    "docs/assets/data/official/uk-mission-verification.json",
-    "docs/assets/data/v1/faq.json",
-    "docs/assets/data/v1/infrastructure.json",
-    "docs/assets/data/v1/manifest.json",
-    "docs/assets/data/v1/missions.json",
-    "docs/assets/data/v1/openapi.json",
-    "docs/assets/data/v1/search-index.json",
-    "docs/assets/data/v1/training.json",
-    "docs/assets/data/v1/vehicles.json",
-}
+# Public verification, FAQ and API exports are committed release assets from
+# v1.2.0 onward. Their generators must be idempotent, so validation must not
+# create any untracked output files.
+TRANSIENT_UNTRACKED_OUTPUTS: set[str] = set()
 
 
 class WorktreeCheckFailure(RuntimeError):

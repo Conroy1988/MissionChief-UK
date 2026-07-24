@@ -1,0 +1,65 @@
+{
+  "id": 779,
+  "name": "Stolen Car Located",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/779",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 1,
+    "recovery_centres": 1
+  },
+  "prisoners": {
+    "maximum": 1
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "car",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 900
+  },
+  "official_metadata": {
+    "generator_family": "tow_trucks_missions",
+    "mission_categories": [
+      "tow_trucks",
+      "police"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 779,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "recovery",
+  "generation_rules": {
+    "main_building_type": 34
+  },
+  "mission_types": [
+    "Recovery Vehicle Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

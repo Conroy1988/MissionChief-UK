@@ -1,0 +1,75 @@
+{
+  "id": 91,
+  "name": "Fail to stop",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "police_helicopter",
+        "quantity": 1
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 2,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/91",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_helicopter_stations": 1,
+    "police_stations": 7
+  },
+  "prisoners": {
+    "maximum": 4
+  },
+  "reward": {
+    "average_credits": 5000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/icy_road_gruen.png",
+      "/images/icy_road_gelb.png",
+      "/images/icy_road_rot.png"
+    ],
+    "base_mission_id": 91,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "467/a",
+  "name": "Caravan roll over RTC (Fast Road)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "fire_engine",
+          "rescue_support_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 2,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/467/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Highway exit",
+    "Major Road Standby Point",
+    "Highway exit\nMajor Road Standby Point"
+  ],
+  "preconditions": {
+    "fire_stations": 2,
+    "police_stations": 8,
+    "hgv_recovery_extensions": 1
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "truck",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 7300
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 467,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

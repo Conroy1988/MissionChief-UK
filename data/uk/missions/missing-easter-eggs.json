@@ -1,0 +1,65 @@
+{
+  "id": 826,
+  "name": "Missing Easter eggs",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 1
+      },
+      {
+        "resource": "police_helicopter",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/826",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_helicopter_stations": 1,
+    "police_stations": 2
+  },
+  "reward": {
+    "average_credits": 900
+  },
+  "availability_window": {
+    "starts_at": "2026-03-23T10:00:00+00:00",
+    "ends_at": "2026-04-07T23:59:59+01:00"
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/zoom_gruen.png",
+      "/images/zoom_gelb.png",
+      "/images/zoom_rot.png"
+    ],
+    "base_mission_id": 826,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-04-07T23:59:59+01:00",
+      "date_start": "2026-03-23T10:00:00+00:00"
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

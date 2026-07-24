@@ -1,12 +1,10 @@
 name: Validate guide
 
-# Validate the corrected 54-mission canonical baseline and generate the next evidence backlog.
+# Validate the complete 1,062-mission canonical baseline and enforce zero-backlog drift controls.
 on:
   push:
     branches:
       - main
-      - feature/uk-mission-catalogue-expansion
-      - validation/canonical-batch-4
   pull_request:
   workflow_dispatch:
 
@@ -78,6 +76,12 @@ jobs:
 
       - name: Validate official recovery mappings
         run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Validate official operational metadata mappings
+        run: python scripts/validate_official_operational_mappings.py
+
+      - name: Validate complete canonical catalogue generation
+        run: python scripts/generate_full_canonical_catalogue.py --check
 
       - name: Run catalogue reporting unit tests
         run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'

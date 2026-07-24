@@ -1,0 +1,78 @@
+{
+  "id": "309/a",
+  "name": "Spinal injury",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "atv_carrier",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/309/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Farm",
+    "Forest",
+    "Heathland",
+    "Golf course",
+    "Moorland",
+    "Farm\nForest\nHeathland\nGolf course\nMoorland"
+  ],
+  "preconditions": {
+    "hart_bases": 1,
+    "rescue_stations": 2
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Surgeon"
+    ],
+    "specialization_ids": [
+      1
+    ],
+    "specialization_text": "General Surgeon",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.5
+  },
+  "reward": {
+    "average_credits": 500
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 309,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

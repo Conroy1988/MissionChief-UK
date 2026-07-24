@@ -1,0 +1,79 @@
+{
+  "id": 818,
+  "name": "Poisoned chocolates",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/818",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 1,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.9
+  },
+  "reward": {
+    "average_credits": 500
+  },
+  "availability_window": {
+    "starts_at": "2026-02-02T10:00:00+00:00",
+    "ends_at": "2026-02-15T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/bar_cocktail_gruen.png",
+      "/images/bar_cocktail_gelb.png",
+      "/images/bar_cocktail_rot.png"
+    ],
+    "base_mission_id": 818,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "allow_ktw_instead_of_rtw": true,
+      "date_end": "2026-02-15T23:59:59+00:00",
+      "date_start": "2026-02-02T10:00:00+00:00"
+    }
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2,
+    "allow_ktw_instead_of_rtw": true
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

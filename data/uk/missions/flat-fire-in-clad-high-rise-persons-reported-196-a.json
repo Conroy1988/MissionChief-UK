@@ -1,0 +1,116 @@
+{
+  "id": "196/a",
+  "name": "Flat Fire in Clad High Rise - Persons Reported",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 5
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/196/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "High Rise with Cladding"
+  ],
+  "preconditions": {
+    "fire_stations": 13,
+    "hart_bases": 1
+  },
+  "patients": {
+    "maximum": 4,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 0.75
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 10000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 196,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "fire_alarm_system_possible": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "fire_alarm_system_possible": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

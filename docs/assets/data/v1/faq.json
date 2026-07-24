@@ -1,0 +1,40 @@
+{
+  "count": 8,
+  "data_version": "1.2.0",
+  "entries": [
+    {
+      "answer": "Version 1.2.0 contains 1,079 mission records, 59 deployable-resource records, 19 infrastructure records and 12 qualification records.",
+      "question": "How much verified data is currently published?"
+    },
+    {
+      "answer": "Verified applies only to populated fields that were reproduced in the current UK game or supported by a suitable primary source. It does not automatically verify omitted prices, staffing, training or response details.",
+      "question": "What does verified mean?"
+    },
+    {
+      "answer": "For some missions the official directory verifies the ID, reward, POI and generation preconditions, while the individual response table is unavailable. Empty arrays preserve that evidence boundary and do not mean that no response is required.",
+      "question": "Why do some missions have no published vehicle requirements?"
+    },
+    {
+      "answer": "An alternative group requires the stated total from any combination of the listed qualifying resources. It never means the full quantity of every resource in the group.",
+      "question": "How are alternative resources interpreted?"
+    },
+    {
+      "answer": "Probabilistic requirements may appear at a verified probability. Conditional requirements apply only when an explicit condition is true; a conditional requirement may also carry a probability when both facts are shown.",
+      "question": "How are conditional and probabilistic requirements different?"
+    },
+    {
+      "answer": "No. Official recovery pages list towing as an outcome under Other information. Towing assets are stored separately from emergency resources and infrastructure generation requirements.",
+      "question": "Is towing treated as a dispatched vehicle requirement?"
+    },
+    {
+      "answer": "Yes. Versioned read-only JSON exports are published under assets/data/v1 and documented in the API section.",
+      "question": "Can I use this data programmatically?"
+    },
+    {
+      "answer": "fire (592), police (235), ambulance (156), coastguard (43), recovery (18), mountain rescue (17), bomb disposal (11), railway response (4), fire and rescue (3)",
+      "question": "Which mission service groups are represented?"
+    }
+  ],
+  "released_at": "2026-07-24",
+  "schema_version": "1"
+}

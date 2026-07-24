@@ -1,0 +1,81 @@
+{
+  "id": 811,
+  "name": "Fight over ugly Christmas sweater contest",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 3
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/811",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_stations": 3,
+    "rescue_stations": 2
+  },
+  "patients": {
+    "maximum": 3,
+    "minimum": 0,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.6
+  },
+  "prisoners": {
+    "minimum": 0,
+    "maximum": 2
+  },
+  "reward": {
+    "average_credits": 1800
+  },
+  "availability_window": {
+    "starts_at": "2025-12-08T10:00:00+00:00",
+    "ends_at": "2025-12-26T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/xmas_gruen.png",
+      "/images/xmas_gelb.png",
+      "/images/xmas_rot.png"
+    ],
+    "base_mission_id": 811,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2025-12-26T23:59:59+00:00",
+      "date_start": "2025-12-08T10:00:00+00:00"
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

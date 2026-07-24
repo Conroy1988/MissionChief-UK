@@ -1,0 +1,86 @@
+{
+  "id": 89,
+  "name": "Road Traffic Collision (Major)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 4
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/89",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "patients": {
+    "maximum": 20,
+    "minimum": 2,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.7
+  },
+  "reward": {
+    "average_credits": 16000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/caraccident_gruen.png",
+      "/images/caraccident_gelb.png",
+      "/images/caraccident_rot.png"
+    ],
+    "base_mission_id": 89,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "only_alliance_mission": true,
+      "unavailable_in_normal_missions": true
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0,
+    "only_alliance_mission": true,
+    "unavailable_in_normal_missions": true
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": 722,
+  "name": "People missing after canoeing accident",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "control_van",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "operational_support_van",
+          "operational_support_trailer",
+          "personal_sar_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/722",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "River"
+  ],
+  "preconditions": {
+    "search_and_rescue_hqs": 1
+  },
+  "personnel": {
+    "available": [
+      {
+        "role": "SAR Commander",
+        "quantity": 1
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 2
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 800
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "search_and_rescue"
+    ],
+    "icons": [
+      "/images/zoom_gruen.png",
+      "/images/zoom_gelb.png",
+      "/images/zoom_rot.png"
+    ],
+    "base_mission_id": 722,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "coastguard",
+  "generation_rules": {
+    "main_building_type": 31
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

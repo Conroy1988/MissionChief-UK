@@ -1,0 +1,94 @@
+{
+  "id": 617,
+  "name": "Pitch Invaders Refusing To Leave (Small)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 3
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/617",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Stadium"
+  ],
+  "preconditions": {
+    "police_stations": 4,
+    "police_public_order_extensions": 2
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 24
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 3
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 30
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 6
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 4
+  },
+  "reward": {
+    "average_credits": 6000
+  },
+  "expandable_missions": [
+    "618"
+  ],
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 617,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

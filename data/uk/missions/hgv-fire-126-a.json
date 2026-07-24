@@ -1,0 +1,87 @@
+{
+  "id": "126/a",
+  "name": "HGV Fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "water_carrier",
+        "quantity": 1,
+        "probability": 0.1
+      }
+    ],
+    "conditional": [
+      {
+        "resource": "traffic_car",
+        "quantity": 1,
+        "condition": "only_when_available",
+        "notes": [
+          "The official UK mission states that this resource is required only when available."
+        ],
+        "probability": 0.5
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/126/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 7,
+    "foam_extensions": 1,
+    "police_stations": 1
+  },
+  "reward": {
+    "average_credits": 1800
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 126,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

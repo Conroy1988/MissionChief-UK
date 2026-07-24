@@ -1,0 +1,99 @@
+{
+  "id": "757/a",
+  "name": "S.O.S Torch Signal Sighted on Moorland",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "control_van",
+        "quantity": 1
+      },
+      {
+        "resource": "drone",
+        "quantity": 1
+      },
+      {
+        "resource": "search_dog_unit",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/757/a",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "active_drones": 1,
+    "mountain_rescue_stations": 3,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 4,
+    "specializations": [
+      "General Internal",
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      0,
+      4
+    ],
+    "specialization_text": "General Internal, Traumatology",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.05
+  },
+  "reward": {
+    "average_credits": 7400
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 757,
+    "additive_overlays": "a",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

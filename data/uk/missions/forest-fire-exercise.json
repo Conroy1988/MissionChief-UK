@@ -1,18 +1,6 @@
 {
   "id": 682,
   "name": "Forest fire exercise",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Rural Fire Missions"
-  ],
-  "poi": [
-    "Forest"
-  ],
-  "preconditions": {
-    "fire_stations": 15,
-    "police_stations": 2
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -32,31 +20,63 @@
         "quantity": 4
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 24000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Forest POI is retained. ICCU or Ambulance Control Unit remains a qualifying alternative group."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/682",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Forest"
+  ],
+  "preconditions": {
+    "fire_stations": 15,
+    "police_stations": 2
+  },
+  "reward": {
+    "average_credits": 24000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 682,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

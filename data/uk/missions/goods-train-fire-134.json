@@ -1,24 +1,12 @@
 {
   "id": 134,
   "name": "Goods Train Fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Fire Support Specialisation Missions",
-    "Railway Fire Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Rail Crossing",
-    "Railroad Crossing",
-    "Train station (regional traffic)",
-    "Goods station"
-  ],
-  "preconditions": {
-    "fire_stations": 13
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 4
@@ -28,40 +16,72 @@
         "quantity": 3
       },
       {
-        "resource": "breathing_apparatus_support_unit",
-        "quantity": 1
-      },
-      {
         "resource": "water_carrier",
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/134",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Rail Crossing",
+    "Railroad Crossing",
+    "Train station (regional traffic)",
+    "Goods station",
+    "Rail Crossing\nRailroad Crossing\nTrain station (regional traffic)\nGoods station"
+  ],
+  "preconditions": {
+    "fire_stations": 13
   },
   "reward": {
     "average_credits": 2000
   },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "All four official POIs are retained. One ICCU or Ambulance Control Unit is represented as a qualifying alternative-group total."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban",
+      "railway_fire"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 134,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-23",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/134",
-      "https://police.missionchief.co.uk/einsaetze/134?additive_overlays=b",
-      "https://www.missionchief.co.uk/einsaetze.json"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

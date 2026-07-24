@@ -1,0 +1,115 @@
+{
+  "id": 568,
+  "name": "Mud Rescue MAJOR",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "coastguard_commander",
+        "quantity": 1
+      },
+      {
+        "resource": "coastguard_mud_rescue_unit",
+        "quantity": 2
+      },
+      {
+        "resource": "coastguard_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "hovercraft_trailer",
+        "quantity": 1
+      },
+      {
+        "resource": "inland_rescue_boat_trailer",
+        "quantity": 1
+      },
+      {
+        "resource": "mud_decontamination_unit",
+        "quantity": 4
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/568",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Estuary",
+    "Harbour",
+    "Beach",
+    "Marina",
+    "Estuary\nHarbour\nBeach\nMarina"
+  ],
+  "preconditions": {
+    "hovercraft_extensions": 1,
+    "lifeboat_stations": 3,
+    "mud_decontamination_extensions": 4,
+    "rescue_stations": 10,
+    "coastguard_rescue_stations": 6
+  },
+  "patients": {
+    "maximum": 30,
+    "minimum": 10,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.7
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 30
+      }
+    ],
+    "available": [
+      {
+        "role": "Mud Rescue Operator",
+        "quantity": 60
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 18000
+  },
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue"
+    ],
+    "icons": [
+      "/images/waterpark_gruen.png",
+      "/images/waterpark_gelb.png",
+      "/images/waterpark_rot.png"
+    ],
+    "base_mission_id": 568,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "coastguard",
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

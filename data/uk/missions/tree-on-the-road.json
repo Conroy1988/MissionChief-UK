@@ -1,16 +1,6 @@
 {
   "id": 12,
   "name": "Tree on the road",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Rural Fire Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [],
-  "preconditions": {
-    "fire_stations": 1
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -18,7 +8,6 @@
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
@@ -26,27 +15,57 @@
           "rescue_support_vehicle",
           "aerial_appliance_truck"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 310
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [
-    "Road accident"
-  ],
-  "notes": [
-    "The retained official source contains one guaranteed Fire Engine plus one additional Fire Engine, Rescue Support Vehicle or Aerial Appliance Truck choice.",
-    "The published expansion into Road accident is retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/12",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 1
+  },
+  "reward": {
+    "average_credits": 310
+  },
+  "expandable_missions": [
+    "25"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/sawmill_gruen.png",
+      "/images/sawmill_gelb.png",
+      "/images/sawmill_rot.png"
+    ],
+    "base_mission_id": 12,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

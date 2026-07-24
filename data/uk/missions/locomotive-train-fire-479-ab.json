@@ -1,0 +1,127 @@
+{
+  "id": "479/ab",
+  "name": "Locomotive train fire",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 6
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 3
+      },
+      {
+        "resource": "foam_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "road_rail_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ],
+        "probability": 0.3
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/479/ab",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Train station (regional traffic)",
+    "Train station (regional traffic and long-distance travel)",
+    "Railroad Crossing",
+    "Rail Crossing",
+    "Train station (regional traffic)\nTrain station (regional traffic and long-distance travel)\nRailroad Crossing\nRail Crossing"
+  ],
+  "preconditions": {
+    "fire_stations": 12,
+    "foam_extensions": 1,
+    "police_stations": 2,
+    "railway_fire_responses": 1
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 2
+      }
+    ],
+    "available": [
+      {
+        "role": "Railway Police Officer",
+        "quantity": 4
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 9100
+  },
+  "follow_up_missions": [
+    "211",
+    "212",
+    "213",
+    "214"
+  ],
+  "expandable_missions": [
+    "134",
+    "135",
+    "136",
+    "137",
+    "295",
+    "297"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "fire_support_specialization",
+      "railway_fire"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 479,
+    "additive_overlays": "ab",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

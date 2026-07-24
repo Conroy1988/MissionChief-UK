@@ -1,0 +1,23 @@
+{
+  "id": "flood_rescue_unit",
+  "name": "Flood Rescue Unit",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Flood rescue",
+  "capabilities": [
+    "flood_rescue"
+  ],
+  "notes": [
+    "The official field represents Flood Rescue Units/equipment as a discrete dispatch resource.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/566",
+      "https://www.missionchief.co.uk/einsaetze/616",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

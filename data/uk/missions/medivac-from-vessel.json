@@ -1,23 +1,6 @@
 {
   "id": 562,
   "name": "Medivac from vessel",
-  "aliases": [],
-  "service": "lifeboat",
-  "mission_types": [
-    "Ocean Rescue Missions"
-  ],
-  "custom_spawn_area": true,
-  "restricted_vehicle_types": [
-    "Ocean"
-  ],
-  "handoff_destinations": [
-    "Lifeboat Station"
-  ],
-  "preconditions": {
-    "rescue_stations": 3,
-    "lifeboat_stations": 1,
-    "helicopter_hangars": 1
-  },
   "requirements": {
     "guaranteed": [],
     "probabilistic": [
@@ -35,10 +18,23 @@
         ],
         "quantity": 1,
         "notes": [
-          "One ILB or ALB satisfies the lifeboat requirement."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/562",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "helicopter_hangars": 1,
+    "lifeboat_stations": 1,
+    "rescue_stations": 3
   },
   "patients": {
     "maximum": 1,
@@ -62,14 +58,47 @@
   "reward": {
     "average_credits": 8000
   },
-  "notes": [
-    "The Coastguard Rescue Helicopter is required with a confirmed probability of 50%."
+  "official_metadata": {
+    "generator_family": "coastal_rescue_missions",
+    "mission_categories": [
+      "coastal_rescue_ocean"
+    ],
+    "icons": [
+      "/images/cruiseship_gruen.png",
+      "/images/cruiseship_gelb.png",
+      "/images/cruiseship_rot.png"
+    ],
+    "base_mission_id": 562,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "handoff_possible_via_building_types": [
+        27
+      ],
+      "uses_custom_spawn_area": true,
+      "vehicle_groups": [
+        "ocean_missions"
+      ]
+    }
+  },
+  "service": "coastguard",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 27
+  },
+  "mission_types": [
+    "Coastguard Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/562"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [],
+  "restricted_vehicle_types": [
+    "Ocean"
+  ],
+  "handoff_destinations": [
+    "Lifeboat Station"
+  ]
 }

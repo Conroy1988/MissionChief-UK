@@ -1,0 +1,90 @@
+{
+  "id": 816,
+  "name": "School buses collide due to black ice",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 5
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/816",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 6,
+    "police_stations": 4,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 2,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "first_responder_full_care_probability": 0.4,
+    "transport_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 4000
+  },
+  "availability_window": {
+    "starts_at": "2026-01-19T10:00:00+00:00",
+    "ends_at": "2026-03-06T22:59:00Z"
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police"
+    ],
+    "icons": [
+      "/images/icy_road_gruen.png",
+      "/images/icy_road_gelb.png",
+      "/images/icy_road_rot.png"
+    ],
+    "base_mission_id": 816,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-03-06T22:59:00Z",
+      "date_start": "2026-01-19T10:00:00+00:00"
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

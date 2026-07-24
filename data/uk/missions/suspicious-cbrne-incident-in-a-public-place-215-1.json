@@ -1,0 +1,134 @@
+{
+  "id": "215-1",
+  "name": "Suspicious CBRNE incident in a public place",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 4
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 6
+      },
+      {
+        "resource": "police_car",
+        "quantity": 10
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 2,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/215-1",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 10,
+    "hart_bases": 1,
+    "police_stations": 15,
+    "rescue_stations": 20
+  },
+  "patients": {
+    "maximum": 40,
+    "minimum": 4,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.2,
+    "critical_care_probability": 0.75
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "prisoners": {
+    "minimum": 1,
+    "maximum": 1
+  },
+  "reward": {
+    "average_credits": 23000
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/radiation_gruen.png",
+      "/images/radiation_gelb.png",
+      "/images/radiation_rot.png"
+    ],
+    "base_mission_id": 215,
+    "additive_overlays": "",
+    "overlay_index": 1,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 12
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

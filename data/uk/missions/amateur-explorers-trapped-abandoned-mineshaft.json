@@ -1,24 +1,6 @@
 {
   "id": 760,
   "name": "Amateur Explorers Trapped in Abandoned Mineshaft",
-  "aliases": [
-    "Amateur explorers trapped in abandoned mineshaft"
-  ],
-  "service": "mountain_rescue",
-  "mission_types": [
-    "Mountain Rescue"
-  ],
-  "poi": [
-    "Mineshaft"
-  ],
-  "custom_spawn_area": true,
-  "preconditions": {
-    "fire_stations": 4,
-    "rescue_stations": 3,
-    "police_stations": 3,
-    "hart_bases": 2,
-    "mountain_rescue_stations": 5
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -26,16 +8,12 @@
         "quantity": 1
       },
       {
-        "resource": "search_dog_unit",
-        "quantity": 1
-      },
-      {
         "resource": "fire_engine",
         "quantity": 2
       },
       {
-        "resource": "rescue_support_vehicle",
-        "quantity": 2
+        "resource": "fire_officer",
+        "quantity": 3
       },
       {
         "resource": "police_car",
@@ -46,6 +24,14 @@
         "quantity": 2
       },
       {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "search_dog_unit",
+        "quantity": 1
+      },
+      {
         "resource": "srv",
         "quantity": 2
       },
@@ -54,8 +40,18 @@
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
       {
         "resources": [
           "mountain_rescue_4x4",
@@ -63,52 +59,28 @@
         ],
         "quantity": 4,
         "notes": [
-          "Four qualifying 4x4 vehicles are required in total."
+          "Any listed qualifying resource may satisfy this official alternative group."
         ]
       }
     ]
   },
-  "personnel": {
-    "available": [
-      {
-        "role": "Cave Rescue Specialist",
-        "quantity": 20
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 2
-      },
-      {
-        "role": "Search Advisor",
-        "quantity": 2
-      }
-    ],
-    "required": [
-      {
-        "role": "Ambulance Officer",
-        "quantity": 1
-      },
-      {
-        "role": "Cave Rescue Specialist",
-        "quantity": 10
-      },
-      {
-        "role": "Fire Officer",
-        "quantity": 3
-      },
-      {
-        "role": "Operational Team Leader",
-        "quantity": 1
-      },
-      {
-        "role": "Police Sergeant",
-        "quantity": 1
-      },
-      {
-        "role": "Search Advisor",
-        "quantity": 1
-      }
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/760",
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
+  },
+  "poi": [
+    "Mineshaft"
+  ],
+  "preconditions": {
+    "fire_stations": 4,
+    "hart_bases": 2,
+    "mountain_rescue_stations": 5,
+    "police_stations": 3,
+    "rescue_stations": 3
   },
   "patients": {
     "maximum": 6,
@@ -130,19 +102,74 @@
     "transport_probability": 0.75,
     "critical_care_probability": 0.25
   },
-  "reward": {
-    "average_credits": 25400,
-    "event_multiplier_observed": 2
-  },
-  "notes": [
-    "The official page displayed a temporary x2 reward marker; 25,400 remains the stored base average.",
-    "PRV and SRV remain canonical abbreviations because the official page does not expand those labels."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/760"
+  "personnel": {
+    "required": [
+      {
+        "role": "Cave Rescue Specialist",
+        "quantity": 10
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Cave Rescue Specialist",
+        "quantity": 20
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 2
+      }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 25400
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 760,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Amateur explorers trapped in abandoned mineshaft"
+  ]
 }

@@ -1,0 +1,60 @@
+{
+  "id": 848,
+  "name": "Cyclist blown over by strong winds",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/848",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Surgeon"
+    ],
+    "specialization_ids": [
+      1
+    ],
+    "specialization_text": "General Surgeon",
+    "codes": [
+      "C-3"
+    ],
+    "transport_probability": 0.25
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/cycling_gruen.png",
+      "/images/cycling_gelb.png",
+      "/images/cycling_rot.png"
+    ],
+    "base_mission_id": 848,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

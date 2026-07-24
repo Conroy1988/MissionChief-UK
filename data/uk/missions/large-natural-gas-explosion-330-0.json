@@ -1,0 +1,128 @@
+{
+  "id": "330-0",
+  "name": "Large Natural Gas Explosion",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 6
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 3
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/330-0",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 13,
+    "hart_bases": 1,
+    "mass_casualty_extensions": 1,
+    "police_stations": 3,
+    "rescue_stations": 15
+  },
+  "patients": {
+    "maximum": 20,
+    "minimum": 3,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.5
+  },
+  "reward": {
+    "average_credits": 13500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "mass_casualty_ambulance_specialization"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 330,
+    "additive_overlays": "",
+    "overlay_index": 0,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

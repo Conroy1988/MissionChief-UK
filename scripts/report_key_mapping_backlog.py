@@ -15,6 +15,7 @@ from conditional_resource_contract import (
     owned_paths as conditional_owned_paths,
 )
 from patient_contract import load_mapping_registry, patient_owned_paths
+from operational_metadata_contract import GENERATOR_METADATA, OPERATIONAL_ADDITIONAL_KEYS
 from recovery_contract import (
     build_expected_recovery,
     load_mapping_registry as load_recovery_mappings,
@@ -61,19 +62,14 @@ PATIENT_ADDITIONAL_KEYS, PATIENT_CHANCE_KEYS = patient_owned_paths(PATIENT_MAPPI
 ) = personnel_education_owned_paths(PERSONNEL_EDUCATION_MAPPINGS)
 SAFE_ADDITIONAL_KEYS = {
     "filter_id",
+    *OPERATIONAL_ADDITIONAL_KEYS,
     *RELATIONSHIP_KEYS,
     *PATIENT_ADDITIONAL_KEYS,
     *CONDITIONAL_ADDITIONAL_KEYS,
     *PERSONNEL_EDUCATION_ADDITIONAL_KEYS,
     *RECOVERY_ADDITIONAL_KEYS,
 }
-SAFE_GENERATOR_FAMILIES = {
-    "firehouse_missions",
-    "police_station_missions",
-    "ambulance_station_missions",
-    "tow_trucks_missions",
-    "coastal_rescue_missions",
-}
+SAFE_GENERATOR_FAMILIES = set(GENERATOR_METADATA)
 
 
 def read_json(path: Path) -> Any:

@@ -48,17 +48,20 @@ class ValidationWorktreeTests(unittest.TestCase):
         tracked, untracked = worktree.unexpected_changes(
             worktree.TRANSIENT_TRACKED_OUTPUTS
             | {"data/sources/missionchief-uk/mission-coverage.json"},
-            worktree.TRANSIENT_UNTRACKED_OUTPUTS | {"unexpected-report.json"},
+            {"docs/assets/data/v1/manifest.json", "unexpected-report.json"},
             allow_validation_generated_outputs=True,
         )
 
         self.assertEqual(tracked, ["data/sources/missionchief-uk/mission-coverage.json"])
-        self.assertEqual(untracked, ["unexpected-report.json"])
+        self.assertEqual(
+            untracked,
+            ["docs/assets/data/v1/manifest.json", "unexpected-report.json"],
+        )
 
-    def test_final_phase_rejects_missing_transient_outputs(self) -> None:
+    def test_final_phase_rejects_missing_transient_registry(self) -> None:
         missing_tracked, missing_untracked = worktree.missing_expected_changes(
             set(),
-            worktree.TRANSIENT_UNTRACKED_OUTPUTS - {"docs/assets/data/v1/manifest.json"},
+            set(),
             allow_validation_generated_outputs=True,
         )
 
@@ -66,7 +69,7 @@ class ValidationWorktreeTests(unittest.TestCase):
             missing_tracked,
             ["data/uk/mission-verification-registry.json"],
         )
-        self.assertEqual(missing_untracked, ["docs/assets/data/v1/manifest.json"])
+        self.assertEqual(missing_untracked, [])
 
 
 if __name__ == "__main__":

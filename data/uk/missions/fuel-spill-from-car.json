@@ -1,15 +1,6 @@
 {
   "id": 30,
   "name": "Fuel spill from car",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [],
-  "preconditions": {
-    "fire_stations": 1
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -17,32 +8,59 @@
         "quantity": 1
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
           "fire_engine",
           "rescue_support_vehicle"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/30",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 1
   },
   "reward": {
     "average_credits": 400
   },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The official requirement is additive: one guaranteed Fire Engine plus one further Fire Engine or Rescue Support Vehicle."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/oil_gruen.png",
+      "/images/oil_gelb.png",
+      "/images/oil_rot.png"
+    ],
+    "base_mission_id": 30,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-23",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/30",
-      "https://www.missionchief.co.uk/einsaetze/422",
-      "https://www.missionchief.co.uk/einsaetze.json"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

@@ -1,0 +1,94 @@
+{
+  "id": 618,
+  "name": "Pitch Invaders Refusing To Leave (Medium)",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 6
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/618",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Stadium"
+  ],
+  "preconditions": {
+    "police_stations": 8,
+    "police_public_order_extensions": 3
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 48
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 6
+      }
+    ],
+    "available": [
+      {
+        "role": "Level 1 Public Order Officer",
+        "quantity": 60
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 4
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 12
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 4
+  },
+  "reward": {
+    "average_credits": 12000
+  },
+  "expandable_missions": [
+    "619"
+  ],
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/baseball_gruen.png",
+      "/images/baseball_gelb.png",
+      "/images/baseball_rot.png"
+    ],
+    "base_mission_id": 618,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

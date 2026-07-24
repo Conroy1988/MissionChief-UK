@@ -1,10 +1,6 @@
 {
   "id": 233,
   "name": "Person under tree",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions"
-  ],
   "requirements": {
     "guaranteed": [
       {
@@ -32,7 +28,7 @@
   },
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/233",
       "https://www.missionchief.co.uk/einsaetze.json"
@@ -62,13 +58,6 @@
     "transport_probability": 1.0,
     "critical_care_probability": 1.0
   },
-  "reward": {
-    "average_credits": 1000
-  },
-  "notes": [
-    "Generated deterministically from the retained official UK mission snapshot.",
-    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
-  ],
   "personnel": {
     "required": [
       {
@@ -76,5 +65,37 @@
         "quantity": 1
       }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/sawmill_gruen.png",
+      "/images/sawmill_gelb.png",
+      "/images/sawmill_rot.png"
+    ],
+    "base_mission_id": 233,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

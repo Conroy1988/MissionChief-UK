@@ -1,14 +1,6 @@
 {
   "id": 301,
   "name": "Unsafe Structure",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "preconditions": {
-    "fire_stations": 3
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -24,20 +16,46 @@
       }
     ]
   },
-  "reward": {
-    "average_credits": 1000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "Rebound from an obsolete catalogue identity after exact-name and detail-page verification."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/301",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 3
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/sawmill_gruen.png",
+      "/images/sawmill_gelb.png",
+      "/images/sawmill_rot.png"
+    ],
+    "base_mission_id": 301,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

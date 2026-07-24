@@ -45,7 +45,11 @@ PERSONNEL_EDUCATION_MAPPINGS = load_personnel_education_mappings()
 PROMOTED_STAGES = {"requirements-mapped", "operationally-verified", "fully-canonical"}
 KEY_GROUPS = ("requirements", "chances", "prerequisites")
 MAPPING_STATUSES = {"verified", "not-applicable"}
-DELEGATED_REQUIREMENT_TARGETS = {"personnel.chance-aware"}
+PERSONNEL_REQUIREMENT_TARGETS = {"personnel.chance-aware"}
+DELEGATED_REQUIREMENT_TARGETS = {
+    *PERSONNEL_REQUIREMENT_TARGETS,
+    "water_requirements.minimum_pump_speed",
+}
 DELEGATED_CHANCE_TARGETS = {
     "patients.transport_probability",
     "patients.critical_care_probability",
@@ -64,7 +68,7 @@ TARGETS_BY_GROUP = {
         PROBABILISTIC_ALTERNATIVE_TARGET,
         *DELEGATED_CHANCE_TARGETS,
     },
-    "prerequisites": {"preconditions"},
+    "prerequisites": {"preconditions", "generation_rules.max_police_stations"},
 }
 
 AlternativeValue = tuple[int, float | None]
@@ -168,11 +172,14 @@ def validate_mapping_registry(registry: Any) -> dict[str, dict[str, dict[str, An
                     group == "requirements" and target == "requirements.alternatives"
                 ) or target == PROBABILISTIC_ALTERNATIVE_TARGET:
                     validated_resource_list(mapping.get("canonical_ids"), label)
-                elif target in DELEGATED_REQUIREMENT_TARGETS or target == "personnel.probabilistic":
+                elif target in PERSONNEL_REQUIREMENT_TARGETS or target == "personnel.probabilistic":
                     role = mapping.get("canonical_role")
                     if not isinstance(role, str) or not role:
                         raise ValueError(f"{label} requires canonical_role")
-                elif target in DELEGATED_CHANCE_TARGETS:
+                elif target in DELEGATED_CHANCE_TARGETS or target in {
+                    "water_requirements.minimum_pump_speed",
+                    "generation_rules.max_police_stations",
+                }:
                     pass
                 else:
                     canonical_id = mapping.get("canonical_id")
@@ -524,6 +531,8 @@ def audit_promoted_mission(
             continue
         if not isinstance(value, int) or isinstance(value, bool) or value < 0:
             raise ValueError(f"Mission {mission_id} uses non-integer prerequisite {official_key}={value!r}")
+        if mapping["canonical_target"] == "generation_rules.max_police_stations":
+            continue
         expected_preconditions[mapping["canonical_id"]] = value
 
     canonical_guaranteed = guaranteed_requirements(canonical, mission_id)

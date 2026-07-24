@@ -1,16 +1,6 @@
 {
   "id": 477,
   "name": "Underground electrical cable fire (Large)",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [],
-  "preconditions": {
-    "fire_stations": 13,
-    "police_stations": 6
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -22,12 +12,12 @@
         "quantity": 4
       },
       {
-        "resource": "rescue_support_vehicle",
-        "quantity": 1
-      },
-      {
         "resource": "police_car",
         "quantity": 4
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
       }
     ],
     "probabilistic": [
@@ -40,37 +30,70 @@
     "alternatives": [
       {
         "resources": [
-          "hazmat_unit",
-          "cbrn_vehicle"
-        ],
-        "quantity": 1
-      },
-      {
-        "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 8000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [
-    "Underground electrical cable fire (Major)"
-  ],
-  "notes": [
-    "The 50% Water Carrier requirement and published expansion into the major incident are retained.",
-    "HazMat/CBRN and ICCU/Ambulance Control requirements remain qualifying alternative groups."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/477",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 13,
+    "police_stations": 6
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "expandable_missions": [
+    "478"
+  ],
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 477,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

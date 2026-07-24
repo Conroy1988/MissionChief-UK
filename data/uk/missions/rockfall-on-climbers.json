@@ -1,0 +1,154 @@
+{
+  "id": 759,
+  "name": "Rockfall on Climbers",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "atv_carrier",
+        "quantity": 1
+      },
+      {
+        "resource": "control_van",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 3
+      },
+      {
+        "resource": "police_car",
+        "quantity": 1
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 4
+      },
+      {
+        "resource": "search_dog_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "mountain_rescue_4x4",
+          "sar_4x4"
+        ],
+        "quantity": 3,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/759",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Cliff"
+  ],
+  "preconditions": {
+    "fire_stations": 4,
+    "hart_bases": 2,
+    "mountain_rescue_stations": 3,
+    "police_stations": 1,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 8,
+    "minimum": 2,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.75,
+    "critical_care_probability": 0.75
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Search Advisor",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Search Advisor",
+        "quantity": 2
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 19400
+  },
+  "official_metadata": {
+    "generator_family": "mountain_missions",
+    "mission_categories": [
+      "mountain"
+    ],
+    "icons": [
+      "/images/snowy_gruen.png",
+      "/images/snowy_gelb.png",
+      "/images/snowy_rot.png"
+    ],
+    "base_mission_id": 759,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "uses_custom_spawn_area": true
+    }
+  },
+  "service": "mountain_rescue",
+  "custom_spawn_area": true,
+  "generation_rules": {
+    "main_building_type": 33
+  },
+  "mission_types": [
+    "Mountain Rescue Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

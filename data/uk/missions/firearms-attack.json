@@ -1,0 +1,99 @@
+{
+  "id": 206,
+  "name": "Firearms Attack",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "dog_support_unit",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "police_helicopter",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/206",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "police_helicopter_stations": 1,
+    "police_stations": 12,
+    "rescue_stations": 6
+  },
+  "patients": {
+    "maximum": 6,
+    "minimum": 3,
+    "specializations": [
+      "Traumatology",
+      "Critical Care"
+    ],
+    "specialization_ids": [
+      4,
+      14
+    ],
+    "specialization_text": "Traumatology, Critical Care",
+    "codes": [
+      "C-1",
+      "C-2"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 1.0
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 1
+  },
+  "reward": {
+    "average_credits": 10000
+  },
+  "expandable_missions": [
+    "207"
+  ],
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/shooting_gruen.png",
+      "/images/shooting_gelb.png",
+      "/images/shooting_rot.png"
+    ],
+    "base_mission_id": 206,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "swat_personnel": 6
+    }
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

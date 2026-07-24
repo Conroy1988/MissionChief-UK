@@ -1,23 +1,12 @@
 {
   "id": 244,
   "name": "Stack of tyres on fire",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Fire Support Specialisation Missions",
-    "Urban Fire Missions"
-  ],
-  "poi": [
-    "Recycling Centre",
-    "Factory",
-    "Scrap yard",
-    "Landfill site"
-  ],
-  "preconditions": {
-    "fire_stations": 15
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 2
+      },
       {
         "resource": "fire_engine",
         "quantity": 15
@@ -27,39 +16,71 @@
         "quantity": 6
       },
       {
-        "resource": "aerial_appliance_truck",
-        "quantity": 2
-      },
-      {
         "resource": "water_carrier",
         "quantity": 2
       }
     ],
-    "probabilistic": [],
     "alternatives": [
       {
         "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
   },
-  "reward": {
-    "average_credits": 13000
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "All four official POIs are retained. One ICCU or Ambulance Control Unit is represented as a qualifying alternative-group total."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/244",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Recycling Centre",
+    "Factory",
+    "Scrap yard",
+    "Landfill site",
+    "Recycling Centre\nFactory\nScrap yard\nLandfill site"
+  ],
+  "preconditions": {
+    "fire_stations": 15
+  },
+  "reward": {
+    "average_credits": 13000
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "fire_support_specialization",
+      "urban"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 244,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

@@ -1,0 +1,70 @@
+{
+  "id": 185,
+  "name": "Heat stroke",
+  "requirements": {
+    "guaranteed": []
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/185",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "rescue_stations": 4
+  },
+  "patients": {
+    "maximum": 1,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2"
+    ],
+    "transport_probability": 0.6
+  },
+  "reward": {
+    "average_credits": 250
+  },
+  "availability_window": {
+    "starts_at": "2026-06-26T09:00:00Z",
+    "ends_at": "2026-08-21T09:00:00Z"
+  },
+  "official_metadata": {
+    "generator_family": "ambulance_station_missions",
+    "mission_categories": [
+      "ambulance"
+    ],
+    "icons": [
+      "/images/medicalstore_gruen.png",
+      "/images/medicalstore_gelb.png",
+      "/images/medicalstore_rot.png"
+    ],
+    "base_mission_id": 185,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2026-08-21T09:00:00Z",
+      "date_start": "2026-06-26T09:00:00Z"
+    }
+  },
+  "service": "ambulance",
+  "generation_rules": {
+    "main_building_type": 2
+  },
+  "mission_types": [
+    "Ambulance Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

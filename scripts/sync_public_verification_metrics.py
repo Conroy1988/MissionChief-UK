@@ -14,7 +14,7 @@ BATCH_ROOT = ROOT / "data" / "uk" / "mission-verification-batches"
 README_PATH = ROOT / "README.md"
 HOME_PATH = ROOT / "docs" / "index.md"
 API_PATH = ROOT / "docs" / "api" / "index.md"
-RELEASE_PATH = ROOT / "docs" / "releases" / "v1.1.0.md"
+RELEASE_PATH = ROOT / "docs" / "releases" / "v1.2.0.md"
 CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 MISSION_LOOKUP_PATH = ROOT / "docs" / "tools" / "mission-lookup.md"
 OFFICIAL_CATALOGUE_PATH = ROOT / "docs" / "reference" / "official-mission-catalogue.md"
@@ -26,9 +26,9 @@ COLLECTION_ROOTS = {
     "training": ROOT / "data" / "uk" / "training",
 }
 
-STATIC_BATCHES: dict[int, list[int]] = {
-    1: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11],
-    2: [13, 14, 15, 16, 17, 18, 19, 23, 24, 27],
+STATIC_BATCHES: dict[int, list[str]] = {
+    1: [str(value) for value in (0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11)],
+    2: [str(value) for value in (13, 14, 15, 16, 17, 18, 19, 23, 24, 27)],
 }
 
 
@@ -121,15 +121,16 @@ def load_metrics() -> dict[str, int | float]:
     }
 
 
-def stable_int(value: object) -> int:
-    try:
-        return int(str(value))
-    except (TypeError, ValueError) as exc:
-        raise SyncFailure(f"Batch mission ID is not numeric: {value!r}") from exc
+def mission_sort_key(value: object) -> tuple[int, int, str]:
+    text = str(value)
+    match = re.match(r"^(\d+)(.*)$", text)
+    if match is None:
+        return (1, 0, text)
+    return (0, int(match.group(1)), match.group(2))
 
 
-def load_batches() -> dict[int, list[int]]:
-    batches = {number: list(ids) for number, ids in STATIC_BATCHES.items()}
+def load_batches() -> dict[int, list[str]]:
+    batches = {number: [str(value) for value in ids] for number, ids in STATIC_BATCHES.items()}
     pattern = re.compile(r"fully-canonical-fire-batch-(\d+)\.json$")
     for path in sorted(BATCH_ROOT.glob("fully-canonical-fire-batch-*.json")):
         match = pattern.search(path.name)
@@ -139,7 +140,7 @@ def load_batches() -> dict[int, list[int]]:
         document = read_json(path)
         if not isinstance(document, dict) or not isinstance(document.get("records"), dict):
             raise SyncFailure(f"Invalid batch registry: {path.relative_to(ROOT)}")
-        ids = sorted(stable_int(value) for value in document["records"])
+        ids = sorted((str(value) for value in document["records"]), key=mission_sort_key)
         if not ids:
             raise SyncFailure(f"Batch registry is empty: {path.relative_to(ROOT)}")
         batches[number] = ids
@@ -150,22 +151,34 @@ def load_batches() -> dict[int, list[int]]:
     return batches
 
 
-def render_batch_block(batches: dict[int, list[int]], width: int = 10) -> str:
+def render_batch_block(batches: dict[int, list[str]], width: int = 10) -> str:
     lines: list[str] = []
     for number, ids in sorted(batches.items()):
+        if number == 31 and len(ids) > 100:
+            lines.append(
+                f"Batch {number}: {len(ids)} missions — complete ID manifest in reference/fully-canonical-mission-batch-{number}"
+            )
+            continue
         chunks = [ids[index : index + width] for index in range(0, len(ids), width)]
         for index, chunk in enumerate(chunks):
             prefix = f"Batch {number}: " if index == 0 else "         "
             suffix = "," if index < len(chunks) - 1 else ""
-            lines.append(prefix + ", ".join(str(value) for value in chunk) + suffix)
+            lines.append(prefix + ", ".join(chunk) + suffix)
     return "\n".join(lines)
 
 
-def render_changelog_batches(batches: dict[int, list[int]]) -> str:
-    return "\n".join(
-        f"- Batch {number}: IDs " + ", ".join(f"`{value}`" for value in ids) + "."
-        for number, ids in sorted(batches.items())
-    )
+def render_changelog_batches(batches: dict[int, list[str]]) -> str:
+    lines: list[str] = []
+    for number, ids in sorted(batches.items()):
+        if number == 31 and len(ids) > 100:
+            lines.append(
+                f"- Batch {number}: {len(ids)} mission IDs; the complete manifest is retained in the Batch {number} evidence page."
+            )
+        else:
+            lines.append(
+                f"- Batch {number}: IDs " + ", ".join(f"`{value}`" for value in ids) + "."
+            )
+    return "\n".join(lines)
 
 
 def format_number(value: int | float) -> str:
@@ -243,10 +256,11 @@ def sync_readme(text: str, metrics: dict[str, int | float], batches: dict[int, l
     )
     text = replace_once(
         text,
-        r"(?:Batch 4 adds strict chance-aware interpretation|Batches 4–\d+ extend the verified vehicle-key contract).*?strict-equivalence validation\.",
+        r"(?:Batch 4 adds strict chance-aware interpretation|Batches 4–\d+ .*?).*?strict-equivalence validation\.",
         (
-            f"Batches 4–{max_batch} extend the verified vehicle-key contract through evidence-safe, "
-            f"exact-ID promotions. All {fully} records pass aggregate identity and strict-equivalence validation."
+            f"Batches 4–{max_batch} progressively extend the verified source contract through evidence-safe, "
+            f"exact-ID promotions. Batch {max_batch} completes the full official catalogue. "
+            f"All {fully} records pass aggregate identity and strict-equivalence validation."
         ),
         "README batch summary",
         flags=re.DOTALL,
@@ -374,84 +388,62 @@ def sync_api(text: str, metrics: dict[str, int | float]) -> str:
     return text
 
 
-def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, list[int]]) -> str:
+def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
     baseline_values = (
         (r"[\d,]+ official UK mission records", f"{format_number(metrics['official'])} official UK mission records", "release official baseline"),
         (r"[\d,]+ canonical mission records", f"{format_number(metrics['canonical'])} canonical mission records", "release canonical baseline"),
-        (r"[\d,]+ official IDs matched to canonical records", f"{format_number(metrics['direct'])} official IDs matched to canonical records", "release direct baseline"),
+        (r"[\d,]+ direct official/canonical ID matches", f"{format_number(metrics['direct'])} direct official/canonical ID matches", "release direct baseline"),
         (r"[\d,]+ fully canonical mission records", f"{format_number(metrics['fully'])} fully canonical mission records", "release fully baseline"),
-        (r"[\d,]+ official records awaiting direct canonical records", f"{format_number(metrics['awaiting'])} official records awaiting direct canonical records", "release awaiting baseline"),
-        (r"[\d,]+ canonical overlay or derived records without standalone official IDs", f"{format_number(metrics['overlays'])} canonical overlay or derived records without standalone official IDs", "release overlay baseline"),
+        (r"[\d,]+ official-only mission records", f"{format_number(metrics['awaiting'])} official-only mission records", "release awaiting baseline"),
         (r"[\d,]+ canonical deployable-resource records", f"{format_number(metrics['vehicles'])} canonical deployable-resource records", "release resource baseline"),
         (r"[\d,]+ canonical infrastructure records", f"{format_number(metrics['infrastructure'])} canonical infrastructure records", "release infrastructure baseline"),
         (r"[\d,]+ qualification records", f"{format_number(metrics['training'])} qualification records", "release qualification baseline"),
     )
-    for pattern, replacement, label in baseline_values:
-        text = replace_once(text, pattern, replacement, label)
+    for pattern, replacement_value, label in baseline_values:
+        text = replace_once(text, pattern, replacement_value, label)
+    final_batch = max(batches)
+    final_count = len(batches[final_batch])
     text = replace_once(
         text,
-        r"The first \w+ fully canonical batches contain:",
-        f"The first {len(batches)} fully canonical batches contain:",
-        "release batch count heading",
+        r"Batch 31 promotes the final \*\*[\d,]+\*\* missions:",
+        f"Batch 31 promotes the final **{format_number(final_count)}** missions:",
+        "release final batch count",
     )
     text = replace_once(
         text,
-        r"(The first \d+ fully canonical batches contain:\n\n```text\n).*?(\n```)",
-        rf"\g<1>{render_batch_block(batches)}\g<2>",
-        "release batch block",
-        flags=re.DOTALL,
-    )
-    text = replace_once(
-        text,
-        r"(?:The first 49 records use explicitly mapped|All [\d,]+ promoted missions pass exact official identity).*?(?=\n\n## Accuracy controls)",
-        (
-            f"All {format_number(metrics['fully'])} promoted missions pass exact official identity, aggregate diagnostics "
-            f"and strict key equivalence. The current analyser has exhausted every mission covered by the verified "
-            f"mapping contract and reports zero immediately safe records; the next phase requires another verified "
-            f"official-key mapping."
-        ),
-        "release verification narrative",
-        flags=re.DOTALL,
+        r"- \*\*[\d,]+\*\* missions left outside the fully canonical gate\.",
+        f"- **{format_number(metrics['remaining'])}** missions left outside the fully canonical gate.",
+        "release remaining count",
     )
     return text
 
 
-def sync_changelog(text: str, metrics: dict[str, int | float], batches: dict[int, list[int]]) -> str:
-    replacements = (
-        (r"against [\d,]+ canonical mission records", f"against {format_number(metrics['canonical'])} canonical mission records", "changelog canonical count"),
-        (
-            r"Identified [\d,]+ direct official/canonical ID matches, [\d,]+ official records awaiting direct canonical records and [\d,]+ canonical overlay or derived records",
-            (
-                f"Identified {format_number(metrics['direct'])} direct official/canonical ID matches, "
-                f"{format_number(metrics['awaiting'])} official records awaiting direct canonical records and "
-                f"{format_number(metrics['overlays'])} canonical overlay or derived records"
-            ),
-            "changelog reconciliation metrics",
-        ),
-        (
-            r"Fully canonicalized [\d,]+ missions across \w+ Fire and Rescue batches\.",
-            f"Fully canonicalized {format_number(metrics['fully'])} missions across {len(batches)} Fire and Rescue batches.",
-            "changelog fully canonical total",
-        ),
-        (
-            r"Confirmed all [\d,]+ promoted missions pass exact official identity and strict key equivalence\.",
-            f"Confirmed all {format_number(metrics['fully'])} promoted missions pass exact official identity and strict key equivalence.",
-            "changelog promoted total",
-        ),
-        (
-            r"Expanded the canonical mission collection from 62 to [\d,]+ records\.",
-            f"Expanded the canonical mission collection from 62 to {format_number(metrics['canonical'])} records.",
-            "changelog canonical expansion total",
-        ),
-    )
-    for pattern, replacement, label in replacements:
-        text = replace_once(text, pattern, replacement, label)
+def sync_changelog(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
+    final_batch = max(batches)
+    final_count = len(batches[final_batch])
     text = replace_once(
         text,
-        r"- Batch 1: IDs .*?(?=\n- Added verified Aerial Appliance Truck)",
-        render_changelog_batches(batches) + "\n",
-        "changelog batch list",
-        flags=re.DOTALL,
+        r"Promoted all [\d,]+ previously incomplete official missions in Batch 31\.",
+        f"Promoted all {format_number(final_count)} previously incomplete official missions in Batch 31.",
+        "changelog Batch 31 total",
+    )
+    text = replace_once(
+        text,
+        r"Reached [\d,]+ / [\d,]+ direct official/canonical ID matches and [\d,]+ / [\d,]+ fully canonical missions\.",
+        (
+            f"Reached {format_number(metrics['direct'])} / {format_number(metrics['official'])} direct official/canonical ID matches "
+            f"and {format_number(metrics['fully'])} / {format_number(metrics['official'])} fully canonical missions."
+        ),
+        "changelog complete coverage",
+    )
+    text = replace_once(
+        text,
+        r"Expanded the canonical mission collection from [\d,]+ to [\d,]+ records while retaining [\d,]+ intentional overlays and derived records\.",
+        (
+            f"Expanded the canonical mission collection from 284 to {format_number(metrics['canonical'])} records "
+            f"while retaining {format_number(metrics['overlays'])} intentional overlays and derived records."
+        ),
+        "changelog canonical collection",
     )
     return text
 

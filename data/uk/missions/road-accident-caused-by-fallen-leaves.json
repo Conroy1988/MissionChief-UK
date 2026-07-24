@@ -1,0 +1,89 @@
+{
+  "id": 377,
+  "name": "Road accident caused by fallen leaves",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 2
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/377",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "preconditions": {
+    "fire_stations": 4,
+    "police_stations": 2,
+    "rescue_stations": 3
+  },
+  "patients": {
+    "maximum": 3,
+    "minimum": 1,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-3",
+      "C-2"
+    ],
+    "transport_probability": 0.6,
+    "critical_care_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "availability_window": {
+    "starts_at": "2025-09-19T09:00:00Z",
+    "ends_at": "2025-11-28T23:59:59+00:00"
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural",
+      "urban"
+    ],
+    "icons": [
+      "/images/autumn_gruen.png",
+      "/images/autumn_gelb.png",
+      "/images/autumn_rot.png"
+    ],
+    "base_mission_id": 377,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {
+      "date_end": "2025-11-28T23:59:59+00:00",
+      "date_start": "2025-09-19T09:00:00Z"
+    }
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

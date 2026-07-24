@@ -1,19 +1,12 @@
 {
   "id": 824,
   "name": "Fire in stables",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Rural Fire Missions"
-  ],
-  "poi": [
-    "Farm"
-  ],
-  "preconditions": {
-    "fire_stations": 6
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 6
@@ -25,28 +18,52 @@
       {
         "resource": "rescue_support_vehicle",
         "quantity": 1
-      },
-      {
-        "resource": "aerial_appliance_truck",
-        "quantity": 1
       }
-    ],
-    "probabilistic": []
+    ]
   },
-  "reward": {
-    "average_credits": 4500
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Farm POI and all four verified resource quantities are retained."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/824",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "poi": [
+    "Farm"
+  ],
+  "preconditions": {
+    "fire_stations": 6
+  },
+  "reward": {
+    "average_credits": 4500
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "rural"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 824,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

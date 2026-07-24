@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-24",
   "requirements": {
     "firetrucks": {
       "status": "verified",
@@ -156,16 +156,16 @@
     },
     "police_cars": {
       "status": "verified",
-      "canonical_target": "requirements.guaranteed",
-      "canonical_id": "police_car",
-      "checked_at": "2026-07-23",
+      "canonical_target": "requirements.chance-aware",
+      "checked_at": "2026-07-24",
       "sources": [
         "https://www.missionchief.co.uk/einsaetze/46",
-        "https://www.missionchief.co.uk/einsaetze/69",
-        "https://police.missionchief.co.uk/einsaetze/622",
+        "https://www.missionchief.co.uk/einsaetze/797",
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": "The official police_cars count is the published Police Car quantity. Mission pages may describe compatible ARV substitution separately, but the retained requirement identity remains Police Cars."
+      "canonical_id": "police_car",
+      "chance_key": "police_cars",
+      "notes": "The official police_cars quantity is a Police Car requirement. A same-key chance converts it to a probabilistic requirement."
     },
     "k9": {
       "status": "verified",
@@ -294,16 +294,19 @@
     },
     "emergency_welfare": {
       "status": "verified",
-      "canonical_target": "requirements.guaranteed",
+      "canonical_target": "requirements.chance-aware",
       "canonical_id": "welfare_vehicle",
-      "checked_at": "2026-07-23",
+      "chance_key": "emergency_welfare",
+      "checked_at": "2026-07-24",
       "sources": [
+        "https://www.missionchief.co.uk/einsaetze/329/ab",
+        "https://www.missionchief.co.uk/einsaetze/356/a",
         "https://www.missionchief.co.uk/einsaetze/587",
         "https://www.missionchief.co.uk/einsaetze/588",
         "https://www.missionchief.co.uk/einsaetze/760",
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": "The official emergency_welfare count represents guaranteed Welfare Vehicles."
+      "notes": "The official emergency_welfare count represents Welfare Vehicles. A same-key chance converts the quantity to a probabilistic requirement where published."
     },
     "mass_casualty_equipment": {
       "status": "verified",
@@ -412,6 +415,511 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official coastal_rescue count is displayed as the required Coastguard Rescue Vehicle quantity."
+    },
+    "atv_carrier": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/759",
+        "https://www.missionchief.co.uk/einsaetze/300-0",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "atv_carrier",
+      "notes": "The official field is displayed as required ATV Carriers."
+    },
+    "oneof_mountain_atv_or_search_and_rescue_atv": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze/756",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "mountain_rescue_4x4",
+        "sar_4x4"
+      ],
+      "notes": "The published quantity is a qualifying total across Mountain Rescue 4x4 and SAR 4x4 resources."
+    },
+    "search_and_rescue_command": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/807",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "control_van",
+      "notes": "The official field is displayed as Control Vans."
+    },
+    "coastal_helicopter": {
+      "status": "verified",
+      "canonical_target": "requirements.chance-aware",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze/600",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_rescue_helicopter",
+      "chance_key": "coastal_helicopter",
+      "notes": "The official field is displayed as Coastguard Rescue Helicopters. A same-key chance converts it to a probabilistic requirement."
+    },
+    "large_coastal_boat": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/544",
+        "https://www.missionchief.co.uk/einsaetze/553",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "all_weather_lifeboat",
+      "notes": "The official field is displayed as All-Weather Lifeboats."
+    },
+    "min_pump_speed": {
+      "status": "verified",
+      "canonical_target": "water_requirements.minimum_pump_speed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/611",
+        "https://www.missionchief.co.uk/einsaetze/616",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "The value is a minimum pumping-speed capability threshold and is retained separately from vehicle quantities."
+    },
+    "rescue_dogs": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/756",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "search_dog_unit",
+      "notes": "The official field is displayed as Search Dog Units."
+    },
+    "bomb_disposal_crew": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/829",
+        "https://www.missionchief.co.uk/einsaetze/839",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_crew",
+      "notes": "The retained UK source identifies Bomb Disposal Crew as a discrete required resource."
+    },
+    "drone": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze/756/a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "drone",
+      "notes": "The official field is displayed as required Drones."
+    },
+    "flood_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/566",
+        "https://www.missionchief.co.uk/einsaetze/616",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "flood_rescue_unit",
+      "notes": "The official field represents Flood Rescue Units/equipment as a discrete dispatch resource."
+    },
+    "arff": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/719",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "major_foam_tender",
+      "notes": "The UK airfield requirement is displayed as Major Foam Tenders."
+    },
+    "coastal_command": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_commander",
+      "notes": "The official field is displayed as Coastguard Commanders."
+    },
+    "oneof_fire_engine_or_airport_fire_engine": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/586",
+        "https://www.missionchief.co.uk/einsaetze/719",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "fire_engine",
+        "riv"
+      ],
+      "notes": "The published quantity is a qualifying total across Fire Engines and Rapid Intervention Vehicles."
+    },
+    "police_horse": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/448",
+        "https://www.missionchief.co.uk/einsaetze/449",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "mounted_unit",
+      "notes": "The official page labels this requirement Mounted Units."
+    },
+    "airport_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/594",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "airfield_operations_vehicle",
+      "notes": "The official field is displayed as Airfield Operations Vehicles."
+    },
+    "coastal_guard_boat": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/598",
+        "https://www.missionchief.co.uk/einsaetze/761",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "inshore_lifeboat",
+      "notes": "The official field is displayed as Inshore Lifeboats."
+    },
+    "coastal_mud_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/546",
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_mud_rescue_unit",
+      "notes": "The official field is displayed as Coastguard Mud Rescue Units."
+    },
+    "coastal_support": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/560",
+        "https://www.missionchief.co.uk/einsaetze/583",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_support_unit",
+      "notes": "The official coastal_support field is displayed as required Support Units on Coastguard and Coastal Rescue missions. It is distinct from the CRV/coastal_rescue requirement."
+    },
+    "mud_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/546",
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "mud_decontamination_unit",
+      "notes": "The official field is displayed as Mud Decontamination Units."
+    },
+    "search_and_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "operational_support_van",
+        "operational_support_trailer",
+        "personal_sar_vehicle"
+      ],
+      "notes": "The published quantity is a qualifying total across the three UK Search and Rescue operational-support resources."
+    },
+    "airport_command": {
+      "status": "verified",
+      "canonical_target": "personnel.chance-aware",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_role": "Airfield Operations Supervisor",
+      "notes": "The official field is displayed as required Airfield Operations Supervisors."
+    },
+    "bomb_disposal_command": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze/839",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_command",
+      "notes": "The retained UK source identifies Bomb Disposal Command as a discrete required resource."
+    },
+    "bomb_disposal_diver_crew": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/830",
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_diver_crew",
+      "notes": "The retained UK source identifies Bomb Disposal Diver Crew as a discrete required resource."
+    },
+    "bomb_disposal_diver_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/830",
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_diver_equipment",
+      "notes": "The retained UK source identifies Bomb Disposal Diver Equipment as a discrete required resource."
+    },
+    "bomb_disposal_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/829",
+        "https://www.missionchief.co.uk/einsaetze/838",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_equipment",
+      "notes": "The retained UK source identifies Bomb Disposal Equipment as a discrete required resource."
+    },
+    "elw_airport": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "airfield_firefighting_command_vehicle",
+      "notes": "The official field is displayed as the dedicated Airfield Firefighting Command Vehicle."
+    },
+    "oneof_fire_command_or_airport_fire_command": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/586",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "fire_officer",
+        "airfield_firefighting_command_vehicle"
+      ],
+      "notes": "The published quantity is a qualifying total across Fire Officers and Airfield Firefighting Command Vehicles."
+    },
+    "oneof_fire_engine_or_airport_fire_engine_large": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/590",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "fire_engine",
+        "major_foam_tender"
+      ],
+      "notes": "The published quantity is a qualifying total across Fire Engines and Major Foam Tenders."
+    },
+    "height_rescue_units": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/548",
+        "https://www.missionchief.co.uk/einsaetze/550",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_rope_rescue_unit",
+      "notes": "The official field is displayed as Coastguard Rope Rescue Units."
+    },
+    "oneof_airport_fire_engine_or_engine_large": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/586",
+        "https://www.missionchief.co.uk/einsaetze/593",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "riv",
+        "major_foam_tender"
+      ],
+      "notes": "The published quantity is a qualifying total across Rapid Intervention Vehicles and Major Foam Tenders."
+    },
+    "oneof_coastal_guard_boat_or_boat_large": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/561",
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "inshore_lifeboat",
+        "all_weather_lifeboat"
+      ],
+      "notes": "The published quantity is a qualifying total across Inshore and All-Weather Lifeboats."
+    },
+    "oneof_fire_ladder_or_rescue_stairs": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze/719",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "aerial_appliance_truck",
+        "rescue_stairs"
+      ],
+      "notes": "The published quantity is a qualifying total across Aerial Appliance Trucks and Rescue Stairs."
+    },
+    "bomb_disposal_heavy_equipment": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/835",
+        "https://www.missionchief.co.uk/einsaetze/839",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_heavy_equipment",
+      "notes": "The retained UK source identifies Heavy Bomb Disposal Equipment as a discrete required resource."
+    },
+    "coastal_boat_hover": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/547",
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "hovercraft_trailer",
+      "notes": "The official page displays Hovercraft (Trailer)."
+    },
+    "oneof_fire_command_advanced_or_airport_fire_command": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "iccu",
+        "ambulance_control_unit",
+        "airfield_firefighting_command_vehicle"
+      ],
+      "notes": "The advanced command alternative accepts ICCU, Ambulance Control Unit or Airfield Firefighting Command Vehicle."
+    },
+    "oneof_paramedic_or_paramedic_advanced": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/693",
+        "https://www.missionchief.co.uk/einsaetze/762",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "rapid_response_vehicle",
+        "specialist_paramedic_rrv"
+      ],
+      "notes": "The published quantity is a qualifying total across Rapid Response Vehicles and Specialist Paramedic RRVs."
+    },
+    "water_rescue": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/636",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "mountain_rescue_4x4",
+        "sar_4x4"
+      ],
+      "notes": "The source uses the same two-resource 4x4 alternative for this Search and Rescue requirement."
+    },
+    "coastal_jetski": {
+      "status": "verified",
+      "canonical_target": "requirements.guaranteed",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/563/a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "rescue_watercraft_trailer",
+      "notes": "The official overlay page displays Rescue Watercraft (Trailer)."
+    },
+    "oneof_fire_engine_or_airport_fire_engine_or_engine_large": {
+      "status": "verified",
+      "canonical_target": "requirements.alternatives",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/591",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_ids": [
+        "fire_engine",
+        "riv",
+        "major_foam_tender"
+      ],
+      "notes": "The published quantity is a qualifying total across Fire Engines, Rapid Intervention Vehicles and Major Foam Tenders."
     }
   },
   "chances": {
@@ -555,6 +1063,44 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The same-key percentage is the Traffic Car requirement probability. Conditional availability remains separately retained when the official flag is true."
+    },
+    "emergency_welfare": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/329/ab",
+        "https://www.missionchief.co.uk/einsaetze/356/a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "welfare_vehicle",
+      "requirement_key": "emergency_welfare",
+      "notes": "Same-key percentage for the Welfare Vehicle requirement."
+    },
+    "coastal_helicopter": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze/600",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "coastguard_rescue_helicopter",
+      "requirement_key": "coastal_helicopter",
+      "notes": "Same-key percentage for the Coastguard Rescue Helicopter requirement."
+    },
+    "police_cars": {
+      "status": "verified",
+      "canonical_target": "requirements.probabilistic",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/797",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "police_car",
+      "requirement_key": "police_cars",
+      "notes": "Same-key percentage for the Police Car requirement."
     }
   },
   "prerequisites": {
@@ -635,13 +1181,26 @@
     "main_building": {
       "status": "not-applicable",
       "allowed_values": [
-        0
+        0,
+        2,
+        6,
+        27,
+        28,
+        31,
+        32,
+        33,
+        34,
+        35
       ],
-      "checked_at": "2026-07-23",
+      "checked_at": "2026-07-24",
       "sources": [
+        "https://www.missionchief.co.uk/einsaetze/0",
+        "https://www.missionchief.co.uk/einsaetze/561",
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/760",
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
-      "notes": "A zero main_building value is an upstream sentinel and does not create a canonical operational prerequisite. Any non-zero value must be reviewed before promotion."
+      "notes": "The field is a MissionChief source/building-family discriminator rather than a count-based player prerequisite. Every value observed in the retained 24 July 2026 UK snapshot is narrowly allow-listed and preserved in generation_rules.main_building_type."
     },
     "riot_police": {
       "status": "verified",
@@ -787,6 +1346,172 @@
         "https://www.missionchief.co.uk/einsaetze.json"
       ],
       "notes": "The official coastal_rescue_count prerequisite is the countable Lifeboat Station mission-generation requirement. It remains distinct from water_rescue_2, which represents Coastguard Rescue Stations."
+    },
+    "mountain_rescue": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/143",
+        "https://www.missionchief.co.uk/einsaetze/756",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "mountain_rescue_stations",
+      "notes": "Required Mountain Rescue Station count."
+    },
+    "airport": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/586",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "aviation_firefighting_extensions",
+      "notes": "Required Aviation Firefighting Extension count."
+    },
+    "bomb_disposal_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/829",
+        "https://www.missionchief.co.uk/einsaetze/839",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_hqs",
+      "notes": "Required Bomb Disposal HQ count."
+    },
+    "coastal_helicopter_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/562",
+        "https://www.missionchief.co.uk/einsaetze/554",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "helicopter_hangars",
+      "notes": "Required Coastguard Rescue Helicopter Hangar count."
+    },
+    "drone": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "active_drones",
+      "notes": "Required active Drone count."
+    },
+    "water_damage_pump_count": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/611",
+        "https://www.missionchief.co.uk/einsaetze/616",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "water_damage_pump_extensions",
+      "notes": "Required Water Damage Pump Extension count."
+    },
+    "flood_equipment": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/566",
+        "https://www.missionchief.co.uk/einsaetze/616",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "flood_rescue_extensions",
+      "notes": "Required Flood Rescue Extension count."
+    },
+    "technical_aid": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/635",
+        "https://www.missionchief.co.uk/einsaetze/808",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "search_and_rescue_hqs",
+      "notes": "Required Search and Rescue HQ count."
+    },
+    "mud_rescue": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/546",
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "mud_decontamination_extensions",
+      "notes": "Required Mud Decontamination Extension count."
+    },
+    "airport_2": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/587",
+        "https://www.missionchief.co.uk/einsaetze/588",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "airfield_operations_extensions",
+      "notes": "Required Airfield Operations Extension count."
+    },
+    "bomb_disposal_diver": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/830",
+        "https://www.missionchief.co.uk/einsaetze/832",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "bomb_disposal_marine_unit_extensions",
+      "notes": "Required Bomb Disposal Marine Unit Extension count."
+    },
+    "coastal_hover_boat": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/547",
+        "https://www.missionchief.co.uk/einsaetze/568",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "hovercraft_extensions",
+      "notes": "Required Hovercraft Extension count."
+    },
+    "max_police_stations": {
+      "status": "verified",
+      "canonical_target": "generation_rules.max_police_stations",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/163",
+        "https://www.missionchief.co.uk/einsaetze/165",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": "This is an upper generation bound, not a minimum station precondition."
+    },
+    "coastal_rescue_extension": {
+      "status": "verified",
+      "canonical_target": "preconditions",
+      "checked_at": "2026-07-24",
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/563/a",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "canonical_id": "beach_lifeguard_extensions",
+      "notes": "Required Beach Lifeguard Extension count."
     }
   }
 }

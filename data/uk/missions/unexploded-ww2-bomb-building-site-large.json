@@ -1,52 +1,78 @@
 {
   "id": 839,
   "name": "Unexploded WW2 Bomb Located at Building Site (Large)",
-  "aliases": [
-    "Large building-site unexploded WW2 bomb"
-  ],
-  "service": "bomb_disposal",
-  "mission_types": [
-    "Bomb Disposal Missions"
-  ],
-  "poi": [],
-  "custom_spawn_area": false,
-  "restricted_vehicle_types": [],
-  "handoff_destinations": [],
-  "variant": {
-    "source_mission_id": 839,
-    "kind": "base",
-    "key": "large-building-site-bomb"
-  },
-  "preconditions": {
-    "fire_stations": 6,
-    "rescue_stations": 15,
-    "police_stations": 20,
-    "hart_bases": 1,
-    "bomb_disposal_hqs": 3,
-    "active_drones": 1,
-    "other": []
-  },
   "requirements": {
-    "guaranteed": [],
-    "probabilistic": [],
-    "alternatives": []
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_command",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_crew",
+        "quantity": 2
+      },
+      {
+        "resource": "bomb_disposal_heavy_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "drone",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 10
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
   },
-  "reward": {
-    "average_credits": 11500
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The official directory confirms the high-complexity station, HQ, HART and active-Drone preconditions.",
-    "The response-unit and EOD personnel sections remain intentionally empty pending direct mission-page verification."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/839",
-      "https://www.missionchief.co.uk/einsaetze"
+      "https://www.missionchief.co.uk/einsaetze.json"
     ]
+  },
+  "preconditions": {
+    "bomb_disposal_hqs": 3,
+    "active_drones": 1,
+    "fire_stations": 6,
+    "hart_bases": 1,
+    "police_stations": 20,
+    "rescue_stations": 15
   },
   "personnel": {
     "required": [
@@ -73,5 +99,45 @@
         "quantity": 2
       }
     ]
+  },
+  "reward": {
+    "average_credits": 11500
+  },
+  "official_metadata": {
+    "generator_family": "bomb_disposal_missions",
+    "mission_categories": [
+      "bomb_disposal"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 839,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "bomb_disposal",
+  "generation_rules": {
+    "main_building_type": 35
+  },
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": [
+    "Large building-site unexploded WW2 bomb"
+  ],
+  "restricted_vehicle_types": [],
+  "handoff_destinations": [],
+  "variant": {
+    "source_mission_id": 839,
+    "kind": "base",
+    "key": "large-building-site-bomb"
   }
 }

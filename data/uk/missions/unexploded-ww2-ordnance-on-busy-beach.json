@@ -1,38 +1,69 @@
 {
   "id": 831,
   "name": "Unexploded WW2 Ordnance on Busy Beach",
-  "aliases": [],
-  "service": "bomb_disposal",
-  "mission_types": [
-    "Bomb Disposal Missions"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_diver_crew",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_diver_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "coastguard_commander",
+        "quantity": 1
+      },
+      {
+        "resource": "coastguard_rescue_vehicle",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/831",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Beach"
   ],
   "preconditions": {
-    "fire_stations": 6,
-    "rescue_stations": 6,
-    "police_stations": 15,
-    "coastguard_rescue_stations": 6,
     "bomb_disposal_hqs": 2,
     "bomb_disposal_marine_unit_extensions": 1,
-    "hart_bases": 1
-  },
-  "requirements": {
-    "guaranteed": []
-  },
-  "reward": {
-    "average_credits": 9000
-  },
-  "notes": [
-    "The official mission directory verifies the populated fields. The individual response table was not available, so no EOD dispatch or personnel values are claimed."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
+    "fire_stations": 6,
+    "hart_bases": 1,
+    "police_stations": 15,
+    "rescue_stations": 6,
+    "coastguard_rescue_stations": 6
   },
   "personnel": {
     "required": [
@@ -51,5 +82,36 @@
         "quantity": 2
       }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 9000
+  },
+  "official_metadata": {
+    "generator_family": "bomb_disposal_missions",
+    "mission_categories": [
+      "bomb_disposal"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 831,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "bomb_disposal",
+  "generation_rules": {
+    "main_building_type": 35
+  },
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

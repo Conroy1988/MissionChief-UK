@@ -1,0 +1,23 @@
+{
+  "id": "bomb_disposal_equipment",
+  "name": "Bomb Disposal Equipment",
+  "aliases": [],
+  "service": "bomb_disposal",
+  "category": "Bomb disposal equipment",
+  "capabilities": [
+    "bomb_disposal_equipment"
+  ],
+  "notes": [
+    "The retained UK source identifies Bomb Disposal Equipment as a discrete required resource.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/829",
+      "https://www.missionchief.co.uk/einsaetze/838",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

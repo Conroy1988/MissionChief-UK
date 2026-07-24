@@ -1,21 +1,16 @@
 {
   "id": 420,
   "name": "Scrapyard Fire Large",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions",
-    "Fire Support Specialisation Missions"
-  ],
-  "poi": [
-    "Scrap yard"
-  ],
-  "preconditions": {
-    "fire_stations": 20,
-    "police_stations": 3
-  },
   "requirements": {
     "guaranteed": [
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 2
+      },
+      {
+        "resource": "breathing_apparatus_support_unit",
+        "quantity": 1
+      },
       {
         "resource": "fire_engine",
         "quantity": 20
@@ -25,61 +20,86 @@
         "quantity": 6
       },
       {
-        "resource": "srv",
-        "quantity": 1
-      },
-      {
-        "resource": "breathing_apparatus_support_unit",
-        "quantity": 1
-      },
-      {
-        "resource": "aerial_appliance_truck",
-        "quantity": 2
-      },
-      {
         "resource": "police_car",
         "quantity": 4
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
       },
       {
         "resource": "water_carrier",
         "quantity": 2
       }
     ],
-    "probabilistic": [],
     "alternatives": [
-      {
-        "resources": [
-          "hazmat_unit",
-          "cbrn_vehicle"
-        ],
-        "quantity": 1
-      },
       {
         "resources": [
           "iccu",
           "ambulance_control_unit"
         ],
-        "quantity": 1
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
       }
     ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/420",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Scrap yard"
+  ],
+  "preconditions": {
+    "fire_stations": 20,
+    "police_stations": 3
   },
   "reward": {
     "average_credits": 20000
   },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "The Scrap yard POI is retained.",
-    "The official SRV requirement is kept distinct from the Fire and Rescue Service Rescue Support Vehicle.",
-    "HazMat/CBRN and ICCU/Ambulance Control requirements remain qualifying alternative groups."
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban",
+      "fire_support_specialization"
+    ],
+    "icons": [
+      "/images/fire_gruen.png",
+      "/images/fire_gelb.png",
+      "/images/fire_rot.png"
+    ],
+    "base_mission_id": 420,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
   ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-23",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze/420",
-      "https://www.missionchief.co.uk/einsaetze/420?additive_overlays=b",
-      "https://www.missionchief.co.uk/einsaetze.json"
-    ]
-  }
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

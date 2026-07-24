@@ -1,38 +1,90 @@
 {
   "id": 835,
   "name": "Unexploded WW2 Ordnance Discovered at Large Train Station",
-  "aliases": [],
-  "service": "bomb_disposal",
-  "mission_types": [
-    "Bomb Disposal Missions"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_command",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_crew",
+        "quantity": 2
+      },
+      {
+        "resource": "bomb_disposal_heavy_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "drone",
+        "quantity": 1
+      },
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 8
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/835",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Train station (regional traffic and long-distance travel)"
   ],
   "preconditions": {
-    "fire_stations": 6,
-    "rescue_stations": 15,
-    "police_stations": 20,
     "bomb_disposal_hqs": 3,
+    "active_drones": 1,
+    "fire_stations": 6,
     "hart_bases": 1,
+    "police_stations": 20,
     "railway_police": 6,
-    "active_drones": 1
-  },
-  "requirements": {
-    "guaranteed": []
-  },
-  "reward": {
-    "average_credits": 12000
-  },
-  "notes": [
-    "The official directory verifies the populated generation fields. Response-table data remains unavailable and is not inferred."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
+    "rescue_stations": 15
   },
   "personnel": {
     "required": [
@@ -67,5 +119,36 @@
         "quantity": 24
       }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 12000
+  },
+  "official_metadata": {
+    "generator_family": "bomb_disposal_missions",
+    "mission_categories": [
+      "bomb_disposal"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 835,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "bomb_disposal",
+  "generation_rules": {
+    "main_building_type": 35
+  },
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

@@ -1,0 +1,92 @@
+{
+  "id": 445,
+  "name": "Bar Fight",
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "police_car",
+        "quantity": 6
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/445",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Bar"
+  ],
+  "preconditions": {
+    "police_stations": 8,
+    "police_public_order_extensions": 1
+  },
+  "patients": {
+    "maximum": 8,
+    "specializations": [
+      "General Surgeon"
+    ],
+    "specialization_ids": [
+      1
+    ],
+    "specialization_text": "General Surgeon",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 0.3
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
+      }
+    ]
+  },
+  "prisoners": {
+    "maximum": 6
+  },
+  "reward": {
+    "average_credits": 3400
+  },
+  "official_metadata": {
+    "generator_family": "police_station_missions",
+    "mission_categories": [
+      "police",
+      "riot_police_specialization"
+    ],
+    "icons": [
+      "/images/bar_cocktail_gruen.png",
+      "/images/bar_cocktail_gelb.png",
+      "/images/bar_cocktail_rot.png"
+    ],
+    "base_mission_id": 445,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "police",
+  "generation_rules": {
+    "main_building_type": 6
+  },
+  "mission_types": [
+    "Police Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
+}

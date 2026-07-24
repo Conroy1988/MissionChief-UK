@@ -1,0 +1,23 @@
+{
+  "id": "mounted_unit",
+  "name": "Mounted Unit",
+  "aliases": [],
+  "service": "police",
+  "category": "Mounted policing",
+  "capabilities": [
+    "mounted_policing"
+  ],
+  "notes": [
+    "The official page labels this requirement Mounted Units.",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/448",
+      "https://www.missionchief.co.uk/einsaetze/449",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

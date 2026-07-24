@@ -1,37 +1,64 @@
 {
   "id": 834,
   "name": "Unexploded WW2 Ordnance Discovered at Small Train Station",
-  "aliases": [],
-  "service": "bomb_disposal",
-  "mission_types": [
-    "Bomb Disposal Missions"
-  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "ambulance",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_crew",
+        "quantity": 1
+      },
+      {
+        "resource": "bomb_disposal_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "eiu",
+        "quantity": 1
+      },
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 2
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 1
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/834",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
   "poi": [
     "Train station (regional traffic)"
   ],
   "preconditions": {
-    "fire_stations": 6,
-    "rescue_stations": 6,
-    "police_stations": 15,
     "bomb_disposal_hqs": 2,
+    "fire_stations": 6,
     "hart_bases": 1,
-    "railway_police": 3
-  },
-  "requirements": {
-    "guaranteed": []
-  },
-  "reward": {
-    "average_credits": 7250
-  },
-  "notes": [
-    "The official directory verifies the railway and Bomb Disposal generation dependencies. Response-table values remain unavailable."
-  ],
-  "verification": {
-    "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": [
-      "https://www.missionchief.co.uk/einsaetze"
-    ]
+    "police_stations": 15,
+    "railway_police": 3,
+    "rescue_stations": 6
   },
   "personnel": {
     "required": [
@@ -58,5 +85,36 @@
         "quantity": 12
       }
     ]
-  }
+  },
+  "reward": {
+    "average_credits": 7250
+  },
+  "official_metadata": {
+    "generator_family": "bomb_disposal_missions",
+    "mission_categories": [
+      "bomb_disposal"
+    ],
+    "icons": [
+      "/images/blast_gruen.png",
+      "/images/blast_gelb.png",
+      "/images/blast_rot.png"
+    ],
+    "base_mission_id": 834,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "bomb_disposal",
+  "generation_rules": {
+    "main_building_type": 35
+  },
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ],
+  "aliases": []
 }

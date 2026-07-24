@@ -1,14 +1,6 @@
 {
   "id": 404,
   "name": "Animal stuck between walls",
-  "service": "fire",
-  "mission_types": [
-    "Fire Fighting Missions",
-    "Urban Fire Missions"
-  ],
-  "preconditions": {
-    "fire_stations": 4
-  },
   "requirements": {
     "guaranteed": [
       {
@@ -19,23 +11,48 @@
         "resource": "rescue_support_vehicle",
         "quantity": 1
       }
-    ],
-    "probabilistic": []
+    ]
   },
-  "reward": {
-    "average_credits": 1300
-  },
-  "follow_up_missions": [],
-  "expandable_missions": [],
-  "notes": [
-    "All published operational fields are represented from the retained official UK catalogue."
-  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-24",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/404",
       "https://www.missionchief.co.uk/einsaetze.json"
     ]
-  }
+  },
+  "preconditions": {
+    "fire_stations": 4
+  },
+  "reward": {
+    "average_credits": 1300
+  },
+  "official_metadata": {
+    "generator_family": "firehouse_missions",
+    "mission_categories": [
+      "fire",
+      "urban"
+    ],
+    "icons": [
+      "/images/sawmill_gruen.png",
+      "/images/sawmill_gelb.png",
+      "/images/sawmill_rot.png"
+    ],
+    "base_mission_id": 404,
+    "additive_overlays": "",
+    "overlay_index": null,
+    "generated_by": "",
+    "additional": {}
+  },
+  "service": "fire",
+  "generation_rules": {
+    "main_building_type": 0
+  },
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, personnel, operational, prerequisite, patient and relationship fields are protected by strict official equivalence validators."
+  ]
 }

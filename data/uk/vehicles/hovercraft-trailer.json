@@ -1,0 +1,26 @@
+{
+  "id": "hovercraft_trailer",
+  "name": "Hovercraft (Trailer)",
+  "aliases": [],
+  "service": "coastguard",
+  "category": "Coastguard water rescue",
+  "capabilities": [
+    "hovercraft_response"
+  ],
+  "notes": [
+    "The official page displays Hovercraft (Trailer).",
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-24",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/547",
+      "https://www.missionchief.co.uk/einsaetze/568",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "deployment": {
+    "is_trailer": true
+  }
+}
