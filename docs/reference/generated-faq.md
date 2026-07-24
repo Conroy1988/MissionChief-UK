@@ -1,13 +1,13 @@
 # Generated FAQ
 
-This page is generated from MissionChief UK data version **1.0.0** released **2026-07-22**.
+This page is generated from MissionChief UK data version **1.1.0** released **2026-07-24**.
 
 !!! info "Generated content"
     Counts and service coverage are regenerated during validation and Pages deployment. Evidence-policy answers are maintained in the generator so the page cannot drift from the publication model.
 
 ## How much verified data is currently published?
 
-Version 1.0.0 contains 62 mission records, 46 deployable-resource records, 18 infrastructure records and 11 qualification records.
+Version 1.1.0 contains 284 mission records, 48 deployable-resource records, 18 infrastructure records and 12 qualification records.
 
 ## What does verified mean?
 
@@ -31,8 +31,8 @@ No. Official recovery pages list towing as an outcome under Other information. T
 
 ## Can I use this data programmatically?
 
-Yes. Versioned read-only JSON exports are published under `assets/data/v1` and documented in the API section.
+Yes. Versioned read-only JSON exports are published under assets/data/v1 and documented in the API section.
 
 ## Which mission service groups are represented?
 
-The generated version lists every current service and its mission-record count directly from the production collection.
+fire (228), bomb disposal (11), recovery (10), airfield operations (9), mountain rescue (5), railway response (5), coastguard (4), fire and rescue (3), ambulance (3), lifeboat (2), police (2), search and rescue (2)

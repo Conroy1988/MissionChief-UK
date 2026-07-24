@@ -1,14 +1,22 @@
 {
   "id": 839,
   "name": "Unexploded WW2 Bomb Located at Building Site (Large)",
-  "aliases": ["Large building-site unexploded WW2 bomb"],
+  "aliases": [
+    "Large building-site unexploded WW2 bomb"
+  ],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
   "poi": [],
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
   "handoff_destinations": [],
-  "variant": {"source_mission_id": 839, "kind": "base", "key": "large-building-site-bomb"},
+  "variant": {
+    "source_mission_id": 839,
+    "kind": "base",
+    "key": "large-building-site-bomb"
+  },
   "preconditions": {
     "fire_stations": 6,
     "rescue_stations": 15,
@@ -18,8 +26,14 @@
     "active_drones": 1,
     "other": []
   },
-  "requirements": {"guaranteed": [], "probabilistic": [], "alternatives": []},
-  "reward": {"average_credits": 11500},
+  "requirements": {
+    "guaranteed": [],
+    "probabilistic": [],
+    "alternatives": []
+  },
+  "reward": {
+    "average_credits": 11500
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
   "notes": [
@@ -29,6 +43,35 @@
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/839", "https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/839",
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Inspector",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
+    ]
   }
 }

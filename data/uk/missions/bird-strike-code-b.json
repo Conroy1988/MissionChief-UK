@@ -1,14 +1,25 @@
 {
   "id": 593,
   "name": "Bird Strike - Code B",
-  "aliases": ["Bird Strike Code B"],
+  "aliases": [
+    "Bird Strike Code B"
+  ],
   "service": "airfield_operations",
-  "mission_types": ["Airfield firefighting operations"],
-  "poi": ["Medium Airport (Runway)", "Large Airport (Runway)"],
+  "mission_types": [
+    "Airfield firefighting operations"
+  ],
+  "poi": [
+    "Medium Airport (Runway)",
+    "Large Airport (Runway)"
+  ],
   "custom_spawn_area": false,
   "restricted_vehicle_types": [],
   "handoff_destinations": [],
-  "variant": {"source_mission_id": 593, "kind": "base", "key": "bird-strike-code-b"},
+  "variant": {
+    "source_mission_id": 593,
+    "kind": "base",
+    "key": "bird-strike-code-b"
+  },
   "preconditions": {
     "fire_stations": 7,
     "rescue_stations": 6,
@@ -18,37 +29,70 @@
   },
   "requirements": {
     "guaranteed": [
-      {"resource": "water_carrier", "quantity": 3},
-      {"resource": "prv", "quantity": 2},
-      {"resource": "srv", "quantity": 1},
-      {"resource": "welfare_vehicle", "quantity": 1}
+      {
+        "resource": "water_carrier",
+        "quantity": 3
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 1
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      }
     ],
     "probabilistic": [],
     "conditional": [],
     "alternatives": [
       {
-        "resources": ["fire_engine", "riv"],
+        "resources": [
+          "fire_engine",
+          "riv"
+        ],
         "quantity": 4,
-        "notes": ["Four qualifying Fire Engines or RIVs are required in total."]
+        "notes": [
+          "Four qualifying Fire Engines or RIVs are required in total."
+        ]
       },
       {
-        "resources": ["riv", "major_foam_tender"],
+        "resources": [
+          "riv",
+          "major_foam_tender"
+        ],
         "quantity": 2,
-        "notes": ["Two qualifying RIVs or Major Foam Tenders are required in total."]
+        "notes": [
+          "Two qualifying RIVs or Major Foam Tenders are required in total."
+        ]
       }
     ]
   },
   "personnel": {
-    "available": [],
-    "required": [{"role": "Operational Team Leader", "quantity": 1}],
-    "average_minimum": [],
-    "probabilistic": []
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      }
+    ],
+    "average_minimum": []
   },
-  "patients": {"minimum": 0, "maximum": 0, "transport_probability": 0, "critical_care_probability": 0, "first_responder_full_care_probability": 0, "specializations": [], "codes": []},
-  "prisoners": {"maximum": 0},
-  "reward": {"average_credits": 6000},
+  "reward": {
+    "average_credits": 6000
+  },
   "follow_up_missions": [],
   "expandable_missions": [],
-  "notes": ["The two alternative groups are independent and must not be merged."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/593"]}
+  "notes": [
+    "The two alternative groups are independent and must not be merged."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-22",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/593"
+    ]
+  }
 }

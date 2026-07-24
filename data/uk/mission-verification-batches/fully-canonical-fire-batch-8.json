@@ -1,0 +1,12 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "169": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/169", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed resources, Heathland POI and one ICCU-or-Ambulance-Control alternative verified."]},
+    "177": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/177", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]},
+    "243": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/243", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Forest POI, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]},
+    "244": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/244", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, four POIs, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]},
+    "256": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/256", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Heathland POI, guaranteed resources and one ICCU-or-Ambulance-Control alternative verified."]},
+    "518": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/518", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Prison POI, guaranteed resources, 5% Water Carrier probability and one ICCU-or-Ambulance-Control alternative verified."]}
+  }
+}

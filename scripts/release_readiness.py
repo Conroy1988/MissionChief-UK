@@ -6,6 +6,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -14,9 +15,14 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = ROOT / "data" / "uk"
 OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "v1"
+OFFICIAL_OUTPUT_ROOT = ROOT / "docs" / "assets" / "data" / "official"
 VERSION_PATH = ROOT / "data" / "version.json"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
 README_PATH = ROOT / "README.md"
+CHANGELOG_PATH = ROOT / "CHANGELOG.md"
+HOME_PATH = ROOT / "docs" / "index.md"
+API_PATH = ROOT / "docs" / "api" / "index.md"
+FAQ_PATH = ROOT / "docs" / "reference" / "generated-faq.md"
 
 COLLECTIONS = {
     "missions": DATA_ROOT / "missions",
@@ -30,6 +36,8 @@ EXPECTED_STATIC_PAGES = (
     "tools/resource-comparison.md",
     "tools/fleet-planner.md",
     "tools/query-catalogue.md",
+    "reference/official-mission-catalogue.md",
+    "reference/mission-verification-status.md",
     "reference/generated-faq.md",
     "api/index.md",
     "quality-assurance.md",
@@ -39,8 +47,54 @@ REQUIRED_QA_FILES = (
     "package.json",
     "playwright.config.mjs",
     "tests/e2e/live-site.spec.mjs",
+    "tests/e2e/official-mission-catalogue.spec.mjs",
+    "tests/python/test_catalogue_reporting.py",
+    ".github/workflows/release-v1.yml",
     "scripts/audit_links.py",
+    "scripts/validate_official_mission_catalogue.py",
+    "scripts/reconcile_official_mission_coverage.py",
+    "scripts/verification_registry.py",
+    "scripts/merge_verification_registry_batches.py",
+    "scripts/validate_official_key_mappings.py",
+    "scripts/validate_official_patient_mappings.py",
+    "scripts/validate_official_personnel_mappings.py",
+    "scripts/validate_official_personnel_education_mappings.py",
+    "scripts/validate_official_prisoner_mappings.py",
+    "scripts/validate_official_recovery_mappings.py",
+    "scripts/report_canonical_candidates.py",
+    "scripts/report_key_mapping_backlog.py",
+    "scripts/generate_ready_canonical_batch.py",
+    "scripts/generate_mission_verification_status.py",
+    "scripts/sync_public_verification_metrics.py",
+    "scripts/validate_verification_programme_assets.py",
+    "tests/python/test_release_integrity.py",
     "docs/quality-assurance.md",
+)
+
+REQUIRED_OFFICIAL_FILES = (
+    "scripts/import_official_uk_missions.py",
+    "scripts/publish_official_mission_catalogue.py",
+    "scripts/compact_official_mission_catalogue.py",
+    ".github/workflows/import-official-uk-missions.yml",
+    "data/uk/mission-verification-registry.json",
+    "data/uk/official-key-mappings.json",
+    "data/sources/missionchief-uk/README.md",
+    "data/sources/missionchief-uk/einsaetze.raw.json",
+    "data/sources/missionchief-uk/mission-coverage.json",
+    "data/sources/missionchief-uk/mission-verification-status.json",
+    "data/sources/missionchief-uk/official-key-inventory.json",
+    "docs/assets/data/official/uk-missions.json",
+    "docs/assets/data/official/uk-mission-coverage.json",
+    "docs/assets/data/official/uk-mission-verification.json",
+    "docs/javascripts/official-catalogue-loader.js",
+    "docs/javascripts/official-mission-details.js",
+    "docs/reference/mission-verification-status.md",
+)
+
+REQUIRED_JAVASCRIPT_ORDER = (
+    "javascripts/official-catalogue-loader.js",
+    "javascripts/intelligence-tools.js",
+    "javascripts/official-mission-details.js",
 )
 
 PLAYWRIGHT_PROJECTS = (
@@ -84,6 +138,43 @@ def require(condition: bool, message: str) -> None:
         raise AuditFailure(message)
 
 
+def formatted_count(value: int) -> str:
+    return f"{value:,}"
+
+
+def require_pattern(text: str, pattern: str, message: str) -> None:
+    require(re.search(pattern, text, flags=re.MULTILINE) is not None, message)
+
+
+def audit_catalogue_state_lines(
+    readme: str,
+    notes: str,
+    awaiting: int,
+    overlays: int,
+) -> None:
+    rows = (
+        ("Official records awaiting canonical records", awaiting),
+        ("Canonical-only overlays", overlays),
+    )
+    for label, value in rows:
+        require_pattern(
+            readme,
+            rf"^\| \*\*{re.escape(label)}\*\* \| \*\*{re.escape(formatted_count(value))}\*\* \|",
+            f"README {label} row is stale; expected {formatted_count(value)}",
+        )
+
+    release_lines = (
+        f"{formatted_count(awaiting)} official records awaiting direct canonical records",
+        f"{formatted_count(overlays)} canonical overlay or derived records without standalone official IDs",
+    )
+    for line in release_lines:
+        require_pattern(
+            notes,
+            rf"^{re.escape(line)}$",
+            f"Release notes catalogue state is stale: {line}",
+        )
+
+
 def flatten_nav(value: Any) -> Iterable[str]:
     if isinstance(value, str):
         yield value
@@ -105,23 +196,31 @@ def audit_navigation(release_version: str) -> None:
     for target in nav_targets:
         require((ROOT / "docs" / target).is_file(), f"MkDocs navigation target does not exist: docs/{target}")
 
-    required_targets = (*EXPECTED_STATIC_PAGES, f"releases/v{release_version}.md")
-    for target in required_targets:
+    dynamic_batches = [
+        path.relative_to(ROOT / "docs").as_posix()
+        for path in sorted((ROOT / "docs" / "reference").glob("fully-canonical-mission-batch-*.md"))
+    ]
+    for target in (*EXPECTED_STATIC_PAGES, *dynamic_batches, f"releases/v{release_version}.md"):
         require(target in nav_targets, f"Release-critical page is not present in MkDocs navigation: {target}")
 
     javascript = config.get("extra_javascript", [])
-    require(
-        isinstance(javascript, list) and "javascripts/intelligence-tools.js" in javascript,
-        "MkDocs must load javascripts/intelligence-tools.js",
-    )
+    require(isinstance(javascript, list), "MkDocs extra_javascript must be a list")
+    for asset in REQUIRED_JAVASCRIPT_ORDER:
+        require(asset in javascript, f"MkDocs must load {asset}")
+    positions = [javascript.index(asset) for asset in REQUIRED_JAVASCRIPT_ORDER]
+    require(positions == sorted(positions), "Official catalogue loader, lookup and detail scripts are in the wrong order")
 
 
-def audit_quality_assets() -> None:
-    for relative in REQUIRED_QA_FILES:
-        require((ROOT / relative).is_file(), f"Release-critical QA file is missing: {relative}")
+def audit_quality_assets(release_version: str) -> None:
+    for relative in (*REQUIRED_QA_FILES, *REQUIRED_OFFICIAL_FILES):
+        require((ROOT / relative).is_file(), f"Release-critical file is missing: {relative}")
+
+    batch_files = sorted((DATA_ROOT / "mission-verification-batches").glob("*.json"))
+    require(bool(batch_files), "No mission verification batch registry files exist")
 
     package = read_json(ROOT / "package.json")
     require(isinstance(package, dict), "package.json must contain an object")
+    require(package.get("version") == release_version, "package.json version does not match data/version.json")
     scripts = package.get("scripts")
     require(
         isinstance(scripts, dict) and scripts.get("test:e2e") == "playwright test",
@@ -140,6 +239,82 @@ def audit_quality_assets() -> None:
     for marker in ("mission-lookup", "comparison", "fleet-planner", "query-catalogue", "AxeBuilder"):
         require(marker in suite_text, f"Browser acceptance suite is missing coverage marker: {marker}")
 
+    official_suite = (ROOT / "tests" / "e2e" / "official-mission-catalogue.spec.mjs").read_text(encoding="utf-8")
+    for marker in (
+        "official-uk-missions",
+        "official_only_count",
+        "officialOnlyIds",
+        "pendingRecord",
+        "Coverage must retain an official-only record",
+        "pendingUrl",
+        "Complete official catalogue record",
+        "mcuk-official-field-details",
+    ):
+        require(marker in official_suite, f"Official mission acceptance suite is missing marker: {marker}")
+
+    workflow_text = (ROOT / ".github" / "workflows" / "import-official-uk-missions.yml").read_text(encoding="utf-8")
+    for marker in (
+        "workflow_dispatch",
+        "schedule:",
+        "reconcile_official_mission_coverage.py",
+        "validate_official_mission_catalogue.py",
+        "merge_verification_registry_batches.py",
+        "validate_official_key_mappings.py",
+        "validate_official_patient_mappings.py",
+        "validate_official_personnel_mappings.py",
+        "validate_official_personnel_education_mappings.py",
+        "validate_official_prisoner_mappings.py",
+        "validate_official_recovery_mappings.py",
+        "python -m unittest discover -s tests/python",
+        "report_canonical_candidates.py",
+        "generate_mission_verification_status.py",
+        "sync_public_verification_metrics.py",
+        "generate_exports.py",
+        "generate_faq.py",
+        "release_readiness.py",
+        "validate_verification_programme_assets.py",
+        "data/sources/missionchief-uk/einsaetze.raw.json",
+        "data/sources/missionchief-uk/mission-coverage.json",
+        "data/sources/missionchief-uk/official-key-inventory.json",
+        "docs/assets/data/official/uk-mission-coverage.json",
+        "docs/assets/data/official/uk-missions.json",
+        "docs/reference/mission-verification-status.md",
+        "git add -A -- data/sources/missionchief-uk/official-missions.json",
+        "git diff --cached --quiet",
+        "gh workflow run deploy-pages.yml --ref main",
+    ):
+        require(marker in workflow_text, f"Official catalogue refresh workflow is missing control: {marker}")
+
+    for forbidden in (
+        "git add -f data/sources/missionchief-uk",
+        "data/sources/missionchief-uk \\",
+        "docs/assets/data/official \\",
+        "data/sources/missionchief-uk/mission-verification-status.json",
+        "docs/assets/data/official/uk-mission-verification.json",
+    ):
+        require(
+            forbidden not in workflow_text,
+            f"Official catalogue refresh workflow stages transient or over-broad path: {forbidden}",
+        )
+
+    release_workflow = (ROOT / ".github" / "workflows" / "release-v1.yml").read_text(encoding="utf-8")
+    require(
+        "workflow_dispatch" not in release_workflow,
+        "Release publication must be triggered only by a successful Pages workflow",
+    )
+    for marker in (
+        "actions: read",
+        "github.event.workflow_run.conclusion == 'success'",
+        "github.event.workflow_run.head_branch == 'main'",
+        "ref: ${{ github.event.workflow_run.head_sha }}",
+        "Verify exact deployed commit",
+        "tagName,isDraft,isPrerelease",
+        'git cat-file -t "refs/tags/$TAG"',
+        "deploy-pages.yml/runs",
+        "successful_pages_runs",
+    ):
+        require(marker in release_workflow, f"Release workflow is missing exact-publication control: {marker}")
+
 
 def release_metadata() -> dict[str, Any]:
     release = read_json(VERSION_PATH)
@@ -151,11 +326,156 @@ def release_metadata() -> dict[str, Any]:
     )
     require(release.get("stage") == 34, "The v1 release must identify Stage 34")
     require(release.get("status") == "production", "The v1 release status must be production")
+    released_at = release.get("released_at")
+    require(isinstance(released_at, str), "Release metadata must contain released_at")
+    try:
+        date.fromisoformat(released_at)
+    except ValueError as exc:
+        raise AuditFailure("Release metadata released_at must be an ISO date") from exc
     require(
         (ROOT / "docs" / "releases" / f"v{version}.md").is_file(),
         f"Release notes are missing for v{version}",
     )
     return release
+
+
+def audit_publication_metadata(
+    release: dict[str, Any],
+    counts: dict[str, int],
+    summary: dict[str, Any],
+) -> None:
+    version = str(release["version"])
+    released_at = str(release["released_at"])
+    release_date = date.fromisoformat(released_at)
+    human_date = f"{release_date.day} {release_date.strftime('%B %Y')}"
+    official = summary.get("official_count")
+    direct = summary.get("direct_canonical_id_matches")
+    fully = summary.get("cumulative_stage_counts", {}).get("fully-canonical")
+    remaining = summary.get("remaining_to_fully_canonical")
+    for value, label in (
+        (official, "official"),
+        (direct, "direct canonical match"),
+        (fully, "fully canonical"),
+        (remaining, "remaining verification"),
+    ):
+        require(isinstance(value, int), f"Verification {label} count is invalid")
+
+    assert isinstance(official, int)
+    assert isinstance(direct, int)
+    assert isinstance(fully, int)
+    assert isinstance(remaining, int)
+
+    awaiting = official - direct
+    overlays = counts["missions"] - direct
+    require(awaiting >= 0, "Direct canonical matches exceed the official catalogue")
+    require(overlays >= 0, "Direct canonical matches exceed canonical mission records")
+
+    readme = README_PATH.read_text(encoding="utf-8")
+    readme_lower = readme.lower()
+    readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
+    readme_rows = {
+        "Official UK missions": official,
+        "Canonical missions": counts["missions"],
+        "Official/canonical ID matches": direct,
+        "Fully canonical missions": fully,
+        "Deployable resources": counts["vehicles"],
+        "Infrastructure": counts["infrastructure"],
+        "Qualifications": counts["training"],
+        "Canonical searchable entities": sum(counts.values()),
+    }
+    for label, value in readme_rows.items():
+        require_pattern(
+            readme,
+            rf"^\| \*\*{re.escape(label)}\*\* \| \*\*{re.escape(formatted_count(value))}\*\* \|",
+            f"README {label} row is stale; expected {formatted_count(value)}",
+        )
+    require_pattern(
+        readme,
+        rf"^\| Remaining to fully canonical \| \*\*{re.escape(formatted_count(remaining))}\*\* \|$",
+        "README remaining verification row is stale",
+    )
+    for label, value in (
+        ("vehicles/", counts["vehicles"]),
+        ("infrastructure/", counts["infrastructure"]),
+        ("training/", counts["training"]),
+    ):
+        require_pattern(
+            readme,
+            rf"^[├└]── {re.escape(label)}\s+{re.escape(formatted_count(value))} ",
+            f"README data estate {label} count is stale",
+        )
+    require(
+        "stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
+        "README stage badge is not synchronized to Stage 34",
+    )
+    require(
+        version in readme_lower and "static api" in readme_words,
+        f"README does not identify Static API v{version}",
+    )
+    require("11 fully canonical" in readme_lower, "README does not preserve the Batch 1 historical milestone")
+
+    home = HOME_PATH.read_text(encoding="utf-8")
+    home_markers = {
+        'data-mcuk-metric="missions"': counts["missions"],
+        'data-mcuk-metric="fully-canonical"': fully,
+        'data-mcuk-verification="fully-canonical"': fully,
+        'data-mcuk-collection="missions"': counts["missions"],
+        'data-mcuk-collection="vehicles"': counts["vehicles"],
+        'data-mcuk-collection="infrastructure"': counts["infrastructure"],
+        'data-mcuk-collection="training"': counts["training"],
+        "data-mcuk-search-count": sum(counts.values()),
+    }
+    for marker, value in home_markers.items():
+        require_pattern(
+            home,
+            rf'{re.escape(marker)}>{re.escape(formatted_count(value))}<',
+            f"Home page marker {marker} is stale; expected {formatted_count(value)}",
+        )
+    require(
+        f"Released {human_date}" in home,
+        f"Home page release date is stale; expected {human_date}",
+    )
+
+    notes_path = ROOT / "docs" / "releases" / f"v{version}.md"
+    notes = notes_path.read_text(encoding="utf-8")
+    audit_catalogue_state_lines(readme, notes, awaiting, overlays)
+    release_lines = (
+        f"{formatted_count(official)} official UK mission records",
+        f"{formatted_count(counts['missions'])} canonical mission records",
+        f"{formatted_count(direct)} official IDs matched to canonical records",
+        f"{formatted_count(fully)} fully canonical mission records",
+        f"{formatted_count(counts['vehicles'])} canonical deployable-resource records",
+        f"{formatted_count(counts['infrastructure'])} canonical infrastructure records",
+        f"{formatted_count(counts['training'])} qualification records",
+    )
+    require(f"**Released:** {human_date}" in notes, "Release notes date does not match data/version.json")
+    for line in release_lines:
+        require_pattern(notes, rf"^{re.escape(line)}$", f"Release notes baseline is stale: {line}")
+
+    changelog = CHANGELOG_PATH.read_text(encoding="utf-8")
+    require_pattern(
+        changelog,
+        rf"^## \[{re.escape(version)}\] — {re.escape(released_at)}$",
+        "Changelog release date does not match data/version.json",
+    )
+
+    api = API_PATH.read_text(encoding="utf-8")
+    require(f"Data version: {version}" in api, "API page version is stale")
+    require(f"Released: {human_date}" in api, "API page release date is stale")
+    require(f'"released_at": "{released_at}"' in api, "API release-date example is stale")
+
+    faq = FAQ_PATH.read_text(encoding="utf-8")
+    require(
+        f"data version **{version}** released **{released_at}**" in faq,
+        "Generated FAQ release metadata is stale",
+    )
+    faq_counts = (
+        f"{formatted_count(counts['missions'])} mission records, "
+        f"{formatted_count(counts['vehicles'])} deployable-resource records, "
+        f"{formatted_count(counts['infrastructure'])} infrastructure records and "
+        f"{formatted_count(counts['training'])} qualification records"
+    )
+    require(faq_counts in faq, "Generated FAQ collection counts are stale")
 
 
 def audit_exports(release: dict[str, Any]) -> dict[str, int]:
@@ -225,35 +545,41 @@ def audit_exports(release: dict[str, Any]) -> dict[str, int]:
     require(manifest.get("faq", {}).get("path") == "faq.json", "Manifest FAQ path mismatch")
     require(manifest.get("openapi", {}).get("path") == "openapi.json", "Manifest OpenAPI path mismatch")
 
-    readme = README_PATH.read_text(encoding="utf-8")
-    readme_lower = readme.lower()
-    readme_words = re.sub(r"[^a-z0-9]+", " ", readme_lower)
-    for name, count in counts.items():
-        require(str(count) in readme, f"README does not expose the current {name} count ({count})")
-    require(
-        "stage_34_complete" in readme_lower or "stage 34 complete" in readme_words,
-        "README stage badge is not synchronized to Stage 34",
-    )
-    require(
-        release_version in readme_lower and "static api" in readme_words,
-        f"README does not identify Static API v{release_version}",
-    )
+    verification = read_json(OFFICIAL_OUTPUT_ROOT / "uk-mission-verification.json")
+    summary = verification.get("summary")
+    require(isinstance(summary, dict), "Verification endpoint summary is missing")
+    fully_canonical = summary.get("cumulative_stage_counts", {}).get("fully-canonical")
+    direct_matches = summary.get("direct_canonical_id_matches")
+    remaining = summary.get("remaining_to_fully_canonical")
+    require(summary.get("canonical_count") == counts["missions"], "Verification canonical count mismatch")
+    require(isinstance(fully_canonical, int), "Verification fully canonical count is invalid")
+    require(isinstance(direct_matches, int), "Verification direct match count is invalid")
+    require(isinstance(remaining, int), "Verification remaining count is invalid")
+
+    audit_publication_metadata(release, counts, summary)
     return counts
 
 
 def audit_built_site(site_dir: Path, release_version: str) -> None:
     require(site_dir.is_dir(), f"Built site directory does not exist: {site_dir}")
-    expected_files = (
+    expected_files = [
         "index.html",
         "tools/mission-lookup/index.html",
         "tools/resource-comparison/index.html",
         "tools/fleet-planner/index.html",
         "tools/query-catalogue/index.html",
+        "reference/official-mission-catalogue/index.html",
+        "reference/mission-verification-status/index.html",
         "reference/generated-faq/index.html",
         "api/index.html",
         "quality-assurance/index.html",
         f"releases/v{release_version}/index.html",
+        "javascripts/official-catalogue-loader.js",
         "javascripts/intelligence-tools.js",
+        "javascripts/official-mission-details.js",
+        "assets/data/official/uk-missions.json",
+        "assets/data/official/uk-mission-coverage.json",
+        "assets/data/official/uk-mission-verification.json",
         "assets/data/v1/manifest.json",
         "assets/data/v1/missions.json",
         "assets/data/v1/vehicles.json",
@@ -262,6 +588,10 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "assets/data/v1/search-index.json",
         "assets/data/v1/faq.json",
         "assets/data/v1/openapi.json",
+    ]
+    expected_files.extend(
+        f"reference/{path.stem}/index.html"
+        for path in sorted((ROOT / "docs" / "reference").glob("fully-canonical-mission-batch-*.md"))
     )
     for relative in expected_files:
         require((site_dir / relative).is_file(), f"Built site is missing release-critical output: {relative}")
@@ -269,6 +599,11 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
     built_manifest = read_json(site_dir / "assets" / "data" / "v1" / "manifest.json")
     source_manifest = read_json(OUTPUT_ROOT / "manifest.json")
     require(built_manifest == source_manifest, "Built-site manifest differs from the generated source manifest")
+
+    for filename in ("uk-missions.json", "uk-mission-coverage.json", "uk-mission-verification.json"):
+        built = read_json(site_dir / "assets" / "data" / "official" / filename)
+        source = read_json(OFFICIAL_OUTPUT_ROOT / filename)
+        require(built == source, f"Built official catalogue asset differs from source: {filename}")
 
 
 def main() -> int:
@@ -278,7 +613,7 @@ def main() -> int:
 
     try:
         release = release_metadata()
-        audit_quality_assets()
+        audit_quality_assets(release["version"])
         counts = audit_exports(release)
         audit_navigation(release["version"])
         if args.site_dir is not None:

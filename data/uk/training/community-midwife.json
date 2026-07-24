@@ -1,0 +1,21 @@
+{
+  "id": "community_midwife",
+  "name": "Community Midwife",
+  "aliases": ["Midwife"],
+  "service": "ambulance",
+  "qualification_type": "role-qualification",
+  "roles": ["Community Midwife"],
+  "notes": [
+    "Current UK maternity missions verify Community Midwife as a required personnel role.",
+    "Course name, duration, prerequisites and eligible vehicle assignments remain unverified."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/690",
+      "https://www.missionchief.co.uk/einsaetze/691",
+      "https://www.missionchief.co.uk/einsaetze/692"
+    ]
+  }
+}

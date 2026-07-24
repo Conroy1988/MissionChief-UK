@@ -1,0 +1,51 @@
+{
+  "id": 22,
+  "name": "Roof fire",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "preconditions": {
+    "fire_stations": 3
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 3
+      },
+      {
+        "resource": "aerial_appliance_truck",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": [
+      {
+        "resource": "fire_officer",
+        "quantity": 1,
+        "probability": 0.5
+      }
+    ]
+  },
+  "reward": {
+    "average_credits": 2700
+  },
+  "follow_up_missions": [
+    "Roof fire"
+  ],
+  "expandable_missions": [],
+  "notes": [
+    "The official catalogue publishes Roof fire as a self-referential follow-up; the relationship is retained explicitly.",
+    "The official Fire Officer probability is retained separately from guaranteed Fire Engine and Aerial Appliance Truck requirements."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/22",
+      "https://www.missionchief.co.uk/einsaetze/22",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

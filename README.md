@@ -5,9 +5,9 @@
 <br>
 
 [![Open Command Centre](https://img.shields.io/badge/OPEN-COMMAND_CENTRE-1593D1?style=for-the-badge&logo=googlemaps&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
-[![Release](https://img.shields.io/github/v/release/Conroy1988/MissionChief-UK?style=for-the-badge&label=RELEASE&color=1675A9)](https://github.com/Conroy1988/MissionChief-UK/releases/latest)
+[![Release](https://img.shields.io/badge/RELEASE-v1.1.0-1675A9?style=for-the-badge)](docs/releases/v1.1.0.md)
 [![Stage](https://img.shields.io/badge/PROGRAMME-STAGE_34_COMPLETE-D63345?style=for-the-badge)](#-production-command-posture)
-[![API](https://img.shields.io/badge/STATIC_API-v1.0.1-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
+[![API](https://img.shields.io/badge/STATIC_API-v1.1.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
 
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
 [![Deploy Pages](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
@@ -16,9 +16,9 @@
 
 ### **Mission control for the United Kingdom game. Not another loose collection of tips.**
 
-**Verified operational data · Instant command search · Service doctrine · Interactive planning · Evidence governance · Versioned public exports**
+**1,062 official UK missions · 284 canonical mission records · 226 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
 
-[**Open Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**Quality Assurance**](docs/quality-assurance.md) · [**Release Notes**](docs/releases/v1.0.1.md)
+[**Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Complete Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Verification Status**](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**v1.1.0 Notes**](docs/releases/v1.1.0.md)
 
 </div>
 
@@ -28,164 +28,159 @@
 
 **MissionChief UK** is an independent operations-intelligence platform for the United Kingdom version of MissionChief.
 
-It combines human-readable guidance, canonical structured records, browser-side command tools, strict evidence rules and a versioned static API. The result is a single place to answer the questions that matter during real play:
+It combines the complete official UK mission catalogue with conservative canonical records, browser-side command tools, strict validation and read-only public data. Unknown internal game fields remain visible rather than being guessed.
 
-- What does this mission actually require?
-- Which resource, qualification, building or extension unlocks the response?
-- What fleet is needed for several incidents at once?
-- Which value is verified, calculated, recommended or still unknown?
-- Can another tool consume the same validated data without scraping the site?
+| Command question | Platform answer |
+|---|---|
+| What missions exist? | Search all **1,062 official UK mission records**. |
+| What does a mission require? | Read the official fields and use canonical mappings only where their semantics are verified. |
+| What unlocks an incident? | Inspect prerequisites, buildings, extensions, personnel and specialist capabilities. |
+| What is fully verified? | Use the five-gate verification programme and evidence ledgers. |
+| What remains uncertain? | Official-only, mapped and fully canonical states remain visibly distinct. |
+| Can another tool consume the data? | Use the versioned Static API and separate official endpoints. |
 
-> **Command principle:** information is operational only when it is easy to find, precise enough to act on, and explicit about what is not yet known.
-
-<table>
-<tr>
-<td width="25%" align="center"><strong>🔎 SEARCH</strong><br><sub>Find missions, resources, aliases, POIs and preconditions.</sub></td>
-<td width="25%" align="center"><strong>🧠 UNDERSTAND</strong><br><sub>Separate guaranteed, probabilistic, conditional and alternative requirements.</sub></td>
-<td width="25%" align="center"><strong>📐 PLAN</strong><br><sub>Compare resources and model concurrent incident demand.</sub></td>
-<td width="25%" align="center"><strong>✅ VERIFY</strong><br><sub>Trace populated facts to controlled evidence and validation.</sub></td>
-</tr>
-</table>
+> **Command principle:** information is operational only when it is easy to find, precise enough to act on and explicit about what is not yet known.
 
 ---
 
 # 📡 Production Command Posture
 
-The numbered core delivery programme is complete through **Stage 34**, with continuous evidence maintenance operating on the **v1.0.1** production baseline.
+The numbered core programme is complete through **Stage 34**. Version **1.1.0** adds complete official catalogue coverage and an enforced route toward 100% fully canonical mission intelligence.
 
 | Intelligence domain | Current baseline | Operational result |
 |---|---:|---|
-| **Verified missions** | **62** | Cross-service generation conditions, requirements, patients, prisoners, towing and rewards |
-| **Canonical resources** | **46** | Vehicles, trailers, boats, specialist equipment, capabilities and deployment metadata |
-| **Infrastructure** | **18** | Buildings and extensions enforced through schema-controlled references |
-| **Qualifications** | **11** | Operational roles with unverified course details deliberately omitted |
-| **Searchable entities** | **137** | One global command index spanning every canonical collection |
-| **Service groups** | **11** | Fire, Ambulance, Police, maritime, mountain, SAR, EOD, airfield, recovery and railway operations |
-| **Mission batches** | **13** | Controlled publication units spanning the current verified catalogue |
-| **Public interface** | **API v1.0.1** | Manifest, collections, search index, generated FAQ and OpenAPI contract |
-| **Quality assurance** | **Cross-browser** | Built-site Chromium plus deployed Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance |
+| **Official UK missions** | **1,062** | Complete searchable catalogue with published fields retained |
+| **Canonical missions** | **284** | Normalized higher-trust records |
+| **Official/canonical ID matches** | **267** | Direct exact-ID evidence links |
+| **Fully canonical missions** | **226** | Passed identity, mapping, operational and final evidence gates |
+| **Official records awaiting canonical records** | **795** | Published records whose remaining semantics stay unguessed |
+| **Canonical-only overlays** | **17** | Derived records without standalone official IDs |
+| **Deployable resources** | **48** | Vehicles, boats, trailers and specialist equipment |
+| **Infrastructure** | **18** | Buildings and extensions |
+| **Qualifications** | **12** | Operational roles and verified course fields |
+| **Canonical searchable entities** | **362** | Missions, resources, infrastructure and qualifications |
+| **Public interface** | **Static API v1.1.0** | Versioned canonical and official data surfaces |
 
 > [!IMPORTANT]
-> **Verified applies only to populated fields.** Missing data remains unknown. It is never silently converted into zero, false or “not required”.
+> **Official does not automatically mean canonically mapped.** Catalogue presence proves publication. Canonical interpretation is applied only after the relevant internal keys and operational semantics are verified.
 
-## Core programme progression
+---
+
+# 💯 Mission Verification Programme
+
+Every official mission progresses through five enforced gates:
+
+1. **Captured** — retained losslessly from the official UK feed.
+2. **Identity verified** — exact official ID and UK name match a canonical record.
+3. **Requirements mapped** — every requirement, chance and prerequisite key is verified or narrowly classified as non-operational.
+4. **Operationally verified** — probabilities, patients, personnel, relationships, variants and conditional mechanics have reproducible evidence.
+5. **Fully canonical** — final evidence-completeness audit passed.
+
+| Verification gate | Current position |
+|---|---:|
+| Captured | **1,062 / 1,062 — 100%** |
+| Identity verified | **267 / 1,062 — 25.14%** |
+| Fully canonical | **226 / 1,062 — 21.28%** |
+| Remaining to fully canonical | **836** |
+
+Batch 1 established **11 fully canonical missions**. The current evidence-controlled batches are:
 
 ```text
-STAGES 01–12  Architecture, schemas, verification, contribution and delivery
-STAGES 13–20  Core emergency-service production data
-STAGE 21      Railway Police and Railway Fire Response
-STAGES 22–27  Infrastructure, qualifications, economics and specialist enrichment
-STAGES 28–34  Public exports, intelligence tools, generated FAQ and Static Data API v1
-CONTINUOUS    Evidence maintenance, command search and verified-data expansion
+Batch 1: 0, 1, 2, 3, 4, 6, 7, 8, 9, 10,
+         11
+Batch 2: 13, 14, 15, 16, 17, 18, 19, 23, 24, 27
+Batch 3: 32, 58, 65, 202, 203, 313, 334, 352, 365, 366,
+         388, 399, 400, 421, 435, 468, 472, 475, 535, 541,
+         570, 577, 624, 638, 668, 772, 857, 858
+Batch 4: 21, 22, 31, 301, 353
+Batch 5: 232, 236, 317, 401, 481, 482, 513, 517, 575, 597,
+         669, 849, 850, 851, 852
+Batch 6: 59, 139, 314, 404, 815, 824
+Batch 7: 107, 153, 175, 178, 248, 249, 250, 402, 406
+Batch 8: 169, 177, 243, 244, 256, 518
+Batch 9: 180, 251, 469
+Batch 10: 134, 579
+Batch 11: 30
+Batch 12: 12
+Batch 13: 127, 392, 419, 440, 441, 466, 476, 477, 670, 682,
+         775, 841
+Batch 14: 703
+Batch 15: 420
+Batch 16: 734, 735
+Batch 17: 20, 25, 64, 75, 108, 168, 171, 204, 241, 255,
+         268, 315, 320, 323, 324, 325, 326, 327, 328, 330,
+         333, 362, 367, 369, 371, 372, 373, 375, 396, 397,
+         422, 423, 470, 473, 514, 515, 516, 606, 607, 626,
+         639, 662, 666, 667, 678, 683, 685, 686, 723, 724,
+         725, 727, 774, 798, 804, 840, 847, 856
+Batch 18: 149, 189, 233, 242, 394, 398, 403
+Batch 19: 527, 528, 602, 704
+Batch 20: 408, 409, 410
+Batch 21: 72, 805, 823
+Batch 22: 749, 793, 794, 795
+Batch 23: 507, 519, 828
+Batch 24: 300
+Batch 25: 625, 677, 718
+Batch 26: 29, 69, 73, 90, 126, 128, 129, 130, 131, 133,
+         322, 393, 442, 443, 444, 451, 467, 478, 484, 485
+Batch 27: 687, 688, 717, 733
+Batch 28: 806
+Batch 29: 810
+Batch 30: 565
 ```
 
----
+Batches 4–30 extend the verified vehicle-key contract through evidence-safe, exact-ID promotions. All 226 records pass aggregate identity and strict-equivalence validation.
 
-# ⌨️ Instant Command Search
-
-The deployed Command Centre now includes a **site-wide verified-data command palette**.
-
-Press **`Ctrl+K`**, **`⌘K`** or **`/`** from any page to:
-
-- search all 137 canonical missions, resources, infrastructure records and qualifications;
-- filter instantly by intelligence collection;
-- navigate entirely from the keyboard;
-- deep-link a selected mission into Mission Lookup;
-- deep-link other canonical records into the Query Catalogue;
-- retain a read-only trust boundary with no MissionChief authentication or account access; and
-- use the same generated `search-index.json` consumed by the public API.
-
-The palette is responsive across desktop, tablet, iPhone and iPad layouts and is included in Playwright acceptance coverage.
-
-[Launch the Command Centre →](https://conroy1988.github.io/MissionChief-UK/)
+[Review the live verification backlog →](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/)
 
 ---
 
-# 🛰️ Command Surface
+# 🔎 Complete UK Mission Lookup
 
-| Command route | What it does | Open |
+Mission Lookup combines two evidence tiers in one interface:
+
+| Evidence tier | What it contains | How it is shown |
 |---|---|---|
-| **Global Command Search** | Searches every canonical collection from any page through `Ctrl+K`, `⌘K` or `/` | [Open Command Centre →](https://conroy1988.github.io/MissionChief-UK/) |
-| **Mission Lookup** | Searches mission IDs, names, aliases, POIs, mission types and service groups | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) |
-| **Resource Comparison** | Compares canonical vehicles and qualifications without hiding unknown fields | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) |
-| **Concurrent Fleet Planner** | Multiplies guaranteed requirements across simultaneous incidents while preserving alternative groups | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) |
-| **Query Catalogue** | Matches ordinary words and short questions against the generated evidence index | [Launch →](https://conroy1988.github.io/MissionChief-UK/tools/query-catalogue/) |
-| **Verified Mission Records** | Exposes the published cross-service mission catalogue | [Browse →](https://conroy1988.github.io/MissionChief-UK/reference/verified-mission-records/) |
-| **Verified Vehicle Records** | Exposes canonical deployable-resource records | [Browse →](https://conroy1988.github.io/MissionChief-UK/reference/verified-vehicle-records/) |
-| **Static Data API** | Publishes versioned, read-only JSON collections and an OpenAPI description | [Read contract →](https://conroy1988.github.io/MissionChief-UK/api/) |
-| **Quality Assurance** | Documents desktop, mobile, accessibility and deployed-site acceptance coverage | [Review gates →](docs/quality-assurance.md) |
+| **Canonical mapped** | 284 normalized project records | Verified resources, alternatives, probabilities, patients, personnel and preconditions where supported |
+| **Official UK catalogue** | 1,062 public records | Published fields reproduced with canonical status explicit |
 
-All interactive tools are browser-side and read-only. They consume the same validated exports used by the documentation and do **not** access, modify or authenticate against a MissionChief account.
+Search covers mission IDs, names, POIs, service families, requirements, probabilities, prerequisites, patients, personnel, availability, follow-ups, expansions, overlays and additional fields.
+
+[Launch Mission Lookup →](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/)
 
 ---
 
-# 🚒 Operational Coverage
+# ⌨️ Command Surface
 
-The platform currently represents the following response theatres:
+| Command route | Purpose |
+|---|---|
+| **Global Command Search** | Press `Ctrl+K`, `⌘K` or `/` to search canonical collections |
+| **Mission Lookup** | Search complete official and canonical mission intelligence |
+| **Verification Status** | Inspect every mission’s gate, blockers and next action |
+| **Resource Comparison** | Compare resources and qualifications without hiding unknowns |
+| **Concurrent Fleet Planner** | Multiply guaranteed requirements across simultaneous incidents |
+| **Query Catalogue** | Match ordinary language against the canonical evidence index |
+| **Official Mission Catalogue** | Review provenance, refresh controls and accuracy boundaries |
+| **Static Data API** | Consume canonical, official and verification JSON |
 
-<table>
-<tr>
-<td width="33%" valign="top">
-
-### Core response
-
-- Fire and Rescue
-- Ambulance and HART
-- Police and Public Order
-- Cross-service incidents
-
-</td>
-<td width="33%" valign="top">
-
-### Maritime and remote
-
-- Coastguard
-- Lifeboat and Ocean Rescue
-- Mountain Rescue
-- Search and Rescue HQ
-
-</td>
-<td width="33%" valign="top">
-
-### Specialist operations
-
-- Bomb Disposal and EOD
-- Airfield Operations
-- Recovery and HGV Recovery
-- Railway Police and Railway Fire Response
-
-</td>
-</tr>
-</table>
-
-Each service page links operational guidance to the canonical data programme rather than maintaining an isolated set of claims.
+All tools are browser-side and read-only. They do not authenticate against, access or modify a MissionChief account.
 
 ---
 
-# 🗂️ Canonical Data Estate
+# 🗂️ Data Estate
 
 ```text
 data/uk/
-├── missions/         62 production mission records
-├── vehicles/         46 canonical deployable resources
-├── infrastructure/   18 buildings and extensions
-└── training/         11 qualification records
+├── missions/                       284 canonical mission records
+├── mission-verification-registry.json
+├── mission-verification-batches/   evidence-controlled promotions
+├── official-key-mappings.json
+├── vehicles/                       48 deployable resources
+├── infrastructure/                 18 buildings and extensions
+└── training/                       12 qualification records
 ```
 
-The validator enforces:
-
-- Draft 2020-12 JSON Schema conformance;
-- unique identifiers and valid verification dates;
-- mission-to-resource referential integrity;
-- infrastructure-precondition integrity;
-- guaranteed, probabilistic, conditional and alternative requirements;
-- patient, prisoner, towing and personnel-range semantics;
-- controlled qualification records; and
-- release metadata and static-site readiness.
-
-## Generated public interface
-
-Every validated build produces:
+Canonical public exports:
 
 ```text
 docs/assets/data/v1/
@@ -199,16 +194,14 @@ docs/assets/data/v1/
 └── openapi.json
 ```
 
-Example production endpoints:
+Official and verification exports:
 
 ```text
-https://conroy1988.github.io/MissionChief-UK/assets/data/v1/manifest.json
-https://conroy1988.github.io/MissionChief-UK/assets/data/v1/missions.json
-https://conroy1988.github.io/MissionChief-UK/assets/data/v1/search-index.json
-https://conroy1988.github.io/MissionChief-UK/assets/data/v1/openapi.json
+docs/assets/data/official/
+├── uk-missions.json
+├── uk-mission-coverage.json
+└── uk-mission-verification.json
 ```
-
-[Data export contract](docs/reference/data-exports.md) · [API guide](docs/api/index.md) · [Data-entry standard](docs/reference/data-entry-guide.md)
 
 ---
 
@@ -216,70 +209,38 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/openapi.json
 
 | Marker | Classification | Operational meaning |
 |:---:|---|---|
-| ✅ | **Verified** | Reproduced in the current UK game or supported by a suitable primary source |
-| 🧮 | **Calculated** | Derived transparently from verified values with the method retained |
-| 🎯 | **Recommended** | Strategic guidance that may vary by account, geography or play style |
-| ⚠️ | **Review required** | Incomplete, contradictory, outdated or awaiting reproduction |
+| ✅ | **Verified** | Reproduced in the UK game or supported by a suitable primary source |
+| 🧮 | **Calculated** | Derived transparently from verified values |
+| 🎯 | **Recommended** | Strategic guidance that may vary by account or geography |
+| ⚠️ | **Review required** | Incomplete, contradictory or awaiting reproduction |
+| 📡 | **Official catalogue** | Published by the UK feed but not automatically normalized |
 
-The evidence model is intentionally conservative:
-
-- unsupported values are omitted;
-- temporary event multipliers do not replace canonical rewards;
-- directory-level evidence is not presented as a complete dispatch table;
-- source URLs and verification dates remain part of the record; and
-- contributions must be reproducible by another player.
-
-[Read the complete data and evidence standard →](docs/reference/data-standard.md)
+Omitted values remain unknown, not zero. Internal official keys remain visible until their UK meaning can be mapped safely.
 
 ---
 
-# ⚙️ Intelligence Architecture
-
-```mermaid
-flowchart LR
-    Evidence[UK game evidence] --> Records[Canonical JSON records]
-    Records --> Validator[Schema + relationship validator]
-    Validator --> Exports[Versioned API exports]
-    Validator --> Docs[Strict MkDocs build]
-    Exports --> Palette[Global command palette]
-    Exports --> Tools[Mission lookup + comparison + planning]
-    Exports --> Consumers[External read-only consumers]
-    Palette --> DeepLinks[Tool deep links]
-    Docs --> Pages[GitHub Pages Command Centre]
-    Tools --> Pages
-    Palette --> Pages
-    Pages --> Smoke[Live-site and API smoke test]
-    Smoke --> Release[Versioned GitHub release]
-```
-
-## Delivery gate
+# 🔄 Catalogue and Validation Pipeline
 
 ```text
-JSON syntax and schemas
-        ↓
-Relationship and range validation
-        ↓
-Versioned exports and generated FAQ
-        ↓
-Repository and API readiness audit
-        ↓
-Documentation link and heading-anchor audit
-        ↓
-MkDocs strict build and built-site audit
-        ↓
-All JavaScript syntax validation
-        ↓
-Chromium acceptance against the built site
-        ↓
-Global command-palette and deep-link acceptance
-        ↓
-GitHub Pages deployment
-        ↓
-Live HTTP and public API smoke test
-        ↓
-Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance
-        ↓
-Versioned release
+Official UK feed
+      ↓
+JSON, identity and checksum validation
+      ↓
+Official/canonical coverage reconciliation
+      ↓
+Verification batch merge
+      ↓
+Aggregate identity and strict key-equivalence audits
+      ↓
+Evidence-safe candidate and key-backlog reports
+      ↓
+Verification status and deterministic exports
+      ↓
+Strict MkDocs, link and built-site audits
+      ↓
+JavaScript and browser acceptance
+      ↓
+Pages deployment and versioned release
 ```
 
 Local verification:
@@ -287,54 +248,53 @@ Local verification:
 ```bash
 pip install -r requirements.txt
 python scripts/validate_data.py
+python scripts/reconcile_official_mission_coverage.py
+python scripts/validate_official_mission_catalogue.py
+python scripts/merge_verification_registry_batches.py
+python scripts/report_promoted_mapping_failures.py
+python scripts/validate_official_key_mappings.py
+python scripts/report_canonical_candidates.py --limit 50
+python scripts/report_key_mapping_backlog.py --limit 50 --examples 5
+python scripts/generate_mission_verification_status.py
+python scripts/validate_verification_programme_assets.py
 python scripts/generate_exports.py
 python scripts/generate_faq.py
 python scripts/release_readiness.py
 python scripts/audit_links.py
 mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
-npm install
+npm install --no-audit --no-fund
 npx playwright install --with-deps
-for file in docs/javascripts/*.js; do node --check "$file"; done
 npm run test:e2e
 ```
 
-[Read the quality-assurance guide →](docs/quality-assurance.md)
-
 ---
 
-# 🧭 Choose Your Entry Point
+# 🧭 Entry Points
 
 | You are… | Begin here |
 |---|---|
-| **A new UK player** | [Start Here](https://conroy1988.github.io/MissionChief-UK/getting-started/) and [First Expansion](https://conroy1988.github.io/MissionChief-UK/getting-started/first-expansion/) |
-| **An established commander** | [Emergency Services](https://conroy1988.github.io/MissionChief-UK/services/) and [Mission Lookup](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) |
-| **Searching during live play** | Open the [Command Centre](https://conroy1988.github.io/MissionChief-UK/) and press `Ctrl+K`, `⌘K` or `/` |
-| **Planning account growth** | [Account Progression](https://conroy1988.github.io/MissionChief-UK/strategy/account-progression/) and [Station Placement](https://conroy1988.github.io/MissionChief-UK/strategy/station-placement/) |
-| **Running alliance operations** | [Alliance Operations](https://conroy1988.github.io/MissionChief-UK/alliances/) |
-| **Using scripts and extensions** | [Compatibility Centre](https://conroy1988.github.io/MissionChief-UK/scripts/compatibility-centre/) |
-| **Building a tool or integration** | [Static API](https://conroy1988.github.io/MissionChief-UK/api/) and [Generated Exports](https://conroy1988.github.io/MissionChief-UK/reference/data-exports/) |
-| **Submitting evidence** | [Contribution Standard](docs/contributing/index.md) and [Verification Workflow](docs/contributing/verification-workflow.md) |
+| **A new UK player** | [Start Here](https://conroy1988.github.io/MissionChief-UK/getting-started/) |
+| **Searching for any UK mission** | [Complete Mission Lookup](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) |
+| **Checking verification progress** | [Mission Verification Status](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) |
+| **Planning several incidents** | [Concurrent Fleet Planner](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) |
+| **Comparing specialist capability** | [Resource Comparison](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) |
+| **Building an integration** | [Static API](https://conroy1988.github.io/MissionChief-UK/api/) |
+| **Submitting evidence** | [Contribution Standard](docs/contributing/index.md) |
 
-# 🤝 Contribute to the Intelligence Picture
+---
 
-Useful contributions include:
+# 🤝 Contribute
 
-- reproducible mission requirements;
-- screenshots or primary-source links supporting a field;
-- corrections to aliases, service ownership or generation conditions;
-- vehicle economics and staffing evidence;
-- qualification and course evidence;
-- accessibility and mobile-workflow findings; and
-- failures in the generated tools, global command search or public API.
+Useful contributions include reproducible mission requirements, screenshots or primary-source links, internal-key mappings, vehicle economics, staffing evidence, qualification details, accessibility findings and failures in generated tools or endpoints.
 
-Every accepted change should leave the platform more precise, not merely larger.
+Every accepted change should leave the platform more precise—not merely larger.
 
 [Open an issue](https://github.com/Conroy1988/MissionChief-UK/issues/new/choose) · [Read the research checklist](docs/contributing/research-checklist.md) · [Review the roadmap](docs/ROADMAP.md)
 
 ---
 
-# ⚖️ Independence and Attribution
+# ⚖️ Independence
 
 MissionChief UK is an independent community project created and maintained by [Conroy1988](https://github.com/Conroy1988). It is **not operated by, endorsed by or affiliated with SHPlay GmbH or the official MissionChief team**.
 

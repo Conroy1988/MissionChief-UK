@@ -3,8 +3,13 @@
   "name": "Aircraft Accident - Code A",
   "aliases": [],
   "service": "airfield_operations",
-  "mission_types": ["Airfield firefighting operations", "Mass Casualty Missions (Specialization)"],
-  "poi": ["Small Airport (Runway)"],
+  "mission_types": [
+    "Airfield firefighting operations",
+    "Mass Casualty Missions (Specialization)"
+  ],
+  "poi": [
+    "Small Airport (Runway)"
+  ],
   "preconditions": {
     "fire_stations": 7,
     "rescue_stations": 7,
@@ -13,12 +18,55 @@
     "mass_casualty_extensions": 1,
     "aviation_firefighting_extensions": 1
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 8000},
-  "notes": ["The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 8000
+  },
+  "notes": [
+    "The official directory verifies generation and reward data. The individual response table was unavailable and has not been inferred."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  },
+  "patients": {
+    "maximum": 10,
+    "minimum": 2,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-2",
+      "C-3"
+    ],
+    "transport_probability": 0.5,
+    "critical_care_probability": 0.8
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 2
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
+      }
+    ]
   }
 }

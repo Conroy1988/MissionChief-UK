@@ -1,0 +1,61 @@
+{
+  "id": 718,
+  "name": "Canoeing accident",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      },
+      {
+        "resource": "inland_rescue_boat_trailer",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/718",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "River"
+  ],
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 2,
+    "technical_rescue_extensions": 1
+  },
+  "patients": {
+    "maximum": 2,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-3",
+      "C-2"
+    ],
+    "generated_at_end": true,
+    "transport_probability": 0.9,
+    "critical_care_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 3450
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

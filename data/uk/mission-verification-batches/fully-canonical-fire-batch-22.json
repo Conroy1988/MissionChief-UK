@@ -1,0 +1,62 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "749": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/749",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient and relationship equivalence is required."
+      ]
+    },
+    "793": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/793",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient and relationship equivalence is required."
+      ]
+    },
+    "794": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/794",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient and relationship equivalence is required."
+      ]
+    },
+    "795": {
+      "stage": "fully-canonical",
+      "checked_at": "2026-07-23",
+      "strict_key_equivalence": true,
+      "strict_patient_equivalence": true,
+      "sources": [
+        "https://www.missionchief.co.uk/einsaetze/795",
+        "https://www.missionchief.co.uk/einsaetze.json"
+      ],
+      "notes": [
+        "Generated from the retained official UK snapshot after all candidate blockers cleared.",
+        "Exact resource, prerequisite, patient and relationship equivalence is required."
+      ]
+    }
+  }
+}

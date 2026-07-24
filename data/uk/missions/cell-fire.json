@@ -1,0 +1,47 @@
+{
+  "id": 513,
+  "name": "Cell Fire",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "Prison"
+  ],
+  "preconditions": {
+    "fire_stations": 6
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 1500
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [
+    "Prison Wing Fire",
+    "Prison Wing Fire (Major Incident)"
+  ],
+  "notes": [
+    "The Prison POI and both published expansion relationships are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/513",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

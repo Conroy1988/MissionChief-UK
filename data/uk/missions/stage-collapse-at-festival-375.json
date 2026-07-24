@@ -1,0 +1,82 @@
+{
+  "id": 375,
+  "name": "Stage Collapse at Festival",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 8
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 8
+      },
+      {
+        "resource": "police_car",
+        "quantity": 6
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 6
+      }
+    ],
+    "alternatives": [
+      {
+        "resources": [
+          "iccu",
+          "ambulance_control_unit"
+        ],
+        "quantity": 1,
+        "notes": [
+          "Any listed qualifying resource may satisfy this official alternative group."
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/375",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Festival"
+  ],
+  "preconditions": {
+    "fire_stations": 13,
+    "police_stations": 6,
+    "rescue_stations": 40
+  },
+  "patients": {
+    "maximum": 35,
+    "minimum": 20,
+    "specializations": [
+      "Traumatology"
+    ],
+    "specialization_ids": [
+      4
+    ],
+    "specialization_text": "Traumatology",
+    "codes": [
+      "C-1",
+      "C-2",
+      "C-3",
+      "C-4"
+    ],
+    "transport_probability": 0.3,
+    "critical_care_probability": 0.3
+  },
+  "reward": {
+    "average_credits": 14000
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

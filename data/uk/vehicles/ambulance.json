@@ -1,0 +1,21 @@
+{
+  "id": "ambulance",
+  "name": "Ambulance",
+  "aliases": ["Ambulances"],
+  "service": "ambulance",
+  "category": "Frontline ambulance",
+  "capabilities": ["patient_treatment", "patient_transport"],
+  "notes": [
+    "Current UK mission pages publish Ambulance as a dedicated guaranteed vehicle requirement.",
+    "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/234",
+      "https://www.missionchief.co.uk/einsaetze/527",
+      "https://www.missionchief.co.uk/einsaetze/691"
+    ]
+  }
+}

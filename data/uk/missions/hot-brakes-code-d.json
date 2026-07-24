@@ -3,8 +3,13 @@
   "name": "Hot Brakes - Code D",
   "aliases": [],
   "service": "airfield_operations",
-  "mission_types": ["Airfield firefighting operations", "Mass Casualty Missions (Specialization)"],
-  "poi": ["Large Airport (Runway)"],
+  "mission_types": [
+    "Airfield firefighting operations",
+    "Mass Casualty Missions (Specialization)"
+  ],
+  "poi": [
+    "Large Airport (Runway)"
+  ],
   "preconditions": {
     "fire_stations": 13,
     "rescue_stations": 6,
@@ -16,42 +21,116 @@
   },
   "requirements": {
     "guaranteed": [
-      {"resource": "water_carrier", "quantity": 6},
-      {"resource": "major_foam_tender", "quantity": 5},
-      {"resource": "airfield_firefighting_command_vehicle", "quantity": 1},
-      {"resource": "airfield_operations_vehicle", "quantity": 4},
-      {"resource": "prv", "quantity": 2},
-      {"resource": "srv", "quantity": 2},
-      {"resource": "welfare_vehicle", "quantity": 1},
-      {"resource": "mass_casualty_equipment", "quantity": 1},
-      {"resource": "police_car", "quantity": 4}
+      {
+        "resource": "water_carrier",
+        "quantity": 6
+      },
+      {
+        "resource": "major_foam_tender",
+        "quantity": 5
+      },
+      {
+        "resource": "airfield_firefighting_command_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "airfield_operations_vehicle",
+        "quantity": 4
+      },
+      {
+        "resource": "prv",
+        "quantity": 2
+      },
+      {
+        "resource": "srv",
+        "quantity": 2
+      },
+      {
+        "resource": "welfare_vehicle",
+        "quantity": 1
+      },
+      {
+        "resource": "mass_casualty_equipment",
+        "quantity": 1
+      },
+      {
+        "resource": "police_car",
+        "quantity": 4
+      }
     ],
     "conditional": [
-      {"resource": "traffic_car", "quantity": 2, "condition": "only_when_available"}
+      {
+        "resource": "traffic_car",
+        "quantity": 2,
+        "condition": "only_when_available"
+      }
     ],
     "alternatives": [
-      {"resources": ["fire_engine", "major_foam_tender"], "quantity": 7},
-      {"resources": ["fire_officer", "airfield_firefighting_command_vehicle"], "quantity": 1},
-      {"resources": ["hazmat_unit", "cbrn_vehicle"], "quantity": 2}
+      {
+        "resources": [
+          "fire_engine",
+          "major_foam_tender"
+        ],
+        "quantity": 7
+      },
+      {
+        "resources": [
+          "fire_officer",
+          "airfield_firefighting_command_vehicle"
+        ],
+        "quantity": 1
+      },
+      {
+        "resources": [
+          "hazmat_unit",
+          "cbrn_vehicle"
+        ],
+        "quantity": 2
+      }
     ]
   },
   "personnel": {
     "available": [
-      {"role": "Police Sergeant", "quantity": 5},
-      {"role": "Police Inspector", "quantity": 5}
+      {
+        "role": "Police Inspector",
+        "quantity": 5
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 5
+      }
     ],
     "required": [
-      {"role": "Airfield Operations Supervisor", "quantity": 2},
-      {"role": "Ambulance Officer", "quantity": 1},
-      {"role": "Operational Team Leader", "quantity": 2},
-      {"role": "Police Sergeant", "quantity": 1},
-      {"role": "Police Inspector", "quantity": 1}
+      {
+        "role": "Airfield Operations Supervisor",
+        "quantity": 2
+      },
+      {
+        "role": "Ambulance Officer",
+        "quantity": 1
+      },
+      {
+        "role": "Operational Team Leader",
+        "quantity": 2
+      },
+      {
+        "role": "Police Inspector",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
     ]
   },
-  "reward": {"average_credits": 18000},
+  "reward": {
+    "average_credits": 18000
+  },
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/590"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/590"
+    ]
   }
 }

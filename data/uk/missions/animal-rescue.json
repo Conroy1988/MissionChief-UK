@@ -1,0 +1,45 @@
+{
+  "id": 59,
+  "name": "Animal Rescue",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Rural Fire Missions",
+    "Urban Fire Missions"
+  ],
+  "poi": [
+    "Farm"
+  ],
+  "preconditions": {
+    "fire_stations": 6
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 1
+      },
+      {
+        "resource": "rescue_support_vehicle",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 900
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The Farm POI and verified Rescue Support Vehicle requirement are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/59",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

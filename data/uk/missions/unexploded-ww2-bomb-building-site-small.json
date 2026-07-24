@@ -3,7 +3,9 @@
   "name": "Unexploded WW2 Bomb Located at Building Site (Small)",
   "aliases": [],
   "service": "bomb_disposal",
-  "mission_types": ["Bomb Disposal Missions"],
+  "mission_types": [
+    "Bomb Disposal Missions"
+  ],
   "poi": [],
   "preconditions": {
     "fire_stations": 6,
@@ -12,12 +14,38 @@
     "bomb_disposal_hqs": 2,
     "hart_bases": 1
   },
-  "requirements": {"guaranteed": []},
-  "reward": {"average_credits": 6250},
-  "notes": ["The official directory verifies the populated generation fields. Exact response-table data remains unavailable."],
+  "requirements": {
+    "guaranteed": []
+  },
+  "reward": {
+    "average_credits": 6250
+  },
+  "notes": [
+    "The official directory verifies the populated generation fields. Exact response-table data remains unavailable."
+  ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze"]
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze"
+    ]
+  },
+  "personnel": {
+    "required": [
+      {
+        "role": "Operational Team Leader",
+        "quantity": 1
+      },
+      {
+        "role": "Police Sergeant",
+        "quantity": 1
+      }
+    ],
+    "available": [
+      {
+        "role": "Police Sergeant",
+        "quantity": 2
+      }
+    ]
   }
 }

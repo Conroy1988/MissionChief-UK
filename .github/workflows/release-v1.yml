@@ -4,9 +4,9 @@ on:
   workflow_run:
     workflows: ["Deploy MissionChief UK Guide"]
     types: [completed]
-  workflow_dispatch:
 
 permissions:
+  actions: read
   contents: write
 
 concurrency:
@@ -16,17 +16,27 @@ concurrency:
 jobs:
   release:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_branch == 'main')
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Check out the successfully deployed commit
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
+
+      - name: Verify exact deployed commit
+        env:
+          DEPLOYED_SHA: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          current_commit=$(git rev-parse HEAD)
+          if [ "$current_commit" != "$DEPLOYED_SHA" ]; then
+            echo "Checked-out commit $current_commit does not match deployed commit $DEPLOYED_SHA"
+            exit 1
+          fi
 
       - name: Read and validate release metadata
         id: metadata
@@ -57,19 +67,57 @@ jobs:
               output.write(f"notes={notes.as_posix()}\n")
           PY
 
-      - name: Check whether the release already exists
+      - name: Verify any existing immutable release
         id: existing
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.metadata.outputs.tag }}
         shell: bash
         run: |
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "Release $TAG already exists; no publication action is required."
-          else
+          if ! release_state=$(gh release view "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --json tagName,isDraft,isPrerelease \
+            --jq '[.tagName, (.isDraft | tostring), (.isPrerelease | tostring)] | @tsv' \
+            2>/dev/null); then
             echo "exists=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          IFS=$'\t' read -r release_tag is_draft is_prerelease <<< "$release_state"
+          if [ "$release_tag" != "$TAG" ]; then
+            echo "Existing release resolves tag $release_tag instead of $TAG"
+            exit 1
+          fi
+          if [ "$is_draft" != "false" ] || [ "$is_prerelease" != "false" ]; then
+            echo "Existing release $TAG must be published and must not be a prerelease"
+            exit 1
+          fi
+
+          git fetch --force origin "refs/tags/$TAG:refs/tags/$TAG"
+          tag_type=$(git cat-file -t "refs/tags/$TAG")
+          if [ "$tag_type" != "tag" ]; then
+            echo "Existing release tag $TAG must be an immutable annotated tag"
+            exit 1
+          fi
+          tagged_commit=$(git rev-parse "$TAG^{commit}")
+          if ! git merge-base --is-ancestor "$tagged_commit" HEAD; then
+            echo "Existing release tag $TAG targets $tagged_commit outside the deployed main history"
+            exit 1
+          fi
+
+          successful_pages_runs=$(gh api --method GET \
+            "repos/$GITHUB_REPOSITORY/actions/workflows/deploy-pages.yml/runs" \
+            -f head_sha="$tagged_commit" \
+            -f status=success \
+            -f per_page=100 \
+            --jq "[.workflow_runs[] | select(.head_sha == \"$tagged_commit\" and .head_branch == \"main\" and .conclusion == \"success\")] | length")
+          if [ "$successful_pages_runs" -lt 1 ]; then
+            echo "Existing release tag $TAG targets $tagged_commit without a successful full Pages run"
+            exit 1
+          fi
+
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+          echo "Release $TAG is published, immutable, and backed by a successful Pages run at $tagged_commit."
 
       - name: Set up Python
         if: steps.existing.outputs.exists != 'true'
@@ -82,9 +130,57 @@ jobs:
         if: steps.existing.outputs.exists != 'true'
         run: python -m pip install -r requirements.txt
 
-      - name: Validate structured data
+      - name: Validate canonical structured data
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/validate_data.py
+
+      - name: Reconcile official/canonical mission coverage
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/reconcile_official_mission_coverage.py
+
+      - name: Validate official UK mission catalogue
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_mission_catalogue.py
+
+      - name: Merge mission verification batch registries
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/merge_verification_registry_batches.py
+
+      - name: Validate official-to-canonical key mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_key_mappings.py
+
+      - name: Validate official patient mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_patient_mappings.py
+
+      - name: Validate official personnel mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_personnel_mappings.py
+
+      - name: Validate official personnel education mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_personnel_education_mappings.py
+
+      - name: Validate official prisoner mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_prisoner_mappings.py
+
+      - name: Validate official recovery mappings
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_official_recovery_mappings.py
+
+      - name: Run catalogue reporting unit tests
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+
+      - name: Generate 100% mission verification status
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/generate_mission_verification_status.py
+
+      - name: Validate mission verification programme assets
+        if: steps.existing.outputs.exists != 'true'
+        run: python scripts/validate_verification_programme_assets.py
 
       - name: Generate public data exports
         if: steps.existing.outputs.exists != 'true'
@@ -93,6 +189,10 @@ jobs:
       - name: Generate FAQ
         if: steps.existing.outputs.exists != 'true'
         run: python scripts/generate_faq.py
+
+      - name: Run release-integrity regressions
+        if: steps.existing.outputs.exists != 'true'
+        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py'
 
       - name: Audit repository and generated API
         if: steps.existing.outputs.exists != 'true'

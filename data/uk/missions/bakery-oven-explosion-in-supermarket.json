@@ -1,0 +1,60 @@
+{
+  "id": 724,
+  "name": "Bakery Oven Explosion In Supermarket",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions"
+  ],
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "fire_officer",
+        "quantity": 1
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/724",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  },
+  "poi": [
+    "Supermarket (small)",
+    "Supermarket (big)",
+    "Supermarket (small)\nSupermarket (big)"
+  ],
+  "preconditions": {
+    "fire_stations": 6,
+    "rescue_stations": 1
+  },
+  "patients": {
+    "maximum": 6,
+    "minimum": 1,
+    "specializations": [
+      "General Internal"
+    ],
+    "specialization_ids": [
+      0
+    ],
+    "specialization_text": "General Internal",
+    "codes": [
+      "C-3",
+      "C-2"
+    ],
+    "transport_probability": 0.2
+  },
+  "reward": {
+    "average_credits": 3000
+  },
+  "notes": [
+    "Generated deterministically from the retained official UK mission snapshot.",
+    "Resource, prerequisite and patient fields are protected by strict official equivalence validators."
+  ]
+}

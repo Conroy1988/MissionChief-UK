@@ -3,16 +3,22 @@
   "name": "Broken Down Car Obstructing Road",
   "aliases": [],
   "service": "recovery",
-  "mission_types": ["Recovery Vehicle Missions"],
+  "mission_types": [
+    "Recovery Vehicle Missions"
+  ],
   "poi": [],
-  "preconditions": {"recovery_centres": 1},
+  "preconditions": {
+    "recovery_centres": 1
+  },
   "requirements": {
     "guaranteed": [],
     "probabilistic": [],
     "conditional": [],
     "alternatives": []
   },
-  "reward": {"average_credits": 400},
+  "reward": {
+    "average_credits": 400
+  },
   "notes": [
     "The official mission directory verifies the mission ID, name, reward, Recovery Centre precondition and mission type.",
     "The individual response page was unavailable during verification, so towing quantity and any dispatch-level requirements are intentionally omitted."
@@ -23,6 +29,18 @@
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/785",
       "https://www.missionchief.co.uk/einsaetze"
+    ]
+  },
+  "recovery": {
+    "assets": [
+      {
+        "asset_type": "car",
+        "minimum": 1,
+        "maximum": 1,
+        "notes": [
+          "Published towing range; this is an operational outcome, not a dispatched emergency-resource requirement."
+        ]
+      }
     ]
   }
 }

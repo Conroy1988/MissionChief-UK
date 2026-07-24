@@ -1,0 +1,44 @@
+{
+  "id": 250,
+  "name": "Harvester on fire in field",
+  "service": "fire",
+  "mission_types": [
+    "Fire Fighting Missions",
+    "Rural Fire Missions"
+  ],
+  "poi": [
+    "Farm"
+  ],
+  "preconditions": {
+    "fire_stations": 7
+  },
+  "requirements": {
+    "guaranteed": [
+      {
+        "resource": "fire_engine",
+        "quantity": 2
+      },
+      {
+        "resource": "water_carrier",
+        "quantity": 1
+      }
+    ],
+    "probabilistic": []
+  },
+  "reward": {
+    "average_credits": 1000
+  },
+  "follow_up_missions": [],
+  "expandable_missions": [],
+  "notes": [
+    "The Farm POI and guaranteed Water Carrier requirement are retained."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-23",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/250",
+      "https://www.missionchief.co.uk/einsaetze.json"
+    ]
+  }
+}

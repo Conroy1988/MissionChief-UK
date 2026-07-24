@@ -1,5 +1,5 @@
 site_name: MissionChief UK — Operations Intelligence Platform
-site_description: Independent verified command knowledgebase, planning suite and static data API for MissionChief UK
+site_description: Independent verified command knowledgebase, complete official UK mission catalogue, planning suite and static data API for MissionChief UK
 site_url: https://conroy1988.github.io/MissionChief-UK/
 repo_url: https://github.com/Conroy1988/MissionChief-UK
 repo_name: Conroy1988/MissionChief-UK
@@ -15,7 +15,9 @@ extra_css:
 
 extra_javascript:
   - javascripts/home-command.js
+  - javascripts/official-catalogue-loader.js
   - javascripts/intelligence-tools.js
+  - javascripts/official-mission-details.js
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
 
@@ -133,6 +135,38 @@ nav:
       - Command Index: reference/index.md
       - Mission Intelligence:
           - Mission Database: reference/mission-database.md
+          - Official UK Mission Catalogue: reference/official-mission-catalogue.md
+          - 100% Verification Status: reference/mission-verification-status.md
+          - Fully Canonical Batch 1: reference/fully-canonical-mission-batch-1.md
+          - Fully Canonical Batch 2: reference/fully-canonical-mission-batch-2.md
+          - Fully Canonical Batch 3: reference/fully-canonical-mission-batch-3.md
+          - Fully Canonical Batch 4: reference/fully-canonical-mission-batch-4.md
+          - Fully Canonical Batch 5: reference/fully-canonical-mission-batch-5.md
+          - Fully Canonical Batch 6: reference/fully-canonical-mission-batch-6.md
+          - Fully Canonical Batch 7: reference/fully-canonical-mission-batch-7.md
+          - Fully Canonical Batch 8: reference/fully-canonical-mission-batch-8.md
+          - Fully Canonical Batch 9: reference/fully-canonical-mission-batch-9.md
+          - Fully Canonical Batch 10: reference/fully-canonical-mission-batch-10.md
+          - Fully Canonical Batch 11: reference/fully-canonical-mission-batch-11.md
+          - Fully Canonical Batch 12: reference/fully-canonical-mission-batch-12.md
+          - Fully Canonical Batch 13: reference/fully-canonical-mission-batch-13.md
+          - Fully Canonical Batch 14: reference/fully-canonical-mission-batch-14.md
+          - Fully Canonical Batch 15: reference/fully-canonical-mission-batch-15.md
+          - Fully Canonical Batch 16: reference/fully-canonical-mission-batch-16.md
+          - Fully Canonical Batch 17: reference/fully-canonical-mission-batch-17.md
+          - Fully Canonical Batch 18: reference/fully-canonical-mission-batch-18.md
+          - Fully Canonical Batch 19: reference/fully-canonical-mission-batch-19.md
+          - Fully Canonical Batch 20: reference/fully-canonical-mission-batch-20.md
+          - Fully Canonical Batch 21: reference/fully-canonical-mission-batch-21.md
+          - Fully Canonical Batch 22: reference/fully-canonical-mission-batch-22.md
+          - Fully Canonical Batch 23: reference/fully-canonical-mission-batch-23.md
+          - Fully Canonical Batch 24: reference/fully-canonical-mission-batch-24.md
+          - Fully Canonical Batch 25: reference/fully-canonical-mission-batch-25.md
+          - Fully Canonical Batch 26: reference/fully-canonical-mission-batch-26.md
+          - Fully Canonical Batch 27: reference/fully-canonical-mission-batch-27.md
+          - Fully Canonical Batch 28: reference/fully-canonical-mission-batch-28.md
+          - Fully Canonical Batch 29: reference/fully-canonical-mission-batch-29.md
+          - Fully Canonical Batch 30: reference/fully-canonical-mission-batch-30.md
           - Verified Mission Records: reference/verified-mission-records.md
           - Mission Batch 2: reference/verified-mission-batch-2.md
           - Mission Batch 3: reference/verified-mission-batch-3.md
@@ -174,6 +208,7 @@ nav:
       - Contributing: contributing/index.md
   - Project:
       - Quality Assurance: quality-assurance.md
+      - v1.1.0 Release Notes: releases/v1.1.0.md
       - v1.0.1 Release Notes: releases/v1.0.1.md
       - v1.0.0 Release Notes: releases/v1.0.0.md
       - Roadmap: ROADMAP.md

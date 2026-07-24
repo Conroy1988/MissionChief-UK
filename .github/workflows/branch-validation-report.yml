@@ -1,0 +1,192 @@
+name: Validate release candidate
+
+# This workflow is deliberately read-only: generated publication changes must be
+# committed by an intentional development branch, never by the validation run.
+on:
+  push:
+    branches:
+      - feature/uk-mission-catalogue-expansion
+    paths-ignore:
+      - data/validation/**
+  pull_request:
+    branches:
+      - feature/uk-mission-catalogue-expansion
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-candidate-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run deterministic validation and retain report
+        id: validate
+        shell: bash
+        env:
+          VALIDATION_DIR: ${{ runner.temp }}/branch-validation
+          VALIDATION_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set +e
+          mkdir -p "$VALIDATION_DIR"
+          log_path="$VALIDATION_DIR/branch-validation.log"
+          : > "$log_path"
+          failed=0
+          publication_paths=(
+            README.md
+            CHANGELOG.md
+            mkdocs.yml
+            docs/index.md
+            docs/api/index.md
+            docs/releases/v1.1.0.md
+            docs/tools/mission-lookup.md
+            docs/reference/official-mission-catalogue.md
+          )
+
+          run_check() {
+            name="$1"
+            shift
+            echo "## $name" | tee -a "$log_path"
+            "$@" >> "$log_path" 2>&1
+            code=$?
+            if [ "$code" -eq 0 ]; then
+              echo "PASS $name" | tee -a "$log_path"
+            else
+              echo "FAIL $name ($code)" | tee -a "$log_path"
+              failed=1
+            fi
+            echo >> "$log_path"
+          }
+
+          capture_worktree() {
+            label="$1"
+            git status --porcelain --untracked-files=all > "$VALIDATION_DIR/$label-status.txt"
+            git diff HEAD --binary -- . > "$VALIDATION_DIR/$label.patch"
+          }
+
+          check_validation_worktree() {
+            label="$1"
+            shift
+            capture_worktree "$label"
+            python scripts/check_validation_worktree.py "$@"
+          }
+
+          check_publication_clean() {
+            label="$1"
+            status_path="$VALIDATION_DIR/$label-status.txt"
+            diff_path="$VALIDATION_DIR/$label.patch"
+            git status --porcelain --untracked-files=no -- "${publication_paths[@]}" > "$status_path"
+            git diff HEAD --binary -- "${publication_paths[@]}" > "$diff_path"
+            git diff HEAD --check -- "${publication_paths[@]}"
+            diff_check=$?
+            git diff HEAD --quiet --ignore-submodules -- "${publication_paths[@]}"
+            diff_status=$?
+            if [ "$diff_status" -ne 0 ] || [ "$diff_check" -ne 0 ]; then
+              echo "Public metric or navigation synchronization left repository changes:"
+              cat "$status_path"
+              return 1
+            fi
+            return 0
+          }
+
+          run_check "navigation-sync-idempotency" python -m unittest discover -s tests -p "test_*.py" -v
+          run_check "conditional-resource-contract-sync" python scripts/sync_conditional_resource_contract_integration.py
+          run_check "conditional-resource-modes-sync" python scripts/sync_conditional_resource_modes_integration.py
+          run_check "recovery-contract-sync" python scripts/sync_recovery_contract_integration.py
+          run_check "coastguard-generator-sync" python scripts/sync_coastguard_generator_integration.py
+          run_check "official-key-mapping-sync" python scripts/sync_all_official_key_mappings.py
+          run_check "prisoner-schema-sync" python scripts/sync_prisoner_schema.py
+          run_check "generate-ready-canonical-batch" python scripts/run_ready_canonical_batch_generation.py --limit 200
+          run_check "canonical-patient-sync" python scripts/sync_canonical_patient_fields.py
+          run_check "canonical-personnel-sync" python scripts/sync_canonical_personnel_fields.py
+          run_check "canonical-personnel-education-sync" python scripts/sync_canonical_personnel_education_fields.py
+          run_check "canonical-prisoner-sync" python scripts/sync_canonical_prisoner_fields.py
+          run_check "canonical-recovery-sync" python scripts/sync_canonical_recovery_fields.py
+          run_check "synchronizer-working-tree-clean" check_validation_worktree synchronizer
+          run_check "canonical-data" python scripts/validate_data.py
+          run_check "coverage-reconciliation" python scripts/reconcile_official_mission_coverage.py
+          run_check "official-catalogue" python scripts/validate_official_mission_catalogue.py
+          run_check "registry-merge" python scripts/merge_verification_registry_batches.py
+          run_check "promoted-mapping-report" python scripts/report_promoted_mapping_failures.py
+          run_check "official-key-equivalence" python scripts/validate_official_key_mappings.py
+          run_check "official-patient-equivalence" python scripts/validate_official_patient_mappings.py
+          run_check "official-personnel-equivalence" python scripts/validate_official_personnel_mappings.py
+          run_check "official-personnel-education-equivalence" python scripts/validate_official_personnel_education_mappings.py
+          run_check "official-prisoner-equivalence" python scripts/validate_official_prisoner_mappings.py
+          run_check "official-recovery-equivalence" python scripts/validate_official_recovery_mappings.py
+          run_check "catalogue-reporting-unit-tests" python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
+          run_check "canonical-candidates" python scripts/report_canonical_candidates.py --limit 200
+          run_check "key-mapping-backlog" python scripts/report_key_mapping_backlog.py --limit 200 --examples 10
+          run_check "patient-field-contract" python scripts/report_patient_field_contract.py
+          run_check "operational-field-contract" python scripts/report_operational_field_contract.py
+          run_check "verification-status" python scripts/generate_mission_verification_status.py
+          run_check "public-metric-sync" python scripts/run_public_verification_sync.py
+          run_check "verification-batch-navigation-sync" python scripts/sync_verification_batch_navigation.py
+          run_check "public-synchronization-clean" check_publication_clean public-synchronization
+          run_check "verification-assets" python scripts/validate_verification_programme_assets.py
+          run_check "public-exports" python scripts/generate_exports.py
+          run_check "generated-faq" python scripts/generate_faq.py
+          run_check "release-integrity-regressions" python -m unittest discover -s tests/python -p 'test_release_integrity.py'
+          run_check "release-readiness" python scripts/release_readiness.py
+          run_check "links-and-anchors" python scripts/audit_links.py
+          run_check "strict-mkdocs-build" python -m mkdocs build --strict --site-dir site
+          run_check "built-site-readiness" python scripts/release_readiness.py --site-dir site
+          run_check "final-working-tree-clean" check_validation_worktree final-working-tree --allow-validation-generated-outputs
+
+          export VALIDATION_FAILED="$failed"
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          status = "failure" if os.environ["VALIDATION_FAILED"] == "1" else "success"
+          payload = {
+              "schema_version": "1",
+              "validated_commit": os.environ["GITHUB_SHA"],
+              "source_commit": os.environ["VALIDATION_SOURCE_SHA"],
+              "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+              "status": status,
+              "log_path": "branch-validation.log",
+          }
+          Path(os.environ["VALIDATION_DIR"], "branch-validation.json").write_text(
+              json.dumps(payload, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+
+      - name: Upload validation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-candidate-validation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/branch-validation
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Enforce validation result
+        if: steps.validate.outputs.failed == '1'
+        run: exit 1

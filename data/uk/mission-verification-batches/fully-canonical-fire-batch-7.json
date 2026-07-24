@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "updated_at": "2026-07-23",
+  "records": {
+    "107": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/107", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, guaranteed resources and 20% Water Carrier probability verified."]},
+    "153": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/153", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI and two guaranteed Water Carriers verified."]},
+    "175": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/175", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Landfill site POI and guaranteed Water Carrier verified."]},
+    "178": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/178", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Forest POI and guaranteed Water Carrier verified."]},
+    "248": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/248", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI and guaranteed Water Carrier verified."]},
+    "249": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/249", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI and guaranteed Water Carrier verified."]},
+    "250": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/250", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Farm POI and guaranteed Water Carrier verified."]},
+    "402": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/402", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Allotment POI, guaranteed resources and 30% Water Carrier probability verified."]},
+    "406": {"stage": "fully-canonical", "checked_at": "2026-07-23", "strict_key_equivalence": true, "sources": ["https://www.missionchief.co.uk/einsaetze/406", "https://www.missionchief.co.uk/einsaetze.json"], "notes": ["Exact identity, Container Holding Area POI, guaranteed resources, 40% Aerial Appliance Truck and 60% Water Carrier probabilities verified."]}
+  }
+}
