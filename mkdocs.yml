@@ -185,6 +185,8 @@ nav:
           - Vehicle Catalogue: reference/vehicle-catalogue.md
           - Verified Vehicle Records: reference/verified-vehicle-records.md
           - Vehicle Coverage Status: reference/vehicle-coverage-status.md
+          - Vehicle Field Resolution — 100%: reference/vehicle-field-resolution.md
+          - Field Resolution Batch 5: reference/verified-vehicle-field-resolution-batch-5.md
           - Public Order Vehicle Batch 1: reference/verified-vehicle-public-order-batch-1.md
           - Official Vehicle Enrichment Batch 2: reference/verified-vehicle-official-enrichment-batch-2.md
           - Vehicle Training & HART Batch 3: reference/verified-vehicle-training-hart-batch-3.md

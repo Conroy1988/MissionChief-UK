@@ -11,6 +11,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY_PATH = ROOT / "data" / "sources" / "missionchief-uk" / "vehicle-type-inventory.json"
 VEHICLE_ROOT = ROOT / "data" / "uk" / "vehicles"
+FIELD_RESOLUTION_PATH = ROOT / "data" / "uk" / "vehicle-field-resolution.json"
 
 ALLOWED_LABEL_STATUSES = {"verified", "candidate", "review-required"}
 ALLOWED_TYPE_ID_STATUSES = {"verified", "community-candidate", "review-required"}
@@ -148,10 +149,24 @@ def count_present(records: Iterable[dict[str, Any]], field: str, *, nonempty: bo
     return total
 
 
+def load_field_resolution(path: Path = FIELD_RESOLUTION_PATH) -> dict[str, Any]:
+    document = read_json(path)
+    require(isinstance(document, dict), "Vehicle field-resolution registry must be an object")
+    require(document.get("collection") == "uk-vehicle-field-resolution", "Vehicle field-resolution collection is invalid")
+    summary = document.get("summary")
+    field_summary = document.get("field_summary")
+    require(isinstance(summary, dict), "Vehicle field-resolution summary must be an object")
+    require(isinstance(field_summary, dict), "Vehicle field-resolution field_summary must be an object")
+    require(summary.get("unresolved_decisions") == 0, "Vehicle field-resolution registry contains unresolved decisions")
+    require(summary.get("resolution_percent") == 100.0, "Vehicle field-resolution registry must report 100 percent decision coverage")
+    return document
+
+
 def build_vehicle_coverage(
     inventory_document: dict[str, Any],
     inventory_records: list[dict[str, Any]],
     canonical_records: dict[str, dict[str, Any]],
+    field_resolution_document: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     canonical_ids = set(canonical_records)
     mapped_entries = [record for record in inventory_records if record.get("canonical_id")]
@@ -189,6 +204,9 @@ def build_vehicle_coverage(
         for key, count in field_counts.items()
     }
 
+    field_resolution = field_resolution_document or load_field_resolution()
+    require(field_resolution["summary"].get("canonical_records") == canonical_total, "Vehicle field-resolution registry record count is stale")
+
     inventory_count = len(inventory_records)
     mapped_count = len(mapped_entries) - len(dangling)
     summary = {
@@ -222,6 +240,8 @@ def build_vehicle_coverage(
         else "in-progress",
         "summary": summary,
         "field_completeness": field_completeness,
+        "field_resolution": field_resolution["summary"],
+        "field_resolution_by_field": field_resolution["field_summary"],
         "service_inventory_counts": dict(sorted(Counter(record["service"] for record in inventory_records).items())),
         "resource_class_counts": dict(sorted(Counter(record["resource_class"] for record in inventory_records).items())),
         "unresolved_inventory": [

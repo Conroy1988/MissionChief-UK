@@ -32,6 +32,11 @@ def markdown_text(report: dict[str, Any]) -> str:
         f"| {field.replace('_', ' ').title()} | {values['complete']:,} / {values['total']:,} | {values['percent']:.2f}% |"
         for field, values in report["field_completeness"].items()
     )
+    resolution = report["field_resolution"]
+    resolution_rows = "\n".join(
+        f"| {field.replace('_', ' ').title()} | {values['resolved']:,} / {values['total']:,} | {values['percent']:.2f}% |"
+        for field, values in report["field_resolution_by_field"].items()
+    )
     unresolved_rows = "\n".join(
         f"| {record['game_vehicle_type_id']} | {record['name']} | {record['service']} | {record['resource_class']} | {record['label_status']} |"
         for record in report["unresolved_inventory"]
@@ -70,6 +75,20 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 {field_rows}
 
 An omitted value is unknown, not zero. Field completeness is reported separately from identity coverage so partial records cannot be mistaken for complete economics or staffing data.
+
+## Field decision coverage
+
+| Metric | Value |
+|---|---:|
+| Resolved field decisions | **{resolution['resolved_decisions']:,} / {resolution['total_decisions']:,}** |
+| Unresolved field decisions | **{resolution['unresolved_decisions']:,}** |
+| Decision coverage | **{resolution['resolution_percent']:.2f}%** |
+
+| Field | Resolved | Coverage |
+|---|---:|---:|
+{resolution_rows}
+
+Decision coverage distinguishes documented values, fields that are not applicable, and values that are not published by a reproducible current UK source. It does not convert unknown values into zeroes or guesses.
 
 ## Source-ledger entries awaiting canonical mapping
 

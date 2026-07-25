@@ -9,10 +9,10 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 | Metric | Value |
 |---|---:|
 | Source-ledger entries | **73** |
-| Canonical deployable-resource records | **103** |
+| Canonical deployable-resource records | **104** |
 | Ledger entries mapped to canonical records | **73** |
 | Ledger entries awaiting canonical mapping | **0** |
-| Canonical records without a ledger entry | **30** |
+| Canonical records without a ledger entry | **31** |
 | Dangling canonical mappings | **0** |
 | Identity coverage | **100.00%** |
 | Verified labels | **27** |
@@ -24,19 +24,41 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 
 | Field | Complete | Coverage |
 |---|---:|---:|
-| Cost | 48 / 103 | 46.60% |
-| Staffing | 31 / 103 | 30.10% |
-| Training | 37 / 103 | 35.92% |
-| Training Requirements | 22 / 103 | 21.36% |
-| Building Requirements | 57 / 103 | 55.34% |
-| Resource Class | 60 / 103 | 58.25% |
-| Transport Capacity | 6 / 103 | 5.83% |
-| Towing | 25 / 103 | 24.27% |
-| Deployment | 20 / 103 | 19.42% |
-| Capabilities | 103 / 103 | 100.00% |
-| Verification Sources | 103 / 103 | 100.00% |
+| Cost | 49 / 104 | 47.12% |
+| Staffing | 32 / 104 | 30.77% |
+| Training | 37 / 104 | 35.58% |
+| Training Requirements | 22 / 104 | 21.15% |
+| Building Requirements | 58 / 104 | 55.77% |
+| Resource Class | 61 / 104 | 58.65% |
+| Transport Capacity | 6 / 104 | 5.77% |
+| Towing | 25 / 104 | 24.04% |
+| Deployment | 20 / 104 | 19.23% |
+| Capabilities | 104 / 104 | 100.00% |
+| Verification Sources | 104 / 104 | 100.00% |
 
 An omitted value is unknown, not zero. Field completeness is reported separately from identity coverage so partial records cannot be mistaken for complete economics or staffing data.
+
+## Field decision coverage
+
+| Metric | Value |
+|---|---:|
+| Resolved field decisions | **936 / 936** |
+| Unresolved field decisions | **0** |
+| Decision coverage | **100.00%** |
+
+| Field | Resolved | Coverage |
+|---|---:|---:|
+| Cost | 104 / 104 | 100.00% |
+| Staffing | 104 / 104 | 100.00% |
+| Training | 104 / 104 | 100.00% |
+| Training Requirements | 104 / 104 | 100.00% |
+| Building Requirements | 104 / 104 | 100.00% |
+| Resource Class | 104 / 104 | 100.00% |
+| Transport Capacity | 104 / 104 | 100.00% |
+| Towing | 104 / 104 | 100.00% |
+| Deployment | 104 / 104 | 100.00% |
+
+Decision coverage distinguishes documented values, fields that are not applicable, and values that are not published by a reproducible current UK source. It does not convert unknown values into zeroes or guesses.
 
 ## Source-ledger entries awaiting canonical mapping
 
@@ -77,6 +99,7 @@ An omitted value is unknown, not zero. Field completeness is reported separately
 | `rescue_container` | Rescue Container | fire_and_rescue |
 | `traffic_car` | Traffic Car | police |
 | `water_container` | Water Container | fire_and_rescue |
+| `water_ladder_with_cafs` | Water Ladder with CAFS | fire_and_rescue |
 | `welfare_container` | Welfare Container | fire_and_rescue |
 
 ## Evidence policy

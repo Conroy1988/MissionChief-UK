@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://conroy1988.github.io/MissionChief-UK/schema/vehicle-field-resolution.schema.json",
+  "title": "MissionChief UK Vehicle Field Resolution Registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "collection",
+    "generated_at",
+    "status",
+    "summary",
+    "field_summary",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {"const": "1"},
+    "collection": {"const": "uk-vehicle-field-resolution"},
+    "generated_at": {"type": "string", "format": "date"},
+    "status": {"enum": ["complete", "in-progress"]},
+    "summary": {
+      "type": "object",
+      "required": [
+        "canonical_records",
+        "tracked_fields",
+        "total_decisions",
+        "resolved_decisions",
+        "unresolved_decisions",
+        "resolution_percent"
+      ],
+      "properties": {
+        "canonical_records": {"type": "integer", "minimum": 1},
+        "tracked_fields": {"const": 9},
+        "total_decisions": {"type": "integer", "minimum": 1},
+        "resolved_decisions": {"type": "integer", "minimum": 0},
+        "unresolved_decisions": {"type": "integer", "minimum": 0},
+        "resolution_percent": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "field_summary": {
+      "type": "object",
+      "required": [
+        "cost",
+        "staffing",
+        "training",
+        "training_requirements",
+        "building_requirements",
+        "resource_class",
+        "transport_capacity",
+        "towing",
+        "deployment"
+      ],
+      "additionalProperties": {"$ref": "#/$defs/fieldSummary"}
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "fieldSummary": {
+      "type": "object",
+      "required": ["resolved", "total", "percent", "status_counts"],
+      "properties": {
+        "resolved": {"type": "integer", "minimum": 0},
+        "total": {"type": "integer", "minimum": 1},
+        "percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "status_counts": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision": {
+      "type": "object",
+      "required": ["status", "checked_at", "reason", "sources"],
+      "properties": {
+        "status": {
+          "enum": ["documented", "not_applicable", "not_published", "review_required"]
+        },
+        "checked_at": {"type": "string", "format": "date"},
+        "reason": {"type": "string", "minLength": 1},
+        "sources": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": ["canonical_id", "name", "service", "decisions"],
+      "properties": {
+        "canonical_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "service": {"type": "string", "minLength": 1},
+        "decisions": {
+          "type": "object",
+          "required": [
+            "cost",
+            "staffing",
+            "training",
+            "training_requirements",
+            "building_requirements",
+            "resource_class",
+            "transport_capacity",
+            "towing",
+            "deployment"
+          ],
+          "additionalProperties": {"$ref": "#/$defs/decision"}
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

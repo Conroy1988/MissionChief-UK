@@ -14,7 +14,7 @@
       "path": "training.json"
     },
     "vehicles": {
-      "count": 103,
+      "count": 104,
       "path": "vehicles.json"
     }
   },
@@ -27,7 +27,7 @@
   },
   "released_at": "2026-07-24",
   "search_index": {
-    "count": 1214,
+    "count": 1215,
     "path": "search-index.json"
   },
   "stage": 35,

@@ -18,10 +18,10 @@ class PublicMetricSyncTests(unittest.TestCase):
         metrics = sync.load_metrics()
 
         self.assertEqual(metrics["canonical"], 1079)
-        self.assertEqual(metrics["vehicles"], 103)
+        self.assertEqual(metrics["vehicles"], 104)
         self.assertEqual(metrics["infrastructure"], 20)
         self.assertEqual(metrics["training"], 12)
-        self.assertEqual(metrics["search_entities"], 1214)
+        self.assertEqual(metrics["search_entities"], 1215)
 
     def test_home_sync_targets_hero_and_board_independently(self) -> None:
         metrics = sync.load_metrics()
@@ -44,7 +44,7 @@ class PublicMetricSyncTests(unittest.TestCase):
 
         self.assertIn('data-mcuk-metric="fully-canonical">1,062<', updated)
         self.assertIn('data-mcuk-verification="fully-canonical">1,062<', updated)
-        self.assertIn('data-mcuk-collection="vehicles">103<', updated)
+        self.assertIn('data-mcuk-collection="vehicles">104<', updated)
         self.assertIn('data-mcuk-collection="training">12<', updated)
         self.assertEqual(sync.sync_home(updated, metrics), updated)
 

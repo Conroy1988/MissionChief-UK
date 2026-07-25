@@ -5,11 +5,11 @@
   "status": "in-progress",
   "summary": {
     "inventory_entries": 73,
-    "canonical_records": 103,
+    "canonical_records": 104,
     "mapped_inventory_entries": 73,
     "unresolved_inventory_entries": 0,
     "dangling_canonical_mappings": 0,
-    "canonical_records_without_inventory_entry": 30,
+    "canonical_records_without_inventory_entry": 31,
     "identity_coverage_percent": 100.0,
     "verified_labels": 27,
     "candidate_labels": 46,
@@ -18,59 +18,155 @@
   },
   "field_completeness": {
     "cost": {
-      "complete": 48,
-      "total": 103,
-      "percent": 46.6
+      "complete": 49,
+      "total": 104,
+      "percent": 47.12
     },
     "staffing": {
-      "complete": 31,
-      "total": 103,
-      "percent": 30.1
+      "complete": 32,
+      "total": 104,
+      "percent": 30.77
     },
     "training": {
       "complete": 37,
-      "total": 103,
-      "percent": 35.92
+      "total": 104,
+      "percent": 35.58
     },
     "training_requirements": {
       "complete": 22,
-      "total": 103,
-      "percent": 21.36
+      "total": 104,
+      "percent": 21.15
     },
     "building_requirements": {
-      "complete": 57,
-      "total": 103,
-      "percent": 55.34
+      "complete": 58,
+      "total": 104,
+      "percent": 55.77
     },
     "resource_class": {
-      "complete": 60,
-      "total": 103,
-      "percent": 58.25
+      "complete": 61,
+      "total": 104,
+      "percent": 58.65
     },
     "transport_capacity": {
       "complete": 6,
-      "total": 103,
-      "percent": 5.83
+      "total": 104,
+      "percent": 5.77
     },
     "towing": {
       "complete": 25,
-      "total": 103,
-      "percent": 24.27
+      "total": 104,
+      "percent": 24.04
     },
     "deployment": {
       "complete": 20,
-      "total": 103,
-      "percent": 19.42
+      "total": 104,
+      "percent": 19.23
     },
     "capabilities": {
-      "complete": 103,
-      "total": 103,
+      "complete": 104,
+      "total": 104,
       "percent": 100.0
     },
     "verification_sources": {
-      "complete": 103,
-      "total": 103,
+      "complete": 104,
+      "total": 104,
       "percent": 100.0
+    }
+  },
+  "field_resolution": {
+    "canonical_records": 104,
+    "tracked_fields": 9,
+    "total_decisions": 936,
+    "resolved_decisions": 936,
+    "unresolved_decisions": 0,
+    "resolution_percent": 100.0
+  },
+  "field_resolution_by_field": {
+    "cost": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 49,
+        "not_published": 55
+      }
+    },
+    "staffing": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 32,
+        "not_applicable": 16,
+        "not_published": 56
+      }
+    },
+    "training": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 37,
+        "not_applicable": 10,
+        "not_published": 57
+      }
+    },
+    "training_requirements": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 22,
+        "not_applicable": 10,
+        "not_published": 72
+      }
+    },
+    "building_requirements": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 58,
+        "not_published": 46
+      }
+    },
+    "resource_class": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 61,
+        "not_published": 43
+      }
+    },
+    "transport_capacity": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 6,
+        "not_applicable": 11,
+        "not_published": 87
+      }
+    },
+    "towing": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 25,
+        "not_applicable": 6,
+        "not_published": 73
+      }
+    },
+    "deployment": {
+      "resolved": 104,
+      "total": 104,
+      "percent": 100.0,
+      "status_counts": {
+        "documented": 20,
+        "not_published": 84
+      }
     }
   },
   "service_inventory_counts": {
@@ -239,6 +335,11 @@
     {
       "canonical_id": "water_container",
       "name": "Water Container",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "water_ladder_with_cafs",
+      "name": "Water Ladder with CAFS",
       "service": "fire_and_rescue"
     },
     {

@@ -1,0 +1,36 @@
+{
+  "id": "water_ladder_with_cafs",
+  "name": "Water Ladder with CAFS",
+  "aliases": [
+    "Water Ladder CAFS"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Foam firefighting appliance",
+  "cost": {
+    "credits": 17300,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 2,
+    "maximum": 9
+  },
+  "building_requirements": [
+    "Fire Station with Fire Support"
+  ],
+  "resource_class": "vehicle",
+  "capabilities": [
+    "firefighting",
+    "foam_response",
+    "compressed_air_foam_system"
+  ],
+  "notes": [
+    "Official UK foam guidance publishes the Water Ladder with CAFS as a distinct foam-capable appliance."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+    ]
+  }
+}
