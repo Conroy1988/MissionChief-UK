@@ -4,7 +4,37 @@
   "aliases": [],
   "service": "police",
   "category": "Traffic policing",
-  "capabilities": ["traffic_management"],
-  "notes": ["On verified airfield incidents this resource is conditional: required only when available."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/590"]}
+  "capabilities": [
+    "traffic_management"
+  ],
+  "notes": [
+    "On verified airfield incidents this resource is conditional: required only when available.",
+    "The official UK training matrix requires the three-day Roads Policing Officer Training course for Traffic Cars and Armed Traffic Cars.",
+    "The official Large Police Depot page lists this resource among the vehicles available at the depot."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://www.missionchief.co.uk/einsaetze/590",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Roads Policing Officer Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "Roads Policing Officer Training",
+      "duration_days": 3,
+      "school": "Police training centre"
+    }
+  ],
+  "building_requirements": [
+    "Large Police Depot"
+  ]
 }

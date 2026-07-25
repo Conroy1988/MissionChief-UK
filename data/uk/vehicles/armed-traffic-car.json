@@ -13,14 +13,18 @@
   },
   "training": [
     "Roads Policing Officer Training",
-    "Firearms Training"
+    "Firearms Training",
+    "Firearms training"
   ],
   "capabilities": [
     "traffic_policing",
     "armed_police_response"
   ],
   "notes": [
-    "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit."
+    "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit.",
+    "The armed traffic vehicle retains the five-day Firearms training requirement alongside roads-policing education.",
+    "The official UK training matrix requires the three-day Roads Policing Officer Training course for Traffic Cars and Armed Traffic Cars.",
+    "The official Large Police Depot page lists this resource among the vehicles available at the depot."
   ],
   "verification": {
     "status": "verified",
@@ -28,7 +32,24 @@
     "sources": [
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
-      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+      "https://missionchief-uk.fandom.com/wiki/Vehicles",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training_requirements": [
+    {
+      "course": "Firearms training",
+      "duration_days": 5,
+      "school": "Police training centre"
+    },
+    {
+      "course": "Roads Policing Officer Training",
+      "duration_days": 3,
+      "school": "Police training centre"
+    }
+  ],
+  "building_requirements": [
+    "Large Police Depot"
+  ]
 }

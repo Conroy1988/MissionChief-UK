@@ -21,14 +21,24 @@
     "patient_information"
   ],
   "notes": [
-    "This vehicle identity is distinct from the Ambulance Officer qualification record."
+    "This vehicle identity is distinct from the Ambulance Officer qualification record.",
+    "The official UK training matrix publishes a five-day Ambulance Officer course for the Ambulance Officer vehicle."
   ],
   "verification": {
     "status": "community-report",
     "checked_at": "2026-07-25",
     "sources": [
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+      "https://missionchief-uk.fandom.com/wiki/Vehicles",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training_requirements": [
+    {
+      "course": "Ambulance Officer",
+      "duration_days": 5,
+      "school": "Rescue (EMS) Academy"
+    }
+  ]
 }

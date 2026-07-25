@@ -1,10 +1,44 @@
 {
   "id": "ambulance_control_unit",
   "name": "Ambulance Control Unit",
-  "aliases": [],
+  "aliases": [
+    "Mobile Command"
+  ],
   "service": "ambulance",
   "category": "Command and control",
-  "capabilities": ["ambulance_incident_command"],
-  "notes": ["Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+  "capabilities": [
+    "ambulance_incident_command"
+  ],
+  "notes": [
+    "Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement.",
+    "The official UK training matrix requires the five-day Tactical Command Course for the Ambulance Control Unit and ATV Carrier.",
+    "The official HART Base page lists Mobile Command.",
+    "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Tactical Command Course"
+  ],
+  "training_requirements": [
+    {
+      "course": "Tactical Command Course",
+      "duration_days": 5,
+      "school": "Rescue (EMS) Academy"
+    }
+  ],
+  "building_requirements": [
+    "HART Base",
+    "Small Ambulance Station"
+  ]
 }

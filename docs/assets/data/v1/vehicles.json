@@ -33,6 +33,9 @@
       "aliases": [
         "HEMS"
       ],
+      "building_requirements": [
+        "Helicopter Station"
+      ],
       "capabilities": [
         "air_medical_response",
         "patient_treatment",
@@ -42,14 +45,29 @@
       "id": "air_ambulance",
       "name": "Air Ambulance",
       "notes": [
-        "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence."
+        "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence.",
+        "The official UK training matrix requires the five-day Critical care course to operate HEMS.",
+        "The official Helicopter Station page identifies HEMS/Air Ambulance as the station vehicle."
       ],
+      "resource_class": "aircraft",
       "service": "ambulance",
+      "training": [
+        "Critical care"
+      ],
+      "training_requirements": [
+        {
+          "course": "Critical care",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1720-what-is-a-helicopter-station/"
         ],
         "status": "verified"
       }
@@ -63,15 +81,28 @@
       "id": "airfield_firefighting_command_vehicle",
       "name": "Airfield Firefighting Command Vehicle",
       "notes": [
-        "Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit."
+        "Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit.",
+        "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
       ],
+      "resource_class": "vehicle",
       "service": "airfield_operations",
+      "training": [
+        "ARFF-Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "ARFF-Training",
+          "duration_days": 3,
+          "school": "Fire Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
           "https://www.missionchief.co.uk/einsaetze/588",
-          "https://www.missionchief.co.uk/einsaetze/590"
+          "https://www.missionchief.co.uk/einsaetze/590",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -183,6 +214,9 @@
       "aliases": [
         "Ambulances"
       ],
+      "building_requirements": [
+        "Small Ambulance Station"
+      ],
       "capabilities": [
         "patient_treatment",
         "patient_transport"
@@ -192,21 +226,30 @@
       "name": "Ambulance",
       "notes": [
         "Current UK mission pages publish Ambulance as a dedicated guaranteed vehicle requirement.",
-        "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted."
+        "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted.",
+        "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
       "verification": {
-        "checked_at": "2026-07-23",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/234",
           "https://www.missionchief.co.uk/einsaetze/527",
-          "https://www.missionchief.co.uk/einsaetze/691"
+          "https://www.missionchief.co.uk/einsaetze/691",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
         ],
         "status": "verified"
       }
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Mobile Command"
+      ],
+      "building_requirements": [
+        "HART Base",
+        "Small Ambulance Station"
+      ],
       "capabilities": [
         "ambulance_incident_command"
       ],
@@ -214,14 +257,31 @@
       "id": "ambulance_control_unit",
       "name": "Ambulance Control Unit",
       "notes": [
-        "Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement."
+        "Official airfield pages list this as an alternative to ICCU or Airfield Firefighting Command Vehicle for one command requirement.",
+        "The official UK training matrix requires the five-day Tactical Command Course for the Ambulance Control Unit and ATV Carrier.",
+        "The official HART Base page lists Mobile Command.",
+        "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "Tactical Command Course"
+      ],
+      "training_requirements": [
+        {
+          "course": "Tactical Command Course",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
-          "https://www.missionchief.co.uk/einsaetze/588"
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
         ],
         "status": "verified"
       }
@@ -242,8 +302,10 @@
       "id": "ambulance_officer_vehicle",
       "name": "Ambulance Officer",
       "notes": [
-        "This vehicle identity is distinct from the Ambulance Officer qualification record."
+        "This vehicle identity is distinct from the Ambulance Officer qualification record.",
+        "The official UK training matrix publishes a five-day Ambulance Officer course for the Ambulance Officer vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
       "staffing": {
         "maximum": 1
@@ -251,11 +313,19 @@
       "training": [
         "Ambulance Officer"
       ],
+      "training_requirements": [
+        {
+          "course": "Ambulance Officer",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+          "https://missionchief-uk.fandom.com/wiki/Vehicles",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "community-report"
       }
@@ -267,6 +337,9 @@
         "ARV",
         "ARVs"
       ],
+      "building_requirements": [
+        "Large Police Depot"
+      ],
       "capabilities": [
         "armed_police_response"
       ],
@@ -275,21 +348,39 @@
       "name": "Armed Response Vehicle (ARV)",
       "notes": [
         "Current UK mission pages publish Armed Response Vehicles as an alternative to Police Cars on selected missions.",
-        "Staffing, price, training and station-capacity details remain unverified and are therefore omitted."
+        "Staffing, price, training and station-capacity details remain unverified and are therefore omitted.",
+        "The official UK training matrix requires the five-day Firearms training course for ARVs.",
+        "The official Large Police Depot page lists this resource among the vehicles available at the depot."
       ],
+      "resource_class": "vehicle",
       "service": "police",
+      "training": [
+        "Firearms training"
+      ],
+      "training_requirements": [
+        {
+          "course": "Firearms training",
+          "duration_days": 5,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-23",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/408",
           "https://www.missionchief.co.uk/einsaetze/410",
-          "https://www.missionchief.co.uk/einsaetze/454"
+          "https://www.missionchief.co.uk/einsaetze/454",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Large Police Depot"
+      ],
       "capabilities": [
         "traffic_policing",
         "armed_police_response"
@@ -302,22 +393,40 @@
       "id": "armed_traffic_car",
       "name": "Armed Traffic Car",
       "notes": [
-        "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit."
+        "The official Large Police Depot guidance lists Armed Traffic Car as a purchasable specialist unit.",
+        "The armed traffic vehicle retains the five-day Firearms training requirement alongside roads-policing education.",
+        "The official UK training matrix requires the three-day Roads Policing Officer Training course for Traffic Cars and Armed Traffic Cars.",
+        "The official Large Police Depot page lists this resource among the vehicles available at the depot."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "staffing": {
         "maximum": 2
       },
       "training": [
         "Roads Policing Officer Training",
-        "Firearms Training"
+        "Firearms Training",
+        "Firearms training"
+      ],
+      "training_requirements": [
+        {
+          "course": "Firearms training",
+          "duration_days": 5,
+          "school": "Police training centre"
+        },
+        {
+          "course": "Roads Policing Officer Training",
+          "duration_days": 3,
+          "school": "Police training centre"
+        }
       ],
       "verification": {
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
-          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+          "https://missionchief-uk.fandom.com/wiki/Vehicles",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -325,6 +434,9 @@
     {
       "aliases": [
         "ATV Carriers"
+      ],
+      "building_requirements": [
+        "HART Base"
       ],
       "capabilities": [
         "all_terrain_transport",
@@ -343,13 +455,28 @@
       "name": "ATV Carrier",
       "notes": [
         "The official HART additive-overlay version of Fall Whilst Fell Running lists one ATV Carrier.",
-        "Price, staffing, training and building requirements are not published in this record."
+        "Price, staffing, training and building requirements are not published in this record.",
+        "The official UK training matrix requires the five-day Tactical Command Course for the Ambulance Control Unit and ATV Carrier.",
+        "The official HART Base page lists the ATV Carrier."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "Tactical Command Course"
+      ],
+      "training_requirements": [
+        {
+          "course": "Tactical Command Course",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a"
+          "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "verified"
       }
@@ -593,6 +720,9 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Small Ambulance Station"
+      ],
       "capabilities": [
         "cbrn_response"
       ],
@@ -600,14 +730,29 @@
       "id": "cbrn_vehicle",
       "name": "CBRN Vehicle",
       "notes": [
-        "Official UK airfield pages use the label CBRN Vehicle and pair it with HazMat Units in an alternative requirement group."
+        "Official UK airfield pages use the label CBRN Vehicle and pair it with HazMat Units in an alternative requirement group.",
+        "The official UK training matrix requires the three-day SORT Training course for Mass Casualty Equipment and the CBRN Vehicle.",
+        "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
+      "training": [
+        "SORT Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "SORT Training",
+          "duration_days": 3,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
-          "https://www.missionchief.co.uk/einsaetze/588"
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
         ],
         "status": "verified"
       }
@@ -1065,6 +1210,9 @@
         "Dog Support Unit",
         "DSU"
       ],
+      "building_requirements": [
+        "Large Police Depot"
+      ],
       "capabilities": [
         "police_dog_support"
       ],
@@ -1072,14 +1220,29 @@
       "id": "dog_support_unit",
       "name": "Dog Support Unit (DSU)",
       "notes": [
-        "Official UK mission pages use both Dog Support Unit and DSU terminology."
+        "Official UK mission pages use both Dog Support Unit and DSU terminology.",
+        "The official UK training matrix publishes Dog handling as a five-day vehicle-operating course.",
+        "The official Large Police Depot page lists this resource among the vehicles available at the depot."
       ],
+      "resource_class": "vehicle",
       "service": "police",
+      "training": [
+        "Dog handling"
+      ],
+      "training_requirements": [
+        {
+          "course": "Dog handling",
+          "duration_days": 5,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://police.missionchief.co.uk/einsaetze/465",
-          "https://police.missionchief.co.uk/einsaetze/808"
+          "https://police.missionchief.co.uk/einsaetze/808",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -1255,8 +1418,10 @@
       "id": "firearms_personnel_carrier",
       "name": "Firearms Personnel Carrier",
       "notes": [
-        "The official Help Centre verifies transport of armed police officers. The current game vehicle type ID remains unverified."
+        "The official Help Centre verifies transport of armed police officers. The current game vehicle type ID remains unverified.",
+        "The official PSU vehicle page requires Firearms training; the UK training matrix publishes the course duration as five days."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "staffing": {
         "maximum": 9,
@@ -1265,11 +1430,19 @@
       "training": [
         "Firearms training"
       ],
+      "training_requirements": [
+        {
+          "course": "Firearms training",
+          "duration_days": 5,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1401,14 +1574,27 @@
       "id": "hazmat_unit",
       "name": "HazMat Unit",
       "notes": [
-        "Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group."
+        "Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group.",
+        "The official UK training matrix requires the three-day HazMat course to operate HazMat vehicles and units."
       ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
+      "training": [
+        "HazMat"
+      ],
+      "training_requirements": [
+        {
+          "course": "HazMat",
+          "duration_days": 3,
+          "school": "Fire Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
-          "https://www.missionchief.co.uk/einsaetze/588"
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1534,14 +1720,27 @@
       "id": "iccu",
       "name": "ICCU",
       "notes": [
-        "Official pages use the abbreviation ICCU; no expanded name is published without separate evidence."
+        "Official pages use the abbreviation ICCU; no expanded name is published without separate evidence.",
+        "The official UK training matrix requires the five-day Mobile command course for mobile command vehicles."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "Mobile command"
+      ],
+      "training_requirements": [
+        {
+          "course": "Mobile command",
+          "duration_days": 5,
+          "school": "Fire Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
-          "https://www.missionchief.co.uk/einsaetze/588"
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1748,8 +1947,10 @@
       "id": "m_rav",
       "name": "M-RAV",
       "notes": [
-        "The official Help Centre describes the M-RAV as responding to high-risk firearms situations."
+        "The official Help Centre describes the M-RAV as responding to high-risk firearms situations.",
+        "The official PSU vehicle page requires Firearms training; the UK training matrix publishes the course duration as five days."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "staffing": {
         "maximum": 6,
@@ -1758,11 +1959,19 @@
       "training": [
         "Firearms training"
       ],
+      "training_requirements": [
+        {
+          "course": "Firearms training",
+          "duration_days": 5,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1777,15 +1986,28 @@
       "id": "major_foam_tender",
       "name": "Major Foam Tender",
       "notes": [
-        "The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs."
+        "The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs.",
+        "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
       ],
+      "resource_class": "vehicle",
       "service": "airfield_operations",
+      "training": [
+        "ARFF-Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "ARFF-Training",
+          "duration_days": 3,
+          "school": "Fire Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
           "https://www.missionchief.co.uk/einsaetze/588",
-          "https://www.missionchief.co.uk/einsaetze/593"
+          "https://www.missionchief.co.uk/einsaetze/593",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1799,14 +2021,27 @@
       "id": "mass_casualty_equipment",
       "name": "Mass Casualty Equipment",
       "notes": [
-        "Verified as a guaranteed resource on Aircraft Accident Codes C and F."
+        "Verified as a guaranteed resource on Aircraft Accident Codes C and F.",
+        "The official UK training matrix requires the three-day SORT Training course for Mass Casualty Equipment and the CBRN Vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "SORT Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "SORT Training",
+          "duration_days": 3,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
-          "https://www.missionchief.co.uk/einsaetze/588"
+          "https://www.missionchief.co.uk/einsaetze/588",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1901,8 +2136,10 @@
       "id": "mounted_unit",
       "name": "Mounted Unit",
       "notes": [
-        "The official Help Centre verifies transport of up to 8 Mounted Officers."
+        "The official Help Centre verifies transport of up to 8 Mounted Officers.",
+        "The official PSU page requires Mounted Training; the UK training matrix publishes the course duration as four days."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "staffing": {
         "maximum": 8,
@@ -1911,11 +2148,19 @@
       "training": [
         "Mounted Training"
       ],
+      "training_requirements": [
+        {
+          "course": "Mounted Training",
+          "duration_days": 4,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -1980,8 +2225,10 @@
       "id": "multiple_dog_carrier",
       "name": "Multiple Dog Carrier",
       "notes": [
-        "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified."
+        "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified.",
+        "The official UK training matrix publishes Dog handling as a five-day vehicle-operating course."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "staffing": {
         "maximum": 4,
@@ -1990,14 +2237,22 @@
       "training": [
         "Dog handling"
       ],
+      "training_requirements": [
+        {
+          "course": "Dog handling",
+          "duration_days": 5,
+          "school": "Police training centre"
+        }
+      ],
       "transport_capacity": {
         "dogs": 4
       },
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -2034,7 +2289,11 @@
     },
     {
       "aliases": [
-        "OSU"
+        "OSU",
+        "Operations Support EMS"
+      ],
+      "building_requirements": [
+        "HART Base"
       ],
       "capabilities": [
         "hazmat_response",
@@ -2048,6 +2307,10 @@
       },
       "id": "operational_support_unit",
       "name": "Operational Support Unit",
+      "notes": [
+        "The official HART Base page lists Operations Support EMS."
+      ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
       "staffing": {
         "maximum": 6
@@ -2059,7 +2322,8 @@
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+          "https://missionchief-uk.fandom.com/wiki/Vehicles",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "community-report"
       }
@@ -2092,6 +2356,10 @@
       "aliases": [
         "OTL"
       ],
+      "building_requirements": [
+        "HART Base",
+        "Small Ambulance Station"
+      ],
       "capabilities": [
         "ambulance_operational_command"
       ],
@@ -2103,8 +2371,11 @@
       "id": "operational_team_leader_vehicle",
       "name": "Operational Team Leader",
       "notes": [
-        "This vehicle identity is distinct from the Operational Team Leader qualification record."
+        "This vehicle identity is distinct from the Operational Team Leader qualification record.",
+        "The official HART Base page lists the Operational Team Leader vehicle.",
+        "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
       "staffing": {
         "maximum": 1
@@ -2113,7 +2384,9 @@
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-          "https://missionchief-uk.fandom.com/wiki/Vehicles"
+          "https://missionchief-uk.fandom.com/wiki/Vehicles",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
         ],
         "status": "community-report"
       }
@@ -2176,7 +2449,9 @@
         "Police Car",
         "Police vehicle"
       ],
-      "building_requirements": [],
+      "building_requirements": [
+        "Large Police Depot"
+      ],
       "capabilities": [
         "police_car_requirement"
       ],
@@ -2185,15 +2460,18 @@
       "name": "Police car",
       "notes": [
         "Official UK mission records identify Police Cars as a required policing resource.",
-        "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market."
+        "Cost, crew capacity and purchase restrictions are intentionally omitted until independently verified from the current UK vehicle market.",
+        "The official Large Police Depot page lists this resource among the vehicles available at the depot."
       ],
+      "resource_class": "vehicle",
       "service": "police",
       "training": [],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/454",
-          "https://www.missionchief.co.uk/einsaetze/797"
+          "https://www.missionchief.co.uk/einsaetze/797",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -2201,6 +2479,9 @@
     {
       "aliases": [
         "Police Air Support"
+      ],
+      "building_requirements": [
+        "Police Helicopter Station"
       ],
       "capabilities": [
         "aerial_search",
@@ -2210,21 +2491,41 @@
       "id": "police_helicopter",
       "name": "Police Helicopter",
       "notes": [
-        "Official SAR mission pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement."
+        "Official SAR mission pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement.",
+        "The official UK training matrix requires the seven-day Police aviation course for police helicopters.",
+        "The official Police Helicopter Station page identifies the police helicopter and Police aviation requirement."
       ],
+      "resource_class": "aircraft",
       "service": "police",
+      "training": [
+        "Police aviation"
+      ],
+      "training_requirements": [
+        {
+          "course": "Police aviation",
+          "duration_days": 7,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/635",
-          "https://www.missionchief.co.uk/einsaetze/636"
+          "https://www.missionchief.co.uk/einsaetze/636",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1731-what-is-a-police-helicopter-station/"
         ],
         "status": "verified"
       }
     },
     {
       "aliases": [
-        "PRVs"
+        "PRVs",
+        "Primary Response Vehicle",
+        "Hazard Response Primary"
+      ],
+      "building_requirements": [
+        "HART Base"
       ],
       "capabilities": [
         "specialist_ambulance_response"
@@ -2234,13 +2535,28 @@
       "name": "PRV",
       "notes": [
         "The official UK mission page uses the label PRV without expanding the abbreviation.",
-        "No expanded name, price, staffing or training requirement is inferred in this record."
+        "No expanded name, price, staffing or training requirement is inferred in this record.",
+        "The official UK training matrix requires the five-day HART Training course for Primary and Secondary Response Vehicles.",
+        "The official HART Base page lists the Hazard Response Primary vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "HART Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "HART Training",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/760"
+          "https://www.missionchief.co.uk/einsaetze/760",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "verified"
       }
@@ -2283,7 +2599,12 @@
     },
     {
       "aliases": [
-        "RRV"
+        "RRV",
+        "Fly Car"
+      ],
+      "building_requirements": [
+        "HART Base",
+        "Small Ambulance Station"
       ],
       "capabilities": [
         "ambulance_first_response"
@@ -2293,14 +2614,19 @@
       "name": "Rapid Response Vehicle",
       "notes": [
         "Official UK mission pages identify an RRV as one valid response option for HCP Home Visit and Palliative Care Visit.",
-        "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification."
+        "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification.",
+        "The official HART Base page lists the Fly Car response vehicle.",
+        "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/693",
-          "https://www.missionchief.co.uk/einsaetze/762"
+          "https://www.missionchief.co.uk/einsaetze/762",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
         ],
         "status": "verified"
       }
@@ -2482,13 +2808,26 @@
       "id": "riv",
       "name": "RIV",
       "notes": [
-        "Official mission pages use the abbreviation RIV; no expanded name is published without separate evidence."
+        "Official mission pages use the abbreviation RIV; no expanded name is published without separate evidence.",
+        "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
       ],
+      "resource_class": "vehicle",
       "service": "airfield_operations",
+      "training": [
+        "ARFF-Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "ARFF-Training",
+          "duration_days": 3,
+          "school": "Fire Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/593"
+          "https://www.missionchief.co.uk/einsaetze/593",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
         ],
         "status": "verified"
       }
@@ -2665,7 +3004,12 @@
     },
     {
       "aliases": [
-        "SRVs"
+        "SRVs",
+        "Secondary Response Vehicle",
+        "Hazard Response Secondary"
+      ],
+      "building_requirements": [
+        "HART Base"
       ],
       "capabilities": [
         "specialist_ambulance_response"
@@ -2675,19 +3019,37 @@
       "name": "SRV",
       "notes": [
         "The official UK mission page uses the label SRV without expanding the abbreviation.",
-        "No expanded name, price, staffing or training requirement is inferred in this record."
+        "No expanded name, price, staffing or training requirement is inferred in this record.",
+        "The official UK training matrix requires the five-day HART Training course for Primary and Secondary Response Vehicles.",
+        "The official HART Base page lists the Hazard Response Secondary vehicle."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
+      "training": [
+        "HART Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "HART Training",
+          "duration_days": 5,
+          "school": "Rescue (EMS) Academy"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/760"
+          "https://www.missionchief.co.uk/einsaetze/760",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "verified"
       }
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Large Police Depot"
+      ],
       "capabilities": [
         "traffic_management"
       ],
@@ -2695,15 +3057,30 @@
       "id": "traffic_car",
       "name": "Traffic Car",
       "notes": [
-        "On verified airfield incidents this resource is conditional: required only when available."
+        "On verified airfield incidents this resource is conditional: required only when available.",
+        "The official UK training matrix requires the three-day Roads Policing Officer Training course for Traffic Cars and Armed Traffic Cars.",
+        "The official Large Police Depot page lists this resource among the vehicles available at the depot."
       ],
+      "resource_class": "vehicle",
       "service": "police",
+      "training": [
+        "Roads Policing Officer Training"
+      ],
+      "training_requirements": [
+        {
+          "course": "Roads Policing Officer Training",
+          "duration_days": 3,
+          "school": "Police training centre"
+        }
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/587",
           "https://www.missionchief.co.uk/einsaetze/588",
-          "https://www.missionchief.co.uk/einsaetze/590"
+          "https://www.missionchief.co.uk/einsaetze/590",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
         ],
         "status": "verified"
       }
@@ -2768,7 +3145,11 @@
     },
     {
       "aliases": [
-        "Welfare Vehicles"
+        "Welfare Vehicles",
+        "Emergency Welfare"
+      ],
+      "building_requirements": [
+        "HART Base"
       ],
       "capabilities": [
         "incident_welfare_support"
@@ -2778,13 +3159,16 @@
       "name": "Welfare Vehicle",
       "notes": [
         "The official Amateur Explorers Trapped in Abandoned Mineshaft mission page lists one Welfare Vehicle.",
-        "Price, staffing, training and building requirements are not published in this record."
+        "Price, staffing, training and building requirements are not published in this record.",
+        "The official HART Base page lists Emergency Welfare; no HART training requirement is added because official release notes removed it."
       ],
+      "resource_class": "vehicle",
       "service": "ambulance",
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/760"
+          "https://www.missionchief.co.uk/einsaetze/760",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "verified"
       }

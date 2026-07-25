@@ -165,6 +165,7 @@ def build_vehicle_coverage(
         "cost": count_present(canonical_values, "cost", nonempty=True),
         "staffing": count_present(canonical_values, "staffing", nonempty=True),
         "training": count_present(canonical_values, "training", nonempty=True),
+        "training_requirements": count_present(canonical_values, "training_requirements", nonempty=True),
         "building_requirements": count_present(canonical_values, "building_requirements", nonempty=True),
         "resource_class": count_present(canonical_values, "resource_class", nonempty=True),
         "transport_capacity": count_present(canonical_values, "transport_capacity", nonempty=True),

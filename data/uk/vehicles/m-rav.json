@@ -25,14 +25,24 @@
     "armed_police_response"
   ],
   "notes": [
-    "The official Help Centre describes the M-RAV as responding to high-risk firearms situations."
+    "The official Help Centre describes the M-RAV as responding to high-risk firearms situations.",
+    "The official PSU vehicle page requires Firearms training; the UK training matrix publishes the course duration as five days."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-24",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training_requirements": [
+    {
+      "course": "Firearms training",
+      "duration_days": 5,
+      "school": "Police training centre"
+    }
+  ]
 }

@@ -1,17 +1,30 @@
 {
   "id": "welfare_vehicle",
   "name": "Welfare Vehicle",
-  "aliases": ["Welfare Vehicles"],
+  "aliases": [
+    "Welfare Vehicles",
+    "Emergency Welfare"
+  ],
   "service": "ambulance",
   "category": "support",
-  "capabilities": ["incident_welfare_support"],
+  "capabilities": [
+    "incident_welfare_support"
+  ],
   "notes": [
     "The official Amateur Explorers Trapped in Abandoned Mineshaft mission page lists one Welfare Vehicle.",
-    "Price, staffing, training and building requirements are not published in this record."
+    "Price, staffing, training and building requirements are not published in this record.",
+    "The official HART Base page lists Emergency Welfare; no HART training requirement is added because official release notes removed it."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/760"]
-  }
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/760",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "building_requirements": [
+    "HART Base"
+  ]
 }

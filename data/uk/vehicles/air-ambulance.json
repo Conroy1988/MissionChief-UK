@@ -12,14 +12,32 @@
     "patient_transport"
   ],
   "notes": [
-    "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence."
+    "The official helicopter-station guidance confirms access to an air ambulance. Market economics remain omitted pending direct current-game evidence.",
+    "The official UK training matrix requires the five-day Critical care course to operate HEMS.",
+    "The official Helicopter Station page identifies HEMS/Air Ambulance as the station vehicle."
   ],
   "verification": {
     "status": "verified",
     "checked_at": "2026-07-25",
     "sources": [
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/"
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1523-what-is-a-helicopter-station/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1720-what-is-a-helicopter-station/"
     ]
-  }
+  },
+  "resource_class": "aircraft",
+  "training": [
+    "Critical care"
+  ],
+  "training_requirements": [
+    {
+      "course": "Critical care",
+      "duration_days": 5,
+      "school": "Rescue (EMS) Academy"
+    }
+  ],
+  "building_requirements": [
+    "Helicopter Station"
+  ]
 }

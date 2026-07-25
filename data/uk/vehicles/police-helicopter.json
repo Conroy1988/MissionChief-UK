@@ -1,19 +1,42 @@
 {
   "id": "police_helicopter",
   "name": "Police Helicopter",
-  "aliases": ["Police Air Support"],
+  "aliases": [
+    "Police Air Support"
+  ],
   "service": "police",
   "category": "Air support",
-  "capabilities": ["aerial_search", "police_air_support"],
+  "capabilities": [
+    "aerial_search",
+    "police_air_support"
+  ],
   "notes": [
-    "Official SAR mission pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement."
+    "Official SAR mission pages allow one Police Helicopter or one Drone to satisfy the aerial-search requirement.",
+    "The official UK training matrix requires the seven-day Police aviation course for police helicopters.",
+    "The official Police Helicopter Station page identifies the police helicopter and Police aviation requirement."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/635",
-      "https://www.missionchief.co.uk/einsaetze/636"
+      "https://www.missionchief.co.uk/einsaetze/636",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1731-what-is-a-police-helicopter-station/"
     ]
-  }
+  },
+  "resource_class": "aircraft",
+  "training": [
+    "Police aviation"
+  ],
+  "training_requirements": [
+    {
+      "course": "Police aviation",
+      "duration_days": 7,
+      "school": "Police training centre"
+    }
+  ],
+  "building_requirements": [
+    "Police Helicopter Station"
+  ]
 }

@@ -1,21 +1,50 @@
 {
   "id": "atv_carrier",
   "name": "ATV Carrier",
-  "aliases": ["ATV Carriers"],
+  "aliases": [
+    "ATV Carriers"
+  ],
   "service": "ambulance",
   "category": "specialist_support",
-  "capabilities": ["all_terrain_transport", "hart_support"],
+  "capabilities": [
+    "all_terrain_transport",
+    "hart_support"
+  ],
   "deployment": {
     "is_trailer": false,
-    "operating_environments": ["land", "off_road", "mountain"]
+    "operating_environments": [
+      "land",
+      "off_road",
+      "mountain"
+    ]
   },
   "notes": [
     "The official HART additive-overlay version of Fall Whilst Fell Running lists one ATV Carrier.",
-    "Price, staffing, training and building requirements are not published in this record."
+    "Price, staffing, training and building requirements are not published in this record.",
+    "The official UK training matrix requires the five-day Tactical Command Course for the Ambulance Control Unit and ATV Carrier.",
+    "The official HART Base page lists the ATV Carrier."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": ["https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a"]
-  }
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://police.missionchief.co.uk/einsaetze/755?additive_overlays=a",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Tactical Command Course"
+  ],
+  "training_requirements": [
+    {
+      "course": "Tactical Command Course",
+      "duration_days": 5,
+      "school": "Rescue (EMS) Academy"
+    }
+  ],
+  "building_requirements": [
+    "HART Base"
+  ]
 }

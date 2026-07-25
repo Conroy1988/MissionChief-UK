@@ -1,21 +1,32 @@
 {
   "id": "ambulance",
   "name": "Ambulance",
-  "aliases": ["Ambulances"],
+  "aliases": [
+    "Ambulances"
+  ],
   "service": "ambulance",
   "category": "Frontline ambulance",
-  "capabilities": ["patient_treatment", "patient_transport"],
+  "capabilities": [
+    "patient_treatment",
+    "patient_transport"
+  ],
   "notes": [
     "Current UK mission pages publish Ambulance as a dedicated guaranteed vehicle requirement.",
-    "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted."
+    "Cost, staffing limits, training and building capacity remain unverified and are therefore omitted.",
+    "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/234",
       "https://www.missionchief.co.uk/einsaetze/527",
-      "https://www.missionchief.co.uk/einsaetze/691"
+      "https://www.missionchief.co.uk/einsaetze/691",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "building_requirements": [
+    "Small Ambulance Station"
+  ]
 }

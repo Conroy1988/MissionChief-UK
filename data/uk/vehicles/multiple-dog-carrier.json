@@ -27,14 +27,24 @@
     "multiple_police_dog_transport"
   ],
   "notes": [
-    "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified."
+    "The official Help Centre states that the unit carries 4 dogs at maximum crew size. The current game vehicle type ID remains unverified.",
+    "The official UK training matrix publishes Dog handling as a five-day vehicle-operating course."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-24",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training_requirements": [
+    {
+      "course": "Dog handling",
+      "duration_days": 5,
+      "school": "Police training centre"
+    }
+  ]
 }

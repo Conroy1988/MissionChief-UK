@@ -1,17 +1,42 @@
 {
   "id": "dog_support_unit",
   "name": "Dog Support Unit (DSU)",
-  "aliases": ["Dog Support Unit", "DSU"],
+  "aliases": [
+    "Dog Support Unit",
+    "DSU"
+  ],
   "service": "police",
   "category": "Dog support",
-  "capabilities": ["police_dog_support"],
-  "notes": ["Official UK mission pages use both Dog Support Unit and DSU terminology."],
+  "capabilities": [
+    "police_dog_support"
+  ],
+  "notes": [
+    "Official UK mission pages use both Dog Support Unit and DSU terminology.",
+    "The official UK training matrix publishes Dog handling as a five-day vehicle-operating course.",
+    "The official Large Police Depot page lists this resource among the vehicles available at the depot."
+  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://police.missionchief.co.uk/einsaetze/465",
-      "https://police.missionchief.co.uk/einsaetze/808"
+      "https://police.missionchief.co.uk/einsaetze/808",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Dog handling"
+  ],
+  "training_requirements": [
+    {
+      "course": "Dog handling",
+      "duration_days": 5,
+      "school": "Police training centre"
+    }
+  ],
+  "building_requirements": [
+    "Large Police Depot"
+  ]
 }

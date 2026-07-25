@@ -104,6 +104,14 @@
     },
     "towing": {
       "$ref": "#/$defs/towingInfo"
+    },
+    "training_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/trainingRequirement"
+      }
     }
   },
   "$defs": {
@@ -212,6 +220,29 @@
           },
           "uniqueItems": true,
           "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "trainingRequirement": {
+      "type": "object",
+      "required": [
+        "course",
+        "duration_days",
+        "school"
+      ],
+      "properties": {
+        "course": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "school": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": false

@@ -1,21 +1,46 @@
 {
   "id": "armed_response_vehicle",
   "name": "Armed Response Vehicle (ARV)",
-  "aliases": ["Armed Response Vehicle", "Armed Response Vehicles", "ARV", "ARVs"],
+  "aliases": [
+    "Armed Response Vehicle",
+    "Armed Response Vehicles",
+    "ARV",
+    "ARVs"
+  ],
   "service": "police",
   "category": "Armed response",
-  "capabilities": ["armed_police_response"],
+  "capabilities": [
+    "armed_police_response"
+  ],
   "notes": [
     "Current UK mission pages publish Armed Response Vehicles as an alternative to Police Cars on selected missions.",
-    "Staffing, price, training and station-capacity details remain unverified and are therefore omitted."
+    "Staffing, price, training and station-capacity details remain unverified and are therefore omitted.",
+    "The official UK training matrix requires the five-day Firearms training course for ARVs.",
+    "The official Large Police Depot page lists this resource among the vehicles available at the depot."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-23",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/408",
       "https://www.missionchief.co.uk/einsaetze/410",
-      "https://www.missionchief.co.uk/einsaetze/454"
+      "https://www.missionchief.co.uk/einsaetze/454",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Firearms training"
+  ],
+  "training_requirements": [
+    {
+      "course": "Firearms training",
+      "duration_days": 5,
+      "school": "Police training centre"
+    }
+  ],
+  "building_requirements": [
+    "Large Police Depot"
+  ]
 }

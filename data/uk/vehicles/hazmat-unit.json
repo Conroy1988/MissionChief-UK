@@ -4,7 +4,31 @@
   "aliases": [],
   "service": "fire_and_rescue",
   "category": "Hazardous materials",
-  "capabilities": ["hazardous_materials_response"],
-  "notes": ["Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+  "capabilities": [
+    "hazardous_materials_response"
+  ],
+  "notes": [
+    "Official UK airfield pages use the label HazMat Unit and pair it with CBRN Vehicles in an alternative requirement group.",
+    "The official UK training matrix requires the three-day HazMat course to operate HazMat vehicles and units."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "HazMat"
+  ],
+  "training_requirements": [
+    {
+      "course": "HazMat",
+      "duration_days": 3,
+      "school": "Fire Academy"
+    }
+  ]
 }
