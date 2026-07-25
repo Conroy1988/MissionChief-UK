@@ -41,7 +41,6 @@ jobs:
           import json
           from pathlib import Path
           import jsonschema
-
           schema = json.loads(Path('data/schema/vehicle-field-resolution.schema.json').read_text(encoding='utf-8'))
           document = json.loads(Path('data/uk/vehicle-field-resolution.json').read_text(encoding='utf-8'))
           jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).validate(document)
@@ -65,16 +64,22 @@ jobs:
           python scripts/generate_vehicle_field_resolution.py --check
           python scripts/generate_vehicle_coverage.py --check
 
-      - name: Synchronize public exports and run regressions
+      - name: Synchronize public exports
         shell: bash
         run: |
           set -euo pipefail
           python scripts/run_public_verification_sync.py
           python scripts/generate_exports.py
           python scripts/generate_faq.py
-          python -m unittest tests/python/test_vehicle_inventory.py tests/python/test_vehicle_field_resolution.py -v
-          python -m unittest discover -s tests/python -p 'test_release_integrity.py' -v
-          python scripts/validate_verification_programme_assets.py
+
+      - name: Run vehicle field-resolution regressions
+        run: python -m unittest tests/python/test_vehicle_inventory.py tests/python/test_vehicle_field_resolution.py -v
+
+      - name: Run release-integrity regressions
+        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py' -v
+
+      - name: Validate verification programme assets
+        run: python scripts/validate_verification_programme_assets.py
 
       - name: Run release readiness and strict site build
         shell: bash
