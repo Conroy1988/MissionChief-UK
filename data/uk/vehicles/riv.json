@@ -4,7 +4,30 @@
   "aliases": [],
   "service": "airfield_operations",
   "category": "Airfield firefighting response",
-  "capabilities": ["airfield_firefighting"],
-  "notes": ["Official mission pages use the abbreviation RIV; no expanded name is published without separate evidence."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/593"]}
+  "capabilities": [
+    "airfield_firefighting"
+  ],
+  "notes": [
+    "Official mission pages use the abbreviation RIV; no expanded name is published without separate evidence.",
+    "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/593",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "ARFF-Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "ARFF-Training",
+      "duration_days": 3,
+      "school": "Fire Academy"
+    }
+  ]
 }

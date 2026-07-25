@@ -2,7 +2,8 @@
   "id": "operational_support_unit",
   "name": "Operational Support Unit",
   "aliases": [
-    "OSU"
+    "OSU",
+    "Operations Support EMS"
   ],
   "service": "fire_and_rescue",
   "category": "Hazardous-materials and welfare support",
@@ -26,7 +27,15 @@
     "checked_at": "2026-07-25",
     "sources": [
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+      "https://missionchief-uk.fandom.com/wiki/Vehicles",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "building_requirements": [
+    "HART Base"
+  ],
+  "notes": [
+    "The official HART Base page lists Operations Support EMS."
+  ]
 }

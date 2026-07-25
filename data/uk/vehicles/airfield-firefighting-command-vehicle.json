@@ -4,7 +4,32 @@
   "aliases": [],
   "service": "airfield_operations",
   "category": "Command",
-  "capabilities": ["airfield_firefighting_command"],
-  "notes": ["Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/590"]}
+  "capabilities": [
+    "airfield_firefighting_command"
+  ],
+  "notes": [
+    "Official UK pages may accept this vehicle inside command or incident-control alternative groups while also requiring a dedicated unit.",
+    "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://www.missionchief.co.uk/einsaetze/590",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "ARFF-Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "ARFF-Training",
+      "duration_days": 3,
+      "school": "Fire Academy"
+    }
+  ]
 }

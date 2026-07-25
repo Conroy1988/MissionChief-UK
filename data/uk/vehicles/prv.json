@@ -1,17 +1,43 @@
 {
   "id": "prv",
   "name": "PRV",
-  "aliases": ["PRVs"],
+  "aliases": [
+    "PRVs",
+    "Primary Response Vehicle",
+    "Hazard Response Primary"
+  ],
   "service": "ambulance",
   "category": "specialist_response",
-  "capabilities": ["specialist_ambulance_response"],
+  "capabilities": [
+    "specialist_ambulance_response"
+  ],
   "notes": [
     "The official UK mission page uses the label PRV without expanding the abbreviation.",
-    "No expanded name, price, staffing or training requirement is inferred in this record."
+    "No expanded name, price, staffing or training requirement is inferred in this record.",
+    "The official UK training matrix requires the five-day HART Training course for Primary and Secondary Response Vehicles.",
+    "The official HART Base page lists the Hazard Response Primary vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": ["https://www.missionchief.co.uk/einsaetze/760"]
-  }
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/760",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "HART Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "HART Training",
+      "duration_days": 5,
+      "school": "Rescue (EMS) Academy"
+    }
+  ],
+  "building_requirements": [
+    "HART Base"
+  ]
 }

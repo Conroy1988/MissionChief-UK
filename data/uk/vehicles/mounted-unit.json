@@ -11,14 +11,16 @@
     "mounted_officer_transport"
   ],
   "notes": [
-    "The official Help Centre verifies transport of up to 8 Mounted Officers."
+    "The official Help Centre verifies transport of up to 8 Mounted Officers.",
+    "The official PSU page requires Mounted Training; the UK training matrix publishes the course duration as four days."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-24",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1740-which-psu-vehicles-are-available-uk-version/",
-      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/"
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1741-what-is-the-large-police-depot-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
     ]
   },
   "cost": {
@@ -36,5 +38,13 @@
     "Police Station",
     "Large Police Depot",
     "Police & Public Safety Extension"
+  ],
+  "resource_class": "vehicle",
+  "training_requirements": [
+    {
+      "course": "Mounted Training",
+      "duration_days": 4,
+      "school": "Police training centre"
+    }
   ]
 }

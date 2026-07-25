@@ -2,7 +2,8 @@
   "id": "rapid_response_vehicle",
   "name": "Rapid Response Vehicle",
   "aliases": [
-    "RRV"
+    "RRV",
+    "Fly Car"
   ],
   "service": "ambulance",
   "category": "response",
@@ -11,14 +12,23 @@
   ],
   "notes": [
     "Official UK mission pages identify an RRV as one valid response option for HCP Home Visit and Palliative Care Visit.",
-    "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification."
+    "Purchase cost, staffing, training and building restrictions are intentionally omitted pending vehicle-market verification.",
+    "The official HART Base page lists the Fly Car response vehicle.",
+    "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/693",
-      "https://www.missionchief.co.uk/einsaetze/762"
+      "https://www.missionchief.co.uk/einsaetze/762",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "building_requirements": [
+    "HART Base",
+    "Small Ambulance Station"
+  ]
 }

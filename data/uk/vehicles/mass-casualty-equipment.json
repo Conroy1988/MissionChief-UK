@@ -4,7 +4,31 @@
   "aliases": [],
   "service": "ambulance",
   "category": "Mass casualty support",
-  "capabilities": ["mass_casualty_support"],
-  "notes": ["Verified as a guaranteed resource on Aircraft Accident Codes C and F."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+  "capabilities": [
+    "mass_casualty_support"
+  ],
+  "notes": [
+    "Verified as a guaranteed resource on Aircraft Accident Codes C and F.",
+    "The official UK training matrix requires the three-day SORT Training course for Mass Casualty Equipment and the CBRN Vehicle."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "SORT Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "SORT Training",
+      "duration_days": 3,
+      "school": "Rescue (EMS) Academy"
+    }
+  ]
 }

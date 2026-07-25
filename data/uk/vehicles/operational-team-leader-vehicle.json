@@ -17,14 +17,23 @@
     "ambulance_operational_command"
   ],
   "notes": [
-    "This vehicle identity is distinct from the Operational Team Leader qualification record."
+    "This vehicle identity is distinct from the Operational Team Leader qualification record.",
+    "The official HART Base page lists the Operational Team Leader vehicle.",
+    "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
   ],
   "verification": {
     "status": "community-report",
     "checked_at": "2026-07-25",
     "sources": [
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
-      "https://missionchief-uk.fandom.com/wiki/Vehicles"
+      "https://missionchief-uk.fandom.com/wiki/Vehicles",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "building_requirements": [
+    "HART Base",
+    "Small Ambulance Station"
+  ]
 }

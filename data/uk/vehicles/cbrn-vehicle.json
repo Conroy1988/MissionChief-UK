@@ -4,7 +4,36 @@
   "aliases": [],
   "service": "fire_and_rescue",
   "category": "CBRN response",
-  "capabilities": ["cbrn_response"],
-  "notes": ["Official UK airfield pages use the label CBRN Vehicle and pair it with HazMat Units in an alternative requirement group."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+  "capabilities": [
+    "cbrn_response"
+  ],
+  "notes": [
+    "Official UK airfield pages use the label CBRN Vehicle and pair it with HazMat Units in an alternative requirement group.",
+    "The official UK training matrix requires the three-day SORT Training course for Mass Casualty Equipment and the CBRN Vehicle.",
+    "The official Small Ambulance Station page lists this UK ambulance-service resource as an available vehicle."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "SORT Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "SORT Training",
+      "duration_days": 3,
+      "school": "Rescue (EMS) Academy"
+    }
+  ],
+  "building_requirements": [
+    "Small Ambulance Station"
+  ]
 }

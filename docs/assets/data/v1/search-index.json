@@ -7783,14 +7783,14 @@
       "collection": "vehicles",
       "id": "air_ambulance",
       "name": "Air Ambulance",
-      "search_text": "air_ambulance air ambulance ambulance air medical response hems air_medical_response patient_treatment patient_transport",
+      "search_text": "air_ambulance air ambulance ambulance air medical response hems air_medical_response patient_treatment patient_transport critical care",
       "service": "ambulance"
     },
     {
       "collection": "vehicles",
       "id": "airfield_firefighting_command_vehicle",
       "name": "Airfield Firefighting Command Vehicle",
-      "search_text": "airfield_firefighting_command_vehicle airfield firefighting command vehicle airfield_operations command airfield_firefighting_command",
+      "search_text": "airfield_firefighting_command_vehicle airfield firefighting command vehicle airfield_operations command airfield_firefighting_command arff-training",
       "service": "airfield_operations"
     },
     {
@@ -7825,7 +7825,7 @@
       "collection": "vehicles",
       "id": "ambulance_control_unit",
       "name": "Ambulance Control Unit",
-      "search_text": "ambulance_control_unit ambulance control unit ambulance command and control ambulance_incident_command",
+      "search_text": "ambulance_control_unit ambulance control unit ambulance command and control mobile command ambulance_incident_command tactical command course",
       "service": "ambulance"
     },
     {
@@ -7839,21 +7839,21 @@
       "collection": "vehicles",
       "id": "armed_response_vehicle",
       "name": "Armed Response Vehicle (ARV)",
-      "search_text": "armed_response_vehicle armed response vehicle (arv) police armed response armed response vehicle armed response vehicles arv arvs armed_police_response",
+      "search_text": "armed_response_vehicle armed response vehicle (arv) police armed response armed response vehicle armed response vehicles arv arvs armed_police_response firearms training",
       "service": "police"
     },
     {
       "collection": "vehicles",
       "id": "armed_traffic_car",
       "name": "Armed Traffic Car",
-      "search_text": "armed_traffic_car armed traffic car police armed roads policing traffic_policing armed_police_response roads policing officer training firearms training",
+      "search_text": "armed_traffic_car armed traffic car police armed roads policing traffic_policing armed_police_response roads policing officer training firearms training firearms training",
       "service": "police"
     },
     {
       "collection": "vehicles",
       "id": "atv_carrier",
       "name": "ATV Carrier",
-      "search_text": "atv_carrier atv carrier ambulance specialist_support atv carriers all_terrain_transport hart_support",
+      "search_text": "atv_carrier atv carrier ambulance specialist_support atv carriers all_terrain_transport hart_support tactical command course",
       "service": "ambulance"
     },
     {
@@ -7923,7 +7923,7 @@
       "collection": "vehicles",
       "id": "cbrn_vehicle",
       "name": "CBRN Vehicle",
-      "search_text": "cbrn_vehicle cbrn vehicle fire_and_rescue cbrn response cbrn_response",
+      "search_text": "cbrn_vehicle cbrn vehicle fire_and_rescue cbrn response cbrn_response sort training",
       "service": "fire_and_rescue"
     },
     {
@@ -8014,7 +8014,7 @@
       "collection": "vehicles",
       "id": "dog_support_unit",
       "name": "Dog Support Unit (DSU)",
-      "search_text": "dog_support_unit dog support unit (dsu) police dog support dog support unit dsu police_dog_support",
+      "search_text": "dog_support_unit dog support unit (dsu) police dog support dog support unit dsu police_dog_support dog handling",
       "service": "police"
     },
     {
@@ -8098,7 +8098,7 @@
       "collection": "vehicles",
       "id": "hazmat_unit",
       "name": "HazMat Unit",
-      "search_text": "hazmat_unit hazmat unit fire_and_rescue hazardous materials hazardous_materials_response",
+      "search_text": "hazmat_unit hazmat unit fire_and_rescue hazardous materials hazardous_materials_response hazmat",
       "service": "fire_and_rescue"
     },
     {
@@ -8126,7 +8126,7 @@
       "collection": "vehicles",
       "id": "iccu",
       "name": "ICCU",
-      "search_text": "iccu iccu ambulance command and control incident_command_and_control",
+      "search_text": "iccu iccu ambulance command and control incident_command_and_control mobile command",
       "service": "ambulance"
     },
     {
@@ -8168,14 +8168,14 @@
       "collection": "vehicles",
       "id": "major_foam_tender",
       "name": "Major Foam Tender",
-      "search_text": "major_foam_tender major foam tender airfield_operations foam firefighting airfield_firefighting foam_delivery",
+      "search_text": "major_foam_tender major foam tender airfield_operations foam firefighting airfield_firefighting foam_delivery arff-training",
       "service": "airfield_operations"
     },
     {
       "collection": "vehicles",
       "id": "mass_casualty_equipment",
       "name": "Mass Casualty Equipment",
-      "search_text": "mass_casualty_equipment mass casualty equipment ambulance mass casualty support mass_casualty_support",
+      "search_text": "mass_casualty_equipment mass casualty equipment ambulance mass casualty support mass_casualty_support sort training",
       "service": "ambulance"
     },
     {
@@ -8224,7 +8224,7 @@
       "collection": "vehicles",
       "id": "operational_support_unit",
       "name": "Operational Support Unit",
-      "search_text": "operational_support_unit operational support unit fire_and_rescue hazardous-materials and welfare support osu hazmat_response breathing_apparatus_support crew_welfare hazmat",
+      "search_text": "operational_support_unit operational support unit fire_and_rescue hazardous-materials and welfare support osu operations support ems hazmat_response breathing_apparatus_support crew_welfare hazmat",
       "service": "fire_and_rescue"
     },
     {
@@ -8266,14 +8266,14 @@
       "collection": "vehicles",
       "id": "police_helicopter",
       "name": "Police Helicopter",
-      "search_text": "police_helicopter police helicopter police air support police air support aerial_search police_air_support",
+      "search_text": "police_helicopter police helicopter police air support police air support aerial_search police_air_support police aviation",
       "service": "police"
     },
     {
       "collection": "vehicles",
       "id": "prv",
       "name": "PRV",
-      "search_text": "prv prv ambulance specialist_response prvs specialist_ambulance_response",
+      "search_text": "prv prv ambulance specialist_response prvs primary response vehicle hazard response primary specialist_ambulance_response hart training",
       "service": "ambulance"
     },
     {
@@ -8287,7 +8287,7 @@
       "collection": "vehicles",
       "id": "rapid_response_vehicle",
       "name": "Rapid Response Vehicle",
-      "search_text": "rapid_response_vehicle rapid response vehicle ambulance response rrv ambulance_first_response",
+      "search_text": "rapid_response_vehicle rapid response vehicle ambulance response rrv fly car ambulance_first_response",
       "service": "ambulance"
     },
     {
@@ -8329,7 +8329,7 @@
       "collection": "vehicles",
       "id": "riv",
       "name": "RIV",
-      "search_text": "riv riv airfield_operations airfield firefighting response airfield_firefighting",
+      "search_text": "riv riv airfield_operations airfield firefighting response airfield_firefighting arff-training",
       "service": "airfield_operations"
     },
     {
@@ -8378,14 +8378,14 @@
       "collection": "vehicles",
       "id": "srv",
       "name": "SRV",
-      "search_text": "srv srv ambulance specialist_response srvs specialist_ambulance_response",
+      "search_text": "srv srv ambulance specialist_response srvs secondary response vehicle hazard response secondary specialist_ambulance_response hart training",
       "service": "ambulance"
     },
     {
       "collection": "vehicles",
       "id": "traffic_car",
       "name": "Traffic Car",
-      "search_text": "traffic_car traffic car police traffic policing traffic_management",
+      "search_text": "traffic_car traffic car police traffic policing traffic_management roads policing officer training",
       "service": "police"
     },
     {
@@ -8406,7 +8406,7 @@
       "collection": "vehicles",
       "id": "welfare_vehicle",
       "name": "Welfare Vehicle",
-      "search_text": "welfare_vehicle welfare vehicle ambulance support welfare vehicles incident_welfare_support",
+      "search_text": "welfare_vehicle welfare vehicle ambulance support welfare vehicles emergency welfare incident_welfare_support",
       "service": "ambulance"
     },
     {

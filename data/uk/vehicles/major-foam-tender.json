@@ -4,7 +4,33 @@
   "aliases": [],
   "service": "airfield_operations",
   "category": "Foam firefighting",
-  "capabilities": ["airfield_firefighting", "foam_delivery"],
-  "notes": ["The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588", "https://www.missionchief.co.uk/einsaetze/593"]}
+  "capabilities": [
+    "airfield_firefighting",
+    "foam_delivery"
+  ],
+  "notes": [
+    "The official UK pages use this both as a dedicated requirement and as an alternative to Fire Engines or RIVs.",
+    "The official UK training matrix requires the three-day ARFF-Training course for airport-specific firefighting vehicles."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://www.missionchief.co.uk/einsaetze/593",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "ARFF-Training"
+  ],
+  "training_requirements": [
+    {
+      "course": "ARFF-Training",
+      "duration_days": 3,
+      "school": "Fire Academy"
+    }
+  ]
 }

@@ -4,7 +4,31 @@
   "aliases": [],
   "service": "ambulance",
   "category": "Command and control",
-  "capabilities": ["incident_command_and_control"],
-  "notes": ["Official pages use the abbreviation ICCU; no expanded name is published without separate evidence."],
-  "verification": {"status": "verified", "checked_at": "2026-07-22", "sources": ["https://www.missionchief.co.uk/einsaetze/587", "https://www.missionchief.co.uk/einsaetze/588"]}
+  "capabilities": [
+    "incident_command_and_control"
+  ],
+  "notes": [
+    "Official pages use the abbreviation ICCU; no expanded name is published without separate evidence.",
+    "The official UK training matrix requires the five-day Mobile command course for mobile command vehicles."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://www.missionchief.co.uk/einsaetze/587",
+      "https://www.missionchief.co.uk/einsaetze/588",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1603-which-training-is-useful-for-what/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "training": [
+    "Mobile command"
+  ],
+  "training_requirements": [
+    {
+      "course": "Mobile command",
+      "duration_days": 5,
+      "school": "Fire Academy"
+    }
+  ]
 }
