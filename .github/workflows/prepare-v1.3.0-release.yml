@@ -1,9 +1,6 @@
 name: Prepare MissionChief UK v1.3.0 release
 
 on:
-  push:
-    branches:
-      - release/v1.3.0-stage36a
   pull_request:
     branches:
       - main
@@ -12,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: prepare-missionchief-uk-v1-3-0
+  group: prepare-missionchief-uk-v1-3-0-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
