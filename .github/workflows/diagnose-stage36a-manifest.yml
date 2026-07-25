@@ -1,0 +1,47 @@
+name: Diagnose Stage 36A final manifest counts
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    if: github.event.pull_request.head.ref == 'stage36a/field-resolution-and-equipment-batch-5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: stage36a/field-resolution-and-equipment-batch-5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Apply migration and generate exports
+        run: |
+          python scripts/apply_stage36a_field_resolution_batch.py
+          python scripts/patch_vehicle_resolution_fixture_contract.py
+          python scripts/generate_vehicle_field_resolution.py
+          python scripts/generate_vehicle_coverage.py
+          python scripts/run_public_verification_sync.py
+          python scripts/generate_exports.py
+      - name: Verify vehicle manifest count
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('docs/assets/data/v1/manifest.json').read_text())
+          print('vehicles=',m['collections']['vehicles']['count'])
+          assert m['collections']['vehicles']['count']==104,m
+          PY
+      - name: Verify search entity count
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('docs/assets/data/v1/manifest.json').read_text())
+          print('search_entities=',m['search']['entity_count'])
+          assert m['search']['entity_count']==1215,m
+          PY
