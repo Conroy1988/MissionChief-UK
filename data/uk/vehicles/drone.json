@@ -1,19 +1,41 @@
 {
   "id": "drone",
   "name": "Drone",
-  "aliases": ["UAV", "Uncrewed Aerial Vehicle"],
+  "aliases": [
+    "UAV",
+    "Uncrewed Aerial Vehicle"
+  ],
   "service": "shared",
   "category": "Aerial search and reconnaissance",
-  "capabilities": ["aerial_search", "reconnaissance"],
+  "capabilities": [
+    "aerial_search",
+    "reconnaissance",
+    "equipment_deployable"
+  ],
   "notes": [
-    "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement."
+    "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement.",
+    "Official UK equipment guidance publishes the drone cost, Drone Operator education and compatibility with UK fire and police equipment storage."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/635",
-      "https://www.missionchief.co.uk/einsaetze/636"
+      "https://www.missionchief.co.uk/einsaetze/636",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1861-what-equipment-is-available-uk-version/",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/2002-what-is-equipment-how-can-i-use-it-and-what-equipment-is-available/"
     ]
-  }
+  },
+  "resource_class": "equipment",
+  "cost": {
+    "credits": 25000,
+    "coins": 15
+  },
+  "training": [
+    "Drone Operator"
+  ],
+  "building_requirements": [
+    "Fire Station equipment storage",
+    "Police Station equipment storage"
+  ]
 }

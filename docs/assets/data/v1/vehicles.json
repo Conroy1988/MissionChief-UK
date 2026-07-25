@@ -133,26 +133,48 @@
       "aliases": [
         "All-weather Lifeboat"
       ],
+      "building_requirements": [
+        "Lifeboat Station"
+      ],
       "capabilities": [
         "ocean_rescue"
       ],
       "category": "ocean rescue boat",
+      "cost": {
+        "coins": 25,
+        "credits": 40000
+      },
       "deployment": {
         "operating_environments": [
-          "ocean"
+          "ocean",
+          "water"
         ]
       },
       "id": "all_weather_lifeboat",
       "name": "ALB",
       "notes": [
-        "Official UK mission requirements use the abbreviation ALB."
+        "Official UK mission requirements use the abbreviation ALB.",
+        "Official UK guidance publishes the ALB crew, cost, education and patient/prisoner capacities."
       ],
+      "resource_class": "vessel",
       "service": "lifeboat",
+      "staffing": {
+        "maximum": 7,
+        "minimum": 5
+      },
+      "training": [
+        "Lifeboat Operations Training"
+      ],
+      "transport_capacity": {
+        "patients": 6,
+        "prisoners": 4
+      },
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/561",
-          "https://www.missionchief.co.uk/einsaetze/562"
+          "https://www.missionchief.co.uk/einsaetze/562",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -353,7 +375,16 @@
       },
       "id": "boat_trailer",
       "name": "Boat Trailer",
+      "notes": [
+        "Official UK guidance publishes the Boat Trailer cost, education, technical-rescue extension and L4V towing relationship."
+      ],
+      "resource_class": "trailer",
       "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "light_4x4"
+        ]
+      },
       "training": [
         "Technical Rescue"
       ],
@@ -542,6 +573,10 @@
       },
       "id": "bulk_foam_unit",
       "name": "Bulk Foam Unit",
+      "notes": [
+        "Official UK foam guidance publishes the Bulk Foam Unit crew, cost and Fire Support availability."
+      ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
       "staffing": {
         "maximum": 2,
@@ -616,18 +651,25 @@
       "id": "coastguard_commander",
       "name": "Coastguard Commander",
       "notes": [
-        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations."
+        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations.",
+        "Official UK guidance publishes the Coastguard Commander crew range, cost, education, station compatibility and towing role."
       ],
+      "resource_class": "vehicle",
       "service": "coastguard",
       "staffing": {
         "maximum": 5,
         "minimum": 1
       },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer"
+        ]
+      },
       "training": [
         "Coastal Command Training"
       ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
@@ -651,18 +693,26 @@
       "name": "Coastguard Mud Rescue Unit",
       "notes": [
         "Official UK Coastguard missions identify this as a required specialist resource.",
-        "Current official Help Center guidance verifies the purchase cost, crew range, training and available building."
+        "Current official Help Center guidance verifies the purchase cost, crew range, training and available building.",
+        "Official UK guidance publishes the Mud Rescue Unit crew range, cost, education and towing relationships."
       ],
+      "resource_class": "vehicle",
       "service": "coastguard",
       "staffing": {
         "maximum": 5,
         "minimum": 1
       },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer",
+          "mud_decontamination_unit"
+        ]
+      },
       "training": [
         "Mud Rescue Training"
       ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/546",
           "https://www.missionchief.co.uk/einsaetze/567",
@@ -673,11 +723,21 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "SAR Airbase"
+      ],
       "capabilities": [
         "air_rescue",
-        "ocean_rescue"
+        "ocean_rescue",
+        "patient_treatment",
+        "patient_transport",
+        "coastal_air_rescue"
       ],
       "category": "air rescue",
+      "cost": {
+        "coins": 30,
+        "credits": 300000
+      },
       "deployment": {
         "operating_environments": [
           "air",
@@ -687,13 +747,26 @@
       "id": "coastguard_rescue_helicopter",
       "name": "Coastguard Rescue Helicopter",
       "notes": [
-        "The verified Medivac from vessel mission applies a 50% requirement probability to this resource."
+        "The verified Medivac from vessel mission applies a 50% requirement probability to this resource.",
+        "Official UK guidance publishes the small Coastguard Rescue Helicopter crew, cost, training, airbase, treatment capability and 16-patient capacity."
       ],
+      "resource_class": "aircraft",
       "service": "coastguard",
+      "staffing": {
+        "maximum": 4,
+        "minimum": 4
+      },
+      "training": [
+        "Coastal Air Rescue Operations"
+      ],
+      "transport_capacity": {
+        "patients": 16
+      },
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
-          "https://www.missionchief.co.uk/einsaetze/562"
+          "https://www.missionchief.co.uk/einsaetze/562",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -750,15 +823,22 @@
       "name": "CRV",
       "notes": [
         "Official UK mission requirements use the abbreviation CRV for this resource.",
-        "Current official Help Center guidance verifies the purchase cost, crew range and available locations."
+        "Current official Help Center guidance verifies the purchase cost, crew range and available locations.",
+        "Official UK guidance publishes the CRV crew range, purchase cost, station compatibility and Flood Rescue Unit towing role."
       ],
+      "resource_class": "vehicle",
       "service": "coastguard",
       "staffing": {
         "maximum": 5,
         "minimum": 1
       },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer"
+        ]
+      },
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/569",
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
@@ -782,18 +862,25 @@
       "id": "coastguard_rope_rescue_unit",
       "name": "Coastguard Rope Rescue Unit",
       "notes": [
-        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building."
+        "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building.",
+        "Official UK guidance publishes the Rope Rescue Unit crew range, cost, education and Flood Rescue Unit towing role."
       ],
+      "resource_class": "vehicle",
       "service": "coastguard",
       "staffing": {
         "maximum": 5,
         "minimum": 1
       },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer"
+        ]
+      },
       "training": [
         "Rope Rescue Training"
       ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
@@ -802,23 +889,42 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Coastguard Rescue Station"
+      ],
       "capabilities": [
         "coastguard_support"
       ],
       "category": "Coastguard support",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
       "id": "coastguard_support_unit",
       "name": "Coastguard Support Unit",
       "notes": [
         "The official coastal_support field is displayed as required Support Units on Coastguard and Coastal Rescue missions. It is distinct from the CRV/coastal_rescue requirement.",
-        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence.",
+        "Official UK guidance publishes the Coastguard Support Unit crew range, cost, station compatibility and Flood Rescue Unit towing role."
       ],
+      "resource_class": "vehicle",
       "service": "coastguard",
+      "staffing": {
+        "maximum": 8,
+        "minimum": 1
+      },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer"
+        ]
+      },
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/560",
           "https://www.missionchief.co.uk/einsaetze/583",
-          "https://www.missionchief.co.uk/einsaetze.json"
+          "https://www.missionchief.co.uk/einsaetze.json",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -983,22 +1089,38 @@
         "UAV",
         "Uncrewed Aerial Vehicle"
       ],
+      "building_requirements": [
+        "Fire Station equipment storage",
+        "Police Station equipment storage"
+      ],
       "capabilities": [
         "aerial_search",
-        "reconnaissance"
+        "reconnaissance",
+        "equipment_deployable"
       ],
       "category": "Aerial search and reconnaissance",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
       "id": "drone",
       "name": "Drone",
       "notes": [
-        "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement."
+        "The official SAR mission pages require one active Drone before generation and allow a Drone to satisfy the Police Helicopter or Drone response requirement.",
+        "Official UK equipment guidance publishes the drone cost, Drone Operator education and compatibility with UK fire and police equipment storage."
       ],
+      "resource_class": "equipment",
       "service": "shared",
+      "training": [
+        "Drone Operator"
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/635",
-          "https://www.missionchief.co.uk/einsaetze/636"
+          "https://www.missionchief.co.uk/einsaetze/636",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1861-what-equipment-is-available-uk-version/",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/2002-what-is-equipment-how-can-i-use-it-and-what-equipment-is-available/"
         ],
         "status": "verified"
       }
@@ -1223,7 +1345,21 @@
       },
       "id": "flood_rescue_unit_trailer",
       "name": "Flood Rescue Unit (Trailer)",
+      "notes": [
+        "Official UK guidance publishes the Flood Rescue Unit trailer cost, training, compatible stations and six towing vehicle types."
+      ],
+      "resource_class": "trailer",
       "service": "coastguard",
+      "towing": {
+        "towable_by": [
+          "coastguard_rescue_vehicle",
+          "coastguard_commander",
+          "coastguard_mud_rescue_unit",
+          "coastguard_rope_rescue_unit",
+          "coastguard_support_unit",
+          "lifeboat_4x4_vehicle"
+        ]
+      },
       "training": [
         "Flood First Responder Training"
       ],
@@ -1300,26 +1436,52 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Lifeboat Station with Hover Mud Rescue Boat Expansion"
+      ],
       "capabilities": [
         "hovercraft_response"
       ],
       "category": "Coastguard water rescue",
+      "cost": {
+        "coins": 20,
+        "credits": 35000
+      },
       "deployment": {
-        "is_trailer": true
+        "is_trailer": true,
+        "operating_environments": [
+          "water",
+          "mud"
+        ]
       },
       "id": "hovercraft_trailer",
       "name": "Hovercraft (Trailer)",
       "notes": [
         "The official page displays Hovercraft (Trailer).",
-        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence.",
+        "Official UK guidance publishes the Hovercraft Trailer crew, cost, education, expansion and towing vehicle."
       ],
+      "resource_class": "trailer",
       "service": "coastguard",
+      "staffing": {
+        "maximum": 5,
+        "minimum": 3
+      },
+      "towing": {
+        "towable_by": [
+          "hovercraft_transporter"
+        ]
+      },
+      "training": [
+        "Hover boat commander"
+      ],
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/547",
           "https://www.missionchief.co.uk/einsaetze/568",
-          "https://www.missionchief.co.uk/einsaetze.json"
+          "https://www.missionchief.co.uk/einsaetze.json",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -1340,10 +1502,19 @@
       },
       "id": "hovercraft_transporter",
       "name": "Hovercraft Transporter",
+      "notes": [
+        "Official UK guidance publishes the Hovercraft Transporter cost, single-person crew, expansion and towing role."
+      ],
+      "resource_class": "vehicle",
       "service": "lifeboat",
       "staffing": {
         "maximum": 1,
         "minimum": 1
+      },
+      "towing": {
+        "can_tow": [
+          "hovercraft_trailer"
+        ]
       },
       "verification": {
         "checked_at": "2026-07-25",
@@ -1396,15 +1567,23 @@
       "deployment": {
         "is_trailer": true,
         "operating_environments": [
-          "inland_water"
+          "inland_water",
+          "water"
         ]
       },
       "id": "inland_rescue_boat_trailer",
       "name": "Inland Rescue Boat (Trailer)",
       "notes": [
-        "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle."
+        "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle.",
+        "Official UK guidance publishes the Inland Rescue Boat trailer cost, education, station and towing vehicle."
       ],
+      "resource_class": "trailer",
       "service": "lifeboat",
+      "towing": {
+        "towable_by": [
+          "lifeboat_4x4_vehicle"
+        ]
+      },
       "training": [
         "Lifeboat Operations Training"
       ],
@@ -1421,26 +1600,48 @@
       "aliases": [
         "Inshore Lifeboat"
       ],
+      "building_requirements": [
+        "Lifeboat Station"
+      ],
       "capabilities": [
         "ocean_rescue"
       ],
       "category": "ocean rescue boat",
+      "cost": {
+        "coins": 15,
+        "credits": 25000
+      },
       "deployment": {
         "operating_environments": [
-          "ocean"
+          "ocean",
+          "water"
         ]
       },
       "id": "inshore_lifeboat",
       "name": "ILB",
       "notes": [
-        "Official UK mission requirements use the abbreviation ILB."
+        "Official UK mission requirements use the abbreviation ILB.",
+        "Official UK guidance publishes the ILB crew, cost, education and patient/prisoner capacities."
       ],
+      "resource_class": "vessel",
       "service": "lifeboat",
+      "staffing": {
+        "maximum": 4,
+        "minimum": 3
+      },
+      "training": [
+        "Lifeboat Operations Training"
+      ],
+      "transport_capacity": {
+        "patients": 3,
+        "prisoners": 2
+      },
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/561",
-          "https://www.missionchief.co.uk/einsaetze/562"
+          "https://www.missionchief.co.uk/einsaetze/562",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -1462,10 +1663,21 @@
       },
       "id": "lifeboat_4x4_vehicle",
       "name": "4x4 Vehicle",
+      "notes": [
+        "Official UK guidance publishes the Lifeboat 4x4 crew, cost and towing compatibility for water-rescue trailers."
+      ],
+      "resource_class": "vehicle",
       "service": "lifeboat",
       "staffing": {
         "maximum": 4,
         "minimum": 1
+      },
+      "towing": {
+        "can_tow": [
+          "flood_rescue_unit_trailer",
+          "inland_rescue_boat_trailer",
+          "rescue_watercraft_trailer"
+        ]
       },
       "verification": {
         "checked_at": "2026-07-25",
@@ -1481,7 +1693,8 @@
         "L4V"
       ],
       "building_requirements": [
-        "Small Fire Station with Technical Rescue Extension"
+        "Small Fire Station with Technical Rescue Extension",
+        "Small Fire Station"
       ],
       "capabilities": [
         "trailer_towing"
@@ -1493,10 +1706,19 @@
       },
       "id": "light_4x4",
       "name": "Light 4x4",
+      "notes": [
+        "Official UK guidance publishes the L4V crew, cost, small-station availability and trailer-towing capability."
+      ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
       "staffing": {
         "maximum": 4,
         "minimum": 1
+      },
+      "towing": {
+        "can_tow": [
+          "boat_trailer"
+        ]
       },
       "verification": {
         "checked_at": "2026-07-25",
@@ -1700,21 +1922,42 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Coastguard Rescue Station with Coastal Rescue Mud Expansion"
+      ],
       "capabilities": [
         "mud_decontamination"
       ],
       "category": "specialist support",
+      "cost": {
+        "coins": 20,
+        "credits": 35000
+      },
+      "deployment": {
+        "is_trailer": true
+      },
       "id": "mud_decontamination_unit",
       "name": "Mud Decontamination Unit",
       "notes": [
-        "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource."
+        "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource.",
+        "Official UK guidance publishes the Mud Decontamination Unit trailer cost, education, expansion and exclusive towing vehicle."
       ],
+      "resource_class": "trailer",
       "service": "coastguard",
+      "towing": {
+        "towable_by": [
+          "coastguard_mud_rescue_unit"
+        ]
+      },
+      "training": [
+        "Mud Rescue Training"
+      ],
       "verification": {
-        "checked_at": "2026-07-22",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/546",
-          "https://www.missionchief.co.uk/einsaetze/567"
+          "https://www.missionchief.co.uk/einsaetze/567",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -2113,6 +2356,10 @@
       },
       "id": "rescue_pump_with_cafs",
       "name": "Rescue Pump with CAFS",
+      "notes": [
+        "Official UK foam guidance publishes the Rescue Pump with CAFS crew, cost and Fire Support availability."
+      ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
       "staffing": {
         "maximum": 9,
@@ -2179,25 +2426,49 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Lifeboat Station with Beach Lifeguard Unit"
+      ],
       "capabilities": [
         "rescue_watercraft_response"
       ],
       "category": "Coastguard water rescue",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
       "deployment": {
-        "is_trailer": true
+        "is_trailer": true,
+        "operating_environments": [
+          "water"
+        ]
       },
       "id": "rescue_watercraft_trailer",
       "name": "Rescue Watercraft (Trailer)",
       "notes": [
         "The official overlay page displays Rescue Watercraft (Trailer).",
-        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+        "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence.",
+        "Official UK guidance publishes the Rescue Watercraft cost, education, station, towing vehicle, speed value of 200 and one-patient capacity."
       ],
+      "resource_class": "trailer",
       "service": "coastguard",
+      "towing": {
+        "towable_by": [
+          "lifeboat_4x4_vehicle"
+        ]
+      },
+      "training": [
+        "Lifeboat Operations Training"
+      ],
+      "transport_capacity": {
+        "patients": 1
+      },
       "verification": {
-        "checked_at": "2026-07-24",
+        "checked_at": "2026-07-25",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/563/a",
-          "https://www.missionchief.co.uk/einsaetze.json"
+          "https://www.missionchief.co.uk/einsaetze.json",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -2477,6 +2748,10 @@
       },
       "id": "water_foam_carrier",
       "name": "Water/Foam Carrier",
+      "notes": [
+        "Official UK foam guidance publishes the Water/Foam Carrier crew, cost and Fire Support availability."
+      ],
+      "resource_class": "vehicle",
       "service": "fire_and_rescue",
       "staffing": {
         "maximum": 2,

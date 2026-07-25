@@ -15,11 +15,13 @@
   "deployment": {
     "is_trailer": true,
     "operating_environments": [
-      "inland_water"
+      "inland_water",
+      "water"
     ]
   },
   "notes": [
-    "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle."
+    "The official UK Help Centre identifies the Inland Rescue Boat as a trailer towed by a 4x4 Vehicle.",
+    "Official UK guidance publishes the Inland Rescue Boat trailer cost, education, station and towing vehicle."
   ],
   "verification": {
     "status": "verified",
@@ -38,5 +40,11 @@
   ],
   "building_requirements": [
     "Lifeboat Station"
-  ]
+  ],
+  "resource_class": "trailer",
+  "towing": {
+    "towable_by": [
+      "lifeboat_4x4_vehicle"
+    ]
+  }
 }

@@ -11,18 +11,40 @@
   ],
   "deployment": {
     "operating_environments": [
-      "ocean"
+      "ocean",
+      "water"
     ]
   },
   "notes": [
-    "Official UK mission requirements use the abbreviation ALB."
+    "Official UK mission requirements use the abbreviation ALB.",
+    "Official UK guidance publishes the ALB crew, cost, education and patient/prisoner capacities."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/561",
-      "https://www.missionchief.co.uk/einsaetze/562"
+      "https://www.missionchief.co.uk/einsaetze/562",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
+  },
+  "resource_class": "vessel",
+  "cost": {
+    "credits": 40000,
+    "coins": 25
+  },
+  "staffing": {
+    "minimum": 5,
+    "maximum": 7
+  },
+  "training": [
+    "Lifeboat Operations Training"
+  ],
+  "building_requirements": [
+    "Lifeboat Station"
+  ],
+  "transport_capacity": {
+    "patients": 6,
+    "prisoners": 4
   }
 }

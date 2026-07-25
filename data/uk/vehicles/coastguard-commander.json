@@ -12,16 +12,31 @@
     "minimum": 1,
     "maximum": 5
   },
-  "training": ["Coastal Command Training"],
+  "training": [
+    "Coastal Command Training"
+  ],
   "building_requirements": [
     "Coastguard Rescue Station",
     "Home Response Location"
   ],
-  "capabilities": ["coastguard_command"],
-  "notes": ["Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations."],
+  "capabilities": [
+    "coastguard_command"
+  ],
+  "notes": [
+    "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available locations.",
+    "Official UK guidance publishes the Coastguard Commander crew range, cost, education, station compatibility and towing role."
+  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": ["https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"]
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "flood_rescue_unit_trailer"
+    ]
   }
 }

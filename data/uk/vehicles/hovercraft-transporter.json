@@ -26,5 +26,14 @@
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "hovercraft_trailer"
+    ]
+  },
+  "notes": [
+    "Official UK guidance publishes the Hovercraft Transporter cost, single-person crew, expansion and towing role."
+  ]
 }

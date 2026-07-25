@@ -24,12 +24,14 @@ The source ledger is deliberately evidence-tiered. Community-observed game vehic
 
 | Field | Complete | Coverage |
 |---|---:|---:|
-| Cost | 29 / 92 | 31.52% |
-| Staffing | 25 / 92 | 27.17% |
-| Training | 14 / 92 | 15.22% |
-| Building Requirements | 21 / 92 | 22.83% |
-| Transport Capacity | 2 / 92 | 2.17% |
-| Deployment | 19 / 92 | 20.65% |
+| Cost | 37 / 92 | 40.22% |
+| Staffing | 30 / 92 | 32.61% |
+| Training | 21 / 92 | 22.83% |
+| Building Requirements | 29 / 92 | 31.52% |
+| Resource Class | 21 / 92 | 22.83% |
+| Transport Capacity | 6 / 92 | 6.52% |
+| Towing | 14 / 92 | 15.22% |
+| Deployment | 20 / 92 | 21.74% |
 | Capabilities | 92 / 92 | 100.00% |
 | Verification Sources | 92 / 92 | 100.00% |
 

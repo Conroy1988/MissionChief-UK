@@ -27,5 +27,16 @@
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "flood_rescue_unit_trailer",
+      "inland_rescue_boat_trailer",
+      "rescue_watercraft_trailer"
+    ]
+  },
+  "notes": [
+    "Official UK guidance publishes the Lifeboat 4x4 crew, cost and towing compatibility for water-rescue trailers."
+  ]
 }
