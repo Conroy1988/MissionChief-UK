@@ -126,7 +126,7 @@ jobs:
           manifest = json.loads(Path('docs/assets/data/v1/manifest.json').read_text(encoding='utf-8'))
           print(json.dumps(manifest, indent=2))
           assert manifest['collections']['vehicles']['count'] == 104, manifest
-          assert manifest['search']['entity_count'] == 1215, manifest
+          assert manifest['search_index']['count'] == 1215, manifest
           PY
 
       - name: Validate patch whitespace
