@@ -9,17 +9,41 @@
   ],
   "notes": [
     "The official overlay page displays Rescue Watercraft (Trailer).",
-    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence.",
+    "Official UK guidance publishes the Rescue Watercraft cost, education, station, towing vehicle, speed value of 200 and one-patient capacity."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-24",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/563/a",
-      "https://www.missionchief.co.uk/einsaetze.json"
+      "https://www.missionchief.co.uk/einsaetze.json",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
   },
   "deployment": {
-    "is_trailer": true
+    "is_trailer": true,
+    "operating_environments": [
+      "water"
+    ]
+  },
+  "resource_class": "trailer",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "training": [
+    "Lifeboat Operations Training"
+  ],
+  "building_requirements": [
+    "Lifeboat Station with Beach Lifeguard Unit"
+  ],
+  "transport_capacity": {
+    "patients": 1
+  },
+  "towing": {
+    "towable_by": [
+      "lifeboat_4x4_vehicle"
+    ]
   }
 }

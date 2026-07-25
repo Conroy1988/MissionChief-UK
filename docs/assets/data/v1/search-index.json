@@ -7811,7 +7811,7 @@
       "collection": "vehicles",
       "id": "all_weather_lifeboat",
       "name": "ALB",
-      "search_text": "all_weather_lifeboat alb lifeboat ocean rescue boat all-weather lifeboat ocean_rescue",
+      "search_text": "all_weather_lifeboat alb lifeboat ocean rescue boat all-weather lifeboat ocean_rescue lifeboat operations training",
       "service": "lifeboat"
     },
     {
@@ -7951,7 +7951,7 @@
       "collection": "vehicles",
       "id": "coastguard_rescue_helicopter",
       "name": "Coastguard Rescue Helicopter",
-      "search_text": "coastguard_rescue_helicopter coastguard rescue helicopter coastguard air rescue air_rescue ocean_rescue",
+      "search_text": "coastguard_rescue_helicopter coastguard rescue helicopter coastguard air rescue air_rescue ocean_rescue patient_treatment patient_transport coastal_air_rescue coastal air rescue operations",
       "service": "coastguard"
     },
     {
@@ -8021,7 +8021,7 @@
       "collection": "vehicles",
       "id": "drone",
       "name": "Drone",
-      "search_text": "drone drone shared aerial search and reconnaissance uav uncrewed aerial vehicle aerial_search reconnaissance",
+      "search_text": "drone drone shared aerial search and reconnaissance uav uncrewed aerial vehicle aerial_search reconnaissance equipment_deployable drone operator",
       "service": "shared"
     },
     {
@@ -8112,7 +8112,7 @@
       "collection": "vehicles",
       "id": "hovercraft_trailer",
       "name": "Hovercraft (Trailer)",
-      "search_text": "hovercraft_trailer hovercraft (trailer) coastguard coastguard water rescue hovercraft_response",
+      "search_text": "hovercraft_trailer hovercraft (trailer) coastguard coastguard water rescue hovercraft_response hover boat commander",
       "service": "coastguard"
     },
     {
@@ -8140,7 +8140,7 @@
       "collection": "vehicles",
       "id": "inshore_lifeboat",
       "name": "ILB",
-      "search_text": "inshore_lifeboat ilb lifeboat ocean rescue boat inshore lifeboat ocean_rescue",
+      "search_text": "inshore_lifeboat ilb lifeboat ocean rescue boat inshore lifeboat ocean_rescue lifeboat operations training",
       "service": "lifeboat"
     },
     {
@@ -8203,7 +8203,7 @@
       "collection": "vehicles",
       "id": "mud_decontamination_unit",
       "name": "Mud Decontamination Unit",
-      "search_text": "mud_decontamination_unit mud decontamination unit coastguard specialist support mud_decontamination",
+      "search_text": "mud_decontamination_unit mud decontamination unit coastguard specialist support mud_decontamination mud rescue training",
       "service": "coastguard"
     },
     {
@@ -8322,7 +8322,7 @@
       "collection": "vehicles",
       "id": "rescue_watercraft_trailer",
       "name": "Rescue Watercraft (Trailer)",
-      "search_text": "rescue_watercraft_trailer rescue watercraft (trailer) coastguard coastguard water rescue rescue_watercraft_response",
+      "search_text": "rescue_watercraft_trailer rescue watercraft (trailer) coastguard coastguard water rescue rescue_watercraft_response lifeboat operations training",
       "service": "coastguard"
     },
     {

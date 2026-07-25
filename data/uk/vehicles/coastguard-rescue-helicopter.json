@@ -6,7 +6,10 @@
   "category": "air rescue",
   "capabilities": [
     "air_rescue",
-    "ocean_rescue"
+    "ocean_rescue",
+    "patient_treatment",
+    "patient_transport",
+    "coastal_air_rescue"
   ],
   "deployment": {
     "operating_environments": [
@@ -15,13 +18,33 @@
     ]
   },
   "notes": [
-    "The verified Medivac from vessel mission applies a 50% requirement probability to this resource."
+    "The verified Medivac from vessel mission applies a 50% requirement probability to this resource.",
+    "Official UK guidance publishes the small Coastguard Rescue Helicopter crew, cost, training, airbase, treatment capability and 16-patient capacity."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
-      "https://www.missionchief.co.uk/einsaetze/562"
+      "https://www.missionchief.co.uk/einsaetze/562",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
+  },
+  "resource_class": "aircraft",
+  "cost": {
+    "credits": 300000,
+    "coins": 30
+  },
+  "staffing": {
+    "minimum": 4,
+    "maximum": 4
+  },
+  "training": [
+    "Coastal Air Rescue Operations"
+  ],
+  "building_requirements": [
+    "SAR Airbase"
+  ],
+  "transport_capacity": {
+    "patients": 16
   }
 }

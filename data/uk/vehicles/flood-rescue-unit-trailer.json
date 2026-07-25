@@ -34,5 +34,19 @@
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "resource_class": "trailer",
+  "towing": {
+    "towable_by": [
+      "coastguard_rescue_vehicle",
+      "coastguard_commander",
+      "coastguard_mud_rescue_unit",
+      "coastguard_rope_rescue_unit",
+      "coastguard_support_unit",
+      "lifeboat_4x4_vehicle"
+    ]
+  },
+  "notes": [
+    "Official UK guidance publishes the Flood Rescue Unit trailer cost, training, compatible stations and six towing vehicle types."
+  ]
 }

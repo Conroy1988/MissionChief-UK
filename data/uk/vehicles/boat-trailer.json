@@ -30,5 +30,14 @@
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "resource_class": "trailer",
+  "towing": {
+    "towable_by": [
+      "light_4x4"
+    ]
+  },
+  "notes": [
+    "Official UK guidance publishes the Boat Trailer cost, education, technical-rescue extension and L4V towing relationship."
+  ]
 }

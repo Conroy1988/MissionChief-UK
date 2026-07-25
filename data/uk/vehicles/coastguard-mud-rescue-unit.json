@@ -12,20 +12,34 @@
     "minimum": 1,
     "maximum": 5
   },
-  "training": ["Mud Rescue Training"],
-  "building_requirements": ["Coastguard Rescue Station"],
-  "capabilities": ["mud_rescue"],
+  "training": [
+    "Mud Rescue Training"
+  ],
+  "building_requirements": [
+    "Coastguard Rescue Station"
+  ],
+  "capabilities": [
+    "mud_rescue"
+  ],
   "notes": [
     "Official UK Coastguard missions identify this as a required specialist resource.",
-    "Current official Help Center guidance verifies the purchase cost, crew range, training and available building."
+    "Current official Help Center guidance verifies the purchase cost, crew range, training and available building.",
+    "Official UK guidance publishes the Mud Rescue Unit crew range, cost, education and towing relationships."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/546",
       "https://www.missionchief.co.uk/einsaetze/567",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "flood_rescue_unit_trailer",
+      "mud_decontamination_unit"
     ]
   }
 }

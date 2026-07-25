@@ -12,13 +12,30 @@
     "minimum": 1,
     "maximum": 5
   },
-  "training": ["Rope Rescue Training"],
-  "building_requirements": ["Coastguard Rescue Station"],
-  "capabilities": ["coastguard_rope_rescue"],
-  "notes": ["Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building."],
+  "training": [
+    "Rope Rescue Training"
+  ],
+  "building_requirements": [
+    "Coastguard Rescue Station"
+  ],
+  "capabilities": [
+    "coastguard_rope_rescue"
+  ],
+  "notes": [
+    "Current official UK Help Center guidance verifies the vehicle label, cost, crew range, education and available building.",
+    "Official UK guidance publishes the Rope Rescue Unit crew range, cost, education and Flood Rescue Unit towing role."
+  ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
-    "sources": ["https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"]
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "flood_rescue_unit_trailer"
+    ]
   }
 }

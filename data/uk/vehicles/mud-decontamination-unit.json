@@ -8,14 +8,35 @@
     "mud_decontamination"
   ],
   "notes": [
-    "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource."
+    "Official UK Coastguard and Coastal Rescue missions identify this as a required specialist support resource.",
+    "Official UK guidance publishes the Mud Decontamination Unit trailer cost, education, expansion and exclusive towing vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/546",
-      "https://www.missionchief.co.uk/einsaetze/567"
+      "https://www.missionchief.co.uk/einsaetze/567",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  },
+  "resource_class": "trailer",
+  "cost": {
+    "credits": 35000,
+    "coins": 20
+  },
+  "training": [
+    "Mud Rescue Training"
+  ],
+  "building_requirements": [
+    "Coastguard Rescue Station with Coastal Rescue Mud Expansion"
+  ],
+  "deployment": {
+    "is_trailer": true
+  },
+  "towing": {
+    "towable_by": [
+      "coastguard_mud_rescue_unit"
     ]
   }
 }

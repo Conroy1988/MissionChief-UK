@@ -9,18 +9,44 @@
   ],
   "notes": [
     "The official page displays Hovercraft (Trailer).",
-    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence."
+    "Cost, staffing, capacity and station compatibility remain unpublished in the retained official mission evidence.",
+    "Official UK guidance publishes the Hovercraft Trailer crew, cost, education, expansion and towing vehicle."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-24",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/547",
       "https://www.missionchief.co.uk/einsaetze/568",
-      "https://www.missionchief.co.uk/einsaetze.json"
+      "https://www.missionchief.co.uk/einsaetze.json",
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
   },
   "deployment": {
-    "is_trailer": true
+    "is_trailer": true,
+    "operating_environments": [
+      "water",
+      "mud"
+    ]
+  },
+  "resource_class": "trailer",
+  "cost": {
+    "credits": 35000,
+    "coins": 20
+  },
+  "staffing": {
+    "minimum": 3,
+    "maximum": 5
+  },
+  "training": [
+    "Hover boat commander"
+  ],
+  "building_requirements": [
+    "Lifeboat Station with Hover Mud Rescue Boat Expansion"
+  ],
+  "towing": {
+    "towable_by": [
+      "hovercraft_transporter"
+    ]
   }
 }

@@ -83,9 +83,27 @@
         "dogs": {
           "type": "integer",
           "minimum": 1
+        },
+        "patients": {
+          "type": "integer",
+          "minimum": 1
         }
       },
       "additionalProperties": false
+    },
+    "resource_class": {
+      "type": "string",
+      "enum": [
+        "vehicle",
+        "aircraft",
+        "vessel",
+        "trailer",
+        "container",
+        "equipment"
+      ]
+    },
+    "towing": {
+      "$ref": "#/$defs/towingInfo"
     }
   },
   "$defs": {
@@ -171,6 +189,29 @@
           "items": {
             "type": "string"
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "towingInfo": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "towable_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "can_tow": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "minItems": 1
         }
       },
       "additionalProperties": false

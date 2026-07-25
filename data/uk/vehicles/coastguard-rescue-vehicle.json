@@ -1,7 +1,9 @@
 {
   "id": "coastguard_rescue_vehicle",
   "name": "CRV",
-  "aliases": ["Coastguard Rescue Vehicle"],
+  "aliases": [
+    "Coastguard Rescue Vehicle"
+  ],
   "service": "coastguard",
   "category": "response",
   "cost": {
@@ -16,17 +18,26 @@
     "Coastguard Rescue Station",
     "Home Response Location"
   ],
-  "capabilities": ["coastguard_response"],
+  "capabilities": [
+    "coastguard_response"
+  ],
   "notes": [
     "Official UK mission requirements use the abbreviation CRV for this resource.",
-    "Current official Help Center guidance verifies the purchase cost, crew range and available locations."
+    "Current official Help Center guidance verifies the purchase cost, crew range and available locations.",
+    "Official UK guidance publishes the CRV crew range, purchase cost, station compatibility and Flood Rescue Unit towing role."
   ],
   "verification": {
     "status": "verified",
-    "checked_at": "2026-07-22",
+    "checked_at": "2026-07-25",
     "sources": [
       "https://www.missionchief.co.uk/einsaetze/569",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
+    ]
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "flood_rescue_unit_trailer"
     ]
   }
 }

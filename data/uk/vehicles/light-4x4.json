@@ -18,7 +18,8 @@
     "trailer_towing"
   ],
   "building_requirements": [
-    "Small Fire Station with Technical Rescue Extension"
+    "Small Fire Station with Technical Rescue Extension",
+    "Small Fire Station"
   ],
   "verification": {
     "status": "verified",
@@ -27,5 +28,14 @@
       "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
       "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1836-what-search-and-rescue-vehicles-are-available-uk-version/"
     ]
-  }
+  },
+  "resource_class": "vehicle",
+  "towing": {
+    "can_tow": [
+      "boat_trailer"
+    ]
+  },
+  "notes": [
+    "Official UK guidance publishes the L4V crew, cost, small-station availability and trailer-towing capability."
+  ]
 }
