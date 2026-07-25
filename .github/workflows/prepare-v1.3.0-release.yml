@@ -35,6 +35,9 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
+      - name: Apply preparation corrections
+        run: python scripts/fix_prepare_v1_3_release.py
+
       - name: Apply Stage 36 release alignment
         run: python scripts/prepare_v1_3_release.py
 
@@ -87,6 +90,7 @@ jobs:
       - name: Remove temporary preparation assets
         run: |
           rm -f scripts/prepare_v1_3_release.py
+          rm -f scripts/fix_prepare_v1_3_release.py
           rm -f .github/workflows/prepare-v1.3.0-release.yml
           rm -f .github/workflows/export-release-workspace.yml
           rm -rf site
