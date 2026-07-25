@@ -1,0 +1,136 @@
+name: Verify container fleet batch 4 production
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agent-verify-container-fleet-batch-4.yml
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'ops/verify-container-fleet-batch-4'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TARGET_SHA: d18951e317dac2cd8a102e9ea227d6a90029749b
+      REPOSITORY: Conroy1988/MissionChief-UK
+      LIVE_ROOT: https://conroy1988.github.io/MissionChief-UK
+    steps:
+      - name: Check out exact production commit
+        uses: actions/checkout@v6
+        with:
+          ref: d18951e317dac2cd8a102e9ea227d6a90029749b
+          fetch-depth: 0
+
+      - name: Verify repository state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          test "$(gh api "repos/$REPOSITORY/commits/main" --jq .sha)" = "$TARGET_SHA"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/sources/missionchief-uk/vehicle-coverage.json').read_text(encoding='utf-8'))
+          summary = report['summary']
+          fields = report['field_completeness']
+          assert summary['canonical_records'] == 103
+          assert summary['mapped_inventory_entries'] == 73
+          assert summary['unresolved_inventory_entries'] == 0
+          assert summary['identity_coverage_percent'] == 100.0
+          assert fields['cost']['complete'] == 48
+          assert fields['staffing']['complete'] == 31
+          assert fields['training']['complete'] == 37
+          assert fields['training_requirements']['complete'] == 22
+          assert fields['building_requirements']['complete'] == 57
+          assert fields['resource_class']['complete'] == 60
+          assert fields['transport_capacity']['complete'] == 6
+          assert fields['towing']['complete'] == 25
+          container = json.loads(Path('data/uk/vehicles/container-vehicle.json').read_text(encoding='utf-8'))
+          assert len(container['towing']['can_tow']) == 10
+          extension = json.loads(Path('data/uk/infrastructure/container-extension.json').read_text(encoding='utf-8'))
+          assert extension['id'] == 'container_extension'
+          PY
+
+      - name: Wait for exact main workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/container-verification"
+          mkdir -p "$evidence"
+          wait_for_workflow() {
+            local workflow="$1" label="$2" output="$3"
+            for attempt in $(seq 1 150); do
+              payload=$(gh api "repos/$REPOSITORY/actions/workflows/$workflow/runs?branch=main&event=push&per_page=50")
+              run=$(jq -c --arg sha "$TARGET_SHA" '[.workflow_runs[] | select(.head_sha == $sha)] | sort_by(.created_at) | reverse | .[0] // empty' <<<"$payload")
+              if [[ -n "$run" ]]; then
+                status=$(jq -r .status <<<"$run")
+                conclusion=$(jq -r '.conclusion // ""' <<<"$run")
+                if [[ "$status" == "completed" ]]; then
+                  printf '%s\n' "$run" > "$output"
+                  [[ "$conclusion" == "success" ]] || { echo "$label failed: $conclusion" >&2; exit 1; }
+                  return 0
+                fi
+              fi
+              sleep 10
+            done
+            echo "Timed out waiting for $label" >&2
+            exit 1
+          }
+          wait_for_workflow vehicle-inventory-validation.yml "Vehicle inventory validation" "$evidence/vehicle-workflow.json"
+          wait_for_workflow deploy-pages.yml "Pages deployment" "$evidence/pages-workflow.json"
+
+      - name: Verify live container publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/container-verification"
+          manifest="$evidence/manifest.json"
+          coverage="$evidence/vehicle-coverage.json"
+          vehicles="$evidence/vehicles.json"
+          infrastructure="$evidence/infrastructure.json"
+          page="$evidence/container-page.html"
+          for attempt in $(seq 1 90); do
+            nonce="$(date +%s)-$attempt"
+            if curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/v1/manifest.json?verify=$nonce" -o "$manifest" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/official/uk-vehicle-coverage.json?verify=$nonce" -o "$coverage" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/v1/vehicles.json?verify=$nonce" -o "$vehicles" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/v1/infrastructure.json?verify=$nonce" -o "$infrastructure" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/reference/verified-vehicle-container-fleet-batch-4/?verify=$nonce" -o "$page"; then
+              if jq -e '.collections.vehicles.count == 103 and .collections.infrastructure.count == 20 and .search_index.count == 1214' "$manifest" >/dev/null \
+                && jq -e '.summary.mapped_inventory_entries == 73 and .summary.unresolved_inventory_entries == 0 and .summary.identity_coverage_percent == 100' "$coverage" >/dev/null \
+                && jq -e '.field_completeness.cost.complete == 48 and .field_completeness.staffing.complete == 31 and .field_completeness.training.complete == 37 and .field_completeness.training_requirements.complete == 22 and .field_completeness.building_requirements.complete == 57 and .field_completeness.resource_class.complete == 60 and .field_completeness.transport_capacity.complete == 6 and .field_completeness.towing.complete == 25' "$coverage" >/dev/null \
+                && jq -e '[.records[] | select(.id == "container_vehicle")][0].towing.can_tow | length == 10' "$vehicles" >/dev/null \
+                && jq -e '[.records[] | select(.id == "container_extension")] | length == 1' "$infrastructure" >/dev/null \
+                && grep -q 'Verified UK Container Fleet Batch 4' "$page"; then
+                jq '{data_version, released_at, stage, status, collections, search_index}' "$manifest" > "$evidence/manifest-summary.json"
+                jq '{summary, field_completeness}' "$coverage" > "$evidence/coverage-summary.json"
+                printf 'production_sha=%s\nvehicles=103\ninfrastructure=20\nsearch=1214\nidentity=73/73\ncost=48/103\nbuildings=57/103\nresource_class=60/103\ntowing=25/103\n' "$TARGET_SHA" > "$evidence/summary.txt"
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo 'Live container publication did not converge.' >&2
+          exit 1
+
+      - name: Retain verification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: container-fleet-batch-4-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/container-verification
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Delete completed branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin --delete stage36a/container-fleet-enrichment-batch-4 || true
+          git push origin --delete ops/verify-container-fleet-batch-4 || true
