@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release/v1.3.0-stage36a
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
