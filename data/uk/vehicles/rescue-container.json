@@ -1,0 +1,33 @@
+{
+  "id": "rescue_container",
+  "name": "Rescue Container",
+  "aliases": [],
+  "service": "fire_and_rescue",
+  "category": "Container pod",
+  "resource_class": "container",
+  "cost": {
+    "credits": 25500,
+    "coins": 8
+  },
+  "building_requirements": [
+    "Fire Station with Container Extension"
+  ],
+  "towing": {
+    "towable_by": [
+      "container_vehicle"
+    ]
+  },
+  "capabilities": [
+    "technical_rescue_container"
+  ],
+  "notes": [
+    "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+    ]
+  }
+}

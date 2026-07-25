@@ -1,6 +1,6 @@
 {
   "collection": "infrastructure",
-  "count": 19,
+  "count": 20,
   "data_version": "1.2.0",
   "records": [
     {
@@ -120,6 +120,34 @@
         "checked_at": "2026-07-22",
         "sources": [
           "https://www.missionchief.co.uk/einsaetze"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Fire Station Container Extension",
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "container_vehicle_purchase",
+        "container_storage"
+      ],
+      "id": "container_extension",
+      "kind": "extension",
+      "name": "Container Extension",
+      "notes": [
+        "The official UK container article requires this extension for the Container Vehicle and every published container pod.",
+        "Extension cost, construction time and storage capacity remain unpublished in the retained source and are intentionally omitted."
+      ],
+      "parent_buildings": [
+        "Fire Station"
+      ],
+      "service": "fire_and_rescue",
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
         ],
         "status": "verified"
       }

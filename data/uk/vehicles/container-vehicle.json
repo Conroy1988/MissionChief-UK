@@ -1,0 +1,49 @@
+{
+  "id": "container_vehicle",
+  "name": "Container Vehicle",
+  "aliases": [
+    "Pod Carrier",
+    "Container Carrier"
+  ],
+  "service": "fire_and_rescue",
+  "category": "Container transport",
+  "resource_class": "vehicle",
+  "cost": {
+    "credits": 10000,
+    "coins": 10
+  },
+  "staffing": {
+    "minimum": 1,
+    "maximum": 2
+  },
+  "building_requirements": [
+    "Fire Station with Container Extension"
+  ],
+  "towing": {
+    "can_tow": [
+      "water_container",
+      "bulk_foam_container",
+      "rescue_container",
+      "command_container",
+      "welfare_container",
+      "basu_container",
+      "misting_container",
+      "hazmat_container",
+      "operational_support_unit_container",
+      "high_volume_pump_container"
+    ]
+  },
+  "capabilities": [
+    "container_transport"
+  ],
+  "notes": [
+    "The official UK Help Centre identifies this as the towing vehicle for every published UK container pod."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+    ]
+  }
+}

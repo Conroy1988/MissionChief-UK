@@ -2,7 +2,7 @@
   "api_version": "v1",
   "collections": {
     "infrastructure": {
-      "count": 19,
+      "count": 20,
       "path": "infrastructure.json"
     },
     "missions": {
@@ -14,7 +14,7 @@
       "path": "training.json"
     },
     "vehicles": {
-      "count": 92,
+      "count": 103,
       "path": "vehicles.json"
     }
   },
@@ -27,7 +27,7 @@
   },
   "released_at": "2026-07-24",
   "search_index": {
-    "count": 1202,
+    "count": 1214,
     "path": "search-index.json"
   },
   "stage": 35,
