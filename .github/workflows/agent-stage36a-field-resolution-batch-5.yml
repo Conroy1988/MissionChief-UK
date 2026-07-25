@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Generate and validate 100 percent resolution
+      - name: Generate and validate field-resolution registry
         shell: bash
         run: |
           set -euo pipefail
@@ -52,22 +52,43 @@ jobs:
           assert summary['resolved_decisions'] == 936, summary
           assert summary['unresolved_decisions'] == 0, summary
           assert summary['resolution_percent'] == 100.0, summary
+          print(json.dumps(summary, indent=2))
           PY
+
+      - name: Validate canonical vehicle data and generated coverage
+        shell: bash
+        run: |
+          set -euo pipefail
           python scripts/validate_data.py
           python scripts/validate_vehicle_inventory.py
           python scripts/generate_vehicle_coverage.py
           python scripts/generate_vehicle_field_resolution.py --check
           python scripts/generate_vehicle_coverage.py --check
+
+      - name: Synchronize public exports and run regressions
+        shell: bash
+        run: |
+          set -euo pipefail
           python scripts/run_public_verification_sync.py
           python scripts/generate_exports.py
           python scripts/generate_faq.py
           python -m unittest tests/python/test_vehicle_inventory.py tests/python/test_vehicle_field_resolution.py -v
           python -m unittest discover -s tests/python -p 'test_release_integrity.py' -v
           python scripts/validate_verification_programme_assets.py
+
+      - name: Run release readiness and strict site build
+        shell: bash
+        run: |
+          set -euo pipefail
           python scripts/release_readiness.py
           python scripts/audit_links.py
           python -m mkdocs build --strict --site-dir site
           python scripts/release_readiness.py --site-dir site
+
+      - name: Enforce final 100 percent metrics
+        shell: bash
+        run: |
+          set -euo pipefail
           python - <<'PY'
           import json
           from pathlib import Path
