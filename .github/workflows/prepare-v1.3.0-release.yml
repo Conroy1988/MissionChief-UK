@@ -44,6 +44,9 @@ jobs:
       - name: Apply Stage 36 release alignment
         run: python scripts/prepare_v1_3_release.py
 
+      - name: Finalize dynamic release compatibility
+        run: python scripts/fix_prepare_v1_3_release.py
+
       - name: Regenerate deterministic vehicle evidence
         run: |
           python scripts/generate_vehicle_field_resolution.py
