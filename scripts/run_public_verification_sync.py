@@ -13,7 +13,7 @@ PUBLICATION_PATHS = (
     sync.README_PATH,
     sync.HOME_PATH,
     sync.API_PATH,
-    sync.RELEASE_PATH,
+    ROOT / "docs" / "releases" / f"v{sync.read_json(sync.VERSION_PATH)['version']}.md",
     sync.CHANGELOG_PATH,
     sync.MISSION_LOOKUP_PATH,
     sync.OFFICIAL_CATALOGUE_PATH,

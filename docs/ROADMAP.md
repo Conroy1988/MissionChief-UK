@@ -4,15 +4,17 @@ MissionChief UK is maintained as an evidence-led information system rather than 
 
 ## Core programme status
 
-**Stages 1–35 are delivered.**
+**Stages 1–36 are delivered.**
 
 ```text
 1,079 canonical mission records
 1,062 / 1,062 official missions fully canonical
-59 deployable-resource records
-19 infrastructure records
+104 deployable-resource records
+20 infrastructure records
 12 qualification records
-Static data API v1.2.0
+73 / 73 observed vehicle type IDs mapped
+936 / 936 vehicle field decisions resolved
+Static Data API v1.3.0
 ```
 
 ## Delivered foundation — Stages 1–12
@@ -39,142 +41,76 @@ Static data API v1.2.0
 
 ## Delivered completion programme — Stages 21–35
 
-### Stage 21 — Railway response
-
-- [x] Railway Police and Railway fire response infrastructure
-- [x] Road Rail Unit, EIU, BA support, Foam Unit and DSU resources
-- [x] Railway Police and command personnel
-- [x] passenger, goods and station incidents
-- [x] personnel-range semantics
-- [x] Railway service guide and Mission Batch 10
-
-### Stage 22 — Specialist infrastructure
-
-- [x] Police Helicopter Station
-- [x] Public Order, Foam, Pump, Flood and Technical Rescue extensions
-- [x] Mud Decontamination and Hovercraft extensions
-- [x] referential enforcement and infrastructure Batch 2
-
-### Stage 23 — Qualifications
-
-- [x] production training schema
-- [x] eleven verified operational-role records
-- [x] qualification template and public catalogue
-- [x] explicit separation of verified roles from unverified course details
-
-### Stage 24 — Vehicle economics and staffing
-
-- [x] structured credit, coin and crew fields
-- [x] first official Coastguard economics set
-- [x] market-data evidence standard
-- [x] comparison-ready export fields
-
-### Stage 25 — Bomb Disposal enrichment
-
-- [x] busy beach and marina progression
-- [x] small and large railway-station incidents
-- [x] shed, loft and small building-site incidents
-- [x] Mission Batch 11 with directory-level evidence boundaries
-
-### Stage 26 — Airfield enrichment
-
-- [x] Aircraft Accident Code A and Code D
-- [x] Hot Brakes Code D
-- [x] Bird Strike and Fuel Leak Code A
-- [x] airport maintenance-hangar fire
-- [x] Mission Batch 12
-
-### Stage 27 — Recovery enrichment
-
-- [x] motorbike and motocross recovery
-- [x] HGV rollover and hazardous-goods recovery
-- [x] bus, caravan and major multi-vehicle variants
-- [x] collision between two buses
-- [x] Mission Batch 13
-
-### Stage 28 — Generated exports
-
-- [x] deterministic mission, vehicle, infrastructure and training exports
-- [x] version manifest and search index
-- [x] validation and deployment integration
-
-### Stage 29 — Mission lookup
-
-- [x] browser-side mission search and service filtering
-- [x] rendered preconditions, patients and requirement classes
-
-### Stage 30 — Comparison
-
-- [x] deployable-resource comparison
-- [x] qualification comparison
-- [x] visible unknown-value handling
-
-### Stage 31 — Fleet planning
-
-- [x] concurrent guaranteed-resource multiplier
-- [x] independent alternative-group output
-- [x] explicit scope limitations
-
-### Stage 32 — Query catalogue
-
-- [x] deterministic natural-language keyword matching
-- [x] cross-collection generated search index
-- [x] no unsupported generative inference
-
-### Stage 33 — Generated FAQ
-
-- [x] live collection counts
-- [x] evidence-policy answers
-- [x] Markdown and JSON outputs generated during builds
-
-### Stage 34 — Static API
-
-- [x] public v1 JSON endpoints
-- [x] release versioning and manifest
-- [x] OpenAPI 3.1 contract
-- [x] API guide and compatibility policy
-
-### Stage 35 — Complete canonical coverage
-
-- [x] direct canonical records for all 1,062 official UK missions
-- [x] strict source equivalence across requirements, patients, personnel, prisoners, recovery and operational metadata
-- [x] lossless variants, overlays, relationships, duration, availability and generation controls
-- [x] zero unmapped official requirement, chance or prerequisite keys
-- [x] Batch 31 completion ledger and v1.2.0 publication
+- [x] Stage 21 — Railway response
+- [x] Stage 22 — Specialist infrastructure
+- [x] Stage 23 — Qualifications
+- [x] Stage 24 — Vehicle economics and staffing
+- [x] Stage 25 — Bomb Disposal enrichment
+- [x] Stage 26 — Airfield enrichment
+- [x] Stage 27 — Recovery enrichment
+- [x] Stage 28 — Deterministic generated exports
+- [x] Stage 29 — Complete browser-side mission lookup
+- [x] Stage 30 — Resource and qualification comparison
+- [x] Stage 31 — Concurrent fleet planning
+- [x] Stage 32 — Deterministic query catalogue
+- [x] Stage 33 — Generated FAQ
+- [x] Stage 34 — Static Data API v1
+- [x] Stage 35 — Complete canonical coverage for all 1,062 official UK missions
 
 ## Stage 36A — Complete deployable-resource coverage
 
-**Status: in progress.**
+**Status: complete.**
 
 - [x] establish an evidence-tiered UK vehicle type ledger
 - [x] compare source identities with canonical deployable-resource records
-- [x] publish identity and field-completeness coverage separately
+- [x] publish identity and raw field-completeness coverage separately
 - [x] block duplicate IDs, dangling mappings and stale generated reports in CI
-- [ ] verify every current UK game vehicle type ID directly
-- [ ] create or reconcile every missing canonical resource identity
-- [ ] complete costs, staffing, training, building and deployment fields where reproducible
-- [ ] reach 100% identity coverage without treating unknown enrichment values as zero
+- [x] map every observed current UK vehicle type ID
+- [x] create or reconcile every missing canonical resource identity
+- [x] add official economics, staffing, training, building, towing, capacity and deployment contracts where reproducible
+- [x] classify every tracked field as documented, not applicable, not published or review required
+- [x] reach 73 / 73 observed identities with zero unresolved mappings
+- [x] resolve 936 / 936 field decisions across 104 canonical resources
+- [x] publish permanent schemas, JSON endpoints, evidence pages and regression enforcement
+- [x] preserve unpublished values as unknown rather than zero
+
+### Completion result
+
+```text
+104 canonical deployable resources
+73 / 73 observed vehicle type IDs mapped
+0 unresolved observed identities
+9 tracked operational fields per resource
+936 / 936 explicit field decisions resolved
+0 unresolved field decisions
+100% identity coverage
+100% field-decision coverage
+```
+
+Canonical-only resources without an observed type-ID entry are explicit overlays or equipment records and do not represent an unresolved observed identity.
 
 ## Ongoing evidence maintenance
 
-The numbered core programme and canonical mission backlog are complete. Remaining work is continuous source monitoring and evidence maintenance:
+The numbered completion programmes are delivered. Remaining work is continuous source monitoring and evidence enrichment:
 
-- reproduce additional vehicle prices, staffing and training durations;
+- reproduce additional published prices, staffing and training durations when suitable evidence appears;
+- directly reproduce community-candidate type IDs in the current authenticated UK interface;
 - verify currently unavailable EOD and Recovery response tables;
-- add new UK missions and game changes;
+- add new UK missions, vehicles and game changes through fail-closed drift review;
 - test overlapping alternative-resource dispatch allocation;
 - enrich infrastructure cost, capacity and parent-building data;
 - maintain API compatibility and publish future versioned releases;
-- improve tools when new verified fields support transparent calculations.
+- improve tools only when new verified fields support transparent calculations.
 
 ## Definition of complete
 
 A subject is complete only when:
 
 1. terminology and aliases are searchable;
-2. exact values are verified and dated;
+2. exact values are verified and dated where they are published;
 3. dependencies, alternatives, conditions and overlays are explicit;
-4. evidence boundaries are stated;
-5. related documentation and structured records are linked;
-6. validation covers the relevant relationships;
-7. a player can act without relying on an unexplained assumption.
+4. unpublished and not-applicable fields have explicit decisions;
+5. evidence boundaries are stated;
+6. related documentation and structured records are linked;
+7. validation covers the relevant relationships; and
+8. a player can act without relying on an unexplained assumption.

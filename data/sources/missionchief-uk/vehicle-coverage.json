@@ -2,7 +2,7 @@
   "schema_version": "1",
   "collection": "uk-vehicle-coverage",
   "source_updated_at": "2026-07-25",
-  "status": "in-progress",
+  "status": "complete",
   "summary": {
     "inventory_entries": 73,
     "canonical_records": 104,

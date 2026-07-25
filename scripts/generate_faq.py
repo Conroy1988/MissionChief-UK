@@ -79,6 +79,10 @@ def main() -> int:
             "answer": "No. Official recovery pages list towing as an outcome under Other information. Towing assets are stored separately from emergency resources and infrastructure generation requirements.",
         },
         {
+            "question": "Does 100% vehicle field resolution mean every value is published?",
+            "answer": "No. It means each of nine tracked fields for every canonical resource has an explicit evidence decision: documented, not applicable, not published or review required. A not-published decision never means zero, free, unrestricted or untrained.",
+        },
+        {
             "question": "Can I use this data programmatically?",
             "answer": "Yes. Versioned read-only JSON exports are published under assets/data/v1 and documented in the API section.",
         },

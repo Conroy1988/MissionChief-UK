@@ -14,7 +14,7 @@ BATCH_ROOT = ROOT / "data" / "uk" / "mission-verification-batches"
 README_PATH = ROOT / "README.md"
 HOME_PATH = ROOT / "docs" / "index.md"
 API_PATH = ROOT / "docs" / "api" / "index.md"
-RELEASE_PATH = ROOT / "docs" / "releases" / "v1.2.0.md"
+VERSION_PATH = ROOT / "data" / "version.json"
 CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 MISSION_LOOKUP_PATH = ROOT / "docs" / "tools" / "mission-lookup.md"
 OFFICIAL_CATALOGUE_PATH = ROOT / "docs" / "reference" / "official-mission-catalogue.md"
@@ -41,6 +41,16 @@ def read_json(path: Path) -> object:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise SyncFailure(f"Unable to read {path.relative_to(ROOT)}: {exc}") from exc
+
+
+def current_release_path() -> Path:
+    document = read_json(VERSION_PATH)
+    if not isinstance(document, dict) or not isinstance(document.get("version"), str):
+        raise SyncFailure("Release metadata version is invalid")
+    return ROOT / "docs" / "releases" / f"v{document['version']}.md"
+
+
+RELEASE_PATH = current_release_path()
 
 
 def replace_once(
@@ -408,35 +418,26 @@ def release_snapshot_counts() -> dict[str, int]:
 
 
 def sync_release(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
+    del metrics, batches
     snapshot = release_snapshot_counts()
     awaiting = snapshot["official_missions"] - snapshot["direct_matches"]
+    overlays = snapshot["canonical_missions"] - snapshot["direct_matches"]
     baseline_values = (
         (r"[\d,]+ official UK mission records", f"{format_number(snapshot['official_missions'])} official UK mission records", "release official baseline"),
         (r"[\d,]+ canonical mission records", f"{format_number(snapshot['canonical_missions'])} canonical mission records", "release canonical baseline"),
         (r"[\d,]+ direct official/canonical ID matches", f"{format_number(snapshot['direct_matches'])} direct official/canonical ID matches", "release direct baseline"),
         (r"[\d,]+ fully canonical mission records", f"{format_number(snapshot['fully_canonical'])} fully canonical mission records", "release fully baseline"),
-        (r"[\d,]+ official-only mission records", f"{format_number(awaiting)} official-only mission records", "release awaiting baseline"),
+        (r"[\d,]+ official records awaiting direct canonical records", f"{format_number(awaiting)} official records awaiting direct canonical records", "release awaiting baseline"),
+        (r"[\d,]+ canonical overlay or derived records without standalone official IDs", f"{format_number(overlays)} canonical overlay or derived records without standalone official IDs", "release overlay baseline"),
         (r"[\d,]+ canonical deployable-resource records", f"{format_number(snapshot['vehicles'])} canonical deployable-resource records", "release resource baseline"),
         (r"[\d,]+ canonical infrastructure records", f"{format_number(snapshot['infrastructure'])} canonical infrastructure records", "release infrastructure baseline"),
         (r"[\d,]+ qualification records", f"{format_number(snapshot['training'])} qualification records", "release qualification baseline"),
     )
     for pattern, replacement_value, label in baseline_values:
         text = replace_once(text, pattern, replacement_value, label)
-    final_batch = max(batches)
-    final_count = len(batches[final_batch])
-    text = replace_once(
-        text,
-        r"Batch 31 promotes the final \*\*[\d,]+\*\* missions:",
-        f"Batch 31 promotes the final **{format_number(final_count)}** missions:",
-        "release final batch count",
-    )
-    text = replace_once(
-        text,
-        r"- \*\*[\d,]+\*\* missions left outside the fully canonical gate\.",
-        f"- **{format_number(awaiting)}** missions left outside the fully canonical gate.",
-        "release remaining count",
-    )
     return text
+
+
 def sync_changelog(text: str, metrics: dict[str, int | float], batches: dict[int, list[str]]) -> str:
     final_batch = max(batches)
     final_count = len(batches[final_batch])
@@ -471,11 +472,15 @@ def main() -> int:
     try:
         metrics = load_metrics()
         batches = load_batches()
+        release_document = read_json(VERSION_PATH)
+        if not isinstance(release_document, dict) or not isinstance(release_document.get("version"), str):
+            raise SyncFailure("Release metadata version is invalid")
+        release_path = ROOT / "docs" / "releases" / f"v{release_document['version']}.md"
         updates = {
             README_PATH: sync_readme(README_PATH.read_text(encoding="utf-8"), metrics, batches),
             HOME_PATH: sync_home(HOME_PATH.read_text(encoding="utf-8"), metrics),
             API_PATH: sync_api(API_PATH.read_text(encoding="utf-8"), metrics),
-            RELEASE_PATH: sync_release(RELEASE_PATH.read_text(encoding="utf-8"), metrics, batches),
+            release_path: sync_release(release_path.read_text(encoding="utf-8"), metrics, batches),
             CHANGELOG_PATH: sync_changelog(CHANGELOG_PATH.read_text(encoding="utf-8"), metrics, batches),
             MISSION_LOOKUP_PATH: sync_mission_lookup(
                 MISSION_LOOKUP_PATH.read_text(encoding="utf-8"), metrics

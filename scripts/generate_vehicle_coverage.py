@@ -88,7 +88,7 @@ An omitted value is unknown, not zero. Field completeness is reported separately
 |---|---:|---:|
 {resolution_rows}
 
-Decision coverage distinguishes documented values, fields that are not applicable, and values that are not published by a reproducible current UK source. It does not convert unknown values into zeroes or guesses.
+Decision coverage distinguishes documented values, fields that are not applicable, and values that are not published by a reproducible current UK source. It does not convert unknown values into zeroes or guesses. Canonical-only equipment and overlay records do not block completion when every observed ledger identity is mapped and every tracked field has an explicit decision.
 
 ## Source-ledger entries awaiting canonical mapping
 
@@ -96,7 +96,7 @@ Decision coverage distinguishes documented values, fields that are not applicabl
 |---:|---|---|---|---|
 {unresolved_rows}
 
-## Canonical records awaiting source-ledger mapping
+## Canonical records without an observed source-ledger ID
 
 | Canonical ID | UK label | Service |
 |---|---|---|
