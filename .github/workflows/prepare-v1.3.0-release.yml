@@ -90,18 +90,17 @@ jobs:
           python -m mkdocs build --strict --site-dir site
           python scripts/release_readiness.py --site-dir site
 
-      - name: Remove temporary preparation assets
+      - name: Remove temporary preparation scripts
         run: |
           rm -f scripts/prepare_v1_3_release.py
           rm -f scripts/fix_prepare_v1_3_release.py
-          rm -f .github/workflows/prepare-v1.3.0-release.yml
-          rm -f .github/workflows/export-release-workspace.yml
           rm -rf site
 
       - name: Commit deterministic release candidate
         shell: bash
         run: |
           set -euo pipefail
+          git restore --source=HEAD --worktree --staged .github/workflows
           git diff --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
