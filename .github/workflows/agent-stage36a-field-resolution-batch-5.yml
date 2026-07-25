@@ -97,7 +97,7 @@ jobs:
           python -m mkdocs build --strict --site-dir site
           python scripts/release_readiness.py --site-dir site
 
-      - name: Enforce final 100 percent metrics
+      - name: Enforce final vehicle coverage metrics
         shell: bash
         run: |
           set -euo pipefail
@@ -107,16 +107,26 @@ jobs:
           coverage = json.loads(Path('data/sources/missionchief-uk/vehicle-coverage.json').read_text(encoding='utf-8'))
           summary = coverage['summary']
           resolution = coverage['field_resolution']
+          print(json.dumps({'coverage': summary, 'resolution': resolution}, indent=2))
           assert summary['canonical_records'] == 104, summary
           assert summary['mapped_inventory_entries'] == 73, summary
           assert summary['unresolved_inventory_entries'] == 0, summary
           assert summary['identity_coverage_percent'] == 100.0, summary
           assert resolution['resolution_percent'] == 100.0, resolution
           assert resolution['unresolved_decisions'] == 0, resolution
+          PY
+
+      - name: Enforce final public manifest metrics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
           manifest = json.loads(Path('docs/assets/data/v1/manifest.json').read_text(encoding='utf-8'))
+          print(json.dumps(manifest, indent=2))
           assert manifest['collections']['vehicles']['count'] == 104, manifest
           assert manifest['search']['entity_count'] == 1215, manifest
-          print(json.dumps({'coverage': summary, 'resolution': resolution}, indent=2))
           PY
           git diff --check
 
