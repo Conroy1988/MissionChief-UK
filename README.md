@@ -55,10 +55,10 @@ The numbered core programme is complete through **Stage 35**. Version **1.2.0** 
 | **Fully canonical missions** | **1,062** | Passed identity, mapping, operational and final evidence gates |
 | **Official records awaiting canonical records** | **0** | Published records whose remaining semantics stay unguessed |
 | **Canonical-only overlays** | **17** | Derived records without standalone official IDs |
-| **Deployable resources** | **92** | Vehicles, boats, trailers and specialist equipment |
-| **Infrastructure** | **19** | Buildings and extensions |
+| **Deployable resources** | **103** | Vehicles, boats, trailers and specialist equipment |
+| **Infrastructure** | **20** | Buildings and extensions |
 | **Qualifications** | **12** | Operational roles and verified course fields |
-| **Canonical searchable entities** | **1,202** | Missions, resources, infrastructure and qualifications |
+| **Canonical searchable entities** | **1,214** | Missions, resources, infrastructure and qualifications |
 | **Public interface** | **Static API v1.2.0** | Versioned canonical and official data surfaces |
 
 > [!IMPORTANT]
@@ -176,8 +176,8 @@ data/uk/
 ├── mission-verification-registry.json
 ├── mission-verification-batches/   evidence-controlled promotions
 ├── official-key-mappings.json
-├── vehicles/                       92 deployable resources
-├── infrastructure/                 19 buildings and extensions
+├── vehicles/                       103 deployable resources
+├── infrastructure/                 20 buildings and extensions
 └── training/                       12 qualification records
 ```
 

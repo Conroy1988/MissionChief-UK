@@ -1,6 +1,6 @@
 {
   "collection": "vehicles",
-  "count": 92,
+  "count": 103,
   "data_version": "1.2.0",
   "records": [
     {
@@ -484,6 +484,39 @@
     {
       "aliases": [],
       "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "breathing_apparatus_support_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 11680
+      },
+      "id": "basu_container",
+      "name": "BASU Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
         "Small Fire Station with Technical Rescue Extension"
       ],
       "capabilities": [
@@ -679,6 +712,39 @@
         "sources": [
           "https://www.missionchief.co.uk/einsaetze/807",
           "https://police.missionchief.co.uk/einsaetze/792?additive_overlays=a"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "bulk_foam_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 17300
+      },
+      "id": "bulk_foam_container",
+      "name": "Bulk Foam Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -1103,6 +1169,88 @@
           "https://missionchief-uk.fandom.com/wiki/Vehicles"
         ],
         "status": "community-report"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "incident_command_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 25500
+      },
+      "id": "command_container",
+      "name": "Command Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Pod Carrier",
+        "Container Carrier"
+      ],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "container_transport"
+      ],
+      "category": "Container transport",
+      "cost": {
+        "coins": 10,
+        "credits": 10000
+      },
+      "id": "container_vehicle",
+      "name": "Container Vehicle",
+      "notes": [
+        "The official UK Help Centre identifies this as the towing vehicle for every published UK container pod."
+      ],
+      "resource_class": "vehicle",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 2,
+        "minimum": 1
+      },
+      "towing": {
+        "can_tow": [
+          "water_container",
+          "bulk_foam_container",
+          "rescue_container",
+          "command_container",
+          "welfare_container",
+          "basu_container",
+          "misting_container",
+          "hazmat_container",
+          "operational_support_unit_container",
+          "high_volume_pump_container"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
       }
     },
     {
@@ -1567,6 +1715,39 @@
     },
     {
       "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "hazmat_response_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 19200
+      },
+      "id": "hazmat_container",
+      "name": "HazMat Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
       "capabilities": [
         "hazardous_materials_response"
       ],
@@ -1618,6 +1799,39 @@
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code"
         ],
         "status": "community-report"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "high_volume_pumping_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 20000
+      },
+      "id": "high_volume_pump_container",
+      "name": "High Volume Pump Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
       }
     },
     {
@@ -2083,6 +2297,39 @@
       }
     },
     {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "misting_firefighting_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 5000
+      },
+      "id": "misting_container",
+      "name": "Misting Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [
         "Mountain Rescue 4x4 Vehicle"
       ],
@@ -2326,6 +2573,39 @@
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/"
         ],
         "status": "community-report"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "operational_support_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 30000
+      },
+      "id": "operational_support_unit_container",
+      "name": "Operational Support Unit Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
       }
     },
     {
@@ -2627,6 +2907,39 @@
           "https://www.missionchief.co.uk/einsaetze/762",
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1736-what-is-a-hart-base/",
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1715-what-is-a-small-ambulance-station/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "technical_rescue_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 25500
+      },
+      "id": "rescue_container",
+      "name": "Rescue Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
         ],
         "status": "verified"
       }
@@ -3108,6 +3421,39 @@
       }
     },
     {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "water_supply_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 17300
+      },
+      "id": "water_container",
+      "name": "Water Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
       "aliases": [
         "F/WrC"
       ],
@@ -3139,6 +3485,39 @@
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [],
+      "building_requirements": [
+        "Fire Station with Container Extension"
+      ],
+      "capabilities": [
+        "welfare_support_container"
+      ],
+      "category": "Container pod",
+      "cost": {
+        "coins": 8,
+        "credits": 15000
+      },
+      "id": "welfare_container",
+      "name": "Welfare Container",
+      "notes": [
+        "The official UK Help Centre publishes this as a container pod transported by the Container Vehicle."
+      ],
+      "resource_class": "container",
+      "service": "fire_and_rescue",
+      "towing": {
+        "towable_by": [
+          "container_vehicle"
+        ]
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
         ],
         "status": "verified"
       }

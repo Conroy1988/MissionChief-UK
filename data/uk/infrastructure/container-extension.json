@@ -1,0 +1,28 @@
+{
+  "id": "container_extension",
+  "name": "Container Extension",
+  "aliases": [
+    "Fire Station Container Extension",
+    "Fire Station with Container Extension"
+  ],
+  "kind": "extension",
+  "service": "fire_and_rescue",
+  "parent_buildings": [
+    "Fire Station"
+  ],
+  "capabilities": [
+    "container_vehicle_purchase",
+    "container_storage"
+  ],
+  "notes": [
+    "The official UK container article requires this extension for the Container Vehicle and every published container pod.",
+    "Extension cost, construction time and storage capacity remain unpublished in the retained source and are intentionally omitted."
+  ],
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026-07-25",
+    "sources": [
+      "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1694-what-containers-are-available-uk-version/"
+    ]
+  }
+}

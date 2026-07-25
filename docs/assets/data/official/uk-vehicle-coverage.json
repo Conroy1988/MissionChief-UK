@@ -5,11 +5,11 @@
   "status": "in-progress",
   "summary": {
     "inventory_entries": 73,
-    "canonical_records": 92,
+    "canonical_records": 103,
     "mapped_inventory_entries": 73,
     "unresolved_inventory_entries": 0,
     "dangling_canonical_mappings": 0,
-    "canonical_records_without_inventory_entry": 19,
+    "canonical_records_without_inventory_entry": 30,
     "identity_coverage_percent": 100.0,
     "verified_labels": 27,
     "candidate_labels": 46,
@@ -18,58 +18,58 @@
   },
   "field_completeness": {
     "cost": {
-      "complete": 37,
-      "total": 92,
-      "percent": 40.22
+      "complete": 48,
+      "total": 103,
+      "percent": 46.6
     },
     "staffing": {
-      "complete": 30,
-      "total": 92,
-      "percent": 32.61
+      "complete": 31,
+      "total": 103,
+      "percent": 30.1
     },
     "training": {
       "complete": 37,
-      "total": 92,
-      "percent": 40.22
+      "total": 103,
+      "percent": 35.92
     },
     "training_requirements": {
       "complete": 22,
-      "total": 92,
-      "percent": 23.91
+      "total": 103,
+      "percent": 21.36
     },
     "building_requirements": {
-      "complete": 46,
-      "total": 92,
-      "percent": 50.0
+      "complete": 57,
+      "total": 103,
+      "percent": 55.34
     },
     "resource_class": {
-      "complete": 49,
-      "total": 92,
-      "percent": 53.26
+      "complete": 60,
+      "total": 103,
+      "percent": 58.25
     },
     "transport_capacity": {
       "complete": 6,
-      "total": 92,
-      "percent": 6.52
+      "total": 103,
+      "percent": 5.83
     },
     "towing": {
-      "complete": 14,
-      "total": 92,
-      "percent": 15.22
+      "complete": 25,
+      "total": 103,
+      "percent": 24.27
     },
     "deployment": {
       "complete": 20,
-      "total": 92,
-      "percent": 21.74
+      "total": 103,
+      "percent": 19.42
     },
     "capabilities": {
-      "complete": 92,
-      "total": 92,
+      "complete": 103,
+      "total": 103,
       "percent": 100.0
     },
     "verification_sources": {
-      "complete": 92,
-      "total": 92,
+      "complete": 103,
+      "total": 103,
       "percent": 100.0
     }
   },
@@ -112,6 +112,11 @@
       "service": "police"
     },
     {
+      "canonical_id": "basu_container",
+      "name": "BASU Container",
+      "service": "fire_and_rescue"
+    },
+    {
       "canonical_id": "bomb_disposal_crew",
       "name": "Bomb Disposal Crew",
       "service": "bomb_disposal"
@@ -137,6 +142,11 @@
       "service": "fire_and_rescue"
     },
     {
+      "canonical_id": "bulk_foam_container",
+      "name": "Bulk Foam Container",
+      "service": "fire_and_rescue"
+    },
+    {
       "canonical_id": "cbrn_vehicle",
       "name": "CBRN Vehicle",
       "service": "fire_and_rescue"
@@ -145,6 +155,16 @@
       "canonical_id": "coastguard_rescue_helicopter",
       "name": "Coastguard Rescue Helicopter",
       "service": "coastguard"
+    },
+    {
+      "canonical_id": "command_container",
+      "name": "Command Container",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "container_vehicle",
+      "name": "Container Vehicle",
+      "service": "fire_and_rescue"
     },
     {
       "canonical_id": "drone",
@@ -172,6 +192,21 @@
       "service": "fire_and_rescue"
     },
     {
+      "canonical_id": "hazmat_container",
+      "name": "HazMat Container",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "high_volume_pump_container",
+      "name": "High Volume Pump Container",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "misting_container",
+      "name": "Misting Container",
+      "service": "fire_and_rescue"
+    },
+    {
       "canonical_id": "mud_decontamination_unit",
       "name": "Mud Decontamination Unit",
       "service": "coastguard"
@@ -182,14 +217,34 @@
       "service": "police"
     },
     {
+      "canonical_id": "operational_support_unit_container",
+      "name": "Operational Support Unit Container",
+      "service": "fire_and_rescue"
+    },
+    {
       "canonical_id": "personal_sar_vehicle",
       "name": "Personal SAR Vehicle",
       "service": "search_and_rescue"
     },
     {
+      "canonical_id": "rescue_container",
+      "name": "Rescue Container",
+      "service": "fire_and_rescue"
+    },
+    {
       "canonical_id": "traffic_car",
       "name": "Traffic Car",
       "service": "police"
+    },
+    {
+      "canonical_id": "water_container",
+      "name": "Water Container",
+      "service": "fire_and_rescue"
+    },
+    {
+      "canonical_id": "welfare_container",
+      "name": "Welfare Container",
+      "service": "fire_and_rescue"
     }
   ]
 }
