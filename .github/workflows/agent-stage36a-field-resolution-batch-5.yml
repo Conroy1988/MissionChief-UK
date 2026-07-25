@@ -128,7 +128,9 @@ jobs:
           assert manifest['collections']['vehicles']['count'] == 104, manifest
           assert manifest['search']['entity_count'] == 1215, manifest
           PY
-          git diff --check
+
+      - name: Validate patch whitespace
+        run: git diff --check
 
       - name: Commit field-resolution batch
         shell: bash
