@@ -1,0 +1,139 @@
+name: Verify official vehicle enrichment batch 2 production
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agent-verify-official-enrichment-batch-2.yml
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'ops/verify-official-enrichment-batch-2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TARGET_SHA: 2c5533bd5e2f7d65862af0dd98de91fe48554016
+      REPOSITORY: Conroy1988/MissionChief-UK
+      LIVE_ROOT: https://conroy1988.github.io/MissionChief-UK
+    steps:
+      - name: Check out exact production commit
+        uses: actions/checkout@v6
+        with:
+          ref: 2c5533bd5e2f7d65862af0dd98de91fe48554016
+          fetch-depth: 0
+
+      - name: Verify repository production state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          main_sha=$(gh api "repos/$REPOSITORY/commits/main" --jq .sha)
+          test "$main_sha" = "$TARGET_SHA"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/sources/missionchief-uk/vehicle-coverage.json').read_text(encoding='utf-8'))
+          summary = report['summary']
+          fields = report['field_completeness']
+          assert summary['canonical_records'] == 92, summary
+          assert summary['mapped_inventory_entries'] == 73, summary
+          assert summary['unresolved_inventory_entries'] == 0, summary
+          assert summary['identity_coverage_percent'] == 100.0, summary
+          expected = {
+              'cost': 37,
+              'staffing': 30,
+              'training': 21,
+              'building_requirements': 29,
+              'resource_class': 21,
+              'transport_capacity': 6,
+              'towing': 14,
+          }
+          for field, count in expected.items():
+              assert fields[field]['complete'] == count, (field, fields[field])
+          PY
+
+      - name: Wait for exact main workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/enrichment-verification"
+          mkdir -p "$evidence"
+
+          wait_for_workflow() {
+            local workflow="$1"
+            local label="$2"
+            local output="$3"
+            for attempt in $(seq 1 150); do
+              payload=$(gh api "repos/$REPOSITORY/actions/workflows/$workflow/runs?branch=main&event=push&per_page=50")
+              run=$(jq -c --arg sha "$TARGET_SHA" '[.workflow_runs[] | select(.head_sha == $sha)] | sort_by(.created_at) | reverse | .[0] // empty' <<<"$payload")
+              if [[ -n "$run" ]]; then
+                status=$(jq -r .status <<<"$run")
+                conclusion=$(jq -r '.conclusion // ""' <<<"$run")
+                if [[ "$status" == "completed" ]]; then
+                  printf '%s\n' "$run" > "$output"
+                  if [[ "$conclusion" != "success" ]]; then
+                    echo "$label failed with conclusion $conclusion" >&2
+                    exit 1
+                  fi
+                  echo "$label passed."
+                  return 0
+                fi
+              fi
+              sleep 10
+            done
+            echo "Timed out waiting for $label at $TARGET_SHA" >&2
+            exit 1
+          }
+
+          wait_for_workflow vehicle-inventory-validation.yml "Vehicle inventory validation" "$evidence/vehicle-workflow.json"
+          wait_for_workflow deploy-pages.yml "Pages deployment" "$evidence/pages-workflow.json"
+
+      - name: Verify live enrichment publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/enrichment-verification"
+          manifest="$evidence/manifest.json"
+          coverage="$evidence/vehicle-coverage.json"
+          page="$evidence/enrichment-page.html"
+
+          for attempt in $(seq 1 90); do
+            nonce="$(date +%s)-$attempt"
+            if curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/v1/manifest.json?verify=$nonce" -o "$manifest" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/assets/data/official/uk-vehicle-coverage.json?verify=$nonce" -o "$coverage" \
+              && curl -fsSL --max-time 30 "$LIVE_ROOT/reference/verified-vehicle-official-enrichment-batch-2/?verify=$nonce" -o "$page"; then
+              if jq -e '.collections.vehicles.count == 92' "$manifest" >/dev/null \
+                && jq -e '.summary.inventory_entries == 73 and .summary.mapped_inventory_entries == 73 and .summary.unresolved_inventory_entries == 0 and .summary.identity_coverage_percent == 100' "$coverage" >/dev/null \
+                && jq -e '.field_completeness.cost.complete == 37 and .field_completeness.staffing.complete == 30 and .field_completeness.training.complete == 21 and .field_completeness.building_requirements.complete == 29 and .field_completeness.resource_class.complete == 21 and .field_completeness.transport_capacity.complete == 6 and .field_completeness.towing.complete == 14' "$coverage" >/dev/null \
+                && grep -q 'Verified Vehicle Enrichment Batch 2' "$page"; then
+                jq '{data_version, released_at, stage, status, collections, search_index}' "$manifest" > "$evidence/manifest-summary.json"
+                jq '{summary, field_completeness}' "$coverage" > "$evidence/coverage-summary.json"
+                printf 'production_sha=%s\nvehicle_records=92\nidentity_coverage=100%%\ncost=37/92\nstaffing=30/92\ntraining=21/92\nbuildings=29/92\ntransport_capacity=6/92\ntowing=14/92\n' "$TARGET_SHA" > "$evidence/summary.txt"
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo 'Live publication did not converge to the expected enrichment baseline.' >&2
+          exit 1
+
+      - name: Retain production evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-enrichment-batch-2-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/enrichment-verification
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Delete completed branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin --delete stage36a/official-enrichment-batch-2 || true
+          git push origin --delete ops/verify-official-enrichment-batch-2 || true
