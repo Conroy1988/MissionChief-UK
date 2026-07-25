@@ -1,5 +1,5 @@
 {
-  "count": 1214,
+  "count": 1215,
   "data_version": "1.2.0",
   "records": [
     {
@@ -8477,6 +8477,13 @@
       "id": "water_foam_carrier",
       "name": "Water/Foam Carrier",
       "search_text": "water_foam_carrier water/foam carrier fire_and_rescue water and foam support f/wrc water_carrier_requirement foam_supply",
+      "service": "fire_and_rescue"
+    },
+    {
+      "collection": "vehicles",
+      "id": "water_ladder_with_cafs",
+      "name": "Water Ladder with CAFS",
+      "search_text": "water_ladder_with_cafs water ladder with cafs fire_and_rescue foam firefighting appliance water ladder cafs firefighting foam_response compressed_air_foam_system",
       "service": "fire_and_rescue"
     },
     {

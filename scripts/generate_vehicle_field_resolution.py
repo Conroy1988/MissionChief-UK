@@ -5,7 +5,6 @@ import argparse
 import json
 import sys
 from collections import Counter
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -97,7 +96,13 @@ def load_records() -> list[dict[str, Any]]:
 
 def build_document() -> dict[str, Any]:
     records = load_records()
-    checked_at = date.today().isoformat()
+    checked_dates = [
+        str(record.get('verification', {}).get('checked_at', ''))
+        for record in records
+        if isinstance(record.get('verification'), dict)
+        and record.get('verification', {}).get('checked_at')
+    ]
+    checked_at = max(checked_dates) if checked_dates else '1970-01-01'
     output_records: list[dict[str, Any]] = []
     field_statuses = {field: Counter() for field in TRACKED_FIELDS}
 

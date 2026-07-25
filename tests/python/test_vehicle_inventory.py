@@ -22,6 +22,40 @@ def inventory_record(type_id: int, name: str, canonical_id: str | None) -> list:
     return [type_id, name, canonical_id, "fire", "vehicle", "candidate", ["example"], []]
 
 
+def field_resolution_document(total: int) -> dict:
+    fields = (
+        "cost",
+        "staffing",
+        "training",
+        "training_requirements",
+        "building_requirements",
+        "resource_class",
+        "transport_capacity",
+        "towing",
+        "deployment",
+    )
+    return {
+        "collection": "uk-vehicle-field-resolution",
+        "summary": {
+            "canonical_records": total,
+            "tracked_fields": len(fields),
+            "total_decisions": total * len(fields),
+            "resolved_decisions": total * len(fields),
+            "unresolved_decisions": 0,
+            "resolution_percent": 100.0,
+        },
+        "field_summary": {
+            field: {
+                "resolved": total,
+                "total": total,
+                "percent": 100.0,
+                "status_counts": {"documented": total},
+            }
+            for field in fields
+        },
+    }
+
+
 
 class VehicleInventoryTests(unittest.TestCase):
     def document(self, records: list[dict]) -> dict:
@@ -88,7 +122,7 @@ class VehicleInventoryTests(unittest.TestCase):
             },
         }
 
-        report = build_vehicle_coverage(document, records, canonical)
+        report = build_vehicle_coverage(document, records, canonical, field_resolution_document(len(canonical)))
 
         self.assertEqual(report["status"], "in-progress")
         self.assertEqual(report["summary"]["mapped_inventory_entries"], 1)
@@ -101,7 +135,7 @@ class VehicleInventoryTests(unittest.TestCase):
     def test_dangling_mapping_is_reported(self) -> None:
         document = self.document([inventory_record(1, "Missing", "not_present")])
         records = validate_inventory_document(document)
-        report = build_vehicle_coverage(document, records, {})
+        report = build_vehicle_coverage(document, records, {}, field_resolution_document(0))
         self.assertEqual(report["summary"]["dangling_canonical_mappings"], 1)
 
     def test_loaders_read_realistic_files(self) -> None:

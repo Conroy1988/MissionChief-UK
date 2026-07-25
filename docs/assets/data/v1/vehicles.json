@@ -1,6 +1,6 @@
 {
   "collection": "vehicles",
-  "count": 103,
+  "count": 104,
   "data_version": "1.2.0",
   "records": [
     {
@@ -3484,6 +3484,42 @@
         "checked_at": "2026-07-25",
         "sources": [
           "https://greasyfork.org/en/scripts/585892-missionchief-unit-naming-tool/code",
+          "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
+        ],
+        "status": "verified"
+      }
+    },
+    {
+      "aliases": [
+        "Water Ladder CAFS"
+      ],
+      "building_requirements": [
+        "Fire Station with Fire Support"
+      ],
+      "capabilities": [
+        "firefighting",
+        "foam_response",
+        "compressed_air_foam_system"
+      ],
+      "category": "Foam firefighting appliance",
+      "cost": {
+        "coins": 10,
+        "credits": 17300
+      },
+      "id": "water_ladder_with_cafs",
+      "name": "Water Ladder with CAFS",
+      "notes": [
+        "Official UK foam guidance publishes the Water Ladder with CAFS as a distinct foam-capable appliance."
+      ],
+      "resource_class": "vehicle",
+      "service": "fire_and_rescue",
+      "staffing": {
+        "maximum": 9,
+        "minimum": 2
+      },
+      "verification": {
+        "checked_at": "2026-07-25",
+        "sources": [
           "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1708-which-vehicles-can-carry-foam/"
         ],
         "status": "verified"
