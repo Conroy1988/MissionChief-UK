@@ -1,24 +1,45 @@
-name: Stage 36B full validation
+name: Validate release candidate
 
-# Bootstrap the permanent release-grade workflow identity on main. The
-# acceleration PR will then make this the sole ready-PR landing audit.
+# Ready pull requests receive one complete release-grade audit. Draft pull
+# requests use the path-aware fast workflow instead. Infrastructure workflow
+# changes also run the audit directly on trusted repository branches.
 on:
+  push:
+    branches:
+      - "infra/**"
+    paths:
+      - .github/workflows/validate.yml
+      - .github/workflows/branch-validation-report.yml
+      - .github/workflows/deploy-pages.yml
+      - .github/workflows/production-pages-verification.yml
+      - .github/workflows/vehicle-inventory-validation.yml
+      - scripts/classify_ci_changes.py
+      - scripts/run_full_data_audit.sh
+      - scripts/validate_verification_programme_assets.py
+      - tests/python/test_ci_change_classifier.py
+      - DELIVERY_ACCELERATION.md
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, labeled]
   workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
 
 permissions:
   contents: read
   statuses: write
 
 concurrency:
-  group: stage36b-full-${{ github.event.pull_request.number || github.ref }}
+  group: release-candidate-validation-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   data-integrity:
     name: Complete data and generator audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -44,7 +65,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stage36b-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             ${{ env.DIAGNOSTICS_DIR }}
             canonical-candidates.json
@@ -54,6 +75,10 @@ jobs:
 
   documentation:
     name: Strict documentation and built-site audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -77,13 +102,17 @@ jobs:
       - name: Upload reusable built site
         uses: actions/upload-artifact@v4
         with:
-          name: stage36b-built-site-${{ github.run_id }}
+          name: full-built-site-${{ github.run_id }}
           path: site
           if-no-files-found: error
           retention-days: 1
 
   workflow-integrity:
     name: Workflow structure audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -111,7 +140,7 @@ jobs:
       - name: Statically validate every Actions workflow
         run: "$RUNNER_TEMP/actionlint/actionlint" .github/workflows/*.yml
 
-      - name: Parse every workflow
+      - name: Parse every workflow and test lane classification
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -123,10 +152,12 @@ jobs:
                   raise SystemExit(f'Invalid workflow structure: {path}')
               print(f'parsed {path}')
           PY
+          python -m unittest tests/python/test_ci_change_classifier.py -v
 
   browser:
     name: Chromium and WebKit acceptance
     needs: documentation
+    if: needs.documentation.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -135,7 +166,7 @@ jobs:
       - name: Download the single audited site build
         uses: actions/download-artifact@v5
         with:
-          name: stage36b-built-site-${{ github.run_id }}
+          name: full-built-site-${{ github.run_id }}
           path: site
 
       - uses: actions/setup-node@v6
@@ -183,7 +214,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: stage36b-playwright-diagnostics-${{ github.run_id }}
+          name: full-playwright-diagnostics-${{ github.run_id }}
           path: |
             playwright-report
             test-results
@@ -191,13 +222,17 @@ jobs:
           retention-days: 14
 
   report:
-    name: Stage 36B full result
-    if: always()
+    name: Release candidate result
+    if: >-
+      always() &&
+      (github.event_name != 'pull_request' ||
+       github.event.pull_request.draft == false ||
+       github.event.label.name == 'full-ci')
     needs: [data-integrity, documentation, workflow-integrity, browser]
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Publish and enforce exact-SHA result
+      - name: Publish and enforce exact-SHA full-audit result
         env:
           GH_TOKEN: ${{ github.token }}
           DATA: ${{ needs.data-integrity.result }}
@@ -208,11 +243,11 @@ jobs:
         run: |
           set -euo pipefail
           state=success
-          description="Stage 36B full audit passed"
+          description="Complete release-grade audit passed"
           for result in "$DATA" "$DOCUMENTATION" "$WORKFLOW" "$BROWSER"; do
             case "$result" in
-              success) ;;
-              *) state=failure; description="Stage 36B full audit failed" ;;
+              success|skipped) ;;
+              *) state=failure; description="Complete release-grade audit failed" ;;
             esac
           done
 
@@ -225,5 +260,7 @@ jobs:
             --data "{\"state\":\"$state\",\"context\":\"stage36b/full-audit\",\"description\":\"$description\",\"target_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}"
 
           if [ "$state" != success ]; then
+            echo "$description"
             exit 1
           fi
+          echo "$description"
