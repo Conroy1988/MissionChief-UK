@@ -1,7 +1,7 @@
 name: Validate guide
 
 # Draft pull requests use path-aware fast lanes. Ready pull requests use the
-# release-grade lane in this same active workflow identity.
+# complete release-grade lanes in this same active workflow identity.
 on:
   pull_request:
     branches: [main]
@@ -249,14 +249,41 @@ jobs:
           python -m unittest tests/test_workflow_yaml.py -v
           python -m unittest tests/python/test_ci_change_classifier.py -v
 
-  ready-smoke:
-    name: Ready-state routing smoke
+  ready-data:
+    name: Complete data and evidence audit
     if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
     steps:
-      - name: Confirm ready routing
-        run: echo "Ready-state validation route is active."
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run complete deterministic data audit
+        run: bash scripts/run_full_data_audit.sh
+
+      - name: Upload retained diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.DIAGNOSTICS_DIR }}
+            canonical-candidates.json
+            key-mapping-backlog.json
+          if-no-files-found: ignore
+          retention-days: 14
 
   validate:
     name: Validation result
@@ -268,7 +295,7 @@ jobs:
       - vehicle-fast
       - interface-fast
       - workflow-fast
-      - ready-smoke
+      - ready-data
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -280,11 +307,11 @@ jobs:
           VEHICLE: ${{ needs.vehicle-fast.result }}
           INTERFACE: ${{ needs.interface-fast.result }}
           WORKFLOW: ${{ needs.workflow-fast.result }}
-          READY: ${{ needs.ready-smoke.result }}
+          READY_DATA: ${{ needs.ready-data.result }}
         shell: bash
         run: |
           set -euo pipefail
-          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$READY"; do
+          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$READY_DATA"; do
             case "$result" in
               success|skipped) ;;
               *) echo "Selected validation lane ended as: $result"; exit 1 ;;
