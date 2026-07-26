@@ -1,11 +1,11 @@
 name: Validate guide
 
 # Fast, path-aware feedback for active pull-request development. The complete
-# release-grade audit runs separately once a pull request is no longer draft.
+# release-grade audit is added automatically when a pull request is ready.
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
   workflow_dispatch:
 
 permissions:
@@ -247,6 +247,14 @@ jobs:
           PY
           python -m unittest tests/python/test_ci_change_classifier.py -v
 
+  full-validation:
+    name: Complete landing audit
+    if: >-
+      github.event_name == 'pull_request' &&
+      (github.event.pull_request.draft == false ||
+       github.event.label.name == 'full-ci')
+    uses: ./.github/workflows/branch-validation-report.yml
+
   validate:
     name: Validation result
     if: always()
@@ -257,6 +265,7 @@ jobs:
       - vehicle-fast
       - interface-fast
       - workflow-fast
+      - full-validation
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -268,13 +277,14 @@ jobs:
           VEHICLE: ${{ needs.vehicle-fast.result }}
           INTERFACE: ${{ needs.interface-fast.result }}
           WORKFLOW: ${{ needs.workflow-fast.result }}
+          FULL: ${{ needs.full-validation.result }}
         shell: bash
         run: |
           set -euo pipefail
-          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW"; do
+          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$FULL"; do
             case "$result" in
               success|skipped) ;;
               *) echo "Selected validation lane ended as: $result"; exit 1 ;;
             esac
           done
-          echo "All selected fast validation lanes passed."
+          echo "All selected validation lanes passed."
