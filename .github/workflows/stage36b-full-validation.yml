@@ -109,7 +109,9 @@ jobs:
           tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP/actionlint"
 
       - name: Statically validate every Actions workflow
-        run: "$RUNNER_TEMP/actionlint/actionlint" .github/workflows/*.yml
+        shell: bash
+        run: |
+          "$RUNNER_TEMP/actionlint/actionlint" .github/workflows/*.yml
 
       - name: Parse every workflow
         run: |
