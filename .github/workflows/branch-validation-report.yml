@@ -1,11 +1,9 @@
 name: Validate release candidate
 
-# Release-grade validation runs only for non-draft pull requests, manual audits,
-# and the scheduled production baseline. Draft development uses validate.yml.
+# Release-grade validation is called by validate.yml for non-draft pull requests,
+# and also remains available for manual and scheduled production audits.
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  workflow_call:
   workflow_dispatch:
   schedule:
     - cron: "17 3 * * *"
@@ -268,11 +266,7 @@ jobs:
 
   report:
     name: Release candidate result
-    if: >-
-      always() &&
-      (github.event_name != 'pull_request' ||
-       github.event.pull_request.draft == false ||
-       github.event.label.name == 'full-ci')
+    if: always()
     needs: [data-integrity, documentation, workflow-integrity, browser]
     runs-on: ubuntu-latest
     timeout-minutes: 2
