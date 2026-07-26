@@ -9,11 +9,12 @@
 
 # MissionChief UK
 
-<p class="mcuk-hero-lead">A complete UK mission catalogue with every official mission directly mapped, fully canonical, searchable and protected by strict source-equivalence validation.</p>
+<p class="mcuk-hero-lead">A complete UK mission catalogue and deployable-resource intelligence platform with 100% canonical mission coverage, 73/73 observed vehicle identities mapped and 936/936 resource-field decisions resolved.</p>
 
 <div class="mcuk-actions" markdown>
 [Search all UK missions](tools/mission-lookup.md){ .md-button .md-button--primary }
-[Track 100% verification](reference/mission-verification-status.md){ .md-button }
+[Track mission verification](reference/mission-verification-status.md){ .md-button }
+[Audit resource resolution](reference/vehicle-field-resolution.md){ .md-button }
 [Plan concurrent incidents](tools/fleet-planner.md){ .md-button }
 [Open the static API](api/index.md){ .md-button }
 </div>
@@ -24,8 +25,8 @@
 </div>
 
 <div class="mcuk-hero-telemetry">
-  <div><strong data-mcuk-metric="version">v1.2.0</strong><span>Data release</span></div>
-  <div><strong data-mcuk-metric="stage">Stage 35</strong><span>Core programme</span></div>
+  <div><strong data-mcuk-metric="version">v1.3.0</strong><span>Data release</span></div>
+  <div><strong data-mcuk-metric="stage">Stage 36</strong><span>Core programme</span></div>
   <div><strong data-mcuk-metric="official">1,062</strong><span>Official UK missions</span></div>
   <div><strong data-mcuk-metric="missions">1,079</strong><span>Canonical mapped</span></div>
   <div><strong data-mcuk-metric="fully-canonical">1,062</strong><span>Fully canonical</span></div>
@@ -110,6 +111,14 @@
   <em>Inspect catalogue →</em>
 </a>
 
+<a class="mcuk-command-card mcuk-command-card--red" href="reference/vehicle-field-resolution/">
+  <span class="mcuk-command-icon">08</span>
+  <small>STAGE 36 RESOURCE EVIDENCE</small>
+  <strong>Vehicle Field Resolution</strong>
+  <p>Audit 936 explicit decisions across 104 resources without converting unpublished values into zeroes or guesses.</p>
+  <em>Inspect resolution →</em>
+</a>
+
 </div>
 
 ## Live intelligence estate
@@ -118,9 +127,9 @@
   <div class="mcuk-board-header">
     <div>
       <small>PRODUCTION POSTURE</small>
-      <h3>Complete official coverage and 100% fully canonical intelligence</h3>
+      <h3>Complete mission coverage and evidence-safe Stage 36 resource intelligence</h3>
     </div>
-    <span data-mcuk-release-date>Released 24 July 2026</span>
+    <span data-mcuk-release-date>Released 25 July 2026</span>
   </div>
   <div class="mcuk-board-metrics">
     <div><strong data-mcuk-collection="missions">1,079</strong><span>Canonical missions</span><i>Mapped requirements, outcomes and generation</i></div>

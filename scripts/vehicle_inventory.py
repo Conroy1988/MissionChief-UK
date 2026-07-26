@@ -236,7 +236,12 @@ def build_vehicle_coverage(
         "collection": "uk-vehicle-coverage",
         "source_updated_at": inventory_document["updated_at"],
         "status": "complete"
-        if not unresolved and not dangling and not canonical_only
+        if (
+            not unresolved
+            and not dangling
+            and field_resolution["summary"].get("unresolved_decisions") == 0
+            and field_resolution["summary"].get("resolution_percent") == 100.0
+        )
         else "in-progress",
         "summary": summary,
         "field_completeness": field_completeness,

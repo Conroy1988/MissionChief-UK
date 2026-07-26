@@ -132,6 +132,31 @@ class VehicleInventoryTests(unittest.TestCase):
         self.assertEqual(report["field_completeness"]["staffing"]["complete"], 0)
         self.assertEqual(report["field_completeness"]["transport_capacity"]["complete"], 0)
 
+    def test_canonical_only_records_do_not_block_complete_programme(self) -> None:
+        document = self.document([inventory_record(1, "Mapped", "mapped")])
+        records = validate_inventory_document(document)
+        canonical = {
+            "mapped": {
+                "id": "mapped",
+                "name": "Mapped",
+                "service": "fire",
+                "verification": {"status": "verified", "checked_at": "2026-07-25", "sources": ["https://example.test"]},
+            },
+            "canonical_only": {
+                "id": "canonical_only",
+                "name": "Canonical only",
+                "service": "police",
+                "verification": {"status": "verified", "checked_at": "2026-07-25", "sources": ["https://example.test"]},
+            },
+        }
+
+        report = build_vehicle_coverage(document, records, canonical, field_resolution_document(len(canonical)))
+
+        self.assertEqual(report["status"], "complete")
+        self.assertEqual(report["summary"]["unresolved_inventory_entries"], 0)
+        self.assertEqual(report["summary"]["canonical_records_without_inventory_entry"], 1)
+        self.assertEqual(report["field_resolution"]["resolution_percent"], 100.0)
+
     def test_dangling_mapping_is_reported(self) -> None:
         document = self.document([inventory_record(1, "Missing", "not_present")])
         records = validate_inventory_document(document)

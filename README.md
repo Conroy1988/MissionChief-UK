@@ -5,9 +5,9 @@
 <br>
 
 [![Open Command Centre](https://img.shields.io/badge/OPEN-COMMAND_CENTRE-1593D1?style=for-the-badge&logo=googlemaps&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/)
-[![Release](https://img.shields.io/badge/RELEASE-v1.2.0-1675A9?style=for-the-badge)](docs/releases/v1.2.0.md)
-[![Stage](https://img.shields.io/badge/PROGRAMME-STAGE_35_COMPLETE-D63345?style=for-the-badge)](#-production-command-posture)
-[![API](https://img.shields.io/badge/STATIC_API-v1.2.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
+[![Release](https://img.shields.io/badge/RELEASE-v1.3.0-1675A9?style=for-the-badge)](docs/releases/v1.3.0.md)
+[![Stage](https://img.shields.io/badge/PROGRAMME-STAGE_36_COMPLETE-D63345?style=for-the-badge)](#-production-command-posture)
+[![API](https://img.shields.io/badge/STATIC_API-v1.3.0-0B1D31?style=for-the-badge&logo=json&logoColor=white)](https://conroy1988.github.io/MissionChief-UK/api/)
 
 [![Validate guide](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/validate.yml)
 [![Deploy Pages](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Conroy1988/MissionChief-UK/actions/workflows/deploy-pages.yml)
@@ -18,7 +18,7 @@
 
 **1,062 official UK missions · 1,079 canonical mission records · 1,062 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
 
-[**Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Complete Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Verification Status**](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**v1.2.0 Notes**](docs/releases/v1.2.0.md)
+[**Command Centre**](https://conroy1988.github.io/MissionChief-UK/) · [**Complete Mission Lookup**](https://conroy1988.github.io/MissionChief-UK/tools/mission-lookup/) · [**Verification Status**](https://conroy1988.github.io/MissionChief-UK/reference/mission-verification-status/) · [**Fleet Planner**](https://conroy1988.github.io/MissionChief-UK/tools/fleet-planner/) · [**Resource Comparison**](https://conroy1988.github.io/MissionChief-UK/tools/resource-comparison/) · [**Static API**](https://conroy1988.github.io/MissionChief-UK/api/) · [**v1.2.0 Notes**](docs/releases/v1.3.0.md)
 
 </div>
 
@@ -45,7 +45,7 @@ It combines the complete official UK mission catalogue with conservative canonic
 
 # 📡 Production Command Posture
 
-The numbered core programme is complete through **Stage 35**. Version **1.2.0** completes direct canonical coverage and strict evidence-controlled verification for every official UK mission.
+The numbered programme is complete through **Stage 36**. Version **1.3.0** combines complete canonical mission coverage with evidence-safe identity and field-decision coverage for the current UK deployable-resource estate.
 
 | Intelligence domain | Current baseline | Operational result |
 |---|---:|---|
@@ -59,10 +59,28 @@ The numbered core programme is complete through **Stage 35**. Version **1.2.0** 
 | **Infrastructure** | **20** | Buildings and extensions |
 | **Qualifications** | **12** | Operational roles and verified course fields |
 | **Canonical searchable entities** | **1,215** | Missions, resources, infrastructure and qualifications |
-| **Public interface** | **Static API v1.2.0** | Versioned canonical and official data surfaces |
+| **Public interface** | **Static API v1.3.0** | Versioned canonical and official data surfaces |
 
 > [!IMPORTANT]
 > **The current catalogue is fully mapped, but the evidence boundary remains active.** Future source changes cannot become operational recommendations until their fields and semantics pass the same strict contracts.
+
+---
+
+# 🚒 Stage 36 Resource Intelligence
+
+The completed Stage 36A programme treats resource identity and operational-field evidence as separate contracts.
+
+| Resource gate | Current position |
+|---|---:|
+| Observed UK vehicle type IDs mapped | **73 / 73 — 100.00%** |
+| Canonical deployable resources | **104** |
+| Tracked operational fields per resource | **9** |
+| Field decisions resolved | **936 / 936 — 100.00%** |
+| Unresolved field decisions | **0** |
+
+Each field is classified as `documented`, `not_applicable`, `not_published` or `review_required`. A `not_published` decision means no reproducible current UK source publishes the value; it never means zero, free, unrestricted or untrained.
+
+[Review vehicle coverage →](https://conroy1988.github.io/MissionChief-UK/reference/vehicle-coverage-status/) · [Audit field resolution →](https://conroy1988.github.io/MissionChief-UK/reference/vehicle-field-resolution/)
 
 ---
 

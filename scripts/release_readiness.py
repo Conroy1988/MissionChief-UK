@@ -353,7 +353,11 @@ def release_metadata() -> dict[str, Any]:
         isinstance(version, str) and re.fullmatch(r"1\.\d+\.\d+", version) is not None,
         "data/version.json must contain a v1 semantic version",
     )
-    require(release.get("stage") == 35, "The v1.2 release must identify Stage 35")
+    stage = release.get("stage")
+    require(
+        isinstance(stage, int) and not isinstance(stage, bool) and stage >= 35,
+        "Release metadata must identify Stage 35 or later",
+    )
     require(release.get("status") == "production", "The v1 release status must be production")
     released_at = release.get("released_at")
     require(isinstance(released_at, str), "Release metadata must contain released_at")
@@ -433,9 +437,10 @@ def audit_publication_metadata(
             rf"^[├└]── {re.escape(label)}\s+{re.escape(formatted_count(value))} ",
             f"README data estate {label} count is stale",
         )
+    stage = int(release["stage"])
     require(
-        "stage_35_complete" in readme_lower or "stage 35 complete" in readme_words,
-        "README stage badge is not synchronized to Stage 35",
+        f"stage_{stage}_complete" in readme_lower or f"stage {stage} complete" in readme_words,
+        f"README stage badge is not synchronized to Stage {stage}",
     )
     require(
         version in readme_lower and "static api" in readme_words,
@@ -615,6 +620,8 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "reference/official-mission-catalogue/index.html",
         "reference/mission-verification-status/index.html",
         "reference/generated-faq/index.html",
+        "reference/vehicle-coverage-status/index.html",
+        "reference/vehicle-field-resolution/index.html",
         "api/index.html",
         "quality-assurance/index.html",
         f"releases/v{release_version}/index.html",
@@ -624,6 +631,8 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
         "assets/data/official/uk-missions.json",
         "assets/data/official/uk-mission-coverage.json",
         "assets/data/official/uk-mission-verification.json",
+        "assets/data/official/uk-vehicle-coverage.json",
+        "assets/data/official/uk-vehicle-field-resolution.json",
         "assets/data/v1/manifest.json",
         "assets/data/v1/missions.json",
         "assets/data/v1/vehicles.json",
@@ -644,7 +653,13 @@ def audit_built_site(site_dir: Path, release_version: str) -> None:
     source_manifest = read_json(OUTPUT_ROOT / "manifest.json")
     require(built_manifest == source_manifest, "Built-site manifest differs from the generated source manifest")
 
-    for filename in ("uk-missions.json", "uk-mission-coverage.json", "uk-mission-verification.json"):
+    for filename in (
+        "uk-missions.json",
+        "uk-mission-coverage.json",
+        "uk-mission-verification.json",
+        "uk-vehicle-coverage.json",
+        "uk-vehicle-field-resolution.json",
+    ):
         built = read_json(site_dir / "assets" / "data" / "official" / filename)
         source = read_json(OFFICIAL_OUTPUT_ROOT / filename)
         require(built == source, f"Built official catalogue asset differs from source: {filename}")

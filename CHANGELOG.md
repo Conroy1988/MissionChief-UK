@@ -8,6 +8,26 @@ The project follows semantic versioning for its public static-data API and relea
 
 No unreleased changes are currently recorded.
 
+## [1.3.0] — 2026-07-25
+
+### Complete deployable-resource intelligence
+
+- Expanded the canonical deployable-resource estate from 59 to 104 vehicles, aircraft, vessels, trailers, containers and specialist equipment.
+- Mapped all 73 observed MissionChief UK vehicle type IDs with zero unresolved identities and 100% identity coverage.
+- Added the complete official UK container fleet, Container Extension and verified bidirectional carrier relationships.
+- Added official economics, staffing, training-duration, building-compatibility, resource-class, capacity, towing and deployment contracts where reproducible.
+- Added Water Ladder with CAFS with verified official cost, crew and Fire Support building compatibility.
+- Resolved all nine tracked operational fields for every canonical resource: 936 / 936 explicit evidence-safe decisions and zero unresolved decisions.
+- Added deterministic field-resolution schemas, registries, public JSON endpoints, evidence pages, regression tests and permanent CI enforcement.
+- Preserved raw documented-value completeness separately from decision coverage; unpublished values remain unknown rather than being converted into zeroes or guesses.
+
+### Release and publication integrity
+
+- Advanced the production programme to Stage 36 and the compatible Static Data API publication to v1.3.0.
+- Reconciled README, roadmap, Command Centre, API documentation, generated FAQ, OpenAPI metadata and release artefacts with the completed Stage 36A baseline.
+- Extended built-site release validation to cover the vehicle-coverage and field-resolution evidence endpoints.
+- Retained the canonical API v1 contract and all existing mission, infrastructure and qualification identifiers.
+
 ## [1.2.0] — 2026-07-24
 
 ### Complete canonical UK mission catalogue

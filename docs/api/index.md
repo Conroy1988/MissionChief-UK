@@ -1,11 +1,12 @@
 # MissionChief UK Static Data API
 
-MissionChief UK publishes two read-only public data tiers:
+MissionChief UK publishes three read-only evidence surfaces:
 
-1. a versioned canonical API generated from normalized evidence records; and
-2. a separate lossless snapshot of the complete public MissionChief UK mission catalogue, including reconciliation and verification status.
+1. a versioned canonical API generated from normalized records;
+2. a lossless snapshot and verification status for the complete official UK mission catalogue; and
+3. deterministic UK vehicle identity, completeness and field-resolution evidence.
 
-Official internal keys are never silently treated as canonical resources.
+Official internal keys and unpublished resource values are never silently treated as verified canonical data.
 
 ## Canonical API base
 
@@ -17,21 +18,25 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 
 ```text
 API contract: v1
-Data version: 1.2.0
-Released: 24 July 2026
+Data version: 1.3.0
+Released: 25 July 2026
+Programme stage: 36
 Canonical missions: 1,079
 Official UK missions: 1,062
 Direct official/canonical ID matches: 1,062
 Fully canonical missions: 1,062
+Canonical deployable resources: 104
+Observed vehicle IDs mapped: 73 / 73
+Vehicle field decisions resolved: 936 / 936
 ```
 
-Version 1.2.0 retains the canonical v1 contract and publishes the complete official catalogue at 100% direct canonical and fully canonical coverage.
+Version 1.3.0 retains the canonical v1 contract. It adds Stage 36 resource records and evidence endpoints without changing existing envelope or identifier semantics.
 
 ## Canonical endpoints
 
 | Endpoint | Purpose |
 |---|---|
-| `manifest.json` | Version, status and canonical collection counts |
+| `manifest.json` | Version, status, programme stage and canonical collection counts |
 | `missions.json` | Canonical normalized mission records |
 | `vehicles.json` | Canonical deployable-resource records |
 | `infrastructure.json` | Canonical building and extension records |
@@ -40,7 +45,7 @@ Version 1.2.0 retains the canonical v1 contract and publishes the complete offic
 | `faq.json` | Generated FAQ entries |
 | `openapi.json` | OpenAPI 3.1 contract for the canonical API |
 
-## Official UK mission endpoints
+## Official and evidence endpoints
 
 Base:
 
@@ -50,51 +55,56 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/official/
 
 | Endpoint | Purpose |
 |---|---|
-| `uk-missions.json` | Complete lossless official UK catalogue with source provenance |
-| `uk-mission-coverage.json` | Reconciliation between official IDs and canonical records |
+| `uk-missions.json` | Complete lossless official UK mission catalogue with source provenance |
+| `uk-mission-coverage.json` | Reconciliation between official mission IDs and canonical records |
 | `uk-mission-verification.json` | Every official mission’s verification gate, blockers and next action |
-
-The official catalogue contains 1,062 records. It preserves every published field and adds only:
-
-- `official_url`;
-- `limited_availability`; and
-- normalized `availability.starts_at` and `availability.ends_at` values.
-
-The verification endpoint is generated after merging the base registry with scalable batch registries. A record is never promoted merely because its name exists in both collections.
+| `uk-vehicle-coverage.json` | Observed vehicle-ID reconciliation and raw documented-field completeness |
+| `uk-vehicle-field-resolution.json` | Explicit decision for nine tracked operational fields across every canonical resource |
 
 ## Canonical response envelope
 
 ```json
 {
   "schema_version": "1",
-  "data_version": "1.2.0",
-  "released_at": "2026-07-24",
+  "data_version": "1.3.0",
+  "released_at": "2026-07-25",
   "collection": "missions",
   "count": 1079,
   "records": []
 }
 ```
 
-The deployed records are generated during the build.
-
-## Official catalogue envelope
+## Vehicle field-resolution envelope
 
 ```json
 {
   "schema_version": "1",
-  "collection": "official-uk-missions",
-  "source": {
-    "authority": "MissionChief UK",
-    "url": "https://www.missionchief.co.uk/einsaetze.json",
-    "fetched_at": "2026-07-22T21:40:36Z",
-    "sha256": "..."
+  "collection": "uk-vehicle-field-resolution",
+  "status": "complete",
+  "summary": {
+    "canonical_records": 104,
+    "tracked_fields": 9,
+    "total_decisions": 936,
+    "resolved_decisions": 936,
+    "unresolved_decisions": 0,
+    "resolution_percent": 100.0
   },
-  "count": 1062,
   "records": []
 }
 ```
 
-## Verification envelope
+Each resource-field decision uses one of four statuses:
+
+| Status | Meaning |
+|---|---|
+| `documented` | A reproducible current UK source publishes the value or contract |
+| `not_applicable` | The field does not apply to the resource under the verified model |
+| `not_published` | No retained reproducible current UK source publishes the value |
+| `review_required` | Evidence is incomplete or contradictory and requires renewed review |
+
+`not_published` never means zero, free, unrestricted or untrained.
+
+## Mission verification envelope
 
 ```json
 {
@@ -112,59 +122,32 @@ The deployed records are generated during the build.
 }
 ```
 
-Each verification record contains:
-
-- official mission ID and exact UK name;
-- current verification stage and rank;
-- official source URL;
-- canonical path where one exists;
-- explicit registry decision where promoted;
-- blocking reasons; and
-- the next required action.
-
-Consumers should use the source SHA-256 to detect catalogue changes, `data_version` for canonical publications and the verification summary for progress toward 100%.
-
 ## Versioning policy
 
 - `v1` identifies the API contract generation.
 - `data_version` identifies the current validated publication.
-- Additive canonical records and optional fields may be published within v1.
+- Additive canonical records, evidence endpoints and optional fields may be published within v1.
 - Breaking envelope or field changes require a new path such as `v2`.
-- Official records remain under a separate non-canonical path.
+- Official records and evidence ledgers remain under separate non-canonical paths.
 - New official fields may appear additively without being normalized automatically.
-- Verification-stage changes are additive evidence updates.
 - Previous API directories should remain available when practical.
 
 ## Availability and caching
 
 All endpoints are static GitHub Pages content with no authentication, write methods, query parameters or server-side filtering.
 
-Consumers should:
-
-- cache responses responsibly;
-- use the manifest to detect `data_version` changes;
-- use the official SHA-256 to detect source changes;
-- use the verification endpoint instead of inferring completeness from catalogue presence;
-- avoid unnecessary polling; and
-- preserve evidence-tier distinctions.
+Consumers should cache responsibly, use the manifest to detect `data_version` changes, use official source hashes for mission drift and preserve evidence-tier distinctions.
 
 ## Validation contract
 
 Every publication is checked against:
 
 - canonical schemas, identifiers and relationships;
-- offline official/canonical coverage reconciliation;
-- official catalogue scale, ordering and identity;
-- source URL, retrieval time and SHA-256 consistency;
-- lossless preservation of every official field;
-- requirement, chance and prerequisite inventories;
-- merged verification batch registries;
-- aggregate promoted-mission identity diagnostics;
-- explicit official-key mappings for every promoted mission;
-- strict chance-aware key equivalence for fully canonical missions;
-- deterministic verification stages, blockers and actions;
-- evidence-safe candidate and key-backlog analysis;
-- deterministic collections, manifest and FAQ generation;
+- official mission losslessness, identity and strict equivalence;
+- complete mission verification and zero unmapped-key backlog;
+- vehicle-ledger uniqueness, mapping integrity and identity coverage;
+- deterministic vehicle field-resolution schemas and 936 / 936 decision coverage;
+- deterministic collections, manifest, OpenAPI and FAQ generation;
 - strict documentation, link and built-site audits;
 - deployed HTTP and data smoke testing; and
 - Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance.
@@ -175,11 +158,11 @@ Consumers must preserve these semantics:
 
 - omitted canonical fields are unknown, not zero;
 - verified applies only to populated canonical fields;
-- empty requirement arrays may mean dispatch evidence is unavailable;
+- a resolved field decision does not imply a published numeric value;
+- empty mission requirement arrays may mean dispatch evidence is unavailable;
 - alternative groups require a qualifying combination total;
 - towing remains separate from emergency resources;
-- official presence proves publication, not complete interpretation;
-- identity verification does not prove operational completeness; and
+- official presence proves publication, not complete interpretation; and
 - unknown official keys must not be guessed.
 
 ## Licence and attribution
