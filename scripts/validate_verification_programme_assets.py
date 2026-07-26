@@ -43,13 +43,17 @@ REQUIRED_FILES = (
     "scripts/sync_verification_batch_navigation.py",
     "scripts/run_public_verification_sync.py",
     "scripts/validate_verification_programme_assets.py",
+    "scripts/classify_ci_changes.py",
     "tests/python/test_catalogue_reporting.py",
+    "tests/python/test_ci_change_classifier.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
+    ".github/workflows/production-pages-verification.yml",
+    "DELIVERY_ACCELERATION.md",
 )
 
-COMMON_WORKFLOW_MARKERS = (
+COMMON_EVIDENCE_MARKERS = (
     "reconcile_official_mission_coverage.py",
     "merge_verification_registry_batches.py",
     "validate_official_key_mappings.py",
@@ -67,34 +71,71 @@ COMMON_WORKFLOW_MARKERS = (
 
 WORKFLOW_MARKERS = {
     ".github/workflows/validate.yml": (
-        *COMMON_WORKFLOW_MARKERS,
-        "report_promoted_mapping_failures.py",
-        "report_canonical_candidates.py",
-        "canonical-candidates",
-        "report_key_mapping_backlog.py",
-        "key-mapping-backlog",
-    ),
-    ".github/workflows/deploy-pages.yml": COMMON_WORKFLOW_MARKERS,
-    ".github/workflows/release-v1.yml": COMMON_WORKFLOW_MARKERS,
-    ".github/workflows/import-official-uk-missions.yml": (
-        *COMMON_WORKFLOW_MARKERS,
-        "report_canonical_candidates.py",
-        "report_key_mapping_backlog.py",
+        "classify_ci_changes.py",
+        "documentation-fast",
+        "data-fast",
+        "vehicle-fast",
+        "interface-fast",
+        "workflow-fast",
+        "Validation result",
+        "mkdocs build --strict",
+        "validate_data.py",
+        "validate_vehicle_inventory.py",
+        "playwright install --with-deps chromium",
     ),
     ".github/workflows/branch-validation-report.yml": (
-        *COMMON_WORKFLOW_MARKERS,
+        *COMMON_EVIDENCE_MARKERS,
         "report_promoted_mapping_failures.py",
         "report_canonical_candidates.py",
         "report_key_mapping_backlog.py",
         "run_public_verification_sync.py",
         "sync_verification_batch_navigation.py",
-        "README.md",
-        "docs/index.md",
-        "docs/api/index.md",
-        "data/version.json",
-        'docs/releases/v${release_version}.md',
-        "CHANGELOG.md",
-        "mkdocs.yml",
+        "DIAGNOSTICS_DIR",
+        "full-built-site",
+        "Chromium and WebKit acceptance",
+        "schedule:",
+    ),
+    ".github/workflows/deploy-pages.yml": (
+        "validate_data.py",
+        "release_readiness.py",
+        "audit_links.py",
+        "mkdocs build --strict",
+        "actions/upload-pages-artifact",
+        "actions/deploy-pages",
+        "smoke_pages.py",
+    ),
+    ".github/workflows/production-pages-verification.yml": (
+        "workflow_run:",
+        "github.event.workflow_run.head_sha",
+        "github.event.workflow_run.head_branch == 'main'",
+        "smoke_pages.py",
+        "npm run test:e2e",
+        "retention-days: 30",
+    ),
+    ".github/workflows/release-v1.yml": COMMON_EVIDENCE_MARKERS,
+    ".github/workflows/import-official-uk-missions.yml": (
+        *COMMON_EVIDENCE_MARKERS,
+        "report_canonical_candidates.py",
+        "report_key_mapping_backlog.py",
+    ),
+    ".github/workflows/vehicle-inventory-validation.yml": (
+        "validate_vehicle_inventory.py",
+        "generate_vehicle_field_resolution.py --check",
+        "generate_vehicle_coverage.py --check",
+        "test_vehicle_inventory.py",
+        "workflow_dispatch:",
+    ),
+}
+
+WORKFLOW_FORBIDDEN = {
+    ".github/workflows/deploy-pages.yml": (
+        "playwright install",
+        "npm run test:e2e",
+        "validate_official_key_mappings.py",
+        "merge_verification_registry_batches.py",
+    ),
+    ".github/workflows/vehicle-inventory-validation.yml": (
+        "pull_request:",
     ),
 }
 
@@ -213,6 +254,17 @@ def validate_batch_files(registries: dict[int, Path]) -> int:
     return len(seen)
 
 
+def audit_workflows() -> None:
+    for workflow, markers in WORKFLOW_MARKERS.items():
+        text = (ROOT / workflow).read_text(encoding="utf-8")
+        for marker in markers:
+            if marker not in text:
+                raise ValueError(f"Workflow {workflow} does not enforce {marker}")
+        for forbidden in WORKFLOW_FORBIDDEN.get(workflow, ()):
+            if forbidden in text:
+                raise ValueError(f"Workflow {workflow} contains forbidden slow-path control: {forbidden}")
+
+
 def audit() -> tuple[dict[str, Any], int, int]:
     for relative in REQUIRED_FILES:
         if not (ROOT / relative).is_file():
@@ -236,11 +288,7 @@ def audit() -> tuple[dict[str, Any], int, int]:
         if target not in nav_targets:
             raise ValueError(f"Verification programme page is missing from MkDocs navigation: {target}")
 
-    for workflow, markers in WORKFLOW_MARKERS.items():
-        text = (ROOT / workflow).read_text(encoding="utf-8")
-        for marker in markers:
-            if marker not in text:
-                raise ValueError(f"Workflow {workflow} does not enforce {marker}")
+    audit_workflows()
     return summary, len(pages), dynamic_decisions
 
 
