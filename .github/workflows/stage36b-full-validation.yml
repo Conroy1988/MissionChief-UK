@@ -1,12 +1,14 @@
 name: Stage 36B full validation
 
-# Bootstrap the permanent release-grade workflow identity on main. The
-# acceleration PR will then make this the sole ready-PR landing audit.
+# Ready pull requests receive one complete release-grade audit. Draft pull
+# requests use the path-aware fast workflow instead.
 on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, labeled]
   workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
 
 permissions:
   contents: read
@@ -19,6 +21,10 @@ concurrency:
 jobs:
   data-integrity:
     name: Complete data and generator audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -54,6 +60,10 @@ jobs:
 
   documentation:
     name: Strict documentation and built-site audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -84,6 +94,10 @@ jobs:
 
   workflow-integrity:
     name: Workflow structure audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -113,7 +127,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/actionlint/actionlint" .github/workflows/*.yml
 
-      - name: Parse every workflow
+      - name: Parse every workflow and test lane classification
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -125,10 +139,12 @@ jobs:
                   raise SystemExit(f'Invalid workflow structure: {path}')
               print(f'parsed {path}')
           PY
+          python -m unittest tests/python/test_ci_change_classifier.py -v
 
   browser:
     name: Chromium and WebKit acceptance
     needs: documentation
+    if: needs.documentation.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -194,7 +210,11 @@ jobs:
 
   report:
     name: Stage 36B full result
-    if: always()
+    if: >-
+      always() &&
+      (github.event_name != 'pull_request' ||
+       github.event.pull_request.draft == false ||
+       github.event.label.name == 'full-ci')
     needs: [data-integrity, documentation, workflow-integrity, browser]
     runs-on: ubuntu-latest
     timeout-minutes: 3
