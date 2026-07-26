@@ -256,7 +256,6 @@ jobs:
     timeout-minutes: 25
     env:
       PYTHONDONTWRITEBYTECODE: "1"
-      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
     steps:
       - uses: actions/checkout@v6
         with:
@@ -278,10 +277,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ env.DIAGNOSTICS_DIR }}
-            canonical-candidates.json
-            key-mapping-backlog.json
+          path: ${{ runner.temp }}/full-data-audit
           if-no-files-found: ignore
           retention-days: 14
 
