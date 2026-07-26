@@ -146,6 +146,7 @@ def validate_status() -> dict[str, Any]:
     records = source.get("records")
     if not isinstance(summary, dict) or not isinstance(records, list):
         raise ValueError("Mission verification summary or records are invalid")
+
     official = summary.get("official_count")
     canonical = summary.get("canonical_count")
     direct = summary.get("direct_canonical_id_matches")
@@ -155,6 +156,7 @@ def validate_status() -> dict[str, Any]:
         raise ValueError("Mission verification completion metrics must be integers")
     if official != len(records) or fully + remaining != official or fully > direct or direct > canonical:
         raise ValueError("Mission verification completion arithmetic is inconsistent")
+
     ids = [str(record.get("id")) for record in records if isinstance(record, dict)]
     if len(ids) != official or len(ids) != len(set(ids)):
         raise ValueError("Mission verification records must contain unique IDs")
@@ -175,7 +177,7 @@ def validate_delivery_architecture() -> None:
         (
             "run_full_data_audit.sh",
             "DIAGNOSTICS_DIR",
-            "full-built-site",
+            "stage36b-built-site",
             "Chromium and WebKit acceptance",
             "schedule:",
             "github.event.pull_request.draft == false",
@@ -183,6 +185,7 @@ def validate_delivery_architecture() -> None:
             "actionlint_1.7.12_linux_amd64.tar.gz",
         ),
     )
+
     deploy = require_markers(
         ".github/workflows/deploy-pages.yml",
         (
@@ -215,6 +218,7 @@ def validate_delivery_architecture() -> None:
             "retention-days: 30",
         ),
     )
+
     vehicle = require_markers(
         ".github/workflows/vehicle-inventory-validation.yml",
         (
