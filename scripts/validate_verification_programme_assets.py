@@ -44,12 +44,12 @@ REQUIRED_FILES = (
     "scripts/run_public_verification_sync.py",
     "scripts/validate_verification_programme_assets.py",
     "scripts/classify_ci_changes.py",
+    "scripts/run_full_data_audit.sh",
     "tests/python/test_catalogue_reporting.py",
     "tests/python/test_ci_change_classifier.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
-    ".github/workflows/full-validation.yml",
     ".github/workflows/production-pages-verification.yml",
     "DELIVERY_ACCELERATION.md",
 )
@@ -78,23 +78,19 @@ WORKFLOW_MARKERS = {
         "vehicle-fast",
         "interface-fast",
         "workflow-fast",
+        "data-complete",
+        "documentation-complete",
+        "workflow-complete",
+        "browser-complete",
+        "run_full_data_audit.sh",
         "Validation result",
         "mkdocs build --strict",
         "validate_data.py",
         "validate_vehicle_inventory.py",
         "playwright install --with-deps chromium",
-        "converted_to_draft",
-    ),
-    ".github/workflows/full-validation.yml": (
-        *COMMON_EVIDENCE_MARKERS,
-        "report_promoted_mapping_failures.py",
-        "report_canonical_candidates.py",
-        "report_key_mapping_backlog.py",
-        "run_public_verification_sync.py",
-        "sync_verification_batch_navigation.py",
-        "DIAGNOSTICS_DIR",
-        "full-built-site",
         "Chromium and WebKit acceptance",
+        "full-built-site",
+        "converted_to_draft",
         "schedule:",
     ),
     ".github/workflows/deploy-pages.yml": (
@@ -126,6 +122,20 @@ WORKFLOW_MARKERS = {
         "generate_vehicle_coverage.py --check",
         "test_vehicle_inventory.py",
         "workflow_dispatch:",
+    ),
+}
+
+SCRIPT_MARKERS = {
+    "scripts/run_full_data_audit.sh": (
+        *COMMON_EVIDENCE_MARKERS,
+        "report_promoted_mapping_failures.py",
+        "report_canonical_candidates.py",
+        "report_key_mapping_backlog.py",
+        "run_public_verification_sync.py",
+        "sync_verification_batch_navigation.py",
+        "DIAGNOSTICS_DIR",
+        "check_validation_worktree.py synchronizer",
+        "check_validation_worktree.py final-working-tree",
     ),
 }
 
@@ -256,15 +266,22 @@ def validate_batch_files(registries: dict[int, Path]) -> int:
     return len(seen)
 
 
+def audit_markers(path: str, markers: tuple[str, ...], *, label: str) -> None:
+    text = (ROOT / path).read_text(encoding="utf-8")
+    for marker in markers:
+        if marker not in text:
+            raise ValueError(f"{label} {path} does not enforce {marker}")
+
+
 def audit_workflows() -> None:
     for workflow, markers in WORKFLOW_MARKERS.items():
+        audit_markers(workflow, markers, label="Workflow")
         text = (ROOT / workflow).read_text(encoding="utf-8")
-        for marker in markers:
-            if marker not in text:
-                raise ValueError(f"Workflow {workflow} does not enforce {marker}")
         for forbidden in WORKFLOW_FORBIDDEN.get(workflow, ()):
             if forbidden in text:
                 raise ValueError(f"Workflow {workflow} contains forbidden slow-path control: {forbidden}")
+    for script, markers in SCRIPT_MARKERS.items():
+        audit_markers(script, markers, label="Audit runner")
 
 
 def audit() -> tuple[dict[str, Any], int, int]:
