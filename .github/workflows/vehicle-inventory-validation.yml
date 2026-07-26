@@ -1,31 +1,10 @@
 name: Validate UK vehicle inventory
 
+# Pull requests are covered by the path-aware fast and full validation lanes.
+# This dedicated workflow remains as an exact-main evidence gate and manual tool.
 on:
   push:
-    branches:
-      - main
-    paths:
-      - data/uk/vehicles/**
-      - data/uk/vehicle-field-resolution.json
-      - data/schema/vehicle.schema.json
-      - data/schema/vehicle-inventory.schema.json
-      - data/schema/vehicle-field-resolution.schema.json
-      - data/sources/missionchief-uk/vehicle-type-inventory.json
-      - data/sources/missionchief-uk/vehicle-coverage.json
-      - docs/assets/data/official/uk-vehicle-coverage.json
-      - docs/assets/data/official/uk-vehicle-field-resolution.json
-      - docs/reference/vehicle-coverage-status.md
-      - docs/reference/vehicle-field-resolution.md
-      - scripts/vehicle_inventory.py
-      - scripts/generate_vehicle_coverage.py
-      - scripts/generate_vehicle_field_resolution.py
-      - scripts/validate_vehicle_inventory.py
-      - tests/python/test_vehicle_inventory.py
-      - tests/python/test_vehicle_field_resolution.py
-      - .github/workflows/vehicle-inventory-validation.yml
-  pull_request:
-    branches:
-      - main
+    branches: [main]
     paths:
       - data/uk/vehicles/**
       - data/uk/vehicle-field-resolution.json
@@ -51,19 +30,17 @@ permissions:
   contents: read
 
 concurrency:
-  group: vehicle-inventory-${{ github.event.pull_request.number || github.ref }}
+  group: vehicle-inventory-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 12
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -71,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Validate inventory and field-resolution schemas
+      - name: Validate schemas, inventory and deterministic outputs
         shell: bash
         run: |
           set -euo pipefail
@@ -99,15 +76,11 @@ jobs:
               ).validate(document)
           PY
           python scripts/validate_vehicle_inventory.py
-
-      - name: Check deterministic vehicle field-resolution outputs
-        run: python scripts/generate_vehicle_field_resolution.py --check
-
-      - name: Check deterministic vehicle coverage outputs
-        run: python scripts/generate_vehicle_coverage.py --check
-
-      - name: Run vehicle inventory and resolution regressions
-        run: python -m unittest tests/python/test_vehicle_inventory.py tests/python/test_vehicle_field_resolution.py -v
+          python scripts/generate_vehicle_field_resolution.py --check
+          python scripts/generate_vehicle_coverage.py --check
+          python -m unittest \
+            tests/python/test_vehicle_inventory.py \
+            tests/python/test_vehicle_field_resolution.py -v
 
       - name: Upload vehicle coverage evidence
         uses: actions/upload-artifact@v4
