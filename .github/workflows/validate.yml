@@ -1,24 +1,26 @@
 name: Validate guide
 
-# Fast, path-aware feedback for draft pull-request development. Ready pull
-# requests are covered by the separate release-grade workflow.
+# Draft pull requests use the smallest safe path-aware lanes. Ready pull
+# requests, manual runs and scheduled audits use the complete parallel audit.
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, converted_to_draft]
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft, labeled]
   workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
 
 permissions:
   contents: read
 
 concurrency:
-  group: validate-fast-${{ github.event.pull_request.number || github.ref }}
+  group: validate-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   classify:
     name: Classify changed paths
-    if: github.event_name != 'pull_request' || github.event.pull_request.draft == true
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -41,21 +43,13 @@ jobs:
         id: changes
         shell: bash
         env:
-          EVENT_NAME: ${{ github.event_name }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
-          if [ "$EVENT_NAME" = "pull_request" ]; then
-            base="$PR_BASE_SHA"
-            head="$PR_HEAD_SHA"
-          else
-            head="$(git rev-parse HEAD)"
-            base="$(git rev-parse HEAD^ 2>/dev/null || printf '%s' "$head")"
-          fi
           python scripts/classify_ci_changes.py \
-            --base "$base" \
-            --head "$head" \
+            --base "$PR_BASE_SHA" \
+            --head "$PR_HEAD_SHA" \
             --github-output "$GITHUB_OUTPUT"
 
   documentation-fast:
@@ -232,7 +226,7 @@ jobs:
       (needs.classify.outputs.workflow == 'true' ||
        needs.classify.outputs.full_required == 'true')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
 
@@ -246,21 +240,192 @@ jobs:
 
       - name: Parse workflows and test change classification
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import yaml
-
-          for path in sorted(Path('.github/workflows').glob('*.yml')):
-              document = yaml.load(path.read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
-              if not isinstance(document, dict) or 'jobs' not in document:
-                  raise SystemExit(f'Invalid workflow structure: {path}')
-              print(f'parsed {path}')
-          PY
+          python -m unittest tests/test_workflow_yaml.py -v
           python -m unittest tests/python/test_ci_change_classifier.py -v
+
+  data-complete:
+    name: Complete data and generator audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run complete deterministic data audit
+        run: bash scripts/run_full_data_audit.sh
+
+      - name: Upload retained data diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.DIAGNOSTICS_DIR }}
+            canonical-candidates.json
+            key-mapping-backlog.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  documentation-complete:
+    name: Strict documentation and built-site audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Audit links and build once
+        run: |
+          python -m unittest tests/test_audit_links.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
+
+      - name: Upload reusable built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+          if-no-files-found: error
+          retention-days: 1
+
+  workflow-complete:
+    name: Workflow structure audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install YAML dependency
+        run: python -m pip install -r requirements.txt
+
+      - name: Install pinned actionlint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/actionlint"
+          curl --fail --location --silent --show-error \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz \
+            --output "$RUNNER_TEMP/actionlint.tar.gz"
+          echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $RUNNER_TEMP/actionlint.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP/actionlint"
+
+      - name: Statically validate every Actions workflow
+        shell: bash
+        run: |
+          "$RUNNER_TEMP/actionlint/actionlint" .github/workflows/*.yml
+
+      - name: Parse every workflow and test lane classification
+        run: |
+          python -m unittest tests/test_workflow_yaml.py -v
+          python -m unittest tests/python/test_ci_change_classifier.py -v
+
+  browser-complete:
+    name: Chromium and WebKit acceptance
+    needs: documentation-complete
+    if: needs.documentation-complete.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download the single audited site build
+        uses: actions/download-artifact@v5
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
+
+      - name: Install only the required browser engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run desktop and mobile acceptance
+        shell: bash
+        run: |
+          python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
+            if [ "$attempt" -eq 30 ]; then
+              cat /tmp/missionchief-uk-http.log
+              exit 1
+            fi
+            sleep 1
+          done
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- \
+              tests/e2e/live-site.spec.mjs \
+              --project=webkit-iphone \
+              --project=webkit-ipad \
+              --grep "renders without runtime or viewport failures"
+
+      - name: Upload browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-playwright-diagnostics-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 14
 
   validate:
     name: Validation result
-    if: always() && (github.event_name != 'pull_request' || github.event.pull_request.draft == true)
+    if: always()
     needs:
       - classify
       - documentation-fast
@@ -268,24 +433,35 @@ jobs:
       - vehicle-fast
       - interface-fast
       - workflow-fast
+      - data-complete
+      - documentation-complete
+      - workflow-complete
+      - browser-complete
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Enforce every selected fast lane
+      - name: Enforce every selected validation lane
         env:
           CLASSIFY: ${{ needs.classify.result }}
-          DOCUMENTATION: ${{ needs.documentation-fast.result }}
-          DATA: ${{ needs.data-fast.result }}
-          VEHICLE: ${{ needs.vehicle-fast.result }}
-          INTERFACE: ${{ needs.interface-fast.result }}
-          WORKFLOW: ${{ needs.workflow-fast.result }}
+          DOCUMENTATION_FAST: ${{ needs.documentation-fast.result }}
+          DATA_FAST: ${{ needs.data-fast.result }}
+          VEHICLE_FAST: ${{ needs.vehicle-fast.result }}
+          INTERFACE_FAST: ${{ needs.interface-fast.result }}
+          WORKFLOW_FAST: ${{ needs.workflow-fast.result }}
+          DATA_COMPLETE: ${{ needs.data-complete.result }}
+          DOCUMENTATION_COMPLETE: ${{ needs.documentation-complete.result }}
+          WORKFLOW_COMPLETE: ${{ needs.workflow-complete.result }}
+          BROWSER_COMPLETE: ${{ needs.browser-complete.result }}
         shell: bash
         run: |
           set -euo pipefail
-          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW"; do
+          for result in \
+            "$CLASSIFY" "$DOCUMENTATION_FAST" "$DATA_FAST" "$VEHICLE_FAST" \
+            "$INTERFACE_FAST" "$WORKFLOW_FAST" "$DATA_COMPLETE" \
+            "$DOCUMENTATION_COMPLETE" "$WORKFLOW_COMPLETE" "$BROWSER_COMPLETE"; do
             case "$result" in
               success|skipped) ;;
-              *) echo "Selected fast lane ended as: $result"; exit 1 ;;
+              *) echo "Selected validation lane ended as: $result"; exit 1 ;;
             esac
           done
-          echo "All selected fast validation lanes passed."
+          echo "All selected validation lanes passed."
