@@ -49,6 +49,7 @@ REQUIRED_FILES = (
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
+    ".github/workflows/full-validation.yml",
     ".github/workflows/production-pages-verification.yml",
     "DELIVERY_ACCELERATION.md",
 )
@@ -82,8 +83,9 @@ WORKFLOW_MARKERS = {
         "validate_data.py",
         "validate_vehicle_inventory.py",
         "playwright install --with-deps chromium",
+        "converted_to_draft",
     ),
-    ".github/workflows/branch-validation-report.yml": (
+    ".github/workflows/full-validation.yml": (
         *COMMON_EVIDENCE_MARKERS,
         "report_promoted_mapping_failures.py",
         "report_canonical_candidates.py",
