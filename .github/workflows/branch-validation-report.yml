@@ -1,0 +1,220 @@
+name: Validate release candidate
+
+# Ready pull requests receive one complete release-grade audit. Draft pull
+# requests use the path-aware fast workflow instead.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-candidate-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data-integrity:
+    name: Complete data and generator audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run complete deterministic data audit
+        run: bash scripts/run_full_data_audit.sh
+
+      - name: Upload retained data diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.DIAGNOSTICS_DIR }}
+            canonical-candidates.json
+            key-mapping-backlog.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  documentation:
+    name: Strict documentation and built-site audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Audit links and build once
+        run: |
+          python -m unittest tests/test_audit_links.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
+
+      - name: Upload reusable built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+          if-no-files-found: error
+          retention-days: 1
+
+  workflow-integrity:
+    name: Workflow structure audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install YAML dependency
+        run: python -m pip install -r requirements.txt
+
+      - name: Parse every workflow and test lane classification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          for path in sorted(Path('.github/workflows').glob('*.yml')):
+              document = yaml.load(path.read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
+              if not isinstance(document, dict) or 'jobs' not in document:
+                  raise SystemExit(f'Invalid workflow structure: {path}')
+              print(f'parsed {path}')
+          PY
+          python -m unittest tests/python/test_ci_change_classifier.py -v
+
+  browser:
+    name: Chromium and WebKit acceptance
+    needs: documentation
+    if: needs.documentation.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download the single audited site build
+        uses: actions/download-artifact@v5
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
+
+      - name: Install only the required browser engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run desktop and mobile acceptance
+        shell: bash
+        run: |
+          python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
+            if [ "$attempt" -eq 30 ]; then
+              cat /tmp/missionchief-uk-http.log
+              exit 1
+            fi
+            sleep 1
+          done
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- \
+              tests/e2e/live-site.spec.mjs \
+              --project=webkit-iphone \
+              --project=webkit-ipad \
+              --grep "renders without runtime or viewport failures"
+
+      - name: Upload browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-playwright-diagnostics-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 14
+
+  report:
+    name: Release candidate result
+    if: >-
+      always() &&
+      (github.event_name != 'pull_request' ||
+       github.event.pull_request.draft == false ||
+       github.event.label.name == 'full-ci')
+    needs: [data-integrity, documentation, workflow-integrity, browser]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Enforce complete release-grade validation
+        env:
+          DATA: ${{ needs.data-integrity.result }}
+          DOCUMENTATION: ${{ needs.documentation.result }}
+          WORKFLOW: ${{ needs.workflow-integrity.result }}
+          BROWSER: ${{ needs.browser.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for result in "$DATA" "$DOCUMENTATION" "$WORKFLOW" "$BROWSER"; do
+            case "$result" in
+              success|skipped) ;;
+              *) echo "Full validation lane ended as: $result"; exit 1 ;;
+            esac
+          done
+          echo "Complete release-grade validation passed."
