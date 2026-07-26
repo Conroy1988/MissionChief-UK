@@ -17,7 +17,9 @@ These are engineering targets, not fabricated guarantees. GitHub Actions run dur
 
 The first draft-PR self-test on 26 July 2026 included workflow, classifier, documentation and vehicle-validation changes. GitHub completed the selected fast lanes and final aggregate gate approximately **34 seconds after the pull request opened**. The full release-grade workflow was correctly skipped while the pull request remained a draft, and the Chromium lane was correctly skipped because no frontend file changed.
 
-This is an initial mixed-change measurement rather than a long-term median. Stage 37 guide batches will supply the representative guide-only median and p90 figures.
+The final activation pull request changed only `validate.yml`. GitHub selected the workflow/classifier lane and skipped documentation, structured data, vehicle and Chromium jobs. The aggregate gate completed before the pull request was moved to ready state, **52 seconds after the draft was created**.
+
+These are activation measurements rather than long-term medians. Stage 37 guide batches will supply representative guide-only median and p90 figures.
 
 ## Validation lanes
 
