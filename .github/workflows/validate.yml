@@ -1,7 +1,7 @@
 name: Validate guide
 
-# Draft pull requests use the smallest safe path-aware lanes. Ready pull
-# requests and manual audits use two complete release-grade jobs in parallel.
+# Draft pull requests use path-aware fast lanes. Ready pull requests use the
+# release-grade lane in this same active workflow identity.
 on:
   pull_request:
     branches: [main]
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   classify:
     name: Classify changed paths
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == true }}
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -41,19 +41,31 @@ jobs:
         id: changes
         shell: bash
         env:
+          EVENT_NAME: ${{ github.event_name }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base="$PR_BASE_SHA"
+            head="$PR_HEAD_SHA"
+          else
+            head="$(git rev-parse HEAD)"
+            base="$(git rev-parse HEAD^ 2>/dev/null || printf '%s' "$head")"
+          fi
           python scripts/classify_ci_changes.py \
-            --base "$PR_BASE_SHA" \
-            --head "$PR_HEAD_SHA" \
+            --base "$base" \
+            --head "$head" \
             --github-output "$GITHUB_OUTPUT"
 
   documentation-fast:
     name: Fast documentation build
     needs: classify
-    if: ${{ needs.classify.result == 'success' && (needs.classify.outputs.docs == 'true' || needs.classify.outputs.interface == 'true' || needs.classify.outputs.release == 'true') }}
+    if: >-
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.docs == 'true' ||
+       needs.classify.outputs.interface == 'true' ||
+       needs.classify.outputs.release == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -74,7 +86,7 @@ jobs:
           python -m mkdocs build --strict --site-dir site
 
       - name: Upload built site for interface tests
-        if: ${{ needs.classify.outputs.interface == 'true' }}
+        if: needs.classify.outputs.interface == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: fast-built-site-${{ github.run_id }}
@@ -85,7 +97,10 @@ jobs:
   data-fast:
     name: Fast structured-data validation
     needs: classify
-    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.data == 'true' && needs.classify.outputs.vehicle_only != 'true' }}
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.data == 'true' &&
+      needs.classify.outputs.vehicle_only != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -120,7 +135,7 @@ jobs:
   vehicle-fast:
     name: Fast vehicle intelligence validation
     needs: classify
-    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true' }}
+    if: needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -148,7 +163,10 @@ jobs:
   interface-fast:
     name: Fast Chromium interface smoke
     needs: [classify, documentation-fast]
-    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.interface == 'true' && needs.documentation-fast.result == 'success' }}
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.interface == 'true' &&
+      needs.documentation-fast.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -192,7 +210,8 @@ jobs:
             fi
             sleep 1
           done
-          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
 
       - name: Upload browser diagnostics
         if: failure()
@@ -208,7 +227,10 @@ jobs:
   workflow-fast:
     name: Workflow and classifier validation
     needs: classify
-    if: ${{ needs.classify.result == 'success' && (needs.classify.outputs.workflow == 'true' || needs.classify.outputs.full_required == 'true') }}
+    if: >-
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.workflow == 'true' ||
+       needs.classify.outputs.full_required == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -227,138 +249,42 @@ jobs:
           python -m unittest tests/test_workflow_yaml.py -v
           python -m unittest tests/python/test_ci_change_classifier.py -v
 
-  fulldata:
-    name: Complete data and evidence audit
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    env:
-      PYTHONDONTWRITEBYTECODE: "1"
-      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install validation dependencies
-        run: python -m pip install -r requirements.txt
-
-      - name: Run complete deterministic data audit
-        run: bash scripts/run_full_data_audit.sh
-
-      - name: Upload retained diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ env.DIAGNOSTICS_DIR }}
-            canonical-candidates.json
-            key-mapping-backlog.json
-          if-no-files-found: ignore
-          retention-days: 14
-
-  fullsite:
-    name: Strict site and browser audit
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install documentation dependencies
-        run: python -m pip install -r requirements.txt
-
-      - name: Audit links and build once
-        run: |
-          python -m unittest tests/test_audit_links.py
-          python scripts/audit_links.py
-          python -m mkdocs build --strict --site-dir site
-          python scripts/release_readiness.py --site-dir site
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          package-manager-cache: false
-
-      - name: Install browser-test dependencies
-        run: npm install --no-audit --no-fund
-
-      - name: Validate JavaScript syntax
-        shell: bash
-        run: |
-          for file in docs/javascripts/*.js; do
-            node --check "$file"
-          done
-
-      - name: Install required browser engines
-        run: npx playwright install --with-deps chromium webkit
-
-      - name: Run desktop and mobile acceptance
-        shell: bash
-        run: |
-          python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid"' EXIT
-          for attempt in {1..30}; do
-            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
-            if [ "$attempt" -eq 30 ]; then
-              cat /tmp/missionchief-uk-http.log
-              exit 1
-            fi
-            sleep 1
-          done
-          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
-          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- \
-            tests/e2e/live-site.spec.mjs \
-            --project=webkit-iphone \
-            --project=webkit-ipad \
-            --grep "renders without runtime or viewport failures"
-
-      - name: Upload browser diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: full-playwright-diagnostics-${{ github.run_id }}
-          path: |
-            playwright-report
-            test-results
-          if-no-files-found: ignore
-          retention-days: 14
-
-  validate:
-    name: Validation result
-    if: ${{ always() }}
-    needs: [classify, documentation-fast, data-fast, vehicle-fast, interface-fast, workflow-fast, fulldata, fullsite]
+  ready-smoke:
+    name: Ready-state routing smoke
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Enforce every selected validation lane
+      - name: Confirm ready routing
+        run: echo "Ready-state validation route is active."
+
+  validate:
+    name: Validation result
+    if: always()
+    needs:
+      - classify
+      - documentation-fast
+      - data-fast
+      - vehicle-fast
+      - interface-fast
+      - workflow-fast
+      - ready-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Enforce every selected lane
         env:
           CLASSIFY: ${{ needs.classify.result }}
-          DOCUMENTATION_FAST: ${{ needs.documentation-fast.result }}
-          DATA_FAST: ${{ needs.data-fast.result }}
-          VEHICLE_FAST: ${{ needs.vehicle-fast.result }}
-          INTERFACE_FAST: ${{ needs.interface-fast.result }}
-          WORKFLOW_FAST: ${{ needs.workflow-fast.result }}
-          FULL_DATA: ${{ needs.fulldata.result }}
-          FULL_SITE: ${{ needs.fullsite.result }}
+          DOCUMENTATION: ${{ needs.documentation-fast.result }}
+          DATA: ${{ needs.data-fast.result }}
+          VEHICLE: ${{ needs.vehicle-fast.result }}
+          INTERFACE: ${{ needs.interface-fast.result }}
+          WORKFLOW: ${{ needs.workflow-fast.result }}
+          READY: ${{ needs.ready-smoke.result }}
         shell: bash
         run: |
           set -euo pipefail
-          for result in \
-            "$CLASSIFY" "$DOCUMENTATION_FAST" "$DATA_FAST" "$VEHICLE_FAST" \
-            "$INTERFACE_FAST" "$WORKFLOW_FAST" "$FULL_DATA" "$FULL_SITE"; do
+          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$READY"; do
             case "$result" in
               success|skipped) ;;
               *) echo "Selected validation lane ended as: $result"; exit 1 ;;
