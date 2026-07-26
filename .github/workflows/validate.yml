@@ -1,11 +1,11 @@
 name: Validate guide
 
-# Fast, path-aware feedback for active pull-request development. The complete
-# release-grade audit is added automatically when a pull request is ready.
+# Fast, path-aware feedback for draft pull-request development. Ready pull
+# requests are covered by the separate release-grade workflow.
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review, labeled]
+    types: [opened, synchronize, reopened, converted_to_draft]
   workflow_dispatch:
 
 permissions:
@@ -18,6 +18,7 @@ concurrency:
 jobs:
   classify:
     name: Classify changed paths
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -61,9 +62,10 @@ jobs:
     name: Fast documentation build
     needs: classify
     if: >-
-      needs.classify.outputs.docs == 'true' ||
-      needs.classify.outputs.interface == 'true' ||
-      needs.classify.outputs.release == 'true'
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.docs == 'true' ||
+       needs.classify.outputs.interface == 'true' ||
+       needs.classify.outputs.release == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -95,7 +97,10 @@ jobs:
   data-fast:
     name: Fast structured-data validation
     needs: classify
-    if: needs.classify.outputs.data == 'true' && needs.classify.outputs.vehicle_only != 'true'
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.data == 'true' &&
+      needs.classify.outputs.vehicle_only != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -130,7 +135,7 @@ jobs:
   vehicle-fast:
     name: Fast vehicle intelligence validation
     needs: classify
-    if: needs.classify.outputs.vehicle == 'true'
+    if: needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -158,7 +163,10 @@ jobs:
   interface-fast:
     name: Fast Chromium interface smoke
     needs: [classify, documentation-fast]
-    if: needs.classify.outputs.interface == 'true'
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.interface == 'true' &&
+      needs.documentation-fast.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -219,7 +227,10 @@ jobs:
   workflow-fast:
     name: Workflow and classifier validation
     needs: classify
-    if: needs.classify.outputs.workflow == 'true' || needs.classify.outputs.full_required == 'true'
+    if: >-
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.workflow == 'true' ||
+       needs.classify.outputs.full_required == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -247,17 +258,9 @@ jobs:
           PY
           python -m unittest tests/python/test_ci_change_classifier.py -v
 
-  full-validation:
-    name: Complete landing audit
-    if: >-
-      github.event_name == 'pull_request' &&
-      (github.event.pull_request.draft == false ||
-       github.event.label.name == 'full-ci')
-    uses: ./.github/workflows/branch-validation-report.yml
-
   validate:
     name: Validation result
-    if: always()
+    if: always() && (github.event_name != 'pull_request' || github.event.pull_request.draft == true)
     needs:
       - classify
       - documentation-fast
@@ -265,11 +268,10 @@ jobs:
       - vehicle-fast
       - interface-fast
       - workflow-fast
-      - full-validation
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Enforce every selected lane
+      - name: Enforce every selected fast lane
         env:
           CLASSIFY: ${{ needs.classify.result }}
           DOCUMENTATION: ${{ needs.documentation-fast.result }}
@@ -277,14 +279,13 @@ jobs:
           VEHICLE: ${{ needs.vehicle-fast.result }}
           INTERFACE: ${{ needs.interface-fast.result }}
           WORKFLOW: ${{ needs.workflow-fast.result }}
-          FULL: ${{ needs.full-validation.result }}
         shell: bash
         run: |
           set -euo pipefail
-          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$FULL"; do
+          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW"; do
             case "$result" in
               success|skipped) ;;
-              *) echo "Selected validation lane ended as: $result"; exit 1 ;;
+              *) echo "Selected fast lane ended as: $result"; exit 1 ;;
             esac
           done
-          echo "All selected validation lanes passed."
+          echo "All selected fast validation lanes passed."
