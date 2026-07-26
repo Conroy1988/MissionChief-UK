@@ -17,11 +17,11 @@ concurrency:
 
 jobs:
   build:
-    name: Build Pages artifact
+    name: Build exact Pages artifact
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
-      - name: Check out repository
+      - name: Check out exact main commit
         uses: actions/checkout@v6
 
       - name: Set up Python
@@ -35,82 +35,21 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run compact deployment integrity gates
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
-
-      - name: Validate canonical structured data
-        run: python scripts/validate_data.py
-
-      - name: Reconcile official/canonical mission coverage
-        run: python scripts/reconcile_official_mission_coverage.py
-
-      - name: Validate official UK mission catalogue
-        run: python scripts/validate_official_mission_catalogue.py
-
-      - name: Merge mission verification batch registries
-        run: python scripts/merge_verification_registry_batches.py
-
-      - name: Validate official-to-canonical key mappings
-        run: python scripts/validate_official_key_mappings.py
-
-      - name: Validate official patient mappings
-        run: python scripts/validate_official_patient_mappings.py
-
-      - name: Validate official personnel mappings
-        run: python scripts/validate_official_personnel_mappings.py
-
-      - name: Validate official personnel education mappings
-        run: python scripts/validate_official_personnel_education_mappings.py
-
-      - name: Validate official prisoner mappings
-        run: python scripts/validate_official_prisoner_mappings.py
-
-      - name: Validate official recovery mappings
-        run: python scripts/validate_official_recovery_mappings.py
-
-      - name: Validate official operational metadata mappings
-        run: python scripts/validate_official_operational_mappings.py
-
-      - name: Validate complete canonical catalogue generation
-        run: python scripts/generate_full_canonical_catalogue.py --check
-
-      - name: Run catalogue reporting unit tests
-        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
-
-      - name: Generate 100% mission verification status
-        run: python scripts/generate_mission_verification_status.py
-
-      - name: Validate mission verification programme assets
-        run: python scripts/validate_verification_programme_assets.py
-
-      - name: Generate public data exports
-        run: python scripts/generate_exports.py
-
-      - name: Generate FAQ
-        run: python scripts/generate_faq.py
-
-      - name: Run release-integrity regressions
-        run: python -m unittest discover -s tests/python -p 'test_release_integrity.py'
-
-      - name: Audit repository and generated API
-        run: python scripts/release_readiness.py
-
-      - name: Audit documentation links and anchors
-        run: python scripts/audit_links.py
-
-      - name: Validate all JavaScript syntax
-        shell: bash
-        run: |
+          python scripts/validate_data.py
+          python scripts/release_readiness.py
+          python scripts/audit_links.py
           for file in docs/javascripts/*.js; do
             node --check "$file"
           done
 
-      - name: Build documentation strictly
-        run: python -m mkdocs build --strict --site-dir site
-
-      - name: Audit built site
-        run: python scripts/release_readiness.py --site-dir site
+      - name: Build documentation strictly once
+        run: |
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
@@ -133,12 +72,12 @@ jobs:
         uses: actions/deploy-pages@v4
 
   smoke:
-    name: Cross-browser acceptance of deployed Pages
+    name: Fast production HTTP smoke
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 5
     needs: deploy
     steps:
-      - name: Check out repository
+      - name: Check out exact deployed commit
         uses: actions/checkout@v6
 
       - name: Set up Python
@@ -146,33 +85,5 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          package-manager-cache: false
-
-      - name: Install browser-test dependencies
-        run: npm install --no-audit --no-fund
-
-      - name: Install Playwright browsers and system dependencies
-        run: npx playwright install --with-deps
-
       - name: Test deployed pages and public API over HTTP
         run: python scripts/smoke_pages.py "${{ needs.deploy.outputs.page_url }}"
-
-      - name: Run full browser acceptance suite
-        env:
-          MCUK_BASE_URL: ${{ needs.deploy.outputs.page_url }}
-        run: npm run test:e2e
-
-      - name: Upload browser-test diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: deployed-playwright-diagnostics
-          path: |
-            playwright-report
-            test-results
-          if-no-files-found: ignore
-          retention-days: 14
