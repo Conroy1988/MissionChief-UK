@@ -1,8 +1,23 @@
 name: Validate release candidate
 
 # Ready pull requests receive one complete release-grade audit. Draft pull
-# requests use the path-aware fast workflow instead.
+# requests use the path-aware fast workflow instead. Infrastructure workflow
+# changes also run the audit directly on trusted repository branches.
 on:
+  push:
+    branches:
+      - "infra/**"
+    paths:
+      - .github/workflows/validate.yml
+      - .github/workflows/branch-validation-report.yml
+      - .github/workflows/deploy-pages.yml
+      - .github/workflows/production-pages-verification.yml
+      - .github/workflows/vehicle-inventory-validation.yml
+      - scripts/classify_ci_changes.py
+      - scripts/run_full_data_audit.sh
+      - scripts/validate_verification_programme_assets.py
+      - tests/python/test_ci_change_classifier.py
+      - DELIVERY_ACCELERATION.md
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, labeled]
