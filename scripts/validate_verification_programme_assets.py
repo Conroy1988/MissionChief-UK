@@ -6,7 +6,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import yaml
 
@@ -50,7 +50,7 @@ REQUIRED_FILES = (
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
-    ".github/workflows/stage36b-full-validation.yml",
+    ".github/workflows/branch-validation-report.yml",
     ".github/workflows/production-pages-verification.yml",
     "DELIVERY_ACCELERATION.md",
 )
@@ -86,15 +86,13 @@ WORKFLOW_MARKERS = {
         "playwright install --with-deps chromium",
         "converted_to_draft",
     ),
-    ".github/workflows/stage36b-full-validation.yml": (
+    ".github/workflows/branch-validation-report.yml": (
         "run_full_data_audit.sh",
         "DIAGNOSTICS_DIR",
         "full-built-site",
         "Chromium and WebKit acceptance",
         "schedule:",
         "github.event.pull_request.draft == false",
-        "stage36b/full-audit",
-        "actionlint_1.7.12_linux_amd64.tar.gz",
     ),
     ".github/workflows/deploy-pages.yml": (
         "validate_data.py",
@@ -149,7 +147,9 @@ WORKFLOW_FORBIDDEN = {
         "validate_official_key_mappings.py",
         "merge_verification_registry_batches.py",
     ),
-    ".github/workflows/vehicle-inventory-validation.yml": ("pull_request:",),
+    ".github/workflows/vehicle-inventory-validation.yml": (
+        "pull_request:",
+    ),
 }
 
 
@@ -160,15 +160,17 @@ def read_json(path: Path) -> Any:
         raise ValueError(f"{path.relative_to(ROOT)}: unable to read JSON: {exc}") from exc
 
 
-def flatten_nav(value: Any) -> Iterable[str]:
+def flatten_nav(value: Any) -> list[str]:
+    result: list[str] = []
     if isinstance(value, str):
-        yield value
+        result.append(value)
     elif isinstance(value, list):
         for item in value:
-            yield from flatten_nav(item)
+            result.extend(flatten_nav(item))
     elif isinstance(value, dict):
         for item in value.values():
-            yield from flatten_nav(item)
+            result.extend(flatten_nav(item))
+    return result
 
 
 def numbered_paths(root: Path, glob_pattern: str, pattern: re.Pattern[str]) -> dict[int, Path]:
@@ -187,12 +189,18 @@ def numbered_paths(root: Path, glob_pattern: str, pattern: re.Pattern[str]) -> d
 def discover_batch_assets() -> tuple[dict[int, Path], dict[int, Path]]:
     registries = numbered_paths(BATCH_ROOT, "fully-canonical-fire-batch-*.json", BATCH_REGISTRY_PATTERN)
     pages = numbered_paths(REFERENCE_ROOT, "fully-canonical-mission-batch-*.md", BATCH_PAGE_PATTERN)
-    if not registries or not pages:
-        raise ValueError("Mission verification batch assets are missing")
-    if sorted(pages) != list(range(1, max(pages) + 1)):
+    if not registries:
+        raise ValueError("Mission verification batch directory contains no batch registries")
+    if not pages:
+        raise ValueError("Mission verification reference directory contains no batch pages")
+
+    expected_pages = list(range(1, max(pages) + 1))
+    if sorted(pages) != expected_pages:
         raise ValueError(f"Fully canonical batch pages are not contiguous: {sorted(pages)}")
-    if sorted(registries) != list(range(3, max(registries) + 1)):
-        raise ValueError(f"Fully canonical batch registries are not contiguous: {sorted(registries)}")
+
+    expected_registries = list(range(3, max(registries) + 1))
+    if sorted(registries) != expected_registries:
+        raise ValueError(f"Fully canonical batch registries are not contiguous from Batch 3: {sorted(registries)}")
     if max(registries) != max(pages):
         raise ValueError(
             f"Latest batch registry and evidence page differ: registry={max(registries)}, page={max(pages)}"
@@ -203,33 +211,38 @@ def discover_batch_assets() -> tuple[dict[int, Path], dict[int, Path]]:
 def validate_status(status: Any) -> dict[str, Any]:
     if not isinstance(status, dict):
         raise ValueError("Mission verification status must be an object")
-    if status.get("schema_version") != "1" or status.get("collection") != "official-uk-mission-verification":
-        raise ValueError("Mission verification status metadata is invalid")
+    if status.get("schema_version") != "1":
+        raise ValueError("Mission verification status schema_version must be '1'")
+    if status.get("collection") != "official-uk-mission-verification":
+        raise ValueError("Mission verification status collection is invalid")
     if status.get("target_stage") != "fully-canonical":
-        raise ValueError("Mission verification target stage is invalid")
+        raise ValueError("Mission verification status target_stage must be fully-canonical")
 
     summary = status.get("summary")
     records = status.get("records")
     if not isinstance(summary, dict) or not isinstance(records, list):
-        raise ValueError("Mission verification summary or records are invalid")
+        raise ValueError("Mission verification status summary or records are invalid")
 
-    official = summary.get("official_count")
-    canonical = summary.get("canonical_count")
-    direct = summary.get("direct_canonical_id_matches")
-    fully = summary.get("cumulative_stage_counts", {}).get("fully-canonical")
+    official_count = summary.get("official_count")
+    canonical_count = summary.get("canonical_count")
+    fully_canonical = summary.get("cumulative_stage_counts", {}).get("fully-canonical")
     remaining = summary.get("remaining_to_fully_canonical")
-    if not all(isinstance(value, int) for value in (official, canonical, direct, fully, remaining)):
-        raise ValueError("Mission verification completion metrics must be integers")
-    assert isinstance(official, int)
-    assert isinstance(canonical, int)
-    assert isinstance(direct, int)
-    assert isinstance(fully, int)
-    assert isinstance(remaining, int)
-    if official != len(records) or fully + remaining != official or fully > direct or direct > canonical:
+    direct_matches = summary.get("direct_canonical_id_matches")
+    if not isinstance(official_count, int) or official_count != len(records):
+        raise ValueError("Mission verification official_count does not match its records")
+    if not isinstance(canonical_count, int) or canonical_count < 1:
+        raise ValueError("Mission verification canonical_count is invalid")
+    if not isinstance(direct_matches, int) or direct_matches > canonical_count:
+        raise ValueError("Mission verification direct match count is invalid")
+    if not isinstance(fully_canonical, int) or not isinstance(remaining, int):
+        raise ValueError("Mission verification completion metrics are invalid")
+    if fully_canonical + remaining != official_count:
         raise ValueError("Mission verification completion arithmetic is inconsistent")
+    if fully_canonical > direct_matches:
+        raise ValueError("Fully canonical missions cannot exceed direct canonical ID matches")
 
     record_ids = [str(record.get("id")) for record in records if isinstance(record, dict)]
-    if len(record_ids) != official or len(record_ids) != len(set(record_ids)):
+    if len(record_ids) != official_count or len(record_ids) != len(set(record_ids)):
         raise ValueError("Mission verification records must contain unique IDs")
     return summary
 
@@ -238,35 +251,38 @@ def validate_batch_files(registries: dict[int, Path]) -> int:
     seen: set[str] = set()
     for number, path in sorted(registries.items()):
         document = read_json(path)
-        records = document.get("records") if isinstance(document, dict) else None
-        if document.get("schema_version") != "1" or not isinstance(records, dict) or not records:
-            raise ValueError(f"Invalid verification batch registry: {path.relative_to(ROOT)}")
-        if number < 3:
-            raise ValueError(f"Dynamic batch numbering must begin at Batch 3, found {number}")
+        label = path.relative_to(ROOT).as_posix()
+        if not isinstance(document, dict) or document.get("schema_version") != "1":
+            raise ValueError(f"{label}: schema_version must be '1'")
+        records = document.get("records")
+        if not isinstance(records, dict) or not records:
+            raise ValueError(f"{label}: records must be a non-empty object")
         for mission_id in records:
             key = str(mission_id)
             if key in seen:
                 raise ValueError(f"Duplicate batch verification decision for mission {key}")
             seen.add(key)
+        if number < 3:
+            raise ValueError(f"Dynamic batch registry numbering must begin at Batch 3, found {number}")
     return len(seen)
 
 
-def audit_markers(path: str, markers: tuple[str, ...], label: str) -> str:
+def audit_markers(path: str, markers: tuple[str, ...], *, label: str) -> None:
     text = (ROOT / path).read_text(encoding="utf-8")
     for marker in markers:
         if marker not in text:
             raise ValueError(f"{label} {path} does not enforce {marker}")
-    return text
 
 
 def audit_workflows() -> None:
     for workflow, markers in WORKFLOW_MARKERS.items():
-        text = audit_markers(workflow, markers, "Workflow")
+        audit_markers(workflow, markers, label="Workflow")
+        text = (ROOT / workflow).read_text(encoding="utf-8")
         for forbidden in WORKFLOW_FORBIDDEN.get(workflow, ()):
             if forbidden in text:
                 raise ValueError(f"Workflow {workflow} contains forbidden slow-path control: {forbidden}")
     for script, markers in SCRIPT_MARKERS.items():
-        audit_markers(script, markers, "Audit runner")
+        audit_markers(script, markers, label="Audit runner")
 
 
 def audit() -> tuple[dict[str, Any], int, int]:
@@ -284,7 +300,7 @@ def audit() -> tuple[dict[str, Any], int, int]:
 
     config = yaml.safe_load((ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
     if not isinstance(config, dict):
-        raise ValueError("mkdocs.yml must contain a mapping")
+        raise ValueError("mkdocs.yml must contain an object")
     nav_targets = set(flatten_nav(config.get("nav")))
     required_nav = {"reference/mission-verification-status.md"}
     required_nav.update(path.relative_to(REFERENCE_ROOT.parent).as_posix() for path in pages.values())
@@ -303,10 +319,10 @@ def main() -> int:
         print(f"Mission verification programme asset audit failed: {exc}", file=sys.stderr)
         return 1
 
-    fully = summary["cumulative_stage_counts"]["fully-canonical"]
+    fully_canonical = summary["cumulative_stage_counts"]["fully-canonical"]
     print(
         "Mission verification programme asset audit passed: "
-        f"{fully}/{summary['official_count']} fully canonical, "
+        f"{fully_canonical}/{summary['official_count']} fully canonical, "
         f"{summary['canonical_count']} canonical records, "
         f"{batch_count} evidence batch pages, {dynamic_decisions} dynamic batch decisions and "
         f"{summary['remaining_to_fully_canonical']} missions remaining."
