@@ -37,6 +37,8 @@ Guide-only Markdown changes do not invoke catalogue equivalence, public-data reg
 
 `branch-validation-report.yml` runs the complete release-grade audit. Data integrity, documentation building, and workflow checks run in parallel. Browser tests reuse the single audited MkDocs artifact instead of rebuilding the site.
 
+The final aggregate job publishes an exact-commit `stage36b/full-audit` status. This keeps full validation observable even when a connector or API view omits push-triggered workflow runs.
+
 ### Main and production
 
 `deploy-pages.yml` performs compact exact-tree integrity checks, builds once, deploys, and runs HTTP smoke tests. The complete production browser matrix runs asynchronously in `production-pages-verification.yml`, bound to the exact deployed SHA. Release publication remains dependent on a successful exact-SHA Pages workflow.
