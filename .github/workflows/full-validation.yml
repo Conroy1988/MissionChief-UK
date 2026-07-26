@@ -1,0 +1,295 @@
+name: Validate release candidate
+
+# Release-grade validation runs only for ready pull requests, manual audits and
+# the scheduled production baseline. Draft development uses validate.yml.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-candidate-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data-integrity:
+    name: Complete data and generator audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      DIAGNOSTICS_DIR: ${{ runner.temp }}/full-data-audit
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          mkdir -p "$DIAGNOSTICS_DIR"
+          python -m pip install -r requirements.txt
+
+      - name: Run root regression suite
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$DIAGNOSTICS_DIR/root-regressions.log"
+
+      - name: Run canonical synchronizers
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > "$DIAGNOSTICS_DIR/synchronizers.log"
+          run_sync() {
+            echo "## $*" | tee -a "$DIAGNOSTICS_DIR/synchronizers.log"
+            "$@" 2>&1 | tee -a "$DIAGNOSTICS_DIR/synchronizers.log"
+          }
+          run_sync python scripts/sync_conditional_resource_contract_integration.py
+          run_sync python scripts/sync_conditional_resource_modes_integration.py
+          run_sync python scripts/sync_recovery_contract_integration.py
+          run_sync python scripts/sync_coastguard_generator_integration.py
+          run_sync python scripts/sync_all_official_key_mappings.py
+          run_sync python scripts/sync_prisoner_schema.py
+          run_sync python scripts/run_ready_canonical_batch_generation.py --limit 200
+          run_sync python scripts/sync_canonical_patient_fields.py
+          run_sync python scripts/sync_canonical_personnel_fields.py
+          run_sync python scripts/sync_canonical_personnel_education_fields.py
+          run_sync python scripts/sync_canonical_prisoner_fields.py
+          run_sync python scripts/sync_canonical_recovery_fields.py
+          run_sync python scripts/sync_canonical_operational_fields.py
+          git status --porcelain --untracked-files=all > "$DIAGNOSTICS_DIR/synchronizer-status.txt"
+          git diff HEAD --binary -- . > "$DIAGNOSTICS_DIR/synchronizer.patch"
+
+      - name: Enforce clean synchronizer output
+        run: python scripts/check_validation_worktree.py synchronizer
+
+      - name: Run complete catalogue and evidence validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate_data.py
+          python scripts/reconcile_official_mission_coverage.py
+          python scripts/validate_official_mission_catalogue.py
+          python scripts/merge_verification_registry_batches.py
+          python scripts/report_promoted_mapping_failures.py
+          python scripts/validate_official_key_mappings.py
+          python scripts/validate_official_patient_mappings.py
+          python scripts/validate_official_personnel_mappings.py
+          python scripts/validate_official_personnel_education_mappings.py
+          python scripts/validate_official_prisoner_mappings.py
+          python scripts/validate_official_recovery_mappings.py
+          python scripts/validate_official_operational_mappings.py
+          python scripts/generate_full_canonical_catalogue.py --check
+          python scripts/validate_vehicle_inventory.py
+          python scripts/generate_vehicle_field_resolution.py --check
+          python scripts/generate_vehicle_coverage.py --check
+          python -m unittest discover -s tests/python -p 'test_*.py' -v
+
+      - name: Recreate publications and verify idempotence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/report_canonical_candidates.py --limit 200 > canonical-candidates.json
+          python scripts/report_key_mapping_backlog.py --limit 200 --examples 10 > key-mapping-backlog.json
+          python scripts/report_patient_field_contract.py
+          python scripts/report_operational_field_contract.py
+          python scripts/generate_mission_verification_status.py
+          python scripts/run_public_verification_sync.py
+          python scripts/sync_verification_batch_navigation.py
+          python scripts/validate_verification_programme_assets.py
+          python scripts/generate_exports.py
+          python scripts/generate_faq.py
+          python -m unittest discover -s tests/python -p 'test_release_integrity.py'
+          python scripts/release_readiness.py
+          python scripts/check_validation_worktree.py final-working-tree --allow-validation-generated-outputs
+
+      - name: Upload retained data diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.DIAGNOSTICS_DIR }}
+            canonical-candidates.json
+            key-mapping-backlog.json
+            key-mapping-validation.log
+            release-readiness.log
+          if-no-files-found: ignore
+          retention-days: 14
+
+  documentation:
+    name: Strict documentation and built-site audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Audit links and build once
+        run: |
+          python -m unittest tests/test_audit_links.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
+
+      - name: Upload reusable built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+          if-no-files-found: error
+          retention-days: 1
+
+  workflow-integrity:
+    name: Workflow structure audit
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.draft == false ||
+      github.event.label.name == 'full-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install YAML dependency
+        run: python -m pip install -r requirements.txt
+
+      - name: Parse every workflow and test lane classification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          for path in sorted(Path('.github/workflows').glob('*.yml')):
+              document = yaml.load(path.read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
+              if not isinstance(document, dict) or 'jobs' not in document:
+                  raise SystemExit(f'Invalid workflow structure: {path}')
+              print(f'parsed {path}')
+          PY
+          python -m unittest tests/python/test_ci_change_classifier.py -v
+
+  browser:
+    name: Chromium and WebKit acceptance
+    needs: documentation
+    if: needs.documentation.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download the single audited site build
+        uses: actions/download-artifact@v5
+        with:
+          name: full-built-site-${{ github.run_id }}
+          path: site
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
+
+      - name: Install only the required browser engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run desktop and mobile acceptance
+        shell: bash
+        run: |
+          python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
+            if [ "$attempt" -eq 30 ]; then
+              cat /tmp/missionchief-uk-http.log
+              exit 1
+            fi
+            sleep 1
+          done
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- \
+              tests/e2e/live-site.spec.mjs \
+              --project=webkit-iphone \
+              --project=webkit-ipad \
+              --grep "renders without runtime or viewport failures"
+
+      - name: Upload browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-playwright-diagnostics-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 14
+
+  report:
+    name: Release candidate result
+    if: >-
+      always() &&
+      (github.event_name != 'pull_request' ||
+       github.event.pull_request.draft == false ||
+       github.event.label.name == 'full-ci')
+    needs: [data-integrity, documentation, workflow-integrity, browser]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Enforce complete release-grade validation
+        env:
+          DATA: ${{ needs.data-integrity.result }}
+          DOCUMENTATION: ${{ needs.documentation.result }}
+          WORKFLOW: ${{ needs.workflow-integrity.result }}
+          BROWSER: ${{ needs.browser.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for result in "$DATA" "$DOCUMENTATION" "$WORKFLOW" "$BROWSER"; do
+            case "$result" in
+              success|skipped) ;;
+              *) echo "Full validation lane ended as: $result"; exit 1 ;;
+            esac
+          done
+          echo "Complete release-grade validation passed."
