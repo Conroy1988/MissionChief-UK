@@ -5,7 +5,7 @@ name: Validate guide
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft, labeled]
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   classify:
     name: Classify changed paths
-    if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -53,11 +53,7 @@ jobs:
   documentation-fast:
     name: Fast documentation build
     needs: classify
-    if: >-
-      needs.classify.result == 'success' &&
-      (needs.classify.outputs.docs == 'true' ||
-       needs.classify.outputs.interface == 'true' ||
-       needs.classify.outputs.release == 'true')
+    if: ${{ needs.classify.result == 'success' && (needs.classify.outputs.docs == 'true' || needs.classify.outputs.interface == 'true' || needs.classify.outputs.release == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -78,7 +74,7 @@ jobs:
           python -m mkdocs build --strict --site-dir site
 
       - name: Upload built site for interface tests
-        if: needs.classify.outputs.interface == 'true'
+        if: ${{ needs.classify.outputs.interface == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: fast-built-site-${{ github.run_id }}
@@ -89,10 +85,7 @@ jobs:
   data-fast:
     name: Fast structured-data validation
     needs: classify
-    if: >-
-      needs.classify.result == 'success' &&
-      needs.classify.outputs.data == 'true' &&
-      needs.classify.outputs.vehicle_only != 'true'
+    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.data == 'true' && needs.classify.outputs.vehicle_only != 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -127,7 +120,7 @@ jobs:
   vehicle-fast:
     name: Fast vehicle intelligence validation
     needs: classify
-    if: needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true'
+    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -155,10 +148,7 @@ jobs:
   interface-fast:
     name: Fast Chromium interface smoke
     needs: [classify, documentation-fast]
-    if: >-
-      needs.classify.result == 'success' &&
-      needs.classify.outputs.interface == 'true' &&
-      needs.documentation-fast.result == 'success'
+    if: ${{ needs.classify.result == 'success' && needs.classify.outputs.interface == 'true' && needs.documentation-fast.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -202,8 +192,7 @@ jobs:
             fi
             sleep 1
           done
-          MCUK_BASE_URL=http://127.0.0.1:8000/ \
-            npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
 
       - name: Upload browser diagnostics
         if: failure()
@@ -219,10 +208,7 @@ jobs:
   workflow-fast:
     name: Workflow and classifier validation
     needs: classify
-    if: >-
-      needs.classify.result == 'success' &&
-      (needs.classify.outputs.workflow == 'true' ||
-       needs.classify.outputs.full_required == 'true')
+    if: ${{ needs.classify.result == 'success' && (needs.classify.outputs.workflow == 'true' || needs.classify.outputs.full_required == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -243,10 +229,7 @@ jobs:
 
   fulldata:
     name: Complete data and evidence audit
-    if: >-
-      github.event_name != 'pull_request' ||
-      github.event.pull_request.draft == false ||
-      github.event.label.name == 'full-ci'
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -282,10 +265,7 @@ jobs:
 
   fullsite:
     name: Strict site and browser audit
-    if: >-
-      github.event_name != 'pull_request' ||
-      github.event.pull_request.draft == false ||
-      github.event.label.name == 'full-ci'
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -338,14 +318,12 @@ jobs:
             fi
             sleep 1
           done
-          MCUK_BASE_URL=http://127.0.0.1:8000/ \
-            npm run test:e2e -- --project=chromium-desktop
-          MCUK_BASE_URL=http://127.0.0.1:8000/ \
-            npm run test:e2e -- \
-              tests/e2e/live-site.spec.mjs \
-              --project=webkit-iphone \
-              --project=webkit-ipad \
-              --grep "renders without runtime or viewport failures"
+          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- --project=chromium-desktop
+          MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e -- \
+            tests/e2e/live-site.spec.mjs \
+            --project=webkit-iphone \
+            --project=webkit-ipad \
+            --grep "renders without runtime or viewport failures"
 
       - name: Upload browser diagnostics
         if: failure()
@@ -360,16 +338,8 @@ jobs:
 
   validate:
     name: Validation result
-    if: always()
-    needs:
-      - classify
-      - documentation-fast
-      - data-fast
-      - vehicle-fast
-      - interface-fast
-      - workflow-fast
-      - fulldata
-      - fullsite
+    if: ${{ always() }}
+    needs: [classify, documentation-fast, data-fast, vehicle-fast, interface-fast, workflow-fast, fulldata, fullsite]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
