@@ -13,6 +13,12 @@ Stage 36B separates rapid guide-authoring feedback from release-grade verificati
 
 These are engineering targets, not fabricated guarantees. GitHub Actions run durations should be recorded after Stage 36B lands so the estimates can be replaced with measured medians and p90 values.
 
+## Initial measured benchmark
+
+The first draft-PR self-test on 26 July 2026 included workflow, classifier, documentation and vehicle-validation changes. GitHub completed the selected fast lanes and final aggregate gate approximately **34 seconds after the pull request opened**. The full release-grade workflow was correctly skipped while the pull request remained a draft, and the Chromium lane was correctly skipped because no frontend file changed.
+
+This is an initial mixed-change measurement rather than a long-term median. Stage 37 guide batches will supply the representative guide-only median and p90 figures.
+
 ## Validation lanes
 
 ### Draft pull requests
