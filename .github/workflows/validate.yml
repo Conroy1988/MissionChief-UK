@@ -1,30 +1,77 @@
 name: Validate guide
 
-# Validate the complete 1,062-mission canonical baseline and enforce zero-backlog drift controls.
+# Draft pull requests use path-aware fast lanes. Ready pull requests use the
+# complete release-grade lanes in this same active workflow identity.
 on:
-  push:
-    branches:
-      - main
   pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: validate-${{ github.ref }}
+  group: validate-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  validate:
+  classify:
+    name: Classify changed paths
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == true
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 5
+    outputs:
+      docs: ${{ steps.changes.outputs.docs }}
+      interface: ${{ steps.changes.outputs.interface }}
+      workflow: ${{ steps.changes.outputs.workflow }}
+      release: ${{ steps.changes.outputs.release }}
+      data: ${{ steps.changes.outputs.data }}
+      vehicle: ${{ steps.changes.outputs.vehicle }}
+      vehicle_only: ${{ steps.changes.outputs.vehicle_only }}
+      guide_only: ${{ steps.changes.outputs.guide_only }}
+      full_required: ${{ steps.changes.outputs.full_required }}
     steps:
-      - name: Check out repository
+      - name: Check out repository history
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Classify the smallest safe validation lanes
+        id: changes
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base="$PR_BASE_SHA"
+            head="$PR_HEAD_SHA"
+          else
+            head="$(git rev-parse HEAD)"
+            base="$(git rev-parse HEAD^ 2>/dev/null || printf '%s' "$head")"
+          fi
+          python scripts/classify_ci_changes.py \
+            --base "$base" \
+            --head "$head" \
+            --github-output "$GITHUB_OUTPUT"
+
+  documentation-fast:
+    name: Fast documentation build
+    needs: classify
+    if: >-
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.docs == 'true' ||
+       needs.classify.outputs.interface == 'true' ||
+       needs.classify.outputs.release == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -32,130 +79,106 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Validate canonical JSON documents
-        run: python scripts/validate_data.py
-
-      - name: Reconcile official/canonical mission coverage
-        run: python scripts/reconcile_official_mission_coverage.py
-
-      - name: Validate official UK mission catalogue
-        run: python scripts/validate_official_mission_catalogue.py
-
-      - name: Merge mission verification batch registries
-        run: python scripts/merge_verification_registry_batches.py
-
-      - name: Report all promoted mapping failures
-        shell: bash
+      - name: Validate links and build documentation strictly
         run: |
-          set -o pipefail
-          python scripts/report_promoted_mapping_failures.py 2>&1 | tee key-mapping-validation.log
+          python -m unittest tests/test_audit_links.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
 
-      - name: Upload key mapping diagnostics
-        if: always()
+      - name: Upload built site for interface tests
+        if: needs.classify.outputs.interface == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: key-mapping-validation-diagnostics
-          path: key-mapping-validation.log
-          if-no-files-found: ignore
-          retention-days: 14
-
-      - name: Validate official-to-canonical key mappings
-        run: python scripts/validate_official_key_mappings.py
-
-      - name: Validate official patient mappings
-        run: python scripts/validate_official_patient_mappings.py
-
-      - name: Validate official personnel mappings
-        run: python scripts/validate_official_personnel_mappings.py
-
-      - name: Validate official personnel education mappings
-        run: python scripts/validate_official_personnel_education_mappings.py
-
-      - name: Validate official prisoner mappings
-        run: python scripts/validate_official_prisoner_mappings.py
-
-      - name: Validate official recovery mappings
-        run: python scripts/validate_official_recovery_mappings.py
-
-      - name: Validate official operational metadata mappings
-        run: python scripts/validate_official_operational_mappings.py
-
-      - name: Validate complete canonical catalogue generation
-        run: python scripts/generate_full_canonical_catalogue.py --check
-
-      - name: Run catalogue reporting unit tests
-        run: python -m unittest discover -s tests/python -p 'test_catalogue_reporting.py'
-
-      - name: Report next evidence-safe canonical candidates
-        run: |
-          python scripts/report_canonical_candidates.py --limit 200 > canonical-candidates.json
-          cat canonical-candidates.json
-
-      - name: Upload canonical candidate report
-        uses: actions/upload-artifact@v4
-        with:
-          name: canonical-candidates
-          path: canonical-candidates.json
+          name: fast-built-site-${{ github.run_id }}
+          path: site
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 1
 
-      - name: Report official key mapping backlog
-        run: |
-          python scripts/report_key_mapping_backlog.py --limit 200 --examples 10 > key-mapping-backlog.json
-          cat key-mapping-backlog.json
+  data-fast:
+    name: Fast structured-data validation
+    needs: classify
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.data == 'true' &&
+      needs.classify.outputs.vehicle_only != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v6
 
-      - name: Upload official key mapping backlog
-        uses: actions/upload-artifact@v4
+      - uses: actions/setup-python@v6
         with:
-          name: key-mapping-backlog
-          path: key-mapping-backlog.json
-          if-no-files-found: error
-          retention-days: 14
+          python-version: "3.12"
+          cache: pip
 
-      - name: Generate 100% mission verification status
-        run: python scripts/generate_mission_verification_status.py
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
 
-      - name: Validate mission verification programme assets
-        run: python scripts/validate_verification_programme_assets.py
-
-      - name: Generate public data exports
-        run: python scripts/generate_exports.py
-
-      - name: Generate FAQ
-        run: python scripts/generate_faq.py
-
-      - name: Run release-integrity regressions
-        run: python -m unittest discover -s tests/python -p "test_release_integrity.py"
-
-      - name: Audit repository and generated API
-        shell: bash
+      - name: Validate canonical and official data contracts
         run: |
-          set -o pipefail
-          python scripts/release_readiness.py 2>&1 | tee release-readiness.log
+          python scripts/validate_data.py
+          python scripts/reconcile_official_mission_coverage.py
+          python scripts/validate_official_mission_catalogue.py
+          python scripts/merge_verification_registry_batches.py
+          python scripts/validate_official_key_mappings.py
+          python scripts/validate_official_patient_mappings.py
+          python scripts/validate_official_personnel_mappings.py
+          python scripts/validate_official_personnel_education_mappings.py
+          python scripts/validate_official_prisoner_mappings.py
+          python scripts/validate_official_recovery_mappings.py
+          python scripts/validate_official_operational_mappings.py
+          python scripts/generate_full_canonical_catalogue.py --check
+          python -m unittest discover -s tests/python -p 'test_*.py' -v
 
-      - name: Upload release-readiness diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
+  vehicle-fast:
+    name: Fast vehicle intelligence validation
+    needs: classify
+    if: needs.classify.result == 'success' && needs.classify.outputs.vehicle == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
         with:
-          name: release-readiness-diagnostics
-          path: release-readiness.log
-          if-no-files-found: ignore
-          retention-days: 14
+          python-version: "3.12"
+          cache: pip
 
-      - name: Test documentation link auditor
-        run: python -m unittest tests/test_audit_links.py
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
 
-      - name: Audit documentation links and anchors
-        run: python scripts/audit_links.py
+      - name: Validate inventory, generated evidence and regressions
+        run: |
+          python scripts/validate_vehicle_inventory.py
+          python scripts/generate_vehicle_field_resolution.py --check
+          python scripts/generate_vehicle_coverage.py --check
+          python -m unittest \
+            tests/python/test_vehicle_inventory.py \
+            tests/python/test_vehicle_field_resolution.py -v
 
-      - name: Build documentation strictly
-        run: python -m mkdocs build --strict --site-dir site
+  interface-fast:
+    name: Fast Chromium interface smoke
+    needs: [classify, documentation-fast]
+    if: >-
+      needs.classify.result == 'success' &&
+      needs.classify.outputs.interface == 'true' &&
+      needs.documentation-fast.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
 
-      - name: Audit built site
-        run: python scripts/release_readiness.py --site-dir site
+      - name: Download the documentation build
+        uses: actions/download-artifact@v5
+        with:
+          name: fast-built-site-${{ github.run_id }}
+          path: site
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: "24"
           package-manager-cache: false
@@ -163,49 +186,208 @@ jobs:
       - name: Install browser-test dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Validate all JavaScript syntax
+      - name: Validate JavaScript syntax
         shell: bash
         run: |
           for file in docs/javascripts/*.js; do
             node --check "$file"
           done
 
-      - name: Install Chromium and WebKit for Playwright
-        run: npx playwright install --with-deps chromium webkit
+      - name: Install Chromium only
+        run: npx playwright install --with-deps chromium
 
-      - name: Run browser acceptance tests against built site
+      - name: Run the fast interface suite
         shell: bash
         run: |
           python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
-
           for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:8000/ >/dev/null; then
-              break
-            fi
+            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
             if [ "$attempt" -eq 30 ]; then
               cat /tmp/missionchief-uk-http.log
               exit 1
             fi
             sleep 1
           done
+          MCUK_BASE_URL=http://127.0.0.1:8000/ \
+            npm run test:e2e -- --project=chromium-desktop
 
+      - name: Upload browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fast-playwright-diagnostics-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 7
+
+  workflow-fast:
+    name: Workflow and classifier validation
+    needs: classify
+    if: >-
+      needs.classify.result == 'success' &&
+      (needs.classify.outputs.workflow == 'true' ||
+       needs.classify.outputs.full_required == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install YAML dependency
+        run: python -m pip install -r requirements.txt
+
+      - name: Parse workflows and test change classification
+        run: |
+          python -m unittest tests/test_workflow_yaml.py -v
+          python -m unittest tests/python/test_ci_change_classifier.py -v
+
+  ready-data:
+    name: Complete data and evidence audit
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run complete deterministic data audit
+        run: bash scripts/run_full_data_audit.sh
+
+      - name: Upload retained diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-data-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/full-data-audit
+          if-no-files-found: ignore
+          retention-days: 14
+
+  ready-site:
+    name: Strict site and browser audit
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Audit links and build once
+        run: |
+          python -m unittest tests/test_audit_links.py
+          python scripts/audit_links.py
+          python -m mkdocs build --strict --site-dir site
+          python scripts/release_readiness.py --site-dir site
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          for file in docs/javascripts/*.js; do
+            node --check "$file"
+          done
+
+      - name: Install required browser engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run desktop and mobile acceptance
+        shell: bash
+        run: |
+          python -m http.server 8000 --directory site > /tmp/missionchief-uk-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break
+            if [ "$attempt" -eq 30 ]; then
+              cat /tmp/missionchief-uk-http.log
+              exit 1
+            fi
+            sleep 1
+          done
           MCUK_BASE_URL=http://127.0.0.1:8000/ \
             npm run test:e2e -- --project=chromium-desktop
           MCUK_BASE_URL=http://127.0.0.1:8000/ \
             npm run test:e2e -- \
               tests/e2e/live-site.spec.mjs \
               --project=webkit-iphone \
-              --grep "tools/resource-comparison/ renders without runtime or viewport failures"
+              --project=webkit-ipad \
+              --grep "renders without runtime or viewport failures"
 
-      - name: Upload browser-test diagnostics
+      - name: Upload browser diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: validation-playwright-diagnostics
+          name: full-playwright-diagnostics-${{ github.run_id }}
           path: |
             playwright-report
             test-results
           if-no-files-found: ignore
           retention-days: 14
+
+  validate:
+    name: Validation result
+    if: always()
+    needs:
+      - classify
+      - documentation-fast
+      - data-fast
+      - vehicle-fast
+      - interface-fast
+      - workflow-fast
+      - ready-data
+      - ready-site
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Enforce every selected lane
+        env:
+          CLASSIFY: ${{ needs.classify.result }}
+          DOCUMENTATION: ${{ needs.documentation-fast.result }}
+          DATA: ${{ needs.data-fast.result }}
+          VEHICLE: ${{ needs.vehicle-fast.result }}
+          INTERFACE: ${{ needs.interface-fast.result }}
+          WORKFLOW: ${{ needs.workflow-fast.result }}
+          READY_DATA: ${{ needs.ready-data.result }}
+          READY_SITE: ${{ needs.ready-site.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for result in "$CLASSIFY" "$DOCUMENTATION" "$DATA" "$VEHICLE" "$INTERFACE" "$WORKFLOW" "$READY_DATA" "$READY_SITE"; do
+            case "$result" in
+              success|skipped) ;;
+              *) echo "Selected validation lane ended as: $result"; exit 1 ;;
+            esac
+          done
+          echo "All selected validation lanes passed."

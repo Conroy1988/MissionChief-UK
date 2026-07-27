@@ -35,11 +35,12 @@ REQUIRED_FILES = (
     "scripts/validate_verification_programme_assets.py",
     "scripts/run_full_data_audit.sh",
     "scripts/classify_ci_changes.py",
+    "tests/test_workflow_yaml.py",
     "tests/python/test_ci_change_classifier.py",
     "data/sources/missionchief-uk/mission-verification-status.json",
     "docs/assets/data/official/uk-mission-verification.json",
     "docs/reference/mission-verification-status.md",
-    ".github/workflows/branch-validation-report.yml",
+    ".github/workflows/validate.yml",
     ".github/workflows/production-pages-verification.yml",
     "DELIVERY_ACCELERATION.md",
 )
@@ -107,7 +108,9 @@ def validate_batch_assets() -> int:
     seen: set[str] = set()
     for number, path in sorted(registries.items()):
         document = read_json(path)
-        records = document.get("records") if isinstance(document, dict) else None
+        if not isinstance(document, dict):
+            raise ValueError(f"Invalid verification batch registry: {path.relative_to(ROOT)}")
+        records = document.get("records")
         if document.get("schema_version") != "1" or not isinstance(records, dict) or not records:
             raise ValueError(f"Invalid verification batch registry: {path.relative_to(ROOT)}")
         if number < 3:
@@ -172,17 +175,28 @@ def require_markers(path: str, markers: tuple[str, ...]) -> str:
 
 
 def validate_delivery_architecture() -> None:
+    retired = ROOT / ".github" / "workflows" / "branch-validation-report.yml"
+    if retired.exists():
+        raise ValueError("Retired duplicate validation workflow must remain removed")
+
     require_markers(
-        ".github/workflows/branch-validation-report.yml",
+        ".github/workflows/validate.yml",
         (
+            "classify_ci_changes.py",
+            "documentation-fast",
+            "data-fast",
+            "vehicle-fast",
+            "interface-fast",
+            "workflow-fast",
+            "ready-data",
+            "ready-site",
+            "Complete data and evidence audit",
+            "Strict site and browser audit",
             "run_full_data_audit.sh",
-            "DIAGNOSTICS_DIR",
-            "stage36b-built-site",
-            "Chromium and WebKit acceptance",
-            "schedule:",
-            "github.event.pull_request.draft == false",
-            "stage36b/full-audit",
-            "actionlint_1.7.12_linux_amd64.tar.gz",
+            "npx playwright install --with-deps chromium",
+            "npx playwright install --with-deps chromium webkit",
+            "converted_to_draft",
+            "Validation result",
         ),
     )
 
@@ -251,32 +265,6 @@ def validate_delivery_architecture() -> None:
             "check_validation_worktree.py final-working-tree",
         ),
     )
-
-    validate_workflow = (ROOT / ".github/workflows/validate.yml").read_text(encoding="utf-8")
-    if "documentation-fast" in validate_workflow:
-        require_markers(
-            ".github/workflows/validate.yml",
-            (
-                "classify_ci_changes.py",
-                "documentation-fast",
-                "data-fast",
-                "vehicle-fast",
-                "interface-fast",
-                "workflow-fast",
-                "Validation result",
-                "playwright install --with-deps chromium",
-                "converted_to_draft",
-            ),
-        )
-    else:
-        require_markers(
-            ".github/workflows/validate.yml",
-            (
-                "Validate canonical JSON documents",
-                "Build documentation strictly",
-                "Run browser acceptance tests against built site",
-            ),
-        )
 
 
 def main() -> int:

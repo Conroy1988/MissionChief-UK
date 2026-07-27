@@ -1,6 +1,6 @@
 # MissionChief UK Delivery Acceleration
 
-Stage 36B separates rapid guide-authoring feedback from release-grade verification.
+Stage 36B separates rapid guide-authoring feedback from release-grade validation.
 
 ## Delivery targets
 
@@ -13,11 +13,15 @@ Stage 36B separates rapid guide-authoring feedback from release-grade verificati
 
 These are engineering targets, not fabricated guarantees. GitHub Actions run durations should be recorded after Stage 36B lands so the estimates can be replaced with measured medians and p90 values.
 
-## Initial measured benchmark
+## Initial measured benchmarks
 
-The first draft-PR self-test on 26 July 2026 included workflow, classifier, documentation and vehicle-validation changes. GitHub completed the selected fast lanes and final aggregate gate approximately **34 seconds after the pull request opened**. The full release-grade workflow was correctly skipped while the pull request remained a draft, and the Chromium lane was correctly skipped because no frontend file changed.
+The first draft-PR self-test on 26 July 2026 included workflow, classifier, documentation and vehicle-validation changes. GitHub completed the selected fast lanes and final aggregate gate approximately **34 seconds after the pull request opened**. The full release-grade lanes were correctly skipped while the pull request remained a draft, and the Chromium lane was correctly skipped because no frontend file changed.
 
-This is an initial mixed-change measurement rather than a long-term median. Stage 37 guide batches will supply the representative guide-only median and p90 figures.
+The activation pull request initially changed only `validate.yml`. GitHub selected the workflow/classifier lane and skipped documentation, structured data, vehicle and Chromium jobs. The aggregate gate completed **52 seconds after the draft was created**.
+
+The final ready-state benchmark launched the complete data/evidence audit and strict site/browser audit simultaneously. Both lanes passed on the same exact head, confirming that draft speed does not weaken the landing boundary.
+
+These are activation measurements rather than long-term medians. Stage 37 guide batches will supply representative guide-only median and p90 figures.
 
 ## Validation lanes
 
@@ -33,11 +37,14 @@ This is an initial mixed-change measurement rather than a long-term median. Stag
 
 Guide-only Markdown changes do not invoke catalogue equivalence, public-data regeneration, Playwright WebKit installation, or release checks.
 
-### Non-draft pull requests
+### Ready pull requests
 
-`branch-validation-report.yml` runs the complete release-grade audit. Data integrity, documentation building, and workflow checks run in parallel. Browser tests reuse the single audited MkDocs artifact instead of rebuilding the site.
+The same active `validate.yml` workflow runs two complete release-grade jobs in parallel:
 
-The final aggregate job publishes an exact-commit `stage36b/full-audit` status. This keeps full validation observable even when a connector or API view omits push-triggered workflow runs.
+- complete data, synchronizer, evidence and release-integrity audit;
+- strict documentation, built-site, Chromium and WebKit audit.
+
+A single aggregate result requires every selected lane to pass. Maintaining one workflow identity avoids duplicate runs and removes workflow-registration ambiguity.
 
 ### Main and production
 
@@ -46,7 +53,7 @@ The final aggregate job publishes an exact-commit `stage36b/full-audit` status. 
 ## Safety boundaries
 
 - Unknown or unpublished game values remain unknown; faster validation never relaxes evidence semantics.
-- Full catalogue, mapping, schema, release, MkDocs and browser checks still gate every non-draft landing candidate.
-- Workflow changes and release metadata fail closed into the full audit lane.
+- Full catalogue, mapping, schema, release, MkDocs and browser checks still gate every ready landing candidate.
+- Workflow changes and release metadata fail closed.
 - Dedicated vehicle validation remains on `main` and through manual dispatch.
-- Scheduled full audits continuously check the production baseline.
+- Production browser verification remains bound to the exact deployed SHA.
