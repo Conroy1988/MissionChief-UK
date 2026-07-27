@@ -8,6 +8,7 @@ This section provides operational references for every service group currently r
 - [Fire specialist extensions and containers](fire-and-rescue-specialists.md) — **Stage 37A Batch 2**
 - [Fire training and personnel planning](fire-training-and-personnel.md) — **Stage 37A Batch 3**
 - [Fire airfield and railway response planning](fire-airfield-and-railway-planning.md) — **Stage 37A Batch 4**
+- [Fire wildfire, flood and water-rescue planning](fire-wildfire-flood-water-rescue.md) — **Stage 37A Batch 5**
 - [Ambulance](ambulance.md)
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
@@ -20,9 +21,9 @@ This section provides operational references for every service group currently r
 
 ## Stage 37 operational-guide programme
 
-Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, specialist-extension activation playbooks, container logistics, training pipelines, personnel reserve guidance, airfield and railway response doctrine, cross-service commissioning checks, common-failure remedies and direct links into the intelligence tools.
+Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, specialist-extension activation playbooks, container logistics, training pipelines, personnel reserve guidance, airfield and railway response doctrine, wildfire and severe-weather planning, towing and pumping logistics, cross-service commissioning checks, common-failure remedies and direct links into the intelligence tools.
 
-Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability and unlock details remain unknown rather than being inferred.
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units and unlock details remain unknown rather than being inferred.
 
 ## Cross-service intelligence
 
@@ -31,6 +32,8 @@ The production data now models shared dependencies rather than treating each ser
 - Railway incidents involving Fire, Police, Ambulance, HART and Search and Rescue;
 - Bomb Disposal missions requiring Coastguard or Railway Police infrastructure;
 - Airfield incidents using Police, HART and Mass Casualty capabilities;
+- wildfire and flood incidents combining Fire command, water supply, HART welfare, Police, Coastguard/Lifeboat and pumping capacity;
+- inland water rescue using Lifeboat trailers within Fire-generated mission families;
 - Recovery variations attached to Fire, Police and Ambulance incidents;
 - maritime and mountain missions using aviation or specialist medical support.
 
