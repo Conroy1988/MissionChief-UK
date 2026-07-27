@@ -7,6 +7,7 @@ This section provides operational references for every service group currently r
 - [Fire and Rescue progression](fire-and-rescue.md) — **Stage 37A Batch 1**
 - [Fire specialist extensions and containers](fire-and-rescue-specialists.md) — **Stage 37A Batch 2**
 - [Fire training and personnel planning](fire-training-and-personnel.md) — **Stage 37A Batch 3**
+- [Fire airfield and railway response planning](fire-airfield-and-railway-planning.md) — **Stage 37A Batch 4**
 - [Ambulance](ambulance.md)
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
@@ -19,7 +20,7 @@ This section provides operational references for every service group currently r
 
 ## Stage 37 operational-guide programme
 
-Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, specialist-extension activation playbooks, container logistics, training pipelines, personnel reserve guidance, common-failure remedies and direct links into the intelligence tools.
+Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, specialist-extension activation playbooks, container logistics, training pipelines, personnel reserve guidance, airfield and railway response doctrine, cross-service commissioning checks, common-failure remedies and direct links into the intelligence tools.
 
 Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability and unlock details remain unknown rather than being inferred.
 
