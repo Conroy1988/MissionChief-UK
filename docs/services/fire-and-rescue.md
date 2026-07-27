@@ -86,7 +86,7 @@ Treat water supply and foam as different operational needs. The Water Ladder wit
 
 HazMat requires trained personnel, so the three-day course is part of the purchase decision. Technical Rescue Extensions are verified as countable mission-generation preconditions, while compatible buildings, price and construction details remain unpublished in the current canonical record. Activating mission generation before response capability is ready can create avoidable pressure.
 
-[Review Buildings & Extensions](../reference/buildings-and-extensions.md) · [Review Training & Personnel](../reference/training-and-personnel.md)
+[Open specialist extension and container playbooks](fire-and-rescue-specialists.md) · [Review Buildings & Extensions](../reference/buildings-and-extensions.md) · [Review Training & Personnel](../reference/training-and-personnel.md)
 
 ## Recommended fleet templates
 
@@ -201,4 +201,4 @@ Before the next fire expansion, confirm:
 
 ## Stage 37A continuation
 
-Batch 1 establishes the progression foundation. The next Fire & Rescue batches will add specialist-extension playbooks, training pipelines, container logistics, airfield and railway coverage, wildfire and water-rescue planning, and mission-family pressure analysis from the complete canonical catalogue.
+Batch 1 establishes the progression foundation. Batch 2 adds the [specialist extension and container logistics playbooks](fire-and-rescue-specialists.md). Later batches will cover training pipelines, airfield and railway coverage, wildfire and water-rescue planning, and mission-family pressure analysis from the complete canonical catalogue.
