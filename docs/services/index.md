@@ -4,7 +4,7 @@ This section provides operational references for every service group currently r
 
 ## Active service guides
 
-- [Fire and Rescue](fire-and-rescue.md)
+- [Fire and Rescue](fire-and-rescue.md) — **Stage 37A progression foundation published**
 - [Ambulance](ambulance.md)
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
@@ -14,6 +14,12 @@ This section provides operational references for every service group currently r
 - [Airfield Operations](airfield-operations.md)
 - [Recovery and HGV Recovery](recovery.md)
 - [Railway Police and Railway Fire Response](railway-response.md)
+
+## Stage 37 operational-guide programme
+
+Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, common-failure remedies and direct links into the intelligence tools.
+
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions and unlock details remain unknown rather than being inferred.
 
 ## Cross-service intelligence
 
