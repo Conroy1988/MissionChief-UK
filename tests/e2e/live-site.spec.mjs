@@ -12,6 +12,7 @@ const CRITICAL_ROUTES = [
   { path: "tools/mission-lookup/", heading: "Mission Requirement Lookup" },
   { path: "tools/resource-comparison/", heading: "Resource and Qualification Comparison" },
   { path: "tools/fleet-planner/", heading: "Concurrent Fleet Planner" },
+  { path: "tools/account-readiness/", heading: "Account Readiness Planner" },
   { path: "tools/query-catalogue/", heading: "Natural-Language Query Catalogue" },
   { path: "reference/generated-faq/", heading: "Generated FAQ" },
   { path: "api/", heading: "MissionChief UK Static Data API" },
@@ -178,6 +179,32 @@ test("fleet planner multiplies a verified mission", async ({ page }) => {
   expect(failures).toEqual([]);
 });
 
+test("account readiness calculates reserve cover and persists a local scenario", async ({ page }) => {
+  const failures = runtimeFailures(page);
+  await openPage(page, "tools/account-readiness/");
+  const root = page.locator("[data-mcuk-tool='account-readiness']");
+  await expect(root).toHaveAttribute("data-mcuk-ready", "true");
+  await expect.poll(() => root.locator("select[data-role='mission'] option").count()).toBeGreaterThan(1);
+
+  await root.locator("select[data-role='mission']").selectOption("0");
+  await root.locator("button[data-action='add-mission']").click();
+  const fireEngineRow = root.locator("tr[data-resource-id='fire_engine']");
+  await expect(fireEngineRow).toBeVisible();
+  await fireEngineRow.locator("input[data-field='dispatchable']").fill("2");
+  await fireEngineRow.locator("input[data-field='reserve']").fill("1");
+  await expect(root.locator("[data-role='summary']")).toContainText("Ready");
+
+  await root.locator("input[data-role='scenario-name']").fill("Playwright readiness");
+  await root.locator("button[data-action='save-local']").click();
+  await expect(root.locator("[data-role='storage-status']")).toContainText("Saved");
+  await root.locator("button[data-action='clear-current']").click();
+  await expect(root.locator("[data-role='scenario']")).toContainText("No missions selected");
+  await root.locator("select[data-role='saved-scenarios']").selectOption("Playwright readiness");
+  await root.locator("button[data-action='load-local']").click();
+  await expect(root.locator("[data-role='scenario']")).toContainText("Bin fire");
+  expect(failures).toEqual([]);
+});
+
 test("query catalogue returns evidence-backed matches", async ({ page }) => {
   const failures = runtimeFailures(page);
   await openPage(page, "tools/query-catalogue/");
@@ -232,7 +259,7 @@ test("public API collections are internally consistent", async ({ request }, tes
 });
 
 test("interactive surfaces have no critical WCAG violations", async ({ page }) => {
-  for (const path of ["", "tools/mission-lookup/", "tools/resource-comparison/", "tools/fleet-planner/", "tools/query-catalogue/"]) {
+  for (const path of ["", "tools/mission-lookup/", "tools/resource-comparison/", "tools/fleet-planner/", "tools/account-readiness/", "tools/query-catalogue/"]) {
     await openPage(page, path);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
