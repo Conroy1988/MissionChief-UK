@@ -1,0 +1,172 @@
+===== validate_data =====
+exit=0
+Structured data validation warnings:
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-10.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-11.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-12.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-13.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-14.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-15.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-16.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-17.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-18.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-19.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-20.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-21.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-22.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-23.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-24.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-25.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-26.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-27.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-28.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-29.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-3.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-30.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-31.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-4.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-5.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-6.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-7.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-8.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-batches/fully-canonical-fire-batch-9.json: no schema mapping for directory 'mission-verification-batches'
+- data/uk/mission-verification-registry.json: no schema mapping for directory 'uk'
+- data/uk/official-conditional-resource-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-key-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-patient-field-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-personnel-education-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-personnel-field-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-prisoner-field-mappings.json: no schema mapping for directory 'uk'
+- data/uk/official-recovery-field-mappings.json: no schema mapping for directory 'uk'
+- data/uk/vehicle-field-resolution.json: no schema mapping for directory 'uk'
+Validated 1253 structured data file(s) successfully, including 4526 mission resource reference(s) and 517 infrastructure precondition reference(s).
+
+===== reconcile_official =====
+exit=0
+Official mission coverage reconciled: 1062/1062 direct official/canonical matches, 0 official missions awaiting canonical records and 17 canonical-only overlays or derived records.
+
+===== validate_official_catalogue =====
+exit=0
+Official UK mission catalogue audit passed: 1062 official missions, 1062/1079 canonical ID matches, 0 official missions awaiting canonical mapping, source SHA-256 bd24efe9027f069f0ed8e6275873784b142d8da7d13e3bfa1fb57cca72443878.
+
+===== merge_verification =====
+exit=0
+Mission verification registry merged: 1062 decisions from 30 source files.
+
+===== validate_key_mappings =====
+exit=0
+Official key mapping audit passed: 1062 promoted missions, 1062 fully canonical, 68 requirement keys, 14 chance keys and 31 prerequisite keys mapped.
+
+===== validate_patients =====
+exit=0
+Official patient mapping audit passed: 1062/1062 promoted missions exact, 605 patient-bearing promoted missions and 10 patient fields mapped.
+
+===== validate_personnel =====
+exit=0
+Official personnel mapping audit passed: 1062/1062 promoted missions exact, 129 mapped-personnel missions and 3 personnel role(s) mapped.
+
+===== validate_personnel_education =====
+exit=0
+Official personnel education mapping audit passed: 1062 promoted missions inspected, 104 exact personnel-education missions, 104 strict decisions and 13 mapped roles.
+
+===== validate_prisoners =====
+exit=0
+Official prisoner mapping audit passed: 1062/1062 promoted missions exact, 132 prisoner-bearing promoted missions and 2 prisoner fields mapped.
+
+===== validate_recovery =====
+exit=0
+Official recovery mapping audit passed: 1062 promoted missions inspected, 36 exact recovery missions, 36 strict decisions and 2 mapped asset types.
+
+===== validate_operational =====
+exit=0
+Official operational metadata audit passed: 1062 promoted missions inspected, 1062 exact and 836 strict decisions across 1062 official records.
+
+===== full_catalogue_check =====
+exit=0
+Complete canonical catalogue checked: 1062 direct records, 17 canonical-only overlays and 0 output(s) changed.
+
+===== python_tests =====
+exit=1
+test_allow_list_blocker_prevents_false_single_key_unlock (test_catalogue_reporting.BacklogReportTests.test_allow_list_blocker_prevents_false_single_key_unlock) ... ok
+test_complete_mapping_backlog_is_empty (test_catalogue_reporting.BacklogReportTests.test_complete_mapping_backlog_is_empty) ... ok
+test_occurrences_and_state_counts_reconcile (test_catalogue_reporting.BacklogReportTests.test_occurrences_and_state_counts_reconcile) ... ok
+test_single_key_unlocks_use_separate_creation_and_audit_buckets (test_catalogue_reporting.BacklogReportTests.test_single_key_unlocks_use_separate_creation_and_audit_buckets) ... ok
+test_catalogue_partition_is_complete_and_disjoint (test_catalogue_reporting.CandidateReportTests.test_catalogue_partition_is_complete_and_disjoint) ... ok
+test_cli_limits_do_not_change_summary_counts (test_catalogue_reporting.CandidateReportTests.test_cli_limits_do_not_change_summary_counts) ... ok
+test_legacy_creation_aliases_never_include_canonical_ids (test_catalogue_reporting.CandidateReportTests.test_legacy_creation_aliases_never_include_canonical_ids) ... ok
+test_registry_union_accepts_idempotent_duplicates (test_catalogue_reporting.CandidateReportTests.test_registry_union_accepts_idempotent_duplicates) ... ok
+test_registry_union_rejects_conflicting_duplicates (test_catalogue_reporting.CandidateReportTests.test_registry_union_rejects_conflicting_duplicates) ... ok
+test_summary_count_invariants (test_catalogue_reporting.CandidateReportTests.test_summary_count_invariants) ... ok
+test_record_construction_uses_resolved_checked_at (test_catalogue_reporting.CanonicalRecordDateTests.test_record_construction_uses_resolved_checked_at) ... ok
+test_default_checked_at_uses_current_utc_date (test_catalogue_reporting.GeneratorDateTests.test_default_checked_at_uses_current_utc_date) ... ok
+test_explicit_checked_at_is_deterministic (test_catalogue_reporting.GeneratorDateTests.test_explicit_checked_at_is_deterministic) ... ok
+test_invalid_checked_at_is_rejected (test_catalogue_reporting.GeneratorDateTests.test_invalid_checked_at_is_rejected) ... ok
+test_duplicate_canonical_id_is_rejected_before_check_mode_returns (test_catalogue_reporting.GeneratorSafetyTests.test_duplicate_canonical_id_is_rejected_before_check_mode_returns) ... ok
+test_duplicate_creation_paths_are_rejected (test_catalogue_reporting.GeneratorSafetyTests.test_duplicate_creation_paths_are_rejected) ... ok
+test_generator_reads_only_the_new_record_creation_pool (test_catalogue_reporting.GeneratorSafetyTests.test_generator_reads_only_the_new_record_creation_pool) ... ok
+test_javascript_change_uses_interface_lane (test_ci_change_classifier.ChangeClassifierTests.test_javascript_change_uses_interface_lane) ... ok
+test_markdown_service_page_uses_guide_only_lane (test_ci_change_classifier.ChangeClassifierTests.test_markdown_service_page_uses_guide_only_lane) ... ok
+test_release_metadata_requires_full_audit (test_ci_change_classifier.ChangeClassifierTests.test_release_metadata_requires_full_audit) ... ok
+test_unknown_root_file_fails_closed (test_ci_change_classifier.ChangeClassifierTests.test_unknown_root_file_fails_closed) ... ok
+test_vehicle_contract_change_is_vehicle_only (test_ci_change_classifier.ChangeClassifierTests.test_vehicle_contract_change_is_vehicle_only) ... ok
+test_workflow_change_requires_full_audit (test_ci_change_classifier.ChangeClassifierTests.test_workflow_change_requires_full_audit) ... ok
+test_collection_counts_are_named_and_complete (test_release_integrity.PublicMetricSyncTests.test_collection_counts_are_named_and_complete) ... ok
+test_home_sync_targets_hero_and_board_independently (test_release_integrity.PublicMetricSyncTests.test_home_sync_targets_hero_and_board_independently) ... ok
+test_publication_files_are_synchronized_and_idempotent (test_release_integrity.PublicMetricSyncTests.test_publication_files_are_synchronized_and_idempotent) ... ERROR
+test_catalogue_refresh_is_fail_closed_on_drift (test_release_integrity.ReleaseReadinessTests.test_catalogue_refresh_is_fail_closed_on_drift) ... ok
+test_catalogue_state_lines_accept_exact_values (test_release_integrity.ReleaseReadinessTests.test_catalogue_state_lines_accept_exact_values) ... ok
+test_catalogue_state_lines_reject_stale_awaiting_count (test_release_integrity.ReleaseReadinessTests.test_catalogue_state_lines_reject_stale_awaiting_count) ... ok
+test_catalogue_state_lines_reject_stale_overlay_count (test_release_integrity.ReleaseReadinessTests.test_catalogue_state_lines_reject_stale_overlay_count) ... ok
+test_publication_metadata_matches_release_source (test_release_integrity.ReleaseReadinessTests.test_publication_metadata_matches_release_source) ... ERROR
+test_structured_marker_does_not_accept_number_substrings (test_release_integrity.ReleaseReadinessTests.test_structured_marker_does_not_accept_number_substrings) ... ok
+test_complete_official_container_fleet (test_vehicle_container_fleet.ContainerFleetTests.test_complete_official_container_fleet) ... ok
+test_container_extension_exists (test_vehicle_container_fleet.ContainerFleetTests.test_container_extension_exists) ... ok
+test_every_resource_and_field_has_a_resolution (test_vehicle_field_resolution.VehicleFieldResolutionTests.test_every_resource_and_field_has_a_resolution) ... ok
+test_generated_registry_is_current (test_vehicle_field_resolution.VehicleFieldResolutionTests.test_generated_registry_is_current) ... ok
+test_water_ladder_with_cafs_is_officially_documented (test_vehicle_field_resolution.VehicleFieldResolutionTests.test_water_ladder_with_cafs_is_officially_documented) ... ok
+test_canonical_only_records_do_not_block_complete_programme (test_vehicle_inventory.VehicleInventoryTests.test_canonical_only_records_do_not_block_complete_programme) ... ok
+test_dangling_mapping_is_reported (test_vehicle_inventory.VehicleInventoryTests.test_dangling_mapping_is_reported) ... ok
+test_duplicate_canonical_mappings_are_rejected (test_vehicle_inventory.VehicleInventoryTests.test_duplicate_canonical_mappings_are_rejected) ... ok
+test_duplicate_type_ids_are_rejected (test_vehicle_inventory.VehicleInventoryTests.test_duplicate_type_ids_are_rejected) ... ok
+test_loaders_read_realistic_files (test_vehicle_inventory.VehicleInventoryTests.test_loaders_read_realistic_files) ... ok
+test_report_separates_identity_and_field_completeness (test_vehicle_inventory.VehicleInventoryTests.test_report_separates_identity_and_field_completeness) ... ok
+test_foam_and_drone_contracts (test_vehicle_official_enrichment.OfficialVehicleEnrichmentTests.test_foam_and_drone_contracts) ... ok
+test_schema_supports_enrichment_contracts (test_vehicle_official_enrichment.OfficialVehicleEnrichmentTests.test_schema_supports_enrichment_contracts) ... ok
+test_search_and_rescue_contracts (test_vehicle_official_enrichment.OfficialVehicleEnrichmentTests.test_search_and_rescue_contracts) ... ok
+test_official_training_durations (test_vehicle_training_hart_enrichment.VehicleTrainingHartTests.test_official_training_durations) ... ok
+test_schema_supports_structured_training (test_vehicle_training_hart_enrichment.VehicleTrainingHartTests.test_schema_supports_structured_training) ... ok
+test_specialist_building_compatibility (test_vehicle_training_hart_enrichment.VehicleTrainingHartTests.test_specialist_building_compatibility) ... ok
+
+======================================================================
+ERROR: test_publication_files_are_synchronized_and_idempotent (test_release_integrity.PublicMetricSyncTests.test_publication_files_are_synchronized_and_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/tests/python/test_release_integrity.py", line 58, in test_publication_files_are_synchronized_and_idempotent
+    self.assertEqual(sync.sync_readme(readme, metrics, batches), readme)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/scripts/sync_public_verification_metrics.py", line 217, in sync_readme
+    text = replace_once(
+           ^^^^^^^^^^^^^
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/scripts/sync_public_verification_metrics.py", line 66, in replace_once
+    raise SyncFailure(f"Expected exactly one {label} pattern; found {count}")
+sync_public_verification_metrics.SyncFailure: Expected exactly one README hero metrics pattern; found 0
+
+======================================================================
+ERROR: test_publication_metadata_matches_release_source (test_release_integrity.ReleaseReadinessTests.test_publication_metadata_matches_release_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/tests/python/test_release_integrity.py", line 162, in test_publication_metadata_matches_release_source
+    readiness.audit_publication_metadata(release, counts, summary)
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/scripts/release_readiness.py", line 420, in audit_publication_metadata
+    require_pattern(
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/scripts/release_readiness.py", line 171, in require_pattern
+    require(re.search(pattern, text, flags=re.MULTILINE) is not None, message)
+  File "/home/runner/work/MissionChief-UK/MissionChief-UK/scripts/release_readiness.py", line 163, in require
+    raise AuditFailure(message)
+release_readiness.AuditFailure: README Official UK missions row is stale; expected 1,062
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.684s
+
+FAILED (errors=2)
+
