@@ -1,0 +1,46 @@
+name: Synchronise Stage 42 release assets
+
+on:
+  push:
+    branches:
+      - agent/stage42-v1.4.0-release
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stage42-release-sync
+  cancel-in-progress: false
+
+jobs:
+  synchronise:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out release branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/stage42-v1.4.0-release
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate deterministic publication assets
+        run: |
+          python scripts/generate_exports.py
+          python scripts/generate_faq.py
+
+      - name: Commit synchronised release candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/stage42-release-sync.yml
+          git add docs/assets/data/v1 docs/reference/generated-faq.md
+          git commit -m 'Stage 42: regenerate v1.4.0 publication assets'
+          git push origin HEAD:agent/stage42-v1.4.0-release
