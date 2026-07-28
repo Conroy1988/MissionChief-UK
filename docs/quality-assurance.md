@@ -1,14 +1,12 @@
 # Quality Assurance
 
-MissionChief UK uses layered validation so canonical records, the complete official UK mission catalogue, generated exports, documentation and browser tools are checked before and after deployment.
+MissionChief UK uses layered validation so canonical records, the complete official UK mission catalogue, generated exports, documentation, long-form guides and browser tools are checked before and after deployment.
 
 ## Browser coverage
 
-The Playwright acceptance suite runs against:
-
 | Project | Engine | Operational target |
 |---|---|---|
-| `chromium-desktop` | Chromium | Desktop Chrome-class browsers |
+| `chromium-desktop` | Chromium | Desktop Chrome-class browsers and complete interactive tests |
 | `firefox-desktop` | Firefox | Desktop Firefox |
 | `webkit-iphone` | WebKit | iPhone-sized iOS Safari behaviour |
 | `webkit-ipad` | WebKit | iPad-sized Safari behaviour |
@@ -19,40 +17,54 @@ Playwright device profiles emulate viewport, touch, mobile mode and user-agent b
 
 The suite verifies:
 
-- Command Centre and every public intelligence-tool route;
+- Command Centre, Getting Started, Game Systems, every mature service guide, Strategy, Alliance Operations and every public intelligence-tool route;
 - generated FAQ, API guide, official-catalogue reference and release notes;
 - absence of JavaScript exceptions and first-party HTTP failures;
 - responsive content without page-level horizontal overflow;
+- mobile-safe long tables and code blocks;
+- automatic long-page section navigation on pages with at least four major sections;
+- visible keyboard focus for links, buttons, controls and section summaries;
 - canonical mission lookup loading and filtering;
 - complete official UK mission-catalogue availability;
 - more than 1,000 unique official mission records;
 - source SHA-256 and reconciliation arithmetic;
 - official-only mission search and canonical mission search;
-- separate Canonical mapped and Official UK catalogue evidence states;
+- distinct Canonical mapped and Official UK catalogue evidence states;
 - structured patient, personnel, duration, variant and relationship fields;
-- complete official record display;
-- one shared official-catalogue browser request per page lifecycle;
 - resource and qualification comparison;
 - concurrent fleet multiplication;
+- Account Readiness mission selection, protected reserve, readiness calculation and local save/load;
 - deterministic query-catalogue results;
 - the global command palette opening through `Ctrl+K` or `⌘K`;
-- command-palette search against the generated canonical search index;
-- collection filtering, keyboard closure and mission-result deep linking;
-- iPhone viewport operation of the command palette;
+- command-palette filtering, keyboard closure and mission-result deep linking;
 - MkDocs Material instant-navigation reinitialisation;
-- all eight canonical Static API endpoints and their cross-file counts;
-- the two complete official-catalogue endpoints; and
-- critical WCAG A/AA violations on the main interactive surfaces.
+- all canonical Static API endpoints and their cross-file counts; and
+- critical WCAG A/AA violations on the main interactive and command surfaces.
 
-The deterministic documentation audit additionally checks:
+## Content and navigation safeguards
+
+Stage 41 adds production safeguards for the expanded long-form estate:
+
+- `.md-content` and page bodies are constrained to the viewport;
+- tables own their horizontal scrolling instead of expanding the page;
+- code blocks scroll locally with touch-friendly behaviour;
+- headings preserve scroll offset below the sticky header;
+- focus-visible outlines are enforced across interactive content;
+- a collapsed Page sections menu is generated after the title when a page has four or more `h2` sections;
+- the Command Centre is excluded from generated section navigation; and
+- print output omits the interactive section menu.
+
+## Deterministic documentation audit
+
+The repository audit checks:
 
 - relative Markdown links;
 - local HTML `href` and `src` references;
-- GitHub Pages URLs that point back into this project;
-- MkDocs page-route resolution for both `page.md` and `page/index.md` layouts; and
+- GitHub Pages URLs pointing back into this project;
+- MkDocs route resolution for both `page.md` and `page/index.md` layouts; and
 - local heading anchors in README, changelog and documentation pages.
 
-External websites are not ordinary build dependencies. The official UK mission feed is accessed only by its dedicated refresh workflow, not by routine validation or deployment. The committed source snapshot makes normal CI deterministic and protects deployment from transient upstream failures.
+External websites are not ordinary build dependencies. The official UK mission feed is accessed only by its dedicated refresh workflow. The committed source snapshot keeps routine CI deterministic and protects deployment from transient upstream failures.
 
 ## Official catalogue integrity
 
@@ -62,15 +74,12 @@ The offline catalogue auditor checks:
 - the official source contains at least 1,000 missions;
 - every mission has a unique ID and non-empty name;
 - records are ordered deterministically by mission ID;
-- compact tracked files remain below repository-content limits;
-- source URL, timestamp and SHA-256 metadata agree across all outputs;
-- every official source field is preserved in the public browser catalogue;
-- only the documented navigation fields are derived;
+- source URL, timestamp and SHA-256 metadata agree across outputs;
+- every official source field is preserved in the browser catalogue;
+- only documented navigation fields are derived;
 - canonical match, official-only and canonical-only counts are correct;
-- reconciliation lists are complete and correctly ordered;
-- canonical/official name mismatches are current;
 - requirement, chance and prerequisite inventories are current; and
-- built official assets are byte-equivalent in meaning to their committed source files.
+- built official assets remain equivalent to committed source files.
 
 The source-refresh workflow is content-addressed. An unchanged source SHA produces no commit. A changed source must pass importer validation, lossless publication, compaction and the offline audit before it can be committed and deployed.
 
@@ -79,7 +88,7 @@ The source-refresh workflow is content-addressed. An unchanged source SHA produc
 ```text
 Canonical JSON records
         ↓
-Schema and referential validation
+Schema and relationship validation
         ↓
 Committed official UK catalogue
         ↓
@@ -91,57 +100,48 @@ Repository/API readiness audit
         ↓
 Documentation link and anchor audit
         ↓
-Strict MkDocs build and built-site equality checks
+Strict MkDocs build and built-site equality
         ↓
 All JavaScript syntax validation
         ↓
-Chromium acceptance against the built site
+Chromium interactive acceptance
         ↓
-Catalogue, command-palette, deep-link and mobile acceptance
+iPhone and iPad WebKit viewport acceptance
         ↓
-GitHub Pages deployment
+Exact-SHA GitHub Pages deployment
         ↓
-HTTP, canonical API and official-data smoke tests
+Production HTTP and API smoke tests
         ↓
-Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance
+Immutable release verification
 ```
 
-A failed post-deployment browser test marks the Pages workflow as failed and prevents automated release publication.
+A failed post-deployment browser or production smoke test marks the Pages workflow as failed and blocks automated release publication.
+
+## Account Readiness trust boundary
+
+The Account Readiness Planner:
+
+- loads only first-party canonical versioned exports;
+- calculates from canonical mission requirements and user-entered local inventory;
+- treats blank values as unknown;
+- subtracts explicit protected reserve;
+- prevents known alternative capacity from being reused across independent groups;
+- keeps towing/carrier allocation separate from response allocation;
+- stores optional scenarios only in the current browser;
+- imports or exports only through explicit JSON actions; and
+- never authenticates against, scrapes or mutates MissionChief.
 
 ## Command-search trust boundary
 
-The global command palette remains a read-only interface over `assets/data/v1/search-index.json`. It searches the canonical collections and must:
+The global command palette remains a read-only interface over `assets/data/v1/search-index.json`. It must escape record content, preserve omitted values as unknown, avoid account access and deep-link only through encoded first-party routes.
 
-- load only the generated first-party canonical search index;
-- expose no arbitrary HTML from data records;
-- escape record content before rendering;
-- avoid MissionChief authentication and account access;
-- preserve omitted values as unknown;
-- link mission records into Mission Lookup using an encoded query; and
-- link other collections into Query Catalogue using the same encoded-query contract.
-
-Mission Lookup additionally consumes the separate official catalogue. Official internal keys are reproduced verbatim and are not silently converted into canonical vehicle, personnel or infrastructure mappings.
+Mission Lookup additionally consumes the separate official catalogue. Official internal keys are reproduced verbatim and are not silently converted into canonical resource mappings.
 
 ## Failure diagnostics
 
-Failed browser runs upload an Actions artifact containing:
+Failed browser runs upload an Actions artifact containing Playwright reports and test results. Depending on the defect, this can include traces, screenshots, video, console errors and failed first-party network requests. Diagnostics are retained for 14 days.
 
-```text
-playwright-report/
-test-results/
-```
-
-Depending on the failure, this can include:
-
-- HTML test report;
-- Playwright trace;
-- screenshot;
-- retained video;
-- console and network failure details.
-
-Artifacts are retained for 14 days.
-
-Link-audit failures are printed directly in the Actions log using this format:
+Link-audit failures are emitted as:
 
 ```text
 source-file.md:line: missing local target or anchor
@@ -149,7 +149,7 @@ source-file.md:line: missing local target or anchor
 
 ## Local execution
 
-Run deterministic repository checks:
+Run repository and documentation checks:
 
 ```bash
 python scripts/validate_data.py
@@ -162,41 +162,24 @@ mkdocs build --strict --site-dir site
 python scripts/release_readiness.py --site-dir site
 ```
 
-Validate every browser-side script:
+Validate browser-side scripts:
 
 ```bash
 for file in docs/javascripts/*.js; do node --check "$file"; done
 ```
 
-Install browser-test dependencies and browser binaries:
+Install and run browser acceptance:
 
 ```bash
 npm install --no-audit --no-fund
 npx playwright install --with-deps
-```
-
-Run the complete suite against the public site:
-
-```bash
 npm run test:e2e
 ```
 
-Run one browser project:
+Run one project:
 
 ```bash
 npm run test:e2e -- --project=chromium-desktop
-```
-
-Run only the complete official-catalogue acceptance specification:
-
-```bash
-npm run test:e2e -- tests/e2e/official-mission-catalogue.spec.mjs
-```
-
-Run only the command-palette acceptance specification:
-
-```bash
-npm run test:e2e -- tests/e2e/command-palette.spec.mjs
 ```
 
 Run against another deployment or local server:
@@ -205,7 +188,7 @@ Run against another deployment or local server:
 MCUK_BASE_URL=http://127.0.0.1:8000/ npm run test:e2e
 ```
 
-On Windows PowerShell:
+PowerShell:
 
 ```powershell
 $env:MCUK_BASE_URL = "http://127.0.0.1:8000/"
@@ -214,10 +197,4 @@ npm run test:e2e
 
 ## Scope boundary
 
-Automated tests can detect repeatable browser, accessibility, network and data-contract defects. They cannot fully reproduce:
-
-- every physical iPhone or iPad model;
-- assistive-technology combinations;
-- unusual browser extensions or content blockers;
-- poor mobile networks; or
-- subjective readability and visual-design preferences.
+Automated tests cannot fully reproduce every physical device, assistive-technology combination, browser extension, poor network or subjective design preference. Repeatable data, browser, accessibility, link and layout defects are release-blocking; physical-device and qualitative reviews remain complementary checks.
