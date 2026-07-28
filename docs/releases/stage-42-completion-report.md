@@ -2,6 +2,7 @@
 
 **Release:** v1.4.0  
 **Evidence baseline:** 28 July 2026  
+**Validation status:** release candidate  
 **Repository:** `Conroy1988/MissionChief-UK`  
 **Production:** GitHub Pages
 
