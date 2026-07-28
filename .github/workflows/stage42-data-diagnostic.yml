@@ -1,0 +1,63 @@
+name: Diagnose Stage 42 data validation
+
+on:
+  push:
+    branches:
+      - agent/stage42-v1.4.0-release
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/stage42-v1.4.0-release
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run commands separately
+        shell: bash
+        run: |
+          set +e
+          report=stage42-data-diagnostic.txt
+          : > "$report"
+          run_check() {
+            label="$1"
+            shift
+            echo "===== $label =====" >> "$report"
+            "$@" > /tmp/stage42-check.log 2>&1
+            code=$?
+            echo "exit=$code" >> "$report"
+            tail -n 120 /tmp/stage42-check.log >> "$report"
+            echo >> "$report"
+          }
+          run_check validate_data python scripts/validate_data.py
+          run_check reconcile_official python scripts/reconcile_official_mission_coverage.py
+          run_check validate_official_catalogue python scripts/validate_official_mission_catalogue.py
+          run_check merge_verification python scripts/merge_verification_registry_batches.py
+          run_check validate_key_mappings python scripts/validate_official_key_mappings.py
+          run_check validate_patients python scripts/validate_official_patient_mappings.py
+          run_check validate_personnel python scripts/validate_official_personnel_mappings.py
+          run_check validate_personnel_education python scripts/validate_official_personnel_education_mappings.py
+          run_check validate_prisoners python scripts/validate_official_prisoner_mappings.py
+          run_check validate_recovery python scripts/validate_official_recovery_mappings.py
+          run_check validate_operational python scripts/validate_official_operational_mappings.py
+          run_check full_catalogue_check python scripts/generate_full_canonical_catalogue.py --check
+          run_check python_tests python -m unittest discover -s tests/python -p 'test_*.py' -v
+      - name: Commit diagnostic report
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/stage42-data-diagnostic.yml
+          git add stage42-data-diagnostic.txt
+          git commit -m 'Stage 42: record structured-data diagnostic'
+          git push origin HEAD:agent/stage42-v1.4.0-release
