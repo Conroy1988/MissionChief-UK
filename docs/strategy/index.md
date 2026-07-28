@@ -2,14 +2,16 @@
 
 Strategy pages convert verified mechanics and the completed service guides into practical planning models. Recommendations state their assumptions and are never presented as immutable game rules.
 
-## Stage 38 — Cross-Service Account Progression
+## Completed programmes
 
-Stage 38 integrates the full Fire, Ambulance, Police, Coastguard, Mountain/SAR, Bomb Disposal, Airfield, Recovery and Railway guide estate into one account-development system.
-
-### Core strategy guides
+### Stage 38 — Cross-Service Account Progression
 
 - [Cross-Service Account Progression](account-progression.md) — expansion gates, readiness states, service sequencing, cross-service dependencies, major-incident resilience and account archetypes;
 - [Station Placement and Coverage](station-placement.md) — route, destination, access, response-cluster, specialist-hub and relief-base planning.
+
+### Stage 39 — Alliance Operations
+
+- [Alliance Operations](../alliances/index.md) — member, dispatcher and administrator modes; onboarding; roles; contributions; mutual support; major incidents; events; moderation; reporting and external-tool boundaries.
 
 ## Operating sequence
 
@@ -21,6 +23,7 @@ Stage 38 integrates the full Fire, Ambulance, Police, Coastguard, Mountain/SAR, 
 6. Preserve routine and specialist reserve.
 7. Activate one controlled expansion.
 8. Observe the changed mission mix and recover to Ready before repeating.
+9. Use alliance support as documented contingency rather than an unbounded substitute for local capability.
 
 ## Strategy pillars
 
@@ -33,6 +36,7 @@ Stage 38 integrates the full Fire, Ambulance, Police, Coastguard, Mountain/SAR, 
 | Cross-service integration | Are every hard partner service and handoff ready? |
 | Throughput | Can patients, prisoners, recovery assets and returning vehicles complete the full cycle? |
 | Resilience | Can another incident occur without regional collapse? |
+| Alliance contingency | Can support be requested without emptying donor networks or hiding local gaps? |
 | Recovery | Does the network return to useful positions before more generation activates? |
 
 ## Account models
@@ -75,8 +79,9 @@ The strategy programme does not:
 - merge guaranteed, alternative, conditional or probabilistic requirements;
 - convert patient, prisoner or recovery ranges into fictional resource rows;
 - treat alliance support as guaranteed local capacity;
+- present community administration policies as game-enforced mechanics;
 - optimise only for visual map symmetry.
 
 ## Next programme
 
-The next programme is [Stage 39 — Alliance Operations](../alliances/index.md), applying the same readiness, reserve and evidence principles to shared infrastructure, mutual support and alliance administration.
+The next programme is [Stage 40 — Account Readiness Planning Suite](../tools/planning-tools.md), adding a local browser-side readiness audit to the existing Mission Lookup, Resource Comparison and Concurrent Fleet Planner.
