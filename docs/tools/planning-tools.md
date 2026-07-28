@@ -1,8 +1,14 @@
 # Intelligence Tools Programme
 
-Stages 29–32 convert the structured reference database into practical browser-side decision support.
+Stages 29–32 established deterministic browser-side evidence lookup and comparison. Stage 40 adds local-only account readiness modelling without connecting to or mutating a MissionChief account.
 
 ## Live tools
+
+### Account Readiness Planner
+
+Combines selected canonical missions, concurrency, user-entered operational inventory and protected reserve. It checks guaranteed resources, capacity-aware alternative allocation, exact personnel, generation thresholds, towing/carrier compatibility and recovery workloads while preserving unknown and non-exact evidence states.
+
+[Open Account Readiness Planner](account-readiness.md)
 
 ### Mission Requirement Lookup
 
@@ -37,19 +43,24 @@ Matches ordinary questions and keywords against the generated cross-collection s
 - Recommendations remain distinct from verified game mechanics.
 - Tools fail visibly when versioned exports cannot be loaded.
 - No tool mutates a MissionChief account or repository record.
+- Account-readiness scenarios remain local unless the user explicitly exports JSON.
 
 ## Data flow
 
 ```text
-Canonical JSON records
-        ↓
-Schema and relationship validation
-        ↓
-Versioned v1 exports
-        ↓
-Browser-side lookup and calculations
+Canonical JSON records + user-entered local inventory
+                    ↓
+Schema-controlled evidence interpretation
+                    ↓
+Browser-side allocation and gap calculations
+                    ↓
+Ready / Watch / Degraded / Unavailable planning state
 ```
 
-## Future enhancement
+## Privacy model
 
-The delivered tools establish a stable read-only layer. Saved scenarios, account inventory import, routing, geographic optimisation and authenticated account integration remain optional future features and would require separate privacy and evidence controls.
+The readiness planner uses browser local storage for optional saved scenarios. It does not authenticate against MissionChief, scrape account pages or upload inventory to this project. Export and import are explicit user-controlled JSON actions.
+
+## Future enhancement boundary
+
+Authenticated account integration, automatic inventory scraping, server-side scenario storage and hidden dispatch inference are outside the current evidence and privacy model. Routing and geographic optimisation remain separate future work because they require map, travel-time and account-location inputs.
