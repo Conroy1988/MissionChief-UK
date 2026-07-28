@@ -8,6 +8,50 @@ The project follows semantic versioning for its public static-data API and relea
 
 No unreleased changes are currently recorded.
 
+## [1.4.0] — 2026-07-28
+
+### Complete operational-guide programme
+
+- Delivered mature evidence-labelled progression guides for Fire and Rescue, Ambulance and HART, Police and Public Safety, Coastguard and Lifeboat, Mountain Rescue, Search and Rescue HQ, Bomb Disposal and EOD, Airfield Operations, Recovery and HGV Recovery, and Railway Police/Railway Fire Response.
+- Added buildings, extensions, resources, personnel, training, mission progression, geography, cross-service dependency, concurrency, common-failure and recovery-to-readiness guidance for every represented service group.
+- Added the live Fire mission-family pressure analysis over the versioned canonical mission export.
+- Preserved verified facts, transparent calculations and recommended strategy as distinct evidence states.
+
+### Cross-service strategy and alliance operations
+
+- Replaced the strategy frameworks with complete cross-service account progression, readiness states, service sequencing, dependency matrices and station-placement doctrine.
+- Added route-, destination-, access-, response-cluster, specialist-hub and relief-base planning for urban, rural, coastal and multi-region accounts.
+- Added Alliance Operations for members, dispatchers and administrators, including onboarding, least privilege, contribution-policy models, shared infrastructure, mutual support, donor reserve, events, major incidents, recruitment and moderation.
+- Kept community policy separate from game-enforced mechanics.
+
+### Account Readiness Planning Suite
+
+- Added local-only multi-mission scenarios with explicit protected reserve.
+- Added exact guaranteed-resource aggregation and capacity-aware allocation across independent alternative groups.
+- Added separate required-at-incident and available-before-generation personnel checks.
+- Added published towing/carrier compatibility checks and recovery-workload reporting without creating fictional resource rows.
+- Added Ready, Watch, Degraded and Unavailable states while preserving blank inventory as unknown.
+- Added reversible browser-local save/load/delete plus explicit JSON import/export.
+- Added no MissionChief authentication, scraping or account mutation capability.
+
+### UX, accessibility and navigation
+
+- Replaced the remaining Getting Started and Game Systems framework pages with mature operational guidance.
+- Added collapsed accessible page-section navigation to long non-home pages.
+- Added mobile-safe content, table, code-block and media containment.
+- Added consistent keyboard focus, sticky-header heading offsets and accessible labels for generated task-list controls.
+- Expanded acceptance to every mature service, strategy, alliance and tool route on Chromium desktop, iPhone WebKit and iPad WebKit.
+- Expanded critical WCAG A/AA checks across primary command and interactive surfaces.
+- Increased full browser-lane installation headroom without weakening any validation gate.
+
+### Release and compatibility
+
+- Advanced the production programme to Stage 42 and the compatible data publication to v1.4.0.
+- Retained the Static Data API v1 contract, existing envelopes, canonical identifiers and populated-field semantics.
+- Added deterministic release-asset synchronisation for compatible semantic-version publications.
+- Reconciled README, Command Centre, roadmap, API guide, release notes, completion report, generated FAQ, OpenAPI and versioned exports.
+- Required exact-SHA GitHub Pages deployment, production smoke tests and immutable release publication.
+
 ## [1.3.0] — 2026-07-25
 
 ### Complete deployable-resource intelligence

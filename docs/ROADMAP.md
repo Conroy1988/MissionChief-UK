@@ -1,20 +1,27 @@
 # Project Roadmap
 
-MissionChief UK is maintained as an evidence-led information system rather than a one-off collection of articles.
+MissionChief UK is maintained as an evidence-led operational information system rather than a one-off collection of articles.
 
-## Core programme status
+## Programme status
 
-**Stages 1–36 are delivered.**
+**Stages 1–42 are delivered.**
 
 ```text
-1,079 canonical mission records
-1,062 / 1,062 official missions fully canonical
-104 deployable-resource records
-20 infrastructure records
-12 qualification records
-73 / 73 observed vehicle type IDs mapped
-936 / 936 vehicle field decisions resolved
-Static Data API v1.3.0
+Release: v1.4.0
+API contract: v1
+Official UK missions: 1,062
+Canonical mission records: 1,079
+Fully canonical official records: 1,062 / 1,062
+Deployable-resource records: 104
+Infrastructure records: 20
+Training and role records: 12
+Observed vehicle type IDs mapped: 73 / 73
+Vehicle field decisions resolved: 936 / 936
+Service operational programmes: complete
+Cross-service strategy: complete
+Alliance Operations: complete
+Account Readiness Planner: complete
+UX and accessibility audit: complete
 ```
 
 ## Delivered foundation — Stages 1–12
@@ -28,86 +35,120 @@ Static Data API v1.3.0
 - [x] Draft 2020-12 schemas and recursive validation
 - [x] GitHub Pages delivery through Actions
 
-## Delivered operational data — Stages 13–20
+## Delivered operational data — Stages 13–27
 
-- [x] Fire and Rescue baseline and resource integrity
-- [x] Ambulance and Police alternatives, patients and personnel
-- [x] Coastguard, Lifeboat, trailer and ocean-rescue modelling
-- [x] Mountain Rescue resources and explicit mission variants
-- [x] Search and Rescue HQ, active Drone and missing-person operations
-- [x] Bomb Disposal infrastructure and initial mission sequence
-- [x] Airfield Operations, airport infrastructure and Code C/F incidents
-- [x] Recovery Centres, HGV extensions and structured towing outcomes
+- [x] Fire, Ambulance and Police baseline modelling
+- [x] Coastguard, Lifeboat, trailer and ocean-rescue contracts
+- [x] Mountain Rescue and Search and Rescue HQ
+- [x] Bomb Disposal and EOD
+- [x] Airfield Operations
+- [x] Recovery and HGV Recovery
+- [x] Railway Police and Railway Fire Response
+- [x] specialist infrastructure and qualifications
+- [x] vehicle economics, staffing, training and logistics enrichment
+- [x] explicit patient, prisoner, recovery, personnel and variant semantics
 
-## Delivered completion programme — Stages 21–35
+## Delivered data and tool platform — Stages 28–36
 
-- [x] Stage 21 — Railway response
-- [x] Stage 22 — Specialist infrastructure
-- [x] Stage 23 — Qualifications
-- [x] Stage 24 — Vehicle economics and staffing
-- [x] Stage 25 — Bomb Disposal enrichment
-- [x] Stage 26 — Airfield enrichment
-- [x] Stage 27 — Recovery enrichment
-- [x] Stage 28 — Deterministic generated exports
-- [x] Stage 29 — Complete browser-side mission lookup
-- [x] Stage 30 — Resource and qualification comparison
-- [x] Stage 31 — Concurrent fleet planning
-- [x] Stage 32 — Deterministic query catalogue
-- [x] Stage 33 — Generated FAQ
+- [x] Stage 28 — deterministic generated exports
+- [x] Stage 29 — complete browser-side mission lookup
+- [x] Stage 30 — resource and qualification comparison
+- [x] Stage 31 — concurrent fleet planning
+- [x] Stage 32 — deterministic query catalogue
+- [x] Stage 33 — generated FAQ
 - [x] Stage 34 — Static Data API v1
-- [x] Stage 35 — Complete canonical coverage for all 1,062 official UK missions
+- [x] Stage 35 — complete canonical coverage for all current official UK missions
+- [x] Stage 36 — complete deployable-resource identity and field-decision coverage
+- [x] Stage 36B — path-aware draft validation and exact ready-state release gates
 
-## Stage 36A — Complete deployable-resource coverage
+## Delivered operational-guide programme — Stage 37A–37I
 
-**Status: complete.**
+- [x] Fire and Rescue progression, specialist systems, training, airfield/railway, severe weather, major incidents and live mission-family pressure
+- [x] Ambulance and HART patient throughput, specialist response, command, mass casualty, welfare and HEMS
+- [x] Police and Public Safety patrol, custody, armed, roads, dog, mounted, public order, air support and railway dependencies
+- [x] Coastguard and Lifeboat shore, vessel, air, trailer, towing, mud, rope and flood rescue
+- [x] Mountain Rescue and Search and Rescue HQ off-road, search, command, drone, dog and personnel systems
+- [x] Bomb Disposal and EOD land, heavy, marine and railway ordnance response
+- [x] Airfield Operations ARFF, command, operations, foam, water, HazMat, access and casualty tiers
+- [x] Recovery and HGV Recovery outcome semantics, overlays, regional capacity and recovery-to-readiness
+- [x] Railway Police and Railway Fire corridor, hub, tunnel, command and major-incident resilience
 
-- [x] establish an evidence-tiered UK vehicle type ledger
-- [x] compare source identities with canonical deployable-resource records
-- [x] publish identity and raw field-completeness coverage separately
-- [x] block duplicate IDs, dangling mappings and stale generated reports in CI
-- [x] map every observed current UK vehicle type ID
-- [x] create or reconcile every missing canonical resource identity
-- [x] add official economics, staffing, training, building, towing, capacity and deployment contracts where reproducible
-- [x] classify every tracked field as documented, not applicable, not published or review required
-- [x] reach 73 / 73 observed identities with zero unresolved mappings
-- [x] resolve 936 / 936 field decisions across 104 canonical resources
-- [x] publish permanent schemas, JSON endpoints, evidence pages and regression enforcement
-- [x] preserve unpublished values as unknown rather than zero
+## Delivered strategy and operations — Stages 38–41
 
-### Completion result
+### Stage 38 — Cross-Service Account Progression
 
-```text
-104 canonical deployable resources
-73 / 73 observed vehicle type IDs mapped
-0 unresolved observed identities
-9 tracked operational fields per resource
-936 / 936 explicit field decisions resolved
-0 unresolved field decisions
-100% identity coverage
-100% field-decision coverage
-```
+- [x] universal expansion gates and readiness states
+- [x] foundation through mature regional account models
+- [x] cross-service dependency and handoff matrix
+- [x] route-, destination-, access-, cluster-, hub- and relief-base station placement
+- [x] urban, rural, coastal and alliance-supported assumptions
 
-Canonical-only resources without an observed type-ID entry are explicit overlays or equipment records and do not represent an unresolved observed identity.
+### Stage 39 — Alliance Operations
 
-## Ongoing evidence maintenance
+- [x] member, dispatcher and administrator modes
+- [x] onboarding, permissions and least privilege
+- [x] contribution-policy and shared-infrastructure models
+- [x] mutual support, donor reserve, events and major incidents
+- [x] recruitment, inactivity, moderation and external-tool boundaries
 
-The numbered completion programmes are delivered. Remaining work is continuous source monitoring and evidence enrichment:
+### Stage 40 — Account Readiness Planning Suite
 
-- reproduce additional published prices, staffing and training durations when suitable evidence appears;
-- directly reproduce community-candidate type IDs in the current authenticated UK interface;
-- verify currently unavailable EOD and Recovery response tables;
-- add new UK missions, vehicles and game changes through fail-closed drift review;
-- test overlapping alternative-resource dispatch allocation;
-- enrich infrastructure cost, capacity and parent-building data;
-- maintain API compatibility and publish future versioned releases;
-- improve tools only when new verified fields support transparent calculations.
+- [x] local-only mission scenarios and explicit protected reserve
+- [x] guaranteed resource aggregation
+- [x] capacity-aware allocation across independent alternative groups
+- [x] personnel generation and incident thresholds
+- [x] separate towing/carrier and recovery-workload checks
+- [x] reversible browser storage and JSON import/export
+- [x] no MissionChief authentication, scraping or mutation
+
+### Stage 41 — Guide UX, Accessibility and Navigation
+
+- [x] replace remaining Getting Started and Game Systems frameworks
+- [x] accessible long-page section navigation
+- [x] mobile-safe tables, code blocks, media and content containment
+- [x] visible keyboard focus and sticky-heading offsets
+- [x] complete programme route acceptance on Chromium, iPhone and iPad WebKit
+- [x] critical WCAG A/AA checks on primary command and interactive surfaces
+
+## Stage 42 — v1.4.0 release and completion report
+
+**Status: complete when the exact release SHA is deployed and published.**
+
+- [x] compatible semantic version selected
+- [x] release metadata advanced to v1.4.0 / Stage 42
+- [x] release notes and completion report written
+- [x] public README, Command Centre, API and roadmap reconciled
+- [ ] deterministic exports and generated FAQ synchronised
+- [ ] complete release-grade validation passed
+- [ ] exact release head merged to `main`
+- [ ] GitHub Pages production deployment verified
+- [ ] immutable annotated `v1.4.0` tag and GitHub Release published
+
+## Maintenance programme
+
+After v1.4.0, work enters controlled maintenance lanes rather than a new completion backlog:
+
+1. **Upstream drift** — changed official missions, resources, documentation or field semantics;
+2. **Evidence enrichment** — directly reproduced unknown economics, staffing, capacity, training or substitution fields;
+3. **Defect correction** — canonical, guide, tool, accessibility, CI or production regressions; and
+4. **Compatible enhancement** — additive guidance or browser capabilities that preserve the v1 contract.
+
+Priority maintenance targets include:
+
+- new UK missions, vehicles and game changes through fail-closed drift review;
+- direct reproduction of currently unpublished infrastructure, vehicle and course fields;
+- authenticated-interface reproduction of community-candidate resource identities;
+- continued validation of overlapping alternatives and live substitution behaviour;
+- routing and geographic optimisation only when suitable location and privacy controls exist;
+- API compatibility and future versioned releases; and
+- physical-device checks to complement automated browser coverage.
 
 ## Definition of complete
 
 A subject is complete only when:
 
 1. terminology and aliases are searchable;
-2. exact values are verified and dated where they are published;
+2. exact values are verified and dated where published;
 3. dependencies, alternatives, conditions and overlays are explicit;
 4. unpublished and not-applicable fields have explicit decisions;
 5. evidence boundaries are stated;

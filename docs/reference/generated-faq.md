@@ -1,13 +1,13 @@
 # Generated FAQ
 
-This page is generated from MissionChief UK data version **1.3.0** released **2026-07-25**.
+This page is generated from MissionChief UK data version **1.4.0** released **2026-07-28**.
 
 !!! info "Generated content"
     Counts and service coverage are regenerated during validation and Pages deployment. Evidence-policy answers are maintained in the generator so the page cannot drift from the publication model.
 
 ## How much verified data is currently published?
 
-Version 1.3.0 contains 1,079 mission records, 104 deployable-resource records, 20 infrastructure records and 12 qualification records.
+Version 1.4.0 contains 1,079 mission records, 104 deployable-resource records, 20 infrastructure records and 12 qualification records.
 
 ## What does verified mean?
 
