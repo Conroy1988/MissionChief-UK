@@ -9,6 +9,26 @@ const RELEASE_VERSION = RELEASE.version;
 
 const CRITICAL_ROUTES = [
   { path: "", heading: "MissionChief UK" },
+  { path: "getting-started/", heading: "Getting Started" },
+  { path: "getting-started/first-expansion/", heading: "First Expansion" },
+  { path: "systems/", heading: "Game Systems" },
+  { path: "systems/missions-and-dispatching/", heading: "Missions and Dispatching" },
+  { path: "systems/buildings-and-extensions/", heading: "Buildings and Extensions" },
+  { path: "services/", heading: "Emergency Services" },
+  { path: "services/fire-and-rescue/", heading: "Fire and Rescue Operational Progression" },
+  { path: "services/ambulance/", heading: "Ambulance and HART Operational Progression" },
+  { path: "services/police/", heading: "Police and Public Safety Operational Progression" },
+  { path: "services/coastguard-and-lifeboat/", heading: "Coastguard and Lifeboat Operational Progression" },
+  { path: "services/mountain-rescue/", heading: "Mountain Rescue Operational Progression" },
+  { path: "services/search-and-rescue/", heading: "Search and Rescue HQ Operational Progression" },
+  { path: "services/bomb-disposal/", heading: "Bomb Disposal and EOD Operational Progression" },
+  { path: "services/airfield-operations/", heading: "Airfield Operations Operational Progression" },
+  { path: "services/recovery/", heading: "Recovery and HGV Recovery Operational Progression" },
+  { path: "services/railway-response/", heading: "Railway Police and Railway Fire Operational Progression" },
+  { path: "strategy/", heading: "Strategy Command Centre" },
+  { path: "strategy/account-progression/", heading: "Cross-Service Account Progression" },
+  { path: "strategy/station-placement/", heading: "Station Placement and Coverage" },
+  { path: "alliances/", heading: "Alliance Operations" },
   { path: "tools/mission-lookup/", heading: "Mission Requirement Lookup" },
   { path: "tools/resource-comparison/", heading: "Resource and Qualification Comparison" },
   { path: "tools/fleet-planner/", heading: "Concurrent Fleet Planner" },
@@ -137,6 +157,27 @@ for (const route of CRITICAL_ROUTES) {
   });
 }
 
+test("long service pages expose accessible section navigation", async ({ page }) => {
+  const failures = runtimeFailures(page);
+  await openPage(page, "services/ambulance/");
+  const details = page.locator("details.mcuk-page-sections");
+  await expect(details).toBeVisible();
+  await expect(details.locator("summary")).toContainText("Page sections");
+  await details.locator("summary").click();
+  const links = details.getByRole("link");
+  await expect.poll(() => links.count()).toBeGreaterThan(3);
+  const firstHref = await links.first().getAttribute("href");
+  expect(firstHref).toMatch(/^#/);
+  await links.first().click();
+  await expect(page).toHaveURL(/#.+$/);
+  expect(failures).toEqual([]);
+});
+
+test("Command Centre remains free of generated page-section navigation", async ({ page }) => {
+  await openPage(page, "");
+  await expect(page.locator("details.mcuk-page-sections")).toHaveCount(0);
+});
+
 test("mission lookup loads, filters and renders mission evidence", async ({ page }) => {
   const failures = runtimeFailures(page);
   await openPage(page, "tools/mission-lookup/");
@@ -215,11 +256,11 @@ test("query catalogue returns evidence-backed matches", async ({ page }) => {
   expect(failures).toEqual([]);
 });
 
-test("MkDocs instant navigation reinitialises intelligence tools", async ({ page }, testInfo) => {
+test("MkDocs instant navigation reinitialises page and intelligence enhancements", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "chromium-desktop", "One desktop browser is sufficient for the navigation lifecycle test");
   const failures = runtimeFailures(page);
-  await openPage(page, "tools/mission-lookup/");
-  await expect(page.locator("[data-mcuk-tool='mission-lookup']")).toHaveAttribute("data-mcuk-ready", "true");
+  await openPage(page, "services/ambulance/");
+  await expect(page.locator("details.mcuk-page-sections")).toBeVisible();
 
   await page.getByRole("link", { name: "Resource Comparison" }).first().click();
   await expect(page).toHaveURL(/\/tools\/resource-comparison\/$/);
@@ -258,8 +299,21 @@ test("public API collections are internally consistent", async ({ request }, tes
   expect(payloads["openapi.json"].info.version).toBe(manifest.data_version);
 });
 
-test("interactive surfaces have no critical WCAG violations", async ({ page }) => {
-  for (const path of ["", "tools/mission-lookup/", "tools/resource-comparison/", "tools/fleet-planner/", "tools/account-readiness/", "tools/query-catalogue/"]) {
+test("interactive and command surfaces have no critical WCAG violations", async ({ page }) => {
+  const paths = [
+    "",
+    "getting-started/",
+    "systems/missions-and-dispatching/",
+    "services/ambulance/",
+    "strategy/account-progression/",
+    "alliances/",
+    "tools/mission-lookup/",
+    "tools/resource-comparison/",
+    "tools/fleet-planner/",
+    "tools/account-readiness/",
+    "tools/query-catalogue/"
+  ];
+  for (const path of paths) {
     await openPage(page, path);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
