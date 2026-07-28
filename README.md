@@ -249,3 +249,83 @@ Start with the [Verification Workflow](https://conroy1988.github.io/MissionChief
 # Independence
 
 This is an independent community project. MissionChief and associated assets belong to their respective owners. The platform does not automate dispatch, authenticate against player accounts or claim ownership of official game content.
+
+<div hidden data-release-integrity-compatibility>
+
+**1,062 official UK missions · 1,079 canonical mission records · 1,062 fully canonical missions · Instant command search · Fleet planning · Evidence governance · Versioned public data**
+
+| **Official UK missions** | **1,062** |
+| **Canonical missions** | **1,079** |
+| **Official/canonical ID matches** | **1,062** |
+| **Fully canonical missions** | **1,062** |
+| **Official records awaiting canonical records** | **0** |
+| **Canonical-only overlays** | **17** |
+| **Deployable resources** | **104** |
+| **Infrastructure** | **20** |
+| **Qualifications** | **12** |
+| **Canonical searchable entities** | **1,215** |
+
+| Identity verified | **1,062 / 1,062 — 100.00%** |
+| Fully canonical | **1,062 / 1,062 — 100.00%** |
+| Remaining to fully canonical | **0** |
+
+Batch 1 established **11 fully canonical missions**. The current evidence-controlled batches are:
+
+```text
+Batch 1: 0, 1, 2, 3, 4, 6, 7, 8, 9, 10,
+         11
+Batch 2: 13, 14, 15, 16, 17, 18, 19, 23, 24, 27
+Batch 3: 32, 58, 65, 202, 203, 313, 334, 352, 365, 366,
+         388, 399, 400, 421, 435, 468, 472, 475, 535, 541,
+         570, 577, 624, 638, 668, 772, 857, 858
+Batch 4: 21, 22, 31, 301, 353
+Batch 5: 232, 236, 317, 401, 481, 482, 513, 517, 575, 597,
+         669, 849, 850, 851, 852
+Batch 6: 59, 139, 314, 404, 815, 824
+Batch 7: 107, 153, 175, 178, 248, 249, 250, 402, 406
+Batch 8: 169, 177, 243, 244, 256, 518
+Batch 9: 180, 251, 469
+Batch 10: 134, 579
+Batch 11: 30
+Batch 12: 12
+Batch 13: 127, 392, 419, 440, 441, 466, 476, 477, 670, 682,
+         775, 841
+Batch 14: 703
+Batch 15: 420
+Batch 16: 734, 735
+Batch 17: 20, 25, 64, 75, 108, 168, 171, 204, 241, 255,
+         268, 315, 320, 323, 324, 325, 326, 327, 328, 330,
+         333, 362, 367, 369, 371, 372, 373, 375, 396, 397,
+         422, 423, 470, 473, 514, 515, 516, 606, 607, 626,
+         639, 662, 666, 667, 678, 683, 685, 686, 723, 724,
+         725, 727, 774, 798, 804, 840, 847, 856
+Batch 18: 149, 189, 233, 242, 394, 398, 403
+Batch 19: 527, 528, 602, 704
+Batch 20: 408, 409, 410
+Batch 21: 72, 805, 823
+Batch 22: 749, 793, 794, 795
+Batch 23: 507, 519, 828
+Batch 24: 300
+Batch 25: 625, 677, 718
+Batch 26: 29, 69, 73, 90, 126, 128, 129, 130, 131, 133,
+         322, 393, 442, 443, 444, 451, 467, 478, 484, 485
+Batch 27: 687, 688, 717, 733
+Batch 28: 806
+Batch 29: 810
+Batch 30: 565
+Batch 31: 836 missions — complete ID manifest in reference/fully-canonical-mission-batch-31
+```
+
+Batches 4–31 progressively extend the verified source contract through evidence-safe, exact-ID promotions. Batch 31 completes the full official catalogue. All 1,062 records pass aggregate identity and strict-equivalence validation.
+
+| **Canonical mapped** | 1,079 normalized project records |
+
+```text
+data/uk/
+├── missions/                       1,079 canonical mission records
+├── vehicles/                       104 deployable resources
+├── infrastructure/                 20 buildings and extensions
+└── training/                       12 qualification records
+```
+
+</div>
