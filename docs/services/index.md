@@ -12,7 +12,7 @@ This section provides operational references for every service group currently r
 - [Fire major-incident resilience](fire-major-incident-resilience.md) — **Stage 37A Batch 6**
 - [Fire mission-family pressure analysis](fire-mission-family-pressure.md) — **Stage 37A Batch 7**
 - [Ambulance and HART operational progression](ambulance.md) — **Stage 37B**
-- [Police](police.md)
+- [Police and Public Safety operational progression](police.md) — **Stage 37C**
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
 - [Mountain Rescue](mountain-rescue.md)
 - [Search and Rescue HQ](search-and-rescue.md)
@@ -26,11 +26,12 @@ This section provides operational references for every service group currently r
 Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Completed programmes now include:
 
 - **Stage 37A — Fire and Rescue:** progression, specialists, containers, training, airfield, railway, severe weather, major incidents and live mission-family pressure;
-- **Stage 37B — Ambulance and HART:** patient throughput, routine transport, specialist response, HART commissioning, command, mass casualty, welfare, HEMS, scalable fleets and recovery.
+- **Stage 37B — Ambulance and HART:** patient throughput, routine transport, specialist response, HART commissioning, command, mass casualty, welfare, HEMS, scalable fleets and recovery;
+- **Stage 37C — Police and Public Safety:** routine patrol, custody, armed, roads, dog, mounted, public order, air support, railway dependencies, scalable fleets and recovery.
 
-Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules and unlock details remain unknown rather than being inferred.
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules, custody rules and unlock details remain unknown rather than being inferred.
 
-The next operational programme is **Stage 37C — Police and Public Safety progression**.
+The next operational programme is **Stage 37D — Coastguard and Lifeboat progression**.
 
 ## Cross-service intelligence
 
@@ -43,6 +44,7 @@ The production data models shared dependencies rather than treating each service
 - inland water rescue using Lifeboat trailers within Fire-generated mission families;
 - major incidents combining independent command slots, mass-casualty support, welfare, specialist access and regional reserve erosion;
 - patient-heavy incidents where hospital journeys and critical-care pressure outlast the initial dispatch;
+- public-order incidents combining educated officer cohorts, supervision, custody, patients and specialist transport;
 - Recovery variations attached to Fire, Police and Ambulance incidents;
 - maritime and mountain missions using aviation or specialist medical support.
 
