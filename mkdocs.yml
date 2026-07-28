@@ -12,6 +12,7 @@ extra_css:
   - stylesheets/command-palette.css
   - stylesheets/home-responsive.css
   - stylesheets/tool-responsive.css
+  - stylesheets/content-responsive.css
 
 extra_javascript:
   - javascripts/home-command.js
@@ -22,6 +23,7 @@ extra_javascript:
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
   - javascripts/fire-mission-pressure.js
+  - javascripts/page-navigation.js
 
 theme:
   name: material
