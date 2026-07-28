@@ -1,0 +1,17 @@
+main_sha=49acffed8fc8b01cb0dbcfdacbda5a1b1d094727
+tag_sha=49acffed8fc8b01cb0dbcfdacbda5a1b1d094727
+tag_matches_main=true
+release_exit=0
+release_json={"isDraft":false,"isPrerelease":false,"name":"MissionChief UK v1.4.0","publishedAt":"2026-07-28T18:48:05Z","tagName":"v1.4.0","url":"https://github.com/Conroy1988/MissionChief-UK/releases/tag/v1.4.0"}
+manifest_http=200
+manifest_sha256=858274e05e19287ae108459c0d17e9c5a5fa4cb1f7ecc233295a7f6256eb779e
+home_http=200
+home_sha256=cd7da3853a0626857aa15d0afc695759ba02e4c42f5325cdd55f631d426eaea5
+release_page_http=200
+release_page_sha256=54d7b81ecb107a58122e5694cdffd88d57501eacafbb2fd9de93e60eae1cf4f8
+manifest_version=1.4.0
+manifest_stage=42
+manifest_status=production
+home_has_stage42=True
+home_has_v140=True
+release_page_has_v140=True
