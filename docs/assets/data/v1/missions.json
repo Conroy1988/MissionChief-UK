@@ -1,7 +1,7 @@
 {
   "collection": "missions",
   "count": 1079,
-  "data_version": "1.3.0",
+  "data_version": "1.4.0",
   "records": [
     {
       "aliases": [
@@ -93987,6 +93987,6 @@
       }
     }
   ],
-  "released_at": "2026-07-25",
+  "released_at": "2026-07-28",
   "schema_version": "1"
 }
