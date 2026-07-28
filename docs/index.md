@@ -143,7 +143,7 @@
     <span><b>4</b> strategy and alliance programmes</span>
     <span><b data-mcuk-search-count>1,215</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
-    <a href="releases/stage42-completion-report/">Read completion report →</a>
+    <a href="releases/stage-42-completion-report/">Read completion report →</a>
   </div>
 </div>
 
@@ -230,7 +230,7 @@
 
 <div class="mcuk-actions" markdown>
 [Contribute evidence](contributing/index.md){ .md-button .md-button--primary }
-[Review the completion report](releases/stage42-completion-report.md){ .md-button }
+[Review the completion report](releases/stage-42-completion-report.md){ .md-button }
 [Open an issue](https://github.com/Conroy1988/MissionChief-UK/issues/new/choose){ .md-button }
 </div>
 
