@@ -17,7 +17,7 @@ This section provides operational references for every service group currently r
 - [Mountain Rescue operational progression](mountain-rescue.md) — **Stage 37E**
 - [Search and Rescue HQ operational progression](search-and-rescue.md) — **Stage 37E**
 - [Bomb Disposal and EOD operational progression](bomb-disposal.md) — **Stage 37F**
-- [Airfield Operations](airfield-operations.md)
+- [Airfield Operations operational progression](airfield-operations.md) — **Stage 37G**
 - [Recovery and HGV Recovery](recovery.md)
 - [Railway Police and Railway Fire Response](railway-response.md)
 
@@ -30,11 +30,12 @@ Stage 37 converts the completed mission and resource intelligence estate into pr
 - **Stage 37C — Police and Public Safety:** routine patrol, custody, armed, roads, dog, mounted, public order, air support, railway dependencies, scalable fleets and recovery;
 - **Stage 37D — Coastguard and Lifeboat:** shore response, command, mud/rope/flood rescue, vessels, air rescue, trailer/towing logistics, geography, scalable fleets and recovery;
 - **Stage 37E — Mountain Rescue and Search and Rescue HQ:** off-road response, search command, dogs, drones, operational support, personnel semantics, overlays, geography, scalable fleets and recovery;
-- **Stage 37F — Bomb Disposal and EOD:** land, heavy, marine and railway ordnance progression, specialist-resource semantics, active Drone handling, cross-service readiness, geography and recovery.
+- **Stage 37F — Bomb Disposal and EOD:** land, heavy, marine and railway ordnance progression, specialist-resource semantics, active Drone handling, cross-service readiness, geography and recovery;
+- **Stage 37G — Airfield Operations:** extension progression, ARFF training, operations, command, water/foam/HazMat/access capability, Code B/D/C/F tiers, airport-base architecture and recovery.
 
-Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules, custody rules, launch behaviour, towing relationships, Bomb Disposal market details and unlock values remain unknown rather than being inferred.
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules, custody rules, launch behaviour, towing relationships, Bomb Disposal market details, Airfield extension economics and unlock values remain unknown rather than being inferred.
 
-The next operational programme is **Stage 37G — Airfield Operations progression**.
+The next operational programme is **Stage 37H — Recovery and HGV Recovery progression**.
 
 ## Cross-service intelligence
 
@@ -42,7 +43,7 @@ The production data models shared dependencies rather than treating each service
 
 - Railway incidents involving Fire, Police, Ambulance, HART and Search and Rescue;
 - Bomb Disposal missions combining specialist crews/equipment with Fire, Police, HART, Coastguard, Lifeboat, Drone and Railway capability;
-- Airfield incidents using Police, HART and Mass Casualty capabilities;
+- Airfield incidents combining ARFF, operations, command, foam, water, HazMat, HART, Police and mass-casualty systems;
 - wildfire and flood incidents combining Fire command, water supply, HART welfare, Police, Coastguard/Lifeboat and pumping capacity;
 - inland water rescue using Lifeboat trailers within Fire-generated mission families;
 - major incidents combining independent command slots, mass-casualty support, welfare, specialist access and regional reserve erosion;
