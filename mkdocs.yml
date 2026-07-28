@@ -20,6 +20,7 @@ extra_javascript:
   - javascripts/official-mission-details.js
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
+  - javascripts/fire-mission-pressure.js
 
 theme:
   name: material
@@ -112,6 +113,7 @@ nav:
   - Emergency Services:
       - Services Index: services/index.md
       - Fire & Rescue: services/fire-and-rescue.md
+      - Fire Mission Pressure: services/fire-mission-family-pressure.md
       - Ambulance & HART: services/ambulance.md
       - Police & Public Order: services/police.md
       - Coastguard & Lifeboat: services/coastguard-and-lifeboat.md
