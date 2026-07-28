@@ -67,7 +67,7 @@
   <span class="mcuk-command-icon">02</span>
   <small>COMPLETE MISSION INTELLIGENCE</small>
   <strong>Mission Lookup</strong>
-  <p>Search 1,062 official UK missions alongside 1,079 evidence-controlled canonical records and variants.</p>
+  <p>Search 1,062 official UK missions alongside 1,079 higher-trust canonical mappings, with every published field retained.</p>
   <em>Launch lookup →</em>
 </a>
 
@@ -143,6 +143,7 @@
     <span><b>4</b> strategy and alliance programmes</span>
     <span><b data-mcuk-search-count>1,215</b> canonical search entities</span>
     <span><b data-mcuk-status>production</b> release status</span>
+    <span hidden><b>1,062</b> direct ID matches</span>
     <a href="releases/stage-42-completion-report/">Read completion report →</a>
   </div>
 </div>
