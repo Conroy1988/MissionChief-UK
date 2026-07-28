@@ -15,7 +15,7 @@ const CRITICAL_ROUTES = [
   { path: "systems/missions-and-dispatching/", heading: "Missions and Dispatching" },
   { path: "systems/buildings-and-extensions/", heading: "Buildings and Extensions" },
   { path: "services/", heading: "Emergency Services" },
-  { path: "services/fire-and-rescue/", heading: "Fire and Rescue Operational Progression" },
+  { path: "services/fire-and-rescue/", heading: "Fire and Rescue Service" },
   { path: "services/ambulance/", heading: "Ambulance and HART Operational Progression" },
   { path: "services/police/", heading: "Police and Public Safety Operational Progression" },
   { path: "services/coastguard-and-lifeboat/", heading: "Coastguard and Lifeboat Operational Progression" },
@@ -262,7 +262,7 @@ test("MkDocs instant navigation reinitialises page and intelligence enhancements
   await openPage(page, "services/ambulance/");
   await expect(page.locator("details.mcuk-page-sections")).toBeVisible();
 
-  await page.getByRole("link", { name: "Resource Comparison" }).first().click();
+  await page.getByRole("link", { name: "Compare Resources" }).first().click();
   await expect(page).toHaveURL(/\/tools\/resource-comparison\/$/);
   await expect(page.locator("[data-mcuk-tool='comparison']")).toHaveAttribute("data-mcuk-ready", "true");
   await expect.poll(() => page.locator("[data-mcuk-tool='comparison'] select[data-role='first'] option").count()).toBeGreaterThan(1);
