@@ -11,7 +11,7 @@ This section provides operational references for every service group currently r
 - [Fire wildfire, flood and water-rescue planning](fire-wildfire-flood-water-rescue.md) — **Stage 37A Batch 5**
 - [Fire major-incident resilience](fire-major-incident-resilience.md) — **Stage 37A Batch 6**
 - [Fire mission-family pressure analysis](fire-mission-family-pressure.md) — **Stage 37A Batch 7**
-- [Ambulance](ambulance.md)
+- [Ambulance and HART operational progression](ambulance.md) — **Stage 37B**
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
 - [Mountain Rescue](mountain-rescue.md)
@@ -23,15 +23,18 @@ This section provides operational references for every service group currently r
 
 ## Stage 37 operational-guide programme
 
-Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first completed service programme, covering progression gates, scalable fleets, specialist extensions, containers, training, airfield and railway response, wildfire and severe weather, towing and pumping logistics, major-incident resilience, protected reserve, recovery doctrine and live mission-family pressure analysis.
+Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Completed programmes now include:
 
-Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units and unlock details remain unknown rather than being inferred.
+- **Stage 37A — Fire and Rescue:** progression, specialists, containers, training, airfield, railway, severe weather, major incidents and live mission-family pressure;
+- **Stage 37B — Ambulance and HART:** patient throughput, routine transport, specialist response, HART commissioning, command, mass casualty, welfare, HEMS, scalable fleets and recovery.
 
-The next operational programme is **Stage 37B — Ambulance & HART progression**.
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules and unlock details remain unknown rather than being inferred.
+
+The next operational programme is **Stage 37C — Police and Public Safety progression**.
 
 ## Cross-service intelligence
 
-The production data now models shared dependencies rather than treating each service as isolated. Examples include:
+The production data models shared dependencies rather than treating each service as isolated. Examples include:
 
 - Railway incidents involving Fire, Police, Ambulance, HART and Search and Rescue;
 - Bomb Disposal missions requiring Coastguard or Railway Police infrastructure;
@@ -39,6 +42,7 @@ The production data now models shared dependencies rather than treating each ser
 - wildfire and flood incidents combining Fire command, water supply, HART welfare, Police, Coastguard/Lifeboat and pumping capacity;
 - inland water rescue using Lifeboat trailers within Fire-generated mission families;
 - major incidents combining independent command slots, mass-casualty support, welfare, specialist access and regional reserve erosion;
+- patient-heavy incidents where hospital journeys and critical-care pressure outlast the initial dispatch;
 - Recovery variations attached to Fire, Police and Ambulance incidents;
 - maritime and mountain missions using aviation or specialist medical support.
 
