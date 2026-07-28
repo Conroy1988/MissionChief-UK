@@ -17,6 +17,7 @@ extra_javascript:
   - javascripts/home-command.js
   - javascripts/official-catalogue-loader.js
   - javascripts/intelligence-tools.js
+  - javascripts/account-readiness.js
   - javascripts/official-mission-details.js
   - javascripts/tool-deep-links.js
   - javascripts/command-palette.js
@@ -206,6 +207,7 @@ nav:
           - Data Standard: reference/data-standard.md
   - Intelligence Tools:
       - Programme: tools/planning-tools.md
+      - Account Readiness: tools/account-readiness.md
       - Mission Lookup: tools/mission-lookup.md
       - Resource Comparison: tools/resource-comparison.md
       - Concurrent Fleet Planner: tools/fleet-planner.md
