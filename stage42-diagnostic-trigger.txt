@@ -1,0 +1,1 @@
+Temporary trigger for the Stage 42 release-integrity diagnostic. This file is removed before merge.
