@@ -14,8 +14,8 @@ This section provides operational references for every service group currently r
 - [Ambulance and HART operational progression](ambulance.md) — **Stage 37B**
 - [Police and Public Safety operational progression](police.md) — **Stage 37C**
 - [Coastguard and Lifeboat operational progression](coastguard-and-lifeboat.md) — **Stage 37D**
-- [Mountain Rescue](mountain-rescue.md)
-- [Search and Rescue HQ](search-and-rescue.md)
+- [Mountain Rescue operational progression](mountain-rescue.md) — **Stage 37E**
+- [Search and Rescue HQ operational progression](search-and-rescue.md) — **Stage 37E**
 - [Bomb Disposal and EOD](bomb-disposal.md)
 - [Airfield Operations](airfield-operations.md)
 - [Recovery and HGV Recovery](recovery.md)
@@ -28,11 +28,12 @@ Stage 37 converts the completed mission and resource intelligence estate into pr
 - **Stage 37A — Fire and Rescue:** progression, specialists, containers, training, airfield, railway, severe weather, major incidents and live mission-family pressure;
 - **Stage 37B — Ambulance and HART:** patient throughput, routine transport, specialist response, HART commissioning, command, mass casualty, welfare, HEMS, scalable fleets and recovery;
 - **Stage 37C — Police and Public Safety:** routine patrol, custody, armed, roads, dog, mounted, public order, air support, railway dependencies, scalable fleets and recovery;
-- **Stage 37D — Coastguard and Lifeboat:** shore response, command, mud/rope/flood rescue, vessels, air rescue, trailer/towing logistics, geography, scalable fleets and recovery.
+- **Stage 37D — Coastguard and Lifeboat:** shore response, command, mud/rope/flood rescue, vessels, air rescue, trailer/towing logistics, geography, scalable fleets and recovery;
+- **Stage 37E — Mountain Rescue and Search and Rescue HQ:** off-road response, search command, dogs, drones, operational support, personnel semantics, overlays, geography, scalable fleets and recovery.
 
-Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules, custody rules, launch behaviour and unlock details remain unknown rather than being inferred.
+Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units, hospital rules, custody rules, launch behaviour, towing relationships and unlock details remain unknown rather than being inferred.
 
-The next operational programme is **Stage 37E — Mountain Rescue and Search and Rescue HQ progression**.
+The next operational programme is **Stage 37F — Bomb Disposal and EOD progression**.
 
 ## Cross-service intelligence
 
@@ -47,8 +48,8 @@ The production data models shared dependencies rather than treating each service
 - patient-heavy incidents where hospital journeys and critical-care pressure outlast the initial dispatch;
 - public-order incidents combining educated officer cohorts, supervision, custody, patients and specialist transport;
 - maritime incidents combining shore, vessel, air, towing, trained personnel and patient handoff;
-- Recovery variations attached to Fire, Police and Ambulance incidents;
-- maritime and mountain missions using aviation or specialist medical support.
+- remote searches combining off-road access, command, dogs, drones, personnel, HART and air rescue;
+- Recovery variations attached to Fire, Police and Ambulance incidents.
 
 ## Standard service-guide structure
 
