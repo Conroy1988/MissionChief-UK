@@ -13,17 +13,22 @@ Strategy pages convert verified mechanics and the completed service guides into 
 
 - [Alliance Operations](../alliances/index.md) — member, dispatcher and administrator modes; onboarding; roles; contributions; mutual support; major incidents; events; moderation; reporting and external-tool boundaries.
 
+### Stage 40 — Account Readiness Planning Suite
+
+- [Account Readiness Planner](../tools/account-readiness.md) — local-only mission scenarios, protected reserve, capacity-aware alternative allocation, personnel thresholds, towing/carrier checks and reversible browser storage.
+
 ## Operating sequence
 
 1. Verify current mission pressure in [Mission Lookup](../tools/mission-lookup.md).
-2. Identify the narrowest quantity, geography, personnel, command or throughput deficit.
-3. Review the relevant [service guide](../services/index.md).
-4. Compare candidate resources using [Resource Comparison](../tools/resource-comparison.md).
-5. Test overlap in the [Concurrent Fleet Planner](../tools/fleet-planner.md).
-6. Preserve routine and specialist reserve.
-7. Activate one controlled expansion.
-8. Observe the changed mission mix and recover to Ready before repeating.
-9. Use alliance support as documented contingency rather than an unbounded substitute for local capability.
+2. Build representative concurrent incidents in the [Account Readiness Planner](../tools/account-readiness.md).
+3. Enter only correctly staffed and deployable inventory, then protect routine and specialist reserve.
+4. Identify the narrowest exact gap or unresolved evidence field.
+5. Review the relevant [service guide](../services/index.md).
+6. Compare candidate resources using [Resource Comparison](../tools/resource-comparison.md).
+7. Use [Station Placement](station-placement.md) for route, access and destination constraints.
+8. Activate one controlled expansion.
+9. Observe the changed mission mix and recover to Ready before repeating.
+10. Use alliance support as documented contingency rather than an unbounded substitute for local capability.
 
 ## Strategy pillars
 
@@ -80,8 +85,9 @@ The strategy programme does not:
 - convert patient, prisoner or recovery ranges into fictional resource rows;
 - treat alliance support as guaranteed local capacity;
 - present community administration policies as game-enforced mechanics;
-- optimise only for visual map symmetry.
+- optimise only for visual map symmetry;
+- scrape or mutate a MissionChief account.
 
 ## Next programme
 
-The next programme is [Stage 40 — Account Readiness Planning Suite](../tools/planning-tools.md), adding a local browser-side readiness audit to the existing Mission Lookup, Resource Comparison and Concurrent Fleet Planner.
+The next programme is **Stage 41 — Guide UX, Accessibility and Navigation Audit**, applying a complete production usability pass to the expanded service, strategy, alliance and planning surfaces.
