@@ -2,7 +2,7 @@
 
 MissionChief UK publishes three read-only evidence surfaces:
 
-1. a versioned canonical API generated from normalized records;
+1. a versioned canonical API generated from normalised records;
 2. a lossless snapshot and verification status for the complete official UK mission catalogue; and
 3. deterministic UK vehicle identity, completeness and field-resolution evidence.
 
@@ -18,26 +18,28 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/v1/
 
 ```text
 API contract: v1
-Data version: 1.3.0
-Released: 25 July 2026
-Programme stage: 36
+Data version: 1.4.0
+Released: 28 July 2026
+Programme stage: 42
 Canonical missions: 1,079
 Official UK missions: 1,062
 Direct official/canonical ID matches: 1,062
 Fully canonical missions: 1,062
 Canonical deployable resources: 104
+Infrastructure records: 20
+Training and role records: 12
 Observed vehicle IDs mapped: 73 / 73
 Vehicle field decisions resolved: 936 / 936
 ```
 
-Version 1.3.0 retains the canonical v1 contract. It adds Stage 36 resource records and evidence endpoints without changing existing envelope or identifier semantics.
+Version 1.4.0 retains the canonical v1 contract. It adds completed operational guidance, cross-service strategy and browser planning capabilities without changing existing collection-envelope, identifier or populated-field semantics.
 
 ## Canonical endpoints
 
 | Endpoint | Purpose |
 |---|---|
 | `manifest.json` | Version, status, programme stage and canonical collection counts |
-| `missions.json` | Canonical normalized mission records |
+| `missions.json` | Canonical normalised mission records |
 | `vehicles.json` | Canonical deployable-resource records |
 | `infrastructure.json` | Canonical building and extension records |
 | `training.json` | Canonical qualification and course records |
@@ -66,8 +68,8 @@ https://conroy1988.github.io/MissionChief-UK/assets/data/official/
 ```json
 {
   "schema_version": "1",
-  "data_version": "1.3.0",
-  "released_at": "2026-07-25",
+  "data_version": "1.4.0",
+  "released_at": "2026-07-28",
   "collection": "missions",
   "count": 1079,
   "records": []
@@ -122,14 +124,26 @@ Each resource-field decision uses one of four statuses:
 }
 ```
 
+## Browser-planning relationship
+
+Public browser tools read these static endpoints directly:
+
+- Mission Lookup consumes canonical missions and the separate official catalogue;
+- Resource Comparison consumes vehicles and training records;
+- Fleet Planner consumes canonical guaranteed and alternative mission rows;
+- Query Catalogue consumes the canonical search index; and
+- Account Readiness consumes canonical missions and vehicles plus user-entered browser-local inventory.
+
+No browser tool writes to the API or authenticates against MissionChief.
+
 ## Versioning policy
 
 - `v1` identifies the API contract generation.
 - `data_version` identifies the current validated publication.
-- Additive canonical records, evidence endpoints and optional fields may be published within v1.
+- Additive canonical records, evidence endpoints, optional fields and compatible tools may be published within v1.
 - Breaking envelope or field changes require a new path such as `v2`.
 - Official records and evidence ledgers remain under separate non-canonical paths.
-- New official fields may appear additively without being normalized automatically.
+- New official fields may appear additively without being normalised automatically.
 - Previous API directories should remain available when practical.
 
 ## Availability and caching
@@ -148,9 +162,10 @@ Every publication is checked against:
 - vehicle-ledger uniqueness, mapping integrity and identity coverage;
 - deterministic vehicle field-resolution schemas and 936 / 936 decision coverage;
 - deterministic collections, manifest, OpenAPI and FAQ generation;
+- release metadata and matching release-note consistency;
 - strict documentation, link and built-site audits;
 - deployed HTTP and data smoke testing; and
-- Chromium, Firefox, iPhone WebKit and iPad WebKit acceptance.
+- Chromium desktop, iPhone WebKit and iPad WebKit programme-route acceptance.
 
 ## Evidence contract
 
