@@ -1,7 +1,7 @@
 {
-  "version": "1.3.0",
-  "released_at": "2026-07-25",
-  "stage": 36,
+  "version": "1.4.0",
+  "released_at": "2026-07-28",
+  "stage": 42,
   "status": "production",
   "release_snapshot": {
     "official_missions": 1062,
