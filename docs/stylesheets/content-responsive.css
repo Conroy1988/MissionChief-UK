@@ -1,0 +1,133 @@
+/* Stage 41 long-form content, table and keyboard-accessibility safeguards. */
+
+.md-content,
+.md-content__inner,
+.md-typeset {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.md-typeset img,
+.md-typeset svg,
+.md-typeset video,
+.md-typeset iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.md-typeset .md-typeset__table,
+.md-typeset > table,
+.md-typeset details > table,
+.md-typeset .tabbed-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-typeset .md-typeset__table table,
+.md-typeset > table,
+.md-typeset details > table,
+.md-typeset .tabbed-content table {
+  width: max-content;
+  min-width: min(36rem, 100%);
+  max-width: none;
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.md-typeset pre,
+.md-typeset .highlight {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-typeset h2,
+.md-typeset h3 {
+  scroll-margin-top: 5rem;
+}
+
+.md-typeset a:focus-visible,
+.md-typeset button:focus-visible,
+.md-typeset input:focus-visible,
+.md-typeset select:focus-visible,
+.md-typeset textarea:focus-visible,
+.md-typeset summary:focus-visible {
+  outline: .18rem solid var(--md-accent-fg-color);
+  outline-offset: .14rem;
+  border-radius: .12rem;
+}
+
+.mcuk-page-sections {
+  margin: .5rem 0 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .4rem;
+  background: var(--md-code-bg-color);
+}
+
+.mcuk-page-sections summary {
+  padding: .65rem .8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mcuk-page-sections nav {
+  padding: 0 .9rem .75rem;
+}
+
+.mcuk-page-sections ol {
+  columns: 2 14rem;
+  column-gap: 1.5rem;
+  margin: .25rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.mcuk-page-sections li {
+  break-inside: avoid;
+  padding: .16rem 0;
+}
+
+.mcuk-page-sections a {
+  display: inline-block;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 44rem) {
+  .md-typeset {
+    font-size: .82rem;
+  }
+
+  .md-typeset h1 {
+    font-size: clamp(1.7rem, 8vw, 2.25rem);
+    line-height: 1.12;
+  }
+
+  .md-typeset h2 {
+    font-size: clamp(1.25rem, 6vw, 1.55rem);
+  }
+
+  .md-typeset .md-typeset__table table,
+  .md-typeset > table,
+  .md-typeset details > table,
+  .md-typeset .tabbed-content table {
+    min-width: 32rem;
+  }
+
+  .mcuk-page-sections ol {
+    columns: 1;
+  }
+}
+
+@media print {
+  .mcuk-page-sections {
+    display: none;
+  }
+}
