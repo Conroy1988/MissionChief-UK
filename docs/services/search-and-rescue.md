@@ -1,133 +1,292 @@
-# Search and Rescue HQ
+# Search and Rescue HQ Operational Progression
 
-Search and Rescue HQ operations provide the structured land-search and drone-enabled response layer used by the verified missing-person missions.
+Search and Rescue HQ provides the structured command, aerial-search, operational-support and specialist-personnel layer used by verified high-risk missing-person and major cross-service search incidents. The safe planning unit is a complete search system, not one active Drone or one SAR 4x4.
 
-!!! success "Verified Stage 17 baseline"
-    The current production records verify the populated fields for High Risk Missing Person and Very High Risk Missing Person. Purchase prices, vehicle staffing, training durations and HQ capacity remain unpublished until reproduced from the current UK interfaces.
+!!! info "Evidence boundary"
+    Verified statements reproduce current canonical mission, vehicle, personnel and training records. Fleet sizes, reserve floors, placement patterns and commissioning sequences are recommendations. HQ economics, vehicle staffing, support-trailer towing, course durations and unlock details remain unknown where unpublished.
 
-## Service model
+**Current evidence baseline:** 28 July 2026.
 
-The verified missions require:
+## Command doctrine
 
-- 2 Search and Rescue HQs;
-- 1 active Drone;
-- Search Advisors and SAR Commanders available before generation;
-- Control Van command support;
-- one qualifying operational-support resource;
-- one Police Helicopter or Drone;
-- two qualifying 4x4 vehicles;
-- an average minimum of 10 Search Technicians.
+1. **Command before volume** — Control Van, SAR Commander and Search Advisor capability must exist before expanding search generators.
+2. **Generation prerequisites remain separate** — an active Drone can be required before mission generation while a Police Helicopter may satisfy the incident aerial-search slot.
+3. **Preserve alternative groups** — operational support and 4x4 rows require the published group quantity, not every listed resource.
+4. **Personnel states before vehicle counts** — available, required and average-minimum fields must retain their semantics.
+5. **Regional coverage before central storage** — off-road access, command and search support must reach the intended terrain.
+6. **Recovery before further activation** — searches, patients and remote travel can keep resources unavailable after the visible phase completes.
 
-The active-Drone precondition and the incident aerial-search requirement are separate concepts. A mission can require an active Drone before generation while still allowing a Police Helicopter to satisfy the response requirement.
+[Open Mission Lookup](../tools/mission-lookup.md) · [Open Concurrent Fleet Planner](../tools/fleet-planner.md) · [Compare Resources](../tools/resource-comparison.md)
 
-## Canonical resources
+## Search system chain
 
-### Control Van
+```text
+Search and Rescue HQ mission generation
+                ↓
+Active Drone prerequisite where published
+                ↓
+Control Van and command personnel
+                ↓
+Aerial-search alternative
+                ↓
+Operational-support alternative
+                ↓
+Mountain Rescue / SAR 4x4 alternatives
+                ↓
+Search personnel, patient handling and recovery
+```
 
-The Control Van is the guaranteed command resource on both verified missing-person missions.
+## Verified resources
 
-### Operational-support alternatives
+| Resource | Verified role | Current evidence boundary |
+|---|---|---|
+| **Control Van** | Incident command and search coordination | Price, staffing, training and building relationship unpublished |
+| **Drone** | Aerial search, reconnaissance and deployable equipment | 25,000 credits / 15 coins; Drone Operator education; Fire or Police equipment storage; course duration unpublished |
+| **Police Helicopter** | Police air support and aerial search | Police Helicopter Station; Police aviation, 7 days |
+| **Mountain Rescue 4x4** | Off-road Mountain Rescue response | Price, staffing and training unpublished |
+| **SAR 4x4** | Off-road Search and Rescue response | Price, staffing and training unpublished |
+| **Operational Support Van** | Search support and incident logistics | Economics, staffing and building relationship unpublished |
+| **Operational Support Trailer** | Search support trailer | Compatible towing vehicle unpublished |
+| **Personal SAR Vehicle** | Personnel transport and search support | Economics, staffing and building relationship unpublished |
+| **Search Dog Unit** | Terrain and missing-person search | Economics, staffing, training and building relationship unpublished |
 
-One of the following satisfies the operational-support requirement:
+## Active Drone semantics
+
+The verified High Risk and Very High Risk Missing Person missions require one **active Drone** before generation.
+
+The same mission also publishes an incident response alternative:
+
+```text
+Police Helicopter OR Drone — quantity 1
+```
+
+These are separate concepts:
+
+- the active Drone is a generation prerequisite;
+- the aerial-response slot can be satisfied by either listed resource;
+- the prerequisite does not automatically dispatch the Drone;
+- a Police Helicopter does not remove the need for the active-Drone prerequisite.
+
+## Operational-support alternatives
+
+One qualifying resource satisfies the verified operational-support group:
 
 - Operational Support Van;
 - Operational Support Trailer;
 - Personal SAR Vehicle.
 
-```json
-{
-  "resources": [
-    "operational_support_van",
-    "operational_support_trailer",
-    "personal_sar_vehicle"
-  ],
-  "quantity": 1
-}
-```
+Do not require all three simultaneously.
 
-The Operational Support Trailer is explicitly recorded as a trailer. Compatible towing vehicles are not yet published.
+### Trailer boundary
 
-### Aerial-search alternatives
+The Operational Support Trailer is verified as a trailer, but its compatible towing vehicles remain unpublished. Do not count the trailer as independently dispatchable until its current game behaviour is directly reproduced.
 
-One of the following satisfies the aerial-search requirement:
+## Off-road alternatives
 
-- Police Helicopter;
-- Drone.
-
-An active Drone precondition does not force the dispatched aerial resource to be a Drone.
-
-### 4x4 alternatives
-
-Two qualifying vehicles are required in total:
+Verified SAR missions require two qualifying vehicles in total from:
 
 - Mountain Rescue 4x4;
 - SAR 4x4.
 
-Any valid combination can satisfy the group where the game permits both resource types.
+Any valid combination may satisfy the group where supported. Do not require two of each.
 
 ## Personnel model
 
+Verified SAR roles include:
+
+- SAR Commander;
+- Search Advisor;
+- Search Technician.
+
 ### Available before generation
 
-- 2 Search Advisors;
-- 4 SAR Commanders.
+The verified High Risk and Very High Risk Missing Person records publish:
+
+- 4 SAR Commanders available;
+- 2 Search Advisors available.
 
 ### Required at the incident
 
-- 1 Search Advisor;
-- 2 SAR Commanders.
+The same missions publish:
 
-### Average minimum
+- 2 SAR Commanders required;
+- 1 Search Advisor required.
 
-- 10 Search Technicians.
+### Average-minimum semantics
 
-The Search Technician figure is stored as `average_minimum`. It must not be presented as an exact guaranteed incident headcount.
+Where Search Technician demand is published as `average_minimum`, it must not be represented as an exact guaranteed count. Use Mission Lookup to inspect the current mission field rather than converting the role into a fixed dispatch rule.
 
-## Verified missions
+## Representative mission pressure
 
-| ID | Mission | Police Cars | Average reward |
-|---:|---|---:|---:|
-| `635` | High Risk Missing Person | 3 | 15,275 |
-| `636` | Very High Risk Missing Person | 5 | 18,750 |
+### High Risk Missing Person
 
-Both missions also require one Control Van, one operational-support alternative, one aerial-search alternative and two qualifying 4x4s.
+Verified response:
 
-## Patient behaviour
+- 1 Control Van;
+- 3 Police Cars;
+- 1 Police Helicopter **or** Drone;
+- 2 Mountain Rescue 4x4s and/or SAR 4x4s;
+- 1 Operational Support Van, Trailer or Personal SAR Vehicle;
+- 2 required SAR Commanders;
+- 1 required Search Advisor;
+- 1 patient generated at mission end;
+- 40% transport probability and 5% critical-care probability;
+- 2 Search and Rescue HQs and 1 active Drone as preconditions.
 
-Both verified missions contain exactly one patient with:
+### Very High Risk Missing Person
 
-- 40% transport probability;
-- 5% critical-care probability;
-- General Internal specialisation;
-- possible codes C-1, C-2 and C-3.
+The verified structure is the same, with 5 Police Cars rather than 3 and a higher average reward. It remains a one-patient mission with the same transport and critical-care probabilities.
 
-## Common modelling errors
+### Transparent concurrency calculation
 
-Avoid these mistakes:
+Running both verified missing-person missions together creates:
 
-1. requiring an Operational Support Van, Trailer and Personal SAR Vehicle simultaneously;
-2. requiring both a Police Helicopter and Drone;
-3. treating an active Drone precondition as the dispatched vehicle;
-4. requiring two Mountain Rescue 4x4s plus two SAR 4x4s instead of two qualifying vehicles total;
-5. treating the average-minimum Search Technician value as an exact guaranteed count;
-6. replacing the base reward with a temporary live multiplier.
+- 2 Control Vans;
+- 8 Police Cars;
+- 2 independent aerial-search slots;
+- 4 qualifying Mountain Rescue/SAR 4x4 slots;
+- 2 operational-support slots;
+- 4 required SAR Commanders;
+- 2 required Search Advisors;
+- up to 2 patients generated at mission end.
 
-## Machine-readable records
+This is a calculation from two verified missions, not an official combined mission. Active-Drone preconditions are generation conditions rather than dispatch quantities and are not converted into two guaranteed Drone responses.
 
-```text
-data/uk/missions/
-├── high-risk-missing-person.json
-└── very-high-risk-missing-person.json
+## Major cross-service searches
 
-data/uk/vehicles/
-├── drone.json
-├── operational-support-trailer.json
-├── operational-support-van.json
-├── personal-sar-vehicle.json
-└── police-helicopter.json
-```
+Large railway, cave and remote incidents may add:
 
-## Primary evidence
+- Search Dog Units;
+- several operational-support alternatives;
+- Police Helicopter or Drone capability;
+- Railway Police and EIU;
+- Fire, HART, Welfare and mass-casualty resources;
+- Cave Rescue Specialist and Operational Team Leader roles.
 
-- [High Risk Missing Person](https://www.missionchief.co.uk/einsaetze/635)
-- [Very High Risk Missing Person](https://www.missionchief.co.uk/einsaetze/636)
+Use Mission Lookup for each incident rather than applying the two missing-person templates universally.
+
+## Six commissioning gates
+
+| Gate | Question | Recommended pass condition |
+|---|---|---|
+| HQ readiness | Are command, support and off-road systems available? | The HQ creates an operational chain rather than only a generator |
+| Drone prerequisite | Is the required active equipment present? | Generation prerequisites are met without confusing them with response rows |
+| Command personnel | Are SAR Commander and Search Advisor states ready? | Available and required values are both supported |
+| Alternative groups | Can one valid resource satisfy each published group? | No group is multiplied into every listed option |
+| Geography | Can resources reach the search area and patient access point? | Route-based coverage is practical |
+| Recovery | Can a second search begin after the first? | Command, support, aerial and off-road reserve returns to useful positions |
+
+## Recommended fleet templates
+
+These are strategy recommendations, not official requirements.
+
+### Foundation SAR network
+
+| Capability | Recommended position |
+|---|---|
+| Search and Rescue HQ | Build only when the complete command/support chain can be commissioned |
+| Control Van | 1 local unit with trained/assigned command personnel |
+| Drone | 1 active item with Drone Operator capability where required |
+| Off-road response | 3–4 qualifying Mountain Rescue/SAR 4x4s across the first region |
+| Operational support | 1 verified option; avoid trailer dependence until towing is understood |
+| Protected reserve | Alliance support for rare second incidents while local depth develops |
+
+### Developing network
+
+| Capability | Recommended position |
+|---|---|
+| HQs | Two operational HQ regions where current mission preconditions require them |
+| Control Vans | One per main response region plus replacement staffing |
+| Aerial search | Drone route plus Police Helicopter fallback or alliance support |
+| Off-road response | 6–8 qualifying 4x4s across two search zones |
+| Operational support | Two independently dispatchable support options |
+| Personnel | Required and replacement SAR Commander/Search Advisor cohorts |
+
+### Established network
+
+| Capability | Recommended position |
+|---|---|
+| HQ and command | Independently dispatchable regional search groups |
+| Aerial search | Multiple active and response-capable options without one trained-person failure point |
+| Off-road response | Sized from measured simultaneous searches and remote return times |
+| Operational support | Vehicle/trailer/personal options distributed by geography and towing certainty |
+| Dogs and specialists | Regional Search Dog and specialist-personnel reserve |
+| Cross-service resilience | Police, Mountain Rescue, HART, Railway and medical dependencies tested together |
+
+## Placement doctrine
+
+### Urban/peri-urban missing-person network
+
+- Position Control Vans and Police support near population and transport corridors.
+- Keep off-road vehicles close enough for woodland, river and edge-of-city searches.
+- Use Drone equipment where it adds genuine coverage rather than replacing ground teams.
+- Preserve Police Car and patient-transport reserve.
+
+### Rural and upland network
+
+- Align HQ command with Mountain Rescue 4x4/SAR 4x4 geography.
+- Distribute operational support by travel-time zone.
+- Maintain aerial-search alternatives for distant searches.
+- Include custom spawn areas and road access.
+
+### Railway and major-incident network
+
+- Position search command near railway corridors and major cross-service risks.
+- Preserve EIU, Railway Police, dogs and operational support independently.
+- Test multiple command and support slots without reusing one unit.
+- Include mass-casualty, welfare and patient handling where published.
+
+## Recovery-to-readiness
+
+After a search incident:
+
+1. record Control Vans, off-road resources, aerial assets and support units still committed;
+2. restore one command and off-road response route in each exposed region;
+3. confirm active Drone equipment and operators remain ready;
+4. return SAR Commander and Search Advisor cohorts to useful geography;
+5. review patients and cross-service missions still active;
+6. rerun the selected dual-search scenario;
+7. correct repeated command, support, aerial or personnel shortages before more HQ expansion.
+
+## Common failures
+
+| Failure | Operational symptom | Correction |
+|---|---|---|
+| Dispatching the active Drone prerequisite | The generation field is treated as a guaranteed response | Keep prerequisite and response alternative separate |
+| Requiring every support option | Fleet plan demands Van, Trailer and Personal SAR Vehicle simultaneously | Apply the quantity to the alternative group |
+| Requiring both 4x4 types | Off-road demand is doubled incorrectly | Use any valid combination across the group |
+| Treating average minimum as exact | Search Technician planning becomes a false fixed rule | Preserve the published personnel semantic |
+| Counting a trailer without towing | Operational Support appears available but may not dispatch | Leave towing unknown until reproduced |
+| Centralising Control Vans | One search removes regional command | Duplicate by travel-time zone |
+| Ignoring personnel availability | Vehicles attend while SAR Commander or Search Advisor requirements remain open | Audit roles separately |
+| Expanding HQs before reserve | New searches generate without a second command/support chain | Commission complete regional readiness first |
+
+## Operational readiness checklist
+
+- [ ] Control Van, off-road and operational-support systems are complete;
+- [ ] active Drone prerequisites are separate from aerial-response slots;
+- [ ] Drone Operator education is available where required;
+- [ ] Mountain Rescue/SAR 4x4 alternative quantities are interpreted correctly;
+- [ ] Operational Support alternatives are not multiplied;
+- [ ] trailer towing remains unknown where unpublished;
+- [ ] SAR Commander and Search Advisor available/required states are supported;
+- [ ] Search Technician semantics are not converted into an exact count;
+- [ ] patient generation, transport and critical care are included;
+- [ ] geography and custom spawn areas are tested;
+- [ ] two searches have been tested together;
+- [ ] cross-service dependencies and recovery reserve are ready;
+- [ ] unpublished values remain unknown rather than zero.
+
+## Stage 37E completion
+
+Together with [Mountain Rescue progression](mountain-rescue.md), this guide completes:
+
+- off-road and remote-area response;
+- command, dogs and operational support;
+- active Drone and aerial-search semantics;
+- SAR Commander, Search Advisor and specialist-personnel planning;
+- HART and helicopter overlays;
+- scalable regional fleet templates;
+- concurrency and recovery-to-readiness.
+
+The next service programme is **Stage 37F — Bomb Disposal and EOD operational progression**.
