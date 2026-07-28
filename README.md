@@ -209,7 +209,7 @@ Immutable annotated tag and GitHub Release
 
 The expanded route suite checks every mature service, strategy, alliance and tool programme for runtime failures and page-level overflow. Critical WCAG A/AA checks cover the main command and interactive surfaces.
 
-See [Quality Assurance](https://conroy1988.github.io/MissionChief-UK/quality-assurance/) and the [Stage 42 Completion Report](docs/releases/stage42-completion-report.md).
+See [Quality Assurance](https://conroy1988.github.io/MissionChief-UK/quality-assurance/) and the [Stage 42 Completion Report](docs/releases/stage-42-completion-report.md).
 
 ---
 
