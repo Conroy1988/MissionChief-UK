@@ -10,6 +10,7 @@ This section provides operational references for every service group currently r
 - [Fire airfield and railway response planning](fire-airfield-and-railway-planning.md) — **Stage 37A Batch 4**
 - [Fire wildfire, flood and water-rescue planning](fire-wildfire-flood-water-rescue.md) — **Stage 37A Batch 5**
 - [Fire major-incident resilience](fire-major-incident-resilience.md) — **Stage 37A Batch 6**
+- [Fire mission-family pressure analysis](fire-mission-family-pressure.md) — **Stage 37A Batch 7**
 - [Ambulance](ambulance.md)
 - [Police](police.md)
 - [Coastguard and Lifeboat](coastguard-and-lifeboat.md)
@@ -22,9 +23,11 @@ This section provides operational references for every service group currently r
 
 ## Stage 37 operational-guide programme
 
-Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first service to receive progression gates, capability ordering, scalable fleet templates, urban/rural planning, specialist-extension activation playbooks, container logistics, training pipelines, personnel reserve guidance, airfield and railway response doctrine, wildfire and severe-weather planning, towing and pumping logistics, major-incident resilience, protected-reserve and recovery doctrine, cross-service commissioning checks, common-failure remedies and direct links into the intelligence tools.
+Stage 37 converts the completed mission and resource intelligence estate into practical, evidence-labelled operating guidance. Fire and Rescue is the first completed service programme, covering progression gates, scalable fleets, specialist extensions, containers, training, airfield and railway response, wildfire and severe weather, towing and pumping logistics, major-incident resilience, protected reserve, recovery doctrine and live mission-family pressure analysis.
 
 Recommendations remain clearly separated from verified game facts. Unpublished costs, restrictions, capacities, class sizes, qualification transferability, pump units and unlock details remain unknown rather than being inferred.
+
+The next operational programme is **Stage 37B — Ambulance & HART progression**.
 
 ## Cross-service intelligence
 
@@ -56,4 +59,4 @@ Mature service guides should document:
 
 ## Ongoing maintenance
 
-Future service work is now treated as evidence enrichment rather than a missing core programme. New UK missions, vehicles, prices, training details and rule changes should enter through the existing schemas, validation pipeline and versioned API.
+Future service work is treated as evidence enrichment rather than a missing core programme. New UK missions, vehicles, prices, training details and rule changes should enter through the existing schemas, validation pipeline and versioned API.
