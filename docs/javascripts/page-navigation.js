@@ -3,9 +3,24 @@
 
   const MIN_SECTIONS = 4;
 
-  function initPageSections() {
+  function labelTaskListControls(content) {
+    for (const input of content.querySelectorAll(".task-list-item input[type='checkbox']")) {
+      if (input.hasAttribute("aria-label") || input.hasAttribute("aria-labelledby")) continue;
+      const item = input.closest(".task-list-item");
+      const labelText = (item?.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      input.setAttribute("aria-label", labelText || "Checklist item");
+    }
+  }
+
+  function initContentEnhancements() {
     const content = document.querySelector(".md-content .md-typeset");
-    if (!content || content.querySelector(".mcuk-home") || content.querySelector("[data-mcuk-page-sections]")) return;
+    if (!content) return;
+
+    labelTaskListControls(content);
+
+    if (content.querySelector(".mcuk-home") || content.querySelector("[data-mcuk-page-sections]")) return;
 
     const heading = content.querySelector("h1");
     const sections = [...content.querySelectorAll("h2[id]")]
@@ -39,10 +54,10 @@
   }
 
   if (typeof document$ !== "undefined") {
-    document$.subscribe(initPageSections);
+    document$.subscribe(initContentEnhancements);
   } else if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPageSections, { once: true });
+    document.addEventListener("DOMContentLoaded", initContentEnhancements, { once: true });
   } else {
-    initPageSections();
+    initContentEnhancements();
   }
 })();
