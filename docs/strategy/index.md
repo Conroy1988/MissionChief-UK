@@ -17,6 +17,17 @@ Strategy pages convert verified mechanics and the completed service guides into 
 
 - [Account Readiness Planner](../tools/account-readiness.md) — local-only mission scenarios, protected reserve, capacity-aware alternative allocation, personnel thresholds, towing/carrier checks and reversible browser storage.
 
+### Stage 41 — Guide UX, Accessibility and Navigation
+
+- mature Getting Started and Game Systems guides replace the remaining framework pages;
+- long pages expose accessible, collapsed section navigation;
+- tables and code blocks scroll within the content column on narrow screens;
+- keyboard focus remains visible across links, controls and disclosure summaries;
+- the complete programme route set is covered by desktop, iPhone and iPad viewport acceptance;
+- critical WCAG A/AA checks cover the primary command, service, strategy, alliance and tool surfaces.
+
+[Review the quality contract](../quality-assurance.md)
+
 ## Operating sequence
 
 1. Verify current mission pressure in [Mission Lookup](../tools/mission-lookup.md).
@@ -90,4 +101,4 @@ The strategy programme does not:
 
 ## Next programme
 
-The next programme is **Stage 41 — Guide UX, Accessibility and Navigation Audit**, applying a complete production usability pass to the expanded service, strategy, alliance and planning surfaces.
+The next programme is **Stage 42 — Versioned Guide Release and Completion Report**, reconciling the completed Stage 37–41 operational estate into the compatible v1.4.0 production release.
