@@ -6,7 +6,7 @@ and is published at:
 
 **[https://www.tkb-gaming.scot/games/missionchief/guides/](https://www.tkb-gaming.scot/games/missionchief/guides/)**
 
-This repository is retained as an archived, read-only record of the original project history.
+This repository is retained as a historical record of the original project.
 Its GitHub Pages publication provides permanent route-preserving redirects to TKB.
 
 All future content, data, tools, issues and development belong in
@@ -16,6 +16,10 @@ All future content, data, tools, issues and development belong in
 
 The final standalone release remains preserved in this repository and in the imported
 monorepo history:
+
+- Stage 42 complete
+- Static API v1.4.0
+- Batch 1 historical milestone: 11 fully canonical missions
 
 | **Official UK missions** | **1,062** |
 |---|---:|
@@ -33,3 +37,11 @@ monorepo history:
 |---|---:|
 | Fully canonical | **1,062 / 1,062 — 100.00%** |
 | Remaining to fully canonical | **0** |
+
+The canonical data estate at migration was:
+
+```text
+├── vehicles/       104 deployable-resource records
+├── infrastructure/ 20 infrastructure records
+└── training/       12 qualification records
+```
